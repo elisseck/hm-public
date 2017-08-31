@@ -8,6 +8,10 @@ This project repository contains the Drupal 8 scaffolding for the public THM sit
     * Composer >= 1.2.3
     * Ansible >= 2.3.1.0
     * Vagrant >= 1.9.0
+    * Note to Linux users:
+        * You might need to enable mbstring and phpunit manually on your machine. You can do this by running `sudo apt-get install php7.0-mbstring` and `sudo apt-get install phpunit`.
+        * You will need to install NFS, which is a distributed file system protocol used between your local machine and the virtual machine generated with `vagrant up`. You can do so by running `sudo apt install nfs-kernel-server`. You might also have to run `sudo apt install nfs-common` if you have mounting issues after installing. More information about that here: https://help.ubuntu.com/lts/serverguide/network-file-system.html.
+
 2. From your terminal, clone the repository locally using `git clone git@github.com:sardell/hm-public.git`.
 3. From the root of the project, install all Composer dependencies by running `composer install`.
 4. Inside the config folder, create a new file called `local.config.yml` and add the following, keeping in mind to fill in the path to your project locally without the double curly braces:
@@ -37,3 +41,7 @@ If you would like to add a new core dependency to the project, we use [Composer]
 `composer require drupal/migrate_tools`
 
 This allows us to easily manage and share dependencies between a team of developers.
+
+## Working on this project
+
+In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.
