@@ -4,10 +4,11 @@ This project repository contains the Drupal 8 scaffolding for the public THM sit
 
 ## Getting started
 1. Ensure you have the following dependencies installed on your machine:
-    * PHP 7
-    * Composer >= 1.2.3
-    * Ansible >= 2.3.1.0
-    * Vagrant >= 1.9.0
+    * [PHP 7](http://php.net/)
+    * [Composer](https://getcomposer.org/) >= 1.2.3
+    * [Ansible](http://docs.ansible.com/ansible/latest/intro.html) >= 2.3.1.0 (Used by Vagrant. We recommend using `brew install ansible` if you're on a Mac.)
+    * [Vagrant](https://www.vagrantup.com/intro/index.html) >= 1.9.0
+    * [VirtualBox](https://www.virtualbox.org/) >= 5.1
     * Note to Linux users:
         * You might need to enable mbstring and phpunit manually on your machine. You can do this by running `sudo apt-get install php7.0-mbstring` and `sudo apt-get install phpunit`.
         * You will need to install NFS, which is a distributed file system protocol used between your local machine and the virtual machine generated with `vagrant up`. You can do so by running `sudo apt install nfs-kernel-server`. You might also have to run `sudo apt install nfs-common` if you have mounting issues after installing. More information about that here: https://help.ubuntu.com/lts/serverguide/network-file-system.html.
