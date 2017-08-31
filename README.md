@@ -41,3 +41,7 @@ If you would like to add a new core dependency to the project, we use [Composer]
 `composer require drupal/migrate_tools`
 
 This allows us to easily manage and share dependencies between a team of developers.
+
+## Working on this project
+
+In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.
