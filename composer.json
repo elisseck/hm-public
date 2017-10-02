@@ -22,6 +22,7 @@
         "drupal/console": "^1.0.1",
         "drupal/core": "~8.0",
         "drupal/devel": "1.x-dev",
+        "drupal/fortytwo": "^2.5",
         "drupal/migrate_tools": "4.0-beta1",
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^1.0.0",
