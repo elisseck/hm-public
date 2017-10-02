@@ -3,11 +3,12 @@
  * Gulpfile for fortytwo.
  */
 
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var del = require('del');
+var gulp         = require('gulp');
+var $            = require('gulp-load-plugins')();
+var del          = require('del');
 var autoprefixer = require('autoprefixer');
-var browserSync = require('browser-sync').create();
+var browserSync  = require('browser-sync').create();
+var cp           = require('child_process');
 
 /**
  * @task browser-sync
@@ -65,11 +66,29 @@ gulp.task('clean', function () {
 });
 
 /**
+ * @task clearcache
+ * Clear all caches
+ */
+gulp.task('clearcache', function(done) {
+  return cp.spawn('drush', ['cache-rebuild'], {stdio: 'inherit'})
+  .on('close', done);
+});
+
+/**
+ * @task reload
+ * Refresh the page after clearing cache
+ */
+gulp.task('reload', function () {
+  browserSync.reload();
+});
+
+/**
  * @task watch
  * Watch files and do stuff.
  */
 gulp.task('watch', ['clean', 'sass-compile','browser-sync'], function () {
   gulp.watch('static/sass/**/*.+(scss|sass)', ['sass-compile']);
+  gulp.watch(['templates/**/*.twig', '**/*.yml'], ['reload']);
 });
 
 /**
