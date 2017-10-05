@@ -3,6 +3,7 @@ namespace Drupal\bio_import_xml\Helpers;
 
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Config\ConfigBase;
+use Drupal\Core\Database\DatabaseExceptionWrapper;
 
 
 class BioXMLMigrationIngestor {
@@ -31,6 +32,7 @@ class BioXMLMigrationIngestor {
      * @var array $data
      */
     protected $data = [
+        'record_count' => [ 'inserted' => 0, 'updated' => 0 ],
         'to_insert' => [
             'fields' => [], 'values' => []
         ],
@@ -38,13 +40,12 @@ class BioXMLMigrationIngestor {
     ];
 
 
-
     public function isAnExistingHistoryMakersID($key, $val) {
         return (is_int($key) && isset($val));
     }
 
     public function isAValidHistoryMakersID($val) {
-        return strlen($val) > 5;
+        return strlen($val) >= 5;
     }
 
     public function isAValidAccessionNumber($val) {
@@ -56,16 +57,23 @@ class BioXMLMigrationIngestor {
     }
 
     public function getNidFromHmidDataField(Connection $db, $hmId) {
-        $stmt = "SELECT entity_id FROM {field_data_field_hm_id} hmid INNER JOIN
+        $stmt = "SELECT entity_id FROM {node__field_hm_id} hmid INNER JOIN
         node n on (hmid.entity_id = n.nid) WHERE field_hm_id_value = :hm_id";
 
-        return $db->query($stmt, [':hm_id', $hmId])->fetchField();
+        try {
+            return $db->query($stmt, [':hm_id' => $hmId])->fetchField();
+        } catch (DatabaseExceptionWrapper $dbExc) {
+            \drupal_set_message($dbExc->getMessage());
+        }
+
+        return false;
     }
 
-    public function prepareTable() {
-        $schema = $this->db->schema();
+    public function prepareTable(Connection $db) {
+        $fieldLocFlashTitle = 'location_flash_title';
+        $schema = $db->schema();
 
-        if (!$schema->fieldExists($this->storageTable, 'location_flash_title')) {
+        if (!$schema->fieldExists($this->storageTable, $fieldLocFlashTitle)) {
             $schema->dropTable($this->storageTable);
             \drupal_set_message("Flushing table: $this->storageTable");
         }
@@ -75,8 +83,8 @@ class BioXMLMigrationIngestor {
             \drupal_install_schema('bio_import_xml');
         }
 
-        return ($schema->fieldExists($this->storageTable, 'location_flash_title') &&
-                $schema->tableExists($this->storageTable));
+        return ($schema->tableExists($this->storageTable) &&
+            $schema->fieldExists($this->storageTable, $fieldLocFlashTitle));
     }
 
     public function loadXml(ConfigBase $config) {
@@ -84,19 +92,30 @@ class BioXMLMigrationIngestor {
         $pathToXml = $config->get($module . '.fm_path');
         $xmlFile = $pathToXml . $config->get($module . '.clean');
 
-        return file_get_contents($xmlFile);
+        try {
+            $xml = new \SplFileObject($xmlFile);
+            return $xml->fread($xml->getSize());
+        } catch (\RuntimeException $exc) {
+            \drupal_set_message('failed to load xml file.');
+            \drupal_set_message($exc->getMessage());
+        }
+
+        return false;
     }
 
     public function convertXml2Array(ConfigBase $config) {
         $xmlData = $this->loadXml($config);
 
-        \drupal_set_message('didn\'t blow up!  yay!');
-        /*if ($xmlData === false) {
+        if ($xmlData === false) {
             \drupal_set_message('The XML data could not be loaded.');
             return false;
         } else {
             return BioXMLMigrationHelpers::xml2array($xmlData);
-        }*/
+        }
+    }
+
+    public function isInFieldList($value, $arr) {
+        return in_array($value, $arr);
     }
 
     /**
@@ -114,10 +133,11 @@ class BioXMLMigrationIngestor {
             intval($dateParts[0]), intval($dateParts[1]), intval($dateParts[2]));
     }
 
-    public function processBiography($bio) {
+    public function processBiography($bio, &$data) {
         $done = '';
 
         foreach ($bio as $field => $value) {
+            //\drupal_set_message('processing field: ' . $field);
             if ($field === 'SponsorLogo' && is_string($value)) {
                 if (substr($value, 0, 5) === 'size:') {
                     $spl = explode('imagewin:', $value);
@@ -132,10 +152,12 @@ class BioXMLMigrationIngestor {
                     $value = implode(' -$- ', $newValue);
                 }
                 if (strlen(trim($value))) {
-                    $this->data['to_insert']['fields'][] = strtolower($field);
-                    $this->data['to_insert']['values'][] = addslashes(urldecode($value));
-                    $this->data['to_update'][] =
-                        strtolower($field) . " = '" . addslashes(urldecode($value));
+                    $v = trim($value);
+                    if (!$this->isInFieldList($v, $data['to_insert']['fields'])) {
+                        $data['to_insert']['fields'][] = strtolower($field);
+                        $data['to_insert']['values'][] = addslashes(urldecode($value));
+                    }
+                    $data['to_update'][strtolower($field)] = addslashes(urldecode($value));
                 }
             }
 
@@ -145,10 +167,20 @@ class BioXMLMigrationIngestor {
 
     public function processBiographies($biographies, $logger) {
 
+        $action = null;
+        $data = [
+            'to_insert' => [ 'fields' => [], 'values' => [] ],
+            'to_update' => []
+        ];
+
         foreach ($biographies as $key => $bio) {
+
             $hmId = $bio['HM_ID'];
 
-            if (!$this->isAValidHistoryMakersID($bio['HM_ID'])) continue;
+            if (!$this->isAValidHistoryMakersID($bio['HM_ID'])) {
+                \drupal_set_message('skipping ' . $bio['HM_ID'] . ' as it is not valid.');
+                continue;
+            }
 
             if (!$this->isAValidAccessionNumber($bio['Accession'])) {
                 $logger->notice('Skipping ' . $hmId . ' as it has no valid accession number.');
@@ -158,50 +190,73 @@ class BioXMLMigrationIngestor {
             if (isset($bio['TimeStampModificationAny'])) {
                 $newDate = $this->convertTimeStamp($bio['TimeStampModificationAny']);
 
-                $this->data['to_insert']['fields'][] = 'timestamp';
-                $this->data['to_insert']['values'][] = $newDate;
-                $this->data['to_update'][] = "timestamp = '" . $newDate . "' ";
+                $data['to_insert']['fields'][] = 'timestamp';
+                $data['to_insert']['values'][] = $newDate;
+                $data['to_update']['timestamp'] = $newDate;
+                //$this->data['to_update'][] = "timestamp = '" . $newDate . "' ";
             }
 
             if ($this->reset) {
 
-                $this->data['to_insert']['fields'][] = 'new';
-                $this->data['to_insert']['values'][] = '1';
-                $this->data['to_update'][] = "new = '1' ";
+                \drupal_set_message('processing: ' . $bio['HM_ID']);
+
+                $data['to_insert']['fields'][] = 'new';
+                $data['to_insert']['values'][] = '1';
+                $data['to_update']['new'] = '1';
+                //$this->data['to_update'][] = "new = '1' ";
 
                 if (!$this->isAnExistingHistoryMakersID($key, $bio['NameFirst'])) {
                     \drupal_set_message('Missing HM fields: ' . $hmId);
                 } else {
-                    $nid = $this->getNidFromHmidDataField($hmId);
+                    $nid = $this->getNidFromHmidDataField($this->db, $hmId);
 
-                    $bioCount = BioXMLMigrationHelpers::historyMakerExists($hmId);
+                    $bioCount = BioXMLMigrationHelpers::historyMakerExists($this->db, $hmId);
                     $action = ($bioCount != 0) ? 'update' : 'insert';
 
-                    if ($nid) {
-                        $this->data['to_insert']['fields'][] = 'nid';
-                        $this->data['to_insert']['values'][] = $nid;
-                        $this->data['to_update'][] = "nid = '" . $nid . "' ";
-                    }
+                    \drupal_set_message('record ' . $bio['HM_ID'] . ' marked to ' . $action);
 
-                    $this->processBiography($bio);
-                    //$this->upsert($action, $hmId, $this->data);
+                    if ($nid) {
+                        $data['to_insert']['fields'][] = 'nid';
+                        $data['to_insert']['values'][] = $nid;
+                        $data['to_update']['nid'] = $nid;
+                        //$this->data['to_update'][] = "nid = '" . $nid . "' ";
+                    }
                 }
             }
+            $this->processBiography($bio, $data);
+            //\drupal_set_message('preparing to perform ' . $action);
+            $this->upsert($this->db, $action, $hmId, $data);
+            $data['to_insert']['fields'] = array();
+            $data['to_insert']['values'] = array();
+            $data['to_update'] = array();
+            //$this->resetDataArrays();
         }
-        \drupal_set_message(print_r($this->data, true));
+        //\drupal_set_message(print_r($this->data, true));
     }
 
-    /*public function upsert($action, $hmId, $data) {
+    public function upsert(Connection $db, $action, $hmId, $data) {
+        \drupal_set_message("attempting to $action record: $hmId");
         switch ($action) {
             case 'update':
-                $stmt = "UPDATE"
-                break;
+                //\drupal_set_message('ACTION: UPDATE');
+                $db->update($this->storageTable)
+                    ->fields($data['to_update'])
+                    ->condition('hm_id', $hmId)
+                    ->execute();
+                return true;
+                //\drupal_set_message(print_r($data['to_update'], true));
             case 'insert':
-                break;
+                $db->insert($this->storageTable)
+                    ->fields($data['to_insert']['fields'])
+                    ->values($data['to_insert']['values'])
+                    ->execute();
+                return true;
+                //\drupal_set_message(print_r($data['to_insert'], true));
             default:
+                \drupal_set_message('record fell through.');
                 return false;
         }
-    }*/
+    }
 
     public function __construct(Connection $db, $reset) {
         $this->db = $db;
@@ -211,10 +266,18 @@ class BioXMLMigrationIngestor {
     public static function ingest(Connection $db, ConfigBase $config, $reset = false) {
         $instance = new self($db, $reset);
 
-        $instance->prepareTable();
-        $bios = $instance->convertXml2Array($config);
-        \drupal_set_message(print_r($bios, true));
-        //$instance->processBiographies($bios, \Drupal::logger($instance->module));
+        $prepared = $instance->prepareTable($instance->db);
 
+        if (!$prepared) {
+            \drupal_set_message('table check test failed. exiting.');
+            return false;
+        } else {
+            \drupal_set_message('Ready to begin ingest process.');
+            $xmlArray = $instance->convertXml2Array($config);
+            $bios = $xmlArray['bios']['Bio'];
+
+            $instance->processBiographies($bios, \Drupal::logger($instance->module));
+            //\drupal_set_message('processed: ' . $instance->data['record_count']['inserted']);
+        }
     }
 }
