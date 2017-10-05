@@ -26,12 +26,13 @@ function bio_import_xml_schema() {
     BiographyLongPath, SpeakersBureauYesNo, SpeakersBureauPreferredAudience, 
     SpeakersBureauHonorarium, SpeakersBureauAvailability, SpeakersBureauNotes, RegionCity, 
     RegionState, TimeStampModificationAny, SponsorLogo, SponsorURL, InterviewPDF1, 
-    InterviewPDF2, new, timestamp';
+    InterviewPDF2, LinkToTHMDA, LinkToSMDA, DAStoryList, DASession, DACaption, DAStory, 
+    DATape, DATitle, DAUrl, new, timestamp';
 
     $fieldNamesAsArray = explode(', ', $fieldNames);
 
     foreach ($fieldNamesAsArray as $field) {
-        $fields[strtolower($field)] = [
+        $fields[trim(strtolower($field))] = [
             'type' => 'text',
             'not null' => FALSE,
         ];
