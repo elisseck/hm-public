@@ -29,15 +29,17 @@ class BioXMLMigrationCleaner {
         $xmlFile   = $pathToXml . $config->get($module . '.original');
         $cleanXml  = $pathToXml . $config->get($module . '.clean');
 
-        $xmlData  = file_get_contents($xmlFile);
-
-        if ($xmlData === FALSE) {
-            \drupal_set_message("file: $xmlFile not found.");
-            return FALSE;
+        try {
+            $xml  = new \SplFileObject($xmlFile);
+            $data = $xml->fread($xml->getSize());
+        } catch (\RuntimeException $exc) {
+            \drupal_set_message('file not found: ' . $exc->getMessage());
+            return false;
         }
 
+
         $handle   = fopen($cleanXml, "w+");
-        $outgoing = BioXMLMigrationHelpers::stripInvalidXml($xmlData);
+        $outgoing = BioXMLMigrationHelpers::stripInvalidXml($data);
 
         fwrite($handle, str_replace('<Bio id', "\n" . '<Bio id', $outgoing));
         return fclose($handle);
