@@ -7,8 +7,10 @@ use Drupal\Core\Database\Connection;
 class BioXMLMigrationHelpers {
 
     public static function historyMakerExists(Connection $db, $hmId) {
-        $stmt = "SELECT hm_id FROM {migrate_thm_storage} WHERE hm_id = :hm_id";
-        return $db->query($stmt, [ ':hm_id' => $hmId ])->rowCount();
+        $stmt = "SELECT COUNT(hm_id) FROM {migrate_thm_storage} WHERE hm_id = :hm_id";
+        $returnValue = $db->query($stmt, [ ':hm_id' => $hmId ])->fetchField();
+        //\drupal_set_message('historyMakerExists returns: ' . $returnValue);
+        return $returnValue;
     }
 
     public static function xml2array($contents, $get_attributes=1, $priority = 'tag') {
