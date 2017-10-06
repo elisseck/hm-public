@@ -114,7 +114,10 @@ class BioXMLMigrationForm extends ConfigFormBase {
      * {@inheritdoc}
      */
     public function import() {
-        \drupal_set_message(t('import as bonafide Drupal nodes.'), 'status');
+        $config = $this->config('bio_import_xml.settings');
+
+        Helpers\BioXMLMigrationImporter::import(\Drupal::database(), $config);
+        //\drupal_set_message(t('import as bonafide Drupal entities.'), 'status');
     }
 
     /**
