@@ -3,8 +3,146 @@
 namespace Drupal\bio_import_xml\Helpers;
 
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Config\ConfigBase;
+use Drupal\file\Entity\File;
 
 class BioXMLMigrationHelpers {
+
+    public static function getTags($tagClump, $vid) {
+        $tags = explode('$', $tagClump);
+
+        if (count($tags) && strlen(trim($tags[0]))) {
+            return array_map(function($tag) use ($vid) {
+                if ($vid == 'tags') {
+                    $t = explode(' - ', $tag);
+                    if (is_numeric($t[1] && $t >= 3)) {
+                        return ['tid' => self::getTid($t[0], $vid)];
+                    } else {
+                        $tid = self::getTid($tag, $vid);
+
+                        if ($tid && is_numeric($tid)) {
+                            return [ 'tid' => $tid ];
+                        }
+                    }
+                }
+            }, $tags);
+        } else {
+            return [];
+        }
+    }
+
+    public static function getTid($term, $vocabName) {
+        $output = false;
+        $termArray = \taxonomy_get_term_by_name(trim($term), $vocabName);
+
+        if (count($termArray)) {
+            $ks = array_keys($termArray);
+            $tid = $ks[0];
+            $output = $tid;
+
+            if (!$termArray[$tid]->vocabulary_machine_name != $vocabName) {
+                if (function_exists('dsm')) {
+                    $x = $termArray[$tid]->vocabulary_machine_name;
+                    $msg = "$term exists in $x but not in $vocabName";
+                    dsm($msg);
+                }
+                $output = false;
+            }
+
+            if ($vocabName === 'tags' && strpos($term, ' - ')) {
+                \taxonomy_term_delete($tid);
+                if (function_exists('dsm')) dsm('Removed :' . $term);
+                $output = false;
+            }
+        }
+
+        if ($vocabName === 'tags' && strpos($term, ' - ')) {
+            $parts = explode(' - ', $term);
+            $count = $parts[1];
+            if (is_numeric($count) && $count >= 3) {
+                $term = $parts[0];
+                $output = false;
+            } else {
+                return false;
+            }
+        }
+
+        if ($output === false && strlen(trim($term))) {
+            $vs   = \taxonomy_vocabulary_get_names();
+            $vVid = $vs[$vocabName]->vid;
+            $newTerm = new \stdClass();
+            $newTerm->name = trim($term);
+            $newTerm->vid  = $vVid;
+            $newTerm->vocabulary_machine_name = $vocabName;
+            \taxonomy_term_save($newTerm);
+
+            if (function_exists('dsm')) {
+                dsm('Added: ' . $newTerm->name . ' to ' . $vocabName);
+            }
+
+            $output = $newTerm->tid;
+        }
+
+        return $output;
+
+    }
+
+    public static function attachImage(Connection $db, ConfigBase $config, $path) {
+        if (strlen(trim($path)) === 0) return false;
+
+        $fmPath = $config->get('bio_import_xml.fm_path');
+        $pathToFile = end(explode('/', $path));
+        $stmt = "SELECT fid FROM {file_managed} WHERE uri = :uri";
+        $uri = 'public://' . preg_replace('/[^\w-.]/', '', $pathToFile);
+
+        $result = $db->query($stmt, [':uri' => $uri]);
+        $fid = $result->fetchCol();
+
+        $action = ($result->rowCount()) ? 'update' : 'add';
+
+        if ($action === 'update') {
+            $file = File::load($fid[0]);
+            $file->set('display', 1);
+            if (isset($file->filename) && strlen($file->filename)) {
+                return (array)$file;
+            }
+        } else {
+            $dir = [
+                'imagewin:/H:/HM Interviews/',
+                'imagewin:/I:/',
+                'H:/HM Interviews/'
+            ];
+
+            $filePath = $fmPath . '/files/' . str_replace($dir, '', $path);
+            if (file_exists($filePath)) {
+                $fileContents = file_get_contents($filePath);
+                $f = file_save_data(
+                    $fileContents, 'public://' . self::stripInvalidXml($pathToFile),
+                    FILE_EXISTS_REPLACE);
+                if (isset($f->filename) && strlen($f->filename)) {
+                    $f->display = 1;
+                    return (array)$f;
+                }
+            } else {
+                \drupal_set_message($filePath . ' doesn\'t exist.');
+            }
+        }
+
+        return false;
+    }
+
+    public static function migrateThmExplode($delimiter, $clump, $charLimit = 240) {
+
+        $q = explode($delimiter, $clump);
+
+        return array_map(function($ele) use ($charLimit) {
+            if (strlen(trim($ele)) >= 2) {
+                return trim(
+                    truncate_utf8(
+                        $ele, $charLimit, 240, 240, 1));
+            }
+        }, $q);
+    }
 
     public static function historyMakerExists(Connection $db, $hmId) {
         $stmt = "SELECT COUNT(hm_id) FROM {migrate_thm_storage} WHERE hm_id = :hm_id";
