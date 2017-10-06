@@ -19,3 +19,12 @@
     outline: none;
   }
 }
+
+%list-no-styles {
+  list-style: none;
+}
+
+%list-item-no-styles {
+  list-style-type: none;
+  padding: 0;
+}
