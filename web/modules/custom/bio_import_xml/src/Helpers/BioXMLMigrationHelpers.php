@@ -5,24 +5,31 @@ namespace Drupal\bio_import_xml\Helpers;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Config\ConfigBase;
 use Drupal\file\Entity\File;
+use Drupal\Component\Utility\Unicode;
+use Drupal\taxonomy\Entity\Term;
+
 
 class BioXMLMigrationHelpers {
 
-    public static function getTags($tagClump, $vid) {
+    public static function getTags($tagClump, $vocabName) {
         $tags = explode('$', $tagClump);
 
         if (count($tags) && strlen(trim($tags[0]))) {
-            return array_map(function($tag) use ($vid) {
-                if ($vid == 'tags') {
+            return array_map(function($tag) use ($vocabName) {
+                if ($vocabName == 'tags') {
                     $t = explode(' - ', $tag);
                     if (is_numeric($t[1] && $t >= 3)) {
-                        return ['tid' => self::getTid($t[0], $vid)];
+                      return \drupal_set_message(
+                        'call with: ' . $t[0] . ' and ' . $vocabName);
+                      //return ['tid' => self::getTid($t[0], $vocabName)];
                     } else {
-                        $tid = self::getTid($tag, $vid);
+                      return \drupal_set_message(
+                        'call with: ' . $t[0] . ' and ' . $vocabName);
+                        /*$tid = self::getTid($tag, $vocabName);
 
                         if ($tid && is_numeric($tid)) {
                             return [ 'tid' => $tid ];
-                        }
+                        }*/
                     }
                 }
             }, $tags);
@@ -33,7 +40,8 @@ class BioXMLMigrationHelpers {
 
     public static function getTid($term, $vocabName) {
         $output = false;
-        $termArray = \taxonomy_get_term_by_name(trim($term), $vocabName);
+        $termArray = \taxonomy_term_load_multiple_by_name(
+          trim($term), $vocabName);
 
         if (count($termArray)) {
             $ks = array_keys($termArray);
@@ -50,37 +58,52 @@ class BioXMLMigrationHelpers {
             }
 
             if ($vocabName === 'tags' && strpos($term, ' - ')) {
-                \taxonomy_term_delete($tid);
+                $tx = \Drupal::entityTypeManager()
+                        ->getStorage($vocabName);
+                $term = $tx->load($tid);
+                \drupal_set_message('attempting to delete: ' .
+                print_r($term, true));
+                //$tx->delete($term);
+
+                //taxonomy_taxonomy_term_delete($tid);
                 if (function_exists('dsm')) dsm('Removed :' . $term);
                 $output = false;
             }
         }
 
         if ($vocabName === 'tags' && strpos($term, ' - ')) {
-            $parts = explode(' - ', $term);
-            $count = $parts[1];
-            if (is_numeric($count) && $count >= 3) {
-                $term = $parts[0];
-                $output = false;
-            } else {
-                return false;
-            }
+          $parts = explode(' - ', $term);
+          $count = $parts[1];
+          if (is_numeric($count) && $count >= 3) {
+              $term = $parts[0];
+              $output = false;
+          } else {
+              return false;
+          }
         }
 
         if ($output === false && strlen(trim($term))) {
-            $vs   = \taxonomy_vocabulary_get_names();
-            $vVid = $vs[$vocabName]->vid;
-            $newTerm = new \stdClass();
+          $vs = \taxonomy_vocabulary_get_names();
+
+          $vVid = $vs[$vocabName]->vid;
+
+          $t = Term::create([
+            'name' => $term,
+            'vid' => $vVid,
+          ]);
+          $t->save();
+
+            /*$newTerm = new \stdClass();
             $newTerm->name = trim($term);
             $newTerm->vid  = $vVid;
             $newTerm->vocabulary_machine_name = $vocabName;
-            \taxonomy_term_save($newTerm);
+            \taxonomy_term_save($newTerm);*/
 
-            if (function_exists('dsm')) {
-                dsm('Added: ' . $newTerm->name . ' to ' . $vocabName);
-            }
+          if (function_exists('dsm')) {
+            dsm('Added: ' . $t->getName() . ' to ' . $vocabName);
+          }
 
-            $output = $newTerm->tid;
+          $output = $t->get('tid');
         }
 
         return $output;
@@ -98,7 +121,7 @@ class BioXMLMigrationHelpers {
         $result = $db->query($stmt, [':uri' => $uri]);
         $fid = $result->fetchCol();
 
-        $action = ($result->rowCount()) ? 'update' : 'add';
+        $action = (!empty($fid)) ? 'update' : 'add';
 
         if ($action === 'update') {
             $file = File::load($fid[0]);
@@ -138,8 +161,9 @@ class BioXMLMigrationHelpers {
         return array_map(function($ele) use ($charLimit) {
             if (strlen(trim($ele)) >= 2) {
                 return trim(
-                    truncate_utf8(
-                        $ele, $charLimit, 240, 240, 1));
+                    Unicode::truncate(
+                        $ele, $charLimit,
+                        240, 240, 1));
             }
         }, $q);
     }
