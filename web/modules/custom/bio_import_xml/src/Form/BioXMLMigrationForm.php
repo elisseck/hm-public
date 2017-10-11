@@ -86,6 +86,9 @@ class BioXMLMigrationForm extends ConfigFormBase {
 
         if ($cleaned) {
             \drupal_set_message(t('XML Document has been cleaned.'), 'status');
+        } else {
+          \drupal_set_message(
+            'something went wrong. please check the error logs.');
         }
     }
 
@@ -101,13 +104,9 @@ class BioXMLMigrationForm extends ConfigFormBase {
         if ($reset == 'reset') {
             \drupal_set_message('all records will be marked new.', 'status');
             $resetFlag = true;
-        } else {
-            \drupal_set_message('reset flag has not been set', 'status');
         }
 
         Helpers\BioXMLMigrationIngestor::ingest(\Drupal::database(), $config, $resetFlag);
-
-        //\drupal_set_message(t('populate custom table with xml data.'), 'status');
     }
 
     /**
