@@ -94,6 +94,8 @@ class BioXMLMigrationImporter {
         ['organizations', 'organizations', 'field_organizations'],
     ];
 
+    protected $pdfFields = ['interviewpdf1', 'interviewpdf2'];
+
   /**
    * @var Node $node
    */
@@ -141,7 +143,7 @@ class BioXMLMigrationImporter {
         } else {
             $file = BioXMLMigrationHelpers::attachImage(
                 $this->db, $this->config, $record->$fieldName);
-            if ($file['filesize'] != 0) {
+            if (!empty($file->getSize())) {
                 $output = $file;
             }
         }
@@ -154,7 +156,7 @@ class BioXMLMigrationImporter {
 
           if (strlen(trim($record->$value)) && !empty($record->$value)) {
             $truncateMig = Unicode::truncate(
-                $record->mig, 240, true, true,
+                $record->$value, 240, true, true,
                 1
             );
             $this->node->set($field, $record->$value);
@@ -192,20 +194,24 @@ class BioXMLMigrationImporter {
 
     protected function populateImageFields($record) {
       foreach($this->imageFields as $field => $value) {
+
         $imageField = BioXMLMigrationHelpers::attachImage(
           $this->db, $this->config, $record->$value);
 
-        if (($imageField) && ($imageField['filesize'] != 0)) {
-          $this->node->$field->value = $imageField;
+        if (($imageField) && !empty($imageField->getSize())) {
+          $this->node->$field->appendItem($imageField);
         }
       }
-        return $this;
+
+      return $this;
     }
 
     protected function populatePdfFields($record) {
-      foreach (['interviewpdf1', 'interviewpdf2'] as $iPdf) {
+      foreach ($this->pdfFields as $iPdf) {
         if ($f = $this->imageExists($record, $iPdf)) {
           $record->$iPdf->appendItem($f);
+        } else {
+            \drupal_set_message('no pdf.');
         }
       }
 
@@ -219,13 +225,7 @@ class BioXMLMigrationImporter {
         $field = $v[2];
 
         if (strlen(trim($record->$value))) {
-          /*\drupal_set_message(
-            'calling with: ' . $record->$value . ' : ' . $vocab);
-          return $this;*/
 
-          $tags = 0;
-          /*\drupal_set_message(
-            'calling with: ' . $record->$value . ' and ' . $vocab);*/
           $tags = BioXMLMigrationHelpers::getTags($record->$value, $vocab);
 
           if (count($tags)) {
@@ -252,19 +252,30 @@ class BioXMLMigrationImporter {
       $title = $this->node->getTitle();
 
       if (!isset($title)) {
-        $this->node->setTitle($record->namefirst . ' ' . $record->namelast);
+        $this->node->setTitle(\stripslashes($record->namefirst . ' ' . $record->namelast));
       }
 
       if (strlen(trim($record->preferredname))) {
-        $this->node->setTitle($record->preferredname);
+        $this->node->setTitle(\stripslashes($record->preferredname));
       }
 
       $cleanBody = preg_replace(
         '/\xEF\x83\xA2/', '&reg;', $record->biographylong);
-      $this->node->body->value = $this->checkPlain($cleanBody);
-      $this->node->body->format = 'filtered_html';
+      $this->node->get('body')->value = $this->checkPlain($cleanBody);
+      $this->node->get('body')->format = 'restricted_html';
 
       return $this;
+    }
+
+    protected function saveNode(){
+        try {
+            $this->node->save();
+        } catch (\Exception $exc) {
+            \drupal_set_message(
+                'node save for ' . $this->node->get('hm_id')->value . 'failed');
+            return false;
+        }
+        return $this;
     }
 
     protected function processRecords($recordSet) {
@@ -335,10 +346,20 @@ class BioXMLMigrationImporter {
           print_r($node->get($field)->getValue(), true));
       }
 
-      /*foreach ($q->imageFields as $field => $value) {
+        /*foreach ($q->pdfFields as $field) {
+            \drupal_set_message(
+                'PDF field: ' . $field . ':' .
+                print_r($node->get($field)->getValue(), true));
+        }*/
+
+      foreach ($q->imageFields as $field => $value) {
         \drupal_set_message(
           'image field: ' . $field . ':' .
-          print_r($node->get($field)->getValue, true));
+          print_r($node->get($field)->getValue(), true));
+      }
+
+      /*foreach ($q->taxonomyFields as $field) {
+
       }*/
     }
 
@@ -354,8 +375,10 @@ class BioXMLMigrationImporter {
                   ->populateSingleValueFields($rec)
                   ->populateLinkFields($rec)
                   ->populateMultiValueFields($rec)
-                  ->populateTaxonomyFields($rec);
-                  //->populateImageFields($rec);
+                  ->populateTaxonomyFields($rec)
+                  ->populatePdfFields($rec)
+                  ->populateImageFields($rec)
+                  ->saveNode();
 
           self::debugPrint($instance);
         }

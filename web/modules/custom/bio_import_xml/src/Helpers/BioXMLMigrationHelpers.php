@@ -11,32 +11,33 @@ use Drupal\taxonomy\Entity\Term;
 
 class BioXMLMigrationHelpers {
 
-    public static function getTags($tagClump, $vocabName) {
-        $tags = explode('$', $tagClump);
+  public static function getTags($tagClump, $vocabName) {
+    $tags = explode('$', $tagClump);
 
-        if (count($tags) && strlen(trim($tags[0]))) {
-            return array_map(function($tag) use ($vocabName) {
-                if ($vocabName == 'tags') {
-                    $t = explode(' - ', $tag);
-                    if (is_numeric($t[1] && $t >= 3)) {
-                      return \drupal_set_message(
-                        'call with: ' . $t[0] . ' and ' . $vocabName);
-                      //return ['tid' => self::getTid($t[0], $vocabName)];
-                    } else {
-                      return \drupal_set_message(
-                        'call with: ' . $t[0] . ' and ' . $vocabName);
-                        /*$tid = self::getTid($tag, $vocabName);
+    if (count($tags) && strlen(trim($tags[0]))) {
+      return array_map(function($tag) use ($vocabName) {
+        if ($vocabName == 'tags') {
+          $t = explode(' - ', $tag);
 
-                        if ($tid && is_numeric($tid)) {
-                            return [ 'tid' => $tid ];
-                        }*/
-                    }
-                }
-            }, $tags);
-        } else {
-            return [];
+          if (is_numeric($t[1] && $t >= 3)) {
+            /*return \drupal_set_message(
+              'call with: ' . $t[0] . ' and ' . $vocabName);*/
+            return ['tid' => self::getTid($t[0], $vocabName)];
+          } else {
+            /*return \drupal_set_message(
+              'call with: ' . $t[0] . ' and ' . $vocabName);*/
+              $tid = self::getTid($tag, $vocabName);
+
+              if ($tid && is_numeric($tid)) {
+                  return [ 'tid' => $tid ];
+              }
+          }
         }
+      }, $tags);
+    } else {
+      return [];
     }
+  }
 
     public static function getTid($term, $vocabName) {
         $output = false;
@@ -85,11 +86,11 @@ class BioXMLMigrationHelpers {
         if ($output === false && strlen(trim($term))) {
           $vs = \taxonomy_vocabulary_get_names();
 
-          $vVid = $vs[$vocabName]->vid;
+          //$vVid = $vs[$vocabName]->vid;
 
           $t = Term::create([
             'name' => $term,
-            'vid' => $vVid,
+            'vid' => $vocabName,
           ]);
           $t->save();
 
@@ -143,15 +144,33 @@ class BioXMLMigrationHelpers {
                     $fileContents, 'public://' . self::stripInvalidXml($pathToFile),
                     FILE_EXISTS_REPLACE);
                 if (isset($f->filename) && strlen($f->filename)) {
-                    $f->display = 1;
-                    return (array)$f;
+                  //$f->display = 1;
+                  $f->set('display', 1);
+                  return (array)$f;
                 }
             } else {
                 \drupal_set_message($filePath . ' doesn\'t exist.');
+                // TODO: Move $placeholderUrl to config or admin form.
+                $placeholderUrl = 'http://via.placeholder.com/300x300';
+                return self::attachPlaceholderImage($placeholderUrl);
             }
         }
 
         return false;
+    }
+
+    public static function attachPlaceholderImage($url) {
+      $file = \system_retrieve_file($url, null, true, FILE_EXISTS_REPLACE);
+
+      if (!$file) {
+        // TODO: Add logger as ; log that online placeholder
+        //       could not be retrieved.
+        \drupal_set_message("the file at $url could not be retrieved.");
+      } else {
+        $file->setFilename('placeholder.png'); // is this working?
+
+        return $file;
+      }
     }
 
     public static function migrateThmExplode($delimiter, $clump, $charLimit = 240) {
