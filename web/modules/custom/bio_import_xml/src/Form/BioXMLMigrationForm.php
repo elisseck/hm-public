@@ -16,6 +16,8 @@ use Drupal\bio_import_xml\Helpers;
  */
 class BioXMLMigrationForm extends ConfigFormBase {
 
+    protected $storageTable = 'migrate_thm_storage';
+
     /**
      * {@inheritdoc}
      */
@@ -30,48 +32,110 @@ class BioXMLMigrationForm extends ConfigFormBase {
         return 'bio_import_xml_migration_form_settings';
     }
 
+  protected function getNewBios($db, $limit = null) {
+    $stmt = "SELECT * FROM {$this->storageTable} WHERE new = :new";
+
+    if ($limit) $stmt .= " LIMIT $limit";
+
+    return $db->query($stmt, [':new' => '1'])->fetchAll();
+  }
+
+    public function renderNewBiosGrid() {
+      $fieldNames = 'HM_ID, nid, Accession, BirthCity, BirthState, BirthCountry,
+       DateBirth, Dates_of_Sessions, DateDeath, MaritalStatus, Gender, 
+       Favorite_Color, Favorite_Food, Favorite_Quote, Favorite_Season, 
+       Favorite_VacationSpot, PreferredName, NameFirst, NameMiddle, NameLast, 
+       BiographyLong, DescriptionShort, Category, Location_Flash_File, 
+       Location_Flash_Title, Employment_for, Occupation, OccupationCategories, 
+       Organizations, Sponsor, Schools_for, BiographyLongWords, ImageBio, 
+       ImageArchive01, ImageArchive02, BiographyLongPath, SpeakersBureauYesNo, 
+       SpeakersBureauPreferredAudience, SpeakersBureauHonorarium, 
+       SpeakersBureauAvailability, SpeakersBureauNotes, RegionCity, RegionState,
+       TimeStampModificationAny, SponsorLogo, SponsorURL, InterviewPDF1, 
+       InterviewPDF2, LinkToTHMDA, LinkToSMDA, DAStoryList, DASession, DACaption,
+       DAStory, DATape, DATitle, DAUrl, new, timestamp';
+
+      $fieldNamesAsArray = explode(', ', $fieldNames);
+
+      $table = [
+        '#type' => 'table',
+        '#caption' => $this->t('New Biographies'),
+        '#header' => $fieldNamesAsArray,
+      ];
+
+
+
+      $newBios = $this->getNewBios(\Drupal::database(), 20);
+
+      pager_default_initialize(count($newBios), 5);
+      $i = 0;
+
+      foreach ($newBios as $newBio) {
+
+        foreach ($fieldNamesAsArray as $fieldName) {
+          $f = strtolower($fieldName);
+
+          $table[$i][$f] = [
+            '#type' => 'item',
+            '#title' => $this->trimTo40Chars($newBio->$f),
+          ];
+        }
+        $i++;
+      }
+
+      $table['pager'] = [
+        '#type' => 'pager'
+      ];
+
+      return $table;
+    }
+
+    public function trimTo40Chars($v) {
+      return substr($v, 0, 40);
+    }
+
     /**
      * {@inheritdoc}
      */
     public function buildForm(array $form, FormStateInterface $form_state, $reset = NULL) {
-        $formId = 'bio_migrator';
-        $config = $this->config('bio_import_xml.settings');
+      $formId = 'bio_migrator';
+      $config = $this->config('bio_import_xml.settings');
 
-        // TODO: Display data in migration table marked as "new"
+      $form[$formId] = [
+          '#type' => 'fieldset',
+          '#title' => t('Import Filemaker XML Feed.'),
+      ];
 
-        $form[$formId] = [
-            '#type' => 'fieldset',
-            '#title' => t('Import Filemaker XML Feed.'),
-        ];
+      $form[$formId]['reset_flag'] = [
+          '#type' => 'hidden',
+          '#value' => $reset,
+      ];
 
-        $form[$formId]['reset_flag'] = [
-            '#type' => 'hidden',
-            '#value' => $reset,
-        ];
+      $form[$formId]['fm_path'] = [
+          '#type' => 'textfield',
+          '#title' => $this->t('Absolute path to the XML file.'),
+          '#default_value' => $config->get('bio_import_xml.fm_path'),
+      ];
 
-        $form[$formId]['fm_path'] = [
-            '#type' => 'textfield',
-            '#title' => $this->t('Absolute path to the XML file.'),
-            '#default_value' => $config->get('bio_import_xml.fm_path'),
-        ];
+      $form[$formId]['clean_xml'] = [
+          '#type' => 'submit',
+          '#value' => t('1. Clean feed.'),
+          '#submit' => [ '::clean' ],
+      ];
 
-        $form[$formId]['clean_xml'] = [
-            '#type' => 'submit',
-            '#value' => t('1. Clean feed.'),
-            '#submit' => [ '::clean' ],
-        ];
+      $form[$formId]['ingest_xml'] = [
+          '#type' => 'submit',
+          '#value' => t('2. Validate and store feed records'),
+          '#submit' => [ '::ingest' ],
+      ];
 
-        $form[$formId]['ingest_xml'] = [
-            '#type' => 'submit',
-            '#value' => t('2. Validate and store feed records'),
-            '#submit' => [ '::ingest' ],
-        ];
+      $form[$formId]['process_data'] = [
+          '#type' => 'submit',
+          '#value' => t('3. Import records to website'),
+          '#submit' => [ '::import' ],
+      ];
 
-        $form[$formId]['process_data'] = [
-            '#type' => 'submit',
-            '#value' => t('3. Import records to website'),
-            '#submit' => [ '::import' ],
-        ];
+      $form[$formId]['table'] = $this->renderNewBiosGrid($form);
 
         return parent::buildForm($form, $form_state);
     }
@@ -113,10 +177,10 @@ class BioXMLMigrationForm extends ConfigFormBase {
      * {@inheritdoc}
      */
     public function import() {
-        $config = $this->config('bio_import_xml.settings');
+      $config = $this->config('bio_import_xml.settings');
 
-        Helpers\BioXMLMigrationImporter::import(\Drupal::database(), $config);
-        //\drupal_set_message(t('import as bonafide Drupal entities.'), 'status');
+      Helpers\BioXMLMigrationImporter::import(
+        \Drupal::database(), $config, \Drupal::logger('bio_import_xml'));
     }
 
     /**

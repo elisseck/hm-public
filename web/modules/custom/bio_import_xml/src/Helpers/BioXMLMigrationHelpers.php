@@ -84,21 +84,14 @@ class BioXMLMigrationHelpers {
         }
 
         if ($output === false && strlen(trim($term))) {
-          $vs = \taxonomy_vocabulary_get_names();
+          //$vs = \taxonomy_vocabulary_get_names();
 
-          //$vVid = $vs[$vocabName]->vid;
 
           $t = Term::create([
             'name' => $term,
             'vid' => $vocabName,
           ]);
           $t->save();
-
-            /*$newTerm = new \stdClass();
-            $newTerm->name = trim($term);
-            $newTerm->vid  = $vVid;
-            $newTerm->vocabulary_machine_name = $vocabName;
-            \taxonomy_term_save($newTerm);*/
 
           if (function_exists('dsm')) {
             dsm('Added: ' . $t->getName() . ' to ' . $vocabName);
@@ -127,8 +120,8 @@ class BioXMLMigrationHelpers {
         if ($action === 'update') {
             $file = File::load($fid[0]);
             $file->set('display', 1);
-            if (isset($file->filename) && strlen($file->filename)) {
-                return (array)$file;
+            if (strlen($file->getFilename())) {
+                return $file;
             }
         } else {
             $dir = [

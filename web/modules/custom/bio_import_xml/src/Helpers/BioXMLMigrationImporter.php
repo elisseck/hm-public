@@ -5,30 +5,46 @@ use Drupal\Core\Database\Connection;
 use Drupal\Core\Config\ConfigBase;
 use Drupal\node\Entity\Node;
 use Drupal\Component\Utility\Unicode;
+use Psr\Log\LoggerInterface;
+use Drupal\Core\Entity\EntityStorageException;
+use React\Promise\Deferred;
+use function React\Promise\all;
+
 
 class BioXMLMigrationImporter {
 
+  /**
+   * @var LoggerInterface Logger reference.
+   */
+  protected $logger;
 
-    protected $config;
 
-    /**
-     * @var Connection $db Database connection reference.
-     */
-    protected $db;
+  /**
+   * @var ConfigBase $config Module config YAML object.
+   */
+  protected $config;
 
-    /**
-     * @var string $storageTable The name of the source data table.
-     */
-    protected $storageTable = 'migrate_thm_storage';
+  /**
+   * @var Connection $db Database connection reference.
+   */
+  protected $db;
 
-    /**
-     * @var int $importXmlUser The user id used to load/update Drupal nodes.
-     */
-    protected $importXmlUser = 155;
+  /**
+   * @var string $storageTable The name of the source data table.
+   */
+  protected $storageTable = 'migrate_thm_storage';
 
-    protected $superUid = 1;
+  /**
+   * @var int $importXmlUser The user id used to load/update Drupal nodes.
+   */
+  protected $importXmlUser = 155;
 
-    protected $newNodes = [];
+  /**
+   * @var int $superUid The root user id;
+   */
+  protected $superUid = 1;
+
+  protected $newNodes = [];
 
     /**
      * @var int $recordsProcessed
@@ -105,6 +121,7 @@ class BioXMLMigrationImporter {
      * Retrieves a set biographies from the migration table.
      *
      * @param Connection $db
+     * @param int $limit
      * @return mixed
      */
     protected function getNewBios(Connection $db, $limit = null) {
@@ -185,7 +202,7 @@ class BioXMLMigrationImporter {
 
     protected function populateLinkFields($record) {
       foreach ($this->linkFields as $field => $value) {
-        if (strlen(trim($record->value)) && !empty($record->value)) {
+        if (strlen(trim($record->$value)) && !empty($record->$value)) {
           $this->node->$field->url = $record->$value;
         }
       }
@@ -207,9 +224,11 @@ class BioXMLMigrationImporter {
     }
 
     protected function populatePdfFields($record) {
+      $fieldName = 'field_bio_pdf';
+
       foreach ($this->pdfFields as $iPdf) {
-        if ($f = $this->imageExists($record, $iPdf)) {
-          $record->$iPdf->appendItem($f);
+        if ($f = $this->imageExists($record->$iPdf, $fieldName)) {
+          $this->node->get($fieldName)->appendItem($f);
         } else {
             \drupal_set_message('no pdf.');
         }
@@ -267,63 +286,41 @@ class BioXMLMigrationImporter {
       return $this;
     }
 
-    protected function saveNode(){
-        try {
-            $this->node->save();
-        } catch (\Exception $exc) {
-            \drupal_set_message(
-                'node save for ' . $this->node->get('hm_id')->value . 'failed');
-            return false;
-        }
-        return $this;
+    protected function saveNode($node){
+      try {
+        return $node->save();
+      } catch (EntityStorageException $exc) {
+        $this->logger->error('node save failed for: ' . $node->get('hm_id'));
+        $this->logger->error($exc->getMessage());
+        return false;
+      }
+    }
+
+    protected function updateStorage($record) {
+      $this->db->update($this->storageTable)
+        ->fields(['new' => '0'])
+        ->condition('hm_id', $record->hm_id)
+        ->execute();
+      return $this;
+    }
+
+    protected function reset() {
+      $this->node = null;
+      return $this;
     }
 
     protected function processRecords($recordSet) {
-        foreach ($recordSet as $record) {
-
-            /*if (empty($node->get('last_comment_uid'))) {
-                $node->set('last_comment_uid', 1);
-            }*/
-
-            /*foreach($this->imageFields as $field => $mig) {
-                $imageField = BioXMLMigrationHelpers::attachImage($this->db, $mig);
-                if ($imageField) {
-                    if ($imageField['filesize'] != 0) {
-                        $node->$field->value = $imageField;
-                    }
-                }
-            }*/
-
-            /*foreach ($this->taxonomyFields as $v) {
-                $vocab = $v[0];
-                $mig   = $v[1];
-                $field = $v[2];
-
-                if (strlen(trim($record->mig))) {
-                    $tags = BioXMLMigrationHelpers::getTags($record->mig, $vocab);
-
-                    if (count($tags)) {
-                        $node->$field->value = $tags;
-                    }
-                }
-            }*/
-
-            /*$node->field_bio_pdf = [];
-            foreach (['interviewpdf1', 'interviewpdf2'] as $iPdf) {
-                if ($f = $this->imageExists($record, $iPdf)) {
-                    $node->field_bio_pdf->appendItem($f);
-                }
-            }*/
-        }
+      return false;
     }
 
-    protected function __construct(Connection $db, ConfigBase $config) {
-        $this->db = $db;
+    protected function __construct(
+      Connection $db, ConfigBase $config, LoggerInterface $logger) {
+        $this->db     = $db;
         $this->config = $config;
+        $this->logger = $logger;
     }
 
-    public static function debugPrint(BioXMLMigrationImporter $q) {
-      $node = $q->node;
+    public static function debugPrint(Node $node, BioXMLMigrationImporter $q) {
 
       \drupal_set_message('title: ' . $node->getTitle());
       \drupal_set_message('body: ' . $node->get('body')->value);
@@ -346,11 +343,11 @@ class BioXMLMigrationImporter {
           print_r($node->get($field)->getValue(), true));
       }
 
-        /*foreach ($q->pdfFields as $field) {
+        foreach ($q->pdfFields as $field) {
             \drupal_set_message(
                 'PDF field: ' . $field . ':' .
                 print_r($node->get($field)->getValue(), true));
-        }*/
+        }
 
       foreach ($q->imageFields as $field => $value) {
         \drupal_set_message(
@@ -358,31 +355,72 @@ class BioXMLMigrationImporter {
           print_r($node->get($field)->getValue(), true));
       }
 
-      /*foreach ($q->taxonomyFields as $field) {
-
-      }*/
     }
 
-    public static function import(Connection $db, ConfigBase $config) {
+    public function recordsToNodes($records) {
+      return array_map(function($rec) {
+        $deferred = new Deferred();
 
-        $instance = new self($db, $config);
+        $this
+          ->createOrLoadNode($rec)
+          ->setTitleAndBody($rec)
+          ->populateSingleValueFields($rec)
+          ->populateLinkFields($rec)
+          ->populateMultiValueFields($rec)
+          ->populateTaxonomyFields($rec)
+          ->populatePdfFields($rec)
+          ->populateImageFields($rec);
 
-        $rs = $instance->getNewBios($instance->db, 1);
+        $deferred->resolve($this->node);
 
-        foreach ($rs as $rec) {
-          $instance->createOrLoadNode($rec)
-                  ->setTitleAndBody($rec)
-                  ->populateSingleValueFields($rec)
-                  ->populateLinkFields($rec)
-                  ->populateMultiValueFields($rec)
-                  ->populateTaxonomyFields($rec)
-                  ->populatePdfFields($rec)
-                  ->populateImageFields($rec)
-                  ->saveNode();
+        $this->reset();
 
-          self::debugPrint($instance);
-        }
+        return $deferred->promise();
+      }, $records);
+    }
 
-        //$instance->processRecords($rs);
+    public function saveNodes($nodes) {
+      return array_map(function($node) {
+        $deferred = new Deferred();
+
+        $result = $this->saveNode($node);
+        $state  = '';
+
+        if (!$result) $state = 'failed';
+        else if ($result == SAVED_NEW) $state = 'created';
+        else if ($result == SAVED_UPDATED) $state = 'updated';
+
+        $deferred->resolve([
+          $node->get('field_hm_id')->value => $state,
+        ]);
+
+        return $deferred->promise();
+      }, $nodes);
+    }
+
+    public function logResults($report) {
+      $msg = 'results for '.date('Y-m-d H:i:s') . '; ';
+      $this->logger->notice($msg . print_r($report, true));
+    }
+
+    public static function import(
+      Connection $db, ConfigBase $config, LoggerInterface $logger) {
+
+        $instance = new self($db, $config, $logger);
+
+        $rs = $instance->getNewBios($instance->db, 5);
+
+        $ps = $instance->recordsToNodes($rs);
+
+        all($ps)
+          ->then(function($nodes) use ($instance) {
+            return $instance->saveNodes($nodes);
+          })
+          ->then(function($rps) {
+            return all($rps);
+          })
+          ->then(function($report) use ($instance) {
+            $instance->logResults($report);
+          });
     }
 }
