@@ -11,6 +11,21 @@ use Drupal\taxonomy\Entity\Term;
 
 class BioXMLMigrationHelpers {
 
+  public static $storageFieldNames = 'HM_ID, nid, Accession, BirthCity, 
+       BirthState, BirthCountry,
+       DateBirth, Dates_of_Sessions, DateDeath, MaritalStatus, Gender, 
+       Favorite_Color, Favorite_Food, Favorite_Quote, Favorite_Season, 
+       Favorite_VacationSpot, PreferredName, NameFirst, NameMiddle, NameLast, 
+       BiographyLong, DescriptionShort, Category, Location_Flash_File, 
+       Location_Flash_Title, Employment_for, Occupation, OccupationCategories, 
+       Organizations, Sponsor, Schools_for, BiographyLongWords, ImageBio, 
+       ImageArchive01, ImageArchive02, BiographyLongPath, SpeakersBureauYesNo, 
+       SpeakersBureauPreferredAudience, SpeakersBureauHonorarium, 
+       SpeakersBureauAvailability, SpeakersBureauNotes, RegionCity, RegionState,
+       TimeStampModificationAny, SponsorLogo, SponsorURL, InterviewPDF1, 
+       InterviewPDF2, LinkToTHMDA, LinkToSMDA, DAStoryList, DASession, DACaption,
+       DAStory, DATape, DATitle, DAUrl, new, timestamp';
+
   public static function getTags($tagClump, $vocabName) {
     $tags = explode('$', $tagClump);
 
