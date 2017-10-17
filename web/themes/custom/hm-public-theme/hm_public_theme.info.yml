@@ -1,0 +1,22 @@
+name: HM Public Theme
+type: theme
+description: Forty Two Sub theme made from the starterkit
+base theme: fortytwo
+core: 8.x
+
+libraries:
+  - hm_public_theme/main
+
+stylesheets-remove:
+  - '@fortytwo/static/css/fortytwo.css'
+
+regions:
+  header: 'Header'
+  page_top: 'Page top'
+  highlighted: 'Highlighted area'
+  navigation: 'Navigation'
+  content: 'Content'
+  sidebar_first: 'First sidebar'
+  sidebar_second: 'Second sidebar'
+  page_bottom: 'Page bottom'
+  footer: 'Footer'

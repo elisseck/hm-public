@@ -1,0 +1,7 @@
+main:
+  version: VERSION
+  css:
+    base:
+      static/css/hm_public_theme.css: {}
+  js:
+      static/js/hm_public_theme.js: {}

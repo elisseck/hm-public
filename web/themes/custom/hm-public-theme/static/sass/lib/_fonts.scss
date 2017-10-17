@@ -1,0 +1,59 @@
+// sass-lint:disable no-duplicate-properties, property-sort-order, no-url-domains, no-url-protocols
+
+// Notice the font family names, the 3 Serif and the 3 Sans names are identical.
+// How does the browser know which one to take? Change the font-weight, just like
+// you would do with a real font. With the values set below you can also use
+// The keyword 'normal' is synonymous with '400', and 'bold' is synonymous with '700'
+// There is no keyword for the lightest version unfortunately
+//
+// Read more about it here:
+// http://www.metaltoad.com/blog/how-use-font-face-avoid-faux-italic-and-bold-browser-styles
+
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,700|Source+Sans+Pro:400,600,700');
+
+// font placeholders
+
+%source-sans {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+%source-sans-semi-bold {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+}
+
+%source-sans-semi-bold-italic {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+%source-sans-bold {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+}
+
+%source-sans-bold-italic {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+%oswald {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+}
+
+%oswald-light {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+}
+
+// Icomoon
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot');
+  src: url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('../fonts/icomoon.woff') format('application/font-woff'), url('../fonts/icomoon.ttf') format('truetype'), url('../fonts/icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

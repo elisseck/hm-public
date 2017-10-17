@@ -1,0 +1,120 @@
+.header {
+  background-color: color(light-grey);
+  color: color(dark-grey);
+  width: 100%;
+}
+
+.header__top-row {
+  align-items: center;
+  display: flex;
+}
+
+.header__da-link {
+  @extend %source-sans-semi-bold;
+  background-color: $white;
+  color: color(secondary);
+  font-size: rem(15);
+  padding: em(16, 15) em(20, 15);
+
+  &:hover {
+    color: color(secondary);
+  }
+}
+
+.header__donate-link {
+  @extend %source-sans-semi-bold;
+  color: color(dark-grey);
+  padding: em(16, 15) em(20, 15);
+
+  &:hover {
+    color: color(dark-grey);
+  }
+}
+
+.header__logo-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: em(45);
+}
+
+// Margin and width are there to align the logo with bottom text.
+.header__logo {
+  margin-left: em(5);
+  max-width: em(380);
+}
+
+.header__logo-copy {
+  @extend %oswald-light;
+  color: color(dark-grey);
+}
+
+#hm-public-theme-main-menu {
+  margin: 0 auto;
+  max-width: em(1240);
+  padding: 0 em(55);
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .menu-item {
+    @extend %oswald;
+    border-bottom: em(8) solid transparent;
+    letter-spacing: .114em;
+    text-transform: uppercase;
+
+    a:hover {
+      border-bottom: em(8) solid color(secondary);
+      transition: border-bottom .2s ease-in-out;
+    }
+
+    .is-active {
+      border-bottom: em(8) solid color(tertiary);
+      transition: border-bottom .2s ease-in-out;
+    }
+
+    a {
+      color: color(dark-grey);
+
+      &:hover { text-decoration: none; }
+    }
+  }
+}
+
+.profile {
+  margin-left: auto;
+  margin-right: em(22);
+}
+
+.profile__option { @extend %list-item-no-styles; }
+
+.profile__link { color: color(dark-grey);}
+
+.social {
+  @extend %list-no-styles;
+  align-items: baseline;
+  border-left: 1px solid color(medium-grey);
+  display: flex;
+  padding: em(16, 15) em(20, 15) em(16, 15) 0;
+}
+
+.social__item { @extend %list-item-no-styles; }
+
+.social__icon {
+  color: color(tertiary);
+  height: em(18);
+  margin-left: em(22);
+  transition: color .2s ease-in-out;
+  width: auto;
+
+  &:first-of-type { height: em(22); }
+
+  &:hover {
+    color: color(secondary);
+    cursor: pointer;
+  }
+}
