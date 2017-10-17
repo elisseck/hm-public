@@ -1,3 +1,7 @@
+// sass-lint:disable nesting-depth
+// Nesting depth is disabled in this theme file for now. We may want to re-write
+// or delete some of the unnecessary parts of this file when we have time.
+
 input, a, button, textarea {
   &:focus {
     @extend %elementfocus;
@@ -421,7 +425,7 @@ label.select.prettify {
 // PAGEELEMENTS
 /////////////////////////////////////////
 a {
-  color: normal-color($bodycopy-link-colors);
+  color: color(secondary);
   text-decoration: none;
   transition: color 0.1s ease-in-out;
 
@@ -443,14 +447,21 @@ ol {
 
   li {
     list-style-type: none;
-
-    &:before {
-      @extend %fonticon;
-      content: counter(olcounter) '.';
-      counter-increment: olcounter;
-      font-family: $default-font;
-      font-size: $default-font-size;
-      padding: 0 4px;
-    }
   }
+
+  li:before {
+    @extend %fonticon;
+    content: counter(olcounter) '.';
+    counter-increment: olcounter;
+    font-family: $default-font;
+    font-size: $default-font-size;
+    padding: 0 4px;
+  }
+}
+
+// remove browser default styles
+ul { list-style: none; }
+
+ul li {
+  list-style-type: none;
 }

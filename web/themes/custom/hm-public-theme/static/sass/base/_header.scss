@@ -63,17 +63,17 @@
 
   .menu-item {
     @extend %oswald;
-    border-bottom: em(4) solid transparent;
+    border-bottom: em(8) solid transparent;
     letter-spacing: .114em;
     text-transform: uppercase;
 
     a:hover {
-      border-bottom: em(4) solid color(secondary);
+      border-bottom: em(8) solid color(secondary);
       transition: border-bottom .2s ease-in-out;
     }
 
     .is-active {
-      border-bottom: em(4) solid color(tertiary);
+      border-bottom: em(8) solid color(tertiary);
       transition: border-bottom .2s ease-in-out;
     }
 

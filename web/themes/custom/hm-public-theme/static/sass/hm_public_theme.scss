@@ -7,11 +7,12 @@
 @import "config/transitions";
 
 // Import grid.
-@import "base/grid/desktop";
-@import "base/grid/tablet-l";
-@import "base/grid/tablet-p";
-@import "base/grid/mobile-l";
-@import "base/grid/mobile-p";
+// Removed from import in favor of Bootstrap 4's grid for the moment
+// @import "base/grid/desktop";
+// @import "base/grid/tablet-l";
+// @import "base/grid/tablet-p";
+// @import "base/grid/mobile-l";
+// @import "base/grid/mobile-p";
 
 // Import icomoon array.
 @import 'lib/icomoon';
@@ -30,6 +31,7 @@
 @import 'base/navigation';
 @import 'base/sidebars';
 @import 'base/tabs';
+@import 'base/buttons';
 
 // Specific page styling
 @import 'pages/home';

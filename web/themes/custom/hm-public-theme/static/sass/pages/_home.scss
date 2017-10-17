@@ -13,13 +13,15 @@ ul {
   padding: 0;
 }
 
+// Begin carousel styles 
 .carousel__links {
   @extend %oswald;
-  font-size: 25px;
+  font-size: rem(25);
+  line-height: 1.2;
   position: absolute;
-  top: 62px;
-  width: 170px;
-  z-index: 1500;
+  top: em(62, 25);
+  width: em(170, 25);
+  z-index: 100;
 }
 
 .carousel__link-wrap {
@@ -48,31 +50,23 @@ ul {
 .carousel__link {
   color: $white;
   display: flex;
-  padding: 15px;
+  padding: em(15, 25);
 
   &:hover {
     text-decoration: none;
   }
 }
 
-.carousel__link--bio:hover {
-  color: color(secondary);
-}
-
-.carousel__link--member:hover {
-  color: color(primary);
-}
-
-.carousel__link--da:hover {
-  color: color(quaternary);
-}
+.carousel__link--bio:hover { color: color(secondary); }
+.carousel__link--member:hover { color: color(primary); }
+.carousel__link--da:hover { color: color(quaternary); }
 
 .carousel__caption {
   color: $white;
   height: 100%;
   left: auto;
   opacity: 0;
-  padding: 30px 60px 30px 30px;
+  padding: em(30) em(60) em(30) em(30);
   position: absolute;
   right: 0;
   text-align: left;
@@ -98,7 +92,7 @@ ul {
 
 .carousel__quote {
   font-family: 'Oswald', sans-serif;
-  font-size: 37px;
+  font-size: rem(37);
   font-weight: 300;
   line-height: 127.027027027027027%;
   quotes: '\201C' '\201D';
@@ -107,7 +101,7 @@ ul {
 
 .carousel__cite {
   display: block;
-  margin-top: 21px;
+  margin-top: em(21, 37);
 }
 
 .active .carousel__image {
@@ -145,7 +139,101 @@ ul {
 .carousel-indicators li {
   background-color: color(dark-grey);
   border-radius: 50%;
-  height: 10px;
-  margin-right: 10px;
-  width: 10px;
+  height: em(10);
+  margin-right: em(10);
+  width: em(10);
+}
+
+// End carousel styles 
+
+.wrapper {
+  display: flex;
+  padding: em(40) 0;
+}
+
+.wrapper--home { background-color: color(light-grey); }
+
+// Biographies and Digital Archives
+.headline--lg { font-size: rem(45); }
+.headline--md { font-size: rem(20); }
+.headline--oswald-light { @extend %oswald-light; }
+.headline--oswald { @extend %oswald; }
+.headline--primary { color: color(primary); }
+.headline--secondary { color: color(secondary); }
+
+.bio-list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.bio-list__category {
+  width: 29.8245614035088%;
+}
+
+.bio-list__img { width: 100%; }
+.bio-list__desc { color: color(dark-grey); }
+.bio-list__link-wrapper:hover { text-decoration: none; }
+.bio-list__link-wrapper:hover .bio-list__desc { text-decoration: underline; }
+.bio-list__img-wrapper { position: relative; }
+
+.bio-list__link-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.bio-list__category:hover .bio-list__img-overlay,
+.bio-list__link-wrapper:focus .bio-list__img-overlay {
+  background-color: color(secondary);
+  height: 100%;
+  opacity: .6;
+  position: absolute;
+  transition: background-color .2s ease-in-out;
+  width: 100%;
+}
+
+.bio-desc,
+.da-desc {
+  margin-bottom: rem(55);
+}
+
+.da {
+  border-left: em(2) solid color(medium-grey);
+}
+
+.da-img {
+  width: 100%;
+}
+
+.da__quotes {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 em(15);
+  padding: em(32) em(70);
+  text-align: center;
+
+  &:last-of-type {
+    border-bottom: em(2) solid color(medium-grey);
+  }
+}
+
+.da__quote {
+  font-size: rem(22);
+}
+
+.da__cite {
+  font-style: normal;
+}
+
+.da__cite-name {
+  @extend %source-sans-semi-bold;
+  display: block;
+  margin-top: em(15);
+}
+
+// 60px gutter
+.gutter-60 > [class^='col-'], .gutter-60 > [class^='col-'] {
+  padding-left: em(30);
+  padding-right: em(30);
 }
