@@ -5,6 +5,7 @@
  */
 namespace Drupal\bio_import_xml\Form;
 
+use Drupal\Core\Ajax;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -76,6 +77,7 @@ class BioXMLMigrationForm extends ConfigFormBase {
   }
 
   public function renderNewBiosGrid() {
+
     $fieldNames = Helpers\BioXMLMigrationHelpers::$storageFieldNames;
 
     $fieldNamesAsArray = explode(', ', $fieldNames);
@@ -148,13 +150,27 @@ class BioXMLMigrationForm extends ConfigFormBase {
     $form[$formId]['ingest_xml'] = [
       '#type' => 'submit',
       '#value' => t('2. Validate and store feed records'),
-      '#submit' => [ '::ingest' ],
+      '#submit' => [ '::ingest' ]
     ];
 
     $form[$formId]['process_data'] = [
       '#type' => 'submit',
       '#value' => t('3. Import records to website'),
-      '#submit' => [ '::import' ],
+      '#submit' => [ '::import' ]
+    ];
+
+    $form[$formId]['test_ajax'] = [
+      '#type' => 'button',
+      '#value' => t('4. Ajax Test'),
+      '#ajax' => [
+        'callback' => '::test',
+        'event' => 'click',
+        'progress' => [
+          'type' => 'bar',
+          'url' => 'thm-migrate/progress',
+          'interval' => 1000
+        ]
+      ]
     ];
 
     $form[$formId]['spacer'] = [
@@ -179,8 +195,8 @@ class BioXMLMigrationForm extends ConfigFormBase {
     if ($cleaned) {
       \drupal_set_message(t('XML Document has been cleaned.'), 'status');
     } else {
-    \drupal_set_message(
-      'something went wrong. please check the error logs.');
+      \drupal_set_message(
+        'something went wrong. please check the error logs.');
     }
   }
 
@@ -210,6 +226,50 @@ class BioXMLMigrationForm extends ConfigFormBase {
 
     Helpers\BioXMLMigrationImporter::import(
       \Drupal::database(), $config, \Drupal::logger('bio_import_xml'));
+  }
+
+
+  public function test(array &$form, FormStateInterface $formState) {
+    $res = new Ajax\AjaxResponse();
+
+    \Drupal::state()->set('import_report', '0 of 4');
+    \Drupal::state()->set('import_progress', 0);
+
+    $count = 1;
+
+    \Drupal::state()->set('import_report', $count . ' of 4');
+    \Drupal::state()->set('import_progress', ($count / 4) * 100);
+    sleep(1);
+    $count++;
+
+    \Drupal::state()->set('import_report', $count . ' of 4');
+    \Drupal::state()->set('import_progress', ($count / 4) * 100);
+    sleep(1);
+    $count++;
+    \Drupal::state()->set('import_report', $count . ' of 4');
+    \Drupal::state()->set('import_progress', ($count / 4) * 100);
+    sleep($seconds = 5);
+
+
+    return $res;
+  }
+
+  public function progress($x = 0) {
+
+    $progress = [
+      'message' => 'importing biographies',
+      'percentage' => 0
+    ];
+
+    $importReport = \Drupal::state()->get('import_report');
+    $completedPercentage = \Drupal::state()->get('import_progress');
+
+    if ($completedPercentage) {
+      $progress['message'] = t($importReport . ': also ' . $x);
+      $progress['percentage'] = $completedPercentage;
+    }
+
+    return new Ajax\AjaxResponse($progress);
   }
 
   /**

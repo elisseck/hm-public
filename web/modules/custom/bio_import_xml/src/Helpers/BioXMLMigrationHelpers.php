@@ -35,17 +35,12 @@ class BioXMLMigrationHelpers {
           $t = explode(' - ', $tag);
 
           if (is_numeric($t[1] && $t >= 3)) {
-            /*return \drupal_set_message(
-              'call with: ' . $t[0] . ' and ' . $vocabName);*/
             return ['tid' => self::getTid($t[0], $vocabName)];
           } else {
-            /*return \drupal_set_message(
-              'call with: ' . $t[0] . ' and ' . $vocabName);*/
+
               $tid = self::getTid($tag, $vocabName);
 
-              if ($tid && is_numeric($tid)) {
-                  return [ 'tid' => $tid ];
-              }
+              if ($tid && is_numeric($tid)) return [ 'tid' => $tid ];
           }
         }
       }, $tags);

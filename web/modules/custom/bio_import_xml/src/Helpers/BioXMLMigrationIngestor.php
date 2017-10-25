@@ -127,7 +127,8 @@ class BioXMLMigrationIngestor {
    * @return false|int A UNIX timestamp.
    */
   public function convertTimeStamp($dtValue) {
-    $date = array_shift(explode(' ', $dtValue));
+    $d = explode(' ', $dtValue);
+    $date = array_shift($d);
     $dateParts = explode('/', $date);
 
     return mktime(
@@ -179,8 +180,8 @@ class BioXMLMigrationIngestor {
 
         $hmId = $bio['HM_ID'];
 
-        if (!$this->isAValidHistoryMakersID($bio['HM_ID'])) {
-          \drupal_set_message('skipping ' . $bio['HM_ID'] . ' as it is not valid.');
+        if (!$this->isAValidHistoryMakersID($hmId)) {
+          \drupal_set_message('skipping ' . $hmId . ' as it is not valid.');
           continue;
         }
 
