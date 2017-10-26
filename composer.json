@@ -24,6 +24,7 @@
         "drupal/deploy": "^1.0@beta",
         "drupal/devel": "1.x-dev",
         "drupal/migrate_manifest": "1.5",
+        "drupal/fortytwo": "^2.5",
         "drupal/migrate_tools": "4.0-beta1",
         "drupal/migrate_upgrade": "3.0.0-rc2",
         "drush/drush": "~8.0",

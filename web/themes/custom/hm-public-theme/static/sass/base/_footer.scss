@@ -1,0 +1,21 @@
+.footer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: em(35) 0 em(85);
+  width: 100%;
+}
+
+#hm-public-theme-footer {
+  .menu-item {
+    padding: em(10);
+  }
+
+  a {
+    color: color(secondary);
+  }
+}
+
+.address {
+  font-style: normal;
+}
