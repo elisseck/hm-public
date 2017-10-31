@@ -31,17 +31,17 @@ class BioXMLMigrationHelpers {
 
     if (count($tags) && strlen(trim($tags[0]))) {
       return array_map(function($tag) use ($vocabName) {
+
         if ($vocabName == 'tags') {
           $t = explode(' - ', $tag);
 
           if (is_numeric($t[1] && $t >= 3)) {
-            return ['tid' => self::getTid($t[0], $vocabName)];
-          } else {
-
-              $tid = self::getTid($tag, $vocabName);
-
-              if ($tid && is_numeric($tid)) return [ 'tid' => $tid ];
+            return [ 'target_id' => self::getTid($t[0], $vocabName)];
           }
+        } else {
+          $tid = self::getTid($tag, $vocabName);
+
+          if ($tid && is_numeric($tid)) return [ 'target_id' => $tid ];
         }
       }, $tags);
     } else {
@@ -53,6 +53,7 @@ class BioXMLMigrationHelpers {
         $output = false;
         $termArray = \taxonomy_term_load_multiple_by_name(
           trim($term), $vocabName);
+
 
         if (count($termArray)) {
             $ks = array_keys($termArray);
@@ -74,9 +75,9 @@ class BioXMLMigrationHelpers {
                 $term = $tx->load($tid);
                 \drupal_set_message('attempting to delete: ' .
                 print_r($term, true));
-                //$tx->delete($term);
+                $tx->delete($term);
 
-                //taxonomy_taxonomy_term_delete($tid);
+                taxonomy_taxonomy_term_delete($tid);
                 if (function_exists('dsm')) dsm('Removed :' . $term);
                 $output = false;
             }
@@ -95,7 +96,6 @@ class BioXMLMigrationHelpers {
 
         if ($output === false && strlen(trim($term))) {
           //$vs = \taxonomy_vocabulary_get_names();
-
 
           $t = Term::create([
             'name' => $term,
