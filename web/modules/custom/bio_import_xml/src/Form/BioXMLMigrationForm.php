@@ -11,6 +11,7 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 use Drupal\bio_import_xml\Helpers;
+use Drupal\Core\Render\Element\Form;
 
 /**
  * Class BioXMLMigrationForm
@@ -141,6 +142,12 @@ class BioXMLMigrationForm extends ConfigFormBase {
       '#default_value' => $config->get('bio_import_xml.fm_path'),
     ];
 
+    $form[$formId]['email_notify'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Email to notify once process is complete.'),
+      '#default_value' => \Drupal::currentUser()->getEmail()
+    ];
+
     $form[$formId]['clean_xml'] = [
       '#type' => 'submit',
       '#value' => t('1. Clean feed.'),
@@ -159,19 +166,6 @@ class BioXMLMigrationForm extends ConfigFormBase {
       '#submit' => [ '::import' ]
     ];
 
-    $form[$formId]['test_ajax'] = [
-      '#type' => 'button',
-      '#value' => t('4. Ajax Test'),
-      '#ajax' => [
-        'callback' => '::test',
-        'event' => 'click',
-        'progress' => [
-          'type' => 'bar',
-          'url' => 'thm-migrate/progress',
-          'interval' => 1000
-        ]
-      ]
-    ];
 
     $form[$formId]['spacer'] = [
       '#markup' => '<hr class="clearfix" />',
@@ -221,19 +215,26 @@ class BioXMLMigrationForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function import() {
+  public function import(&$form, FormStateInterface $formState) {
     $config = $this->config('bio_import_xml.settings');
+    $values = $formState->getValues();
+    $startMsg = 'The import process has begun. An email will be sent to ' .
+      $values['email_notify'] . ' once completed';
 
     Helpers\BioXMLMigrationImporter::import(
       \Drupal::database(), $config, \Drupal::logger('bio_import_xml'));
+
+    \drupal_set_message(t($startMsg));
+  }
+
+  public function resetState() {
+    \Drupal::state()->delete('import_report');
+    \Drupal::state()->delete('import_progress');
   }
 
 
   public function test(array &$form, FormStateInterface $formState) {
     $res = new Ajax\AjaxResponse();
-
-    \Drupal::state()->set('import_report', '0 of 4');
-    \Drupal::state()->set('import_progress', 0);
 
     $count = 1;
 
@@ -248,7 +249,10 @@ class BioXMLMigrationForm extends ConfigFormBase {
     $count++;
     \Drupal::state()->set('import_report', $count . ' of 4');
     \Drupal::state()->set('import_progress', ($count / 4) * 100);
-    sleep($seconds = 5);
+
+    sleep(3);
+
+    $this->resetState();
 
 
     return $res;
@@ -265,7 +269,7 @@ class BioXMLMigrationForm extends ConfigFormBase {
     $completedPercentage = \Drupal::state()->get('import_progress');
 
     if ($completedPercentage) {
-      $progress['message'] = t($importReport . ': also ' . $x);
+      $progress['message'] = t($importReport);
       $progress['percentage'] = $completedPercentage;
     }
 
