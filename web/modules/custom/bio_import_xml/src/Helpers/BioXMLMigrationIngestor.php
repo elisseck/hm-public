@@ -178,7 +178,7 @@ class BioXMLMigrationIngestor {
 
       foreach ($biographies as $key => $bio) {
 
-        $hmId = $bio['HM_ID'];
+        $hmId = (isset($bio['HM_ID'])) ? $bio['HM_ID'] : '';
 
         if (!$this->isAValidHistoryMakersID($hmId)) {
           \drupal_set_message('skipping ' . $hmId . ' as it is not valid.');
@@ -198,9 +198,10 @@ class BioXMLMigrationIngestor {
           $data['to_update']['timestamp'] = $newDate;
         }
 
-        if ($this->reset) {
+        if ($this->reset ||
+          (isset($newDate) && $this->isDateLessThanAWeekOld($newDate))) {
 
-          \drupal_set_message('processing: ' . $bio['HM_ID']);
+          //\drupal_set_message('processing: ' . $bio['HM_ID']);
 
           $data['to_insert']['fields'][] = 'new';
           $data['to_insert']['values'][] = '1';
