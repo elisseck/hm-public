@@ -139,10 +139,6 @@ class BioXMLMigrationImporter {
   protected function loadExistingNode($record) {
     $node = Node::load($record->nid);
 
-    /*if ($node === null) {
-      $node = Node::create([ 'type' => 'bio' ]);
-    }*/
-
     if ($this->noUserForNode($node->id())) {
       $node->setOwnerId($this->superUid);
     }
@@ -248,7 +244,9 @@ class BioXMLMigrationImporter {
         $tags = BioXMLMigrationHelpers::getTags($record->$value, $vocab);
 
         if (count($tags)) {
-          $this->node->set($field, $tags);
+          foreach ($tags as $tag) {
+            $this->node->$field->appendItem($tag);
+          }
         }
       }
     }
@@ -309,52 +307,11 @@ class BioXMLMigrationImporter {
     return $this;
   }
 
-  protected function processRecords($recordSet) {
-    return false;
-  }
-
   public function __construct(
     Connection $db, ConfigBase $config, LoggerInterface $logger) {
     $this->db     = $db;
     $this->config = $config;
     $this->logger = $logger;
-  }
-
-  public static function debugPrint(Node $node, BioXMLMigrationImporter $q) {
-
-    \drupal_set_message('title: ' . $node->getTitle());
-    \drupal_set_message('body: ' . $node->get('body')->value);
-
-    foreach($q->singleValueFields as $field => $value) {
-      \drupal_set_message(
-        'single val field: ' . $field . ':' .
-        $node->get($field)->value);
-    }
-
-    foreach($q->linkFields as $field => $value) {
-      \drupal_set_message(
-        'link val field: ' . $field . ':' .
-        $node->get($field)->getValue()[0]['url']);
-    }
-
-    foreach ($q->multiValueFields as $field => $value) {
-      \drupal_set_message(
-        'multi-value field: ' . $field . ':' .
-        print_r($node->get($field)->getValue(), true));
-    }
-
-    foreach ($q->pdfFields as $field) {
-      \drupal_set_message(
-        'PDF field: ' . $field . ':' .
-        print_r($node->get($field)->getValue(), true));
-    }
-
-    foreach ($q->imageFields as $field => $value) {
-      \drupal_set_message(
-        'image field: ' . $field . ':' .
-        print_r($node->get($field)->getValue(), true));
-    }
-
   }
 
   public function makeNodes($records) {
@@ -373,7 +330,7 @@ class BioXMLMigrationImporter {
 
       $deferred->resolve($this->node);
 
-      $deferred->notify(++$this->biosProcessed);
+      $this->biosProcessed++;
 
       $this->reset();
 
@@ -438,12 +395,40 @@ class BioXMLMigrationImporter {
     return $output;
   }
 
+  public function sendMessage($recipient = null) {
+    //$mailMgr = \Drupal::service('plugin.manager.mail');
+
+    $module = 'bio_import_xml';
+    $key = 'import_bios';
+
+    $headers = [
+      'From: ' . \Drupal::currentUser()->getEmail()
+    ];
+    $to = 'tony.taylor@thirdwavellc.com';
+    $params = [
+      'body' => [ $this->biosProcessed . ' biographies of ' . $this->totalBios . ' have been processed.' ],
+      'subject' => 'Biography Import Successful'
+    ];
+    $langCode = \Drupal::currentUser()->getPreferredLangcode();
+    $send = true;
+
+    $result = \mail($to, $params['subject'], $params['body'][0], implode("\r\n", $headers));
+
+    if ($result !== true) {
+      \drupal_set_message(
+        t('There was an issue mailing the message'), 'error'
+      );
+    } else {
+      \drupal_set_message(t('A message has been sent to ' . $to));
+    }
+  }
+
   public static function import(
     Connection $db, ConfigBase $config, LoggerInterface $logger) {
 
     $instance = new self($db, $config, $logger);
 
-    $rs = $instance->getNewBios($instance->db, 5);
+    $rs = $instance->getNewBios($instance->db);
 
     $instance->totalBios = count($rs);
 
@@ -465,5 +450,6 @@ class BioXMLMigrationImporter {
         });
     }
 
+    $instance->sendMessage();
   }
 }
