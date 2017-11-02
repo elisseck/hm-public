@@ -117,7 +117,7 @@ class BioXMLMigrationHelpers {
     public static function attachImage(Connection $db, ConfigBase $config, $path) {
         if (strlen(trim($path)) === 0) return false;
 
-        $fmPath = $config->get('bio_import_xml.fm_path');
+        $fmPath = $config->get('bio_import_xml.fm_files_path');
         $pathToFile = end(explode('/', $path));
         $stmt = "SELECT fid FROM {file_managed} WHERE uri = :uri";
         $uri = 'public://' . preg_replace('/[^\w-.]/', '', $pathToFile);
@@ -129,7 +129,7 @@ class BioXMLMigrationHelpers {
 
         if ($action === 'update') {
             $file = File::load($fid[0]);
-            $file->set('display', 1);
+
             if (strlen($file->getFilename())) {
                 return $file;
             }
@@ -140,16 +140,16 @@ class BioXMLMigrationHelpers {
                 'H:/HM Interviews/'
             ];
 
-            $filePath = $fmPath . '/files/' . str_replace($dir, '', $path);
+            $filePath = $fmPath . str_replace($dir, '', $path);
+
             if (file_exists($filePath)) {
                 $fileContents = file_get_contents($filePath);
                 $f = file_save_data(
                     $fileContents, 'public://' . self::stripInvalidXml($pathToFile),
                     FILE_EXISTS_REPLACE);
-                if (isset($f->filename) && strlen($f->filename)) {
-                  //$f->display = 1;
-                  $f->set('display', 1);
-                  return (array)$f;
+                $name = $f->getFilename();
+                if (isset($name) && strlen($name)) {
+                  return $f;
                 }
             } else {
                 \drupal_set_message($filePath . ' doesn\'t exist.');
