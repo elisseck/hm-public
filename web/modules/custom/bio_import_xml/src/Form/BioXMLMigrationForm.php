@@ -142,6 +142,13 @@ class BioXMLMigrationForm extends ConfigFormBase {
       '#default_value' => $config->get('bio_import_xml.fm_path'),
     ];
 
+    $form[$formId]['fm_files_path'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Absolute path to accompanying media.'),
+      '#default_value' => $config->get('bio_import_xml.fm_files_path'),
+
+    ];
+
     $form[$formId]['email_notify'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Email to notify once process is complete.'),
@@ -286,6 +293,7 @@ class BioXMLMigrationForm extends ConfigFormBase {
 
     $this->configFactory->getEditable('bio_import_xml.settings')
       ->set('bio_import_xml.fm_path', $values['fm_path'])
+      ->set('bio_import_xml.fm_files_path', $values['fm_files_path'])
       ->save();
 
     parent::submitForm($form, $formState);
