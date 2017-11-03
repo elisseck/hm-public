@@ -8,4 +8,4 @@ $log = \Drupal::logger('bio_import_xml');
 
 \drupal_set_message('Importing biographies. . .');
 
-BioXMLMigrationImporter::import($db, $cfg, \Drupal::logger('bio_import_xml'));
+BioXMLMigrationImporter::import($db, $cfg, $log);

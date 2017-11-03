@@ -209,7 +209,7 @@ class BioXMLMigrationImporter {
     foreach($this->imageFields as $field => $value) {
 
       $imageField = BioXMLMigrationHelpers::attachImage(
-        $this->db, $this->config, $record->$value);
+        $this->db, $this->config, stripslashes($record->$value));
 
       if (($imageField) && !empty($imageField->getSize())) {
         $this->node->$field->appendItem($imageField);
@@ -294,11 +294,36 @@ class BioXMLMigrationImporter {
     }
   }
 
-  protected function updateStorage($record) {
+  protected function updateStorage($hmId) {
     $this->db->update($this->storageTable)
       ->fields(['new' => '0'])
-      ->condition('hm_id', $record->hm_id)
+      ->condition('hm_id', $hmId)
       ->execute();
+    return $this;
+  }
+
+  protected function removeDuplicates($title) {
+    $stmt = <<<SQL
+SELECT 
+  MIN(nid) AS old_nid,
+  COUNT(title) AS nid_count
+FROM {node_field_data}
+WHERE
+  type = 'bio' AND
+  title = :title
+GROUP BY
+  title
+HAVING nid_count > 1;
+SQL;
+
+    $oldNid = $this->db->query($stmt, [':title' => $title])->fetchField();
+
+    //\drupal_set_message('removing: ' . print_r($oldNid, true));
+    if ($oldNid) {
+      \drupal_set_message('removing: ' . $oldNid);
+      Node::load($oldNid)->delete();
+    }
+
     return $this;
   }
 
@@ -340,6 +365,9 @@ class BioXMLMigrationImporter {
 
   public function saveNodes($nodes) {
     return array_map(function(Node $node) {
+      $id = $node->get('field_hm_id')->value . ':' .
+        $node->getTitle();
+
       $deferred = new Deferred();
 
       $result = $this->saveNode($node);
@@ -349,15 +377,13 @@ class BioXMLMigrationImporter {
       else if ($result == SAVED_NEW) $state = 'created';
       else if ($result == SAVED_UPDATED) $state = 'updated';
 
-      $report = $this->biosProcessed . " of " . $this->totalBios;
+      /*$report = $this->biosProcessed . " of " . $this->totalBios;
       \Drupal::state()->set('import_counter', $report);
 
       $percent = ($this->biosProcessed / $this->totalBios);
-      \Drupal::state()->set('import_progress', $percent);
+      \Drupal::state()->set('import_progress', $percent);*/
 
-      $deferred->resolve([
-        $node->get('field_hm_id')->value => $state,
-      ]);
+      $deferred->resolve([ $id => $state ]);
 
       return $deferred->promise();
     }, $nodes);
@@ -366,6 +392,8 @@ class BioXMLMigrationImporter {
   public function logResults($report) {
     $msg = 'results for '.date('Y-m-d H:i:s') . '; ';
     $this->logger->notice($msg . print_r($report, true));
+
+    return $this;
   }
 
   public static function update($time) {
@@ -428,7 +456,7 @@ class BioXMLMigrationImporter {
 
     $instance = new self($db, $config, $logger);
 
-    $rs = $instance->getNewBios($instance->db);
+    $rs = $instance->getNewBios($instance->db, 3);
 
     $instance->totalBios = count($rs);
 
@@ -446,6 +474,13 @@ class BioXMLMigrationImporter {
           return all($rps);
         })
         ->then(function($report) use ($instance) {
+          foreach ($report as $id => $state) {
+            $hmIdAndTitle = explode(':', key($state));
+
+            $instance
+              ->updateStorage($hmIdAndTitle[0])
+              ->removeDuplicates($hmIdAndTitle[1]);
+          }
           $instance->logResults($report);
         });
     }
