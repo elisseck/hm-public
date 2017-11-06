@@ -1,0 +1,15 @@
+// This is a class only applied to individual biography nodes
+.node--type-bio {
+  .page-title {
+    @extend %oswald-light;
+    align-items: center;
+    background-color: color(quaternary);
+    color: $white;
+    display: flex;
+    font-size: rem(53);
+    height: em(100, 53);
+    margin: 0 auto;
+    max-width: 77.5em;
+    padding: 0 em(55, 53);
+  }
+}

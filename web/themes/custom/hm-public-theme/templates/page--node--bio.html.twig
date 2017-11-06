@@ -1,0 +1,29 @@
+<div class="page-wrapper">
+    {% include directory ~ '/partials/header.html.twig' %}
+    
+    <main>
+      <a id="main-content" tabindex="-1"></a>
+
+      <h1 class="page-title">{{ node.title.value }}</h1>
+      {{ content }}
+
+      <section>
+        Profession
+        Category: {{ node.field_maker_category[0].target_id }}
+        {# {{ page.content }} #}
+      </section>
+      <section>
+
+      </section>
+
+    </main>
+  </div>
+  
+  {% include directory ~ '/partials/footer.html.twig' %}
+
+{# Used to print out available fields for node #}
+{# <ol>
+{% for key, value in node %}
+  <li>{{ key }}</li>
+  {% endfor %}
+</ol> #}

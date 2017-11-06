@@ -1,0 +1,5 @@
+name: Hero Carousel
+description: A custom hero carousel
+core: 8.x
+package: Custom
+type: module
