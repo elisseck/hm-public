@@ -7,14 +7,81 @@
       <h1 class="page-title">{{ node.title.value }}</h1>
       {{ content }}
 
-      <section>
-        Profession
-        Category: {{ node.field_maker_category[0].target_id }}
-        {# {{ page.content }} #}
-      </section>
-      <section>
+      <div class="container">
+        <div class="row">
+          <section class="col-sm-3">
+            <h2 class="sr-only">Information about {{ node.title.value }}</h2>
+  
+            <section>
+              {{ field_bio_image }}
+              <h3>Profession</h3>
+              <dl>
+                <dt>Category:</dt>
+                <dd>
+                    {% for key, value in node.field_maker_category %}
+                      {{ node.field_maker_category[key].entity.label }}<br />
+                    {% endfor %}
+                </dd>
+                {# Field does not exist in THM public database
+                <dt>Job Type:</dt>
+                <dd>
+                  {% for key, value in node.field_occupation %}
+                    {{ node.field_occupation[key].target_id }}
+                  {% endfor %}
+                </dd> #}
+                <dt>Occupation(s):</dt>
+                <dd>
+                    {% for key, value in node.field_occupation %}
+                      {{ node.field_occupation[key].entity.label }}<br />
+                    {% endfor %}
+                  </dd>
+              </dl>
+            </section>
+  
+            <section>
+              <h3>Favorites</h3>
+              <dl>
+                <dt>Favorite Color:</dt>
+                <dd>{{ node.field_favorite_color.value }}</dd>
+                <dt>Favorite Food:</dt>
+                <dd>{{ node.field_favorite_food.value }}</dd>
+                <dt>Favorite Time of Year:</dt>
+                <dd>{{ node.field_favorite_season.value }}</dd>
+                <dt>Favorite Vacation Spot:</dt>
+                <dd>{{ node.field_favorite_vacation.value }}</dd>
+                <dt>Favorite Quote:</dt>
+                <dd>{{ node.field_favorite_quote.value }}</dd>
+              </dl>
+            </section>
+  
+            <section>
+              <h3>Birthplace</h3>
+              <dl>
+                <dt>Born:</dt>
+                <dd>{{ node.field_birth_date[0].value }}</dd>
+                <dt>Birth Location:</dt>
+                <dd>{{ node.field_birth_place_term[0].entity.label }}</dd>
+                {# Cannot find field in THM public database
+                <dt>Residence:</dt>
+                <dd></dd> #}
+              </dl>
+            </section>
+  
+          </section>
+          <div class="col-sm-9">
+            <section>
+              <h2>Biography</h2>
+              <p>{{ node.body.value }}</p>
+            </section>
+            {# {{ page.content }} #}
+            <section>
+              <h2>Selected Video Oral History Segments</h2>
+              <app-root>Loading...</app-root>
+            </section>
+          </div>
 
-      </section>
+        </div>
+      </div>
 
     </main>
   </div>
@@ -27,3 +94,11 @@
   <li>{{ key }}</li>
   {% endfor %}
 </ol> #}
+
+<ol>
+  {% for key, value in page.content %}
+    <li>{{ key }}</li>
+  {% endfor %}
+</ol>
+
+{{ node.field_maker_category[0].entity.label }}
