@@ -1,7 +1,3 @@
-<h1>
-  {{title}}
-</h1>
-
 <vg-player (onPlayerReady)="onPlayerReady($event)">
   <vg-controls class="vg-controls">
       <div class="vg-controls__inner-wrapper">
@@ -26,7 +22,7 @@
           </svg>
       </div>
   </vg-controls>
-  <video aria-label="video" [vgMedia]="media" #media class="" preload="auto" playsinline [poster]="poster" (loadeddata)="isLoaded()" (timeupdate)="updateTime()" (ended)="nextVideo()">
+  <video aria-label="video" [vgMedia]="media" #media class="" preload="auto" playsinline poster="https://thmdatestmedia.blob.core.windows.net/media/story/image/2336" (loadeddata)="isLoaded()" (timeupdate)="updateTime()" (ended)="nextVideo()">
       <source src="https://thmdatestmedia.blob.core.windows.net/media/story/video/2336" type="video/mp4">
   </video>
 </vg-player>
