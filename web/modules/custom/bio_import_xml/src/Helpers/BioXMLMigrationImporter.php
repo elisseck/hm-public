@@ -253,6 +253,29 @@ class BioXMLMigrationImporter {
     return $this;
   }
 
+  protected function populateWebClipFields($record) {
+    $value = 'daurl';
+    $targetBase = 'field_web_clip';
+
+    if (strlen(trim($record->$value)) && !empty($record->$value)) {
+
+      $clips = explode('$', $record->$value);
+
+      for ($i = 0, $clipCount = count($clips); $i < $clipCount; $i++) {
+        if ($i <= 2) {
+          $target = $targetBase . ($i + 1);
+          $this->node->set($target, $clips[$i]);
+        } else {
+          $msgPrefix = 'this field type is only configured for two fields.';
+          $msg = 'dropping ' . $clips[$i] . 'as there\'s no room for it.';
+          \drupal_set_message("$msgPrefix\n$msg");
+        }
+      }
+    }
+
+    return $this;
+  }
+
   protected function createOrLoadNode($record) {
     if ($this->nidExists($record->nid)) {
       $this->node = $this->loadExistingNode($record);
@@ -278,7 +301,7 @@ class BioXMLMigrationImporter {
 
     $cleanBody = preg_replace(
       '/\xEF\x83\xA2/', '&reg;', $record->biographylong);
-    $this->node->get('body')->value = $this->checkPlain($cleanBody);
+    $this->node->get('body')->value = $this->checkPlain(\stripslashes($cleanBody));
     $this->node->get('body')->format = 'restricted_html';
 
     return $this;
@@ -303,6 +326,7 @@ class BioXMLMigrationImporter {
   }
 
   protected function removeDuplicates($title) {
+    // TODO: Refactor this statement. Currently assumes there will be one duplicate.
     $stmt = <<<SQL
 SELECT 
   MIN(nid) AS old_nid,
@@ -351,7 +375,8 @@ SQL;
         ->populateMultiValueFields($rec)
         ->populateTaxonomyFields($rec)
         ->populatePdfFields($rec)
-        ->populateImageFields($rec);
+        ->populateImageFields($rec)
+        ->populateWebClipFields($rec);
 
       $deferred->resolve($this->node);
 
@@ -423,16 +448,31 @@ SQL;
     return $output;
   }
 
+  protected function bio_import_xml_mail($key, &$message, $params) {
+    $options = [ 'langcode' => $message['langcode'] ];
+
+    $message['from'] = \Drupal::config('system.site')->get('mail');
+    $message['body'][] = $params['message'];
+
+    switch($key) {
+      case 'import_complete':
+        $message['subject'] = 'Biography Import Successful';
+        $message['body'][] = $params['message'];
+        break;
+      case 'import_failure':
+        $message['subject'] = 'Biography Import Unsuccessful';
+        break;
+    }
+  }
+
   public function sendMessage($recipient = null) {
-    //$mailMgr = \Drupal::service('plugin.manager.mail');
+    $mailMgr = \Drupal::service('plugin.manager.mail');
 
     $module = 'bio_import_xml';
     $key = 'import_bios';
 
-    $headers = [
-      'From: ' . \Drupal::currentUser()->getEmail()
-    ];
-    $to = 'tony.taylor@thirdwavellc.com';
+
+    $to = $recipient;
     $params = [
       'body' => [ $this->biosProcessed . ' biographies of ' . $this->totalBios . ' have been processed.' ],
       'subject' => 'Biography Import Successful'
@@ -440,8 +480,9 @@ SQL;
     $langCode = \Drupal::currentUser()->getPreferredLangcode();
     $send = true;
 
-    $result = \mail($to, $params['subject'], $params['body'][0], implode("\r\n", $headers));
+    //$result = \mail($to, $params['subject'], $params['body'][0], implode("\r\n", $headers));
 
+    $result = $mailMgr->mail($module, $key, $to, $langCode, $params, NULL, $send);
     if ($result !== true) {
       \drupal_set_message(
         t('There was an issue mailing the message'), 'error'
@@ -485,6 +526,6 @@ SQL;
         });
     }
 
-    $instance->sendMessage();
+    $instance->sendMessage($recipient);
   }
 }

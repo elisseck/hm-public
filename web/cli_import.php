@@ -1,4 +1,4 @@
-#!/usr/local/bin/drush
+<?php
 
 use Drupal\bio_import_xml\Helpers\BioXMLMigrationImporter;
 
