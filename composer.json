@@ -24,6 +24,9 @@
         "drupal/devel": "1.x-dev",
         "drupal/fortytwo": "^2.5",
         "drupal/migrate_tools": "4.0-beta1",
+        "drupal/page_manager": "^4.0@beta",
+        "drupal/panels": "^4.2",
+        "drupal/paragraphs": "^1.2",
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
