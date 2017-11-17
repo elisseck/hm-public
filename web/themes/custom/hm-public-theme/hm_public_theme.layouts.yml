@@ -1,0 +1,11 @@
+1_2col_3_9:
+  label: 1-2 Column 3/9
+  category: Custom Layouts
+  template: layouts/1_2col_3_9.html.twig
+  regions:
+    top:
+      label: Top
+    left:
+      label: Left
+    right:
+      label: Right
