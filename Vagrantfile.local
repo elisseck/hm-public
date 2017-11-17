@@ -6,7 +6,7 @@ vconfig['vagrant_synced_folders'].each do |synced_folder|
     config.vm.synced_folders[guest_path][:guestpath] = "/var/nfs#{host_path}"
     config.bindfs.bind_folder "/var/nfs#{host_path}", guest_path,
       u: 'www-data',
-      g: 'www-data',
+      g: 'vagrant',
       perms: 'u=rwX:g=rwD',
       o: 'nonempty'
     config.nfs.map_uid = Process.uid
