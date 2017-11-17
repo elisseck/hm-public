@@ -16,7 +16,7 @@
         changing the settings to 'visually-hidden' or 'hidden'.
     #}
 
-    <img  src="{{ file_url(content.field_da_image.0['#item'].entity.uri.value) }}" alt="{{ content.field_da_image.0['#item'].alt }}" >
+    <img src="{{ file_url(content.field_da_image.0['#item'].entity.uri.value) }}" alt="{{ content.field_da_image.0['#item'].alt }}" >
 
     {% if content.field_quote_1[0]['#context'].value|render is not empty %}
     <div class="da__quotes">
