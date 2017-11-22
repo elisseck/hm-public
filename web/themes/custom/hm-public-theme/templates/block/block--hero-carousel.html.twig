@@ -1,0 +1,65 @@
+{# <ol>
+{% for key, value in _context.content['#photo_1'] %}
+  <li>{{ key }}</li>
+  {% endfor %}
+</ol> #}
+
+<div id="hero-carousel" class="carousel slide" data-ride="carousel">
+  
+      <div class="carousel-inner">
+  
+        <!-- Left side links -->
+        <ul class="carousel__links">
+          <li class="carousel__link-wrap">
+            <a class="carousel__link carousel__link--bio" href="#">Read Our Biographies</a>
+          </li>
+          <li class="carousel__link-wrap">
+            <a class="carousel__link carousel__link--member" href="#">Become a Member</a>
+          </li>
+          <li class="carousel__link-wrap">
+            <a class="carousel__link carousel__link--da" href="#">Join Our
+              <br /> Digital Archive</a>
+          </li>
+        </ul>
+  
+        <!-- Caption overlay -->
+        <div class="carousel__inner-caption"></div>
+  
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <!-- Uses image temporarily hosted on codepen until custom module/block is created -->
+          <img class="carousel__image d-block w-100" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/324671/slide-1.jpg" alt="First slide">
+          <div class="carousel-caption">
+            <q class="carousel__quote">{{ _context.content['#quote_1'] }}</q>
+            <cite class="carousel__cite">{{ _context.content['#citation_1'] }}</cite>
+          </div>
+        </div>
+        <div class="carousel__caption">
+          <q class="carousel__quote">{{ _context.content['#quote_1'] }}</q>
+          <cite class="carousel__cite">{{ _context.content['#citation_1'] }}</cite>
+        </div>
+  
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <!-- Uses image temporarily hosted on codepen until custom module/block is created -->
+          <img class="carousel__image d-block w-100" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/324671/slide-2.jpg" alt="Second slide">
+          <div class="carousel-caption">
+            <q class="carousel__quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eget imperdiet mauris. Phasellus laoreet odio purus,
+              nec facilisis quam consequat sit amet. Aliquam erat volutpat.</q>
+            <cite class="carousel__cite">Lorem Ipsum</cite>
+            </div>
+        </div>
+        <div class="carousel__caption">
+          <q class="carousel__quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eget imperdiet mauris. Phasellus laoreet odio purus,
+            nec facilisis quam consequat sit amet. Aliquam erat volutpat.</q>
+          <cite class="carousel__cite">Lorem Ipsum</cite>
+        </div>
+  
+      </div>
+  
+      <ol class="carousel-indicators">
+        <li data-target="#hero-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#hero-carousel" data-slide-to="1"></li>
+      </ol>
+    </div>
+

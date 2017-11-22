@@ -3,6 +3,10 @@
   border-radius: 0;
   font-size: rem(16);
   padding: em(16) em(14);
+
+  @media screen and (max-width: 767px) {
+    font-size: rem(11);
+  }
 }
 
 .button.button--primary {
