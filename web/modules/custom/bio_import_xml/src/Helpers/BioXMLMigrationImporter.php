@@ -75,6 +75,7 @@ class BioXMLMigrationImporter {
     'field_speakers_bureau_available' => 'speakersbureauavailability',
     'field_married'                   => 'maritalstatus',
     'field_event_title_sponsor_url'   => 'sponsorurl',
+    'field_timing_pairs'              => 'datimingpair'
   ];
 
   protected $linkFields = [
@@ -461,6 +462,7 @@ SQL;
         break;
       case 'import_failure':
         $message['subject'] = 'Biography Import Unsuccessful';
+        $message['body'][] = $params['message'];
         break;
     }
   }
@@ -497,7 +499,7 @@ SQL;
 
     $instance = new self($db, $config, $logger);
 
-    $rs = $instance->getNewBios($instance->db, 3);
+    $rs = $instance->getNewBios($instance->db);
 
     $instance->totalBios = count($rs);
 
@@ -526,6 +528,6 @@ SQL;
         });
     }
 
-    $instance->sendMessage($recipient);
+    $instance->sendMessage('tony.taylor@thirdwavellc.com');
   }
 }

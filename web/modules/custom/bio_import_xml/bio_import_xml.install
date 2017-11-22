@@ -27,7 +27,7 @@ function bio_import_xml_schema() {
     SpeakersBureauHonorarium, SpeakersBureauAvailability, SpeakersBureauNotes, RegionCity, 
     RegionState, TimeStampModificationAny, SponsorLogo, SponsorURL, InterviewPDF1, 
     InterviewPDF2, LinkToTHMDA, LinkToSMDA, DAStoryList, DASession, DACaption, DAStory, 
-    DATape, DATitle, DAUrl, new, timestamp';
+    DATape, DATitle, DAUrl, DATimingPair, new, timestamp';
 
     $fieldNamesAsArray = explode(', ', $fieldNames);
 

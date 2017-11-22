@@ -24,7 +24,15 @@ class BioXMLMigrationHelpers {
        SpeakersBureauAvailability, SpeakersBureauNotes, RegionCity, RegionState,
        TimeStampModificationAny, SponsorLogo, SponsorURL, InterviewPDF1, 
        InterviewPDF2, LinkToTHMDA, LinkToSMDA, DAStoryList, DASession, DACaption,
-       DAStory, DATape, DATitle, DAUrl, new, timestamp';
+       DAStoryList, DATape, DATitle, DAUrl, DATIMINGPAIR, new, timestamp';
+
+  public static function jsonifyTimingPairs($data) {
+
+    return json_encode([ 'timingPairs' => array_map(function($pair) {
+      $values = explode(',', $pair);
+      return [ 'offset' => $values[0], 'time' => $values[1] ];
+    }, explode(':', urldecode($data)))]);
+  }
 
   public static function getTags($tagClump, $vocabName) {
     $tags = explode('$', $tagClump);

@@ -11,6 +11,8 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 use Drupal\bio_import_xml\Helpers;
+use React\EventLoop\Factory;
+use React\ChildProcess\Process;
 use Drupal\Core\Render\Element\Form;
 
 /**
@@ -223,7 +225,24 @@ class BioXMLMigrationForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function import(&$form, FormStateInterface $formState) {
-    $config = $this->config('bio_import_xml.settings');
+
+    $loop = Factory::create();
+
+    $process = new Process('/var/www/hm-public/vendor/bin/drush scr cli_import');
+
+    $process->start($loop);
+
+    $process->stdout->on('data', function($chunk) {
+      \drupal_set_message(print_r($chunk, true));
+    });
+
+    $process->on('exit', function($exitCode, $termSignal) {
+      \drupal_set_message('process exited with ' . $exitCode);
+    });
+
+    $loop->run();
+
+    /*$config = $this->config('bio_import_xml.settings');
     $values = $formState->getValues();
     $startMsg = 'The import process has begun. An email will be sent to ' .
       $values['email_notify'] . ' once completed';
@@ -231,7 +250,7 @@ class BioXMLMigrationForm extends ConfigFormBase {
     Helpers\BioXMLMigrationImporter::import(
       \Drupal::database(), $config, \Drupal::logger('bio_import_xml'));
 
-    \drupal_set_message(t($startMsg));
+    \drupal_set_message(t($startMsg));*/
   }
 
   public function resetState() {
