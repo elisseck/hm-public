@@ -1,11 +1,23 @@
 1_2col_3_9:
   label: 1-2 Column 3/9
-  category: Custom Layouts
-  template: layouts/1_2col_3_9.html.twig
+  category: HistoryMaker Layouts
+  template: layouts/1_2col_3_9
   regions:
-    top:
-      label: Top
-    left:
-      label: Left
-    right:
-      label: Right
+    banner: 
+      label: Banner
+    left_3:
+      label: 3-Left
+    right_9:
+      label: 9-Right
+
+1_2col_9_3:
+  label: 1-2 Column 9/3
+  category: HistoryMaker Layouts
+  template: layouts/1_2col_9_3
+  regions:
+    banner: 
+      label: Banner
+    left_9:
+      label: 9-Left
+    right_3:
+      label: 3-Right
