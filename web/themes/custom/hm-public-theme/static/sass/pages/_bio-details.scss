@@ -25,10 +25,15 @@
     background-color: $white;
     border: 1px solid color(medium-grey);
     margin-bottom: em(30, 15);
+    overflow: hidden;
     padding: rem(15);
   }
 
-  .info__headshot { width: 100%; }
+  .info__headshot {
+    margin-bottom: em(30);
+    transform: scale(1.2);
+    width: 100%;
+  }
 
   .discover__heading {
     @extend %oswald;
@@ -77,6 +82,10 @@
   .card-head-link {
     @extend %oswald;
     color: $white;
+  }
+
+  .archive__photo {
+    max-width: 100%;
   }
 
 }

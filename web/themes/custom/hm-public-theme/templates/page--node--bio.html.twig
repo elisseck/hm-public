@@ -1,6 +1,5 @@
 <div class="page-wrapper">
     {% include directory ~ '/partials/header.html.twig' %}
-    
     <main class="main">
       <a id="main-content" tabindex="-1"></a>
 
@@ -15,7 +14,7 @@
             <div class="info">
               <section>
                 <div>
-                  <img class="info__headshot" src="http://via.placeholder.com/150x150" alt="">
+                  <img class="info__headshot" src="{{file_url(node.field_bio_image.entity.uri.value)}}" alt="">
                 </div>
                 {{ field_bio_image }}
                 <h3>Profession</h3>
@@ -110,10 +109,19 @@
               {% endautoescape %}
             </section>
             {# {{ page.content }} #}
+            {% if node.field_web_clip1.value %}
             <section>
               <h2>Selected Video Oral History Segments</h2>
-              <app-root>Loading...</app-root>
+              {# Titles, Thumbnails and Timing Pairs to be added when available in the DB #}
+              <app-root source="{{ node.field_web_clip1.value }}" 
+                        source2="{{ node.field_web_clip2.value }}"
+                        title="Temporary Placeholder Title 1"
+                        title2="Temporary Placeholder Title 2"
+                        thumb="https://thmdatestmedia.blob.core.windows.net/media/story/image/2336"
+                        thumb2="https://thmdatestmedia.blob.core.windows.net/media/story/image/2366"
+                        timingPairs="">Loading...</app-root>
             </section>
+            {% endif %}
 
             <div id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="card">
@@ -146,27 +154,24 @@
                   </div>
                 </div>
               </div>
+              <section>
+                <h2>Archival Photos</h2>
+                <div class="row">
+                  <div class="col-sm-6 archive">
+                    <img class="archive__photo" src="{{file_url(node.field_archival_image1.entity.uri.value)}}" alt="">
+                  </div>
+                  <div class="col-sm-6">
+                    <img class="archive__photo" src="{{file_url(node.field_archival_image2.entity.uri.value)}}" alt="">
+                  </div>
+                </div>
+              </section>
           </div>
-
+          
         </div>
       </div>
+
 
     </main>
   </div>
   
   {% include directory ~ '/partials/footer.html.twig' %}
-
-{# Used to print out available fields for node #}
-{# <ol>
-{% for key, value in node %}
-  <li>{{ key }}</li>
-  {% endfor %}
-</ol> #}
-
-<ol>
-  {% for key, value in page.content %}
-    <li>{{ key }}</li>
-  {% endfor %}
-</ol>
-
-{{ node.field_maker_category[0].entity.label }}
