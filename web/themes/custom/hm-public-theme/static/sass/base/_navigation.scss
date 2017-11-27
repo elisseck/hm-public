@@ -1,3 +1,31 @@
 nav ul {
   @include inline-list;
 }
+
+//Pager
+/*
+
+<?php if ($pager): ?>
+  <?php print $pager; ?>
+<?php endif; ?>
+
+*/
+.pager {
+
+  .pager__item {
+    @extend %source-sans-semi-bold;
+    font-size: em(18);
+  }
+
+  .pager__item > a {
+    margin-right: em(20);
+  }
+
+  .pager__item.is-active > a {
+    background: color(secondary);
+    color: $white;
+    margin-right: em(10);
+    padding: em(10) em(15);
+  }
+
+}
