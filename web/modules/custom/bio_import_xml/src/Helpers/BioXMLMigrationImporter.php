@@ -75,7 +75,11 @@ class BioXMLMigrationImporter {
     'field_speakers_bureau_available' => 'speakersbureauavailability',
     'field_married'                   => 'maritalstatus',
     'field_event_title_sponsor_url'   => 'sponsorurl',
-    'field_timing_pairs'              => 'datimingpair'
+    'field_timing_pairs'              => 'datimingpair',
+    'field_story_caption'             => 'dacaption',
+    'field_dasession'                 => 'dasession',
+    'field_datape'                    => 'datape',
+    'field_dastory'                   => 'dastory',
   ];
 
   protected $linkFields = [
@@ -89,6 +93,8 @@ class BioXMLMigrationImporter {
     'field_employment'         => 'employment_for',
     'field_schools'            => 'schools_for',
     'field_interview_date'     => 'dates_of_sessions',
+    'field_dastories'          => 'dastorylist',
+    'field_datitle'            => 'datitle',
   ];
 
   protected $imageFields = [
@@ -173,7 +179,7 @@ class BioXMLMigrationImporter {
           $record->$value, 240, true, true,
           1
         );
-        $this->node->set($field, $record->$value);
+        $this->node->set($field, trim($record->$value));
       }
     }
     return $this;
