@@ -1,4 +1,6 @@
-.view.list-biography-card {
+.view.list-biography-cards-w-category-filter {
+  flex: 0 0 75%;
+  max-width: 75%;
 
   .view-header {
     @extend %oswald-light;
@@ -40,26 +42,44 @@
     }
 
     //bio-cards
-    img {
-      flex: 1;
-      margin-right: em(15);
-      max-width: em(100);
-    }
+    a {
+      display: flex;
 
-    .bio-card--content {
-      flex: 1;
+      .bio-card--image {
+        flex: 1;
+        max-width: em(100);
+        
+        img {
+          height: em(100);
+          width: em(100);
+        }
 
-      h3 {
-        font-family: $oswald;
-        margin-top: em(10);
       }
 
-      h4 {
-        font-size: em(18);
+      .bio-card--content {
+        flex: 1;
+        margin-left: em(15);
+
+        h3 {
+          font-family: $oswald;
+          margin-top: em(6);
+        }
+
+        h4 {
+          color: $black;
+          font-size: em(18);
+        }
       }
 
-    }
+      &:hover {
+        text-decoration: none;
 
+        h3, 
+        h4 {
+          text-decoration: none;
+        }
+      }
+    }
   }//.bio-card.col-lg-4
 
 }//.view.list-biography-card 
