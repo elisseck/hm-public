@@ -1,3 +1,47 @@
+.banner.row.col-lg-12 {
+  background-size: cover;
+  display: flex;
+  height: em(276);
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+
+  h2 {
+    @extend %oswald-light;
+    align-self: flex-end;
+    color: $white;
+    font-size: em(52);
+    padding-bottom: 1em;
+    padding-left: 15px;
+  }
+
+  .banner--feature {
+    align-items: flex-end;
+    background-position: center;
+    background-size: cover;
+    color: $white;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    padding: em(20) em(30) em(30);
+    width: 500px;
+
+    p {
+      align-self: flex-start;
+      flex: 1 0 100%;
+      margin-top: 0;
+    }
+
+    .banner--feature-name {
+      @extend %oswald;
+      align-content: flex-end;
+      font-size: em(22);
+      margin-top: 45%;
+    }
+  }
+
+}
+
 .view.list-biography-cards-w-category-filter {
   flex: 0 0 75%;
   max-width: 75%;
