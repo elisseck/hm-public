@@ -43,8 +43,6 @@
 }
 
 .view.list-biography-cards-w-category-filter {
-  flex: 0 0 75%;
-  max-width: 75%;
 
   .view-header {
     @extend %oswald-light;
@@ -58,12 +56,22 @@
     padding-top: em(2);
   }
 
+  //Filter
+
+  //List
   .view-content {
     display: flex;
     flex-flow: row wrap;
+    order: 2;
   }
 
-  .bio-card.col-lg-4 {
+  //Pager
+  .pager {
+    order: 1;
+  }
+
+  //Card
+  .bio-card--list.col-lg-4 {
     background: $white;
     border: 1px solid color(medium-grey);
     display: flex;
@@ -92,7 +100,7 @@
       .bio-card--image {
         flex: 1;
         max-width: em(100);
-        
+
         img {
           height: em(100);
           width: em(100);
@@ -118,12 +126,11 @@
       &:hover {
         text-decoration: none;
 
-        h3, 
-        h4 {
+        h3, h4 {
           text-decoration: none;
         }
       }
     }
-  }//.bio-card.col-lg-4
+  }//.bio-card--list.col-lg-4
 
 }//.view.list-biography-card 

@@ -2,16 +2,25 @@
 
 <main>
   <a id="main-content" tabindex="-1"></a>
-
-  <div class="wrapper row wrapper--home gutter-60">
-
-
-  
-
-
-
-
+  <div class="banner row col-lg-12" style="background-image: url('/themes/custom/hm-public-theme/static/images/banner-background.png');">
+    <h2 class="col-lg-9">{{ drupal_title() }}</h2>
+    <div class="banner--feature col-lg-3" style="background-image: url('/themes/custom/hm-public-theme/static/images/banner--feature-image.png');">
+      <p>Featured Maker</p>
+      <div class="banner--feature-name">Susan Davenport Austin</div>
+      <div class="banner--feature-occupation">Broadcast Executive</div>
+    </div>  
   </div>
+  <div class="wrapper row col-lg-12 gutter-60">
+
+    {# {{ drupal_dump(page)}} #}
+
+    <div class="bio-card--filter col-lg-3">
+      filter
+    </div>
+    <div class="col-lg-9">
+      {{ drupal_block('views_block__biography_cards_w_category_filter_block_1') }}
+    </div>
+  </div><!-- close wrapper -->
 </main>
 
 {% include directory ~ '/partials/footer.html.twig' %}
