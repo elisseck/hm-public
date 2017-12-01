@@ -1,0 +1,109 @@
+<?php
+
+/**
+ * @file
+ * Contains thm_related_makers.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\search_api\Entity\Index;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_help().
+ */
+function thm_related_makers_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the thm_related_makers module.
+    case 'help.page.thm_related_makers':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Module for retrieval and display of people related to a specific HistoryMaker') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function thm_related_makers_theme() {
+  return [
+    'thm_related_makers' => [
+      'variables' => [ 'data' => null ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function thm_related_makers_preprocess_block(&$variables) {
+  $variables['#cache']['max-age'] = 0;
+}
+
+
+/**
+ * Retrieves the node in current display context (page|view|block).
+ * Returns false if node id isn't found.
+ *
+ * @return int|bool
+ */
+function thm_related_makers_get_current_nid() {
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($node instanceof NodeInterface) {
+    return $node->id();
+  } else {
+    return false;
+  }
+}
+
+function thm_related_makers_parse_results($results) {
+
+  return array_map(function($item) {
+    /** @var Drupal\search_api\Item\ItemInterface $item */
+    return [
+      'title' => @$item->getField('title')->getValues()[0],
+      'first_name' => @$item->getField('field_first_name')->getValues()[0],
+      'last_name' => @$item->getField('field_last_name')->getValues()[0],
+      'body' => @$item->getField('body')->getValues()[0]
+    ];
+  }, $results);
+}
+
+/**
+ * Performs the search.
+ *
+ */
+function thm_related_makers_perform_search() {
+  $index = Index::load('biography_index');
+
+  /** @var Drupal\search_api\Query\QueryInterface $query */
+  $query = $index->query();
+  $nid   = thm_related_makers_get_current_nid();
+
+  $parseMode = \Drupal::service('plugin.manager.search_api.parse_mode')
+    ->createInstance('direct')
+    ->setConjunction('OR');
+
+  $query->setParseMode($parseMode);
+
+  $query->keys('Atchison');
+
+  $query->setFulltextFields([
+    'body', 'field_first_name', 'field_last_name', 'title'
+  ]);
+
+  $query->range(0, 5);
+
+  $results = $query->execute();
+
+  return [
+    'count' => $results->getResultCount(),
+    'data' => array_values(thm_related_makers_parse_results(
+      $results->getResultItems()
+    ))
+  ];
+}
