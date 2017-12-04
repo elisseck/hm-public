@@ -19,7 +19,7 @@ class RMBlock extends BlockBase {
    */
   public function build() {
 
-    $vs = thm_related_makers_perform_search();
+    $vs = thm_related_makers_perform_search(true);
 
     drupal_set_message(print_r($vs['data'], true));
 

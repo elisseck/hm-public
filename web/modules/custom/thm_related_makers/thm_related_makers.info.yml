@@ -6,3 +6,5 @@ package: THM Search Services
 dependencies:
   - node
   - block
+  - search_api
+  - search_api_solr

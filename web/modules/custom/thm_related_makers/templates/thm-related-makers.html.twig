@@ -1,4 +1,16 @@
+{#
+ #  The following values are available:
+ #  - title
+ #  - first_name
+ #  - last_name
+ #  - bio_image
+ #  - maker_type (list of makers)
+#}
 {% for record in data %}
     <h3>{{ record.first_name }}</h3>
     <h3>{{ record.last_name }}</h3>
+    <img src="{{ record.bio_image }}">
+    {% for type in record.maker_types %}
+        <h5>{{ type }}</h5>
+    {% endfor %}
 {% endfor %}

@@ -8,6 +8,8 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\search_api\Entity\Index;
 use Drupal\node\NodeInterface;
+use Drupal\file\Entity\File;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Implements hook_help().
@@ -60,6 +62,18 @@ function thm_related_makers_get_current_nid() {
   }
 }
 
+function thm_related_makers_get_image_url($fid) {
+  return file_url_transform_relative(
+    file_create_url(File::load($fid)->getFileUri()));
+}
+
+function thm_related_makers_get_terms($tidList) {
+
+  return array_map(function($tid) {
+    return Term::load($tid)->getName();
+  }, $tidList);
+}
+
 function thm_related_makers_parse_results($results) {
 
   return array_map(function($item) {
@@ -68,17 +82,57 @@ function thm_related_makers_parse_results($results) {
       'title' => @$item->getField('title')->getValues()[0],
       'first_name' => @$item->getField('field_first_name')->getValues()[0],
       'last_name' => @$item->getField('field_last_name')->getValues()[0],
-      'body' => @$item->getField('body')->getValues()[0]
+      'bio_image' =>
+        @$item->getField('field_bio_image')->getValues()[0],
+      'body' => @$item->getField('body')->getValues()[0],
+      'maker_types' => thm_related_makers_get_terms(
+        @$item->getField('field_maker_category')->getValues())
     ];
   }, $results);
+}
+
+function get_test_data() {
+  return [
+    [
+      'title' => 'John Atchison',
+      'first_name' => 'John',
+      'last_name' => 'Atchison',
+      'bio_image' => '/sites/default/files/Atchison_John_wm.png',
+      'maker_types' => [
+        'StyleMakers'
+      ]
+    ],
+    [
+      'title' => 'Na\'im Akbar',
+      'first_name' => 'Na\'im',
+      'last_name' => 'Akbar',
+      'bio_image' => '/sites/default/files/Akbar_Naim_wm.png',
+      'maker_types' => [
+        'EducationMakers'
+      ]
+    ],
+    [
+      'title' => 'The Honorable John Allen',
+      'first_name' => 'John',
+      'last_name' => 'Allen',
+      'bio_image' => '/sites/default/files/Allen_John_wm.png',
+      'maker_types' => [
+        'LawMakers'
+      ]
+    ]
+  ];
 }
 
 /**
  * Performs the search.
  *
  */
-function thm_related_makers_perform_search() {
+function thm_related_makers_perform_search($test = false) {
   $index = Index::load('biography_index');
+
+  if ($test) {
+    return [ 'count' => 3, 'data' => get_test_data() ];
+  }
 
   /** @var Drupal\search_api\Query\QueryInterface $query */
   $query = $index->query();
@@ -90,7 +144,7 @@ function thm_related_makers_perform_search() {
 
   $query->setParseMode($parseMode);
 
-  $query->keys('Atchison');
+  $query->keys('The Honorable John Allen');
 
   $query->setFulltextFields([
     'body', 'field_first_name', 'field_last_name', 'title'
