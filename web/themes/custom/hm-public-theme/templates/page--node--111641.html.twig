@@ -2,6 +2,8 @@
 
 <main>
   <a id="main-content" tabindex="-1"></a>
+
+  {# Banner #}
   <div class="banner row col-lg-12" style="background-image: url('/themes/custom/hm-public-theme/static/images/banner-background.png');">
     <h2 class="col-lg-9">{{ drupal_title() }}</h2>
     <div class="banner--feature col-lg-3" style="background-image: url('/themes/custom/hm-public-theme/static/images/banner--feature-image.png');">
@@ -10,16 +12,20 @@
       <div class="banner--feature-occupation">Broadcast Executive</div>
     </div>  
   </div>
+
+  {# Content #}
   <div class="wrapper row col-lg-12 gutter-60">
 
     {# {{ drupal_dump(page)}} #}
-
-    <div class="bio-card--filter col-lg-3">
+    {{ drupal_view('biography_cards_w_category_filter') }}
+    
+    {# <div class="bio-card--filter col-lg-3">
       filter
     </div>
     <div class="col-lg-9">
-      {{ drupal_block('views_block__biography_cards_w_category_filter_block_1') }}
-    </div>
+      {{ drupal_view('biography_cards_w_category_filter') }}
+    </div> #}
+
   </div><!-- close wrapper -->
 </main>
 
