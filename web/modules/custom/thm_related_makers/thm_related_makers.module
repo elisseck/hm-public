@@ -128,11 +128,12 @@ function get_test_data() {
  *
  */
 function thm_related_makers_perform_search($test = false) {
-  $index = Index::load('biography_index');
 
   if ($test) {
     return [ 'count' => 3, 'data' => get_test_data() ];
   }
+
+  $index = Index::load('biography_index');
 
   /** @var Drupal\search_api\Query\QueryInterface $query */
   $query = $index->query();
