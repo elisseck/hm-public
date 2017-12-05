@@ -44,8 +44,9 @@
 
 .view.list-biography-cards-w-category-filter {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  padding: 0 15px;
 
   .view-header {
     @extend %oswald-light;
@@ -56,18 +57,8 @@
     height: em(30);
     line-height: normal;
     margin-bottom: em(5);
-    order: 2;
     padding-left: em(15);
     padding-top: em(2);
-  }
-
-  //Filter
-  .view-filters.form-group {
-    height: 100%;
-    min-height: 100%;
-    min-width: 150px;
-    order: 1;
-    width: 30%;
   }
 
   //List
@@ -75,21 +66,14 @@
     display: flex;
     flex: 1;
     flex-flow: row wrap;
-    margin-left: 30%;
-    order: 4;
+    order: 3;
   }
 
   //Pager
   .pager {
     flex: 1;
-    margin: 0 0 em(48) 30%;
-    order: 3;
-  }
-
-  .view-header,
-  .pager,
-  .view-content {
-    flex-basis: 70%;
+    margin: 0 0 em(48);
+    order: 2;
   }
 
   //Card
@@ -156,3 +140,22 @@
   }//.bio-card--list.col-lg-4
 
 }//.view.list-biography-card 
+
+.contextual-region.view.list-maker-category-filter {
+  border-top: 1px solid color(medium-grey);
+  margin-right: 3%;
+  min-width: 150px;
+  padding-top: em(15);
+  width: 27%;
+
+  //Filter
+  .views-row {
+    margin: em(5) 0;
+  }
+
+  .views-row a {
+    @extend %source-sans-semi-bold;
+    color: color(dark-grey);
+  }
+
+}
