@@ -52,26 +52,33 @@ function thm_related_makers_preprocess_block(&$variables) {
  *
  * @return int|bool
  */
-function thm_related_makers_get_current_nid() {
+function thm_related_makers_get_current_node() {
   $node = \Drupal::routeMatch()->getParameter('node');
 
   if ($node instanceof NodeInterface) {
-    return $node->id();
+    return $node;
   } else {
     return false;
   }
 }
 
 function thm_related_makers_get_image_url($fid) {
+  if (!$fid) return false;
+
   return file_url_transform_relative(
     file_create_url(File::load($fid)->getFileUri()));
 }
 
 function thm_related_makers_get_terms($tidList) {
-
   return array_map(function($tid) {
     return Term::load($tid)->getName();
   }, $tidList);
+}
+
+function thm_related_makers_get_node_tid($node, $field) {
+  return array_map(function($item) {
+    return @$item->getValue()['target_id'];
+  }, iterator_to_array($node->get($field)));
 }
 
 function thm_related_makers_parse_results($results) {
@@ -80,16 +87,19 @@ function thm_related_makers_parse_results($results) {
     /** @var Drupal\search_api\Item\ItemInterface $item */
     return [
       'title' => @$item->getField('title')->getValues()[0],
-      'first_name' => @$item->getField('field_first_name')->getValues()[0],
+      'first_name' => stripslashes(
+        @$item->getField('field_first_name')->getValues()[0]),
       'last_name' => @$item->getField('field_last_name')->getValues()[0],
-      'bio_image' =>
-        @$item->getField('field_bio_image')->getValues()[0],
-      'body' => @$item->getField('body')->getValues()[0],
+      'bio_image' => thm_related_makers_get_image_url(
+        @$item->getField('field_bio_image')->getValues()[0]),
       'maker_types' => thm_related_makers_get_terms(
-        @$item->getField('field_maker_category')->getValues())
+        @$item->getField('field_maker_category')->getValues()),
+      'occupations' => thm_related_makers_get_terms(
+        @$item->getField('field_occupation')->getValues()),
     ];
   }, $results);
 }
+
 
 function get_test_data() {
   return [
@@ -100,7 +110,8 @@ function get_test_data() {
       'bio_image' => '/sites/default/files/Atchison_John_wm.png',
       'maker_types' => [
         'StyleMakers'
-      ]
+      ],
+      'occupations' => [ 'Personal Care Entrepreneur' ]
     ],
     [
       'title' => 'Na\'im Akbar',
@@ -109,6 +120,10 @@ function get_test_data() {
       'bio_image' => '/sites/default/files/Akbar_Naim_wm.png',
       'maker_types' => [
         'EducationMakers'
+      ],
+      'occupations' => [
+        'Psychology Professor',
+        'Publisher'
       ]
     ],
     [
@@ -118,26 +133,87 @@ function get_test_data() {
       'bio_image' => '/sites/default/files/Allen_John_wm.png',
       'maker_types' => [
         'LawMakers'
-      ]
+      ],
+      'occupations' => [ 'Superior Court Judge' ]
     ]
   ];
 }
 
 /**
+ * Returns a
+ * @param $node Drupal\node\Entity\Node
+ *
+ * @return array
+ */
+function thm_related_makers_get_search_params($node) {
+  return [
+    'nid' => $node->id(),
+    'field_maker_category' => thm_related_makers_get_node_tid(
+      $node, 'field_maker_category'),
+    'field_occupation' => thm_related_makers_get_node_tid(
+      $node, 'field_occupation'),
+    'field_birth_place_term' => thm_related_makers_get_node_tid(
+      $node, 'field_birth_place_term'),
+    'field_organizations' => thm_related_makers_get_node_tid(
+      $node, 'field_organizations')
+  ];
+}
+
+/**
+ * Adds condition parameters to the search query.
+ *
+ * @param $query Drupal\search_api\Query\QueryInterface
+ * @param $data array
+ *
+ * @return void
+ */
+function thm_related_makers_add_conditions($query, $data) {
+  foreach ($data as $field => $value) {
+    if (count($value) > 1) {
+      foreach ($value as $item) {
+        drupal_set_message("adding condition that $field equals $item");
+        $query->addCondition($field, $item);
+      }
+    } else if (!is_array($value)) {
+      drupal_set_message("disabled condition that $field does NOT equal $value");
+      //$query->addCondition($field, $value, '<>');
+    } else {
+      drupal_set_message("adding condition that $field equals " . $value[0]);
+      $query->addCondition($field, $value);
+    }
+  }
+}
+
+/**
  * Performs the search.
  *
+ * @throws Drupal\search_api\SearchApiException
+ *
+ * @param bool $testMode If true, sidesteps the search api and returns canned
+ * data.
+ *
+ * @return array Returns array containing the # of results found and the
+ * results themselves.
  */
-function thm_related_makers_perform_search($test = false) {
+function thm_related_makers_perform_search($testMode = false) {
 
-  if ($test) {
+  if ($testMode) {
     return [ 'count' => 3, 'data' => get_test_data() ];
   }
 
   $index = Index::load('biography_index');
 
   /** @var Drupal\search_api\Query\QueryInterface $query */
-  $query = $index->query();
-  $nid   = thm_related_makers_get_current_nid();
+  $query  = $index->query(); // TODO: Wrap in try-catch block
+  $node   = thm_related_makers_get_current_node();
+  $params = null;
+
+  if (!is_bool($node)) {
+    //$params = thm_related_makers_get_search_params($node);
+
+    //thm_related_makers_add_conditions($query, $params);
+    //drupal_set_message(print_r($params, true));
+  }
 
   $parseMode = \Drupal::service('plugin.manager.search_api.parse_mode')
     ->createInstance('direct')
@@ -145,15 +221,15 @@ function thm_related_makers_perform_search($test = false) {
 
   $query->setParseMode($parseMode);
 
-  $query->keys('The Honorable John Allen');
+  $query->keys('Allen');
 
   $query->setFulltextFields([
-    'body', 'field_first_name', 'field_last_name', 'title'
+    'field_first_name', 'field_last_name', 'title', 'body'
   ]);
 
   $query->range(0, 5);
 
-  $results = $query->execute();
+  $results = $query->execute(); // TODO: Wrap in try-catch block
 
   return [
     'count' => $results->getResultCount(),
