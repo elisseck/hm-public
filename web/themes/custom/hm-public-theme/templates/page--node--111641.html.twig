@@ -17,14 +17,14 @@
   <div class="wrapper row col-lg-12 gutter-60">
 
     {# {{ drupal_dump(page)}} #}
-    {{ drupal_view('biography_cards_w_category_filter') }}
     
-    {# <div class="bio-card--filter col-lg-3">
-      filter
+    
+    <div class="bio-card--filter col-lg-3">
+      {{ drupal_block('views_block__maker_category_filter_block_1') }}
     </div>
     <div class="col-lg-9">
       {{ drupal_view('biography_cards_w_category_filter') }}
-    </div> #}
+    </div>
 
   </div><!-- close wrapper -->
 </main>
