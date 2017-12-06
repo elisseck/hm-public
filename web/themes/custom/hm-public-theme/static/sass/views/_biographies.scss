@@ -141,21 +141,25 @@
 
 }//.view.list-biography-card 
 
-.contextual-region.view.list-maker-category-filter {
-  border-top: 1px solid color(medium-grey);
+#makercategoryfilter {
   margin-right: 3%;
-  min-width: 150px;
-  padding-top: em(15);
-  width: 27%;
+  padding: 0 em(15);
 
   //Filter
-  .views-row {
-    margin: em(5) 0;
-  }
+  .menu {
+    border-top: 1px solid color(medium-grey);
+    padding-top: em(15);
 
-  .views-row a {
-    @extend %source-sans-semi-bold;
-    color: color(dark-grey);
+    .menu-item {
+      display: inherit;
+      margin: em(5) 0;
+    }
+
+    .menu-item a {
+      @extend %source-sans-semi-bold;
+      color: color(dark-grey);
+    }
+
   }
 
 }
