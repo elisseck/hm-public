@@ -119,7 +119,8 @@
                         title2="Temporary Placeholder Title 2"
                         thumb="https://thmdatestmedia.blob.core.windows.net/media/story/image/2336"
                         thumb2="https://thmdatestmedia.blob.core.windows.net/media/story/image/2366"
-                        timingPairs="">Loading...</app-root>
+                        timingPairs=" {{ node.field_timing_pairs.value | json_encode() }} "
+                        transcriptText="{{ node.field_story_caption.value |raw|nl2br }}">Loading...</app-root>
             </section>
             {% endif %}
 
