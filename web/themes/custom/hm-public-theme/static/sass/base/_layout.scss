@@ -26,9 +26,13 @@ h1, h2, h3, h4, h5, h6 {
 
 //Correct position of First Sidebar
 .column.sidebar.first {
+  flex-basis: 20%;
+  min-width: 20%;
   order: 1;
 }
 
-.content.column {
+.content.column,
+.columns-middle .content.column {
+  flex: 1 auto;
   order: 2;
 }
