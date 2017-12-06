@@ -8,12 +8,12 @@
  #  - occupations (list)
 #}
 {% for record in data %}
-    <h3>{{ record.first_name }} {{ record.last_name }}</h3>
+    <h4>{{ record.title }}</h4>
     <img src="{{ record.bio_image }}">
     {% for type in record.maker_types %}
         <h5>{{ type }}</h5>
     {% endfor %}
     {% for occupation in record.occupations %}
-        <h5>{{ occupation }}</h5>
+        <h6>{{ occupation }}</h6>
     {% endfor %}
 {% endfor %}
