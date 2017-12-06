@@ -36,3 +36,9 @@ h1, h2, h3, h4, h5, h6 {
   flex: 1 auto;
   order: 2;
 }
+
+.columns-middle .sidebar.second {
+  flex-basis: 20%;
+  min-width: 20%;
+  order: 3;
+}
