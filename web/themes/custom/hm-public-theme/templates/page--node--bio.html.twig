@@ -53,7 +53,7 @@
                   <dt>Favorite Vacation Spot:</dt>
                   <dd>{{ node.field_favorite_vacation.value }}</dd>
                   <dt>Favorite Quote:</dt>
-                  <dd>{{ node.field_favorite_quote.value }}</dd>
+                  <dd>{{ node.field_favorite_quote.value | striptags }}</dd>
                 </dl>
               </section>
     
@@ -115,17 +115,17 @@
               {# Titles, Thumbnails and Timing Pairs to be added when available in the DB #}
               <app-root source="{{ node.field_web_clip1.value }}" 
                         source2="{{ node.field_web_clip2.value }}"
-                        title="Temporary Placeholder Title 1"
-                        title2="Temporary Placeholder Title 2"
+                        title="{{ node.field_datitle[0].value | replace({'\\': ''}) }}"
+                        title2="{{ node.field_datitle[1].value | replace({'\\': ''}) }}"
                         thumb="https://thmdatestmedia.blob.core.windows.net/media/story/image/2336"
                         thumb2="https://thmdatestmedia.blob.core.windows.net/media/story/image/2366"
                         timingPairs=" {{ node.field_timing_pairs.value | json_encode() }} "
-                        transcriptText="{{ node.field_story_caption.value |raw|nl2br }}">Loading...</app-root>
+                        transcriptText="{{ node.field_story_caption.value | striptags }}">Loading...</app-root>
             </section>
             {% endif %}
 
             <div id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="card">
+                <div >
                   <div class="card-header" role="tab" id="headingOne">
                     <h5 class="mb-0">
                       <a class="collapsed card-head-link" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -136,11 +136,15 @@
               
                   <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
                     <div class="card-block">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      <ul>
+                        {% for key, value in node.field_dastories %}
+                          <li>{{ node.field_dastories[key].value | replace({'\\': ''}) }}</li>
+                        {% endfor %}
+                      </ul>
                     </div>
                   </div>
                 </div>
-                <div class="card">
+                <div>
                   <div class="card-header" role="tab" id="headingTwo">
                     <h5 class="mb-0">
                       <a class="collapsed card-head-link" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
