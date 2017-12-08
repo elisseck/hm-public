@@ -41,9 +41,9 @@ function thm_related_makers_theme() {
 
 /**
  * Retrieves the node in current display context (page|view|block).
- * Returns false if node id isn't found.
+ * Returns false if node isn't found.
  *
- * @return int|bool
+ * @return \Drupal\node\Entity\Node|bool
  */
 function thm_related_makers_get_current_node() {
   $node = \Drupal::routeMatch()->getParameter('node');
@@ -191,7 +191,7 @@ function thm_related_makers_perform_search($testMode = false) {
 
   if (!is_bool($node)) {
     $terms = thm_related_makers_build_term_string($node);
-    drupal_set_message("terms: $terms");
+    //drupal_set_message("terms: $terms");
     $query->addCondition('nid', $node->id(), '<>');
   }
 
