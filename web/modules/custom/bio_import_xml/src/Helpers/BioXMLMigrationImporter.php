@@ -76,7 +76,7 @@ class BioXMLMigrationImporter {
     'field_married'                   => 'maritalstatus',
     'field_event_title_sponsor_url'   => 'sponsorurl',
     'field_timing_pairs'              => 'datimingpair',
-    'field_story_caption'             => 'dacaption',
+    'field_transcript'                => 'dacaption',
     'field_dasession'                 => 'dasession',
     'field_datape'                    => 'datape',
     'field_dastory'                   => 'dastory',
@@ -179,7 +179,7 @@ class BioXMLMigrationImporter {
           $record->$value, 240, true, true,
           1
         );
-        $this->node->set($field, trim($record->$value));
+        $this->node->set($field, stripslashes(trim($record->$value)));
       }
     }
     return $this;
@@ -193,10 +193,14 @@ class BioXMLMigrationImporter {
     foreach ($this->multiValueFields as $field => $value) {
       if (strlen(trim($record->$value)) && !empty($record->$value)) {
         $dollarValues = BioXMLMigrationHelpers::migrateThmExplode(
-          '$', $record->$value);
+          '$', stripslashes($record->$value));
 
         foreach ($dollarValues as $val) {
-          $this->node->$field->appendItem($val);
+          $valuesInField = $this->node->$field->getValue();
+
+          if (!in_array($val, array_column($valuesInField, 'value'))) {
+            $this->node->$field->appendItem($val);
+          }
         }
       }
     }
@@ -252,7 +256,12 @@ class BioXMLMigrationImporter {
 
         if (count($tags)) {
           foreach ($tags as $tag) {
-            $this->node->$field->appendItem($tag);
+            $tagsInField = $this->node->$field->getValue();
+            $key = 'target_id';
+
+            if (!in_array($tag[$key], array_column($tagsInField, $key))) {
+              $this->node->$field->appendItem($tag);
+            }
           }
         }
       }
@@ -299,16 +308,16 @@ class BioXMLMigrationImporter {
     $title = $this->node->getTitle();
 
     if (!isset($title)) {
-      $this->node->setTitle(\stripslashes($record->namefirst . ' ' . $record->namelast));
+      $this->node->setTitle(stripslashes($record->namefirst . ' ' . $record->namelast));
     }
 
     if (strlen(trim($record->preferredname))) {
-      $this->node->setTitle(\stripslashes($record->preferredname));
+      $this->node->setTitle(stripslashes($record->preferredname));
     }
 
     $cleanBody = preg_replace(
       '/\xEF\x83\xA2/', '&reg;', $record->biographylong);
-    $this->node->get('body')->value = $this->checkPlain(\stripslashes($cleanBody));
+    $this->node->get('body')->value = $this->checkPlain(stripslashes($cleanBody));
     $this->node->get('body')->format = 'restricted_html';
 
     return $this;
@@ -505,7 +514,7 @@ SQL;
 
     $instance = new self($db, $config, $logger);
 
-    $rs = $instance->getNewBios($instance->db);
+    $rs = $instance->getNewBios($instance->db, 1);
 
     $instance->totalBios = count($rs);
 
@@ -526,9 +535,9 @@ SQL;
           foreach ($report as $id => $state) {
             $hmIdAndTitle = explode(':', key($state));
 
-            $instance
+            /*$instance
               ->updateStorage($hmIdAndTitle[0])
-              ->removeDuplicates($hmIdAndTitle[1]);
+              ->removeDuplicates($hmIdAndTitle[1]);*/
           }
           $instance->logResults($report);
         });

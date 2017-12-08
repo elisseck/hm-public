@@ -38,13 +38,6 @@ function thm_related_makers_theme() {
   ];
 }
 
-/**
- * Implements hook_preprocess_HOOK().
- */
-function thm_related_makers_preprocess_block(&$variables) {
-  $variables['#cache']['max-age'] = 0;
-}
-
 
 /**
  * Retrieves the node in current display context (page|view|block).
@@ -139,68 +132,30 @@ function get_test_data() {
   ];
 }
 
-/**
- * Returns a
- * @param $node Drupal\node\Entity\Node
- *
- * @return array
- */
-function thm_related_makers_get_search_params($node) {
-  return [
-    'nid' => $node->id(),
-    'field_maker_category' => thm_related_makers_get_node_tid(
-      $node, 'field_maker_category'),
-    'field_occupation' => thm_related_makers_get_node_tid(
-      $node, 'field_occupation'),
-    'field_birth_place_term' => thm_related_makers_get_node_tid(
-      $node, 'field_birth_place_term'),
-    'field_organizations' => thm_related_makers_get_node_tid(
-      $node, 'field_organizations')
-  ];
-}
-
-/**
- * Adds condition parameters to the search query.
- *
- * @param $query Drupal\search_api\Query\QueryInterface
- * @param $data array
- *
- * @return void
- */
-function thm_related_makers_add_conditions($query, $data) {
-  //$conditions = $query->createConditionGroup('OR');
-  foreach ($data as $field => $value) {
-    if (is_array($value)) {
-      drupal_set_message(
-        "adding condition that $field matches something in " . print_r($value, true));
-      $query->addCondition($field, $value, 'IN');
-      /*foreach ($value as $item) {
-        drupal_set_message("adding condition that $field equals $item");
-        $query->addCondition($field, $item);
-      }*/
-    } else if (!is_array($value)) {
-      //drupal_set_message("disabled condition that $field does NOT equal $value");
-      //$conditions->addCondition($field, $value, '<>');
-    } else {
-      //drupal_set_message("adding condition that $field equals " . $value[0]);
-      //$query->addCondition($field, $value);
-    }
-  }
-}
 
 function stringify_terms($node, $field) {
-  return implode(' ', thm_related_makers_get_terms(
+  return implode('" "', thm_related_makers_get_terms(
     thm_related_makers_get_node_tid($node, $field)
   ));
 }
 
+/**
+ * Builds a string of quoted values to be passed to the search engine.
+ *
+ * @param $node Drupal\node\Entity\Node
+ *
+ * @return string $terms
+ */
 function thm_related_makers_build_term_string($node) {
-  return implode(' ', [
-    stringify_terms($node, 'field_maker_category'),
+  return '"' . implode('" "', [
+    implode('" "',
+      array_column($node->get('field_employment')->getValue(), 'value')),
+    implode('" "',
+      array_column($node->get('field_hm_city_state_country')->getValue(), 'value')),
     stringify_terms($node, 'field_birth_place_term'),
     stringify_terms($node, 'field_organizations'),
     stringify_terms($node, 'field_occupation')
-  ]);
+  ]) . '"';
 }
 
 /**
@@ -236,21 +191,11 @@ function thm_related_makers_perform_search($testMode = false) {
 
   if (!is_bool($node)) {
     $terms = thm_related_makers_build_term_string($node);
+    drupal_set_message("terms: $terms");
     $query->addCondition('nid', $node->id(), '<>');
-    //drupal_set_message('parameters: ' . $terms);
   }
 
-  //$query->keys("6678 41288 41286 41292 654571 43957 Tallahassee 'Association of Black Psychologists'");
-
-  //$query->keys("'EducationMakers' 'Tallahassee' 'Association of Black Psychologists' 'Publisher'");
-
   $query->keys($terms);
-
-
-  /*$query->setFulltextFields([
-    'field_maker_category', 'field_occupation', 'field_organizations',
-    'field_birth_place_term'
-  ]);*/
 
   $query->setOption('conjunction', 'OR');
   $query->range(0, 5);
