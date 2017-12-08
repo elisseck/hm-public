@@ -63,12 +63,12 @@ export class AppComponent {
     this.source2 = this.elementRef.nativeElement.getAttribute('source2');
     this.title = this.elementRef.nativeElement.getAttribute('title');
     this.title2 = this.elementRef.nativeElement.getAttribute('title2');
-    this.thumb = this.elementRef.nativeElement.getAttribute('thumb');
-    this.thumb2 = this.elementRef.nativeElement.getAttribute('thumb2');
+    this.thumb = this.source.replace('video','image');
+    this.thumb2 = this.source2.replace('video','image');
     this.timingPairs = this.elementRef.nativeElement.getAttribute('timingPairs');
     this.transcriptText = this.elementRef.nativeElement.getAttribute('transcriptText');
 
-    this.transcriptText = this.transcriptText.replace( /(\$)\1+/gi, "\n\n");
+    this.transcriptText = this.transcriptText.replace( /(\$)\1+/gi, "\n\n").replace(/[\\]/, '');;
     this.transcriptText1 = this.transcriptText.split(/[\$]/)[0];
     this.transcriptText2 = this.transcriptText.split(/[\$]/)[1];
     var index = this.timingPairs.indexOf("$");

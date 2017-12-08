@@ -88,4 +88,14 @@
     max-width: 100%;
   }
 
+  .share {
+    left: em(10);
+    position: fixed;
+    top: 50%;
+  }
+
+  .share__icon {
+    height: auto;
+    width: em(36);
+  }
 }
