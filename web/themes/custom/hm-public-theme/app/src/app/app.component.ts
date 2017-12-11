@@ -22,7 +22,6 @@ export interface IMedia {
 })
 
 export class AppComponent {
-  // @Input() source: string;
   @ViewChild('myVideoArea') videoPlayerAndControlsAreaRef: ElementRef;
   @ViewChild('myVideoPlayer') videoPlayerRef: any;
   @ViewChild('transcript') transcript: any;
@@ -36,9 +35,13 @@ export class AppComponent {
   mobileDetails: boolean = false;
   transcriptAreaHeight: number = 100;
   transcriptText: string;
+  transcriptText1: string;
+  transcriptText2: string;
   myStory: DetailedStory;
   myMatchContext: TimedTextMatch[] = [];
-  timingPairs: TranscriptTiming[];
+  timingPairs: string;
+  timingPairsVideo1: TranscriptTiming[];
+  timingPairsVideo2: TranscriptTiming[];
   wideScreen: boolean = false;
   storyHasMatches: boolean = true;
   videoPositionInSeconds: number = 0;
@@ -60,13 +63,17 @@ export class AppComponent {
     this.source2 = this.elementRef.nativeElement.getAttribute('source2');
     this.title = this.elementRef.nativeElement.getAttribute('title');
     this.title2 = this.elementRef.nativeElement.getAttribute('title2');
-    this.thumb = this.elementRef.nativeElement.getAttribute('thumb');
-    this.thumb2 = this.elementRef.nativeElement.getAttribute('thumb2');
+    this.thumb = this.source.replace('video','image');
+    this.thumb2 = this.source2.replace('video','image');
     this.timingPairs = this.elementRef.nativeElement.getAttribute('timingPairs');
+    this.transcriptText = this.elementRef.nativeElement.getAttribute('transcriptText');
 
-    // For development purposes when used as a standalone applications
-    // this.source = "https://thmdatestmedia.blob.core.windows.net/media/story/video/2336";
-    // this.source2 = "https://thmdatestmedia.blob.core.windows.net/media/story/video/2366";
+    this.transcriptText = this.transcriptText.replace( /(\$)\1+/gi, "\n\n").replace(/[\\]/, '');;
+    this.transcriptText1 = this.transcriptText.split(/[\$]/)[0];
+    this.transcriptText2 = this.transcriptText.split(/[\$]/)[1];
+    var index = this.timingPairs.indexOf("$");
+    this.timingPairsVideo1 = this.timingPairsToJSON(this.timingPairs.substr(0, index));
+    this.timingPairsVideo2 = this.timingPairsToJSON(this.timingPairs.substr(index + 1) + "}");
     
     this.playlist = [
       {
@@ -86,16 +93,37 @@ export class AppComponent {
     this.previousItem = this.playlist[ this.currentIndex + 1 ];
   }
 
-  ngOnInit() {
-    this.timingPairs = [];
-    this.myStory = {
-      transcript: this.transcriptText,
-      timingPairs: this.timingPairs
+  timingPairsToJSON(timingPairs) {
+    let currentNum = "";
+    let newTimingPairs = [];
+    let newTimingPair: TranscriptTiming = {offset: 0, time: 0};
+    for (let ch of timingPairs) {
+      if (ch === ',') {
+        newTimingPair.time = Number(currentNum);
+        currentNum = "";
+      }
+      else if (ch === ':') {
+        newTimingPair.offset = Number(currentNum);
+        newTimingPairs.push(newTimingPair);
+        currentNum = "";
+        newTimingPair = {offset: 0, time: 0};
+      }
+      else {
+        currentNum = currentNum + ch;
+      }
     }
-    this.myStory.transcript = this.transcriptText;
+    return newTimingPairs;
+  }
+
+  ngOnInit() {
+    this.myStory = {
+      transcript: this.transcriptText1,
+      timingPairs: this.timingPairsVideo1
+    }
     this.transcriptPieces = [];
     this.transcriptPieces.push("");
     this.currentActiveTranscriptPiece = -1;
+    this.ComputeTimesForOffsets();
     this.ComputeTimedTranscriptWithMatches();
   }
 
@@ -230,9 +258,30 @@ export class AppComponent {
 
     if (this.currentIndex === this.playlist.length) {
         this.currentIndex = 0;
+        this.myStory = {
+            transcript: this.transcriptText1,
+            timingPairs: this.timingPairsVideo1
+        }
+        this.transcriptPieces = [];
+        this.transcriptPieces.push("");
+        this.currentActiveTranscriptPiece = -1;
+        this.ComputeTimesForOffsets();
+        this.ComputeTimedTranscriptWithMatches();
+    }
+    else {
+        this.myStory = {
+            transcript: this.transcriptText2,
+            timingPairs: this.timingPairsVideo2
+        }
+        this.transcriptPieces = [];
+        this.transcriptPieces.push("");
+        this.currentActiveTranscriptPiece = -1;
+        this.ComputeTimesForOffsets();
+        this.ComputeTimedTranscriptWithMatches();
     }
 
     this.currentItem = this.playlist[ this.currentIndex ];
+
   }
 
   onClickPlaylistItem(item: IMedia, index: number) {
@@ -345,4 +394,37 @@ export class AppComponent {
           }
       }
   }
+
+  private ComputeTimesForOffsets() {
+    // Use this.myStory.timingPairs and this.myStory.matchTerms to compute this.myMatchContext for each match in matchTerms
+    var i: number = 0;
+    var matchIndex: number = 0;
+    var maxTimingPairIndex: number;
+    var givenMatchesCount: number;
+    var newEntry: TimedTextMatch;
+
+    if (this.myStory.timingPairs == null)
+        maxTimingPairIndex = -1;
+    else
+        maxTimingPairIndex = this.myStory.timingPairs.length - 1;
+    if (givenMatchesCount == 0 || maxTimingPairIndex <= 0) {
+        this.storyHasMatches = false;
+        this.myMatchContext = [];
+        return;
+    }
+
+    this.storyHasMatches = true;
+    // As we move through this.myStory.timingPairs in ascending offset order, we don't go back,
+    // i.e., i starts at 0 but moves forward within this outer while loop rather than being
+    // reset to 0 each time:
+    while (matchIndex < givenMatchesCount) {
+        if (i == 0)
+            newEntry.time = this.myStory.timingPairs[0].time;
+        else
+            newEntry.time = this.myStory.timingPairs[i - 1].time;
+        this.myMatchContext.push(newEntry);
+        matchIndex++; // Note: service puts matches in order, so this.myStory.timingPairs[N+1].startOffset >= this.myStory.timingPairs[N].startOffset
+    }
+}
+
 }

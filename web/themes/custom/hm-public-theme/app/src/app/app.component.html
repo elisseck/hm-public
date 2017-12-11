@@ -32,7 +32,7 @@
     
         <section class="col-sm-4 next-vid">
             <h3>Up Next</h3>
-            <div class="row" (click)="nextVideo()">
+            <div class="row next-vid__preview" (click)="nextVideo()">
                 <div class="col-md-6"><img class="next-vid__thumb" [src]="previousItem.thumb" alt=""></div>
                 <div class="col-md-6 next-vid__title">{{previousItem.title}}</div>
             </div>
