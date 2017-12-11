@@ -79,6 +79,7 @@ function thm_related_makers_parse_results($results) {
   return array_map(function($item) {
     /** @var Drupal\search_api\Item\ItemInterface $item */
     return [
+      'nid' => @$item->getField('nid')->getValues()[0],
       'title' => @$item->getField('title')->getValues()[0],
       'first_name' => stripslashes(
         @$item->getField('field_first_name')->getValues()[0]),
