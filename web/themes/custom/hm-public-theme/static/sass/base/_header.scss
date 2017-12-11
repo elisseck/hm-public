@@ -7,6 +7,10 @@
 .header__top-row {
   align-items: center;
   display: flex;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }
 
 .header__da-link {
@@ -55,10 +59,28 @@
   max-width: em(1240);
   padding: 0 em(55);
 
+  @media screen and (max-width: 767px) {
+    left: - em(600, 16);
+    padding: 0 em(15, 16) em(15, 16);
+    transition: left .3s ease-in-out;
+    width: 70vw;
+  }
+
+  &.hm-public-theme-main-menu--open {
+    left: 0;
+  }
+
   .menu {
     display: flex;
     justify-content: space-between;
     width: 100%;
+
+    @media screen and (max-width: 767px) {
+      flex: 2;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-start;
+    }
   }
 
   .menu-item {
@@ -67,14 +89,36 @@
     letter-spacing: .114em;
     text-transform: uppercase;
 
+    @media screen and (max-width: 767px) {
+      border-bottom: em(1, 16) solid $white;
+      padding: em(12, 16) em(8, 16);
+  }
+
+    & .is-active {
+      color: color(tertiary);
+
+      // @media screen and (max-width: 767px) {
+      //   border-bottom: em(3,16) solid color(tertiary);
+      //   text-decoration: none;
+      // }
+    }
+
     a:hover {
       border-bottom: em(8) solid color(secondary);
       transition: border-bottom .2s ease-in-out;
+
+      @media screen and (max-width: 767px) {
+        border-bottom: 0;
+      }
     }
 
     .is-active {
       border-bottom: em(8) solid color(tertiary);
       transition: border-bottom .2s ease-in-out;
+
+      @media screen and (max-width: 767px) {
+        border-bottom: 0;
+      }
     }
 
     a {
@@ -116,5 +160,16 @@
   &:hover {
     color: color(secondary);
     cursor: pointer;
+  }
+}
+
+.header nav {
+
+  @media screen and (max-width: 767px) {
+    background: color(light-grey);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 2000;
   }
 }

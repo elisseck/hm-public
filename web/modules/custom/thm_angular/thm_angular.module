@@ -1,0 +1,10 @@
+<?php
+// Code for Angular Module
+function thm_angular_theme($existing, $type, $theme, $path){
+    return [
+        'angular' => [
+            'variables' => [],
+            'template' => 'block--video-player'
+        ]
+    ];
+}
