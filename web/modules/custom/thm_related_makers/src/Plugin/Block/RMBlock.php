@@ -19,7 +19,7 @@ class RMBlock extends BlockBase {
    */
   public function build() {
 
-    $vs = thm_related_makers_perform_search(true);
+    $vs = thm_related_makers_perform_search();
 
     //drupal_set_message('sending to twig: ' . print_r($vs['data'], true));
 
