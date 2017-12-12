@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Contains thm_related_makers.module.
+ * Contains page_banner.module.
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -10,18 +10,12 @@ use Drupal\node\NodeInterface;
 use Drupal\file\Entity\File;
 use Drupal\taxonomy\Entity\Term;
 
-function mypluginBanner_theme($existing, $type, $theme, $path){
+function page_banner_theme($existing, $type, $theme, $path){
   return [
-    'mypluginBanner' => [
+    'page_banner' => [
       'variables' => [
-        'background_color' => $background_color, 
-        'feature_name' => $feature_name,       
-        'feature_occupation' => $feature_occupation, 
-        'feature_image' => $feature_image, 
-        'sponsor_name' => $sponsor_name, 
-        'sponsor_image' => $sponsor_image, 
-      ],
-        'template' => 'block--page-banner'
+        'banner_data' => null 
+      ]
     ]
   ];
 
