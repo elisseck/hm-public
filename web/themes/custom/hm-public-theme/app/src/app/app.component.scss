@@ -375,7 +375,7 @@ input {
     position: relative;
 
     @media screen and (min-width: bp(medium) + 1) {
-        background-color: color(light-grey);
+        background-color: #dedede;
         border: 1px solid color(grey);
         display: inherit;
         line-height: em(22, 16);
