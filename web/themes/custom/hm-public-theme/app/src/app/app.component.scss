@@ -372,9 +372,10 @@ input {
     font-size: rem(12);
     margin-bottom: em(20);
     margin-top: em(20);
+    position: relative;
 
     @media screen and (min-width: bp(medium) + 1) {
-        background-color: color(light-grey);
+        background-color: #dedede;
         border: 1px solid color(grey);
         display: inherit;
         line-height: em(22, 16);
@@ -720,6 +721,10 @@ input {
 }
 
 .video__title { font-size: rem(18); }
+
+.next-vid__preview:hover {
+  cursor: pointer;
+}
 
 .next-vid__thumb {
   font-size: rem(14);

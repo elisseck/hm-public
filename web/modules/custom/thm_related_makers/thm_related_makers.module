@@ -33,7 +33,7 @@ function thm_related_makers_help($route_name, RouteMatchInterface $route_match) 
 function thm_related_makers_theme() {
   return [
     'thm_related_makers' => [
-      'variables' => [ 'data' => null ],
+      'variables' => [ 'data' => null ]
     ],
   ];
 }
