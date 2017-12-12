@@ -184,15 +184,16 @@
                   </div>
                   <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="card-block">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
+                      {% for key, value in node.field_bio_pdf %}
+                        <li><a href="{{file_url(node.field_bio_pdf[key].entity.uri.value)}}">{{ node.field_bio_pdf[key].entity.filename.value }}</a></li>
+                      {% endfor %}
                   </div>
                 </div>
               </div>
-              <section>
+              <section class="archive">
                 <h2>Archival Photos</h2>
                 <div class="row">
-                  <div class="col-sm-6 archive">
+                  <div class="col-sm-6">
                     <img class="archive__photo" src="{{file_url(node.field_archival_image1.entity.uri.value)}}" alt="">
                   </div>
                   <div class="col-sm-6">
@@ -202,9 +203,20 @@
               </section>
           </div>
           
+          <button class="back-button scroll" title="Back to top">
+              <svg 
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 23 12"
+              width='11px'>
+             <path fill-rule="evenodd"  fill="rgb(146, 28, 33)"
+              d="M11.501,0.007 L23.002,12.011 L0.001,12.011 L11.501,0.007 Z"/>
+             </svg>
+              Back to Top
+          </button>
         </div>
       </div>
-
 
     </main>
   </div>

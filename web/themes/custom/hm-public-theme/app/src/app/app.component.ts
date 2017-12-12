@@ -248,7 +248,6 @@ export class AppComponent {
 
   onPlayerReady(api: VgAPI) {
     this.api = api;
-    this.initTranscriptHeight();
     this.api.getDefaultMedia().subscriptions.ended.subscribe(this.nextVideo.bind(this));
   }
 
@@ -330,25 +329,23 @@ export class AppComponent {
         newTranscriptHeight = 100;
     if (this.videoPlayerRef) {
         const aspectRatio = this.videoPlayerRef.api.videogularElement.offsetWidth / this.videoPlayerRef.api.videogularElement.offsetHeight
-        if (fullWindowWidth >= 768 && this.wideScreen === false) {
-            // Use a bigger calculation when a video has a shorter height (eg. 16:9 ratio)
-            if (aspectRatio > 1.4) {
-                this.transcriptAreaHeight = this.videoPlayerRef.api.videogularElement.offsetHeight * 1.5;
-            }
-            else {
-                if (this.storyHasMatches === true) this.transcriptAreaHeight = this.videoPlayerRef.api.videogularElement.offsetHeight + 30;
-                else this.transcriptAreaHeight = this.videoPlayerRef.api.videogularElement.offsetHeight;
-            }
+        if (fullWindowWidth >= 550 && this.wideScreen === false) {
+            this.transcriptAreaHeight = 220;
         }
-        else if (fullWindowWidth >= 768 && this.wideScreen === true) {
-            if (this.storyHasMatches === true) this.transcriptAreaHeight = fullWindowHeight - (this.videoPlayerRef.api.videogularElement.offsetHeight + 120);
-            else this.transcriptAreaHeight = fullWindowHeight - (this.videoPlayerRef.api.videogularElement.offsetHeight + 70);
-        }
+        // Widescreen capability is currently commented out until a design is done
+        // else if (fullWindowWidth >= 768 && this.wideScreen === true) {
+        //     if (this.storyHasMatches === true) this.transcriptAreaHeight = fullWindowHeight - (this.videoPlayerRef.api.videogularElement.offsetHeight + 120);
+        //     else this.transcriptAreaHeight = fullWindowHeight - (this.videoPlayerRef.api.videogularElement.offsetHeight + 70);
+        // }
         else {
             if (this.storyHasMatches === true) this.transcriptAreaHeight = fullWindowHeight - (this.videoPlayerRef.api.videogularElement.offsetHeight + 250);
             else this.transcriptAreaHeight = fullWindowHeight - (this.videoPlayerRef.api.videogularElement.offsetHeight + 215);
         }
     }
+}
+
+onResize(event) {
+    this.computeTranscriptAreaHeight(window.innerWidth, window.innerHeight);
 }
 
   adjustVideoCurrentTime() {

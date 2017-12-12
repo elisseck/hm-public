@@ -27,3 +27,10 @@ $('.carousel').carousel({
   interval: 5000,
   pause: "true"
 });
+
+const $scrollButton = document.querySelector('.scroll');
+function scrollStep() {
+    // Check if we're at the top already.
+    window.scrollTo(0, 0);
+}
+$scrollButton.addEventListener('click', scrollStep);
