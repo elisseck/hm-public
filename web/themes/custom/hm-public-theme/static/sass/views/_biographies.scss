@@ -15,7 +15,7 @@
     padding-left: 15px;
   }
 
-  .banner--feature {
+  .banner--highlight {
     align-items: flex-end;
     background-position: center;
     background-size: cover;
@@ -32,11 +32,12 @@
       margin-top: 0;
     }
 
-    .banner--feature-name {
+    .banner--highlight-name {
       @extend %oswald;
       align-content: flex-end;
+      flex-basis: 100%;
       font-size: em(22);
-      margin-top: 45%;
+      margin-top: 70%;
     }
   }
 
