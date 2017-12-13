@@ -42,3 +42,12 @@
   color: color(quaternary);
 }
 
+//Membership Button
+.button.button--primary.button--membership {
+  @extend %oswald;
+  font-size: em(30);
+  line-height: 120%;
+  margin: em(10) em(8);
+  max-width: 6em;
+  padding: .5em 1em;
+}
