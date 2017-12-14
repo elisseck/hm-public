@@ -15,7 +15,7 @@ vagrant_gui: false
 
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
-vagrant_hostname: hm-public.dev
+vagrant_hostname: hm-public.test
 vagrant_machine_name: hm-public
 vagrant_ip: 192.168.88.88
 
