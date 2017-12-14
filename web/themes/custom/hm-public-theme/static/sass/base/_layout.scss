@@ -41,3 +41,12 @@ h1, h2, h3, h4, h5, h6 {
   order: 3;
   padding: 0;
 }
+
+//Place Back to Top button below views
+div#buttonbacktotop {
+  order: 2;
+}
+
+.views-element-container.contextual-region {
+  order: 1;
+}
