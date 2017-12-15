@@ -31,3 +31,7 @@ config/local.config.yml
 
 # Ignore npm dependencies
 node_modules
+
+# Ignore fm files
+fm_files
+fm_import
