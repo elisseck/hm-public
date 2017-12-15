@@ -83,6 +83,9 @@ class PageBanner extends BlockBase {
     if (!$fid || is_null($fid)) return false;
 
     $file = \Drupal\file\Entity\File::load($fid);
+    drupal_set_message('file id: ' . $fid);
+
+    drupal_set_message('file is null: ' . (is_null($file) ? 'yep' : 'nope'));
     return file_url_transform_relative(file_create_url($file->getFileUri()));
   }
 
@@ -94,6 +97,7 @@ class PageBanner extends BlockBase {
   public function blockSubmit($form, FormStateInterface $form_state) {
     $values = $form_state->getValues();
     if (!empty($values['highlight_section_image'])) {
+      drupal_set_message('highlight image id: ' . print_r($values['highlight_section_image'], true));
       $this->setConfigurationValue('highlight_section_image', $values['highlight_section_image']);
     }
     if (!empty($values['background_image'])) {
@@ -114,6 +118,7 @@ class PageBanner extends BlockBase {
     }
     if (!empty($config['background_image'])) {
       $background_image = $this->getImagePath(@$config['background_image'][0]);
+      //drupal_set_message('bkgd-image-path: ' . $background_image);
     }       
     if (!empty($config['highlight_section'])) {
       $highlight_section = $config['highlight_section'];
@@ -122,6 +127,7 @@ class PageBanner extends BlockBase {
       $highlight_section_name = $config['highlight_section_name'];
     }
     if (!empty($config['highlight_section_image'])) {
+      drupal_set_message('highlight image id: ' . $config['highlight_section_image'][0]);
       $highlight_section_image = $this->getImagePath(@$config['highlight_section_image'][0]);
     }   
     if (!empty($config['feature_occupation'])) {
@@ -134,9 +140,8 @@ class PageBanner extends BlockBase {
         'background_image' => $background_image, 
         'highlight_section' => $highlight_section, 
         'highlight_section_name' => $highlight_section_name,       
-        'feature_occupation' => $feature_occupation, 
         'highlight_section_image' => $highlight_section_image, 
-        'sponsor_image' => $sponsor_image, 
+        'feature_occupation' => $feature_occupation, 
       ]
     ];
   }
