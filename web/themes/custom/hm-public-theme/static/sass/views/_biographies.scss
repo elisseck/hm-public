@@ -39,6 +39,7 @@
       font-size: em(22);
       margin-top: 49%;
     }
+
   }
 
 }
@@ -77,12 +78,13 @@
     margin: 1em 0 2em;
     order: 2;
     width: 50%;
-  
+
     .pager__item.pager__item--last,
     .pager__item.pager__item--ellipsis,
     .pager__item.pager__item--first {
       display: none;
     }
+
   }
 
   //Filters
@@ -92,14 +94,15 @@
     margin: 1em 0 2em;
     order: 3;
     width: 50%;
-  
+
     .views-exposed-form {
       display: flex;
-    
+
       .form-item.form-item-items-per-page.form-type-select {
         align-self: center;
         margin-right: 1em;
       }
+
       #edit-submit-biography-cards-w-category-filter {
         background-color: color(secondary);
       }
