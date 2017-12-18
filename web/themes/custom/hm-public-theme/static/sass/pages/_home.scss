@@ -22,22 +22,6 @@ ul {
   top: em(62, 25);
   width: em(170, 25);
   z-index: 100;
-
-  @media screen and (max-width: 767px) {
-    display: none;
-    font-size: rem(16);
-  }
-}
-
-.carousel__links--mobile {
-  display: none;
-
-  @media screen and (max-width: 767px) {
-    display: flex;
-    position: relative;
-    top: 0;
-    width: 100%;
-  }
 }
 
 .carousel__link-wrap {
@@ -61,10 +45,6 @@ ul {
   &:nth-of-type(3):hover {
     background-color: $white;
   }
-
-  @media screen and (max-width: 767px) {
-    flex: 1;
-  }
 }
 
 .carousel__link {
@@ -75,10 +55,6 @@ ul {
   &:hover {
     text-decoration: none;
   }
-
-  @media screen and (max-width: 767px) {
-    flex: 1;
-  }
 }
 
 .carousel__link--bio:hover { color: color(secondary); }
@@ -87,8 +63,6 @@ ul {
 
 .carousel__caption {
   color: $white;
-  display: flex;
-  flex-direction: column;
   height: 100%;
   left: auto;
   opacity: 0;
@@ -99,10 +73,6 @@ ul {
   top: 0;
   width: 33.0739299610895%;
   z-index: 300;
-
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
 }
 
 .active+.carousel__caption {
@@ -118,10 +88,6 @@ ul {
   top: 0;
   width: 33.0739299610895%;
   z-index: 100;
-
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
 }
 
 .carousel__quote {
@@ -131,20 +97,11 @@ ul {
   line-height: 127.027027027027027%;
   quotes: '\201C' '\201D';
   text-align: left;
-
-  @media screen and (max-width: 767px) {
-    font-size: rem(22);
-  }
 }
 
 .carousel__cite {
-  @extend %source-sans-semi-bold;
   display: block;
   margin-top: em(21, 37);
-
-  @media screen and (max-width: 767px) {
-    font-size: rem(12);
-  }
 }
 
 .active .carousel__image {
@@ -164,25 +121,9 @@ ul {
   }
 }
 
-
+.carousel-caption,
 .carousel-item-left .carousel__caption {
   opacity: 0;
-}
-
-.carousel-caption {
-  background-color: color(primary);
-  display: none;
-  left: auto;
-  position: relative;
-  right: auto;
-
-  @media screen and (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
-    font-size: rem(22);
-    padding: em(22, 22) em(30, 22) em(75, 22);
-    text-align: left;
-  }
 }
 
 .active .carousel__caption {
@@ -193,13 +134,6 @@ ul {
 .carousel-indicators {
   left: auto;
   z-index: 500;
-
-  @media screen and (max-width: 767px) {
-    bottom: em(50);
-    left: 0;
-    margin: 0 auto;
-    right: 0;
-  }
 }
 
 .carousel-indicators li {
@@ -220,13 +154,7 @@ ul {
 .wrapper--home { background-color: color(light-grey); }
 
 // Biographies and Digital Archives
-.headline--lg {
-  font-size: rem(45);
-
-  @media screen and (max-width: 767px) {
-    font-size: rem(31);
-  }
-}
+.headline--lg { font-size: rem(45); }
 .headline--md { font-size: rem(20); }
 .headline--oswald-light { @extend %oswald-light; }
 .headline--oswald { @extend %oswald; }
@@ -237,10 +165,6 @@ ul {
   display: flex;
   justify-content: space-between;
   list-style: none;
-
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
 }
 
 .bio-list__category {
@@ -271,11 +195,6 @@ ul {
 .bio-desc,
 .da-desc {
   margin-bottom: rem(55);
-
-  @media screen and (max-width: 767px) {
-    font-size: rem(12);
-    line-height: em(18, 12);
-  }
 }
 
 .da {
@@ -317,10 +236,6 @@ ul {
 .gutter-60 > [class^='col-'], .gutter-60 > [class^='col-'] {
   padding-left: em(30);
   padding-right: em(30);
-}
-
-.views-element-container {
-  display: none;
 }
 
 .field-da-image img {

@@ -15,7 +15,7 @@
     padding-left: 15px;
   }
 
-  .banner--highlight {
+  .banner--feature {
     align-items: flex-end;
     background-position: center;
     background-size: cover;
@@ -32,10 +32,9 @@
       margin-top: 0;
     }
 
-    .banner--highlight-name {
+    .banner--feature-name {
       @extend %oswald;
       align-content: flex-end;
-      flex-basis: 100%;
       font-size: em(22);
       margin-top: 45%;
     }
@@ -45,7 +44,7 @@
 
 .view.list-biography-cards-w-category-filter {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   padding: 0 15px;
 
@@ -54,7 +53,6 @@
     background: $black;
     color: $white;
     flex: 1;
-    flex-basis: 100%;
     font-size: em(44);
     height: em(30);
     line-height: normal;
@@ -63,36 +61,18 @@
     padding-top: em(2);
   }
 
-  //Filters
-  .view-filters.form-group {
-    flex-basis: 50%;
-    margin: 1.5em 0 3em;
-    order: 3;
-  }
-
-  form.views-exposed-form {
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-  }
-
-  .form-item.form-item-items-per-page.form-type-select {
-    margin-right: em(20);
-  }
-
   //List
   .view-content {
     display: flex;
     flex: 1;
     flex-flow: row wrap;
-    order: 4;
+    order: 3;
   }
 
   //Pager
   .pager {
     flex: 1;
-    flex-basis: 50%;
-    margin: 1.5em 0 3em;
+    margin: 0 0 em(48);
     order: 2;
   }
 
@@ -165,7 +145,7 @@
   margin-right: 3%;
   padding: 0 em(15);
 
-  //Maker Category Navigation
+  //Filter
   .menu {
     border-top: 1px solid color(medium-grey);
     padding-top: em(15);

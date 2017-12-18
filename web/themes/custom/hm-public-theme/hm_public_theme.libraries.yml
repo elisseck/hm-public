@@ -5,8 +5,3 @@ main:
       static/css/hm_public_theme.css: {}
   js:
       static/js/hm_public_theme.js: {}
-      app/dist/inline.bundle.js: {}
-      app/dist/polyfills.bundle.js: {}
-      app/dist/styles.bundle.js: {}
-      app/dist/vendor.bundle.js: {}
-      app/dist/main.bundle.js: {}

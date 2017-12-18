@@ -24,7 +24,7 @@ class BioXMLMigrationHelpers {
        SpeakersBureauAvailability, SpeakersBureauNotes, RegionCity, RegionState,
        TimeStampModificationAny, SponsorLogo, SponsorURL, InterviewPDF1, 
        InterviewPDF2, LinkToTHMDA, LinkToSMDA, DAStoryList, DASession, DACaption,
-       DATape, DATitle, DAUrl, DATIMINGPAIR, new, timestamp';
+       DAStoryList, DATape, DATitle, DAUrl, DATIMINGPAIR, new, timestamp';
 
   public static function jsonifyTimingPairs($data) {
 
