@@ -42,15 +42,3 @@
   color: color(quaternary);
 }
 
-#buttonbecomeamember {
-
-  .button.button--primary.button--membership {
-    @extend %oswald;
-    font-size: em(30);
-    line-height: 120%;
-    margin: em(10) em(20) em(10) em(8);
-    max-width: em(100);
-    padding: em(8) em(20) em(8) em(8);
-  }
-
-}
