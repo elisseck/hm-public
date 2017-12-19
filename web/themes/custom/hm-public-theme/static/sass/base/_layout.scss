@@ -29,7 +29,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .content.column,
 .columns-middle .content.column {
+  display: flex;
   flex: 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
   order: 2;
 }
 

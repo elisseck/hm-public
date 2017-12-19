@@ -39,13 +39,14 @@
       font-size: em(22);
       margin-top: 49%;
     }
+
   }
 
 }
 
 .view.list-biography-cards-w-category-filter {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   padding: 0 15px;
 
@@ -53,7 +54,7 @@
     @extend %oswald-light;
     background: $black;
     color: $white;
-    flex: 1;
+    flex: 1 0 100%;
     font-size: em(44);
     height: em(30);
     line-height: normal;
@@ -65,16 +66,49 @@
   //List
   .view-content {
     display: flex;
-    flex: 1;
+    flex: 1 0 100%;
     flex-flow: row wrap;
-    order: 3;
+    order: 4;
   }
 
   //Pager
   .pager {
+    align-self: center;
     flex: 1;
-    margin: 0 0 em(48);
+    margin: 1em 0 2em;
     order: 2;
+    width: 50%;
+
+    .pager__item.pager__item--last,
+    .pager__item.pager__item--ellipsis,
+    .pager__item.pager__item--first {
+      display: none;
+    }
+
+  }
+
+  //Filters
+  .view-filters.form-group {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1em 0 2em;
+    order: 3;
+    width: 50%;
+
+    .views-exposed-form {
+      display: flex;
+
+      .form-item.form-item-items-per-page.form-type-select {
+        align-self: center;
+        margin-right: 1em;
+      }
+
+      #edit-submit-biography-cards-w-category-filter {
+        background-color: color(secondary);
+      }
+
+    }
+
   }
 
   //Card
@@ -163,4 +197,8 @@
 
   }
 
+}
+
+#buttonbacktotop {
+  order: 2;
 }
