@@ -228,7 +228,9 @@ class BioXMLMigrationForm extends ConfigFormBase {
 
     $loop = Factory::create();
 
-    $process = new Process('/var/www/hm-public/vendor/bin/drush scr cli_import');
+    $drush_exec = '../vendor/bin/drush';
+
+    $process = new Process($drush_exec . ' scr cli_import');
 
     $process->start($loop);
 

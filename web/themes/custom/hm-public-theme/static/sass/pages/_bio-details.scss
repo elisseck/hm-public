@@ -1,0 +1,127 @@
+// This is a class only applied to individual biography nodes
+
+.main { background-color: color(light-grey); }
+
+.node--type-bio {
+  .container {
+    max-width: none;
+    padding: 0 rem(55);
+  }
+
+  .page-title {
+    @extend %oswald-light;
+    align-items: center;
+    background-color: color(quaternary);
+    color: $white;
+    display: flex;
+    font-size: rem(53);
+    height: em(100, 53);
+    margin: 0 auto rem(45);
+    max-width: 77.5em;
+    padding: 0 em(55, 53);
+  }
+
+  .info {
+    background-color: $white;
+    border: 1px solid color(medium-grey);
+    margin-bottom: em(30, 15);
+    overflow: hidden;
+    padding: rem(15);
+  }
+
+  .info__headshot {
+    margin-bottom: em(30);
+    transform: scale(1.2);
+    width: 100%;
+  }
+
+  .discover__heading {
+    @extend %oswald;
+    background-color: color(quaternary);
+    color: $white;
+    font-size: rem(25);
+    letter-spacing: 1px;
+    margin-bottom: em(15, 25);
+    padding: em(15, 25);
+    width: 100%;
+  }
+
+  .bio-card {
+    display: flex;
+    margin-bottom: em(15);
+    overflow: hidden;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .bio-card__img {
+    height: 100%;
+    max-width: 120px;
+    transform: scale(1.1);
+    width: 50%;
+  }
+
+  .bio-card__info {
+    background-color: $white;
+    flex: 2;
+    padding: em(12);
+    z-index: 2;
+  }
+
+  .bio-card__name {
+    @extend %oswald;
+    color: color(secondary);
+    font-size: em(20);
+  }
+
+  .card {
+    margin: em(30) 0;
+  }
+
+  .card-header {
+    background-color: color(secondary);
+    border-radius: 0;
+    color: $white;
+  }
+
+  .card-head-link {
+    @extend %oswald;
+    color: $white;
+  }
+
+  .archive__photo {
+    max-width: 100%;
+  }
+
+  .share {
+    left: em(10);
+    position: fixed;
+    top: 55%; // we may eventually want to use js to calculate this relative to the parent container
+  }
+
+  .share__icon {
+    height: auto;
+    width: em(36);
+  }
+
+  .archive {
+    margin-bottom: em(36);
+  }
+
+  .back-button {
+    @extend %source-sans-semi-bold;
+
+    align-items: center;
+    background-color: transparent;
+    color: color(secondary);
+    display: inline-flex;
+    font-size: rem(18);
+    justify-content: space-between;
+    margin-bottom: em(60, 18);
+    width: em(130, 18);
+  }
+}
+
+.accordion__panel { margin-bottom: 1rem; }

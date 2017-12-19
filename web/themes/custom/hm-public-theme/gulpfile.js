@@ -88,7 +88,7 @@ gulp.task('reload', function () {
  */
 gulp.task('watch', ['clean', 'sass-compile','browser-sync'], function () {
   gulp.watch('static/sass/**/*.+(scss|sass)', ['sass-compile']);
-  gulp.watch(['templates/**/*.twig', '**/*.yml'], ['reload']);
+  gulp.watch(['templates/**/*.twig', '**/*.yml'], ['clearcache','reload']);
 });
 
 /**
