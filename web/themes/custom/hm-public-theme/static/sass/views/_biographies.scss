@@ -148,6 +148,14 @@
         h4 {
           color: $black;
           font-size: em(18);
+
+          //Overflow at 1 line
+          // -webkit-box-orient: vertical;
+          // -webkit-line-clamp: 1;
+          // display: -webkit-box;
+          // line-height: 120%;
+          // overflow: hidden;
+          // text-overflow: ellipsis;
         }
       }
 
