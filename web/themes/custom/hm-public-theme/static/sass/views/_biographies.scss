@@ -126,9 +126,11 @@
       .bio-card--image {
         flex: 1;
         max-width: em(100);
+        overflow: hidden;
 
         img {
           height: em(100);
+          transform: scale(1.1);
           width: em(100);
         }
 
