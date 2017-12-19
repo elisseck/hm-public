@@ -4,6 +4,10 @@ html, body {
   line-height: pxtorem($default-line-height);
 }
 
+.page-wrapper {
+  position: relative;
+}
+
 a {
   text-decoration: none;
 }
@@ -29,7 +33,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .content.column,
 .columns-middle .content.column {
+  display: flex;
   flex: 1 auto;
+  flex-direction: column;
   order: 2;
 }
 
@@ -38,4 +44,13 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 20%;
   order: 3;
   padding: 0;
+}
+
+//Place Back to Top button below views
+div#buttonbacktotop {
+  order: 2;
+}
+
+.views-element-container.contextual-region {
+  order: 1;
 }

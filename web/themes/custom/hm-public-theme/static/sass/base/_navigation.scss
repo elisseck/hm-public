@@ -22,3 +22,9 @@ nav ul {
   }
 
 }
+
+li.pager__item.pager__item--last,
+li.pager__item.pager__item--first,
+li.pager__item.pager__item--ellipsis {
+  display: none;
+}
