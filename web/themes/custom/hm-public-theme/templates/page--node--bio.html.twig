@@ -3,6 +3,8 @@
     <main class="main">
       <a id="main-content" tabindex="-1"></a>
 
+      {{ drupal_dump(node) }}
+
       <h1 class="page-title">{{ node.title.value }}</h1>
 
       <div class="container">
@@ -133,12 +135,20 @@
   
           </section>
           <div class="col-sm-9">
-            <section>
-              <h2>Biography</h2>
-              {% autoescape %}
-                <p>{{ node.body.value|raw|nl2br }}</p>
-              {% endautoescape %}
-            </section>
+            <div class="row">
+              <section class="col-sm-9">
+                <h2>Biography</h2>
+                {% autoescape %}
+                  <p>{{ node.body.value|raw|nl2br }}</p>
+                {% endautoescape %}
+              </section>
+              <section class="col-sm-3 sponsor">
+                <h2>Sponsored by {{ node.field_sponsor.value }}</h2>
+                <div>
+                  <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="">
+                </div>
+              </section>
+            </div>
             {# {{ page.content }} #}
             {% if node.field_web_clip1.value %}
             <section>
@@ -149,7 +159,7 @@
                         title="{{ node.field_datitle[0].value | replace({'\\': ''}) }}"
                         title2="{{ node.field_datitle[1].value | replace({'\\': ''}) }}"
                         timingPairs=" {{ node.field_timing_pairs.value | json_encode() }} "
-                        transcriptText="{{ node.field_story_caption.value | striptags }}">Loading...</app-root>
+                        transcriptText="{{ node.field_transcript.value | striptags }}">Loading...</app-root>
             </section>
             {% endif %}
 
