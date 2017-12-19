@@ -46,12 +46,6 @@ class PageBanner extends BlockBase {
       ),
     );       
     //Highlighted Banner Section (Name/Sponsor, Portrait/Logo, Occupation)
-    $form['highlight_section'] = array (
-      '#type' => 'textfield',
-      '#title' => $this->t('Sponsor or Feature Maker?'),
-      '#description' => $this->t('Is the highlight section for a Sponsor?  Or is the highlight section for a Feature Maker?'),
-      '#default_value' => isset($config['highlight_section']) ? $config['highlight_section'] : '',
-    ); 
     $form['highlight_section_name'] = array (
       '#type' => 'textfield',
       '#title' => $this->t('Highlight Section Name'),
@@ -100,7 +94,6 @@ class PageBanner extends BlockBase {
       $this->setConfigurationValue('background_image', $values['background_image']);
     }       
     $this->setConfigurationValue('background_color', $values['background_color']);   
-    $this->setConfigurationValue('highlight_section', $form_state->getValue('highlight_section')); 
     $this->setConfigurationValue('highlight_section_name', $form_state->getValue('highlight_section_name'));   
     $this->setConfigurationValue('feature_occupation', $form_state->getValue('feature_occupation'));
   }
@@ -115,9 +108,6 @@ class PageBanner extends BlockBase {
     if (!empty($config['background_image'])) {
       $background_image = $this->getImagePath(@$config['background_image'][0]);
     }       
-    if (!empty($config['highlight_section'])) {
-      $highlight_section = $config['highlight_section'];
-    }
     if (!empty($config['highlight_section_name'])) {
       $highlight_section_name = $config['highlight_section_name'];
     }
@@ -132,10 +122,10 @@ class PageBanner extends BlockBase {
       '#banner_data' => [
         'background_color' => $background_color, 
         'background_image' => $background_image, 
-        'highlight_section' => $highlight_section, 
         'highlight_section_name' => $highlight_section_name,       
         'feature_occupation' => $feature_occupation, 
         'highlight_section_image' => $highlight_section_image, 
+        'sponsor_image' => $sponsor_image, 
       ]
     ];
   }
