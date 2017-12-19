@@ -12,7 +12,7 @@ stylesheets-remove:
 
 regions:
   header: 'Header'
-  banner: 'Banner top'
+  # banner: 'Banner top'
   page_top: 'Page top'
   highlighted: 'Highlighted area'
   navigation: 'Navigation'
@@ -21,7 +21,7 @@ regions:
   sidebar_second: 'Second sidebar'
   page_bottom: 'Page bottom'
   footer: 'Footer'
-  left_3: '3-Left'
-  right_9: '9-Right'
-  left_9: '9-Left' 
-  right_3: '3-Right'
+  # left_3: '3-Left'
+  # right_9: '9-Right'
+  # left_9: '9-Left' 
+  # right_3: '3-Right'
