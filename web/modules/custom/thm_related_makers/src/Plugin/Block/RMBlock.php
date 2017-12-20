@@ -19,9 +19,9 @@ class RMBlock extends BlockBase {
    */
   public function build() {
 
-    $vs = thm_related_makers_perform_search();
+    $vs = thm_related_makers_perform_search(null,false, 5);
 
-    //drupal_set_message('sending to twig: ' . print_r($vs['data'], true));
+    drupal_set_message('sending to twig: ' . print_r($vs['data'], true));
 
     $build = [];
     $build['block_related_makers']['#cache']['max-age'] = 0;
