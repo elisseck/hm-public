@@ -89,6 +89,14 @@ class PageBanner extends BlockBase {
     return file_url_transform_relative(file_create_url($file->getFileUri()));
   }
 
+  public function permanentify($fid) {
+    if (!$fid || is_null($fid)) return false;
+    $file = \Drupal\file\Entity\File::load($fid);
+
+    $file->setPermanent();
+    $file->save();
+  }
+
   /**
    * {@inheritdoc}
    */
@@ -98,9 +106,11 @@ class PageBanner extends BlockBase {
     $values = $form_state->getValues();
     if (!empty($values['highlight_section_image'])) {
       drupal_set_message('highlight image id: ' . print_r($values['highlight_section_image'], true));
+      $this->permanentify($values['highlight_section_image'][0]);
       $this->setConfigurationValue('highlight_section_image', $values['highlight_section_image']);
     }
     if (!empty($values['background_image'])) {
+      $this->permanentify($values['background_image'][0]);
       $this->setConfigurationValue('background_image', $values['background_image']);
     }       
     $this->setConfigurationValue('background_color', $values['background_color']);   
