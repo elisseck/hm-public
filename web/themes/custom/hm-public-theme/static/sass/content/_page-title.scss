@@ -1,12 +1,15 @@
+#pagetitle {
+  background-color: color(quaternary);
+}
+
 .page-title {
   @extend %oswald;
   align-items: center;
-  background-color: color(quaternary);
   color: $white;
   display: flex;
   font-size: 3.3125rem;
   height: 1.88679em;
   margin: 0 auto 2.8125rem;
-  max-width: 77.5em;
-  padding: 0 15px; //1.03774em
+  max-width: $max-width;
+  padding: 0 $default-grid-gutter-width; 
 }

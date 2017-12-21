@@ -7,6 +7,8 @@
 .header__top-row {
   align-items: center;
   display: flex;
+  margin: 0 auto;
+  max-width: $max-width;
 
   @media screen and (max-width: 767px) {
     display: none;
@@ -56,8 +58,8 @@
 
 #hm-public-theme-main-menu {
   margin: 0 auto;
-  max-width: em(1240);
-  padding: 0 em(55);
+  max-width: $max-width;
+  padding: 0 $default-grid-gutter-width;
 
   @media screen and (max-width: 767px) {
     left: - em(600, 16);
