@@ -1,4 +1,4 @@
-.banner.row.col-lg-12 {
+.banner.row.col-sm {
   background-size: cover;
   display: flex;
   height: em(276);
@@ -97,7 +97,7 @@
   }
 
   //Card
-  .bio-card--list.col-lg-4 {
+  .bio-card--list.col-sm {
     background: $white;
     border: 1px solid color(medium-grey);
     display: flex;
