@@ -233,11 +233,15 @@ class BioXMLMigrationImporter {
   protected function populatePdfFields($record) {
     $fieldName = 'field_bio_pdf';
 
-    foreach ($this->pdfFields as $iPdf) {
-      if ($f = $this->imageExists($record->$iPdf, $fieldName)) {
-        $this->node->get($fieldName)->appendItem($f);
+    foreach($this->pdfFields as $field => $value) {
+
+      $imageField = BioXMLMigrationHelpers::attachImage(
+        $this->db, $this->config, stripslashes($record->$value));
+
+      if (($imageField) && !empty($imageField->getSize())) {
+        $this->node->$fieldName->appendItem($imageField);
       } else {
-        \drupal_set_message('no pdf.');
+        drupal_set_message('no pdf found: ' . $record->$value);
       }
     }
 
@@ -514,7 +518,7 @@ SQL;
 
     $instance = new self($db, $config, $logger);
 
-    $rs = $instance->getNewBios($instance->db, 1);
+    $rs = $instance->getNewBios($instance->db);
 
     $instance->totalBios = count($rs);
 
@@ -535,9 +539,9 @@ SQL;
           foreach ($report as $id => $state) {
             $hmIdAndTitle = explode(':', key($state));
 
-            /*$instance
+            $instance
               ->updateStorage($hmIdAndTitle[0])
-              ->removeDuplicates($hmIdAndTitle[1]);*/
+              ->removeDuplicates($hmIdAndTitle[1]);
           }
           $instance->logResults($report);
         });
