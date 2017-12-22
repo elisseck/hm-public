@@ -1,4 +1,4 @@
-.view.list-biography-cards-w-category-filter {
+.list-biography-cards-w-category-filter {
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -64,7 +64,7 @@
   }
 
   //Card
-  .bio-card--list.col-sm {
+  .bio-card--list {
     background: $white;
     border: 1px solid color(medium-grey);
     display: flex;
@@ -134,7 +134,7 @@
         }
       }
     }
-  }//.bio-card--list.col-lg-4
+  }//.bio-card--list
 
 }//.view.list-biography-card 
 
