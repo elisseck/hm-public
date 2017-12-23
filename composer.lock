@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f7bfa9b65a16d871d911c84539b8234e",
-    "content-hash": "18f98139d3ffadba4a3ee52f255fd2b2",
+    "hash": "aa84a0741dacb42998121c548673de51",
+    "content-hash": "e871b364dc00d4f8591f16cc302d6e7a",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2885,6 +2885,132 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/webform",
                 "issues": "https://drupal.org/project/issues/webform"
+            }
+        },
+        {
+            "name": "drupal/webform_migrate",
+            "version": "1.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/webform_migrate",
+                "reference": "8.x-1.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform_migrate-8.x-1.0-alpha1.zip",
+                "reference": "8.x-1.0-alpha1",
+                "shasum": "620d9df2cb1f59a5cb69961b7b67cb81b47d9568"
+            },
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/webform": "*",
+                "drupal/webform_node": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha1",
+                    "datestamp": "1502725743",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "heshanlk",
+                    "homepage": "https://www.drupal.org/user/199102"
+                },
+                {
+                    "name": "sylus",
+                    "homepage": "https://www.drupal.org/user/339714"
+                }
+            ],
+            "description": "Migration routines from d6 & d7 webform to d8 webform",
+            "homepage": "https://www.drupal.org/project/webform_migrate",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/webform_migrate",
+                "issues": "http://drupal.org/project/issues/webform_migrate"
+            }
+        },
+        {
+            "name": "drupal/webform_node",
+            "version": "5.0.0-beta25",
+            "require": {
+                "drupal/core": "*",
+                "drupal/webform": "self.version"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-5.x": "5.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-5.0-beta25",
+                    "datestamp": "1513003985",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "DanChadwick",
+                    "homepage": "https://www.drupal.org/user/504278"
+                },
+                {
+                    "name": "Liam Morland",
+                    "homepage": "https://www.drupal.org/user/493050"
+                },
+                {
+                    "name": "fenstrat",
+                    "homepage": "https://www.drupal.org/user/362649"
+                },
+                {
+                    "name": "jrockowitz",
+                    "homepage": "https://www.drupal.org/user/371407"
+                },
+                {
+                    "name": "podarok",
+                    "homepage": "https://www.drupal.org/user/116002"
+                },
+                {
+                    "name": "quicksketch",
+                    "homepage": "https://www.drupal.org/user/35821"
+                },
+                {
+                    "name": "sanchiz",
+                    "homepage": "https://www.drupal.org/user/1671246"
+                },
+                {
+                    "name": "tedbow",
+                    "homepage": "https://www.drupal.org/user/240860"
+                },
+                {
+                    "name": "torotil",
+                    "homepage": "https://www.drupal.org/user/865256"
+                }
+            ],
+            "description": "Provides a Webform content type which allows webforms to be integrated into a website as nodes.",
+            "homepage": "https://www.drupal.org/project/webform",
+            "support": {
+                "source": "http://cgit.drupalcode.org/webform"
             }
         },
         {
@@ -7701,7 +7827,8 @@
         "drupal/devel": 20,
         "drupal/flag": 15,
         "drupal/page_manager": 10,
-        "drupal/webform": 10
+        "drupal/webform": 10,
+        "drupal/webform_migrate": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
