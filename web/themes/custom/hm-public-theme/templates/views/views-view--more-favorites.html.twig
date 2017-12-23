@@ -1,0 +1,24 @@
+
+{% set selectedWorkGrouped = rows[0]['#rows']|batch(3) %}
+
+    {% for group in selectedWorkGrouped %}
+        <div class="row">
+
+            {% for entry in group %}
+                <div class="col-md-4">
+                    <div class="bio-card">
+                        <img class="bio-card__img" src="{{ file_url( entry['#row']._entity.field_bio_image.entity.uri.value ) }}">
+                        <div class="bio-card__info">
+                            <span class="bio-card__name">{{ entry['#row']._entity.title.value }}</span><br>
+                            {% for category in entry['#row']._entity.field_maker_category %}
+                                <span class="bio-card__job">{{ entry['#row']._entity.field_maker_category.entity.label }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    {% endfor %}
+
+{{ pager }}
