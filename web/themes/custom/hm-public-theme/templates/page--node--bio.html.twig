@@ -4,9 +4,9 @@
       <a id="main-content" tabindex="-1"></a>
 
       <h1 class="page-title">{{ node.title.value }}</h1>
-      {{ content }}
 
       <div class="container">
+        {# Social Media Share #}
         <section>
           <h2 class="sr-only">Share on Social Media</h2>
           <ul class="share">
@@ -61,10 +61,13 @@
             </li>
           </ul>
         </section>
+        {# End Social Media Share #}
+
         <div class="row">
           <section class="col-sm-3">
             <h2 class="sr-only">Information about {{ node.title.value }}</h2>
-  
+            
+            {# Profession #}
             <div class="info">
               <section>
                 <div>
@@ -79,82 +82,137 @@
                         {{ node.field_maker_category[key].entity.label }}<br />
                       {% endfor %}
                   </dd>
-                  {# Field does not exist in THM public database
-                  <dt>Job Type:</dt>
-                  <dd>
-                    {% for key, value in node.field_occupation %}
-                      {{ node.field_occupation[key].target_id }}
-                    {% endfor %}
-                  </dd> #}
+
                   <dt>Occupation(s):</dt>
                   <dd>
-                      {% for key, value in node.field_occupation %}
-                        {{ node.field_occupation[key].entity.label }}<br />
-                      {% endfor %}
-                    </dd>
+                    {% for key, value in node.field_occupation %}
+                      {{ node.field_occupation[key].entity.label }}<br />
+                    {% endfor %}
+                  </dd>
+
                 </dl>
               </section>
+              {# End Profession #}
     
+              {# Favorites #}
               <section>
                 <h3>Favorites</h3>
                 <dl>
-                  <dt>Favorite Color:</dt>
-                  <dd>{{ node.field_favorite_color.value }}</dd>
-                  <dt>Favorite Food:</dt>
-                  <dd>{{ node.field_favorite_food.value }}</dd>
-                  <dt>Favorite Time of Year:</dt>
-                  <dd>{{ node.field_favorite_season.value }}</dd>
-                  <dt>Favorite Vacation Spot:</dt>
-                  <dd>{{ node.field_favorite_vacation.value }}</dd>
-                  <dt>Favorite Quote:</dt>
-                  <dd>{{ node.field_favorite_quote.value | striptags }}</dd>
+                  {% if node.field_favorite_color.value %}
+                    <dt>Favorite Color:</dt>
+                    <dd>{{ node.field_favorite_color.value }}</dd>
+                  {% endif %}
+
+                  {% if node.field_favorite_food.value %}
+                    <dt>Favorite Food:</dt>
+                    <dd>{{ node.field_favorite_food.value }}</dd>
+                  {% endif %}
+
+                  {% if node.field_favorite_season.value %}
+                    <dt>Favorite Time of Year:</dt>
+                    <dd>{{ node.field_favorite_season.value }}</dd>
+                  {% endif %}
+
+                  {% if node.field_favorite_vacation.value %}
+                    <dt>Favorite Vacation Spot:</dt>
+                    <dd>{{ node.field_favorite_vacation.value }}</dd>
+                  {% endif %}
+
+                  {% if node.field_favorite_quote.value %}
+                    <dt>Favorite Quote:</dt>
+                    <dd>{{ node.field_favorite_quote.value | striptags }}</dd>
+                  {% endif %}
                 </dl>
               </section>
+              {# End Favorites #}
     
+              {# Birthplace #}
+              {% if node.field_birth_date[0].value  %}
               <section>
                 <h3>Birthplace</h3>
                 <dl>
                   <dt>Born:</dt>
                   <dd>{{ node.field_birth_date[0].value }}</dd>
-                  <dt>Birth Location:</dt>
-                  <dd>{{ node.field_birth_place_term[0].entity.label }}</dd>
-                  {# Cannot find field in THM public database
-                  <dt>Residence:</dt>
-                  <dd></dd> #}
+
+                  {% if node.field_birth_place_term[0].entity.label %}
+                    <dt>Birth Location:</dt>
+                    <dd>{{ node.field_birth_place_term[0].entity.label }}</dd>
+                  {% endif %}
+
                 </dl>
               </section>
+              {% endif %}
+              {# End Birthplace #}
+              
             </div>
 
+            {# Related Makers #}
             <section class="discover">
               <h2 class="discover__heading">Discover Other Related HistoryMakers</h2>
-
               {{ page.content.relatedmakersblock }}
-
             </section>
+            {# End Related Makers #}
   
           </section>
           <div class="col-sm-9">
-            <section>
-              <h2>Biography</h2>
-              {% autoescape %}
-                <p>{{ node.body.value|raw|nl2br }}</p>
-              {% endautoescape %}
-            </section>
-            {# {{ page.content }} #}
+            <div class="row">
+
+              {# Body #}
+              <section class="col-sm-9">
+                <h2>Biography</h2>
+                {% autoescape %}
+                  <p>{{ node.body.value|raw|nl2br }}</p>
+                {% endautoescape %}
+              </section>
+              {# End Body #}
+
+              {# Sponsored by #}
+              {% if node.field_sponsor.value %}
+              <section class="col-sm-3 sponsor">
+                <h2>Sponsored by {{ node.field_sponsor.value }}</h2>
+                <div>
+                  <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="">
+                </div>
+              </section>
+              {% endif %}
+              {# End Sponsored by #}
+
+            </div>
+
+            {# Video Selections #}
             {% if node.field_web_clip1.value %}
             <section>
-              <h2>Selected Video Oral History Segments</h2>
-              {# Titles, Thumbnails and Timing Pairs to be added when available in the DB #}
-              <app-root source="{{ node.field_web_clip1.value }}" 
-                        source2="{{ node.field_web_clip2.value }}"
-                        title="{{ node.field_datitle[0].value | replace({'\\': ''}) }}"
-                        title2="{{ node.field_datitle[1].value | replace({'\\': ''}) }}"
-                        timingPairs=" {{ node.field_timing_pairs.value | json_encode() }} "
-                        transcriptText="{{ node.field_story_caption.value | striptags }}">Loading...</app-root>
+              <div id="videoAccordion" role="tablist" aria-multiselectable="true">
+                <div class="accordion__panel">
+                  <div class="card-header" role="tab" id="videoInAccordion">
+                    <h5 class="mb-0">
+                      <a class="collapsed card-head-link" data-toggle="collapse" data-parent="#videoAccordion" href="#videoPanel" aria-expanded="false" aria-controls="videoPanel">
+                        Selected Video Oral History Segments
+                      </a>
+                    </h5>
+                  </div>
+              
+                  <div id="videoPanel" class="collapse show" role="tabpanel" aria-labelledby="videoInAccordion">
+                    <div class="card-block">
+                    <app-root source="{{ node.field_web_clip1.value }}" 
+                              source2="{{ node.field_web_clip2.value }}"
+                              title="{{ node.field_datitle[0].value | replace({'\\': ''}) }}"
+                              title2="{{ node.field_datitle[1].value | replace({'\\': ''}) }}"
+                              timingPairs=" {{ node.field_timing_pairs.value | json_encode() }} "
+                              transcriptText="{{ node.field_transcript.value | striptags }}">Loading...</app-root>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </section>
             {% endif %}
+            {# End Video Selections #}
 
             <div id="accordion" role="tablist" aria-multiselectable="true">
+
+                {#  List of DA Stories #}
+                {% if node.field_dastories.value %}
                 <div class="accordion__panel">
                   <div class="card-header" role="tab" id="headingOne">
                     <h5 class="mb-0">
@@ -165,7 +223,7 @@
                   </div>
               
                   <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="card-block">
+                    <div>
                       <ul>
                         {% for key, value in node.field_dastories %}
                           <li>{{ node.field_dastories[key].value | replace({'\\': ''}) }}</li>
@@ -174,6 +232,11 @@
                     </div>
                   </div>
                 </div>
+                {% endif %}
+                {#  End List of DA Stories #}
+
+                {# Learning Aids #}
+                {% if node.field_bio_pdf.value %}
                 <div class="accordion__panel">
                   <div class="card-header" role="tab" id="headingTwo">
                     <h5 class="mb-0">
@@ -183,24 +246,38 @@
                     </h5>
                   </div>
                   <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="card-block">
+                    <div>
                       {% for key, value in node.field_bio_pdf %}
                         <li><a href="{{file_url(node.field_bio_pdf[key].entity.uri.value)}}">{{ node.field_bio_pdf[key].entity.filename.value }}</a></li>
                       {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {# End Learning Aids #}
+              {% if node.field_archival_image1.entity.uri.value %}
+              <div class="accordion__panel">
+                <div class="card-header mt-10" role="tab" id="headingThree">
+                  <h5 class="mb-0">
+                    <a class="collapsed card-head-link" data-toggle="collapse" data-parent="#accordion" href="#collapseArchPhotos" aria-expanded="false" aria-controls="collapseArchPhotos">
+                      Archival Photos
+                    </a>
+                  </h5>
+                </div>
+                <div id="collapseArchPhotos" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="archive">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <img class="archive__photo" src="{{file_url(node.field_archival_image1.entity.uri.value)}}" alt="">
+                      </div>
+                      <div class="col-sm-6">
+                        <img class="archive__photo" src="{{file_url(node.field_archival_image2.entity.uri.value)}}" alt="">
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <section class="archive">
-                <h2>Archival Photos</h2>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <img class="archive__photo" src="{{file_url(node.field_archival_image1.entity.uri.value)}}" alt="">
-                  </div>
-                  <div class="col-sm-6">
-                    <img class="archive__photo" src="{{file_url(node.field_archival_image2.entity.uri.value)}}" alt="">
-                  </div>
-                </div>
-              </section>
+              {% endif %}
           </div>
           
           <button class="back-button scroll" title="Back to top">

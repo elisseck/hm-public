@@ -33,9 +33,13 @@
 @import 'base/tabs';
 @import 'base/buttons';
 
+// Shared components
+@import 'shared/bio-card';
+
 // Specific page styling
 @import 'pages/home';
 @import 'pages/bio-details';
+@import 'pages/user-profile';
 
 // Views styling
 @import 'views/biographies';

@@ -16,7 +16,7 @@ var cp           = require('child_process');
  */
 gulp.task('browser-sync', function() {
   browserSync.init({
-      proxy: "hm-public.dev"
+      proxy: "hm-public.test"
   });
 });
 
