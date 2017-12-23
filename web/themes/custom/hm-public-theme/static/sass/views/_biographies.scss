@@ -1,50 +1,6 @@
-.banner.row.col-lg-12 {
-  background-size: cover;
+.list-biography-cards-w-category-filter {
   display: flex;
-  height: em(276);
-  margin: 0 auto;
-  padding: 0;
-  width: 100%;
-
-  h2 {
-    @extend %oswald-light;
-    align-self: flex-end;
-    color: $white;
-    font-size: em(52);
-    padding-bottom: 1em;
-    padding-left: 15px;
-  }
-
-  .banner--highlight {
-    align-items: flex-end;
-    background-position: center;
-    background-size: cover;
-    color: $white;
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    padding: em(20) em(30) em(30);
-    width: 500px;
-
-    p {
-      align-self: flex-start;
-      flex: 1 0 100%;
-      margin-top: 0;
-    }
-
-    .banner--highlight-name {
-      @extend %oswald;
-      align-content: flex-end;
-      flex-basis: 100%;
-      font-size: em(22);
-      margin-top: 45%;
-    }
-  }
-
-}
-
-.view.list-biography-cards-w-category-filter {
-  display: flex;
+  flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0 15px;
@@ -70,14 +26,24 @@
     order: 3;
   }
 
-  form.views-exposed-form {
+  .views-exposed-form {
+    align-items: baseline;
     display: flex;
     flex: 1;
     justify-content: flex-end;
   }
 
   .form-item.form-item-items-per-page.form-type-select {
+    flex: 1;
     margin-right: em(20);
+  }
+
+  .form-item.form-item-sort-by.form-type-select {
+    margin-right: 15px;
+  }
+
+  #edit-submit-biography-cards-w-category-filter {
+    background-color: color(secondary);
   }
 
   //List
@@ -90,6 +56,7 @@
 
   //Pager
   .pager {
+    align-self: center;
     flex: 1;
     flex-basis: 50%;
     margin: 1.5em 0 3em;
@@ -97,7 +64,7 @@
   }
 
   //Card
-  .bio-card--list.col-lg-4 {
+  .bio-card--list {
     background: $white;
     border: 1px solid color(medium-grey);
     display: flex;
@@ -126,9 +93,11 @@
       .bio-card--image {
         flex: 1;
         max-width: em(100);
+        overflow: hidden;
 
         img {
           height: em(100);
+          transform: scale(1.1);
           width: em(100);
         }
 
@@ -146,6 +115,14 @@
         h4 {
           color: $black;
           font-size: em(18);
+
+          //Overflow at 1 line
+          // -webkit-box-orient: vertical;
+          // -webkit-line-clamp: 1;
+          // display: -webkit-box;
+          // line-height: 120%;
+          // overflow: hidden;
+          // text-overflow: ellipsis;
         }
       }
 
@@ -157,7 +134,7 @@
         }
       }
     }
-  }//.bio-card--list.col-lg-4
+  }//.bio-card--list
 
 }//.view.list-biography-card 
 
