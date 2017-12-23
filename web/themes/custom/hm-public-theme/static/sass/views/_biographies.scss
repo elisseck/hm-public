@@ -1,5 +1,6 @@
-.view.list-biography-cards-w-category-filter {
+.list-biography-cards-w-category-filter {
   display: flex;
+  flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0 15px;
@@ -25,14 +26,24 @@
     order: 3;
   }
 
-  form.views-exposed-form {
+  .views-exposed-form {
+    align-items: baseline;
     display: flex;
     flex: 1;
     justify-content: flex-end;
   }
 
   .form-item.form-item-items-per-page.form-type-select {
+    flex: 1;
     margin-right: em(20);
+  }
+
+  .form-item.form-item-sort-by.form-type-select {
+    margin-right: 15px;
+  }
+
+  #edit-submit-biography-cards-w-category-filter {
+    background-color: color(secondary);
   }
 
   //List
@@ -45,6 +56,7 @@
 
   //Pager
   .pager {
+    align-self: center;
     flex: 1;
     flex-basis: 50%;
     margin: 1.5em 0 3em;
@@ -52,7 +64,7 @@
   }
 
   //Card
-  .bio-card--list.col-lg-4 {
+  .bio-card--list {
     background: $white;
     border: 1px solid color(medium-grey);
     display: flex;
@@ -122,7 +134,7 @@
         }
       }
     }
-  }//.bio-card--list.col-lg-4
+  }//.bio-card--list
 
 }//.view.list-biography-card 
 
