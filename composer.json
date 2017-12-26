@@ -36,6 +36,7 @@
         "drupal/pathauto": "^1.0",
         "drupal/search_api": "^1.5",
         "drupal/search_api_solr": "^1.2",
+        "drupal/twig_field_value": "^1.1",
         "drupal/twig_tweak": "^1.9",
         "drupal/webform": "^5.0@beta",
         "drupal/webform_migrate": "^1.0@alpha",

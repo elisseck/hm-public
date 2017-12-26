@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Theme override for custom block Intro Content.
+ *
+ * Available variables:
+ * -  field_intro_header
+ * -  field_intro_content
+ * -  field_intro_button
+ *
+ */
+#}
+
+<div class="intro-content">
+  <h1>{{ content.field_intro_header|field_value }}</h1>
+  <p>{{ content.field_intro_content|field_value }}</p>
+  
+  {{ content.field_intro_button|field_value }}
+</div>
