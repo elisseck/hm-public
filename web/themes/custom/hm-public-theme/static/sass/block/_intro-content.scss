@@ -1,0 +1,11 @@
+.intro-content {
+
+  h1 {
+    @extend %oswald;
+  }
+
+  p {
+    @extend %source-sans;
+  }
+
+}
