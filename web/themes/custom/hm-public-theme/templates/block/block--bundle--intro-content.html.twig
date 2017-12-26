@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Theme override for custom block Intro Content.
+ *
+ * Available variables:
+ * -  field_intro_header
+ * -  field_intro_content
+ * -  field_intro_button
+ *
+ */
+#}
+
+{# {{ kint(content) }} #}
+{{ drupal_dump(content) }}
+
+
+
+{# <ol>
+{% for key, value in _context.content['field_intro_header'] %}
+  <li>{{ key }}</li>
+  {% endfor %}
+</ol>  #}
