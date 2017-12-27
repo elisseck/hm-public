@@ -119,39 +119,33 @@ class PageBanner extends BlockBase {
     $this->setConfigurationValue('feature_occupation', $form_state->getValue('feature_occupation'));
   }
 
+  public function existy($config, $value) {
+    return (array_key_exists($value, $config) && !empty($config[$value])) ?
+        $config[$value] : false;
+  }
+
 // BLOCK BUILD
   public function build() {
     $config = $this->getConfiguration();
     //drupal_set_message(print_r($config, true));
-    if (!empty($config['background_color'])) {
-      $background_color = $config['background_color'];
-    }
+    
     if (!empty($config['background_image'])) {
       $background_image = $this->getImagePath(@$config['background_image'][0]);
       //drupal_set_message('bkgd-image-path: ' . $background_image);
     }       
-    if (!empty($config['highlight_section'])) {
-      $highlight_section = $config['highlight_section'];
-    }
-    if (!empty($config['highlight_section_name'])) {
-      $highlight_section_name = $config['highlight_section_name'];
-    }
     if (!empty($config['highlight_section_image'])) {
       //drupal_set_message('highlight image id: ' . $config['highlight_section_image'][0]);
       $highlight_section_image = $this->getImagePath(@$config['highlight_section_image'][0]);
     }   
-    if (!empty($config['feature_occupation'])) {
-      $feature_occupation = $config['feature_occupation'];
-    } 
     return [
       '#theme' => 'page_banner',
       '#banner_data' => [
-        'background_color' => $background_color, 
+        'background_color' => $this->existy($config, 'background_color'), 
         'background_image' => $background_image, 
-        'highlight_section' => $highlight_section, 
-        'highlight_section_name' => $highlight_section_name,       
-        'highlight_section_image' => $highlight_section_image, 
-        'feature_occupation' => $feature_occupation, 
+        'highlight_section' => $this->existy($config, 'highlight_section'), 
+        'highlight_section_name' => $this->existy($config, 'highlight_section_name'),       
+        'highlight_section_image' => $highlight_section_image,
+        'feature_occupation' => $this->existy($config, 'feature_occupation'),
       ]
     ];
   }
