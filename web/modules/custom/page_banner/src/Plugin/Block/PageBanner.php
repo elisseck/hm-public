@@ -83,9 +83,9 @@ class PageBanner extends BlockBase {
     if (!$fid || is_null($fid)) return false;
 
     $file = \Drupal\file\Entity\File::load($fid);
-    drupal_set_message('file id: ' . $fid);
+    //drupal_set_message('file id: ' . $fid);
 
-    drupal_set_message('file is null: ' . (is_null($file) ? 'yep' : 'nope'));
+    //drupal_set_message('file is null: ' . (is_null($file) ? 'yep' : 'nope'));
     return file_url_transform_relative(file_create_url($file->getFileUri()));
   }
 
@@ -105,7 +105,7 @@ class PageBanner extends BlockBase {
   public function blockSubmit($form, FormStateInterface $form_state) {
     $values = $form_state->getValues();
     if (!empty($values['highlight_section_image'])) {
-      drupal_set_message('highlight image id: ' . print_r($values['highlight_section_image'], true));
+      //drupal_set_message('highlight image id: ' . print_r($values['highlight_section_image'], true));
       $this->permanentify($values['highlight_section_image'][0]);
       $this->setConfigurationValue('highlight_section_image', $values['highlight_section_image']);
     }
@@ -122,7 +122,7 @@ class PageBanner extends BlockBase {
 // BLOCK BUILD
   public function build() {
     $config = $this->getConfiguration();
-    drupal_set_message(print_r($config, true));
+    //drupal_set_message(print_r($config, true));
     if (!empty($config['background_color'])) {
       $background_color = $config['background_color'];
     }
@@ -137,7 +137,7 @@ class PageBanner extends BlockBase {
       $highlight_section_name = $config['highlight_section_name'];
     }
     if (!empty($config['highlight_section_image'])) {
-      drupal_set_message('highlight image id: ' . $config['highlight_section_image'][0]);
+      //drupal_set_message('highlight image id: ' . $config['highlight_section_image'][0]);
       $highlight_section_image = $this->getImagePath(@$config['highlight_section_image'][0]);
     }   
     if (!empty($config['feature_occupation'])) {
