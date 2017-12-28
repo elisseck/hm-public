@@ -42,4 +42,3 @@ function scrollStep() {
     window.scrollTo(0, 0);
 }
 $scrollButton.addEventListener('click', scrollStep);
-
