@@ -1,0 +1,20 @@
+.intro-content {
+  margin: 0 auto;
+  max-width: $max-width;
+  text-align: center;
+
+  h1 {
+    @extend %oswald;
+    font-size: em(38);
+    text-align: center;
+  }
+
+  p {
+    @extend %source-sans;
+    font-size: em(24);
+    line-height: normal;
+    max-width: 1024px;
+    text-align: left;
+  }
+
+}
