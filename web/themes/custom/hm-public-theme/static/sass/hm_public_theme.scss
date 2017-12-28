@@ -33,20 +33,21 @@
 @import 'base/tabs';
 @import 'base/buttons';
 
-// Shared components
-@import 'shared/bio-card';
+// Block styling
+@import 'block/intro-content';
+@import 'block/two-column-slider';
+
+// Content styling
+@import 'content/page-title';
+@import 'content/page-banner';
 
 // Specific page styling
 @import 'pages/home';
 @import 'pages/bio-details';
 @import 'pages/user-profile';
 
+// Shared components
+@import 'shared/bio-card';
+
 // Views styling
 @import 'views/biographies';
-
-// Block styling
-@import 'block/intro-content';
-
-// Content styling
-@import 'content/page-title';
-@import 'content/page-banner';
