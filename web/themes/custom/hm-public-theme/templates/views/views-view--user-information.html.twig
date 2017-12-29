@@ -1,0 +1,40 @@
+{% set userInfo = rows[0]['#view'].result[0]._entity.fields %}
+<img class="user-info__img" src="{{ file_url( userInfo.user_picture.entity.uri.value ) }}">
+
+<div class="accordion">
+    <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#userDetails" aria-expanded="false" aria-controls="userDetails">
+        Profile Information
+        <span class="arrow">
+            <span></span>
+            <span></span>
+        </span>
+    </button>
+    
+    <div class="collapse accordion__body" id="userDetails">
+        <div class="">
+            <dl>
+                <dt>Username:</dt>
+                <dd>{{ userInfo.name.value}} </dd>
+
+                <dt>Email:</dt>
+                <dd>{{ userInfo.mail.value }}</dd>
+
+                {% if userInfo.field_work_phone.value %}
+                    <dt>Work phone:</dt>
+                    <dd>{{ userInfo.field_work_phone.value }}</dd>
+                {% endif %}
+
+                {% if userInfo.field_home_phone.value %}
+                    <dt>Home phone:</dt>
+                    <dd>{{ userInfo.field_home_phone.value }}</dd>
+                {% endif %}
+
+                {% if userInfo.field_cell_phone.value %}
+                    <dt>Cell phone:</dt>
+                    <dd>{{ userInfo.field_cell_phone.value }}</dd>
+                {% endif %}
+            </dl>
+        </div>
+        <a class="button button--primary" href="/user/{{userInfo.uid.value}}/edit" data-drupal-link-system-path="user/1/edit">Update</a>
+    </div>
+</div>
