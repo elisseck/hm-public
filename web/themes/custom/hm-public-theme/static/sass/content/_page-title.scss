@@ -1,4 +1,4 @@
-#pagetitle {
+#hm-public-theme-page-title {
   background-color: color(quaternary);
 }
 
@@ -9,7 +9,7 @@
   display: flex;
   font-size: 3.3125rem;
   height: 1.88679em;
-  margin: 0 auto 2.8125rem;
+  margin: 0 auto; //margin-bottom: 2.8125rem;
   max-width: $max-width;
   padding: 0 $default-grid-gutter-width;
 }
