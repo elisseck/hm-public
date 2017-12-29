@@ -18,6 +18,7 @@
   <li>Slide Header:  {{ content.field_carousel_header }}</li>
   <li>Slide Content: {{ content.field_carousel_content }}</li>
 </ol> #}
+
 <div class="row two-column-slide">
   <div class="col-sm-8 two-column-slide--image" style="background-image: url('{{ file_url(content.field_carousel_image|field_target_entity.uri.value) }}');" alt="{{ content.field_carousel_image|field_raw('alt') }}">
   </div>
