@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Theme override for custom block 2 Column Slide.
+ *
+ * Available variables using Paragraphs:
+ * -  {{ content.field_two_column_slide }}
+ *
+ */
+#}
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    {{ content.field_two_column_slide }}
+  </div>
+</div>
+
+<script>
+$(document).ready(function () {
+  $('#carouselExampleSlidesOnly').find('.field-item').addClass('carousel-item');
+  $('#carouselExampleSlidesOnly').find('.field-item').first().addClass('active');
+});
+</script>
