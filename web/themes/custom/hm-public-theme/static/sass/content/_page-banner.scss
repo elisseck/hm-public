@@ -31,6 +31,7 @@
       align-self: flex-start;
       flex: 1 0 100%;
       margin-top: 0;
+      z-index: 10;
     }
 
     .banner--highlight-name {
@@ -39,7 +40,24 @@
       flex-basis: 100%;
       font-size: em(22);
       margin-top: 45%;
+      z-index: 10;
     }
+
+    .banner--feature-occupation {
+      z-index: 10;
+    }
+
+    &:before {
+      background-image: linear-gradient(transparent, $black);
+      bottom: 0;
+      content: '';
+      left: 0;
+      opacity: .3;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
   }
 
 }
