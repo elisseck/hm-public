@@ -1,3 +1,9 @@
+#two_column_carousel {
+  margin: em(30) 0;
+  max-width: $max-width;
+  padding: 0 $default-grid-gutter-width;
+}
+
 .two-column-slide {
   height: 500px;
 
@@ -26,10 +32,15 @@
 
 }
 
-.carousel-indicators li {
-  background-color: color(medium-grey);
-}
+.carousel-indicators {
+  bottom: em(30);
 
-.carousel-indicators li.active {
-  background-color: color(dark-grey);
+  li {
+    background-color: color(medium-grey);
+  }
+
+  li.active {
+    background-color: color(dark-grey);
+  }
+
 }
