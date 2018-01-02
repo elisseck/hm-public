@@ -1,6 +1,6 @@
 #two_column_carousel {
-  margin: em(30) 0;
-  max-width: $max-width;
+  margin-bottom: em(30);
+  margin-top: em(30);
   padding: 0 $default-grid-gutter-width;
 }
 
@@ -8,6 +8,7 @@
   height: 500px;
 
   .two-column-slide--image {
+    background-position: center;
     background-size: cover;
     height: 500px;
   }
