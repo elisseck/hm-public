@@ -12,17 +12,15 @@
 <div id="two_column_carousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     {{ content.field_two_column_slide }}
-  
     {% if content.field_two_column_slide %}
-      <ul class="carousel-indicators" role="menu">
+      <div class="carousel-indicators" role="menu">
         {% for list in content.field_two_column_slide['#items'] %}
           {% set item_classes = [start_index == loop.index0 ? 'active'] %}
-          <li {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}"></li>
+          <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href="#two_column_carousel"></a>
         {% endfor %}
-      </ul>
+      </div>
     {% endif %}
-
-  </div>{# Close .carousel-inner #}
+  </div>
 </div>
 
 <script>

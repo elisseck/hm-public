@@ -35,11 +35,15 @@
 .carousel-indicators {
   bottom: em(30);
 
-  li {
+  a {
     background-color: color(medium-grey);
+    border-radius: em(100);
+    height: em(15);
+    margin-right: em(15);
+    width: em(15);
   }
 
-  li.active {
+  a.active {
     background-color: color(dark-grey);
   }
 
