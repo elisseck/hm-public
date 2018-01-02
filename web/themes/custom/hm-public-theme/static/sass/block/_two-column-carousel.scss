@@ -1,0 +1,51 @@
+#two_column_carousel {
+  margin-bottom: em(30);
+  margin-top: em(30);
+  padding: 0 $default-grid-gutter-width;
+}
+
+.two-column-slide {
+  height: 500px;
+
+  .two-column-slide--image {
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+  }
+
+  .two-column-slide--content {
+    background: $white;
+    color: $black;
+    padding-left: $default-grid-gutter-width;
+    padding-right: 50px;
+    padding-top: em(80);
+
+    h2 {
+      @extend %oswald;
+    }
+
+    p {
+      font-size: em(24);
+      line-height: 120%;
+    }
+
+  }
+
+}
+
+.carousel-indicators {
+  bottom: em(30);
+
+  a {
+    background-color: color(medium-grey);
+    border-radius: em(100);
+    height: em(15);
+    margin-right: em(15);
+    width: em(15);
+  }
+
+  a.active {
+    background-color: color(dark-grey);
+  }
+
+}
