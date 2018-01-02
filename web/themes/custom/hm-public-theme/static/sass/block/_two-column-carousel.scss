@@ -25,3 +25,11 @@
   }
 
 }
+
+.carousel-indicators li {
+  background-color: color(medium-grey);
+}
+
+.carousel-indicators li.active {
+  background-color: color(dark-grey);
+}

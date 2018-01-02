@@ -9,15 +9,25 @@
  */
 #}
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+<div id="two_column_carousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     {{ content.field_two_column_slide }}
-  </div>
+  
+    {% if content.field_two_column_slide %}
+      <ul class="carousel-indicators" role="menu">
+        {% for list in content.field_two_column_slide['#items'] %}
+          {% set item_classes = [start_index == loop.index0 ? 'active'] %}
+          <li {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}"></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+  </div>{# Close .carousel-inner #}
 </div>
 
 <script>
 $(document).ready(function () {
-  $('#carouselExampleSlidesOnly').find('.field-item').addClass('carousel-item');
-  $('#carouselExampleSlidesOnly').find('.field-item').first().addClass('active');
+  $('#two_column_carousel').find('.field-item').addClass('carousel-item');
+  $('#two_column_carousel').find('.field-item').first().addClass('active');
 });
 </script>
