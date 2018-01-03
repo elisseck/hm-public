@@ -47,17 +47,14 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
-//Place Back to Top button below views
-div#buttonbacktotop {
-  order: 2;
-}
-
-.views-element-container.contextual-region {
-  order: 1;
-}
-
 div.wrapper {
   padding: 0;
+}
+
+div.wrapper .content.column,
+div.wrapper .sidebar.first,
+div.wrapper .sidebar.second {
+  margin-bottom: 0;
 }
 
 //Custom Layout
@@ -65,4 +62,18 @@ div.wrapper {
   margin: 0 auto;
   max-width: $max-width;
   width: 100%;
+
+  .column {
+    padding: 0;
+  }
+
+}
+
+//Place Back to Top button below views
+div#buttonbacktotop {
+  order: 2;
+}
+
+.views-element-container.contextual-region {
+  order: 1;
 }
