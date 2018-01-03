@@ -12,7 +12,8 @@
 <div id="two_column_carousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     {{ content.field_two_column_slide }}
-    {% if content.field_two_column_slide %}
+    {# {% if content.field_two_column_slide %} #}
+    {% if content.field_two_column_slide|length > 17 %}
       <div class="carousel-indicators" role="menu">
         {% for list in content.field_two_column_slide['#items'] %}
           {% set item_classes = [start_index == loop.index0 ? 'active'] %}
