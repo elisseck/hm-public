@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Theme override for custom block Two Column Quote Carousel.
+ *
+ * Available variables using Paragraphs:
+ * -  {{ content.field_two_column_quote }}
+ *
+ */
+#}
+
+<div id="two_column_quote_carousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    {{ content.field_quote_block }}
+  </div>
+    {# {% if content.field_two_column_slide %} #}
+    {% if content.field_quote_block|length > 17 %}
+      <div class="carousel-indicators" role="menu">
+        {% for list in content.field_quote_block['#items'] %}
+          {% set item_classes = [start_index == loop.index0 ? 'active'] %}
+          <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href="#two_column_quote_carousel"></a>
+        {% endfor %}
+      </div>
+    {% endif %}
+</div>
+
+<script>
+$(document).ready(function () {
+  $('#two_column_quote_carousel').find('.field-item').addClass('carousel-item');
+  $('#two_column_quote_carousel').find('.field-item').first().addClass('active');
+});
+</script>
