@@ -120,8 +120,17 @@ class PageBanner extends BlockBase {
   }
 
   public function existy($config, $value) {
-    return (array_key_exists($value, $config) && !empty($config[$value])) ?
-        $config[$value] : false;
+    if (array_key_exists($value, $config)) {
+      if (is_array($config[$value]) && count($config[$value]) > 0) {
+        return $this->getImagePath($config[$value][0]);
+      } else {
+        return $config[$value];
+      }
+    }
+
+    return false;
+    //return (array_key_exists($value, $config) && !empty($config[$value])) ?
+    //    $config[$value] : false;
   }
 
 // BLOCK BUILD
@@ -129,22 +138,14 @@ class PageBanner extends BlockBase {
     $config = $this->getConfiguration();
     //drupal_set_message(print_r($config, true));
     
-    if (!empty($config['background_image'])) {
-      $background_image = $this->getImagePath(@$config['background_image'][0]);
-      //drupal_set_message('bkgd-image-path: ' . $background_image);
-    }       
-    if (!empty($config['highlight_section_image'])) {
-      //drupal_set_message('highlight image id: ' . $config['highlight_section_image'][0]);
-      $highlight_section_image = $this->getImagePath(@$config['highlight_section_image'][0]);
-    }   
     return [
       '#theme' => 'page_banner',
       '#banner_data' => [
         'background_color' => $this->existy($config, 'background_color'), 
-        'background_image' => $background_image, 
+        'background_image' => $this->existy($config, 'background_image'), 
         'highlight_section' => $this->existy($config, 'highlight_section'), 
         'highlight_section_name' => $this->existy($config, 'highlight_section_name'),       
-        'highlight_section_image' => $highlight_section_image,
+        'highlight_section_image' => $this->existy($config, 'highlight_section_image'),
         'feature_occupation' => $this->existy($config, 'feature_occupation'),
       ]
     ];
