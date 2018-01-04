@@ -29,6 +29,11 @@
       line-height: 120%;
     }
 
+    a.button.button--primary {
+      max-width: em(150);
+      text-align: center;
+    }
+
   }
 
 }
