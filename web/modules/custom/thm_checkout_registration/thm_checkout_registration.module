@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains thm_checkout_registration.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function thm_checkout_registration_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the thm_checkout_registration module.
+    case 'help.page.thm_checkout_registration':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom Commerce Checkout Pane for THM DA registration') . '</p>';
+      return $output;
+
+    default:
+  }
+}
