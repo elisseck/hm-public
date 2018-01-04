@@ -157,6 +157,10 @@
       color: color(dark-grey);
     }
 
+    .menu-item.active-trail a.is-active {
+      color: color(secondary);
+    }
+
   }
 
 }

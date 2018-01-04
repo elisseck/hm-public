@@ -49,16 +49,17 @@
       z-index: 10;
     }
 
-    &:before {
-      background-image: linear-gradient(transparent, $black);
-      bottom: 0;
-      content: '';
-      left: 0;
-      opacity: .3;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
+    // Applies gradient over image for white text
+    // &:before {
+    //   background-image: linear-gradient(transparent, $black);
+    //   bottom: 0;
+    //   content: '';
+    //   left: 0;
+    //   opacity: .3;
+    //   position: absolute;
+    //   right: 0;
+    //   top: 0;
+    // }
 
   }
 
