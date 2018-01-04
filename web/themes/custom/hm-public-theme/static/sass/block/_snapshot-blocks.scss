@@ -1,0 +1,19 @@
+.snapshot-blocks {
+  margin-bottom: em(60);
+
+  .field-items {
+    display: flex;
+    justify-content: center;
+  }
+
+  .field-item {
+    flex: 0 1 30%;
+    margin: 0 30px;
+  }
+
+  h3 {
+    @extend %oswald;
+    color: color(quaternary);
+  }
+
+}

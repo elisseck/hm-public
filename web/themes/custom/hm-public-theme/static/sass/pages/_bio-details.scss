@@ -107,7 +107,7 @@
   }
 
   .archive {
-    margin-bottom: em(36);
+    margin: em(36) 0;
   }
 
   .back-button {
@@ -122,6 +122,8 @@
     margin-bottom: em(60, 18);
     width: em(130, 18);
   }
+
+  .sponsor__img { max-width: 100%; }
 }
 
 .accordion__panel { margin-bottom: 1rem; }
