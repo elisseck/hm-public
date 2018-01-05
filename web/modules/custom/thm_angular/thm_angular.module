@@ -3,7 +3,9 @@
 function thm_angular_theme($existing, $type, $theme, $path){
     return [
         'angular' => [
-            'variables' => [],
+            'variables' => [
+                'node' => thm_related_makers_get_current_node()
+            ],
             'template' => 'block--video-player'
         ]
     ];

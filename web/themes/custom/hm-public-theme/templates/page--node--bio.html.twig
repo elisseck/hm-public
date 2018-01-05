@@ -7,6 +7,7 @@
 
       <div class="container">
         {# Social Media Share #}
+
         <section>
           <h2 class="sr-only">Share on Social Media</h2>
           <ul class="share">
@@ -193,12 +194,7 @@
 
                   <div class="accordion__body collapse show" id="videoInAccordion">
                       <div class="card-block">
-                          <app-root source="{{ node.field_web_clip1.value }}"
-                                    source2="{{ node.field_web_clip2.value }}"
-                                    title="{{ node.field_datitle[0].value | replace({'\\': ''}) }}"
-                                    title2="{{ node.field_datitle[1].value | replace({'\\': ''}) }}"
-                                    timingPairs=" {{ node.field_timing_pairs.value | json_encode() }} "
-                                    transcriptText="{{ node.field_transcript.value | striptags }}">Loading...</app-root>
+                        {{ page.content.angularblock }}                      
                       </div>
                   </div>
                 </div>
