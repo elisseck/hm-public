@@ -1,10 +1,10 @@
 thm_angular:
   version: 1.x
   js:
-    /app/dist/inline.bundle.js: {preprocess: false}
-    /app/dist/polyfills.bundle.js: {preprocess: false}
-    /app/dist/styles.bundle.js: {preprocess: false}
-    /app/dist/vendor.bundle.js: {preprocess: false}
-    /app/dist/main.bundle.js: {preprocess: false}
+    app/dist/inline.bundle.js: {preprocess: false}
+    app/dist/polyfills.bundle.js: {preprocess: false}
+    app/dist/styles.bundle.js: {preprocess: false}
+    app/dist/vendor.bundle.js: {preprocess: false}
+    app/dist/main.bundle.js: {preprocess: false}
   dependencies:
     - core/jquery

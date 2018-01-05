@@ -42,15 +42,6 @@ class AngularBlock extends BlockBase {
   public function build() {
     return [
       '#theme' => 'angular',
-      '#attached' => array(
-        'library' => array(
-            'thm_angular/inline.bundle.js',
-            'thm_angular/polyfills.bundle.js',
-            'thm_angular/styles.bundle.js',
-            'thm_angular/vendor.bundle.js',
-            'thm_angular/main.bundle.js',
-        ),
-      ),
     ];
   }
 
