@@ -1,0 +1,31 @@
+// Two Column Quote
+.two-column-quote {
+  margin: em(60) auto 3.75em;
+  max-width: 70%;
+
+  &--content {
+
+    h4 {
+      @extend %oswald;
+    }
+
+    h4 p {
+      font-size: em(22);
+      line-height: 120%;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    h4 + p {
+      @extend %source-sans-semi-bold;
+    }
+
+  }
+
+  &--image img {
+    float: right;
+    margin-right: em(10);
+    max-width: em(267);
+  }
+
+}

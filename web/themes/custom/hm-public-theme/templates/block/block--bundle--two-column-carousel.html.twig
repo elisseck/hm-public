@@ -9,15 +9,15 @@
  */
 #}
 
-<div id="two_column_carousel" class="carousel slide" data-ride="carousel">
+<div class="two-column-carousel hero-carousel carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     {{ content.field_two_column_slide }}
     {# {% if content.field_two_column_slide %} #}
     {% if content.field_two_column_slide|length > 17 %}
-      <div class="carousel-indicators" role="menu">
+      <div class="right-carousel-indicators carousel-indicators" role="menu">
         {% for list in content.field_two_column_slide['#items'] %}
           {% set item_classes = [start_index == loop.index0 ? 'active'] %}
-          <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href="#two_column_carousel"></a>
+          <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href=".two-column-carousel"></a>
         {% endfor %}
       </div>
     {% endif %}
@@ -26,7 +26,7 @@
 
 <script>
 $(document).ready(function () {
-  $('#two_column_carousel').find('.field-item').addClass('carousel-item');
-  $('#two_column_carousel').find('.field-item').first().addClass('active');
+  $('.two-column-carousel').find('.field-item').addClass('carousel-item');
+  $('.two-column-carousel').find('.field-item').first().addClass('active');
 });
 </script>
