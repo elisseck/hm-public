@@ -14,7 +14,7 @@
   <h1>{{ content.field_intro_header|field_value }}</h1>
   <p>{{ content.field_intro_content|field_value }}</p>
   {% if content.field_intro_button|field_value is not empty %}
-    <a href="{{ content.field_intro_button|field_raw('url') }}" class="button button--primary">
+    <a href="{{ content.field_intro_button|field_raw('uri') }}" class="button button--primary">
       {{ content.field_intro_button|field_raw('title') }}
     </a>
   {% endif %}  
