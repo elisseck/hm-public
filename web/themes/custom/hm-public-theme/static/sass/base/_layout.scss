@@ -1,4 +1,5 @@
 html, body {
+  background-color: color(light-grey);
   font-family: $default-font;
   height: 100%;
   line-height: pxtorem($default-line-height);
@@ -44,6 +45,28 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 20%;
   order: 3;
   padding: 0;
+}
+
+div.wrapper {
+  padding: 0;
+}
+
+div.wrapper .content.column,
+div.wrapper .sidebar.first,
+div.wrapper .sidebar.second {
+  margin-bottom: 0;
+}
+
+//Custom Layout
+.layout-1-1col {
+  margin: 0 auto;
+  max-width: $max-width;
+  width: 100%;
+
+  .column {
+    padding: 0;
+  }
+
 }
 
 //Place Back to Top button below views

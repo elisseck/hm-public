@@ -1,0 +1,30 @@
+.bio-card {
+  border: 1px solid color(medium-grey);
+  display: flex;
+  margin-bottom: em(15);
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.bio-card__img {
+  height: 100%;
+  max-width: 120px;
+  transform: scale(1.1);
+  width: 50%;
+}
+
+.bio-card__info {
+  background-color: $white;
+  flex: 2;
+  padding: em(12);
+  z-index: 2;
+}
+
+.bio-card__name {
+  @extend %oswald;
+  color: color(secondary);
+  font-size: em(20);
+}

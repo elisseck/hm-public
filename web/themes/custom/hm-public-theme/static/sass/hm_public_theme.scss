@@ -33,9 +33,25 @@
 @import 'base/tabs';
 @import 'base/buttons';
 
+// Shared components
+@import 'shared/bio-card';
+@import 'shared/forms/progress-bar';
+
 // Specific page styling
 @import 'pages/home';
 @import 'pages/bio-details';
+@import 'pages/user-profile';
 
 // Views styling
 @import 'views/biographies';
+
+// Block styling
+@import 'block/intro-content';
+@import 'block/two-column-carousel';
+@import 'block/snapshot-blocks';
+@import 'block/two-column-quote-carousel';
+@import 'block/hero-carousel';
+
+// Content styling
+@import 'content/page-title';
+@import 'content/page-banner';
