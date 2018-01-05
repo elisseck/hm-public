@@ -21,7 +21,7 @@
 
 // Two column snapshot container
 .two-column-snapshot {
-  margin: $default-grid-gutter-width auto 3.75em;
+  margin: em(60) auto 3.75em;
   max-width: 70%;
 
   &--image img {

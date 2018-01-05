@@ -1,6 +1,6 @@
 // Two Column Quote
 .two-column-quote {
-  margin: $default-grid-gutter-width auto 3.75em;
+  margin: em(60) auto 3.75em;
   max-width: 70%;
 
   &--content {
