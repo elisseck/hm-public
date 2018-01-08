@@ -1,0 +1,33 @@
+// Single snapshot container
+.snapshot-blocks {
+  margin-bottom: em(60);
+
+  .field-items {
+    display: flex;
+    justify-content: center;
+  }
+
+  .field-item {
+    flex: 0 1 30%;
+    margin: 0 30px;
+  }
+
+}
+
+.snapshot h3 {
+  @extend %oswald;
+  color: color(quaternary);
+}
+
+// Two column snapshot container
+.two-column-snapshot {
+  margin: em(60) auto 3.75em;
+  max-width: 70%;
+
+  &--image img {
+    float: right;
+    margin-right: em(10);
+    max-width: em(267);
+  }
+
+}

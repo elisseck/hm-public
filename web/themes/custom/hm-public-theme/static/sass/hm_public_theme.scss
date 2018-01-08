@@ -18,40 +18,38 @@
 @import 'lib/icomoon';
 
 // Put your own mixins in this file
-@import 'lib/mixins';
 @import 'lib/functions';
+@import 'lib/mixins';
 
 // Import assets
 @import 'assets/pageelements';
 
 // Basic layout styling
-@import 'base/layout';
-@import 'base/header';
+@import 'base/buttons';
 @import 'base/footer';
+@import 'base/header';
+@import 'base/layout';
 @import 'base/navigation';
 @import 'base/sidebars';
 @import 'base/tabs';
-@import 'base/buttons';
 
-// Shared components
-@import 'shared/bio-card';
-@import 'shared/forms/progress-bar';
+// Content styling
+@import 'content/intro-content';
+@import 'content/page-banner';
+@import 'content/page-title';
 
 // Specific page styling
 @import 'pages/home';
 @import 'pages/bio-details';
 @import 'pages/user-profile';
 
+// Shared components
+@import 'shared/bio-card';
+@import 'shared/carousel';
+@import 'shared/forms/progress-bar';
+@import 'shared/snapshot-blocks';
+@import 'shared/quotes';
+@import 'shared/slides';
+
 // Views styling
 @import 'views/biographies';
-
-// Block styling
-@import 'block/intro-content';
-@import 'block/two-column-carousel';
-@import 'block/snapshot-blocks';
-@import 'block/two-column-quote-carousel';
-@import 'block/hero-carousel';
-
-// Content styling
-@import 'content/page-title';
-@import 'content/page-banner';
