@@ -2,7 +2,7 @@
 <img class="user-info__img" src="{{ file_url( userInfo.user_picture.entity.uri.value ) }}">
 
 <div class="accordion">
-    <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#userDetails" aria-expanded="false" aria-controls="userDetails">
+    <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#userDetails" aria-expanded="true" aria-controls="userDetails">
         Profile Information
         <span class="accordion__arrow">
             <span class="accordion__arrow-half"></span>
@@ -10,7 +10,7 @@
         </span>
     </button>
     
-    <div class="collapse accordion__body" id="userDetails">
+    <div class="collapse show accordion__body" id="userDetails">
         <div class="">
             <dl>
                 <dt>Username:</dt>
