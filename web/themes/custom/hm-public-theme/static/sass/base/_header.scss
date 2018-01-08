@@ -265,10 +265,22 @@
       background-color: $black;
       color: $white;
       cursor: pointer;
-      transition: .5s;
+      transition: .2s ease-in-out;
     }
 
     &:hover a {
+      color: $white;
+    }
+
+  }
+
+  .menu-item.active-trail {
+    background-color: $black;
+    color: $white;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+
+    a {
       color: $white;
     }
 
@@ -282,6 +294,11 @@
       color: $white;
     }
 
+  }
+
+  .menu-item a.is-active {
+    border-bottom: 0;
+    color: $white;
   }
 
 }
