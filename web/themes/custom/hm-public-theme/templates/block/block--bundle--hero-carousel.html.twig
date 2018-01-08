@@ -9,15 +9,15 @@
  */
 #}
 
-<div id="hero_carousel" class="carousel slide" data-ride="carousel">
+<div class="image-carousel hero-carousel carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     {{ content.field_image_slide }}
     {# {% if content.field_image_slide %} #}
     {% if content.field_image_slide|length > 17 %}
-      <div class="carousel-indicators" role="menu">
+      <div class="centered-carousel-indicators carousel-indicators" role="menu">
         {% for list in content.field_image_slide['#items'] %}
           {% set item_classes = [start_index == loop.index0 ? 'active'] %}
-          <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href="#hero_carousel"></a>
+          <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href=".image-carousel"></a>
         {% endfor %}
       </div>
     {% endif %}
@@ -26,7 +26,7 @@
 
 <script>
 $(document).ready(function () {
-  $('#hero_carousel').find('.field-item').addClass('carousel-item');
-  $('#hero_carousel').find('.field-item').first().addClass('active');
+  $('.image-carousel').find('.field-item').addClass('carousel-item');
+  $('.image-carousel').find('.field-item').first().addClass('active');
 });
 </script>
