@@ -6,7 +6,7 @@ function thm_angular_theme($existing, $type, $theme, $path){
             'variables' => [
                 'node' => thm_related_makers_get_current_node()
             ],
-            'template' => 'block--video-player'
+            'template' => 'block--angular-block'
         ]
     ];
 }
