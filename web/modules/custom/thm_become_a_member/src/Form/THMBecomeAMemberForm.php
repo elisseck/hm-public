@@ -16,6 +16,11 @@ use Drupal\commerce_cart\CartSession;
 
 class THMBecomeAMemberForm extends FormBase {
 
+  /**
+   * @var CartSession
+   */
+  protected $cartSession;
+
   public function getStore($storeId = 1) {
     return \Drupal::entityManager()
       ->getStorage('commerce_store')
@@ -68,15 +73,16 @@ class THMBecomeAMemberForm extends FormBase {
     $res->send();
   }
 
-  public function prepOrder() {
-    $session = \Drupal::service('session');
+  public function prepOrder(array &$form, FormStateInterface $formState) {
 
-    $cartSession = new CartSession($session);
     $cart        = $this->makeCart();
     $cartId      = $cart->id();
-    $cartSession->addCartId($cartId);
+    $this->cartSession->addCartId($cartId);
 
-    $this->goto("/checkout/$cartId/login");
+    $formState->setRedirect('commerce_checkout.form', [
+      'commerce_order' => $cartId, 'step' => 'login'
+    ]);
+    return $form;
   }
 
   public function getFormId() {
@@ -84,6 +90,8 @@ class THMBecomeAMemberForm extends FormBase {
   }
 
   public function buildForm(array $form, FormStateInterface $form_state) {
+    $this->cartSession = \Drupal::service('commerce_cart.cart_session');
+
     $form['actions']['#type'] = 'actions';
 
     $form['simple_form'] = [
