@@ -27,22 +27,15 @@ class AngularBlock extends BlockBase {
    *
    * @return \Drupal\node\Entity\Node|bool
    */
-  function thm_related_makers_get_current_node() {
-    $node = \Drupal::routeMatch()->getParameter('node');
-    if ($node instanceof NodeInterface) {
-      return $node;
-    } else {
-      return false;
-    }
-  }
 
   /**
    * {@inheritdoc}
    */
   public function build() {
-    return [
-      '#theme' => 'angular',
-    ];
+    drupal_set_message(thm_angular_get_current_node()->getTitle());
+    $build['thm_angular']['#theme'] = 'angular';
+    $build['thm_angular']['#video'] = thm_angular_get_current_node();
+  return $build;
   }
 
 }

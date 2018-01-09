@@ -1,6 +1,0 @@
-<app-root source="{{ node.field_web_clip1.value }}"
-        source2="{{ node.field_web_clip2.value }}"
-        title="{{ node.field_datitle[0].value | replace({'\\': ''}) }}"
-        title2="{{ node.field_datitle[1].value | replace({'\\': ''}) }}"
-        timingPairs=" {{ node.field_timing_pairs.value | json_encode() }} "
-        transcriptText="{{ node.field_transcript.value | striptags }}">Loading...</app-root>
