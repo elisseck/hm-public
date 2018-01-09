@@ -32,7 +32,6 @@ class AngularBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    drupal_set_message(thm_angular_get_current_node()->getTitle());
     $build['thm_angular']['#theme'] = 'angular';
     $build['thm_angular']['#video'] = thm_angular_get_current_node();
   return $build;
