@@ -10,3 +10,8 @@ function thm_angular_theme($existing, $type, $theme, $path){
         ]
     ];
 }
+
+function thm_angular_page_attachments(array &$attachments) {
+    $attachments['#attached']['library'][] =
+        'thm_angular/thm_angular';
+}
