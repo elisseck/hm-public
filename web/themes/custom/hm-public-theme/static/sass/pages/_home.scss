@@ -214,7 +214,9 @@ ul {
 
 .wrapper {
   display: flex;
-  padding: em(40) 0;
+  margin: 0 auto;
+  max-width: em(1440);
+  padding: em(30);
 }
 
 .wrapper--home { background-color: color(light-grey); }

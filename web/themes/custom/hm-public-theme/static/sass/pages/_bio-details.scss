@@ -35,6 +35,24 @@
     width: 100%;
   }
 
+  .info__favorites {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    a {
+      opacity: 0;
+      height: em(50);
+      width: 100%;
+    }
+  }
+
+  .info__favorites-icon {
+    position: absolute;
+    top: em(15);
+    right: em(32);
+  }
+
   .discover__heading {
     @extend %oswald;
     background-color: color(quaternary);
