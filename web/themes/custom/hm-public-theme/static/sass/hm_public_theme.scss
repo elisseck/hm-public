@@ -33,6 +33,11 @@
 @import 'base/sidebars';
 @import 'base/tabs';
 
+// Shared components
+@import 'shared/bio-card';
+@import 'shared/forms/progress-bar';
+@import 'shared/accordion';
+
 // Content styling
 @import 'content/intro-content';
 @import 'content/page-banner';
@@ -44,7 +49,7 @@
 @import 'pages/user-profile';
 
 // Shared components
-@import 'shared/bio-card';
+@import 'shared/cards';
 @import 'shared/carousel';
 @import 'shared/forms/progress-bar';
 @import 'shared/snapshot-blocks';
@@ -53,3 +58,4 @@
 
 // Views styling
 @import 'views/biographies';
+@import 'views/people';
