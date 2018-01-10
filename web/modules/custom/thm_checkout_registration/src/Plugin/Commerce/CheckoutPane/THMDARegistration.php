@@ -8,11 +8,16 @@
 
 namespace Drupal\thm_checkout_registration\Plugin\Commerce\CheckoutPane;
 
-use Drupal\user\UserInterface;
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\commerce\CredentialsCheckFloodInterface;
 use Drupal\commerce_checkout\Plugin\Commerce\CheckoutFlow\CheckoutFlowInterface;
 use Drupal\commerce_checkout\Plugin\Commerce\CheckoutPane\CheckoutPaneBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\Core\Entity\EntityStorageException;
 
 /**
  * Custom Commerce Checkout (login/registration) Pane
@@ -24,6 +29,53 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * )
  */
 class THMDARegistration extends CheckoutPaneBase {
+
+  /**
+   * The credentials check flood controller.
+   *
+   * @var \Drupal\commerce\CredentialsCheckFloodInterface
+   */
+  protected $credentialsCheckFlood;
+
+  /**
+   * @var EntityFormDisplayInterface
+   */
+  protected $userProfileForm;
+
+  protected $user;
+
+  /**
+   * The client IP address.
+   *
+   * @var string
+   */
+  protected $clientIp;
+
+  /**
+   * Populates account custom fields from user-registration form.
+   *
+   * @param $formValues
+   * @param \Drupal\user\UserInterface $userAccount
+   */
+  protected function populateAccount($formValues, UserInterface &$userAccount) {
+    foreach ($formValues as $fieldName => $formValue) {
+      if (!($formValue instanceof TranslatableMarkup)
+        && substr($fieldName, 0, 6) === 'field_') {
+        $userAccount->set($fieldName, @$formValue[0]['value']);
+      }
+    }
+
+    try {
+      $userAccount->save();
+
+    } catch (EntityStorageException $storageException) {
+      $msg = 'An error occurred. Your account data may not have been saved.';
+      drupal_set_message($msg);
+
+      \Drupal::logger('thm_checkout_registration')
+        ->error($storageException->getMessage());
+    }
+  }
 
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition, CheckoutFlowInterface $checkout_flow = NULL) {
     return new static(
@@ -43,25 +95,37 @@ class THMDARegistration extends CheckoutPaneBase {
    * {@inheritdoc}
    */
   public function buildPaneForm(array $pane_form, FormStateInterface $form_state, array &$complete_form) {
-    $pane_form['user_profile_form'] = [
-      '#type' => 'fieldset',
-      '#title' => $this->t('Enter Contact Information'),
-      '#attributes' => [
-        'class' => [
-          'form-wrapper__login-option',
-          'form-wrapper__guest-checkout',
-        ],
-      ],
+
+    $this->user = \Drupal::entityTypeManager()
+      ->getStorage('user')
+      ->create();
+
+    $this->userProfileForm = EntityFormDisplay::collectRenderDisplay(
+      $this->user, 'default');
+
+    $pane_form['#tree'] = true;
+
+    // embedded forms don't play nice with container/fieldset/prefix/suffix
+    // elements
+    $pane_form['open_account_info_wrapper'] = [
+      '#markup' => '<div class="membership-account-info">',
+      '#weight' => -100
     ];
 
-    $pane_form['user_profile_form']['user_account'] = [
-      '#type' => 'webform',
-      '#webform' => 'user_registration'
+    $pane_form['account_info'] = [
+      '#type' => '#form',
+      '#value'=> $this->userProfileForm->buildForm($this->user, $pane_form, $form_state)
+    ];
+
+    $pane_form['close_account_info_wrapper'] = [
+      '#markup' => '</div>',
+      '#weight' => 190
     ];
 
     $pane_form['register'] = [
       '#type' => 'fieldset',
-      '#title' => $this->t('New Customer'),
+      '#title' => $this->t('Register'),
+      '#weight' => 200,
       '#attributes' => [
         'class' => [
           'form-wrapper__login-option',
@@ -94,13 +158,67 @@ class THMDARegistration extends CheckoutPaneBase {
       '#description' => $this->t('Provide a password for the new account in both fields.'),
       '#required' => FALSE,
     ];
-    $pane_form['register']['register'] = [
+
+    $pane_form['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Create account and continue'),
-      '#op' => 'register',
+      '#value' => $this->t('Next'),
+      '#weight' => 220,
+      '#op' => 'continue'
+    ];
+
+    $pane_form['cancel'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('Cancel'),
+      '#weight' => 210,
+      '#op' => 'cancel'
     ];
 
     return $pane_form;
+  }
+
+  public function validatePaneForm(array &$pane_form, FormStateInterface $form_state, array &$complete_form) {
+    $values = $form_state->getValue($pane_form['#parents']);
+    $triggering_element = $form_state->getTriggeringElement();
+    switch ($triggering_element['#op']) {
+      case 'continue':
+
+        $email = $values['register']['mail'];
+        $username = $values['register']['name'];
+        $password = trim($values['register']['password']);
+        if (empty($email)) {
+          $form_state->setError($pane_form['register']['mail'], $this->t('Email field is required.'));
+          return;
+        }
+        if (empty($username)) {
+          $form_state->setError($pane_form['register']['name'], $this->t('Username field is required.'));
+          return;
+        }
+        if (empty($password)) {
+          $form_state->setError($pane_form['register']['password'], $this->t('Password field is required.'));
+          return;
+        }
+
+        /** @var \Drupal\user\UserInterface $account */
+        $account = $this->entityTypeManager->getStorage('user')->create([
+          'mail' => $email,
+          'name' => $username,
+          'pass' => $password,
+          'status' => TRUE,
+        ]);
+        // Validate the entity. This will ensure that the username and email
+        // are in the right format and not already taken.
+        $violations = $account->validate();
+        foreach ($violations->getByFields(['name', 'mail']) as $violation) {
+          list($field_name) = explode('.', $violation->getPropertyPath(), 2);
+          $form_state->setError($pane_form['register'][$field_name], $violation->getMessage());
+        }
+
+        if (!$form_state->hasAnyErrors()) {
+          $account->save();
+          $form_state->set('logged_in_uid', $account->id());
+        }
+        break;
+    }
   }
 
   /**
@@ -110,16 +228,14 @@ class THMDARegistration extends CheckoutPaneBase {
     $triggering_element = $form_state->getTriggeringElement();
     switch ($triggering_element['#op']) {
       case 'continue':
-        break;
-
-      case 'login':
-      case 'register':
         $storage = $this->entityTypeManager->getStorage('user');
         /** @var \Drupal\user\UserInterface $account */
         $account = $storage->load($form_state->get('logged_in_uid'));
+
         user_login_finalize($account);
+        $this->populateAccount($form_state->getValues()['thmda_access_registration'], $account);
         $this->order->setCustomer($account);
-        $this->credentialsCheckFlood->clearAccount($this->clientIp, $account->getAccountName());
+        //$this->credentialsCheckFlood->clearAccount($this->clientIp, $account->getAccountName());
         break;
     }
 
