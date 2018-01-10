@@ -33,6 +33,11 @@
 @import 'base/sidebars';
 @import 'base/tabs';
 
+// Shared components
+@import 'shared/bio-card';
+@import 'shared/forms/progress-bar';
+@import 'shared/accordion';
+
 // Content styling
 @import 'content/intro-content';
 @import 'content/page-banner';
