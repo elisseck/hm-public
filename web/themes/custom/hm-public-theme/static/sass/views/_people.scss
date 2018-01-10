@@ -1,0 +1,17 @@
+.list-people {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: em(60);
+  padding: 0 15px;
+
+  //List
+  .view-content {
+    display: flex;
+    flex: 1;
+    flex-flow: row wrap;
+    order: 4;
+  }
+
+}

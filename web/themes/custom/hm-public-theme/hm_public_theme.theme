@@ -32,23 +32,18 @@
 
 }
 
+/**
+ * Implements hook_theme_suggestions for both a Custom Block and a View
+ */
+
 function hm_public_theme_theme_suggestions_block_alter(array &$suggestions, array $variables) {
   if (isset($variables['elements']['content']['#block_content'])) {
     array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());
   }
 }
 
-// function hm_public_theme_preprocess_block(&$variables){
-//     $node = \Drupal::routeMatch()->getParameter('node');
-//     if ($node instanceof \Drupal\node\NodeInterface) {
-//       // You can get nid and anything else you need from the node object.
-//       $variables["nid"] = $node->id();
-//       $variables["node_title"] = $node->getTitle();
-//       $variables["body"] = $node->body->value;
-//       $variables["field_web_clip1"] = $node->field_web_clip1->value;
-
-//       //following did not work ?!
-//       //$vars["field_text"] = $node->get('field_text')->getValue();
-//       //$vars["field_text"] = $node->field_text->getValue();
-//     }    
-// }
+function hm_public_theme_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  if (isset($variables['view']->element['#view_id'])) {
+    $suggestions[] = 'views_view__' . $variables['view']->element['#view_id'];
+  }
+}
