@@ -14,7 +14,7 @@ class THMBecomeAMemberController extends ControllerBase {
     $becomeAMember = '\Drupal\thm_become_a_member\Form\THMBecomeAMemberForm';
 
     return [
-      'subscription_form' => $this->formBuilder()->getForm($becomeAMember),
+      'form' => $this->formBuilder()->getForm($becomeAMember),
     ];
   }
 }

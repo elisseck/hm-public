@@ -80,7 +80,7 @@ class THMBecomeAMemberForm extends FormBase {
     $this->cartSession->addCartId($cartId);
 
     $formState->setRedirect('commerce_checkout.form', [
-      'commerce_order' => $cartId, 'step' => 'login'
+      'commerce_order' => $cartId, 'step' => null
     ]);
     return $form;
   }
