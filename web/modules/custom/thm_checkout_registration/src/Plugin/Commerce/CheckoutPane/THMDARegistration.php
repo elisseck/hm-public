@@ -235,6 +235,8 @@ class THMDARegistration extends CheckoutPaneBase {
         user_login_finalize($account);
         $this->populateAccount($form_state->getValues()['thmda_access_registration'], $account);
         $this->order->setCustomer($account);
+
+        _user_mail_notify('register_no_approval_required', $account);
         //$this->credentialsCheckFlood->clearAccount($this->clientIp, $account->getAccountName());
         break;
     }
