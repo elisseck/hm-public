@@ -1,0 +1,52 @@
+.full-screen-carousel {
+  margin-bottom: em(60);
+}
+
+.hero-carousel {
+  margin-bottom: em(30);
+  margin-top: em(30);
+  padding: 0 $default-grid-gutter-width;
+}
+
+.two-column-quote-carousel {
+  background-color: color(carousel-bg-alt);
+}
+
+// Pagers
+.centered-carousel-indicators.carousel-indicators {
+  left: 0;
+
+  a {
+    background-color: color(disabled-text);
+    border-radius: 100%;
+    height: em(8);
+    margin-right: em(10);
+    width: em(8);
+  }
+
+  a.active {
+    background-color: $white;
+  }
+
+}
+
+.hero-carousel .centered-carousel-indicators.carousel-indicators {
+  bottom: em(30);
+}
+
+.right-carousel-indicators.carousel-indicators {
+  bottom: em(30);
+
+  a {
+    background-color: color(medium-grey);
+    border-radius: em(100);
+    height: em(15);
+    margin-right: em(15);
+    width: em(15);
+  }
+
+  a.active {
+    background-color: color(dark-grey);
+  }
+
+}

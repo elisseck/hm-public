@@ -18,7 +18,7 @@
   <li>Snapshot Button Title:  {{ content.field_snapshot_button|field_raw('title') }}</li>
 </ol> #}
 
-<div class="snapshot-block">
+<div class="snapshot">
   <h3>{{ content.field_snapshot_header|field_value }}</h3>
   <p>{{ content.field_snapshot_content|field_value }}</p>
   {% if content.field_snapshot_button|field_value is not empty %}

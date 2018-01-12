@@ -3,6 +3,7 @@
   flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: em(60);
   padding: 0 15px;
 
   .view-header {
@@ -63,83 +64,86 @@
     order: 2;
   }
 
-  //Card
-  .bio-card--list {
-    background: $white;
-    border: 1px solid color(medium-grey);
-    display: flex;
-    flex: 1;
-    flex-flow: row wrap;
-    margin: 0 em(16) em(32);
-    min-width: 30%;
-    padding-left: 0;
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:nth-child(3n+1) {
-      margin-left: 0;
-    }
-
-    &:nth-child(3n) {
-      margin-right: 0;
-    }
-
-    //bio-cards
-    a {
-      display: flex;
-
-      .bio-card--image {
-        flex: 1;
-        max-width: em(100);
-        overflow: hidden;
-
-        img {
-          height: em(100);
-          transform: scale(1.1);
-          width: em(100);
-        }
-
-      }
-
-      .bio-card--content {
-        flex: 1;
-        margin-left: em(15);
-
-        h3 {
-          font-family: $oswald;
-          margin-top: em(6);
-        }
-
-        h4 {
-          color: $black;
-          font-size: em(18);
-
-          //Overflow at 1 line
-          // -webkit-box-orient: vertical;
-          // -webkit-line-clamp: 1;
-          // display: -webkit-box;
-          // line-height: 120%;
-          // overflow: hidden;
-          // text-overflow: ellipsis;
-        }
-      }
-
-      &:hover {
-        text-decoration: none;
-
-        h3, h4 {
-          text-decoration: none;
-        }
-      }
-    }
-  }//.bio-card--list
-
 }//.view.list-biography-card 
+
+//Card
+.bio-card--list {
+  background: $white;
+  border: 1px solid color(medium-grey);
+  display: flex;
+  flex: 1;
+  flex-flow: row wrap;
+  margin: 0 em(16) em(32);
+  min-width: 30%;
+  padding-left: 0;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:nth-child(3n+1) {
+    margin-left: 0;
+  }
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+
+  //bio-cards
+  a {
+    display: flex;
+
+    .bio-card--image {
+      overflow: hidden;
+
+      img {
+        height: 100%;
+        max-width: 150px;
+        transform: scale(1.1);
+      }
+
+    }
+
+    .bio-card--content {
+      background-color: $white;
+      flex: 2;
+      padding: em(12);
+      z-index: 2;
+
+
+      h3 {
+        font-family: $oswald;
+        font-size: em(25);
+        margin-top: em(6);
+      }
+
+      h4 {
+        color: $black;
+        font-size: em(16);
+
+        //Overflow at 1 line
+        // -webkit-box-orient: vertical;
+        // -webkit-line-clamp: 1;
+        // display: -webkit-box;
+        // line-height: 120%;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+      }
+    }
+
+    &:hover {
+      text-decoration: none;
+
+      h3, h4 {
+        text-decoration: none;
+      }
+    }
+  }
+}//.bio-card--list
 
 #makercategorynavigation {
   margin-right: 3%;
+  margin-top: em(60);
   padding: 0 em(15);
 
   //Maker Category Navigation

@@ -1,19 +1,25 @@
-#two_column_carousel {
-  margin-bottom: em(30);
-  margin-top: em(30);
-  padding: 0 $default-grid-gutter-width;
+// Hero Slide
+.hero-slide {
+
+  &--image {
+    background-position: center;
+    background-size: cover;
+    height: em(580);
+  }
+
 }
 
+// Two Column Slide
 .two-column-slide {
   height: 500px;
 
-  .two-column-slide--image {
+  &--image {
     background-position: center;
     background-size: cover;
     height: 500px;
   }
 
-  .two-column-slide--content {
+  &--content {
     background: $white;
     color: $black;
     padding-left: $default-grid-gutter-width;
@@ -34,23 +40,6 @@
       text-align: center;
     }
 
-  }
-
-}
-
-.carousel-indicators {
-  bottom: em(30);
-
-  a {
-    background-color: color(medium-grey);
-    border-radius: em(100);
-    height: em(15);
-    margin-right: em(15);
-    width: em(15);
-  }
-
-  a.active {
-    background-color: color(dark-grey);
   }
 
 }
