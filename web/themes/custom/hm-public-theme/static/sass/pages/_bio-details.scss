@@ -37,20 +37,20 @@
 
   .info__favorites {
     position: absolute;
-    top: 0;
     right: 0;
+    top: 0;
 
     a {
-      opacity: 0;
       height: em(50);
+      opacity: 0;
       width: 100%;
     }
   }
 
   .info__favorites-icon {
     position: absolute;
-    top: em(15);
     right: em(32);
+    top: em(15);
   }
 
   .discover__heading {
