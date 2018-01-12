@@ -1,0 +1,23 @@
+{
+  "name": "hm-public",
+  "version": "0.1.0",
+  "description": "Static assets used in The HistoryMakers' public site",
+  "main": "index.js",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dist": "rm -Rf mkdir dist/ && mkdir dist/ && cp -R web/themes/custom/hm-public-theme/static/css dist/css && cp -R web/modules/custom/thm_angular/app/dist dist/js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheHistoryMakers/hm-public.git"
+  },
+  "author": "Shane Ardell <shane.ardell@thirdwavellc.com> (http://www.thirdwavellc.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheHistoryMakers/hm-public/issues"
+  },
+  "homepage": "https://github.com/TheHistoryMakers/hm-public#readme"
+}
