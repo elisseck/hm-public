@@ -94,9 +94,9 @@ class THMBecomeAMemberForm extends FormBase {
 
     $form['actions']['#type'] = 'actions';
 
-    $form['simple_form'] = [
+    $form['membership_form'] = [
       '#type' => 'submit',
-      '#value' => t('Become a DigitalMaker'),
+      '#value' => t('Buy'),
       '#submit' => [ '::prepOrder' ]
     ];
 

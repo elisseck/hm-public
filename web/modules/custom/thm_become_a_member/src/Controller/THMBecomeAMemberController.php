@@ -11,10 +11,17 @@ class THMBecomeAMemberController extends ControllerBase {
 
   public function content() {
 
-    $becomeAMember = '\Drupal\thm_become_a_member\Form\THMBecomeAMemberForm';
+    $formNamespace = '\Drupal\thm_become_a_member\Form';
+
+    $basicSignUp      = $formNamespace . '\THMRegister';
+    $corporateSignUp  = $formNamespace . '\THMCorporateSignup';
+    $accessTheArchive = $formNamespace . '\THMBecomeAMemberForm';
 
     return [
-      'form' => $this->formBuilder()->getForm($becomeAMember),
+      '#theme' => 'thm_become_a_member',
+      '#payment_form' => $this->formBuilder()->getForm($accessTheArchive),
+      '#signup_form' => $this->formBuilder()->getForm($basicSignUp),
+      '#industry_form' => $this->formBuilder()->getForm($corporateSignUp)
     ];
   }
 }
