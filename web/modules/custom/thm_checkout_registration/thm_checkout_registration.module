@@ -22,3 +22,14 @@ function thm_checkout_registration_help($route_name, RouteMatchInterface $route_
     default:
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function thm_checkout_registration_theme($existing, $type, $theme, $path) {
+  return [
+    'thm_checkout_registration_complete' => [
+      'variables' => []
+    ]
+  ];
+}

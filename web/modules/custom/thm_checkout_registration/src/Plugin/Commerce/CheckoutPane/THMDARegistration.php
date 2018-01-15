@@ -14,10 +14,12 @@ use Drupal\commerce\CredentialsCheckFloodInterface;
 use Drupal\commerce_checkout\Plugin\Commerce\CheckoutFlow\CheckoutFlowInterface;
 use Drupal\commerce_checkout\Plugin\Commerce\CheckoutPane\CheckoutPaneBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Entity\EntityStorageException;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Custom Commerce Checkout (login/registration) Pane
@@ -103,6 +105,8 @@ class THMDARegistration extends CheckoutPaneBase {
     $this->userProfileForm = EntityFormDisplay::collectRenderDisplay(
       $this->user, 'default');
 
+    $back_step_url = 'internal:/checkout/' . $this->order->id() . '/membership_options';
+
     $pane_form['#tree'] = true;
 
     // embedded forms don't play nice with container/fieldset/prefix/suffix
@@ -162,14 +166,16 @@ class THMDARegistration extends CheckoutPaneBase {
     $pane_form['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Next'),
-      '#weight' => 220,
+      '#weight' => 210,
       '#op' => 'continue'
     ];
 
     $pane_form['cancel'] = [
-      '#type' => 'submit',
-      '#value' => $this->t('Cancel'),
-      '#weight' => 210,
+      '#type' => 'link',
+      '#limit_validation_errors' => [],
+      '#title' => $this->t('go back'),
+      '#url' => Url::fromUri($back_step_url),
+      '#weight' => 220,
       '#op' => 'cancel'
     ];
 
@@ -179,7 +185,12 @@ class THMDARegistration extends CheckoutPaneBase {
   public function validatePaneForm(array &$pane_form, FormStateInterface $form_state, array &$complete_form) {
     $values = $form_state->getValue($pane_form['#parents']);
     $triggering_element = $form_state->getTriggeringElement();
+
     switch ($triggering_element['#op']) {
+      case 'cancel':
+        $form_state->clearErrors();
+        break;
+
       case 'continue':
 
         $email = $values['register']['mail'];
@@ -218,6 +229,7 @@ class THMDARegistration extends CheckoutPaneBase {
           $form_state->set('logged_in_uid', $account->id());
         }
         break;
+
     }
   }
 
@@ -238,12 +250,16 @@ class THMDARegistration extends CheckoutPaneBase {
 
         _user_mail_notify('register_no_approval_required', $account);
         //$this->credentialsCheckFlood->clearAccount($this->clientIp, $account->getAccountName());
-        break;
+        return $form_state->setRedirect('commerce_checkout.form', [
+          'commerce_order' => $this->order->id(),
+          'step' => $this->checkoutFlow->getNextStepId($this->getStepId()),
+        ]);
+
+      case 'cancel':
+        $uri = 'internal:/checkout/' . $this->order->id() . '/membership_options';
+        return new RedirectResponse(Url::fromUri($uri)->toString());
     }
 
-    $form_state->setRedirect('commerce_checkout.form', [
-      'commerce_order' => $this->order->id(),
-      'step' => $this->checkoutFlow->getNextStepId($this->getStepId()),
-    ]);
+
   }
 }

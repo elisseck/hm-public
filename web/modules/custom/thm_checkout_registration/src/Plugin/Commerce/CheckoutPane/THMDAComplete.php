@@ -10,6 +10,7 @@ namespace Drupal\thm_checkout_registration\Plugin\Commerce\CheckoutPane;
 
 use Drupal\commerce_checkout\Plugin\Commerce\CheckoutPane\CheckoutPaneBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\UserInterface;
 
 /**
  * Provides the completion message pane.
@@ -23,13 +24,26 @@ use Drupal\Core\Form\FormStateInterface;
 class THMDAComplete extends CheckoutPaneBase {
 
   /**
+   * @var UserInterface
+   */
+  protected $user;
+
+  public function assignRole() {
+    $this->user->addRole('thm_paid_member');
+    $this->user->save();
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function buildPaneForm(array $pane_form, FormStateInterface $form_state, array &$complete_form) {
-    $pane_form['#theme'] = 'commerce_checkout_completion_message';
-    $pane_form['#order_entity'] = $this->order;
+    $pane_form['#theme'] = 'thm_checkout_registration_complete';
 
+    $this->user = $this->entityTypeManager
+      ->getStorage('user')
+      ->load($this->order->getCustomerId());
 
+    $this->assignRole();
 
     return $pane_form;
   }
