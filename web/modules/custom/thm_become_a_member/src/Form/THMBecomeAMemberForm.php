@@ -11,6 +11,7 @@ namespace Drupal\thm_become_a_member\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\commerce_cart\CartSession;
+use Drupal\commerce_product\Entity\Product;
 
 
 class THMBecomeAMemberForm extends FormBase {
@@ -26,24 +27,27 @@ class THMBecomeAMemberForm extends FormBase {
       ->load($storeId);
   }
 
-  public function getProductVariation($variation) {
-    return \Drupal::entityTypeManager()
-      ->getStorage('commerce_product_variation')
-      ->load($variation);
+  public function getProductVariation($productId) {
+    $storage = \Drupal::entityTypeManager()
+      ->getStorage('commerce_product');
+
+    /** @var Product $product */
+    $product = $storage->load($productId);
+
+    return $product->getDefaultVariation();
   }
 
   public function makeCart() {
 
     $orderType    = 'default';
     $productId    = 2; // product ID.
-    $varId        = 4; // product variation on a placeholder item.
 
     $entityMgr    = \Drupal::entityTypeManager();
     $cartMgr      = \Drupal::service('commerce_cart.cart_manager');
     $cartProvider = \Drupal::service('commerce_cart.cart_provider');
 
     $store = $this->getStore();
-    $productVar = $this->getProductVariation($varId);
+    $productVar = $this->getProductVariation($productId);
 
     $cart = $cartProvider->getCart($orderType, $store);
 
