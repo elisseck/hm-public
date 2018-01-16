@@ -32,20 +32,21 @@
 }
 
 // Board/Committee Cards
-.card--list {
+.staff-card {
   background: $white;
   border: 1px solid color(medium-grey);
   display: flex;
-  flex: 1 0 45%;
+  flex: 1;
+  flex-basis: 45%;
   flex-flow: row wrap;
-  margin: 0 em(16) em(32);
+  margin: 0 2% em(32) 2.5%;
   max-width: 45%;
   padding-left: 0;
 
-  .card--image {
-    flex: 1;
-    flex-basis: 30%;
+  &--image {
+    height: 150px;
     overflow: hidden;
+    width: 150px;
 
     img {
       height: auto;
@@ -54,25 +55,26 @@
 
   }
 
-  .card--content {
-    flex: 2;
-    flex-basis: 65%;
-    margin-left: em(15);
+  &--content {
+    background-color: $white;
+    flex: 1;
+    padding: em(12);
+    z-index: 2;
 
     h3 {
-      color: color(secondary);
       font-family: $oswald;
-      margin-top: em(6);
+      font-size: em(25);
+      margin-top: 0;
     }
 
     h4 {
       color: $black;
-      font-size: em(18);
+      font-size: em(16);
     }
 
     p {
       color: color(secondary);
-      margin-top: 0;
+      margin: 0;
     }
 
   }

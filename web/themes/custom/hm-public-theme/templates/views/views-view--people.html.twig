@@ -7,7 +7,7 @@
  * -  Paragraph Label: People
  * -  Paragraph Field: field_accordion_people
  *
- * Available Fields 
+ * Available Fields
  * -  field_bio
  * -  field_location
  * -  field_name
@@ -16,12 +16,13 @@
  *
  */
 #}
-{{ drupal_dump(_context|keys) }}
+
 {# {{ drupal_dump(_context|keys) }} #}
+{# {{ drupal_dump(_context.rows) }} #}
 
 <div class="accordion">
     <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#{{ view.element['#name']}}{{ view.element['#display_id'] }}" aria-expanded="true" aria-controls="{{ view.element['#name']}}{{ view.element['#display_id'] }}">
-
+          {# Header goes here... #}
         <span class="accordion__arrow">
             <span class="accordion__arrow-half"></span>
             <span class="accordion__arrow-half"></span>
@@ -29,19 +30,16 @@
     </button>
 
     <div class="collapse show accordion__body" id="{{ view.element['#name']}}{{ view.element['#display_id'] }}">
-        <div class="card">
-            <ul class="list-group list-group-flush">
-
-            </ul>
+        <div class="row col-sm">
+          {{ _context.rows }}
         </div>
     </div>
 </div>
 
-{# 
-Card Markup
+{#  
 <div class="card--list col-sm-6">
   <div class="card--image">
-    <img src={{ file_url(content.field_picture|field_target_entity.uri.value) }} alt={{ content.field_picture|field_raw('alt') }} />
+    <img src={{ file_url(content.field_picture|field_target_entity.uri.value) }} alt={{ content.field_picture|field_raw('alt') }} /> 
   </div>
   <div class="card--content">
     <h3>{{ content.field_name|field_value }}</h3>
