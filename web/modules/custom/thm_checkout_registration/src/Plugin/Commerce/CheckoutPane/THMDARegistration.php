@@ -107,6 +107,8 @@ class THMDARegistration extends CheckoutPaneBase {
 
     $back_step_url = 'internal:/checkout/' . $this->order->id() . '/membership_options';
 
+    $pane_form['#theme'] = 'thm_registration_info';
+
     $pane_form['#tree'] = true;
 
     // embedded forms don't play nice with container/fieldset/prefix/suffix
