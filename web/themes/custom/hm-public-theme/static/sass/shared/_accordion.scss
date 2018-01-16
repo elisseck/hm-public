@@ -47,3 +47,22 @@
     transform: rotate(-45deg);
   }
 }
+
+.accordion-block.accordion {
+  margin: 0 auto;
+  max-width: 70%;
+  width: 100%;
+
+  button.accordion__panel {
+    margin-bottom: 0;
+  }
+
+  .accordion__body p {
+    padding: 0 $default-grid-gutter-width;
+  }
+
+  &:last-of-type {
+    margin-bottom: em(100);
+  }
+
+}
