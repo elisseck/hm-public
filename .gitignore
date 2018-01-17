@@ -35,3 +35,5 @@ node_modules
 # Ignore fm files
 fm_files
 fm_import
+
+/dist/
