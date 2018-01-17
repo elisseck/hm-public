@@ -20,9 +20,9 @@
 {# {{ drupal_dump(_context|keys) }} #}
 {# {{ drupal_dump(_context.rows) }} #}
 
-<div class="accordion">
+<div class="people-block accordion">
     <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#{{ view.element['#name']}}{{ view.element['#display_id'] }}" aria-expanded="true" aria-controls="{{ view.element['#name']}}{{ view.element['#display_id'] }}">
-          {# Header goes here... #}
+          {{ drupal_title() }}
         <span class="accordion__arrow">
             <span class="accordion__arrow-half"></span>
             <span class="accordion__arrow-half"></span>
