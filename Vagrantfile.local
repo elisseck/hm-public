@@ -17,3 +17,6 @@ end
 if Vagrant.has_plugin?('vagrant-exec')
   config.exec.commands '*', directory: '/var/www/drupalvm/web'
 end
+
+config.vm.network 'forwarded_port', guest: 80, host: 9540, auto_correct: true
+
