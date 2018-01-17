@@ -33,19 +33,42 @@
 
 // Board/Committee Cards
 .staff-card {
-  background: $white;
-  border: 1px solid color(medium-grey);
-  display: flex;
-  flex: 1;
-  flex-basis: 45%;
-  flex-flow: row wrap;
   margin: 0 2% em(32) 2.5%;
   max-width: 45%;
-  padding-left: 0;
+  padding: 0;
+
+  &--accordion {
+    background: $white;
+    border: 1px solid color(medium-grey);
+
+    .accordion__panel {
+      background-color: transparent;
+      color: color(secondary);
+      margin-bottom: 0;
+      padding: 0;
+    }
+
+    .accordion__panel .accordion__arrow-half {
+      background-color: color(secondary);
+    }
+
+    .accordion__body {
+      color: $black;
+
+      p {
+        padding: 0 0.75em 0.75em;
+      }
+
+    }
+
+  }
 
   &--image {
-    height: 150px;
+    height: auto;
+    max-height: 150px;
+    min-width: 150px;
     overflow: hidden;
+    padding: 0;
     width: 150px;
 
     img {
@@ -57,13 +80,13 @@
 
   &--content {
     background-color: $white;
-    flex: 1;
     padding: em(12);
-    z-index: 2;
 
     h3 {
+      color: color(secondary);
       font-family: $oswald;
       font-size: em(25);
+      line-height: 80%;
       margin-top: 0;
     }
 
@@ -85,6 +108,12 @@
     h3, h4 {
       text-decoration: none;
     }
+
   }
 
-}//.card--list
+}//staff-card
+
+.staff-card .staff-card--accordion.accordion {
+  margin: 0;
+  max-width: 100%;
+}
