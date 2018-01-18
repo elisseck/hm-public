@@ -44,8 +44,10 @@
     .accordion__panel {
       background-color: transparent;
       color: color(secondary);
-      margin-bottom: 0;
+      cursor: pointer;
+      margin: 0;
       padding: 0;
+      width: 100%;
     }
 
     .accordion__panel .accordion__arrow-half {
@@ -54,6 +56,9 @@
 
     .accordion__body {
       color: $black;
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 100%;
 
       p {
         padding: 0 0.75em 0.75em;
