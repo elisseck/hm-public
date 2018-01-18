@@ -37,6 +37,13 @@
 @import 'shared/cards';
 @import 'shared/forms/progress-bar';
 @import 'shared/accordion';
+@import 'shared/cards';
+@import 'shared/carousel';
+@import 'shared/forms/progress-bar';
+@import 'shared/snapshot-blocks';
+@import 'shared/quotes';
+@import 'shared/slides';
+@import 'shared/readmore';
 
 // Content styling
 @import 'content/intro-content';
@@ -47,14 +54,6 @@
 @import 'pages/home';
 @import 'pages/bio-details';
 @import 'pages/user-profile';
-
-// Shared components
-@import 'shared/cards';
-@import 'shared/carousel';
-@import 'shared/forms/progress-bar';
-@import 'shared/snapshot-blocks';
-@import 'shared/quotes';
-@import 'shared/slides';
 
 // Views styling
 @import 'views/biographies';
