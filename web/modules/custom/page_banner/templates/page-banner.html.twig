@@ -14,7 +14,7 @@
 
 {# {{ drupal_dump(banner_data) }} #}
 
-<div style="background-image: url('{{ banner_data.background_image }}'); background-color: {{ banner_data.background_color }};">
+<div style="background-image: url('{{ banner_data.background_image }}'); background-color: {{ banner_data.background_color }}; background-size: cover;">
   <div class="banner row col-lg-12">
     <h2 class="col-sm-9">{{ drupal_title() }}</h2>
     <div class="banner--highlight col-sm-3" style="background-image: url('{{ banner_data.highlight_section_image }}');" alt="{{ banner_data.highlight_section_name }}">
