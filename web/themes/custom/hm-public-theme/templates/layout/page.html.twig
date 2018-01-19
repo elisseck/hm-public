@@ -60,20 +60,20 @@
   </div>
 {% endif %}
 
-<div class="wrapper">
+{% if page.highlighted %}
+  <div class="highlighted">{{ page.highlighted }}</div>
+{% endif %}
+
+<div class="content-wrapper">
   {{ page.breadcrumb }}
 
-  <section class="content column">
+  <section class="content column section-wrapper">
     {% if messages %}
       <div class="messages">
         {{ messages }}
       </div>
     {% endif %}
     {{ page.help }}
-
-    {% if page.highlighted %}
-      <div class="highlighted">{{ page.highlighted }}</div>
-    {% endif %}
 
     <a id="main-content" tabindex="-1"></a>
 
