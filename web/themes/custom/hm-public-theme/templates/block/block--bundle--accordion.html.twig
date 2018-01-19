@@ -10,10 +10,11 @@
  */
 #}
 
-{# {{ drupal_dump(_context.elements['#id']) }} #}
+<!-- {{ drupal_dump(_context.elements) }}
+{{ drupal_dump(_context.elements['#derivative_plugin_id']) }} -->
 
 <div class="accordion-block accordion">
-  <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#{{  _context.elements['#id']}}" aria-expanded="false" aria-controls="{{  _context.elements['#id']}}">
+  <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#{{  _context.elements['#derivative_plugin_id']}}" aria-expanded="false" aria-controls="{{  _context.elements['#derivative_plugin_id']}}">
     {{ content.field_accordion_title|field_value }}
     <span class="accordion__arrow">
       <span class="accordion__arrow-half"></span>
@@ -21,7 +22,7 @@
     </span>
   </button>
 
-  <div class="collapse accordion__body" id="{{  _context.elements['#id']}}">
+  <div class="collapse accordion__body" id="{{  _context.elements['#derivative_plugin_id']}}">
     <div>
       {{ content.field_accordion_content|field_value }}
     </div>
