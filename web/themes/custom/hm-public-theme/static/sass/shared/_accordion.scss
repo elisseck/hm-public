@@ -6,6 +6,8 @@
   border-radius: 0;
   display: flex;
   font-size: em(20);
+  margin-left: auto;
+  margin-right: auto;
   padding: em(10, 18) em(15, 18);
   width: 100%;
 }
@@ -48,10 +50,22 @@
   }
 }
 
+.accordion-block.accordion,
+.people-block.accordion {
+  @extend %max-width;
+  max-width: 1008px;
+  width: 70%;
+
+  button.accordion__panel,
+  .accordion__body {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
+
+}
+
 .accordion-block.accordion {
-  margin: 0 auto;
-  max-width: 70%;
-  width: 100%;
 
   button.accordion__panel {
     margin-bottom: 0;

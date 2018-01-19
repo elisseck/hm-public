@@ -57,18 +57,6 @@ div.wrapper .sidebar.second {
   margin-bottom: 0;
 }
 
-//Custom Layout
-.layout-1-1col {
-  margin: 0 auto;
-  max-width: $max-width;
-  width: 100%;
-
-  .column {
-    padding: 0;
-  }
-
-}
-
 //Place Back to Top button below views
 div#buttonbacktotop {
   order: 2;

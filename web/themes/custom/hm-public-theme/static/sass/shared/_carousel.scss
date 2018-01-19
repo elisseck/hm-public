@@ -5,11 +5,17 @@
 .hero-carousel {
   margin-bottom: em(30);
   margin-top: em(30);
-  padding: 0 $default-grid-gutter-width;
 }
 
 .two-column-quote-carousel {
   background-color: color(carousel-bg-alt);
+}
+
+.two-column-quote-carousel .carousel-inner,
+.two-column-snapshot-carousel .carousel-inner,
+.hero-carousel .carousel-inner {
+  @extend %max-width;
+  padding: 0 $default-grid-gutter-width;
 }
 
 // Pagers
