@@ -12,8 +12,7 @@
  *   displayed after the main title tag that appears in the template.
  */
 #}
-{{ title_prefix }}
-{% if title %}
-  <h1 class="page-title"{{ title_attributes }}>{{ title }}</h1>
-{% endif %}
-{{ title_suffix }}
+
+<div id="pagetitle">
+  <h1 class="page-title">{{ drupal_title() }}</h1>
+</div>
