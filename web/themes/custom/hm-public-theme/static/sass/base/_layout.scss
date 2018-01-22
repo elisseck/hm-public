@@ -40,6 +40,7 @@ h1, h2, h3, h4, h5, h6 {
   order: 2;
 }
 
+//Correct position of Second Sidebar
 .columns-middle .sidebar.second {
   flex-basis: 20%;
   min-width: 20%;
@@ -47,6 +48,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
+//Correct spacing on content areas
 div.wrapper {
   padding: 0;
 }
@@ -55,6 +57,19 @@ div.wrapper .content.column,
 div.wrapper .sidebar.first,
 div.wrapper .sidebar.second {
   margin-bottom: 0;
+}
+
+.block-region-content {
+  width: 100%;
+}
+
+.content-wrapper,
+.section-wrapper {
+  display: flex;
+}
+
+.content-wrapper {
+  @extend %max-width;
 }
 
 //Place Back to Top button below views
