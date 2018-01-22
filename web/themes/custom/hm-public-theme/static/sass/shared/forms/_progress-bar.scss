@@ -38,3 +38,35 @@
     display: none;
   }
 }
+
+.checkout-progress {
+  display: flex;
+}
+
+.checkout-progress--step {
+  @extend %oswald;
+
+  align-items: center;
+  background-color: color(medium-grey);
+  color: color(disabled-text);
+  display: flex;
+  flex: 1;
+  font-size: em(22);
+  font-weight: 400;
+  justify-content: center;
+  margin-right: em(15);
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+}
+
+.checkout-progress--step__current {
+  background-color: color(dark-grey);
+  color: $white;
+  font-weight: 400;
+  padding: em(16) 0;
+}
+
+.checkout-progress--step:before { display: none; }
