@@ -1,5 +1,6 @@
 // Single snapshot container
 .snapshot-blocks {
+  @extend %max-width;
   margin-bottom: em(60);
 
   .field-items {
@@ -8,8 +9,8 @@
   }
 
   .field-item {
-    flex: 0 1 30%;
-    margin: 0 30px;
+    flex: 0 1 25%;
+    margin: 0 15px;
   }
 
 }
@@ -21,8 +22,10 @@
 
 // Two column snapshot container
 .two-column-snapshot {
-  margin: em(60) auto 3.75em;
-  max-width: 70%;
+  @extend %max-width;
+  margin-bottom: 3.75em;
+  margin-top: em(60);
+  width: 70%;
 
   &--image img {
     float: right;

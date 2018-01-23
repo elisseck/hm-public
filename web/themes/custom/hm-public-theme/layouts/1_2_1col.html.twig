@@ -15,7 +15,7 @@
   </div>
 {% endif %}
 
-<div class="wrapper">
-  {{ page.content }}
-  {{ content.content }}
+<div class="wrapper layout--1-2-1col">
+  <div class="col-sm-12 col-md-6 column first">{{ content.custom_left }}</div>
+  <div class="col-sm-12 col-md-6 column last">{{ content.custom_right }}</div>
 </div>

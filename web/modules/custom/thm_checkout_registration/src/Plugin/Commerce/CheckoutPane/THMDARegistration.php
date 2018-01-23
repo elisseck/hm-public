@@ -54,6 +54,14 @@ class THMDARegistration extends CheckoutPaneBase {
   protected $clientIp;
 
   /**
+   * The user authentication object.
+   *
+   * @var \Drupal\user\UserAuthInterface
+   */
+  protected $userAuth;
+
+
+  /**
    * Populates account custom fields from user-registration form.
    *
    * @param $formValues
@@ -91,6 +99,13 @@ class THMDARegistration extends CheckoutPaneBase {
       $container->get('user.auth'),
       $container->get('request_stack')
     );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isVisible() {
+    return \Drupal::currentUser()->isAnonymous();
   }
 
   /**
