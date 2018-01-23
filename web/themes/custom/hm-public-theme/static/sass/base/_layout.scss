@@ -80,3 +80,15 @@ div#buttonbacktotop {
 .views-element-container.contextual-region {
   order: 1;
 }
+
+//Custom Layouts
+.layout--1-2-1col {
+  @extend %max-width;
+
+  .first,
+  .last {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}

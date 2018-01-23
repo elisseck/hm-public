@@ -31,3 +31,15 @@
       label: Banner
     content:
       label: Content
+
+1_2_1col:
+  label: 1-2-1 Column
+  category: HistoryMaker Layouts
+  template: layouts/1_2_1col
+  regions:
+    banner: 
+      label: Banner
+    custom_left:
+      label: Left
+    custom_right:
+      label: Right
