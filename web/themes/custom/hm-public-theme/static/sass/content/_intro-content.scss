@@ -1,7 +1,14 @@
 .intro-content {
-  margin: $default-grid-gutter-width auto em(60);
-  max-width: 70%;
+  @extend %max-width;
+  margin-bottom: em(60);
+  margin-top: $default-grid-gutter-width;
   text-align: center;
+
+  div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
 
   h1 {
     @extend %oswald;

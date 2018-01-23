@@ -16,12 +16,17 @@
 
 }
 
-.block-views .accordion {
-  margin: 0 auto;
-  max-width: 70%;
+.people-block.accordion {
+  @extend %max-width;
 
   .row {
     margin: 0;
   }
 
+}
+
+.people-block.accordion .accordion__body .staff-card--accordion .accordion__body {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
 }

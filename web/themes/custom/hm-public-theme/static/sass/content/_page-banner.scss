@@ -1,5 +1,4 @@
-.banner {
-  background-size: cover;
+.page-banner {
   display: flex;
   height: em(276);
   margin: 0 auto;
@@ -16,7 +15,7 @@
     padding-left: $default-grid-gutter-width;
   }
 
-  .banner--highlight {
+  .page-banner--highlight {
     align-items: flex-end;
     background-position: center;
     background-size: cover;
@@ -34,7 +33,7 @@
       z-index: 10;
     }
 
-    .banner--highlight-name {
+    .page-banner--highlight-name {
       @extend %oswald;
       align-content: flex-end;
       flex-basis: 100%;
@@ -43,7 +42,7 @@
       z-index: 10;
     }
 
-    .banner--feature-occupation {
+    .page-banner--feature-occupation {
       line-height: 100%;
       padding-top: em(8);
       z-index: 10;
