@@ -88,4 +88,22 @@ div#buttonbacktotop {
 //Custom Layouts
 .layout--1-2-1col {
   @extend %max-width;
+
+  .first {
+    padding-right: 0;
+  }
+
+  .last {
+    padding-left: 0;
+  }
+
+  .block-region-custom-left {
+    border-right: 1px solid color(medium-grey);
+    padding-right: $default-grid-gutter-width;
+  }
+
+  .block-region-custom-right {
+    padding-left: $default-grid-gutter-width;
+  }
+
 }
