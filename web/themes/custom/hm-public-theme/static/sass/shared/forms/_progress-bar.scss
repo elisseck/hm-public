@@ -70,3 +70,9 @@
 }
 
 .checkout-progress--step:before { display: none; }
+
+.checkout-pane-thmda-membership-opts {
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: em(300);
+}
