@@ -46,3 +46,18 @@
   margin-right: auto;
   max-width: $max-width;
 }
+
+%card-header {
+  @extend %oswald;
+  color: color(secondary);
+  font-size: em(20);
+}
+
+%text-overflow {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
+  line-height: 120%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

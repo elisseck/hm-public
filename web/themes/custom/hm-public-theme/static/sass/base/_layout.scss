@@ -72,6 +72,10 @@ div.wrapper .sidebar.second {
   @extend %max-width;
 }
 
+section.content.column.section-wrapper {
+  padding: 0;
+}
+
 //Place Back to Top button below views
 div#buttonbacktotop {
   order: 2;
@@ -84,11 +88,4 @@ div#buttonbacktotop {
 //Custom Layouts
 .layout--1-2-1col {
   @extend %max-width;
-
-  .first,
-  .last {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
 }
