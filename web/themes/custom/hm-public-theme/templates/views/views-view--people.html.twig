@@ -17,12 +17,13 @@
  */
 #}
 
-{# {{ drupal_dump(_context|keys) }} #}
-{# {{ drupal_dump(_context.rows) }} #}
+{# {{ drupal_dump(_context|keys) }}  #}
+{# {{ drupal_dump(_context.view.display.display.display_title) }} #}
+{# display_title #}
 
 <div class="people-block accordion">
     <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#{{ view.element['#name']}}{{ view.element['#display_id'] }}" aria-expanded="true" aria-controls="{{ view.element['#name']}}{{ view.element['#display_id'] }}">
-          {{ drupal_title() }}
+          {{ _context.view.display.display.display_title }}
         <span class="accordion__arrow">
             <span class="accordion__arrow-half"></span>
             <span class="accordion__arrow-half"></span>
