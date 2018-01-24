@@ -1,3 +1,6 @@
+// Some rules are overly specific due to the lack of ability to
+// control the markup generated.
+
 input {
   border: 1px solid color(medium-grey);
   height: em(45);
@@ -9,7 +12,10 @@ fieldset { border: 0; }
 
 .filter-wrapper { @extend %sr-only; }
 
-.form__row { display: flex; }
+.form__row {
+  display: flex;
+  margin: 1rem 0;
+}
 
 .form__field {
   margin-right: em(16);
@@ -28,11 +34,16 @@ fieldset { border: 0; }
 }
 
 .form__button input,
+.form-submit,
 .form__button a {
   @extend %button;
   @extend .button;
 
   width: em(100);
+}
+
+.form-submit {
+  @extend %button--primary
 }
 
 .form__button {
@@ -51,7 +62,8 @@ fieldset { border: 0; }
     }
   }
 
-  &--primary input {
+  &--primary input,
+  .form-submit {
     @extend %button--primary;
 
     &:hover,
@@ -69,6 +81,20 @@ fieldset { border: 0; }
     }
   }
 
+}
+
+.form-submit.form-submit {
+  @extend %button--primary;
+  background-color: color(primary);
+  border: em(1) solid transparent;
+
+  &:hover,
+  &:focus {
+    @extend %button--primary-focus;
+    background-color: $white;
+    border: em(1) solid color(primary);
+    color: color(primary);
+  }
 }
 
 // form wrapper
