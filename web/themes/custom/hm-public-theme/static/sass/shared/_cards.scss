@@ -26,9 +26,7 @@
 }
 
 .bio-card__name {
-  @extend %oswald;
-  color: color(secondary);
-  font-size: em(20);
+  @extend %card-header;
 }
 
 // Board/Committee Cards
@@ -88,8 +86,7 @@
     padding: em(12);
 
     h3 {
-      color: color(secondary);
-      font-family: $oswald;
+      @extend %card-header;
       font-size: em(25);
       line-height: 80%;
       margin-top: 0;
@@ -121,4 +118,42 @@
 .staff-card .staff-card--accordion.accordion {
   margin: 0;
   max-width: 100%;
+}
+
+//Maker 
+.list-maker-category-cards {
+  display: flex;
+  flex-direction: row;
+}
+
+.maker-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  a {
+    color: color(dark-grey);
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    img {
+      height: auto;
+      padding: 0;
+    }
+
+    h3 {
+      @extend %card-header;
+      font-size: em(25);
+      margin-top: 15px;
+    }
+
+    p {
+      @extend %text-overflow;
+      margin-top: 0;
+    }
+
+  }
+
 }
