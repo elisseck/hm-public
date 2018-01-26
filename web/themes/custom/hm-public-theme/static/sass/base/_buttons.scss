@@ -1,4 +1,5 @@
-.button.button {
+.button.button,
+%button {
   @extend %source-sans-semi-bold;
   border-radius: 0;
   font-size: rem(16);
@@ -9,12 +10,14 @@
   }
 }
 
-.button.button--primary {
+.button.button--primary,
+%button--primary {
   background-color: color(primary);
   border: em(1) solid transparent;
 }
 
-.button.button--secondary {
+.button.button--secondary,
+%button--secondary {
   background-color: color(secondary);
   border: em(1) solid transparent;
 }
@@ -26,7 +29,8 @@
 
 // hover and focus state
 .button.button--primary:hover,
-.button.button--primary:focus {
+.button.button--primary:focus,
+%button--primary-focus {
   background-color: $white;
   border: em(1) solid color(primary);
   color: color(primary);
