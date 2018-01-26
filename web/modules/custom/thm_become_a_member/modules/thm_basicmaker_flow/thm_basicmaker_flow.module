@@ -10,8 +10,9 @@ use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
 use Drupal\webform\Utility\WebformFormHelper;
-use Drupal\webform\Entity\Webform;
 use Drupal\webform\WebformSubmissionForm;
+use Drupal\webform\WebformSubmissionInterface;
+use Drupal\user\UserInterface;
 
 
 /**
@@ -32,12 +33,21 @@ function thm_basicmaker_flow_help($route_name, RouteMatchInterface $route_match)
   return false;
 }
 
-function thm_basicmaker_flow_create_placeholder_user() {
+/**
+ *
+ * Creates an in-memory user account.
+ * @param array $data
+ *
+ * @return bool|\Drupal\Core\Entity\EntityInterface
+ */
+function thm_basicmaker_flow_create_user($data = []) {
   $entityTypeMgr = \Drupal::entityTypeManager();
   $logger        = \Drupal::logger('thm_basicmaker_flow');
 
   try {
-    return $entityTypeMgr->getStorage('user')->create([]);
+    /** @var UserInterface $account */
+    $account = $entityTypeMgr->getStorage('user')->create($data);
+    return $account;
   } catch (InvalidPluginDefinitionException $exc) {
     $msg = 'An error occurred in the formation of this page.  Please contact ' .
       'your administrator';
@@ -73,15 +83,13 @@ function populateTempUserObject($formValues) {
 function create_user($session, $accountData) {
   $profileData  = $session->get('profile');
 
-
   /** @var \Drupal\user\UserInterface $account */
-  $account = \Drupal::entityTypeManager()->getStorage('user')
-    ->create([
-      'mail' => $accountData['mail'],
-      'name' => $accountData['name'],
-      'pass' => $accountData['password'],
-      'status' => TRUE
-    ]);
+  $account = thm_basicmaker_flow_create_user([
+    'mail' => $accountData['mail'],
+    'name' => $accountData['name'],
+    'pass' => $accountData['password'],
+    'status' => TRUE
+  ]);
 
   foreach ($profileData as $fieldName => $fieldValue) {
     $account->set($fieldName, $fieldValue);
@@ -90,60 +98,64 @@ function create_user($session, $accountData) {
   $account->save();
   user_login_finalize($account);
   _user_mail_notify('register_no_approval_required', $account);
-  drupal_set_message('An account has been created for ' . $account->getUsername());
+  drupal_set_message('An account has been created for ' . $account->getDisplayName());
 }
 
 /**
  * Implements hook_form_alter().
  */
-function thm_basicmaker_flow_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function thm_basicmaker_flow_form_alter(&$form, FormStateInterface $formState, $formId) {
   $targetForm = get_webform_id();
   $session    = \Drupal::request()->getSession();
 
-  if ($form_id === $targetForm) {
+  if ($formId === $targetForm) {
 
     $els = &WebformFormHelper::flattenElements($form['elements']);
 
     if (this_is_the_right_page($els, 'tell_us_about_you')) {
 
-      $anonUser = thm_basicmaker_flow_create_placeholder_user();
+      // Creates an 'empty' user account to satisfy the needs to load the
+      // system user display form.
+      $anonUser = thm_basicmaker_flow_create_user();
 
       if (!$anonUser) return false;
 
       $userForm = EntityFormDisplay::collectRenderDisplay(
         $anonUser, 'default');
-      $form['account_form'] = $userForm->buildForm($anonUser,$form, $form_state);
+      $form['account_form'] = $userForm->buildForm($anonUser,$form, $formState);
 
     } else if (this_is_the_right_page($els, 'membership_account_setup')) {
 
-      $values    = $form_state->getValue($form['#parents']);
+      // Stores account data into a session object while user registers.
+      $values    = $formState->getValue($form['#parents']);
       $userData  = populateTempUserObject($values);
       $session->set('profile', $userData);
 
     } else if (this_is_the_right_page($els, 'user_profile')) {
 
-      $form['user_profile_form'] = [
-        '#type' => 'webform', '#webform' => 'user_profile'
-      ];
-
-      $accountData = $form_state->getValue($form['#parents']);
+      // Creates a user account, populates account with account data,
+      // sends welcome email, and logs user in.
+      $accountData = $formState->getValue($form['#parents']);
       create_user($session, $accountData);
-
-
-    } else {
-      $values = $form_state->getValue($form['user_profile_form']);
-      drupal_set_message(print_r($values, true));
-      //$survey = Webform::load('user_profile');
-
     }
   }
 }
 
-/**
- * Implements hook_webform_component_presave().
- */
-function thm_basicmaker_flow_webform_component_presave(&$component) {
+function thm_basicmaker_flow_form_submit(array &$form, FormStateInterface $formState) {
+  $values           = $formState->getValue($form['#parents']);
+  $userSurveyValues = [];
 
+  $userSurveyValues['in_draft'] = $values['in_draft'];
+
+  $tmp = array_filter($values, function($key) {
+    $exclude = ['mail', 'name', 'password', 'in_draft'];
+    return !in_array($key, $exclude);
+  }, ARRAY_FILTER_USE_KEY);
+
+  $userSurveyValues['data']       = $tmp;
+  $userSurveyValues['webform_id'] = 'user_profile';
+
+  WebformSubmissionForm::submitValues($userSurveyValues);
 }
 
 function validate(&$element, FormStateInterface $formState, &$context) {
@@ -154,12 +166,11 @@ function validate(&$element, FormStateInterface $formState, &$context) {
   if ($value === '' || is_array($value)) return;
 
   /** @var \Drupal\user\UserInterface $account */
-  $account = \Drupal::entityTypeManager()->getStorage('user')
-    ->create([
-      'mail' => $formValues['mail'],
-      'name' => $formValues['name'],
-      'pass' => $formValues['password']
-    ]);
+  $account = thm_basicmaker_flow_create_user([
+    'mail' => $formValues['mail'],
+    'name' => $formValues['name'],
+    'pass' => $formValues['password']
+  ]);
 
   $violations = $account->validate();
 
@@ -172,32 +183,17 @@ function validate(&$element, FormStateInterface $formState, &$context) {
 
 /**
  * Implements hook_webform_element_alter().
+ *
+ * @param array $element
+ * @param FormStateInterface $form_state
+ * @param array $context
+ *
  */
 function thm_basicmaker_flow_webform_element_alter(array &$element, FormStateInterface $form_state, array $context) {
-
-  if (isset($element['#type']) && $element['#type'] === 'status_messages') {
-    $prerenderFn = 'thm_basicmaker_flow_webform_element_status_messages_pre_render';
-    $element['#pre_render'][] = $prerenderFn;
-  }
-
   if ($element['#webform_id'] === 'basicmaker_membership_flow--mail' ||
       $element['#webform_id'] === 'basicmaker_membership_flow--name') {
     $element['#element_validate'][] = 'validate';
   }
-}
-
-function thm_basicmaker_flow_webform_element_status_messages_pre_render(&$ele) {
-  $ele = [
-    '#theme' => 'status_messages',
-    '#message_list' => drupal_set_message(null, true),
-    '#status_headings' => [
-      'status' => t('Status message'),
-      'error' => t('Error message'),
-      'warning' => t('Warning message')
-    ]
-  ];
-
-  return $ele;
 }
 
 /**
