@@ -1,9 +1,11 @@
+{# Makes sure the menu shows #}
 {% import _self as menus %}
 
 {#
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
+
 {{ attach_library('simple_megamenu/base') }}
 {{ menus.menu_links(items, attributes, 0) }}
 
@@ -30,10 +32,13 @@
           {% if has_megamenu(item.url) %}
             <div class="mega-menu-wrapper">
               <div class="mega-menu-background"></div>
-              {{ view_megamenu(item.url) }}
+              {# Shows the megamenu #}
+              {{ view_megamenu(item.url, 'before') }}
               {{ menus.menu_links(item.below, attributes.addClass('mega-menu-item'), menu_level + 1) }}
+              {{ view_megamenu(item.url, 'after') }}
             </div>
           {% else %}
+            {# Makes sure if there is not a megamenu the dropdown menu still shows #}
             {{ menus.menu_links(item.below, attributes.removeClass('mega-menu-item'), menu_level + 1) }}
           {% endif %}
         {% endif %}
