@@ -1,4 +1,5 @@
 <div class="page-wrapper">
+  {{ drupal_dump(page.content) }}
     {% include directory ~ '/partials/header.html.twig' %}
     <main class="main">
       <a id="main-content" tabindex="-1"></a>
@@ -203,7 +204,8 @@
 
                   <div class="accordion__body collapse show" id="videoInAccordion">
                       <div class="card-block">
-                        {{ page.content.angularblock }}                      
+                        
+                        {{ drupal_block('angular_block') }}  
                       </div>
                   </div>
                 </div>
