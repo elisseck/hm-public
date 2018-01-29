@@ -9,6 +9,7 @@
 namespace Drupal\thm_become_a_member\Form;
 
 use Drupal\Core\Form\FormBase;
+use Drupal\Core\Url;
 use Drupal\Core\Form\FormStateInterface;
 
 class THMRegister extends FormBase {
@@ -27,7 +28,7 @@ class THMRegister extends FormBase {
   }
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    drupal_set_message('basicmaker signup process goes here.');
+    $form_state->setRedirectUrl(Url::fromUri('internal:/become-a-member/basic'));
   }
 
 }

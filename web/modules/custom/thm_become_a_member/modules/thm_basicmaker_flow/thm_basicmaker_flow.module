@@ -11,8 +11,9 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
 use Drupal\webform\Utility\WebformFormHelper;
 use Drupal\webform\WebformSubmissionForm;
-use Drupal\webform\WebformSubmissionInterface;
 use Drupal\user\UserInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 
 /**
@@ -109,13 +110,16 @@ function thm_basicmaker_flow_form_alter(&$form, FormStateInterface $formState, $
   $session    = \Drupal::request()->getSession();
 
   if ($formId === $targetForm) {
+    // if user is already logged in, redirect them to their account page
+    if (\Drupal::currentUser()->isAuthenticated()) {
+      $res = new RedirectResponse(Url::fromUserInput('/user')->toString());
+      return $res->send();
+    }
 
     $els = &WebformFormHelper::flattenElements($form['elements']);
 
     if (this_is_the_right_page($els, 'tell_us_about_you')) {
 
-      // Creates an 'empty' user account to satisfy the needs to load the
-      // system user display form.
       $anonUser = thm_basicmaker_flow_create_user();
 
       if (!$anonUser) return false;
@@ -126,15 +130,12 @@ function thm_basicmaker_flow_form_alter(&$form, FormStateInterface $formState, $
 
     } else if (this_is_the_right_page($els, 'membership_account_setup')) {
 
-      // Stores account data into a session object while user registers.
       $values    = $formState->getValue($form['#parents']);
       $userData  = populateTempUserObject($values);
       $session->set('profile', $userData);
 
     } else if (this_is_the_right_page($els, 'user_profile')) {
 
-      // Creates a user account, populates account with account data,
-      // sends welcome email, and logs user in.
       $accountData = $formState->getValue($form['#parents']);
       create_user($session, $accountData);
     }
