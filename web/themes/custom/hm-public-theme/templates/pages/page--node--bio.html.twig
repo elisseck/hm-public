@@ -1,9 +1,15 @@
 <div class="page-wrapper">
+
     {% include directory ~ '/partials/header.html.twig' %}
+
+    {{ page.navigation }}
+
+    {{ page.highlighted }}
+
+    {{ page.banner }}
+
     <main class="main">
       <a id="main-content" tabindex="-1"></a>
-
-      <h1 class="page-title">{{ node.title.value }}</h1>
 
       <div class="container">
         {# Social Media Share #}
