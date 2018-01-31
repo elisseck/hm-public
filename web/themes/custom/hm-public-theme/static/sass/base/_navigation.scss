@@ -28,3 +28,13 @@ li.pager__item.pager__item--first,
 li.pager__item.pager__item--ellipsis {
   display: none;
 }
+
+//MegaMenu
+.simple-mega-menu-type-education-megamenu .name {
+  display: none;
+}
+
+//Hides required child nav item to show the megamenu
+#hm-public-theme-main-menu .menu-item--expanded:hover .mega-menu-wrapper ul {
+  display: none;
+}
