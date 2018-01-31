@@ -64,7 +64,7 @@ li.pager__item.pager__item--ellipsis {
 
   }
 
-  .menu-item.active-trail {
+  .menu-item.menu-item--active-trail {
     background-color: $black;
     color: $white;
     cursor: pointer;
@@ -140,12 +140,37 @@ li.pager__item.pager__item--ellipsis {
   text-transform: uppercase;
 }
 
-#hm-public-theme-main-menu .field-megamenu-left-link .field-item,
-#hm-public-theme-main-menu .field-megamenu-right-link .field-item {
-  padding: em(5) em(15);
-  text-transform: none;
+#hm-public-theme-main-menu .field-megamenu-left-link,
+#hm-public-theme-main-menu .field-megamenu-right-link {
 
-  &:hover {
+  .field-item {
+    padding: em(5) em(15);
+    text-transform: none;
+
+    &:hover {
+      background-color: $black;
+      cursor: pointer;
+      transition: .2s ease-in-out;
+
+      a {
+        color: $white;
+      }
+
+    }
+
+    a {
+      color: color(secondary);
+    }
+
+    a:hover {
+      border-bottom: 0;
+      color: $white;
+      transition: .2s ease-in-out;
+    }
+
+  }
+
+  .field-item.menu-item--active-trail {
     background-color: $black;
     cursor: pointer;
     transition: .2s ease-in-out;
@@ -154,16 +179,6 @@ li.pager__item.pager__item--ellipsis {
       color: $white;
     }
 
-  }
-
-  a {
-    color: color(secondary);
-  }
-
-  a:hover {
-    border-bottom: 0;
-    color: $white;
-    transition: .2s ease-in-out;
   }
 
 }
