@@ -3,6 +3,7 @@
   @extend %source-sans-semi-bold;
   border-radius: 0;
   font-size: rem(16);
+  margin-right: em(15);
   padding: em(16) em(14);
 
   @media screen and (max-width: 767px) {
