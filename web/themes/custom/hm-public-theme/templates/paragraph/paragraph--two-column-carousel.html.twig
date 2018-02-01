@@ -25,7 +25,7 @@
   <div class="col-sm-8 two-column-slide--image" style="background-image: url('{{ file_url(content.field_carousel_image|field_target_entity.uri.value) }}');" alt="{{ content.field_carousel_image|field_raw('alt') }}">
   </div>
   <div class="col-sm-4 two-column-slide--content carousel__caption">
-    <h2>{{ content.field_carousel_header|field_value }}</h2>
+    <h2 style="color: {{ content.field_carousel_header_color|field_value }};">{{ content.field_carousel_header|field_value }}</h2>
     <p>{{ content.field_carousel_content|field_value }}</p>
     {% if content.field_carousel_link|field_value is not empty %}
       <a href="{{ content.field_carousel_link|field_raw('uri') }}" class="button button--primary">
