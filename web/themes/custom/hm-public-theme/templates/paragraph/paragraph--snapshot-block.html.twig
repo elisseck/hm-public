@@ -19,7 +19,11 @@
 </ol> #}
 
 <div class="snapshot">
-  <h3>{{ content.field_snapshot_header|field_value }}</h3>
+  {% if content.field_snapshot_image|field_value is not empty %}
+    <div class="snapshot--image" style="background-image: url('{{ file_url(content.field_snapshot_image|field_target_entity.uri.value) }}');" alt="{{ content.field_snapshot_image|field_raw('alt') }}"></div>
+  {% endif %}
+  <h3 style="color: {{ content.field_snapshot_header_color|field_value }}">{{ content.field_snapshot_header|field_value }}</h3>
+  <h2>{{ content.field_snapshot_subtitle|field_value }}</h2>
   <p>{{ content.field_snapshot_content|field_value }}</p>
   {% if content.field_snapshot_button|field_value is not empty %}
     <a href="{{ content.field_snapshot_button|field_raw('uri') }}" class="button button--primary">

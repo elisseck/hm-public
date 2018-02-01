@@ -15,9 +15,31 @@
 
 }
 
-.snapshot h3 {
-  @extend %oswald;
-  color: color(quaternary);
+.snapshot {
+
+  &--image {
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+    margin-bottom: em(15);
+    width: 100%;
+  }
+
+  h3 {
+    @extend %oswald;
+    color: color(quaternary);
+  }
+
+  h2 {
+    @extend %source-sans-semi-bold;
+    font-size: em(18);
+  }
+
+  .button {
+    text-align: center;
+    width: 50%
+  }
+
 }
 
 // Two column snapshot container
