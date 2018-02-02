@@ -30,7 +30,7 @@
     color: color(quaternary);
   }
 
-  h2 {
+  h4 {
     @extend %source-sans-semi-bold;
     font-size: em(18);
   }
@@ -53,6 +53,54 @@
     float: right;
     margin-right: em(10);
     max-width: em(267);
+  }
+
+}
+
+//Past Winners Block
+.past-winner-block {
+  margin: 0 auto;
+  max-width: 60%;
+
+  h3.left-block-title {
+    @extend %oswald;
+    color: color(quaternary);
+    padding: em(30) 0 em(15);
+  }
+
+  .field-item {
+    flex: 1;
+  }
+
+  .field-item:first-child {
+    margin-left: 0;
+  }
+
+  .field-item:last-child {
+    margin-right: 0;
+  }
+
+}
+
+.field-past-winners-block .snapshot {
+  display: flex;
+  flex-direction: column;
+
+  .snapshot--image {
+    order: 1;
+  }
+
+  h4 {
+    order: 2;
+  }
+
+  h3 {
+    order: 3;
+  }
+
+  p {
+    margin: em(2) 0 0;
+    order: 4;
   }
 
 }
