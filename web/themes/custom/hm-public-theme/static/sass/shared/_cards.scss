@@ -38,6 +38,7 @@
   &--accordion {
     background: $white;
     border: 1px solid color(medium-grey);
+    display: flex;
 
     .accordion__panel {
       background-color: transparent;
@@ -59,7 +60,7 @@
       max-width: 100%;
 
       p {
-        padding: 0 0.75em 0.75em;
+        padding: em(15) em(30) em(30);
       }
 
     }
@@ -67,12 +68,11 @@
   }
 
   &--image {
+    flex: 1 0 100%;
     height: auto;
-    max-height: 150px;
-    min-width: 150px;
-    overflow: hidden;
+    max-width: 200px;
     padding: 0;
-    width: 150px;
+    width: 100%;
 
     img {
       height: auto;
@@ -83,12 +83,13 @@
 
   &--content {
     background-color: $white;
+    flex: 2;
     padding: em(12);
 
     h3 {
       @extend %card-header;
       font-size: em(25);
-      line-height: 80%;
+      line-height: 120%;
       margin-top: 0;
     }
 
@@ -97,6 +98,13 @@
       font-size: em(16);
     }
 
+    .accordion__arrow {
+      height: 11px;
+      margin-left: 10px;
+      margin-top: 5px;
+      width: 19px;
+    }
+    
     p {
       color: color(secondary);
       margin: 0;
