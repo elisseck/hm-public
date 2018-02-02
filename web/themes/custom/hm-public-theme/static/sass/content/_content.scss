@@ -1,0 +1,10 @@
+// Generic content styles
+.wrapper .body {
+  @extend %max-width;
+  width: 70%;
+
+  p {
+    font-size: em(18);
+  }
+
+}
