@@ -40,6 +40,14 @@
     width: 50%;
   }
 
+  .snapshot--download svg {
+    height: em(15);
+  }
+
+  .snapshot--link svg {
+    width: em(12);
+  }
+
 }
 
 // Two column snapshot container
