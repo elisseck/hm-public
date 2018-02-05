@@ -1,7 +1,40 @@
+//Quote Block
+.quote-block {
+  background-color: color(carousel-bg-alt);
+}
+
+.quote-block--content {
+  @extend %max-width;
+  padding: em(40) 0;
+  text-align: center;
+  width: 60%;
+
+  q {
+    @extend %oswald;
+    font-size: em(40);
+    line-height: 120%;
+  }
+
+}
+
+.quote-block--credits {
+  margin-top: em(15);
+
+  cite {
+    @extend %source-sans-semi-bold;
+    font-style: normal;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+}
+
 // Two Column Quote
 .two-column-quote {
   margin: em(60) auto 3.75em;
-  width: 70%;
+  width: 50%;
 
   &--content {
 
