@@ -1,6 +1,7 @@
 // Generic content styles
 .wrapper .body {
   @extend %max-width;
+  margin-bottom: em(50);
   width: 70%;
 
   p {
