@@ -10,9 +10,27 @@ namespace Drupal\thm_related_makers\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Render\Renderer;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\views\ViewExecutable;
 
 
 class RMController extends ControllerBase {
+
+  /**
+   * @var Renderer
+   */
+  protected $renderer;
+
+  public function __construct(Renderer $renderer) {
+    $this->renderer = $renderer;
+  }
+
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('renderer')
+    );
+  }
 
   /**
    * Retrives a node given a node id (nid).
@@ -37,6 +55,22 @@ class RMController extends ControllerBase {
   }
 
   /**
+   * Extracts terms from a node to be used as parameters in embedded views.
+   *
+   * @param Node $node
+   *
+   * @return array
+   */
+  public function getSearchTerms(Node $node): array {
+    return [
+      'favorite_color' => $node->get('field_favorite_color')->value,
+      'birthplace'     => $node->get('field_birth_place_term')->getValue(),
+      'occupation'     => $node->get('field_occupation')->getValue(),
+      'education'      => $node->get('field_schools')->getValue()
+    ];
+  }
+
+  /**
    * Page content processor.
    *
    * @param int $nid
@@ -46,13 +80,20 @@ class RMController extends ControllerBase {
    */
   public function content(int $nid): array {
 
-    $node = $this->getNode($nid);
-    $results = thm_related_makers_perform_search($node, false, 50);
+    $node  = $this->getNode($nid);
+    $terms = $this->getSearchTerms($node);
 
-    return [
-      '#cache' => [ 'max-age' => 0 ],
-      '#theme' => 'thm_related_makers_full_page',
-      '#data' => $results['data']
-    ];
+    /** @var ViewExecutable $colorView */
+    $colorView = \Drupal\views\Views::getView('related_makers_by_color');
+
+
+    $build['related_content'] = [];
+
+    $build['related_content']['by_birthplace'] = [];
+    $build['related_content']['by_color'] = $colorView->buildRenderable('block_1', [$terms['favorite_color']]);
+    $build['related_content']['by_occupation'] = [];
+    $build['related_content']['by_education'] = [];
+
+    return $build;
   }
 }
