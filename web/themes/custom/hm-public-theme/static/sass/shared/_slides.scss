@@ -11,12 +11,12 @@
 
 // Two Column Slide
 .two-column-slide {
-  height: 500px;
+  height: 550px;
 
   &--image {
     background-position: center;
     background-size: cover;
-    height: 500px;
+    height: 550px;
   }
 
   &--content {
@@ -40,6 +40,11 @@
       text-align: center;
     }
 
+  }
+
+  .carousel__caption {
+    padding-bottom: em(70);
+    padding-top: em(70);
   }
 
 }
