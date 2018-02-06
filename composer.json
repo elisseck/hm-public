@@ -38,6 +38,7 @@
         "drupal/panels": "^4.2",
         "drupal/paragraphs": "^1.2",
         "drupal/pathauto": "^1.0",
+        "drupal/profile": "^1.0@RC",
         "drupal/search_api": "^1.5",
         "drupal/search_api_solr": "^1.2",
         "drupal/simple_megamenu": "^1.0@beta",
