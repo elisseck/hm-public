@@ -11,6 +11,7 @@ namespace Drupal\thm_related_makers\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\Entity\Node;
 use Drupal\Core\Render\Renderer;
+use Drupal\views\Views;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\views\ViewExecutable;
 
@@ -76,7 +77,6 @@ class RMController extends ControllerBase {
    * @param int $nid
    *
    * @return array Render array
-   * @throws \Drupal\search_api\SearchApiException
    */
   public function content(int $nid): array {
 
@@ -84,13 +84,14 @@ class RMController extends ControllerBase {
     $terms = $this->getSearchTerms($node);
 
     /** @var ViewExecutable $colorView */
-    $colorView = \Drupal\views\Views::getView('related_makers_by_color');
+    $colorView = Views::getView('related_makers_by_color');
 
 
-    $build['related_content'] = [];
+    $build['related_content'] = [
+      'by_color' => $colorView->buildRenderable('block_1', [$terms['favorite_color']])
+    ];
 
     $build['related_content']['by_birthplace'] = [];
-    $build['related_content']['by_color'] = $colorView->buildRenderable('block_1', [$terms['favorite_color']]);
     $build['related_content']['by_occupation'] = [];
     $build['related_content']['by_education'] = [];
 
