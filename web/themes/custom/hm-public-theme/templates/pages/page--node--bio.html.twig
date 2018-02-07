@@ -79,9 +79,11 @@
               <section>
                 <div>
                   <img class="info__headshot" src="{{file_url(node.field_bio_image.entity.uri.value)}}" alt="">
-                  <div class="info__favorites">
-                    {{ drupal_view('flag_favorites', 'block_1') }}
-                  </div>
+                  {% if logged_in %}
+                    <div class="info__favorites">
+                      {{ drupal_view('flag_favorites', 'block_1') }}
+                    </div>
+                  {% endif %}
                 </div>
                 {{ field_bio_image }}
                 <h3>Profession</h3>

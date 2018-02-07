@@ -1,6 +1,17 @@
 <header class="header">
     <div class="header__top-row">
-        <a class="header__da-link" href="#">Explore The HistoryMakers Archives</a>
+        <div class="header__da-links">
+            <div class="header__da-links-title">Explore The HistoryMakers Archives</div>
+            <div class="header__da-link-container">
+                <!-- Still need to add role logic to display 'upgrade' link if not a paying member -->
+                {% if logged_in %}
+                    <a class="header__da-link" href="#">The HistoryMakers Digital Archive</a>
+                    <a class="header__da-link" href="#">ScienceMakers Digital Archive</a>
+                {% else %}
+                    <a class="header__da-link" href="/become-a-member">Become a member today!</a>
+                {% endif %}
+            </div>
+        </div>
         <a class="header__donate-link" href="#">Donate Now</a>
 
         <ul class="profile">
@@ -10,7 +21,7 @@
             </li>
             <li class="profile__option profile__option--logout">
                 <a class="profile__link" href="/user/logout" data-drupal-link-system-path="user/logout">Log out</a>
-            </li>  
+            </li>
         {% else %}
             <li class="profile__option profile__option--logout">
             <button class="profile__link" type="button" data-toggle="modal" data-target="#loginModal">
@@ -55,7 +66,7 @@
             </svg>
             </a>
         </li>
-        
+
         <li class="social__item">
             <a href="http://www.twitter.com/thehstrymakers" target="_blank">
             <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" viewBox="212.2 331.4 187.6 129.3">
@@ -133,4 +144,3 @@
 
     {{ page.header }}
     </header>
-  
