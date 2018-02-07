@@ -4,9 +4,67 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4f4f683773250207e8cff3f692364638",
-    "content-hash": "53fecb54d1258fa4ceaf95b22a0b63d8",
+    "content-hash": "e6e347902d3da090eba234909acb1520",
     "packages": [
+        {
+            "name": "ajgl/breakpoint-twig-extension",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ajgarlag/AjglBreakpointTwigExtension.git",
+                "reference": "0dfa4f0ae3bbeb6c8036e3e6d6c204c43b090155"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ajgarlag/AjglBreakpointTwigExtension/zipball/0dfa4f0ae3bbeb6c8036e3e6d6c204c43b090155",
+                "reference": "0dfa4f0ae3bbeb6c8036e3e6d6c204c43b090155",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "twig/twig": "^1.14"
+            },
+            "require-dev": {
+                "symfony/framework-bundle": "^2.3",
+                "symfony/twig-bundle": "^2.3"
+            },
+            "suggest": {
+                "ext-xdebug": "The Xdebug extension is required for the breakpoint to work",
+                "symfony/framework-bundle": "The framework bundle to integrate the extension into Symfony",
+                "symfony/twig-bundle": "The twig bundle to integrate the extension into Symfony"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ajgl\\Twig\\Extension\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antonio J. García Lagar",
+                    "email": "aj@garcialagar.es",
+                    "homepage": "http://aj.garcialagar.es",
+                    "role": "developer"
+                }
+            ],
+            "description": "Twig extension to set breakpoints",
+            "homepage": "https://github.com/ajgarlag/AjglBreakpointTwigExtension",
+            "keywords": [
+                "Xdebug",
+                "breakpoint",
+                "twig"
+            ],
+            "time": "2016-03-31T18:09:32+00:00"
+        },
         {
             "name": "alchemy/zippy",
             "version": "0.4.3",
@@ -3928,6 +3986,57 @@
             }
         },
         {
+            "name": "drupal/simple_megamenu",
+            "version": "1.0.0-beta3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/simple_megamenu",
+                "reference": "8.x-1.0-beta3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/simple_megamenu-8.x-1.0-beta3.zip",
+                "reference": "8.x-1.0-beta3",
+                "shasum": "7acc38f6e9e2fb371f2ea631f45e3110aacb8e4a"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta3",
+                    "datestamp": "1509488285",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "flocondetoile",
+                    "homepage": "https://www.drupal.org/user/2006064"
+                }
+            ],
+            "description": "Provide a Megamenu entity which can be used on Menu link content to construct a Mega Menu",
+            "homepage": "https://www.drupal.org/project/simple_megamenu",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/simple_megamenu",
+                "issues": "https://www.drupal.org/project/issues/simple_megamenu"
+            }
+        },
+        {
             "name": "drupal/state_machine",
             "version": "1.0.0-beta3",
             "source": {
@@ -4247,6 +4356,54 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/twig_tweak",
                 "issues": "https://www.drupal.org/project/issues/twig_tweak"
+            }
+        },
+        {
+            "name": "drupal/twig_xdebug",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/twig_xdebug",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/twig_xdebug-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "f8a5cfef63b427d6b6b428a2c4bd19b19d082037"
+            },
+            "require": {
+                "ajgl/breakpoint-twig-extension": "0.3",
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1464928439",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "charginghawk",
+                    "homepage": "https://www.drupal.org/user/2626341"
+                }
+            ],
+            "description": "Enables Xdebug breakpoints in Twig.",
+            "homepage": "https://www.drupal.org/project/twig_xdebug",
+            "support": {
+                "source": "http://cgit.drupalcode.org/twig_xdebug"
             }
         },
         {
@@ -4981,43 +5138,6 @@
             ],
             "description": "Converts HTML to formatted plain text",
             "time": "2016-03-16T23:24:34+00:00"
-        },
-        {
-            "name": "html2text/html2text",
-            "version": "4.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mtibben/html2text.git",
-                "reference": "f55104b7c9f99b0937f0e20fe051b19f9c0ecad1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mtibben/html2text/zipball/f55104b7c9f99b0937f0e20fe051b19f9c0ecad1",
-                "reference": "f55104b7c9f99b0937f0e20fe051b19f9c0ecad1",
-                "shasum": ""
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4"
-            },
-            "suggest": {
-                "ext-mbstring": "For best performance",
-                "symfony/polyfill-mbstring": "If you can't install ext-mbstring"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Html2Text\\": [
-                        "src/",
-                        "test/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPLv2"
-            ],
-            "description": "Converts HTML to formatted plain text",
-            "time": "2016-03-16 23:24:34"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -6018,60 +6138,6 @@
                 "mailer"
             ],
             "time": "2018-01-23T07:37:21+00:00"
-        },
-        {
-            "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "7ffc1ea296ed14bf8260b6ef11b80208dbadba91"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/7ffc1ea296ed14bf8260b6ef11b80208dbadba91",
-                "reference": "7ffc1ea296ed14bf8260b6ef11b80208dbadba91",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9.1",
-                "symfony/phpunit-bridge": "~3.2"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.4-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "lib/swift_required.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Corbyn"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Swiftmailer, free feature-rich PHP mailer",
-            "homepage": "https://swiftmailer.symfony.com",
-            "keywords": [
-                "email",
-                "mail",
-                "mailer"
-            ],
-            "time": "2018-01-23 07:37:21"
         },
         {
             "name": "symfony-cmf/routing",
@@ -9453,10 +9519,8 @@
         "drupal/devel": 20,
         "drupal/flag": 15,
         "drupal/page_manager": 10,
-<<<<<<< HEAD
         "drupal/profile": 5,
-=======
->>>>>>> b39a79ba2cf250e596714fbeb8e06a31f2cf1dc5
+        "drupal/simple_megamenu": 10,
         "drupal/swiftmailer": 10,
         "drupal/webform": 5,
         "drupal/webform_migrate": 15
