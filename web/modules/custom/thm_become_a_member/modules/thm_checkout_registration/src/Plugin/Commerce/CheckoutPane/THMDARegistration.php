@@ -71,7 +71,11 @@ class THMDARegistration extends CheckoutPaneBase {
     foreach ($formValues as $fieldName => $formValue) {
       if (!($formValue instanceof TranslatableMarkup)
         && substr($fieldName, 0, 6) === 'field_') {
-        $userAccount->set($fieldName, @$formValue[0]['value']);
+        if ($fieldName === 'field_intl_address') {
+          $userAccount->set($fieldName, $formValue[0]['address']);
+        } else {
+          $userAccount->set($fieldName, @$formValue[0]['value']);
+        }
       }
     }
 
