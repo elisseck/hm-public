@@ -129,6 +129,7 @@
     width: 70%;
 
     .field-item {
+      display: flex;
       flex: 1;
     }
 
@@ -138,6 +139,13 @@
 
     .field-item:last-child {
       margin-right: 0;
+    }
+
+    .snapshot {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: space-evenly;
     }
 
     h3 {
