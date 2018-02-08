@@ -18,6 +18,12 @@
   padding: 0 $default-grid-gutter-width;
 }
 
+//Testimonial Carousel
+.testimonial-carousel.carousel.slide {
+  background-color: color(carousel-bg-alt);
+  padding-bottom: em(30);
+}
+
 // Pagers
 .centered-carousel-indicators.carousel-indicators {
   left: 0;

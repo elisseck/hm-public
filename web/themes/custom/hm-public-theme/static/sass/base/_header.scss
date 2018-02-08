@@ -35,9 +35,9 @@
 .header__da-link-container {
   background-color: $white;
   left: 0;
+  opacity: 0;
   padding: em(16, 15) em(20, 15);
   position: absolute;
-  opacity: 0;
   width: 100%;
 
   .header__da-links:hover & {
