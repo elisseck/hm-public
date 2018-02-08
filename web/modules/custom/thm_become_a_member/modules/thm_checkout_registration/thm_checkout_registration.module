@@ -48,7 +48,6 @@ function thm_checkout_registration_theme($existing, $type, $theme, $path) {
  */
 function thm_checkout_registration_form_alter(&$form) {
   if (array_key_exists('#step_id', $form) && $form['#step_id'] === 'payment_method') {
-    //$form['#theme'] = 'thm_payment_info';
 
     $form['match_registration_data'] = [
       '#type' => 'checkbox',
