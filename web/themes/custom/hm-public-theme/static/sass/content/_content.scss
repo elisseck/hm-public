@@ -2,6 +2,7 @@
 .wrapper .body {
   @extend %max-width;
   margin-bottom: em(50);
+  margin-top: em(60);
   width: 70%;
 
   p {
