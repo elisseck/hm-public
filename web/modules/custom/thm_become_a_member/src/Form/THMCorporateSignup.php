@@ -10,6 +10,7 @@ namespace Drupal\thm_become_a_member\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 
 class THMCorporateSignup extends FormBase {
 
@@ -27,7 +28,9 @@ class THMCorporateSignup extends FormBase {
   }
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    drupal_set_message('industrymaker signup process goes here.');
+    $contact = '?subject=RE: Corporate Membership Inquiry';
+    $form_state->setRedirectUrl(
+      Url::fromUri('internal:/form/contact' . $contact));
   }
 
 }
