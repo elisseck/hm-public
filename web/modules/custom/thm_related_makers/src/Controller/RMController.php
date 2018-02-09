@@ -84,16 +84,28 @@ class RMController extends ControllerBase {
     $terms = $this->getSearchTerms($node);
 
     /** @var ViewExecutable $colorView */
-    $colorView = Views::getView('related_makers_by_color');
+    $colorView      = Views::getView('related_makers_by_color');
+    $birthPlaceView = Views::getView('related_makers_by_birthplace');
+    $occupationView = Views::getView('related_makers_by_occupation');
+    $educationView  = Views::getView('related_makers_by_education');
 
 
     $build['related_content'] = [
-      'by_color' => $colorView->buildRenderable('block_1', [$terms['favorite_color']])
+      'by_color' => $colorView->buildRenderable(
+        'block_1', [$terms['favorite_color']])
     ];
-
-    $build['related_content']['by_birthplace'] = [];
-    $build['related_content']['by_occupation'] = [];
-    $build['related_content']['by_education'] = [];
+    $build['related_content']['by_birthplace'] = [
+      'by_birthplace' => $birthPlaceView->buildRenderable(
+        'block_1', [$terms['birthplace']])
+    ];
+    $build['related_content']['by_occupation'] = [
+      'by_occupation' => $occupationView->buildRenderable(
+        'block_1', [$terms['occupation']])
+    ];
+    $build['related_content']['by_education'] = [
+      'by_education' => $educationView->buildRenderable(
+        'block_1', [$terms['education']])
+    ];
 
     return $build;
   }

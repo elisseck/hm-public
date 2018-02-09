@@ -6,6 +6,10 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\Entity\User;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\InvokeCommand;
 
 /**
  * Implements hook_help().
@@ -35,4 +39,54 @@ function thm_checkout_registration_theme($existing, $type, $theme, $path) {
       'render element' => 'form'
     ]
   ];
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param $form array
+ */
+function thm_checkout_registration_form_alter(&$form) {
+  if (array_key_exists('#step_id', $form) && $form['#step_id'] === 'payment_method') {
+
+    $form['match_registration_data'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Check if billing info matches registration info.'),
+      '#ajax' => [
+        'callback' => 'loadDataIntoBillingForm'
+      ]
+    ];
+  }
+}
+
+function getAddressFields() {
+  return [
+    '.country-code', '.given-name', '.family-name', '.address-line1',
+    '.address-line2', '.dependent-locality', '.sorting-code',
+    '.organization', '.locality', '.administrative-area', '.postal-code'
+  ];
+}
+
+function loadDataIntoBillingForm(&$form, FormStateInterface $formState) {
+  $profile      = User::load(\Drupal::currentUser()->id());
+  $checked      = $formState->getValue('match_registration_data');
+  $ajaxResponse = new AjaxResponse();
+  $formClasses  = getAddressFields();
+
+  if ($checked) {
+    $intlAddress = $profile->get('field_intl_address')->getValue()[0];
+
+    foreach ($formClasses as $formClass) {
+      $snakeCasedField = substr(str_replace('-', '_', $formClass), 1);
+      $ajaxResponse->addCommand(new InvokeCommand(
+        $formClass, 'val', [$intlAddress[$snakeCasedField]]
+      ));
+    }
+    return $ajaxResponse;
+  } else {
+    foreach ($formClasses as $formClass) {
+      $ajaxResponse->addCommand(new InvokeCommand($formClass, 'val', ['']));
+    }
+    return $ajaxResponse;
+  }
 }

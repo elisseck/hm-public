@@ -26,6 +26,10 @@ class THMDigitalMakerFlow extends CheckoutFlowWithPanesBase {
         'label' => $this->t('Registration Information'),
         'previous_label' => $this->t('Go Back')
       ],
+      'user_profile' => [
+        'label' => $this->t('User Profile'),
+        'previous_label' => $this->t('Go Back')
+      ],
       'payment_method' => [
         'label' => $this->t('Payment Method'),
         'previous_label' => $this->t('Go Back')

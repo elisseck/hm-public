@@ -49,6 +49,9 @@ function hm_public_theme_theme_suggestions_views_view_alter(array &$suggestions,
 }
 
 /**
+ * Provides variables to the twig responsible for formatting order receipt
+ * emails.
+ *
  * @param $vars
  */
 function hm_public_theme_preprocess_commerce_order_receipt(&$vars) {
@@ -57,4 +60,43 @@ function hm_public_theme_preprocess_commerce_order_receipt(&$vars) {
   $vars['site_name']      = $config->get('name');
   $vars['site_url']       = $host;
   $vars['site_login_url'] = $host . '/user/login';
+}
+
+/**
+ * Removes `fortytwo_preprocess_block` from the registry.
+ *
+ * @param $registry
+ */
+function hm_public_theme_theme_registry_alter(&$registry) {
+  $parentBlockRef = 'fortytwo_preprocess_block';
+
+  foreach ($registry as $key => $item) {
+    if (strpos($key, 'block') !== false) {
+      $index = array_search($parentBlockRef, $item['preprocess functions']);
+      if ($index) {
+        unset($registry[$key]['preprocess functions'][$index]);
+      }
+    }
+  }
+}
+
+/**
+ * Serves as a replacement for `fortytwo_preprocess_block`, but a bit more
+ * defensive as the use of Page Manager rewrites blocks in a manner that
+ * triggers warnings.
+ *
+ * @param $variables
+ */
+function hm_public_theme_preprocess_block(&$variables) {
+  // Replace first occurance of block- to clean up the ID's.
+  if (array_key_exists('id', $variables['attributes']) &&
+    substr($variables['attributes']['id'], 0, 6) === 'block-') {
+    $variables['attributes']['id'] = substr($variables['attributes']['id'], 6);
+  }
+
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+  if (array_key_exists('id', $variables['attributes']) &&
+    strstr($variables['attributes']['id'], $theme)) {
+    $variables['attributes']['id'] = str_replace($theme . '-', '', $variables['attributes']['id']);
+  }
 }
