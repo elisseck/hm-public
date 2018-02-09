@@ -9,6 +9,7 @@
 namespace Drupal\thm_checkout_registration\Plugin\Commerce\CheckoutPane;
 
 use Drupal\commerce_checkout\Plugin\Commerce\CheckoutPane\CheckoutPaneBase;
+use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\UserInterface;
 
@@ -30,7 +31,15 @@ class THMDAComplete extends CheckoutPaneBase {
 
   public function assignRole() {
     $this->user->addRole('thm_paid_member');
-    $this->user->save();
+    try {
+      $this->user->save();
+    } catch (EntityStorageException $exc) {
+      $msg = 'An error occurred in provisioning access to the Digital Archive' .
+        'Please notify an administrator ASAP.';
+      drupal_set_message($this->t($msg), 'error');
+      \Drupal::logger('thm_checkout_registration')
+        ->error($exc->getMessage());
+    }
   }
 
   /**
