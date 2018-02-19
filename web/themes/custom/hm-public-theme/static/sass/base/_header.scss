@@ -47,14 +47,9 @@
 
 .header__da-link {
   @extend %source-sans;
-  color: color(dark-grey);
   display: block;
   font-size: rem(14);
   margin-top: em(10, 14);
-
-  &:first-of-type {
-    margin-top: em(30, 14);
-  }
 }
 
 .header__donate-link {
