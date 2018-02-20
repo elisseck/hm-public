@@ -10,21 +10,7 @@ function thm_hero_video_player_theme($existing, $type, $theme, $path){
             'variables' => [
                 'video' => null
             ],
-            'template' => 'block--hero-video-player-block'
+            'template' => 'block--bundle--hero-video-player'
         ]
     ];
-}
-
-function thm_hero_video_player_get_current_node() {
-    $node = \Drupal::routeMatch()->getParameter('node');
-    if ($node instanceof NodeInterface) {
-      return $node;
-    } else {
-      return false;
-    }
-  }
-
-function thm_hero_video_player_page_attachments(array &$attachments) {
-    $attachments['#attached']['library'][] =
-        'thm_hero_video_player/thm_hero_video_player';
 }
