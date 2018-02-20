@@ -53,7 +53,6 @@
 .accordion-block.accordion,
 .people-block.accordion {
   @extend %max-width;
-  max-width: 1008px;
   width: 70%;
 
   button.accordion__panel,
