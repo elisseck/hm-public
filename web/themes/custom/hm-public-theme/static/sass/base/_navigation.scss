@@ -34,6 +34,25 @@ li.pager__item.pager__item--ellipsis {
   display: inline-block;
 }
 
+.menu-item.menu-item--expanded.menu-item--active-trail a {
+  border-bottom: em(8) solid color(tertiary);
+  transition: border-bottom .2s ease-in-out;
+
+  @media screen and (max-width: 767px) {
+    border-bottom: 0;
+  }
+
+}
+
+.menu-item.menu-item--expanded.menu-item--active-trail {
+
+  .menu .menu-item a,
+  .menu .menu-item.menu-item--active-trail a {
+    border-bottom: 0;
+  }
+
+}
+
 #hm-public-theme-main-menu .menu .menu {
   background: $white;
   display: none;
