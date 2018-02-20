@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
   flex-basis: 20%;
   min-width: 20%;
   order: 1;
-  padding: 0;
+  padding: 0 0 0 $default-grid-gutter-width;
 }
 
 .content.column,
