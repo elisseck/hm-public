@@ -2,6 +2,16 @@
   width: 100%;
 }
 
+.user-info__member-status {
+  @extend %oswald;
+  background-color: color(quaternary);
+  color: $white;
+  font-size: rem(25);
+  letter-spacing: 1.25px;
+  margin-bottom: em(15, 25);
+  padding: em(16, 25);
+}
+
 article {
   display: none;
 }
