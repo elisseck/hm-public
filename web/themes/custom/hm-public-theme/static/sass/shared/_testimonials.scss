@@ -73,3 +73,10 @@
   }
 
 }
+
+.two-column-testimonial--header {
+  @extend %oswald;
+  font-size: em(40);
+  margin-bottom: 0;
+  text-align: center;
+}
