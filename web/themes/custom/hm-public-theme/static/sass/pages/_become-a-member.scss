@@ -1,0 +1,34 @@
+.member {
+
+  &--anchor-buttons {
+    display: flex;
+    justify-content: center;
+
+    ul li {
+      display: inline;
+    }
+
+    ul li a {
+      text-align: center;
+      width: em(120);
+    }
+
+  }
+
+  &--content {
+    color: color(quaternary);
+    text-align: center;
+
+    h1 {
+      @extend %oswald;
+      font-size: em(40);
+      margin: 0 auto;
+    }
+
+    p {
+      color: $black;
+    }
+
+  }
+
+}

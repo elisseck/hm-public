@@ -53,26 +53,3 @@
   margin-left: auto;
   margin-right: auto;
 }
-
-//Testimonial Slide
-.testimonial-carousel {
-
-  h2 {
-    @extend %oswald;
-    background-color: color(carousel-bg-alt);
-    font-size: em(40);
-    margin-bottom: 0;
-    padding-top: em(15);
-    text-align: center;
-  }
-
-  .quote-block--content {
-    padding-top: em(30);
-
-    q {
-      font-size: em(30);
-    }
-
-  }
-
-}
