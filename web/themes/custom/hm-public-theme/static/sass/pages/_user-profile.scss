@@ -86,3 +86,16 @@ article {
   top: 0;
   z-index: 1500;
 }
+
+#views-block-user-information-block-1,
+#views-block-my-favorites-block-1 {
+  margin-top: $default-grid-gutter-width;
+}
+
+#views-block-user-information-block-1 {
+
+  .accordion__panel {
+    margin-bottom: 0;
+  }
+
+}
