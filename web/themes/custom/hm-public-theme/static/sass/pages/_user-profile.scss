@@ -2,6 +2,16 @@
   width: 100%;
 }
 
+.user-info__member-status {
+  @extend %oswald;
+  background-color: color(quaternary);
+  color: $white;
+  font-size: rem(25);
+  letter-spacing: 1.25px;
+  margin-bottom: em(15, 25);
+  padding: em(16, 25);
+}
+
 article {
   display: none;
 }
@@ -75,4 +85,17 @@ article {
   right: 15px;
   top: 0;
   z-index: 1500;
+}
+
+#views-block-user-information-block-1,
+#views-block-my-favorites-block-1 {
+  margin-top: $default-grid-gutter-width;
+}
+
+#views-block-user-information-block-1 {
+
+  .accordion__panel {
+    margin-bottom: 0;
+  }
+
 }
