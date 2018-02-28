@@ -23,6 +23,7 @@
         "drupal/commerce_authnet": "1.0-beta2",
         "drupal/commerce_migrate": "^2.0@alpha",
         "drupal/commerce_recurring": "^1.0@beta",
+        "drupal/commerce_shipping": "^2.0@beta",
         "drupal/config_update": "^1.5",
         "drupal/console": "^1.0.1",
         "drupal/core": "~8.4",
@@ -71,7 +72,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "preferred-install": "source"
     },
     "autoload": {
         "classmap": [
@@ -113,6 +115,16 @@
             "drush/contrib/{$name}": [
                 "type:drupal-drush"
             ]
+        },
+        "enable-patching": true,
+        "patches": {
+            "drupal/commerce": {
+                "order comment support": "patches/commerce-add-order-comments-2908196-4.patch",
+                "legacy admin comments": "patches/commerce_log.templates.patch"
+            },
+            "drupal/commerce_shipping": {
+                "expand the shipmentweight condition to support ranges": "patches/commerce_shipping-shipment_weight_condition_range-2919113-5-d8.patch"
+            }
         }
     }
 }
