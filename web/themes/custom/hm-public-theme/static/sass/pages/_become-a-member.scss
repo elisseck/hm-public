@@ -3,6 +3,8 @@
   &--anchor-buttons {
     display: flex;
     justify-content: center;
+    margin-bottom: em(15);
+    margin-top: em(15);
 
     ul li {
       display: inline;
@@ -17,6 +19,8 @@
 
   &--content {
     color: color(quaternary);
+    margin-bottom: em(15);
+    margin-top: em(15);
     text-align: center;
 
     h1 {
@@ -27,6 +31,100 @@
 
     p {
       color: $black;
+    }
+
+  }
+
+}//.membership
+
+#becomeamembercontentblock {
+  margin-bottom: $default-grid-gutter-width;
+}
+
+// Pricing Block
+.membership.row {
+  @extend %max-width;
+  max-width: 70%;
+  text-align: center;
+  width: 100%;
+
+  .two-column-testimonial--header {
+    margin-bottom: em(15);
+    margin-top: 0;
+  }
+
+  h3 {
+    @extend %oswald;
+    font-size: em(35);
+    margin-bottom: em(15);
+  }
+
+  h4 {
+    @extend %oswald;
+    color: $black;
+    font-size: em(25);
+    margin-bottom: em(15);
+    margin-top: em(15);
+  }
+
+  .membership--individual svg,
+  .membership--institutional svg {
+    margin-bottom: em(15);
+    max-width: 70%;
+  }
+
+  .membership--individual {
+    border-right: 1px solid color(medium-grey);
+
+    h3 {
+      color: color(secondary);
+    }
+
+    h4 {
+      margin-bottom: em(5);
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    input#edit-signup-form,
+    input#edit-membership-form {
+      margin-right: 0;
+      width: 80%;
+    }
+
+    .membership--outline-box {
+      border-bottom: 1px solid color(medium-grey);
+      border-left: 1px solid color(medium-grey);
+      padding-bottom: em(60);
+    }
+
+  }
+
+  .membership--institutional {
+
+    h3 {
+      color: color(quaternary);
+    }
+
+    h4 {
+      margin-bottom: em(30);
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    input#edit-signup-form--2 {
+      margin-right: 0;
+      width: 40%;
+    }
+
+    .membership--outline-box {
+      border-bottom: 1px solid color(medium-grey);
+      border-right: 1px solid color(medium-grey);
+      padding-bottom: em(60);
     }
 
   }
