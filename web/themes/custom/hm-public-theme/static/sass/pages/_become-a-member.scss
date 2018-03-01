@@ -44,6 +44,8 @@
 // Pricing Block
 .membership.row {
   @extend %max-width;
+  display: flex;
+  justify-content: center;
   max-width: 70%;
   text-align: center;
   width: 100%;
@@ -75,6 +77,10 @@
 
   .membership--individual {
     border-right: 1px solid color(medium-grey);
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 
     h3 {
       color: color(secondary);
@@ -95,14 +101,17 @@
     }
 
     .membership--outline-box {
-      border-bottom: 1px solid color(medium-grey);
       border-left: 1px solid color(medium-grey);
       padding-bottom: em(60);
     }
 
-  }
+  }//.membership--individual
 
   .membership--institutional {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 
     h3 {
       color: color(quaternary);
@@ -122,9 +131,45 @@
     }
 
     .membership--outline-box {
-      border-bottom: 1px solid color(medium-grey);
       border-right: 1px solid color(medium-grey);
       padding-bottom: em(60);
+    }
+
+  }//.membership--institutional
+
+  .membership--pricing-table {
+    border-top: 1px solid color(medium-grey);
+    text-align: left;
+
+    tr:nth-child(odd) {
+      background-color: color(medium-grey);
+      margin: 0;
+
+      &:last-of-type {
+        border-right: 0;
+      }
+    }
+
+    tr:nth-child(even) {
+      background-color: $white;
+      margin: 0;
+    }
+
+    td {
+      border: 1px solid color(medium-grey);
+      border-right: 0;
+      border-top: 0;
+      padding: 1em $default-grid-gutter-width;
+
+      &:last-of-type {
+        border-right: 1px solid color(medium-grey);
+      }
+
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
     }
 
   }
