@@ -46,6 +46,7 @@
   @extend %max-width;
   display: flex;
   justify-content: center;
+  margin-bottom: $default-grid-gutter-width;
   max-width: 70%;
   text-align: center;
   width: 100%;
@@ -138,6 +139,7 @@
   }//.membership--institutional
 
   .membership--pricing-table {
+    @extend %source-sans-semi-bold;
     border-top: 1px solid color(medium-grey);
     text-align: left;
 
@@ -145,14 +147,20 @@
       background-color: color(medium-grey);
       margin: 0;
 
-      &:last-of-type {
+      td {
         border-right: 0;
       }
+
     }
 
     tr:nth-child(even) {
       background-color: $white;
       margin: 0;
+
+      td {
+        text-align: center;
+      }
+
     }
 
     td {
@@ -163,6 +171,10 @@
 
       &:last-of-type {
         border-right: 1px solid color(medium-grey);
+      }
+
+      svg {
+        width: em(40);
       }
 
     }
