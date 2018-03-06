@@ -61,3 +61,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+%h2 {
+  @extend %oswald;
+  font-size: em(40);
+  margin-bottom: 0;
+}
