@@ -16,3 +16,11 @@ hr {
   margin-right: $default-grid-gutter-width;
 }
 
+.content {
+
+  h2 {
+    @extend %h2;
+    margin-bottom: em(15);
+  }
+
+}
