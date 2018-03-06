@@ -2,10 +2,8 @@
 .testimonial-carousel {
 
   h2 {
-    @extend %oswald;
+    @extend %h2;
     background-color: color(carousel-bg-alt);
-    font-size: em(40);
-    margin-bottom: 0;
     padding-top: em(15);
     text-align: center;
   }
