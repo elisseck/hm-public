@@ -111,4 +111,10 @@ div#buttonbacktotop {
 
   }
 
+  .block-region-custom-left div,
+  .block-region-custom-right div {
+    margin-top: 0;
+    width: 100%;
+  }
+
 }

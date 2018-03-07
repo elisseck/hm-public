@@ -46,7 +46,7 @@
   @extend %max-width;
   display: flex;
   justify-content: center;
-  margin-bottom: $default-grid-gutter-width;
+  margin-bottom: em(60);
   max-width: 70%;
   text-align: center;
   width: 100%;
@@ -184,6 +184,6 @@
       padding: 0;
     }
 
-  }
+  }//.membership--pricing-table
 
 }
