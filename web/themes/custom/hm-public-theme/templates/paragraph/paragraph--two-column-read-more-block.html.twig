@@ -20,12 +20,12 @@
   <li>{{ content.field_read_more_block_content|field_value }}</li>
 </ol> #}
 
-{# {{ _context.paragraph.id() }} #}
-
 <div class="row two-column-snapshot">
   <div class="col-sm-5 two-column-snapshot--image">
-    <img src="{{ file_url(content.field_read_more_block_image|field_target_entity.uri.value) }}" alt="{{ content.field_read_more_block_image|field_raw('alt') }}" />
+    <div class="readmore--image-overlay"></div>
+    <div class="readmore" style="background-image:url('{{ file_url(content.field_read_more_block_image|field_target_entity.uri.value) }}');" alt="{{ content.field_read_more_block_image|field_raw('alt') }}"></div>
   </div>
+
   <div class="col-sm-7 snapshot">
     <h3>{{ content.field_read_more_block_header|field_value }}</h3>
     <input type="checkbox" class="read-more-state" id="readmore{{ _context.paragraph.id() }}" />
@@ -37,6 +37,6 @@
         {{ content.field_read_more_block_content|field_value }}
       </div>      
     </div>  
-    <label for="readmore{{ _context.paragraph.id() }}" class="read-more-trigger"></label>
+    <label for="readmore{{ _context.paragraph.id() }}" class="button button--primary read-more-trigger"></label>
   </div>
 </div>
