@@ -172,14 +172,14 @@ li.pager__item.pager__item--ellipsis {
       background-color: $black;
       cursor: pointer;
       transition: .2s ease-in-out;
+    }
 
-      a {
-        color: $white;
-      }
-
+    &:hover a {
+      color: $white;
     }
 
     a {
+      border-bottom: 0;
       color: color(secondary);
     }
 
