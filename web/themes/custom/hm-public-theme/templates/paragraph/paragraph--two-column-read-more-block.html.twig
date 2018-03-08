@@ -22,11 +22,11 @@
 
 {# {{ _context.paragraph.id() }} #}
 
-<div class="row two-column-snapshot">
-  <div class="col-sm-5 two-column-snapshot--image">
+<div class="row two-column-snapshot read-more">
+  <div class="col-sm-3 two-column-snapshot--image">
     <img src="{{ file_url(content.field_read_more_block_image|field_target_entity.uri.value) }}" alt="{{ content.field_read_more_block_image|field_raw('alt') }}" />
   </div>
-  <div class="col-sm-7 snapshot">
+  <div class="col-sm-9 snapshot">
     <h3>{{ content.field_read_more_block_header|field_value }}</h3>
     <input type="checkbox" class="read-more-state" id="readmore{{ _context.paragraph.id() }}" />
     <div class="read-more-wrap">
