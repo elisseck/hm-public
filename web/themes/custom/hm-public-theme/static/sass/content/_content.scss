@@ -12,5 +12,15 @@
 }
 
 hr {
-  width: 1380px;
+  margin-left: $default-grid-gutter-width;
+  margin-right: $default-grid-gutter-width;
+}
+
+.content {
+
+  h2 {
+    @extend %h2;
+    margin-bottom: em(15);
+  }
+
 }
