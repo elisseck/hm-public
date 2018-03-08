@@ -64,7 +64,7 @@
     order: 2;
   }
 
-}//.view.list-biography-card 
+}//.view.list-biography-card
 
 //Card
 .bio-card--list {
@@ -144,7 +144,8 @@
   }
 }//.bio-card--list
 
-#makercategorynavigation {
+#makercategorynavigation,
+.press-year-navigation {
   margin-right: 3%;
   margin-top: em(60);
   padding: 0 em(15) 0 0;
