@@ -1,7 +1,7 @@
 // Generic content styles
 
 // Basic Block Content
-.wrapper .body {
+.wrapper .basic-block {
   @extend %max-width;
   margin-bottom: em(50);
   margin-top: em(60);
@@ -14,8 +14,6 @@
 }
 
 hr {
-  margin-left: $default-grid-gutter-width;
-  margin-right: $default-grid-gutter-width;
   margin-top: em(60);
 }
 
