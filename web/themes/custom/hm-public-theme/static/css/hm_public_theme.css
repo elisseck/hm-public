@@ -319,7 +319,7 @@ input:focus, a:focus, button:focus, textarea:focus, input[type='radio']:focus + 
 .content-wrapper, .layout--1-2-1col, .accordion-block.accordion,
 .people-block.accordion, .two-column-quote-carousel .carousel-inner,
 .two-column-snapshot-carousel .carousel-inner,
-.hero-carousel .carousel-inner, .snapshot-blocks, .two-column-snapshot, .snapshot-section--block, .quote-block--content, .intro-content, .wrapper .body, .how-it-works, .membership.row {
+.hero-carousel .carousel-inner, .snapshot-blocks, .two-column-snapshot, .snapshot-section--block, .quote-block--content, .intro-content, .wrapper .basic-block, .membership.row {
   margin-left: auto;
   margin-right: auto;
   max-width: 1440px; }
@@ -2388,8 +2388,7 @@ fieldset {
       text-align: center; }
   .two-column-slide .carousel__caption {
     padding-bottom: 4.375em;
-    padding-top: 4.375em;
-    right: 30px; }
+    padding-top: 4.375em; }
 
 .two-column-slide.row {
   margin-left: auto;
@@ -2957,25 +2956,25 @@ label.button--primary.read-more-trigger.form-submit {
   .feature-carousel-indicators.carousel-indicators a.active {
     background-color: #FFFFFF; }
 
-.wrapper .body {
+.wrapper .basic-block {
   margin-bottom: 3.125em;
-  margin-top: 3.75em; }
-  .wrapper .body p {
-    font-size: 1.125em;
-    width: 70%; }
+  margin-top: 3.75em;
+  width: 70%; }
+  .wrapper .basic-block p {
+    font-size: 1.125em; }
 
 hr {
-  margin-left: 30px;
-  margin-right: 30px;
   margin-top: 3.75em; }
 
 .content h2 {
   margin-bottom: 0.9375em; }
 
+.content h3 {
+  font-family: "Oswald", sans-serif; }
+
 .how-it-works {
   margin-bottom: 3.75em;
-  margin-top: 0.9375em;
-  width: 70%; }
+  margin-top: 0.9375em; }
   .how-it-works .two-column-snapshot {
     margin-bottom: 0.9375em;
     margin-top: 0.9375em;
