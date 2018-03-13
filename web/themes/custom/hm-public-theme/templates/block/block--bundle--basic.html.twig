@@ -7,6 +7,11 @@
  *
  */
 #}
-<div class="body {{ content.field_content_alignment|field_value }}">
-  {{ content.body|field_value }}
+<div class="contextual-region">
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div class="body {{ content.field_content_alignment|field_value }}">
+    {{ content.body|field_value }}
+  </div>
 </div>
