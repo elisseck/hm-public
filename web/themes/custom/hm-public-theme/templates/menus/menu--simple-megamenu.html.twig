@@ -24,24 +24,20 @@
           item.is_expanded ? 'menu-item--expanded',
           item.is_collapsed ? 'menu-item--collapsed',
           item.in_active_trail ? 'menu-item--active-trail',
+          item.has_megamenu ? 'menu-item--megamenu',
         ]
       %}
       <li{{ item.attributes.addClass(classes) }}>
         {{ link(item.title, item.url) }}
+        {% if has_megamenu(item.url) %}
+          <div class="mega-menu-wrapper">
+            <div class="mega-menu-background"></div>
+            {{ view_megamenu(item.url) }}
+            {{ menus.menu_links(item.url, attributes, menu_level + 1) }}
+          </div>
+        {%endif %}
         {% if item.below %}
-          {% if has_megamenu(item.url) %}
-            <div class="mega-menu-wrapper">
-              <div class="mega-menu-background"></div>
-              {# Shows the megamenu #}
-              {{ view_megamenu(item.url, 'before') }}
-              {{ menus.menu_links(item.below, attributes.addClass('mega-menu-item'), menu_level + 1) }}
-              {# Duplicates the menu 
-              {{ view_megamenu(item.url, 'after') }} #}
-            </div>
-          {% else %}
-            {# Makes sure if there is not a megamenu the dropdown menu still shows #}
-            {{ menus.menu_links(item.below, attributes.removeClass('mega-menu-item'), menu_level + 1) }}
-          {% endif %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% endif %}
       </li>
     {% endfor %}
