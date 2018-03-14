@@ -48,8 +48,15 @@
                 </dl>
                 {% if entry['#row']._entity.field_pdf_upload.value %}
                   {{ entry['#row']._entity.field_pdf_upload['#list'][0].values }}
-                  <a href="{{ file_url( entry['#row']._entity.field_pdf_upload.entity.uri.value ) }}">TEST</a>
+                  <a href="{{ file_url( entry['#row']._entity.field_pdf_upload.entity.uri.value ) }}">{{ entry['#row']._entity.field_pdf_upload.value }}</a>
                 {% endif %}
+
+
+                {% if entry['#row']._entity.field_wav_upload.value %}
+                  {{ entry['#row']._entity.field_wav_upload['#list'][0].values }}
+                  <a href="{{ file_url( entry['#row']._entity.field_wav_upload.entity.uri.value ) }}">{{ entry['#row']._entity.field_wav_upload.value }}</a>
+                {% endif %}
+
               </div>
             {% endfor %}
           {% endfor %}
