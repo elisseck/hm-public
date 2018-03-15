@@ -124,6 +124,12 @@
             },
             "drupal/commerce_shipping": {
                 "expand the shipmentweight condition to support ranges": "patches/commerce_shipping-shipment_weight_condition_range-2919113-5-d8.patch"
+            },
+            "drupal/page_manager": {
+                "fixes variant route filter issue": "https://www.drupal.org/files/issues/2918564-22.patch"
+            },
+            "drupal/l10n_client_ui": {
+                "Fixes invalid render array key":"https://www.drupal.org/files/issues/l10n_client-hook_toolbar-fix-2872668-3.patch"
             }
         }
     }
