@@ -20,7 +20,7 @@
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/commerce": "^2.2",
-        "drupal/commerce_authnet": "1.0-beta2",
+        "drupal/commerce_authnet": "^1.0-beta2",
         "drupal/commerce_migrate": "^2.0@alpha",
         "drupal/commerce_recurring": "^1.0@beta",
         "drupal/commerce_shipping": "^2.0@beta",
@@ -118,12 +118,16 @@
         },
         "enable-patching": true,
         "patches": {
+            "drupal/page_manager": {
+                "fixes variant route filter issue": "https://www.drupal.org/files/issues/2918564-22.patch"
+            },
             "drupal/commerce": {
                 "order comment support": "patches/commerce-add-order-comments-2908196-4.patch",
-                "legacy admin comments": "patches/commerce_log.templates.patch"
+                "legacy admin comments": "patches/commerce_log.templates.patch",
+                "guest checkout email addition": "patches/commerce-guest-payment-email.patch"
             },
             "drupal/commerce_shipping": {
-                "expand the shipmentweight condition to support ranges": "patches/commerce_shipping-shipment_weight_condition_range-2919113-5-d8.patch"
+                "fixes shipment weight issue": "https://www.drupal.org/files/issues/Limit-by-shipment-weight-not-working-2950520-1.patch"
             }
         }
     }
