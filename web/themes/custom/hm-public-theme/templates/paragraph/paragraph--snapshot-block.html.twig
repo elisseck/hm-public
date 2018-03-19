@@ -33,7 +33,9 @@
   <p>{{ content.field_snapshot_content|field_value }}</p>
 
   {% if content.field_snapshot_cta|field_value is not empty %}
-    {{ content.field_snapshot_cta|field_value }}
+    <ul>
+      {{ content.field_snapshot_cta|field_value }}
+    </ul>  
   {% endif %} 
   
 </div>
