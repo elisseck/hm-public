@@ -50,7 +50,9 @@
     <div class="col-sm-12 col-md-9 column first event__info">
       {{ content.left_9 }}
       <h2>Description</h2>
-      {{ content.field_hon_bio01|field_value }}
+      <div class="event__bio">
+        {{ content.field_hon_bio01|field_value }}
+      </div>
 
       {# Honorary Chair #}
         {% if content.field_hon_cochair|field_value is not empty %}
@@ -64,9 +66,11 @@
           </button>
 
           <div class="collapse accordion__body" id="field_hon_cochair">
-            <div>
-              {{ content.field_hon_cochair|field_value }}
-            </div>
+            <ul>
+              {% for item in content.field_hon_cochair|field_value %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
           </div>
         </div>
       {% endif %}
@@ -83,9 +87,11 @@
           </button>
 
           <div class="collapse accordion__body" id="field_chair">
-            <div>
-              {{ content.field_chair|field_value }}
-            </div>
+            <ul>
+              {% for item in content.field_chair|field_value %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
           </div>
         </div>
       {% endif %}
@@ -102,9 +108,11 @@
           </button>
 
           <div class="collapse accordion__body" id="field_co_chairs">
-            <div>
-              {{ content.field_co_chairs|field_value }}
-            </div>
+            <ul>
+              {% for item in content.field_co_chairs|field_value %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
           </div>
         </div>
       {% endif %}
@@ -121,9 +129,11 @@
           </button>
 
           <div class="collapse accordion__body" id="field_benefit_committee">
-            <div>
-              {{ content.field_benefit_committee|field_value }}
-            </div>
+            <ul>
+              {% for item in content.field_benefit_committee|field_value %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
           </div>
         </div>
       {% endif %}

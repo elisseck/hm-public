@@ -30,6 +30,10 @@
 //Left column
 .event__info {
 
+  .event__bio {
+    margin-bottom: $default-grid-gutter-width;
+  }
+
   .accordion-block.accordion {
     width: 100%;
   }
