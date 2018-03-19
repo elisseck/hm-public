@@ -21,12 +21,14 @@
 
 }
 
-.events__content {
+//Everything below the carousel
+.event__content {
   @extend %max-width;
   margin-top: $default-grid-gutter-width;
 }
 
-.events__info {
+//Left column
+.event__info {
 
   .accordion-block.accordion {
     width: 100%;
@@ -38,7 +40,18 @@
 
 }
 
-.events__date-and-time {
+.event__sponsor {
+
+  img {
+    height: auto;
+    margin-top: $default-grid-gutter-width;
+    max-width: 100%;
+  }
+
+}
+
+//Right column
+.event__date-and-time {
   margin-bottom: $default-grid-gutter-width;
 
   h6 {
@@ -47,8 +60,9 @@
 
 }
 
-.events__info h2,
-.events__date-and-time h2,
-.events__location h2 {
+//Misc.
+.event__info h2,
+.event__date-and-time h2,
+.event__location h2 {
   margin-bottom: em(5);
 }

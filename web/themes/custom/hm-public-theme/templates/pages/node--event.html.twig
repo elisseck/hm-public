@@ -46,14 +46,14 @@
     </div>
   </div>
 
-  <div class="row layout--1-2col-9-3 events__content">
-    <div class="col-sm-12 col-md-9 column first events__info">
+  <div class="row layout--1-2col-9-3 event__content">
+    <div class="col-sm-12 col-md-9 column first event__info">
       {{ content.left_9 }}
       <h2>Description</h2>
       {{ content.field_hon_bio01|field_value }}
 
-      {# Honorary Chair #}  
-        {% if content.field_hon_cochair|field_value is not empty %}  
+      {# Honorary Chair #}
+        {% if content.field_hon_cochair|field_value is not empty %}
         <div class="accordion-block accordion">
           <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#field_hon_cochair" aria-expanded="false" aria-controls="field_hon_cochair">
             Honarary Chair
@@ -71,8 +71,8 @@
         </div>
       {% endif %}
 
-      {# Chair #}   
-      {% if content.field_chair|field_value is not empty %} 
+      {# Chair #}
+      {% if content.field_chair|field_value is not empty %}
         <div class="accordion-block accordion">
           <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#field_chair" aria-expanded="false" aria-controls="field_chair">
             Chair
@@ -87,11 +87,11 @@
               {{ content.field_chair|field_value }}
             </div>
           </div>
-        </div> 
+        </div>
       {% endif %}
 
-      {# Co-chairs #}  
-      {% if content.field_co_chairs|field_value is not empty %} 
+      {# Co-chairs #}
+      {% if content.field_co_chairs|field_value is not empty %}
         <div class="accordion-block accordion">
           <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#field_co_chairs" aria-expanded="false" aria-controls="field_co_chairs">
             Co-chairs
@@ -106,11 +106,11 @@
               {{ content.field_co_chairs|field_value }}
             </div>
           </div>
-        </div> 
+        </div>
       {% endif %}
 
-      {# Benefit Committee #}   
-      {% if content.field_benefit_committee|field_value is not empty %} 
+      {# Benefit Committee #}
+      {% if content.field_benefit_committee|field_value is not empty %}
         <div class="accordion-block accordion">
           <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#field_benefit_committee" aria-expanded="false" aria-controls="field_benefit_committee">
             Benefit Committee
@@ -125,21 +125,37 @@
               {{ content.field_benefit_committee|field_value }}
             </div>
           </div>
-        </div>   
-      {% endif %}               
-    </div>
+        </div>
+      {% endif %}
+
+      {# Premier Sponsor #}
+      <hr>
+      <section class="event__sponsor">
+      <h2>Premier Sponsor</h2>
+        {{ content.field_events_sponsors|field_value }}
+      </section>
+
+      {# Title Sponsor #}
+      <hr>
+      <section class="event__sponsor">
+      <h2>Title Sponsor</h2>
+        {{ content.field_event_title_sponsor|field_value }}
+      </section>
+
+    </div>{# closed events__info #}
 
     <div class="col-sm-12 col-md-3 column last">
       {{ content.right_3 }}
-      <div class="events__date-and-time">
+      <div class="event__date-and-time">
         <h2>Date and Time</h2>
         {# {{ content.field_date|field_value }} #}
         {{ content.field_date_and_time_details|field_value }}
       </div>
-      <div class="events__location">
+      <div class="event__location">
         <h2>Location</h2>
         {{ content.field_address|field_value }}
-      </div>      
+        <a href="">View Map</a>
+      </div>
     </div>
 
   </div>
