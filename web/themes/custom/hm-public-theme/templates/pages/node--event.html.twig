@@ -21,8 +21,6 @@
  */
 #}
 
-{{ drupal_dump(content) }}
-
 <div class="contextual-region">
   {{ title_prefix }}
   {{ title_suffix }}
@@ -135,9 +133,7 @@
       {{ content.right_3 }}
       <div class="events__date-and-time">
         <h2>Date and Time</h2>
-        {{ content.field_date|field_value }}
-        <p>Doors open at {{time}}</p>
-        <p>Taping starts at {{ time }}</p>
+        {# {{ content.field_date|field_value }} #}
         {{ content.field_date_and_time_details|field_value }}
       </div>
       <div class="events__location">

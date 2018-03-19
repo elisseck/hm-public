@@ -1,0 +1,54 @@
+.view.list-events .view-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+
+  .bio-card--list {
+    max-width: 30%;
+  }
+
+  .field-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h3 {
+    color: color(quaternary);
+  }
+
+}
+
+.events__content {
+  @extend %max-width;
+  margin-top: $default-grid-gutter-width;
+}
+
+.events__info {
+
+  .accordion-block.accordion {
+    width: 100%;
+  }
+
+  .accordion__body {
+    padding: em(15);
+  }
+
+}
+
+.events__date-and-time {
+  margin-bottom: $default-grid-gutter-width;
+
+  h6 {
+    color: $red;
+  }
+
+}
+
+.events__info h2,
+.events__date-and-time h2,
+.events__location h2 {
+  margin-bottom: em(5);
+}
