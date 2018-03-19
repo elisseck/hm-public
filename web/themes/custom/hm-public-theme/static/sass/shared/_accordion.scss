@@ -75,7 +75,30 @@
   }
 
   &:last-of-type {
-    margin-bottom: em(100);
+    //margin-bottom: em(100);
+  }
+
+}
+
+//Accordion with image grid
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  &--block {
+    background: $white;
+    display: flex;
+    flex: 1 0 33.3%;
+    justify-content: center;
+    margin: em(15);
+    max-width: 30%;
+
+    img {
+      max-height: em(200);
+      max-width: em(200);
+      padding: em(10);
+    }
+
   }
 
 }

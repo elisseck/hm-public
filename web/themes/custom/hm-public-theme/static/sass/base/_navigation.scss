@@ -118,7 +118,7 @@ li.pager__item.pager__item--ellipsis {
 }
 
 //Hides required child nav item to show the megamenu
-#hm-public-theme-main-menu .menu-item--expanded:hover .mega-menu-wrapper ul {
+#hm-public-theme-main-menu .menu-item--expanded:hover .mega-menu-wrapper + ul.menu {
   display: none;
 }
 
@@ -172,14 +172,14 @@ li.pager__item.pager__item--ellipsis {
       background-color: $black;
       cursor: pointer;
       transition: .2s ease-in-out;
+    }
 
-      a {
-        color: $white;
-      }
-
+    &:hover a {
+      color: $white;
     }
 
     a {
+      border-bottom: 0;
       color: color(secondary);
     }
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "350b0966c62db3b16a746df83c54a57e",
+    "content-hash": "9b035e94e38e3db5fdb571e6668d2d8e",
     "packages": [
         {
             "name": "ajgl/breakpoint-twig-extension",
@@ -1504,7 +1504,8 @@
                 },
                 "patches_applied": {
                     "order comment support": "patches/commerce-add-order-comments-2908196-4.patch",
-                    "legacy admin comments": "patches/commerce_log.templates.patch"
+                    "legacy admin comments": "patches/commerce_log.templates.patch",
+                    "guest checkout email addition": "patches/commerce-guest-payment-email.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -1571,8 +1572,7 @@
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
                     }
-                },
-                "patches_applied": []
+                }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
@@ -1604,17 +1604,17 @@
         },
         {
             "name": "drupal/commerce_migrate",
-            "version": "2.0.0-alpha6",
+            "version": "2.0.0-alpha7",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/commerce_migrate",
-                "reference": "8.x-2.0-alpha6"
+                "reference": "8.x-2.0-alpha7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce_migrate-8.x-2.0-alpha6.zip",
-                "reference": "8.x-2.0-alpha6",
-                "shasum": "d16d7ce23d6faa7c5643a7f150b0062a2d6b2a79"
+                "url": "https://ftp.drupal.org/files/projects/commerce_migrate-8.x-2.0-alpha7.zip",
+                "reference": "8.x-2.0-alpha7",
+                "shasum": "56dcfaefbdadc6892cec86f8f2aabd26b526c1d9"
             },
             "require": {
                 "drupal/commerce": "^2.0",
@@ -1631,8 +1631,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-alpha6",
-                    "datestamp": "1518605884",
+                    "version": "8.x-2.0-alpha7",
+                    "datestamp": "1521071280",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
@@ -1969,7 +1969,7 @@
                     }
                 },
                 "patches_applied": {
-                    "expand the shipmentweight condition to support ranges": "patches/commerce_shipping-shipment_weight_condition_range-2919113-5-d8.patch"
+                    "fixes shipment weight issue": "https://www.drupal.org/files/issues/Limit-by-shipment-weight-not-working-2950520-1.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -4521,17 +4521,17 @@
         },
         {
             "name": "drupal/webform",
-            "version": "5.0.0-rc5",
+            "version": "5.0.0-rc6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/webform",
-                "reference": "8.x-5.0-rc5"
+                "reference": "8.x-5.0-rc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.0-rc5.zip",
-                "reference": "8.x-5.0-rc5",
-                "shasum": "534fb597d074399d4ae56c4971d3662da5d518a9"
+                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.0-rc6.zip",
+                "reference": "8.x-5.0-rc6",
+                "shasum": "fa534723f1aea1255d19bfd42ad9def9ac0fcf14"
             },
             "require": {
                 "drupal/core": "*"
@@ -4548,8 +4548,8 @@
                     "dev-5.x": "5.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-5.0-rc5",
-                    "datestamp": "1521041284",
+                    "version": "8.x-5.0-rc6",
+                    "datestamp": "1521230880",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -4681,7 +4681,7 @@
         },
         {
             "name": "drupal/webform_node",
-            "version": "5.0.0-rc5",
+            "version": "5.0.0-rc6",
             "require": {
                 "drupal/core": "*",
                 "drupal/webform": "self.version"
@@ -4692,8 +4692,8 @@
                     "dev-5.x": "5.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-5.0-rc5",
-                    "datestamp": "1521041284",
+                    "version": "8.x-5.0-rc6",
+                    "datestamp": "1521230880",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."

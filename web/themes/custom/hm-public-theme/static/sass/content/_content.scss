@@ -1,5 +1,7 @@
 // Generic content styles
-.wrapper .body {
+
+// Basic Block Content
+.wrapper .basic-block {
   @extend %max-width;
   margin-bottom: em(50);
   margin-top: em(60);
@@ -12,5 +14,18 @@
 }
 
 hr {
-  width: 1380px;
+  margin-top: em(60);
+}
+
+.content {
+
+  h2 {
+    @extend %h2;
+    margin-bottom: em(15);
+  }
+
+  h3 {
+    font-family: $oswald;
+  }
+
 }

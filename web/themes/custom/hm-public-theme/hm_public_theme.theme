@@ -25,7 +25,9 @@ function hm_public_theme_preprocess_page(&$variables) {
     $variables["nid"] = $node->id();
     $variables["node_title"] = $node->getTitle();
     $variables["body"] = $node->body->value;
-    $variables["field_web_clip1"] = $node->field_web_clip1->value;
+    if ($node->bundle() === "bio") {
+      $variables["field_web_clip1"] = $node->field_web_clip1->value;
+    }
   }
 
   $variables['paid_user']     = current_user_has_role('thm_paid_member');

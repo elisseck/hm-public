@@ -73,7 +73,11 @@ div.wrapper .sidebar.second {
 }
 
 section.content.column.section-wrapper {
-  padding: 0;
+  padding: 0 $default-grid-gutter-width 0 0;
+}
+
+.wrapper.layout--1-1col {
+  margin-right: -30px;
 }
 
 //Place Back to Top button below views
@@ -109,6 +113,12 @@ div#buttonbacktotop {
       width: 100%;
     }
 
+  }
+
+  .block-region-custom-left div,
+  .block-region-custom-right div {
+    margin-top: 0;
+    width: 100%;
   }
 
 }

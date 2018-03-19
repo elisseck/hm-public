@@ -48,6 +48,8 @@
 @import 'shared/timeline';
 @import 'shared/view-blocks';
 @import 'shared/testimonials';
+@import 'shared/img-button';
+@import 'shared/collage';
 
 // Content styling
 @import 'content/intro-content';
@@ -55,6 +57,7 @@
 @import 'content/page-title';
 @import 'content/feature-carousel';
 @import 'content/content';
+@import 'content/how-it-works';
 
 // Specific page styling
 @import 'pages/home';
@@ -65,3 +68,4 @@
 // Views styling
 @import 'views/biographies';
 @import 'views/people';
+@import 'views/events';

@@ -19,7 +19,7 @@
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
-        "drupal/commerce": "^2.2",
+        "drupal/commerce": "2.4",
         "drupal/commerce_authnet": "^1.0-beta2",
         "drupal/commerce_migrate": "^2.0@alpha",
         "drupal/commerce_recurring": "^1.0@beta",
@@ -128,6 +128,9 @@
             },
             "drupal/commerce_shipping": {
                 "fixes shipment weight issue": "https://www.drupal.org/files/issues/Limit-by-shipment-weight-not-working-2950520-1.patch"
+            },
+            "drupal/l10n_client_ui": {
+                "Fixes invalid render array key":"https://www.drupal.org/files/issues/l10n_client-hook_toolbar-fix-2872668-3.patch"
             }
         }
     }
