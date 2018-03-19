@@ -31,7 +31,10 @@
       {# Carousel #}
       <div class="two-column-snapshot-carousel carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          {{ content.field_two_column_snapshot }}
+          <div class="hero-slide">
+            <div class="hero-slide--image" style="background-image: url('{{ file_url(content.field_event_image|field_target_entity.uri.value) }}');" alt="{{ content.field_event_image|field_raw('alt') }}">
+            </div>
+          </div>
         </div>
           {# Pager #}
           {% if content.field_two_column_snapshot|length > 17 %}
@@ -58,7 +61,7 @@
         {% if content.field_hon_cochair|field_value is not empty %}
         <div class="accordion-block accordion">
           <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#field_hon_cochair" aria-expanded="false" aria-controls="field_hon_cochair">
-            Honarary Chair
+            Honorary Chair
             <span class="accordion__arrow">
               <span class="accordion__arrow-half"></span>
               <span class="accordion__arrow-half"></span>
@@ -158,7 +161,7 @@
       {{ content.right_3 }}
       <div class="event__date-and-time">
         <h2>Date and Time</h2>
-        {# {{ content.field_date|field_value }} #}
+        {{ content.field_date|field_value }}
         {{ content.field_date_and_time_details|field_value }}
       </div>
       <div class="event__location">
