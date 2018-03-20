@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Contains thm_jwt.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Implements hook_help().
+ */
+function thm_jwt_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the thm_jwt module.
+    case 'help.page.thm_jwt':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Serves to craft JWTs for authentication and access to remote THM services') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function getReturnUrl(string $uri) {
+  $parts     = explode('return', $uri);
+  $returnUri = urldecode(array_values(array_slice($parts, -1))[0]);
+  return substr($returnUri, 1);
+}
+
+/**
+ * Implements hook_user_login().
+ *
+ * @param AccountInterface $account The account of the logged-in user.
+ */
+function thm_jwt_user_login(AccountInterface $account) {
+  $uri       = \Drupal::request()->getUri();
+  $returnUri = getReturnUrl($uri);
+  $client    = \Drupal::httpClient();
+  $request   = $client->get('http://hm-public.test/jwt/token');
+  $response  = $request->getBody();
+  drupal_set_message('you just logged in. didn\'t you?');
+}
