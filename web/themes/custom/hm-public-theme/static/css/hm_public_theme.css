@@ -1459,7 +1459,9 @@ body.ft-tabs-rendered div.ft-collapsible-tabs {
         -ms-flex: 1 0 100%;
             flex: 1 0 100%;
     height: auto;
+    max-height: 199px;
     max-width: 200px;
+    overflow: hidden;
     padding: 0;
     width: 100%; }
     .staff-card--image img {
@@ -1901,7 +1903,9 @@ fieldset {
         -ms-flex: 1 0 100%;
             flex: 1 0 100%;
     height: auto;
+    max-height: 199px;
     max-width: 200px;
+    overflow: hidden;
     padding: 0;
     width: 100%; }
     .staff-card--image img {
