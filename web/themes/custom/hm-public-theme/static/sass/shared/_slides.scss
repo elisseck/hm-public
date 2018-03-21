@@ -9,6 +9,21 @@
 
 }
 
+.hero-slide--date {
+  @extend %oswald;
+  background: $white;
+  color: color(primary);
+  font-size: em(30);
+  line-height: 120%;
+  padding: em(10);
+  position: absolute;
+  right: 0;
+  text-align: center;
+  text-transform: uppercase;
+  top: 0;
+  width: em(45);
+}
+
 // Two Column Slide
 .two-column-slide {
   height: 550px;
@@ -52,4 +67,18 @@
 .two-column-slide.row {
   margin-left: auto;
   margin-right: auto;
+}
+
+.carousel__caption--event {
+  background-color: color(primary);
+
+  a.button {
+    @extend %oswald;
+    background-color: $white;
+    color: color(quaternary);
+    font-size: em(20);
+    text-align: center;
+    width: 70%;
+  }
+
 }
