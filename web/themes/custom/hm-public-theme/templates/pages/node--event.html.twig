@@ -9,6 +9,7 @@
  * -  field_date_and_time_details
  * -  field_address
  * -  field_event_image
+ * -  field_date_image_label
  * -  field_hon_guest02 (honarary guest)
  * -  field_insert_images
  * -  field_hon_bio01
@@ -31,20 +32,33 @@
       {# Carousel #}
       <div class="two-column-snapshot-carousel carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="hero-slide">
+          <div class="hero-slide carousel-item active">
             <div class="hero-slide--image" style="background-image: url('{{ file_url(content.field_event_image|field_target_entity.uri.value) }}');" alt="{{ content.field_event_image|field_raw('alt') }}">
+              <div class="hero-slide--date">
+                {{ content.field_date_image_label|field_value }}
+              </div>
             </div>
-          </div>
-        </div>
-          {# Pager #}
-          {% if content.field_two_column_snapshot|length > 17 %}
-            <div class="centered-carousel-indicators carousel-indicators" role="menu">
-              {% for list in content.field_two_column_snapshot['#items'] %}
-                {% set item_classes = [start_index == loop.index0 ? 'active'] %}
-                <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href=".two-column-snapshot-carousel"></a>
-              {% endfor %}
+          </div>{# close hero-slide #}
+          {# Event Image #}
+          {% if content.field_insert_images|field_value is not empty %}
+            <div class="row two-column-slide carousel-item active">
+              <div class="col-sm-8 two-column-slide--image" style="background-image: url('{{ file_url(content.field_insert_images|field_target_entity.uri.value) }}');" alt="{{ content.field_insert_images|field_raw('alt') }}">
+              </div>
+              <div class="col-sm-4 two-column-slide--content carousel__caption carousel__caption--event">
+                <a href="{{ content.field_carousel_link|field_raw('uri') }}" class="button">
+                  Button
+                </a>
+              </div>
             </div>
           {% endif %}
+        </div>
+          {# Pager 
+          <div class="centered-carousel-indicators carousel-indicators" role="menu">
+            {% for item in content.field_insert_images %}
+              {% set item_classes = [start_index == loop.index0 ? 'active'] %}
+              <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href=".carousel-item"></a>
+            {% endfor %}
+          </div> #}
       </div>{# Close Carousel #}
     </div>
   </div>
@@ -173,10 +187,3 @@
 
   </div>
 </div>{# Closed contextual-region #}
-
-<script>
-$(document).ready(function () {
-  $('.two-column-snapshot-carousel').find('.field-item').addClass('carousel-item');
-  $('.two-column-snapshot-carousel').find('.field-item').first().addClass('active');
-});
-</script>
