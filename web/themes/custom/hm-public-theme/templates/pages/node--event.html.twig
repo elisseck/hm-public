@@ -35,10 +35,8 @@
           {# Event Image #}
           {% if content.field_insert_images|field_value is not empty %}
             {% for item in content.field_insert_images|field_value %}
-            <div class="row two-column-slide carousel-item active">
-              {# <div class="col-sm-8 two-column-slide--image" style="background-image: url('{{ file_url(item|field_target_entity.uri.value) }}');" alt="{{ item|field_raw('alt') }}">
-              </div> #}
-              <div>
+            <div class="row two-column-slide two-column-slide--event carousel-item">
+              <div class="col-sm-8 two-column-slide--image">
                 {{ item }}
               </div>
               <div class="col-sm-4 two-column-slide--content carousel__caption carousel__caption--event">
@@ -55,13 +53,15 @@
             {% endfor %}
           {% endif %}
         </div>
-          {# Pager 
-          <div class="centered-carousel-indicators carousel-indicators" role="menu">
-            {% for item in content.field_insert_images %}
-              {% set item_classes = [start_index == loop.index0 ? 'active'] %}
-              <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href=".carousel-item"></a>
-            {% endfor %}
-          </div> #}
+          {# Pager #}
+          {% if content.field_image_slide|length > 17 %}
+            <div class="centered-carousel-indicators carousel-indicators" role="menu">
+              {% for list in content.field_image_slide['#items'] %}
+                {% set item_classes = [start_index == loop.index0 ? 'active'] %}
+                <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href=".two-column-snapshot-carousel"></a>
+              {% endfor %}
+            </div>
+          {% endif %}
       </div>{# Close Carousel #}
     </div>
   </div>
@@ -86,7 +86,8 @@
       <div class="event__location">
         <h2>Location</h2>
         {{ content.field_address|field_value }}
-        <a href="">View Map</a>
+        {{ content.field_event_address|field_value }}
+        {{ content.field_event_map|field_value }}
       </div>
     </div>
 
