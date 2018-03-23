@@ -60,6 +60,7 @@
   .carousel__caption {
     padding-bottom: em(70);
     padding-top: em(70);
+    width: 100%;
   }
 
 }
@@ -78,7 +79,28 @@
     color: color(quaternary);
     font-size: em(20);
     text-align: center;
-    width: 70%;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  a.button:hover {
+    background-color: color(quaternary);
+    color: $white;
+  }
+
+}
+
+.carousel__caption--buttons {
+  bottom: em(60);
+  position: absolute;
+  width: 50%;
+
+  p {
+    color: white;
+    font-size: em(18);
+    margin-bottom: em(10);
+    margin-top: em(10);
+    text-align: center;
   }
 
 }

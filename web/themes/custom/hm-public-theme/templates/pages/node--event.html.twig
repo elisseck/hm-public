@@ -10,14 +10,7 @@
  * -  field_address
  * -  field_event_image
  * -  field_date_image_label
- * -  field_hon_guest02 (honarary guest)
  * -  field_insert_images
- * -  field_hon_bio01
- * -  field_event_chair
- * -  field_hon_chair
- * -  field_benefit_committee
- * -  field_events_sponsors
- * -  field_event_title_sponsor
  *
  */
 #}
@@ -41,15 +34,25 @@
           </div>{# close hero-slide #}
           {# Event Image #}
           {% if content.field_insert_images|field_value is not empty %}
+            {% for item in content.field_insert_images|field_value %}
             <div class="row two-column-slide carousel-item active">
-              <div class="col-sm-8 two-column-slide--image" style="background-image: url('{{ file_url(content.field_insert_images|field_target_entity.uri.value) }}');" alt="{{ content.field_insert_images|field_raw('alt') }}">
+              {# <div class="col-sm-8 two-column-slide--image" style="background-image: url('{{ file_url(item|field_target_entity.uri.value) }}');" alt="{{ item|field_raw('alt') }}">
+              </div> #}
+              <div>
+                {{ item }}
               </div>
               <div class="col-sm-4 two-column-slide--content carousel__caption carousel__caption--event">
-                <a href="{{ content.field_carousel_link|field_raw('uri') }}" class="button">
-                  Button
-                </a>
+                <div class="hero-slide--date">
+                  {{ content.field_date_image_label|field_value }}
+                </div>
+                <div class="carousel__caption--buttons">
+                  <a href="#" class="button">Buy Tickets</a>
+                  <p>or</p>
+                  <a href="#" class="button">Become a Sponsor</a>
+                </div>
               </div>
             </div>
+            {% endfor %}
           {% endif %}
         </div>
           {# Pager 
@@ -71,7 +74,7 @@
         {{ content.field_hon_bio01|field_value }}
       </div>
       {{ content.field_event_accordion|field_value }}
-    </div>{# closed events__info #}
+    </div>
 
     <div class="col-sm-12 col-md-3 column last">
       {{ content.right_3 }}
@@ -88,4 +91,4 @@
     </div>
 
   </div>
-</div>{# Closed contextual-region #}
+</div>
