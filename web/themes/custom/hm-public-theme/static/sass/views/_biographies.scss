@@ -4,7 +4,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: em(60);
-  padding: 0;
+  padding: 0 $default-grid-gutter-width 0 0;
 
   .view-header {
     @extend %oswald-light;

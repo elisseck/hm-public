@@ -72,33 +72,27 @@ div.wrapper .sidebar.second {
   @extend %max-width;
 }
 
+//Enables sections to go full-width
 section.content.column.section-wrapper {
-  padding: 0 $default-grid-gutter-width 0 0;
-}
-
-.wrapper.layout--1-1col {
-  margin-right: -30px;
-}
-
-//Place Back to Top button below views
-div#buttonbacktotop {
-  order: 2;
-}
-
-.views-element-container.contextual-region {
-  order: 1;
+  padding: 0;
 }
 
 //Custom Layouts
+.layout--1-1col {
+  width: 100%;
+}
+
 .layout--1-2-1col {
   @extend %max-width;
 
   .first {
+    padding-left: $default-grid-gutter-width;
     padding-right: 0;
   }
 
   .last {
     padding-left: 0;
+    padding-right: $default-grid-gutter-width;
   }
 
   .block-region-custom-left {
@@ -119,6 +113,20 @@ div#buttonbacktotop {
   .block-region-custom-right div {
     margin-top: 0;
     width: 100%;
+  }
+
+}
+
+.layout--1-2col-9-3 {
+
+  .first {
+    padding-left: $default-grid-gutter-width;
+    padding-right: $default-grid-gutter-width;
+  }
+
+  .last {
+    padding-left: $default-grid-gutter-width;
+    padding-right: $default-grid-gutter-width;
   }
 
 }
