@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: t2
- * Date: 1/5/18
- * Time: 11:20 AM
+ * Date: 3/1/18
+ * Time: 10:28 AM
  */
 
 namespace Drupal\thm_become_a_member\Form;
@@ -14,16 +14,16 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\thm_direct_checkout\Helpers\CommerceCheckoutDirect;
 
 
-class THMBecomeAMemberForm extends FormBase {
+class THMUpgradeAMemberForm extends FormBase {
 
   public function getFormId() {
-    return 'create_thmda_order';
+    return 'upgrade_to_thmda';
   }
 
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['membership_form'] = [
+    $form['upgrade_form'] = [
       '#type' => 'submit',
-      '#value' => t('Buy')
+      '#value' => t('Upgrade to DigitalMaker')
     ];
 
     return $form;

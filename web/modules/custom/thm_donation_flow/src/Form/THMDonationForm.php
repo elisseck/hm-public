@@ -2,11 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: t2
- * Date: 1/5/18
- * Time: 11:20 AM
+ * Date: 3/1/18
+ * Time: 11:05 AM
  */
 
-namespace Drupal\thm_become_a_member\Form;
+namespace Drupal\thm_donation_flow\Form;
+
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -14,16 +15,16 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\thm_direct_checkout\Helpers\CommerceCheckoutDirect;
 
 
-class THMBecomeAMemberForm extends FormBase {
+class THMDonationForm extends FormBase {
 
   public function getFormId() {
-    return 'create_thmda_order';
+    return 'make_a_donation';
   }
 
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['membership_form'] = [
+    $form['donation_form'] = [
       '#type' => 'submit',
-      '#value' => t('Buy')
+      '#value' => t('Donate Now')
     ];
 
     return $form;
@@ -31,7 +32,7 @@ class THMBecomeAMemberForm extends FormBase {
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $directCheckout = CommerceCheckoutDirect::create(
-      \Drupal::getContainer(), 'default', 'default');
+      \Drupal::getContainer(), 'donation', 'default');
     return $directCheckout->prepOrder($form, $form_state);
   }
 
