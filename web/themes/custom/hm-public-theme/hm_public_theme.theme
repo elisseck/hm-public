@@ -17,6 +17,13 @@ function hm_public_theme_preprocess_page(&$variables) {
     $variables['login_form'] = render_form(UserLoginForm::class);
   }
 
+  $variables['paid_user']  = current_user_has_role('thm_paid_member');
+
+  if ($variables['paid_user']) {
+    $variables['user_jwt_da']   = assemble_paid_links();
+    $variables['user_jwt_smda'] = assemble_paid_links('smda');
+  }
+
   /** @var \Drupal\node\NodeInterface $node */
   $node = \Drupal::routeMatch()->getParameter('node');
 
@@ -30,9 +37,23 @@ function hm_public_theme_preprocess_page(&$variables) {
     }
   }
 
-  $variables['paid_user']     = current_user_has_role('thm_paid_member');
   $variables['upgrade_form']  = render_form(THMUpgradeAMemberForm::class);
   $variables['donation_form'] = render_form(THMDonationForm::class);
+}
+
+/**
+ * Retrieves JWT.
+ *
+ * @return bool|string
+ */
+function get_user_jwt() {
+  $session = \Drupal::request()->getSession();
+  return thm_jwt_fetch_token($session);
+}
+
+function assemble_paid_links($subDomain = 'da') {
+  $host = 'thehistorymakers';
+  return "https://$subDomain.$host.org/?jwt=" . get_user_jwt();
 }
 
 /**
