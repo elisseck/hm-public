@@ -29,7 +29,7 @@
         "drupal/core": "~8.4",
         "drupal/devel": "1.x-dev",
         "drupal/drush_delete": "^2.2",
-        "drupal/flag": "^4.0@alpha",
+        "drupal/flag": "4.0.0-alpha2",
         "drupal/fortytwo": "^2.5",
         "drupal/jwt": "^1.0@alpha",
         "drupal/geolocation": "^1.11",
