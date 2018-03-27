@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "80848a33a3fafd07fabe68e8c6e25db5",
+    "content-hash": "0ae5fe212c4d222b855c468eb1ec12ab",
     "packages": [
         {
             "name": "ajgl/breakpoint-twig-extension",
@@ -2947,23 +2947,20 @@
         },
         {
             "name": "drupal/flag",
-            "version": "4.0.0-alpha3",
+            "version": "4.0.0-alpha2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/flag",
-                "reference": "8.x-4.0-alpha3"
+                "reference": "8.x-4.0-alpha2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/flag-8.x-4.0-alpha3.zip",
-                "reference": "8.x-4.0-alpha3",
-                "shasum": "cb55277b79ff66871f0e1bd9a417b2490cae3a84"
+                "url": "https://ftp.drupal.org/files/projects/flag-8.x-4.0-alpha2.zip",
+                "reference": "8.x-4.0-alpha2",
+                "shasum": "e9ead06aadc9d26364b9ad1225354b0c47d5ce02"
             },
             "require": {
                 "drupal/core": "~8.0"
-            },
-            "require-dev": {
-                "drupal/rules": "*"
             },
             "type": "drupal-module",
             "extra": {
@@ -2971,7 +2968,7 @@
                     "dev-4.x": "4.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-4.0-alpha3",
+                    "version": "8.x-4.0-alpha2",
                     "datestamp": "1521598685",
                     "security-coverage": {
                         "status": "not-covered",
@@ -9789,7 +9786,6 @@
         "drupal/commerce_recurring": 10,
         "drupal/commerce_shipping": 10,
         "drupal/devel": 20,
-        "drupal/flag": 15,
         "drupal/jwt": 15,
         "drupal/page_manager": 10,
         "drupal/profile": 5,
