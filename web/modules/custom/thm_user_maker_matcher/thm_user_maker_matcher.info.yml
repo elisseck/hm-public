@@ -1,0 +1,7 @@
+name: 'THM User Matching Engine'
+type: module
+description: 'Maps common experiences and attributes between users and makers.'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - search_api
