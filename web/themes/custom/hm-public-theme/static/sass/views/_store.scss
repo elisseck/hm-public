@@ -13,12 +13,7 @@
 
     li.row{
 
-      background: $white;
-      border: 1px solid color(medium-grey);
-      display: flex;
-      flex-direction: column;
-      margin: em(16) em(16) em(16);
-      padding: em(30);
+      @extend .product-card;
 
       .price{
         font-weight:bold;
@@ -64,5 +59,25 @@
         }
       }
     }
+  }
+}
+
+
+.product-detail{
+  @extend .product-card;
+
+  @media all and (min-width: 1248px){
+    width: 60%;
+    margin-right:auto;
+    margin-left:auto;
+  }
+
+  .price{
+    font-weight:bold;
+    margin-top: em(10)
+  }
+
+  input{
+    margin: em(10) 0;
   }
 }
