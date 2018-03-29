@@ -58,13 +58,13 @@
   color: color(dark-grey);
 
   &:hover {
-    border: none;
+    border: 0;
     color: color(secondary);
     text-decoration: underline;
   }
 
   &:focus {
-    border: none;
+    border: 0;
   }
 }
 
@@ -76,7 +76,7 @@
   padding: 0;
 
   &:hover {
-    border: none;
+    border: 0;
     text-decoration: underline;
   }
 }

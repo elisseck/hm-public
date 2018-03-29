@@ -11,18 +11,9 @@
   width: em(170, 25);
   z-index: 100;
 
-  @media screen and (max-width: 767px) {
-    display: none;
-    font-size: rem(16);
-  }
-}
-
-.carousel__links--mobile {
-  display: none;
-
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 900px) {
     display: flex;
-    position: relative;
+    flex-direction: row;
     top: 0;
     width: 100%;
   }
@@ -50,7 +41,7 @@
     background-color: $white;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 950px) {
     flex: 1;
   }
 }
@@ -62,6 +53,10 @@
 
   &:hover {
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 65%;
   }
 
   @media screen and (max-width: 767px) {
@@ -110,8 +105,13 @@
   width: 33.0739299610895%;
   z-index: 100;
 
-  @media screen and (max-width: 767px) {
-    display: none;
+  @media screen and (max-width: 900px) {
+    height: 100%;
+    left: 0;
+    position: relative;
+    right: 0;
+    top: 0;
+    width: 100%;
   }
 }
 
@@ -142,6 +142,15 @@
   }
 }
 
+.feature-carousel__image-container {
+
+  @media screen and (max-width: 900px) {
+    height: em(400);
+    margin-top: 90px;
+    overflow: hidden;
+  }
+}
+
 .active .carousel__image {
   animation-duration: 10s;
   animation-iteration-count: infinite;
@@ -161,15 +170,27 @@
 
 .carousel-item {
   max-height: em(600);
+
+  @media screen and (max-width: 900px) {
+    background-color: color(primary);
+    max-height: 100%;
+  }
+
 }
 
-.carousel-item-left .carousel__caption {
+.carousel-item-left .carousel__caption,
+.carousel-item-left .carousel__caption__content,
+.carousel-item-left .carousel__caption__event,
+.carousel-item-left .carousel__caption__quote {
   opacity: 0;
 }
 
-.carousel-caption {
+.carousel-caption,
+.carousel-caption__content,
+.carousel-caption__event,
+.carousel-caption__quote {
   background-color: color(primary);
-  //display: none;
+  color: $white;
   left: auto;
   margin: em(30) em(90) em(30) em(30);
   position: relative;
@@ -203,7 +224,10 @@
 
 }
 
-.active .carousel__caption {
+.active .carousel__caption,
+.active .carousel-caption__content,
+.active .carousel-caption__event,
+.active .carousel-caption__quote {
   opacity: 1;
   transition: opacity .25s ease-in-out;
 }
