@@ -87,6 +87,10 @@
   width: 33.0739299610895%;
   z-index: 300;
 
+  @media screen and (max-width: 950px) {
+    padding: em(30);
+  }
+
   @media screen and (max-width: 767px) {
     display: none;
   }
@@ -118,6 +122,10 @@
   line-height: 127.027027027027027%;
   quotes: '\201C' '\201D';
   text-align: left;
+
+  @media screen and (max-width: 950px) {
+    font-size: 1.8em;
+  }
 
   @media screen and (max-width: 767px) {
     font-size: rem(22);
