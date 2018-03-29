@@ -33,27 +33,6 @@ function thm_jwt_help($route_name) {
   }
 }
 
-
-/**
- * Implements hook_user_login().
- *
- * @param AccountInterface $account User account.
- */
-function thm_jwt_user_login(AccountInterface $account) {
-  $request = \Drupal::request();
-  $session = $request->getSession();
-  $query   = $request->getQueryString();
-
-  if ($account->isAuthenticated()) {
-    $token = thm_jwt_fetch_token($session);
-
-    if (_requestHasReturnUrl($query)) {
-      $url = urldecode(explode('=', $query)[1]);
-      _redirectToReturnUrl(thm_jwt_refresh_url($url, $token));
-    }
-  }
-}
-
 /**
  * Implements hook_theme().
  */
@@ -91,7 +70,7 @@ function thm_jwt_refresh_url(string $url, string $token) {
  *
  * @return Symfony\Component\HttpFoundation\Response
  */
-function _redirectToReturnUrl(string $url) {
+function thm_jwt_redirect_to_return_url(string $url) {
   return RedirectResponse::create($url)->send();
 }
 
@@ -101,8 +80,12 @@ function _redirectToReturnUrl(string $url) {
  *
  * @return bool
  */
-function _requestHasReturnUrl($query) {
+function thm_jwt_request_has_return_url($query) {
   return strpos($query, 'return') !== false;
+}
+
+function thm_jwt_url_has_jwt_entry($url) {
+  return strpos($url, 'jwt') !== false;
 }
 
 
