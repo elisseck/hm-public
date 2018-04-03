@@ -38,7 +38,8 @@
         }
       }
 
-      @media all and (min-width: 1248px) {
+
+      @media all and (min-width: $screen_lg_min) {
 
         flex-direction: row;
         flex-wrap: nowrap;

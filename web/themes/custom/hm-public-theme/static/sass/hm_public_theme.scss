@@ -5,6 +5,7 @@
 @import "config/colors";
 @import "config/media-grid";
 @import "config/transitions";
+@import "config/dims";
 
 // Import grid.
 // Removed from import in favor of Bootstrap 4's grid for the moment
@@ -70,3 +71,4 @@
 @import 'views/biographies';
 @import 'views/people';
 @import 'views/store';
+@import 'views/cart';

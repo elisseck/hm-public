@@ -200,3 +200,12 @@
   padding: em(30);
   margin: em(15) em(15) em(15);
 }
+
+.shopping-card{
+  background: $white;
+  border: 1px solid color(medium-grey);
+  display: flex;
+  flex-direction: column;
+  padding: em(15);
+  margin: em(7) em(7);
+}
