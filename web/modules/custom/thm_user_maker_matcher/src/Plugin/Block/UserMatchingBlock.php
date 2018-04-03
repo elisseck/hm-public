@@ -9,7 +9,6 @@
 namespace Drupal\thm_user_maker_matcher\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\thm_user_maker_matcher\Form\UserMatchingForm;
 
 
 /**
@@ -29,6 +28,9 @@ class UserMatchingBlock extends BlockBase{
    * {@inheritdoc}
    */
   public function build() {
-    return \Drupal::formBuilder()->getForm(UserMatchingForm::class);
+    return [
+      '#type' => 'webform',
+      '#webform' => 'makermatcher_form'
+    ];
   }
 }

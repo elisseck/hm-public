@@ -5,12 +5,14 @@
  * Contains thm_user_maker_matcher.module.
  */
 
-use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Routing\RouteMatchInterface as RMI;
+use Drupal\Core\Form\FormStateInterface as FSI;
+use Drupal\webform\WebformSubmissionInterface as WSI;
 
 /**
  * Implements hook_help().
  */
-function thm_user_maker_matcher_help($route_name, RouteMatchInterface $route_match) {
+function thm_user_maker_matcher_help($route_name, RMI $route_match) {
   switch ($route_name) {
     // Main module help for the thm_user_maker_matcher module.
     case 'help.page.thm_user_maker_matcher':
@@ -23,6 +25,15 @@ function thm_user_maker_matcher_help($route_name, RouteMatchInterface $route_mat
   }
 }
 
+function _getWebformSessionKey() {
+  $webformSessionKeyBase = 'maker_matcher_uid_';
+  return $webformSessionKeyBase . \Drupal::currentUser()->id();
+}
+
+function _getSession() {
+  return \Drupal::request()->getSession();
+}
+
 /**
  * Implements hook_theme().
  */
@@ -32,4 +43,12 @@ function thm_user_maker_matcher_theme() {
       'render element' => 'children',
     ],
   ];
+}
+
+function thm_user_maker_matcher_webform_submission_prepare_form(WSI $webformSubmission, $op, FSI $formState) {
+  if ($data = _getSession()->get(_getWebformSessionKey())) {
+    $webformSubmission->setElementData('results', $data['results']);
+    $formState->set('current_page', 'webform_confirmation');
+    $formState->setRebuild();
+  }
 }
