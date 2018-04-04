@@ -168,13 +168,13 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.header__da-link, #hm-public-theme-main-menu .menu .menu .menu-item, .field-megamenu-left-column,
+.header__da-link, .header__top-row .upgrade-to-thmda #edit-upgrade-form, #hm-public-theme-main-menu .menu .menu .menu-item, .field-megamenu-left-column,
 .field-megamenu-right-column, .timeline-scroller--content, .two-column-testimonial .two-column-quote--content q, .intro-content p {
   font-family: 'Source Sans Pro', sans-serif; }
 
 .button, .form__button input,
 .form-submit,
-.form__button a, .header__da-links-title, .header__donate-link, .pager .pager__item, .snapshot h4, .quote-block--credits cite, .two-column-quote--content h4 + p, .read-more-trigger, .two-column-testimonial .two-column-testimonial--byline, .carousel__cite, .da__cite-name, .node--type-bio .back-button, .membership.row .membership--pricing-table, #makercategorynavigation .menu .menu-item a,
+.form__button a, .header__da-links-title, .header__top-row .make-a-donation #edit-donation-form, .pager .pager__item, .snapshot h4, .quote-block--credits cite, .two-column-quote--content h4 + p, .read-more-trigger, .two-column-testimonial .two-column-testimonial--byline, .carousel__cite, .da__cite-name, .node--type-bio .back-button, .membership.row .membership--pricing-table, #makercategorynavigation .menu .menu-item a,
 .press-year-navigation .menu .menu-item a {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 600; }
@@ -182,7 +182,13 @@ table {
 .bio-card__name, .staff-card--content h3, .maker-card a h3, .testimonial-carousel h2, .two-column-testimonial--header, .content h2, .button.button--primary.button--membership, .form__button input.button--primary.button--membership,
 .button--primary.button--membership.form-submit,
 .form__button a.button--primary.button--membership, #hm-public-theme-main-menu .menu-item, .modal__heading, .webform-progress-tracker .progress-step .progress-text, .webform-progress-tracker .progress-step .progress-title, .checkout-progress--step, .accordion__panel,
-.accordion__panel:hover, .snapshot h3, .past-winner-block h3.left-block-title, .snapshot-section--header, .quote-block--content q, .two-column-quote--content h4, .two-column-slide--content h2, .timeline-scroller h4, .view-block__title, .two-column-testimonial .two-column-quote--content a, .img-button__overlay-text, .collage__title, .intro-content h1, .page-banner .page-banner--highlight .page-banner--highlight-name, .page-title, .carousel__links, .carousel-caption h2, .headline--oswald, .node--type-bio .discover__heading, .node--type-bio .bio-card__name, .node--type-bio .card-head-link, .user-info__member-status, .member--content h1, .membership.row h3, .membership.row h4 {
+.accordion__panel:hover, .snapshot h3, .past-winner-block h3.left-block-title, .snapshot-section--header, .quote-block--content q, .two-column-quote--content h4, .hero-slide--date, .two-column-slide--content h2, .carousel__caption--event a.button, .carousel__caption--event
+a.form-submit, .carousel__caption--event
+.form__button a,
+.form__button .carousel__caption--event a, .timeline-scroller h4, .view-block__title, .two-column-testimonial .two-column-quote--content a, .img-button__overlay-text, .collage__title, .intro-content h1, .page-banner .page-banner--highlight .page-banner--highlight-name, .page-title, .carousel__links, .carousel-caption h2,
+.carousel-caption__content h2,
+.carousel-caption__event h2,
+.carousel-caption__quote h2, .headline--oswald, .node--type-bio .discover__heading, .node--type-bio .bio-card__name, .node--type-bio .card-head-link, .user-info__member-status, .member--content h1, .membership.row h3, .membership.row h4 {
   font-family: 'Oswald', sans-serif;
   font-weight: 400; }
 
@@ -1567,42 +1573,6 @@ body.ft-tabs-rendered div.ft-collapsible-tabs {
 .press-card__img {
   max-height: 4.0625rem; }
 
-.product-card, .item-list.store-products ul li.row, .product-detail, .cart-empty-page {
-  background: #FFFFFF;
-  border: 1px solid #cccccc;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-     -moz-box-orient: vertical;
-     -moz-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 1.875em;
-  margin: 0.9375em 0.9375em 0.9375em; }
-
-.shopping-card, .cart table.cols-6 tbody > tr, .cart table.cols-6 thead > tr, .cart-empty-page table.cols-6 tbody > tr, .cart-empty-page table.cols-6 thead > tr, .cart .form-actions.js-form-wrapper.form-wrapper, .cart .total-price, .cart-empty-page .form-actions.js-form-wrapper.form-wrapper, .cart-empty-page .total-price {
-  background: #FFFFFF;
-  border: 1px solid #cccccc;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-     -moz-box-orient: vertical;
-     -moz-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 0.9375em;
-  margin: 0.4375em 0.4375em; }
-
 .webform-progress-tracker .progress-step::after {
   display: none; }
 
@@ -2044,42 +2014,6 @@ fieldset {
 
 .press-card__img {
   max-height: 4.0625rem; }
-
-.product-card, .item-list.store-products ul li.row, .product-detail, .cart-empty-page {
-  background: #FFFFFF;
-  border: 1px solid #cccccc;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-     -moz-box-orient: vertical;
-     -moz-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 1.875em;
-  margin: 0.9375em 0.9375em 0.9375em; }
-
-.shopping-card, .cart table.cols-6 tbody > tr, .cart table.cols-6 thead > tr, .cart-empty-page table.cols-6 tbody > tr, .cart-empty-page table.cols-6 thead > tr, .cart .form-actions.js-form-wrapper.form-wrapper, .cart .total-price, .cart-empty-page .form-actions.js-form-wrapper.form-wrapper, .cart-empty-page .total-price {
-  background: #FFFFFF;
-  border: 1px solid #cccccc;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-     -moz-box-orient: vertical;
-     -moz-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 0.9375em;
-  margin: 0.4375em 0.4375em; }
 
 .full-screen-carousel {
   margin-bottom: 3.75em; }
@@ -3917,154 +3851,19 @@ hr {
   margin-right: 0;
   max-width: 100%; }
 
-.item-list.store-products {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex; }
-  .item-list.store-products ul li.row .price {
-    font-weight: bold;
-    margin-top: 0.625em; }
-  .item-list.store-products ul li.row .views-field-variations-1 {
-    -webkit-align-self: flex-start;
-        -ms-flex-item-align: start;
-            align-self: flex-start; }
-    .item-list.store-products ul li.row .views-field-variations-1 form {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-         -moz-box-orient: vertical;
-         -moz-box-direction: normal;
-          -ms-flex-direction: column;
-              flex-direction: column; }
-      .item-list.store-products ul li.row .views-field-variations-1 form .form-item.form-type-select {
-        margin: 0;
-        padding: 0.25em 0;
-        width: 12.5em; }
-      .item-list.store-products ul li.row .views-field-variations-1 form input {
-        margin: 0.625em 0; }
-
-.product-detail .price {
-  font-weight: bold;
-  margin-top: 0.625em; }
-
-.product-detail div.form-item {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  width: 250px; }
-
-.product-detail input {
-  margin: 0.9375em 0 0.625em; }
-
-.cart, .cart-empty-page {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  margin-bottom: 10px; }
-  .cart:last-of-type, .cart-empty-page:last-of-type {
-    margin-bottom: 0px; }
-  .cart .views-element-container, .cart-empty-page .views-element-container {
-    width: 100%; }
-  .cart p, .cart-empty-page p {
-    margin: 0; }
-  .cart table.cols-6, .cart-empty-page table.cols-6 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-       -moz-box-orient: vertical;
-       -moz-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column; }
-    .cart table.cols-6 tbody > tr, .cart table.cols-6 thead > tr, .cart-empty-page table.cols-6 tbody > tr, .cart-empty-page table.cols-6 thead > tr {
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: row;
-         -moz-box-orient: horizontal;
-         -moz-box-direction: normal;
-          -ms-flex-direction: row;
-              flex-direction: row;
-      -webkit-flex-wrap: wrap;
-          -ms-flex-wrap: wrap;
-              flex-wrap: wrap; }
-      .cart table.cols-6 tbody > tr:last-of-type, .cart table.cols-6 thead > tr:last-of-type, .cart-empty-page table.cols-6 tbody > tr:last-of-type, .cart-empty-page table.cols-6 thead > tr:last-of-type {
-        margin-bottom: 0; }
-      .cart table.cols-6 tbody > tr > td, .cart table.cols-6 tbody > tr > th, .cart table.cols-6 thead > tr > td, .cart table.cols-6 thead > tr > th, .cart-empty-page table.cols-6 tbody > tr > td, .cart-empty-page table.cols-6 tbody > tr > th, .cart-empty-page table.cols-6 thead > tr > td, .cart-empty-page table.cols-6 thead > tr > th {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: column;
-           -moz-box-orient: vertical;
-           -moz-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column; }
-      .cart table.cols-6 tbody > tr td:nth-child(2) .product-id, .cart table.cols-6 tbody > tr td:nth-child(2) .price, .cart table.cols-6 tbody > tr td:nth-child(2) .field-format, .cart table.cols-6 thead > tr td:nth-child(2) .product-id, .cart table.cols-6 thead > tr td:nth-child(2) .price, .cart table.cols-6 thead > tr td:nth-child(2) .field-format, .cart-empty-page table.cols-6 tbody > tr td:nth-child(2) .product-id, .cart-empty-page table.cols-6 tbody > tr td:nth-child(2) .price, .cart-empty-page table.cols-6 tbody > tr td:nth-child(2) .field-format, .cart-empty-page table.cols-6 thead > tr td:nth-child(2) .product-id, .cart-empty-page table.cols-6 thead > tr td:nth-child(2) .price, .cart-empty-page table.cols-6 thead > tr td:nth-child(2) .field-format {
-        display: none; }
-      .cart table.cols-6 tbody > tr td:nth-child(2) .field-items, .cart table.cols-6 thead > tr td:nth-child(2) .field-items, .cart-empty-page table.cols-6 tbody > tr td:nth-child(2) .field-items, .cart-empty-page table.cols-6 thead > tr td:nth-child(2) .field-items {
-        width: 100%;
-        height: 100%;
-        display: table; }
-        .cart table.cols-6 tbody > tr td:nth-child(2) .field-items .field-item, .cart table.cols-6 thead > tr td:nth-child(2) .field-items .field-item, .cart-empty-page table.cols-6 tbody > tr td:nth-child(2) .field-items .field-item, .cart-empty-page table.cols-6 thead > tr td:nth-child(2) .field-items .field-item {
-          text-align: center;
-          vertical-align: middle;
-          display: table-cell; }
-          .cart table.cols-6 tbody > tr td:nth-child(2) .field-items .field-item img, .cart table.cols-6 thead > tr td:nth-child(2) .field-items .field-item img, .cart-empty-page table.cols-6 tbody > tr td:nth-child(2) .field-items .field-item img, .cart-empty-page table.cols-6 thead > tr td:nth-child(2) .field-items .field-item img {
-            max-width: 100%;
-            height: auto; }
-  .cart .form-actions.js-form-wrapper.form-wrapper, .cart .total-price, .cart-empty-page .form-actions.js-form-wrapper.form-wrapper, .cart-empty-page .total-price {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-       -moz-box-orient: horizontal;
-       -moz-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-    -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-       -moz-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end; }
-  @media screen and (min-width: 1248px){
+@media screen and (min-width: 1248px){
   body.show-grid div#svg-grid-background > svg rect{
     fill: rgba(192, 57, 43, 0.12); } }
-  @media screen and (min-width: 1002px) and (max-width: 1247px){
+
+@media screen and (min-width: 1002px) and (max-width: 1247px){
   body.show-grid div#svg-grid-background > svg rect{
     fill: rgba(155, 89, 182, 0.12); } }
-  @media screen and (min-width: 768px) and (max-width: 1001px){
+
+@media screen and (min-width: 768px) and (max-width: 1001px){
   body.show-grid div#svg-grid-background > svg rect{
     fill: rgba(41, 128, 185, 0.12); } }
-  @media screen and (min-width: 480px) and (max-width: 767px){
+
+@media screen and (min-width: 480px) and (max-width: 767px){
   body.show-grid div#svg-grid-background > svg rect{
     fill: rgba(39, 174, 96, 0.12); }
   body.columns-left.layout-fluid .content.column,
@@ -4073,15 +3872,18 @@ hr {
   body.columns-left.layout-adaptive .sidebar.first,
   body.columns-left.layout-adaptive .sidebar.second{
     float: none; } }
-  @media screen and (min-width: 0px) and (max-width: 479px){
+
+@media screen and (min-width: 0px) and (max-width: 479px){
   body.show-grid div#svg-grid-background > svg rect{
     fill: rgba(241, 196, 15, 0.12); } }
-  @media screen and (min-width: 0px) and (max-width: 767px){
+
+@media screen and (min-width: 0px) and (max-width: 767px){
   body.columns-middle.layout-fluid .content.column,
   body.columns-middle.layout-fluid .sidebar.second, body.columns-middle.layout-adaptive .content.column,
   body.columns-middle.layout-adaptive .sidebar.second{
     float: none; } }
-  @media screen and (max-width: 767px){
+
+@media screen and (max-width: 767px){
   .button.button, .form__button input,
     .form-submit,
     .form__button a,
@@ -4230,75 +4032,14 @@ hr {
     flex-wrap: nowrap; }
   .item-list.store-products ul li.row .views-field-body{
     width: 100%; }
-  .item-list.store-products ul li.row .views-field-variations-1{
-    -webkit-align-self: flex-end;
-    -ms-flex-item-align: end;
-    align-self: flex-end; }
-  .item-list.store-products ul li.row .views-field-variations-1 form{
-    -webkit-box-align: end;
-    -webkit-align-items: flex-end;
-    -moz-box-align: end;
-    -ms-flex-align: end;
-    align-items: flex-end; }
-  .item-list.store-products ul li.row .views-field-variations-1 form input{
-    margin: 0.625em 0 0; }
-  .product-detail{
-    width: 60%;
-    margin-right: auto;
-    margin-left: auto; }
-  .cart, .cart-empty-page{
-    width: 80%;
-    margin-right: auto;
-    margin-left: auto; } }
-  @media all and (max-width: 767px){
-  .cart table.cols-6, .cart-empty-page table.cols-6{
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -moz-box-orient: vertical;
-    -moz-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column; }
-  .cart table.cols-6 thead, .cart-empty-page table.cols-6 thead{
-    display: none; }
-  .cart table.cols-6 tbody > tr > td, .cart table.cols-6 tbody > tr > th, .cart table.cols-6 thead > tr > td, .cart table.cols-6 thead > tr > th, .cart-empty-page table.cols-6 tbody > tr > td, .cart-empty-page table.cols-6 tbody > tr > th, .cart-empty-page table.cols-6 thead > tr > td, .cart-empty-page table.cols-6 thead > tr > th{
-    width: 100%;
-    padding: 0px; }
-  .cart table.cols-6 tbody > tr > td span, .cart table.cols-6 tbody > tr > th span, .cart table.cols-6 thead > tr > td span, .cart table.cols-6 thead > tr > th span, .cart-empty-page table.cols-6 tbody > tr > td span, .cart-empty-page table.cols-6 tbody > tr > th span, .cart-empty-page table.cols-6 thead > tr > td span, .cart-empty-page table.cols-6 thead > tr > th span{
-    font-weight: bold;
-    margin-right: 8px;
-    display: inline-block; }
-  .cart table.cols-6 tbody > tr td:nth-child(2), .cart table.cols-6 thead > tr td:nth-child(2), .cart-empty-page table.cols-6 tbody > tr td:nth-child(2), .cart-empty-page table.cols-6 thead > tr td:nth-child(2){
-    width: 100%;
-    padding: 0px; }
-  .cart table.cols-6 tbody > tr td:nth-child(2) span, .cart table.cols-6 thead > tr td:nth-child(2) span, .cart-empty-page table.cols-6 tbody > tr td:nth-child(2) span, .cart-empty-page table.cols-6 thead > tr td:nth-child(2) span{
-    font-weight: bold;
-    margin-right: 8px;
-    display: inline-block; }
-  .cart table.cols-6 tbody > tr, .cart table.cols-6 thead > tr, .cart-empty-page table.cols-6 tbody > tr, .cart-empty-page table.cols-6 thead > tr{
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -moz-box-orient: vertical;
-    -moz-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column; }
-  .cart table.cols-6 tbody > tr > td, .cart table.cols-6 tbody > tr > th, .cart table.cols-6 thead > tr > td, .cart table.cols-6 thead > tr > th, .cart-empty-page table.cols-6 tbody > tr > td, .cart-empty-page table.cols-6 tbody > tr > th, .cart-empty-page table.cols-6 thead > tr > td, .cart-empty-page table.cols-6 thead > tr > th{
-    margin-bottom: 7px; }
-  .cart table.cols-6 tbody > tr > td:last-of-type, .cart table.cols-6 tbody > tr > th:last-of-type, .cart table.cols-6 thead > tr > td:last-of-type, .cart table.cols-6 thead > tr > th:last-of-type, .cart-empty-page table.cols-6 tbody > tr > td:last-of-type, .cart-empty-page table.cols-6 tbody > tr > th:last-of-type, .cart-empty-page table.cols-6 thead > tr > td:last-of-type, .cart-empty-page table.cols-6 thead > tr > th:last-of-type{
-    margin-bottom: 0; } }
-  @media all and (min-width: 768px){
-  .cart table.cols-6 tbody > tr > td, .cart table.cols-6 tbody > tr > th, .cart table.cols-6 thead > tr > td, .cart table.cols-6 thead > tr > th, .cart-empty-page table.cols-6 tbody > tr > td, .cart-empty-page table.cols-6 tbody > tr > th, .cart-empty-page table.cols-6 thead > tr > td, .cart-empty-page table.cols-6 thead > tr > th{
-    width: 15%;
-    padding: 0px 8px; }
-  .cart table.cols-6 tbody > tr > td span, .cart table.cols-6 tbody > tr > th span, .cart table.cols-6 thead > tr > td span, .cart table.cols-6 thead > tr > th span, .cart-empty-page table.cols-6 tbody > tr > td span, .cart-empty-page table.cols-6 tbody > tr > th span, .cart-empty-page table.cols-6 thead > tr > td span, .cart-empty-page table.cols-6 thead > tr > th span{
-    display: none; }
-  .cart table.cols-6 tbody > tr > td:first-of-type, .cart table.cols-6 tbody > tr > th:first-of-type, .cart table.cols-6 thead > tr > td:first-of-type, .cart table.cols-6 thead > tr > th:first-of-type, .cart-empty-page table.cols-6 tbody > tr > td:first-of-type, .cart-empty-page table.cols-6 tbody > tr > th:first-of-type, .cart-empty-page table.cols-6 thead > tr > td:first-of-type, .cart-empty-page table.cols-6 thead > tr > th:first-of-type{
-    width: 25%;
-    padding-left: 0px; }
-  .cart table.cols-6 tbody > tr > td:last-of-type, .cart table.cols-6 tbody > tr > th:last-of-type, .cart table.cols-6 thead > tr > td:last-of-type, .cart table.cols-6 thead > tr > th:last-of-type, .cart-empty-page table.cols-6 tbody > tr > td:last-of-type, .cart-empty-page table.cols-6 tbody > tr > th:last-of-type, .cart-empty-page table.cols-6 thead > tr > td:last-of-type, .cart-empty-page table.cols-6 thead > tr > th:last-of-type{
-    padding-right: 0px; }
-  .cart table.cols-6 tbody > tr > td input.form-number, .cart table.cols-6 tbody > tr > th input.form-number, .cart table.cols-6 thead > tr > td input.form-number, .cart table.cols-6 thead > tr > th input.form-number, .cart-empty-page table.cols-6 tbody > tr > td input.form-number, .cart-empty-page table.cols-6 tbody > tr > th input.form-number, .cart-empty-page table.cols-6 thead > tr > td input.form-number, .cart-empty-page table.cols-6 thead > tr > th input.form-number{
+  .carousel__link{
+    width: 65%; }
+  .carousel__inner-caption{
+    height: 100%;
+    left: 0;
+    position: relative;
+    right: 0;
+    top: 0;
     width: 100%; }
   .cart .total-price .field-item:last-of-type, .cart-empty-page .total-price .field-item:last-of-type{
     margin-right: 2.5em; } }

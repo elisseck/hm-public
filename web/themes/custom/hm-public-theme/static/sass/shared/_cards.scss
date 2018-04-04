@@ -75,7 +75,9 @@
   &--image {
     flex: 1 0 100%;
     height: auto;
+    max-height: 199px;
     max-width: 200px;
+    overflow: hidden;
     padding: 0;
     width: 100%;
 
@@ -172,7 +174,6 @@
 }
 
 // Press Cards
-
 .press-card-row {
   display: flex;
   flex-wrap: wrap;
