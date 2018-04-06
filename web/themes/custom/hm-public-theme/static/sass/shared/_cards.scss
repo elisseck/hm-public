@@ -193,7 +193,7 @@
 
 .press-card__img { max-height: rem(65); }
 
-.product-card {
+%product-card {
   background: $white;
   border: 1px solid color(medium-grey);
   display: flex;
@@ -202,7 +202,7 @@
   padding: em(30);
 }
 
-.shopping-card {
+%shopping-card {
   background: $white;
   border: 1px solid color(medium-grey);
   display: flex;
