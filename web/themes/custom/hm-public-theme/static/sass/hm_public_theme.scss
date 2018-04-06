@@ -2,10 +2,10 @@
 @import 'lib/basicimports';
 
 // Import config.
-@import "config/colors";
-@import "config/media-grid";
-@import "config/transitions";
-@import "config/dims";
+@import 'config/colors';
+@import 'config/media-grid';
+@import 'config/transitions';
+@import 'config/dims';
 
 // Import grid.
 // Removed from import in favor of Bootstrap 4's grid for the moment
