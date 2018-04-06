@@ -1,38 +1,39 @@
-.item-list.store-products{
+.item-list.store-products {
 
-  display:flex;
+  display: flex;
 
 
-  @media all and (min-width: 1248px){
+  @media all and (min-width: 1248px) {
+    margin-left: auto;
+    margin-right: auto;
     width: 70%;
-    margin-right:auto;
-    margin-left:auto;
   }
 
-  ul{
+  ul {
 
-    li.row{
+    li.row {
 
       @extend .product-card;
-      .price{
-        font-weight:bold;
-        margin-top: em(10)
+
+      .price {
+        font-weight: bold;
+        margin-top: em(10);
       }
 
-      .views-field-variations-1{
-        align-self:flex-start;
+      .views-field-variations-1 {
+        align-self: flex-start;
 
-        form{
-          display:flex;
-          flex-direction:column;
+        form {
+          display: flex;
+          flex-direction: column;
 
-          .form-item.form-type-select{
+          .form-item.form-type-select {
             margin: 0;
             padding: em(4) 0;
-            width:em(200); //ensure there is no blank space on the right.
+            width: em(200); //ensure there is no blank space on the right.
           }
 
-          input{
+          input {
             margin: em(10) 0;
           }
         }
@@ -43,17 +44,18 @@
 
         flex-direction: row;
         flex-wrap: nowrap;
-        .views-field-body{
-          width:100%;
+
+        .views-field-body {
+          width: 100%;
         }
 
-        .views-field-variations-1{
-          align-self:flex-end;
+        .views-field-variations-1 {
+          align-self: flex-end;
 
-          form{
-            align-items:flex-end;
+          form {
+            align-items: flex-end;
 
-            input{
+            input {
               margin: em(10) 0 0;
             }
           }
@@ -63,31 +65,30 @@
   }
 }
 
-
-.product-detail{
+.product-detail {
   @extend .product-card;
 
-  @media all and (min-width: 1248px){
+  @media all and (min-width: 1248px) {
+    margin-left: auto;
+    margin-right: auto;
     width: 60%;
-    margin-right:auto;
-    margin-left:auto;
   }
 
-  .price{
-    font-weight:bold;
-    margin-top: em(10)
+  .price {
+    font-weight: bold;
+    margin-top: em(10);
   }
 
 
 
   //we want to have the dropdown below the label which also has an asterisk.
-  div.form-item{
-    display:flex;
+  div.form-item {
+    display: flex;
     flex-wrap: wrap;
     width: 250px;
   }
 
-  input{
+  input {
     margin: em(15) 0 em(10);
   }
 }
