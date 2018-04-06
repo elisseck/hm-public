@@ -27,6 +27,28 @@
   margin-top: $default-grid-gutter-width;
 }
 
+.event__content .first.event__info {
+  margin-left: 30px;
+  max-width: 72%;
+
+  @media screen and (max-width: 768px) {
+    max-width: 96%;
+  }
+
+}
+
+.event__content .last {
+  padding-left: 0;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 30px;
+    margin-top: em(30);
+    max-width: 96%;
+    padding-left: 30px;
+  }
+
+}
+
 //Left column
 .event__info {
 
@@ -40,6 +62,11 @@
 
   .accordion__body {
     padding: em(15);
+
+    @media screen and (max-width: 768px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
 
     img {
       width: 100%;

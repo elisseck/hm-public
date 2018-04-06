@@ -22,6 +22,7 @@
   text-transform: uppercase;
   top: 0;
   width: em(45);
+  z-index: 500;
 }
 
 // Two Column Slide
@@ -51,6 +52,7 @@
     }
 
     a.button.button--primary {
+      margin-bottom: em(15);
       max-width: em(150);
       text-align: center;
     }
@@ -83,7 +85,22 @@
 
 }
 
-.carousel__caption--event {
+.event-carousel {
+  margin-top: 1.875em;
+
+  .carousel-item {
+    margin-left: 30px;
+    width: 98%;
+
+    @media screen and (max-width: 768px) {
+      max-width: 96%;
+    }
+
+  }
+
+}
+
+.event-carousel .carousel__caption {
   background-color: color(primary);
 
   a.button {
