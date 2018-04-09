@@ -11,6 +11,7 @@ namespace Drupal\thm_user_maker_matcher\Plugin\WebformHandler;
 use Drupal\Core\Form\FormStateInterface as FSI;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformSubmissionInterface as WSI;
+use Drupal\thm_user_maker_matcher\Helper\MakerMatcher;
 
 /**
  * Form submission handler.
@@ -42,13 +43,31 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
   /**
    * @param \Drupal\Core\Form\FormStateInterface $formState
    *
-   * @return mixed
+   * @return array
    */
   protected function collectResults(FSI $formState) {
     $values = $formState->getValues();
-    return array_reduce(array_keys($values), function($curr, $key) use ($values) {
-      return $curr . 'key: ' . $key . ', value: ' . $values[$key] . "\n";
-    }, '');
+    $output = [];
+
+    foreach ($values as $key => $value) {
+      if (!in_array($key, ['user', 'results', 'in_draft'])) {
+        $output[$this->restructureKeys($key)] = $values[$key];
+      }
+    }
+    return $output;
+  }
+
+  protected function restructureKeys($key) {
+    switch ($key) {
+      case 'what_s_your_favorite_season_':
+        return 'field_favorite_season';
+      case 'what_s_your_favorite_color_':
+        return 'field_favorite_color';
+      case 'what_s_your_favorite_food_':
+        return 'field_favorite_food';
+      case 'when_is_your_birthday_':
+        return 'field_birth_date';
+    }
   }
 
   /**
@@ -114,6 +133,10 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
    * @param \Drupal\webform\WebformSubmissionInterface $webformSubmission
    */
   public function submitForm(array &$form, FSI $formState, WSI $webformSubmission) {
-    $webformSubmission->setElementData('results', $this->collectResults($formState));
+    $matcher    = new MakerMatcher();
+    $formValues = $this->collectResults($formState);
+    $results    = $matcher->performSearch($formValues);
+    //$data       = $matcher->prepareResults($results);
+    $webformSubmission->setElementData('results', 'placeholder');
   }
 }
