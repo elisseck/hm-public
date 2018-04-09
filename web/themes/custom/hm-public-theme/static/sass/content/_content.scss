@@ -33,7 +33,7 @@ hr {
 .share {
   left: em(10);
   position: fixed;
-  top: 30%; // we may eventually want to use js to calculate this relative to the parent container
+  top: 52%; // we may eventually want to use js to calculate this relative to the parent container
   z-index: 1000;
 
   @media screen and (min-width: 1510px) {
