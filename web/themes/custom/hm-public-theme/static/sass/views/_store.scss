@@ -13,7 +13,7 @@
 
     li.row {
 
-      @extend .product-card;
+      @extend %product-card;
 
       .price {
         font-weight: bold;
@@ -40,7 +40,7 @@
       }
 
 
-      @media all and (min-width: $screen_lg_min) {
+      @media all and (min-width: $screen-lg-min) {
 
         flex-direction: row;
         flex-wrap: nowrap;
@@ -66,7 +66,7 @@
 }
 
 .product-detail {
-  @extend .product-card;
+  @extend %product-card;
 
   @media all and (min-width: 1248px) {
     margin-left: auto;
