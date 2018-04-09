@@ -32,5 +32,8 @@
         {{ content.field_carousel_link|field_raw('title') }}
       </a>
     {% endif %} 
+    {% if content.field_carousel_product_button|field_value is not empty %}
+      {{ content.field_carousel_product_button|field_value }}
+    {% endif %} 
   </div>
 </div>
