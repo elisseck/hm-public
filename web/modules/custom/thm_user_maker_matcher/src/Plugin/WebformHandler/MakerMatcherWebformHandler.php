@@ -51,7 +51,7 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
 
     foreach ($values as $key => $value) {
       if (!in_array($key, ['user', 'results', 'in_draft'])) {
-        $output[$this->restructureKeys($key)] = $values[$key];
+        $output[$this->restructureKeys($key)] = $value;
       }
     }
     return $output;
@@ -135,8 +135,8 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
   public function submitForm(array &$form, FSI $formState, WSI $webformSubmission) {
     $matcher    = new MakerMatcher();
     $formValues = $this->collectResults($formState);
-    $results    = $matcher->performSearch($formValues);
-    //$data       = $matcher->prepareResults($results);
+    $matcher->performSearch($formValues);
+    $data       = $matcher->prepareResults();
     $webformSubmission->setElementData('results', 'placeholder');
   }
 }

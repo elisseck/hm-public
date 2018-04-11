@@ -26,13 +26,21 @@ class MakerMatcher {
    */
   protected $searchService = 'plugin.manager.search_api.parse_mode';
 
+  /**
+   * @var string $parseStrategy
+   */
+  protected $parseStrategy = 'terms';
+
 
   /**
-   * @var QueryInterface
+   * @var QueryInterface $query
    */
   protected $query;
 
-  protected $results = [];
+  /**
+   * @var array $results
+   */
+  public $results = [];
 
   /**
    * MakerMatcher constructor.
@@ -49,37 +57,44 @@ class MakerMatcher {
   }
 
   protected function setParseMode() {
-    $parseMode = \Drupal::service($this->searchService)->createInstance('direct');
+    $parseMode = \Drupal::service($this->searchService)
+      ->createInstance($this->parseStrategy);
     $this->query->setParseMode($parseMode);
   }
 
   public function performSearch(array $values) {
     $this->setParseMode();
-    $this->query->setFulltextFields([
-      'field_favorite_season',
-      'field_favorite_food',
-      'field_favorite_color',
-      'field_birth_date'
-    ]);
 
     foreach ($values as $fieldName => $fieldValue) {
       $this->executeSearch($fieldValue, $fieldName);
     }
   }
 
-  protected function executeSearch(string $term, string $field) {
-    $this->query->keys($term);
-    $this->results[$field] = $this->query->execute();
+  protected function executeSearch(string $fieldValue, string $fieldName) {
+    if ($fieldName === 'field_birth_date') {
+      //$fieldValue = date('m/d', $fieldValue);
+      $this->query->addCondition($fieldName, $fieldValue);
+    } else {
+      $this->query->addCondition($fieldName, $fieldValue, 'CONTAINS');
+    }
+
+    $this->results[$fieldName] = $this->query->execute();
   }
 
   public function prepareResults() {
-    $items = $this->results;
-    return $items;
+    $items  = $this->results;
+    $output = [];
 
-    /*return array_map(function(ItemInterface $item) {
-      return [
-        'favorite_season' => [ @$item->getField('field_favorite_season')->getValues() ]
-      ];
-    }, $items);*/
+    /**
+     * @var string $field
+     * @var ResultSetInterface $results
+     */
+    foreach ($items as $field => $results) {
+      $output[$field] = array_map(function(ItemInterface $item) use ($field) {
+        return @$item->getField($field)->getValues();
+      }, $results->getResultItems());
+    }
+
+    return $output;
   }
 }
