@@ -87,8 +87,8 @@ var megamenuUtils = function(){
         $span.parent().removeClass( "show" );
       }
     });
-  }).focusout(  function(){
-    console.log( "blur me");
+  }).focusout( function(){
+
     var $thisSpan = $(this);
     var $parent = $thisSpan.parent();
     $parent.removeClass("show");

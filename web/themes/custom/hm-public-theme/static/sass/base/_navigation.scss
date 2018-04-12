@@ -29,26 +29,34 @@ li.pager__item.pager__item--ellipsis {
   display: none;
 }
 
-#hm-public-theme-main-menu{
+#hm-public-theme-main-menu {
 
-  .menu-item.show, .mega-menu-wrapper.show{
+  .menu-item.show, .mega-menu-wrapper.show {
     .menu {
-      display: inline-block !important;
+      display: inline-block;
     }
 
-    .mega-menu-wrapper{
-      opacity: 1;
+    .mega-menu-wrapper {
       display: flex;
+      opacity: 1;
     }
 
-    .mega-menu-wrapper+.menu{
-      display: none !important;
+    .mega-menu-wrapper+.menu {
+      display: none;
+    }
+  }
+
+  .mega-menu-wrapper .simple-mega-menu{
+    background-color: $white;
+
+    &>div{
+      min-width: 200px;
     }
   }
 
   //Dropdown Navigation
   @media all and (min-width: $screen-desktop) {
-    .menu-item:hover{
+    .menu-item:hover {
       .menu {
         display: inline-block;
       }
@@ -147,25 +155,27 @@ li.pager__item.pager__item--ellipsis {
   display: flex;
 }
 
-.menu--simple-mega-menu > .menu-item{
-
-  display:flex;
-  position: relative;
+.menu--simple-mega-menu > .menu-item {
+  display: flex;
   flex-flow: column;
+  position: relative;
+
+  span {
+    font-weight: bold;
+  }
 
 
   @media all and (min-width: $screen-desktop) {
-
-    span{
+    span {
       display: none;
     }
   }
 
   @media all and (min-width: $screen-tablet) {
-    &>.menu, & > .menu-item--expanded > .mega-menu-wrapper{
-      z-index: 10;
+    &>.menu, & > .menu-item--expanded > .mega-menu-wrapper {
       position: absolute;
       top: 25px;
+      z-index: 10;
     }
 
 
@@ -173,22 +183,22 @@ li.pager__item.pager__item--ellipsis {
       border-right: 1px solid color(medium-grey);
     }
 
-    span{
-      position: absolute;
-      padding: 5px;
+    span {
       cursor: pointer;
-      top: 0;
+      padding: 5px;
+      position: absolute;
       right: -20px;
+      top: 0;
     }
   }
 
   @media all and (max-width: $screen-sm-max) {
-    &>ul.menu, & > .mega-menu-wrapper{
+    &>ul.menu, & > .mega-menu-wrapper {
       position: relative;
       top: 0;
     }
 
-    & > .mega-menu-wrapper > .simple-mega-menu{
+    & > .mega-menu-wrapper > .simple-mega-menu {
       flex-flow: column;
       width: auto;
     }
@@ -197,12 +207,12 @@ li.pager__item.pager__item--ellipsis {
       border-bottom: 1px solid color(medium-grey);
     }
 
-    span{
-      position: absolute;
-      padding: 14px 10px 0;
+    span {
       cursor: pointer;
-      top: 0;
+      padding: 14px 10px 0;
+      position: absolute;
       right: 0;
+      top: 0;
     }
   }
 }
@@ -214,8 +224,8 @@ li.pager__item.pager__item--ellipsis {
   z-index: 2000;
 
   .mega-menu-background {
+    background: $white;
     width: auto;
-    background: white;
   }
 
   .mega-menu-item {
