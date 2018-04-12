@@ -57,14 +57,12 @@ li.pager__item.pager__item--ellipsis {
   background: $white;
   display: none;
   margin-top: 0.5em;
-  position: absolute;
   width: 200px;
-  z-index: 10;
 
   .menu-item {
     @extend %source-sans;
     border-bottom: 0;
-    display: block;
+    display: flex;
     font-size: 90%;
     line-height: 120%;
     padding: 10px 15px;
@@ -122,29 +120,67 @@ li.pager__item.pager__item--ellipsis {
   display: none;
 }
 
-.menu--simple-mega-menu > .menu-item--expanded > .mega-menu-wrapper {
-  left: inherit;
-  padding: 0;
-  width: 40%;
-  z-index: 2000;
-}
-
-.menu--simple-mega-menu > .menu-item--expanded > .mega-menu-wrapper .mega-menu-background {
-  width: auto;
-}
 
 .simple-mega-menu {
   display: flex;
 }
 
-.menu--simple-mega-menu > .menu-item--expanded > .mega-menu-wrapper .mega-menu-item {
-  flex: 1 0 100%;
-  padding-bottom: em(15);
+.menu--simple-mega-menu > .menu-item{
+
+  display:flex;
+  position: relative;
+  flex-flow: column;
+
+  @media all and (min-width: $screen-tablet) {
+    &>.menu, & > .menu-item--expanded > .mega-menu-wrapper{
+      z-index: 10;
+      position: absolute;
+      top: 25px;
+    }
+
+
+    .field-megamenu-left-column {
+      border-right: 1px solid color(medium-grey);
+    }
+
+  }
+
+  @media all and (max-width: $screen-sm-max) {
+    &>ul.menu, & > .mega-menu-wrapper{
+      position: relative;
+      top: 0;
+    }
+
+    & > .mega-menu-wrapper > .simple-mega-menu{
+      flex-flow: column;
+      width: auto;
+    }
+
+    .field-megamenu-left-column {
+      border-bottom: 1px solid color(medium-grey);
+    }
+
+  }
 }
 
-.field-megamenu-left-column {
-  border-right: 1px solid color(medium-grey);
+.menu--simple-mega-menu > .menu-item--expanded > .mega-menu-wrapper {
+  left: inherit;
+  padding: 0;
+  width: 40%;
+  z-index: 2000;
+
+  .mega-menu-background {
+    width: auto;
+    background: white;
+  }
+
+  .mega-menu-item {
+    flex: 1 0 100%;
+    padding-bottom: em(15);
+  }
 }
+
+
 
 .field-megamenu-left-column,
 .field-megamenu-right-column {
