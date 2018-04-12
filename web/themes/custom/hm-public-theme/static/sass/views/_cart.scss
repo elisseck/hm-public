@@ -1,0 +1,166 @@
+.cart,
+.cart-empty-page {
+
+  display: flex;
+  margin-bottom: 10px;
+  width: 100%;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .views-element-container {
+    width: 100%;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @media all and (min-width: 1248px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+
+  table.cols-6 {
+    display: flex;
+    flex-direction: column;
+
+    @media all and (max-width: $screen-sm-max) {
+      flex-direction: column;
+    }
+
+    thead {
+      @media all and (max-width: $screen-sm-max) {
+        display: none;
+      }
+    }
+
+    tbody > tr,
+    thead > tr {
+      @extend %shopping-card;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      & > td,
+      & > th {
+        display: flex;
+        flex-direction: column;
+
+        @media all and (max-width: $screen-sm-max) {
+          padding: 0;
+          width: 100%;
+
+          span {
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 8px;
+          }
+        }
+
+        @media all and ( min-width: $screen-md-min) {
+          padding: 0 8px;
+          width: (15%);
+
+          span {
+            display: none;
+          }
+
+          &:first-of-type {
+            padding-left: 0;
+            width: (100% - (15 * 5));
+          }
+
+          &:last-of-type {
+            padding-right: 0;
+          }
+
+          input.form-number {
+            width: 100%;
+          }
+        }
+      }
+
+      //product cover
+      td:nth-child(2) {
+
+        .product-id,
+        .price,
+        .field-format {
+          display: none;
+        }
+
+        @media all and (max-width: $screen-sm-max) {
+          padding: 0;
+          width: 100%;
+
+          span {
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 8px;
+          }
+        }
+
+        .field-items {
+          display: table;
+          height: 100%;
+          width: 100%;
+
+          .field-item {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+
+            img {
+              height: auto;
+              max-width: 100%;
+            }
+          }
+        }
+      }
+
+      @media all and (max-width: $screen-sm-max) {
+        flex-direction: column;
+
+        & > td,
+        & > th {
+          margin-bottom: 7px;
+
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+        }
+
+      }
+    }
+  }
+
+  .form-actions.js-form-wrapper.form-wrapper,
+  .total-price {
+    @extend %shopping-card;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .total-price {
+
+    @media all and ( min-width: $screen-md-min) {
+      .field-item:last-of-type {
+        margin-right: 2.5em;
+      }
+    }
+  }
+
+
+}
+
+.cart-empty-page {
+  @extend %product-card;
+}
