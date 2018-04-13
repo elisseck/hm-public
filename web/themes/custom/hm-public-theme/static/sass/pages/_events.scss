@@ -1,3 +1,7 @@
+.view.list-events {
+  @extend %max-width;
+}
+
 .view.list-events .view-content {
   display: flex;
   flex-direction: row;
