@@ -12,3 +12,12 @@ function thm_commerce_shipment_weight_views_data_alter(array &$data) {
     ],
   ];
 }
+
+/**
+ * Implements hook_theme().
+ */
+function thm_commerce_shipment_weight_theme($existing, $type, $theme, $path) {
+  return [
+    'thm_shippable_order_complete' => [ 'render element' => 'form']
+  ];
+}
