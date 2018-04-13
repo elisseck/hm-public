@@ -67,3 +67,12 @@
   font-size: em(40);
   margin-bottom: 0;
 }
+
+%default-gutter-width {
+  padding: 0 30px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 15px;
+  }
+
+}

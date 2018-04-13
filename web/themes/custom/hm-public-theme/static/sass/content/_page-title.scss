@@ -4,6 +4,7 @@
 
 .page-title {
   @extend %oswald;
+  @extend %default-gutter-width;
   align-items: center;
   color: $white;
   display: flex;
@@ -11,5 +12,4 @@
   height: 1.88679em;
   margin: 0 auto; //margin-bottom: 2.8125rem;
   max-width: $max-width;
-  padding: 0 $default-grid-gutter-width;
 }
