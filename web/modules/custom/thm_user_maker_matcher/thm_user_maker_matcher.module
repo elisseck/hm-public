@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Contains thm_user_maker_matcher.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface as RMI;
+use Drupal\Core\Form\FormStateInterface as FSI;
+use Drupal\webform\WebformSubmissionInterface as WSI;
+
+/**
+ * Implements hook_help().
+ */
+function thm_user_maker_matcher_help($route_name, RMI $route_match) {
+  switch ($route_name) {
+    // Main module help for the thm_user_maker_matcher module.
+    case 'help.page.thm_user_maker_matcher':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Maps common experiences and attributes between users and makers.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function _getWebformSessionKey() {
+  $webformSessionKeyBase = 'maker_matcher_uid_';
+  return $webformSessionKeyBase . \Drupal::currentUser()->id();
+}
+
+function _getSession() {
+  return \Drupal::request()->getSession();
+}
+
+/**
+ * Implements hook_theme().
+ */
+function thm_user_maker_matcher_theme() {
+  return [
+    'thm_user_maker_matcher' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+function thm_user_maker_matcher_webform_submission_prepare_form(WSI $webformSubmission, $op, FSI $formState) {
+  if ($data = _getSession()->get(_getWebformSessionKey())) {
+    $webformSubmission->setElementData('results', $data['results']);
+    $formState->set('current_page', 'webform_confirmation');
+    $formState->setRebuild();
+  }
+}

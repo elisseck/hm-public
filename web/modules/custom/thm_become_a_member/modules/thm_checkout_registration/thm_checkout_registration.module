@@ -36,7 +36,10 @@ function thm_checkout_registration_theme($existing, $type, $theme, $path) {
       'render element' => 'form'
     ],
     'thm_checkout_registration_complete' => [
-      'render element' => 'form'
+      'render element' => 'form',
+      'variables' => [
+        'user_jwt_da' => null
+      ]
     ]
   ];
 }

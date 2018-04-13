@@ -6,6 +6,7 @@
 
 use Drupal\user\Entity\User;
 use Drupal\user\Form\UserLoginForm;
+use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\thm_become_a_member\Form\THMUpgradeAMemberForm;
 use Drupal\thm_donation_flow\Form\THMDonationForm;
 
@@ -51,9 +52,17 @@ function get_user_jwt() {
   return thm_jwt_fetch_token($session);
 }
 
+function hm_public_theme_get_paid_link() {
+  return assemble_paid_links();
+}
+
 function assemble_paid_links($subDomain = 'da') {
-  $host = 'thehistorymakers';
-  return "https://$subDomain.$host.org/?jwt=" . get_user_jwt();
+  if ($subDomain === 'da') {
+    return "https://auth-test-client.azurewebsites.net/?jwt=" . get_user_jwt();
+  } else {
+    $host = 'thehistorymakers';
+    return "https://$subDomain.$host.org/?jwt=" . get_user_jwt();
+  }
 }
 
 /**
@@ -111,6 +120,17 @@ function hm_public_theme_preprocess_commerce_order_receipt(&$vars) {
   $vars['site_name']      = $config->get('name');
   $vars['site_url']       = $host;
   $vars['site_login_url'] = $host . '/user/login';
+  $vars['process_type']   = get_commerce_order_item_type($vars['order_entity']);
+}
+
+function get_commerce_order_item_type(OrderInterface $order) {
+  $orderItems = $order->getItems();
+
+  if (count($orderItems) > 0) {
+    return $orderItems[0]->getPurchasedEntity()->getOrderItemTypeId();
+  } else {
+    return null;
+  }
 }
 
 /**
