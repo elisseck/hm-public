@@ -31,7 +31,8 @@
       <li{{ item.attributes.addClass(classes) }}>
         {{ link(item.title, item.url) }}
           {% if item.is_expanded %}
-            <span>*</span>
+           {#todo: replace i for svg#}
+            <span><i class="fas fa-angle-down"></i></span>
           {% endif %}
 
           {% if has_megamenu(item.url) %}

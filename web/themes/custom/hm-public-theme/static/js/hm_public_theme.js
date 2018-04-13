@@ -66,9 +66,35 @@ var makeFooterStayBelow = function(){
 
 
 var megamenuUtils = function(){
-  var $megamenu = $( ".menu.menu--simple-mega-menu" );
-  var $spans = $( "span", $megamenu );
+  var $hamburger = $( ".header__hamburger" );
+  var $megamenu = $( "#hm-public-theme-main-menu" );
+  var $menu = $( ".menu.menu--simple-mega-menu" );
+  var $spans = $( "span", $menu );
 
+  $hamburger.on( "click", function(e){
+    if( !$megamenu.hasClass("open") ){
+      $megamenu.addClass( "open" );
+
+      $( ".header__hamburger.open" ).css( "display", "none" );
+      $( ".header__hamburger.close" ).css( "display", "block" );
+
+    }else{
+      $megamenu.removeClass( "open" );
+
+      $( ".header__hamburger.open" ).css( "display", "block" );
+      $( ".header__hamburger.close" ).css( "display", "none" );
+    }
+
+    e.stopPropagation();
+  });
+
+  $(window).click(function() {
+    $megamenu.removeClass( "open" );
+
+    $spans.each( function(i, span){
+      $(span).parent().removeClass( "show" );
+    });
+  });
 
   $spans.on( "click", function(e){
     var $thisSpan = $(this);
@@ -87,6 +113,8 @@ var megamenuUtils = function(){
         $span.parent().removeClass( "show" );
       }
     });
+
+    e.stopPropagation();
   }).focusout( function(){
 
     var $thisSpan = $(this);
@@ -99,6 +127,10 @@ var megamenuUtils = function(){
       $spans.each( function(i, span){
         $(span).parent().removeClass( "show" );
       });
+
+      $megamenu.removeClass( "open" );
+      $( ".header__hamburger.open" ).css( "display", "" );
+      $( ".header__hamburger.close" ).css( "display", "" );
     }
   }
 

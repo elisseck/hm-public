@@ -81,24 +81,60 @@
   }
 }
 
-.header__logo-container {
-  align-items: center;
+.header__bottom-row{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: em(45);
+  margin: em(10) em(25);
+
+  .header__logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    // Margin and width are there to align the logo with bottom text.
+    .header__logo {
+      margin-left: em(5);
+      max-width: em(380);
+    }
+
+    .header__logo-copy {
+      @extend %oswald-light;
+      color: color(dark-grey);
+    }
+  }
+
+  .header__hamburger{
+    margin-left: em(10);
+
+    &.close{
+      display:none;
+    }
+  }
+
+  .header__search{
+    margin-left: auto;
+  }
+
+  .header__hamburger, .header__search{
+    align-self: center;
+    display: flex;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  @media all and (min-width: $screen-md-min ){
+
+    justify-content: center;
+    align-items: center;
+    margin-bottom: em(45);
+    cursor: pointer;
+
+    .header__hamburger, .header__search{
+      display:none;
+    }
+  }
 }
 
-// Margin and width are there to align the logo with bottom text.
-.header__logo {
-  margin-left: em(5);
-  max-width: em(380);
-}
-
-.header__logo-copy {
-  @extend %oswald-light;
-  color: color(dark-grey);
-}
 
 //#hm-public-theme-main-menu moved to _navigation.scss
 
