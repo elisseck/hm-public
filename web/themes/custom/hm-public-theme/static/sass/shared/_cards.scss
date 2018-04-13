@@ -192,3 +192,21 @@
 }
 
 .press-card__img { max-height: rem(65); }
+
+%product-card {
+  background: $white;
+  border: 1px solid color(medium-grey);
+  display: flex;
+  flex-direction: column;
+  margin: em(15);
+  padding: em(30);
+}
+
+%shopping-card {
+  background: $white;
+  border: 1px solid color(medium-grey);
+  display: flex;
+  flex-direction: column;
+  margin: em(7);
+  padding: em(15);
+}

@@ -1,3 +1,7 @@
+.view.list-events {
+  @extend %max-width;
+}
+
 .view.list-events .view-content {
   display: flex;
   flex-direction: row;
@@ -6,8 +10,42 @@
   margin-right: auto;
   width: 70%;
 
+  @media screen and (max-width: 950px) {
+    padding-left: $default-grid-gutter-width;
+    padding-right: $default-grid-gutter-width;
+    width: 100%;
+  }
+
   .bio-card--list {
     max-width: 30%;
+  }
+
+  @media screen and (max-width: 700px) {
+
+    .bio-card--list {
+      max-width: 48%;
+      min-width: 40%;
+    }
+
+    .bio-card--list:nth-child(2n) {
+      margin-right: 0;
+    }
+
+    .bio-card--list:nth-child(3n) {
+      margin-left: 0;
+    }
+
+  }
+
+  @media screen and (max-width: 550px) {
+
+    .bio-card--list {
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 100%;
+      min-width: 100%;
+    }
+
   }
 
   .field-content {
@@ -21,10 +59,33 @@
 
 }
 
+//Event Detail Page
 //Everything below the carousel
 .event__content {
   @extend %max-width;
   margin-top: $default-grid-gutter-width;
+}
+
+.event__content .first.event__info {
+  margin-left: 30px;
+  max-width: 72%;
+
+  @media screen and (max-width: 768px) {
+    max-width: 96%;
+  }
+
+}
+
+.event__content .last {
+  padding-left: 0;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 30px;
+    margin-top: em(30);
+    max-width: 96%;
+    padding-left: 30px;
+  }
+
 }
 
 //Left column
@@ -40,6 +101,11 @@
 
   .accordion__body {
     padding: em(15);
+
+    @media screen and (max-width: 768px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
 
     img {
       width: 100%;
