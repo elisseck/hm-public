@@ -2,9 +2,9 @@
 .hero-slide {
 
   &--image {
+    @extend %slide-height;
     background-position: center;
     background-size: cover;
-    height: em(580);
   }
 
 }
@@ -27,21 +27,12 @@
 
 // Two Column Slide
 .two-column-slide {
-  height: 550px;
+  @extend %slide-height;
 
   &--image {
+    @extend %slide-height;
     background-position: center;
     background-size: cover;
-    height: 550px;
-  }
-
-  @media screen and (max-width: 900px) {
-    height: 450px;
-
-    &--image {
-      height: 450px;
-    }
-
   }
 
   @media screen and (max-width: 768px) {
@@ -66,10 +57,11 @@
 
     h2 {
       @extend %oswald;
+      @extend %h2;
     }
 
     p {
-      font-size: em(24);
+      @extend %large-p;
       line-height: 120%;
     }
 
@@ -84,12 +76,10 @@
   @media screen and (max-width: 900px) {
 
     h2 {
-      font-size: em(30);
       margin-bottom: 20px;
     }
 
     p {
-      font-size: em(18);
       margin-top: 0;
     }
 

@@ -62,17 +62,53 @@
   text-overflow: ellipsis;
 }
 
-%h2 {
-  @extend %oswald;
-  font-size: em(40);
-  margin-bottom: 0;
-}
-
+//Regulating sizing
 %default-gutter-width {
   padding: 0 30px;
 
   @media screen and (max-width: 768px) {
     padding: 0 15px;
+  }
+
+}
+
+%med-width-content {
+  width: 70%;
+
+  @media screen and (max-width: 900px) {
+    width: 85%;
+  }
+
+}
+
+%h2 {
+  @extend %oswald;
+  font-size: em(40);
+  margin-bottom: 0;
+
+  @media screen and (max-width: 900px) {
+    font-size: em(30);
+  }
+
+}
+
+%large-p {
+  font-size: em(24);
+
+  @media screen and (max-width: 900px) {
+    font-size: em(18);
+  }
+}
+
+%slide-height {
+  height: 550px;
+
+  @media screen and (max-width: 900px) {
+    height: 450px;
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 250px;
   }
 
 }
