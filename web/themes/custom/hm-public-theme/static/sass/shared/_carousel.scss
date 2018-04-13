@@ -15,7 +15,7 @@
 .two-column-snapshot-carousel .carousel-inner,
 .hero-carousel .carousel-inner {
   @extend %max-width;
-  padding: 0 $default-grid-gutter-width;
+  @extend %default-gutter-width;
 }
 
 //Testimonial Carousel
@@ -59,6 +59,14 @@
 
   a.active {
     background-color: color(dark-grey);
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .carousel-indicators {
+    display: none;
   }
 
 }
