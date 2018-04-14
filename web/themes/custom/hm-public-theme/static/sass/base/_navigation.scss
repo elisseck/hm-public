@@ -44,13 +44,13 @@ li.pager__item.pager__item--ellipsis {
 
   @media screen and (max-width: $screen-sm-max) {
     background: $white;
-    left: -70vw;
+    left: -130%;
     min-height: 100vh;
     padding: 0 em(15, 16) em(15, 16);
     position: absolute;
     transition: left .2s ease-in-out;
     top: 0;
-    width: 70vw;
+    width: auto;
     z-index: 1000;
 
     &.open{
@@ -61,6 +61,30 @@ li.pager__item.pager__item--ellipsis {
 
   &.hm-public-theme-main-menu--open {
     left: 0;
+  }
+
+  .header__logo-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    // Margin and width are there to align the logo with bottom text.
+    .header__logo {
+      margin-left: em(5);
+      max-width: em(380);
+    }
+
+    .header__logo-copy {
+      @extend %oswald-light;
+      color: color(dark-grey);
+    }
+
+
+    @media screen and (max-width: $screen-sm-max) {
+      display: flex;
+      margin: em(10) em(10);
+    }
   }
 
   .menu {
@@ -100,6 +124,11 @@ li.pager__item.pager__item--ellipsis {
       @media screen and (max-width: 767px) {
         border-bottom: 0;
       }
+    }
+
+    //menu items from footer are hidden in medium to large screens
+    &.footer-menu-item{
+      display: none;
     }
 
     a {
@@ -149,6 +178,11 @@ li.pager__item.pager__item--ellipsis {
     @media all and (max-width: $screen-sm-max) {
       border-bottom: em(1, 16) solid $white;
       padding: em(12, 16) em(8, 16);
+
+      //menu items from footer are visible in small screens
+      &.footer-menu-item{
+        display: flex;
+      }
 
       &>ul.menu, & > .mega-menu-wrapper {
         position: relative;

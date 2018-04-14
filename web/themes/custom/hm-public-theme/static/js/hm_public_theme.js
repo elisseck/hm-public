@@ -71,25 +71,34 @@ var megamenuUtils = function(){
   var $menu = $( ".menu.menu--simple-mega-menu" );
   var $spans = $( "span", $menu );
 
+
+  var closeNavigation = function(){
+    $megamenu.removeClass( "open" );
+    $( ".header__hamburger.open" ).addClass("show");
+    $( ".header__hamburger.close" ).removeClass("show");
+  }
+
+  var openNavigation = function(){
+    $megamenu.addClass( "open" );
+    $( ".header__hamburger.open" ).removeClass("show");
+    $( ".header__hamburger.close" ).addClass("show");
+  }
+
+  //default
+  closeNavigation();
+
   $hamburger.on( "click", function(e){
     if( !$megamenu.hasClass("open") ){
-      $megamenu.addClass( "open" );
-
-      $( ".header__hamburger.open" ).css( "display", "none" );
-      $( ".header__hamburger.close" ).css( "display", "block" );
-
+      openNavigation();
     }else{
-      $megamenu.removeClass( "open" );
-
-      $( ".header__hamburger.open" ).css( "display", "block" );
-      $( ".header__hamburger.close" ).css( "display", "none" );
+      closeNavigation();
     }
 
     e.stopPropagation();
   });
 
   $(window).click(function() {
-    $megamenu.removeClass( "open" );
+    closeNavigation();
 
     $spans.each( function(i, span){
       $(span).parent().removeClass( "show" );
@@ -128,14 +137,27 @@ var megamenuUtils = function(){
         $(span).parent().removeClass( "show" );
       });
 
-      $megamenu.removeClass( "open" );
-      $( ".header__hamburger.open" ).css( "display", "" );
-      $( ".header__hamburger.close" ).css( "display", "" );
+      closeNavigation();
     }
   }
 
   $( window ).resize( onResize );
   onResize();
+
+  //append footer menu items into header menu
+  var $footerMenuItems = $("footer .menu" ).children();
+  var $footerLi;
+  $.each($footerMenuItems, function(i,li){
+    $footerLi = $(li).clone();
+
+    //class helps to keep these menu items visible only in smartphone
+    $footerLi.addClass("footer-menu-item");
+    $menu.append( $footerLi );
+  })
+
+  //append logo at navigation
+  var $headerLogo = $("header .header__logo-container");
+  $megamenu.prepend( $headerLogo.clone() );
 }
 
 $(function() {
