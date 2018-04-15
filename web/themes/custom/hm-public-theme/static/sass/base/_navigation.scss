@@ -44,7 +44,7 @@ li.pager__item.pager__item--ellipsis {
 
   @media screen and (max-width: $screen-md-max) {
     background: $white;
-    left: -130%; //initial position
+    left: -440px; //initial position of sliding megamenu
     min-height: 100vh;
     padding: 0 em(15, 16) em(15, 16);
     position: absolute;
@@ -151,27 +151,6 @@ li.pager__item.pager__item--ellipsis {
     @media all and (min-width: $screen-lg-min) {
       svg {
         display: none;
-      }
-    }
-
-    @media all and (min-width: $screen-lg-min) {
-      &>.menu, & > .menu-item--expanded > .mega-menu-wrapper {
-        position: absolute;
-        top: 25px;
-        z-index: 10;
-      }
-
-
-      .field-megamenu-left-column {
-        border-right: 1px solid color(medium-grey);
-      }
-
-      span {
-        cursor: pointer;
-        padding: 5px;
-        position: absolute;
-        right: -20px;
-        top: 0;
       }
     }
 
