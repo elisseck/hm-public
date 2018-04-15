@@ -18,7 +18,8 @@
       <ul {{ attributes.removeClass('menu--simple-mega-menu') }}>
     {% endif %}
     {% for item in items %}
-      {%
+
+        {%
         set classes = [
           'menu-item',
           item.is_expanded ? 'menu-item--expanded',
@@ -29,7 +30,12 @@
       %}
       <li{{ item.attributes.addClass(classes) }}>
         {{ link(item.title, item.url) }}
-        {% if has_megamenu(item.url) %}
+          {% if item.is_expanded %}
+           {#todo: replace i for svg#}
+            <span><i class="fas fa-angle-down"></i></span>
+          {% endif %}
+
+          {% if has_megamenu(item.url) %}
           <div class="mega-menu-wrapper">
             <div class="mega-menu-background"></div>
             {{ view_megamenu(item.url) }}

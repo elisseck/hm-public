@@ -5,6 +5,7 @@ main:
       static/css/hm_public_theme.css: {}
   js:
       static/js/hm_public_theme.js: {}
+      https://use.fontawesome.com/releases/v5.0.10/js/all.js: {preprocess: false, type: external}
 
 hero-video-player:
   js:
