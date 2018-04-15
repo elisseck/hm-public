@@ -81,42 +81,42 @@
   }
 }
 
-.header__bottom-row{
+.header__bottom-row {
   display: flex;
   margin: em(10) em(25);
 
-  .header__hamburger{
+  .header__hamburger {
+    display: none;
     margin-left: em(10);
     min-width: em(22);
-    display: none;
   }
 
-  .header__search{
+  .header__search {
     display: flex;
     margin-left: auto;
   }
 
-  .header__hamburger, .header__search{
+  .header__hamburger, .header__search {
     align-self: center;
-    font-size: 25px;
     cursor: pointer;
+    font-size: 25px;
   }
 
   @media all and (min-width: $screen-lg-min ){
 
-    justify-content: center;
     align-items: center;
-    margin-bottom: em(45);
     cursor: pointer;
+    justify-content: center;
+    margin-bottom: em(45);
 
-    .header__hamburger, .header__search{
-      display:none;
+    .header__hamburger, .header__search {
+      display: none;
     }
   }
 
   @media all and ( max-width: $screen-md-max ){
-    .header__hamburger{
-      &.show{
+    .header__hamburger {
+      &.show {
         display: flex;
       }
     }
@@ -125,9 +125,9 @@
 
 //this class appears in header and navigation..
 .header__logo-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 
   // Margin and width are there to align the logo with bottom text.

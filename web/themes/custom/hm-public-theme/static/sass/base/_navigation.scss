@@ -48,12 +48,12 @@ li.pager__item.pager__item--ellipsis {
     min-height: 100vh;
     padding: 0 em(15, 16) em(15, 16);
     position: absolute;
-    transition: left .2s ease-in-out;
     top: 0;
+    transition: left .2s ease-in-out;
     width: auto;
     z-index: 1000;
 
-    &.open{
+    &.open {
       left: 0;
     }
 
@@ -64,9 +64,9 @@ li.pager__item.pager__item--ellipsis {
   }
 
   .header__logo-container {
+    align-items: center;
     display: none;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 
     // Margin and width are there to align the logo with bottom text.
@@ -83,7 +83,7 @@ li.pager__item.pager__item--ellipsis {
 
     @media screen and (max-width: $screen-md-max) {
       display: flex;
-      margin: em(10) em(10);
+      margin: em(10);
     }
   }
 
@@ -127,7 +127,7 @@ li.pager__item.pager__item--ellipsis {
     }
 
     //menu items from footer are hidden in medium to large screens
-    &.footer-menu-item{
+    &.footer-menu-item {
       display: none;
     }
 
@@ -180,7 +180,7 @@ li.pager__item.pager__item--ellipsis {
       padding: em(12, 16) em(8, 16);
 
       //menu items from footer are visible in small screens
-      &.footer-menu-item{
+      &.footer-menu-item {
         display: flex;
       }
 
