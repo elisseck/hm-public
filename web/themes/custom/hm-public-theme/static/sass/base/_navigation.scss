@@ -287,6 +287,10 @@ li.pager__item.pager__item--ellipsis {
     width: 40%;
     z-index: 2000;
 
+    @media all and (max-width: $screen-sm-max) {
+      width: 250px;
+    }
+
     .mega-menu-background {
       background: $white;
       width: auto;
