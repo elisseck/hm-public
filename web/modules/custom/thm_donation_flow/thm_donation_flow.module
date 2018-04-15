@@ -70,4 +70,13 @@ function thm_donation_flow_form_alter(&$form, FormStateInterface $form_state, $f
   }
 }
 
-
+/**
+ * Implements hook_theme().
+ */
+function thm_donation_flow_theme($existing, $type, $theme, $path) {
+  return [
+    'thm_donation_complete' => [
+      'render element' => 'form'
+    ]
+  ];
+}

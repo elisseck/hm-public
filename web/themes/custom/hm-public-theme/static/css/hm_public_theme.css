@@ -168,8 +168,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.header__da-link, .header__top-row .upgrade-to-thmda #edit-upgrade-form, #hm-public-theme-main-menu .menu .menu .menu-item, #hm-public-theme-main-menu .mega-menu-wrapper .simple-mega-menu .field-megamenu-left-column,
-#hm-public-theme-main-menu .mega-menu-wrapper .simple-mega-menu .field-megamenu-right-column, .timeline-scroller--content, .two-column-testimonial .two-column-quote--content q, .intro-content p {
+.header__da-link, .header__top-row .upgrade-to-thmda #edit-upgrade-form, #hm-public-theme-main-menu .menu .menu .menu-item, .field-megamenu-left-column,
+.field-megamenu-right-column, .timeline-scroller--content, .two-column-testimonial .two-column-quote--content q, .intro-content p {
   font-family: 'Source Sans Pro', sans-serif; }
 
 .button, .form__button input,
@@ -181,18 +181,18 @@ table {
 
 .bio-card__name, .staff-card--content h3, .maker-card a h3, .testimonial-carousel h2, .two-column-testimonial--header, .content h2, .button.button--primary.button--membership, .form__button input.button--primary.button--membership,
 .button--primary.button--membership.form-submit,
-.form__button a.button--primary.button--membership, .modal__heading, #hm-public-theme-main-menu .menu-item, .webform-progress-tracker .progress-step .progress-text, .webform-progress-tracker .progress-step .progress-title, .checkout-progress--step, .accordion__panel,
-.accordion__panel:hover, .snapshot h3, .past-winner-block h3.left-block-title, .snapshot-section--header, .quote-block--content q, .two-column-quote--content h4, .hero-slide--date, .two-column-slide--content h2, .carousel__caption--event a.button, .carousel__caption--event
-a.form-submit, .carousel__caption--event
+.form__button a.button--primary.button--membership, #hm-public-theme-main-menu .menu-item, .modal__heading, .webform-progress-tracker .progress-step .progress-text, .webform-progress-tracker .progress-step .progress-title, .checkout-progress--step, .accordion__panel,
+.accordion__panel:hover, .snapshot h3, .past-winner-block h3.left-block-title, .snapshot-section--header, .quote-block--content q, .two-column-quote--content h4, .hero-slide--date, .two-column-slide--content h2, .event-carousel .carousel__caption a.button, .event-carousel .carousel__caption
+a.form-submit, .event-carousel .carousel__caption
 .form__button a,
-.form__button .carousel__caption--event a, .timeline-scroller h4, .view-block__title, .two-column-testimonial .two-column-quote--content a, .img-button__overlay-text, .collage__title, .intro-content h1, .page-banner .page-banner--highlight .page-banner--highlight-name, .page-title, .carousel__links, .carousel-caption h2,
+.form__button .event-carousel .carousel__caption a, .timeline-scroller h4, .view-block__title, .two-column-testimonial .two-column-quote--content a, .img-button__overlay-text, .collage__title, .intro-content h1, .page-banner .page-banner--highlight .page-banner--highlight-name, .page-title, .carousel__links, .carousel-caption h2,
 .carousel-caption__content h2,
 .carousel-caption__event h2,
 .carousel-caption__quote h2, .headline--oswald, .node--type-bio .discover__heading, .node--type-bio .bio-card__name, .node--type-bio .card-head-link, .user-info__member-status, .member--content h1, .membership.row h3, .membership.row h4 {
   font-family: 'Oswald', sans-serif;
   font-weight: 400; }
 
-.header__logo-container .header__logo-copy, #hm-public-theme-main-menu .header__logo-container .header__logo-copy, .page-banner h2, .headline--oswald-light, .node--type-bio .page-title, .list-biography-cards-w-category-filter .view-header {
+.header__logo-copy, .page-banner h2, .headline--oswald-light, .node--type-bio .page-title, .list-biography-cards-w-category-filter .view-header {
   font-family: 'Oswald', sans-serif;
   font-weight: 300; }
 
@@ -900,6 +900,11 @@ ul li {
     cursor: pointer; }
 
 .header__logo-container {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -2557,6 +2562,7 @@ fieldset {
     a.button--primary.form-submit, .two-column-slide--content
     .form__button a.button--primary,
     .form__button .two-column-slide--content a.button--primary {
+      margin-bottom: 0.9375em;
       max-width: 9.375em;
       text-align: center; }
   .two-column-slide .carousel__caption {
@@ -3199,6 +3205,16 @@ hr {
 .content h3 {
   font-family: "Oswald", sans-serif; }
 
+.share {
+  left: 0.625em;
+  position: fixed;
+  top: 52%;
+  z-index: 1000; }
+
+.share__icon {
+  height: auto;
+  width: 2.25em; }
+
 .how-it-works {
   margin-bottom: 3.75em;
   margin-top: 0.9375em; }
@@ -3772,6 +3788,13 @@ hr {
 
 .event__content {
   margin-top: 30px; }
+
+.event__content .first.event__info {
+  margin-left: 30px;
+  max-width: 72%; }
+
+.event__content .last {
+  padding-left: 0; }
 
 .event__info .event__bio {
   margin-bottom: 30px; }
@@ -4502,6 +4525,19 @@ hr {
   @media screen and (min-width: 567px){
   .modal-dialog{
     max-width: 43.75em; } }
+  @media screen and (max-width: 768px){
+  .event-carousel .carousel-item{
+    max-width: 96%; }
+  .event__content .first.event__info{
+    max-width: 96%; }
+  .event__content .last{
+    margin-left: 30px;
+    margin-top: 1.875em;
+    max-width: 96%;
+    padding-left: 30px; }
+  .event__info .accordion__body{
+    padding-left: 0;
+    padding-right: 0; } }
   @media (max-width: 1000px){
   .collage{
     -webkit-column-count: 3;
