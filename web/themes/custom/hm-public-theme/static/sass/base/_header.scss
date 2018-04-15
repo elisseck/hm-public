@@ -14,7 +14,7 @@
   margin: 0 auto;
   max-width: $max-width;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: $screen-md-max) {
     display: none;
   }
 }
@@ -102,7 +102,7 @@
     cursor: pointer;
   }
 
-  @media all and (min-width: $screen-md-min ){
+  @media all and (min-width: $screen-lg-min ){
 
     justify-content: center;
     align-items: center;
@@ -114,7 +114,7 @@
     }
   }
 
-  @media all and ( max-width: $screen-sm-max ){
+  @media all and ( max-width: $screen-md-max ){
     .header__hamburger{
       &.show{
         display: flex;
@@ -186,7 +186,7 @@
 
 .header nav {
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: $screen-md-max) {
     background: color(light-grey);
     height: 100%;
     position: absolute;

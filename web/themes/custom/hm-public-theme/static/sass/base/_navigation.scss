@@ -34,7 +34,7 @@ li.pager__item.pager__item--ellipsis {
   max-width: $max-width;
   padding: 0 $default-grid-gutter-width;
 
-  @media all and (min-width: $screen-desktop) {
+  @media all and (min-width: $screen-lg-min) {
     .menu-item:hover {
       .menu {
         display: inline-block;
@@ -42,7 +42,7 @@ li.pager__item.pager__item--ellipsis {
     }
   }
 
-  @media screen and (max-width: $screen-sm-max) {
+  @media screen and (max-width: $screen-md-max) {
     background: $white;
     left: -130%;
     min-height: 100vh;
@@ -81,7 +81,7 @@ li.pager__item.pager__item--ellipsis {
     }
 
 
-    @media screen and (max-width: $screen-sm-max) {
+    @media screen and (max-width: $screen-md-max) {
       display: flex;
       margin: em(10) em(10);
     }
@@ -92,7 +92,7 @@ li.pager__item.pager__item--ellipsis {
     justify-content: space-between;
     width: 100%;
 
-    @media screen and (max-width: $screen-sm-max) {
+    @media screen and (max-width: $screen-md-max) {
       flex: 2;
       flex-direction: column;
       height: 100%;
@@ -148,13 +148,13 @@ li.pager__item.pager__item--ellipsis {
       font-weight: bold;
     }
 
-    @media all and (min-width: $screen-desktop) {
+    @media all and (min-width: $screen-lg-min) {
       svg {
         display: none;
       }
     }
 
-    @media all and (min-width: $screen-tablet) {
+    @media all and (min-width: $screen-lg-min) {
       &>.menu, & > .menu-item--expanded > .mega-menu-wrapper {
         position: absolute;
         top: 25px;
@@ -175,7 +175,7 @@ li.pager__item.pager__item--ellipsis {
       }
     }
 
-    @media all and (max-width: $screen-sm-max) {
+    @media all and (max-width: $screen-md-max) {
       border-bottom: em(1, 16) solid $white;
       padding: em(12, 16) em(8, 16);
 
@@ -287,7 +287,7 @@ li.pager__item.pager__item--ellipsis {
     width: 40%;
     z-index: 2000;
 
-    @media all and (max-width: $screen-sm-max) {
+    @media all and (max-width: $screen-md-max) {
       width: 250px;
     }
 
