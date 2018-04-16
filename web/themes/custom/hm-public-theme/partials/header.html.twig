@@ -109,9 +109,10 @@
 
     </ul>
 
+     <div class="header__bottom-row">
         <!-- Logo -->
         <a class="header__logo-container" href="/" title="Home" rel="home">
-        <!-- <div class="header__logo-container"> -->
+
         <svg class="header__logo" width="449" height="36" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460.8 35.72">
             <title>The HistoryMakers logo</title>
             <g id="9d093465-49b3-44af-8fd4-115826e3f914">
@@ -142,8 +143,15 @@
         <span class="header__logo-copy">
             The Nation’s Largest African American Video Oral History Collection
         </span>
-        <!-- </div> -->
     </a>
+
+         {#todo: replace i for svg#}
+         <span class="header__search"><i class="fas fa-search"></i></span>
+
+        {#todo: replace i for svg#}
+        <span class="header__hamburger open"><i class="fas fa-bars"></i></span>
+        <span class="header__hamburger close"><i class="fas fa-times"></i></span>
+    </div>
 
     {{ page.header }}
     </header>

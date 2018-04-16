@@ -41,4 +41,7 @@ function scrollStep() {
     // Check if we're at the top already.
     window.scrollTo(0, 0);
 }
-$scrollButton.addEventListener('click', scrollStep);
+
+if( $scrollButton ){
+  $scrollButton.addEventListener('click', scrollStep);
+}

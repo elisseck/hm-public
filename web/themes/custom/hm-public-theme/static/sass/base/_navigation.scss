@@ -29,42 +29,175 @@ li.pager__item.pager__item--ellipsis {
   display: none;
 }
 
-//Dropdown Navigation
-#hm-public-theme-main-menu .menu-item:hover .menu {
-  display: inline-block;
-}
+#hm-public-theme-main-menu {
+  margin: 0 auto;
+  max-width: $max-width;
+  padding: 0 $default-grid-gutter-width;
 
-.menu-item.menu-item--expanded.menu-item--active-trail a {
-  border-bottom: em(8) solid color(tertiary);
-  transition: border-bottom .2s ease-in-out;
-
-  @media screen and (max-width: 767px) {
-    border-bottom: 0;
+  @media all and (min-width: $screen-lg-min) {
+    .menu-item:hover {
+      .menu {
+        display: inline-block;
+      }
+    }
   }
 
-}
+  @media screen and (max-width: $screen-md-max) {
+    background: $white;
+    left: -440px; //initial position of sliding megamenu
+    min-height: 100vh;
+    padding: 0 em(15, 16) em(15, 16);
+    position: absolute;
+    top: 0;
+    transition: left .2s ease-in-out;
+    width: auto;
+    z-index: 1000;
 
-.menu-item.menu-item--expanded.menu-item--active-trail {
+    &.open {
+      left: 0;
+    }
 
-  .menu .menu-item a,
-  .menu .menu-item.menu-item--active-trail a {
-    border-bottom: 0;
   }
 
-}
+  &.hm-public-theme-main-menu--open {
+    left: 0;
+  }
 
-#hm-public-theme-main-menu .menu .menu {
-  background: $white;
-  display: none;
-  margin-top: 0.5em;
-  position: absolute;
-  width: 200px;
-  z-index: 10;
+  .header__logo-container {
+    align-items: center;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+
+    // Margin and width are there to align the logo with bottom text.
+    .header__logo {
+      margin-left: em(5);
+      max-width: em(380);
+    }
+
+    .header__logo-copy {
+      @extend %oswald-light;
+      color: color(dark-grey);
+    }
+
+
+    @media screen and (max-width: $screen-md-max) {
+      display: flex;
+      margin: em(10);
+    }
+  }
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @media screen and (max-width: $screen-md-max) {
+      flex: 2;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-start;
+    }
+  }
 
   .menu-item {
+    @extend %oswald;
+    border-bottom: em(8) solid transparent;
+    display: flex;
+    flex-flow: column;
+    letter-spacing: .114em;
+    position: relative;
+    text-transform: uppercase;
+
+    & .is-active {
+      color: color(tertiary);
+      // @media screen and (max-width: 767px) {
+      //   border-bottom: em(3,16) solid color(tertiary);
+      //   text-decoration: none;
+      // }
+    }
+
+    .is-active {
+      border-bottom: em(8) solid color(tertiary);
+      transition: border-bottom .2s ease-in-out;
+
+      @media screen and (max-width: $screen-md-max) {
+        border-bottom: 0;
+      }
+    }
+
+    //menu items from footer are hidden in medium to large screens
+    &.footer-menu-item {
+      display: none;
+    }
+
+    a {
+      color: color(dark-grey);
+
+      &:hover {
+        border-bottom: em(8) solid color(secondary);
+        text-decoration: none;
+        transition: border-bottom .2s ease-in-out;
+        @media screen and (max-width: $screen-md-max) {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    svg {
+      font-weight: bold;
+    }
+
+    @media all and (min-width: $screen-lg-min) {
+      svg {
+        display: none;
+      }
+    }
+
+    @media all and (max-width: $screen-md-max) {
+      border-bottom: em(1, 16) solid $white;
+      padding: em(12, 16) em(8, 16);
+
+      //menu items from footer are visible in small screens
+      &.footer-menu-item {
+        display: flex;
+      }
+
+      &>ul.menu, & > .mega-menu-wrapper {
+        position: relative;
+        top: 0;
+      }
+
+      & > .mega-menu-wrapper > .simple-mega-menu {
+        flex-flow: column;
+        width: auto;
+      }
+
+      .field-megamenu-left-column {
+        border-bottom: 1px solid color(medium-grey);
+      }
+
+      span {
+        cursor: pointer;
+        padding: 14px 10px 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+  }
+
+  .menu .menu {
+    background: $white;
+    display: none;
+    margin-top: 0.5em;
+    width: 200px;
+  }
+
+  .menu .menu .menu-item {
     @extend %source-sans;
     border-bottom: 0;
-    display: block;
+    display: flex;
     font-size: 90%;
     line-height: 120%;
     padding: 10px 15px;
@@ -81,125 +214,162 @@ li.pager__item.pager__item--ellipsis {
       color: $white;
     }
 
-  }
-
-  .menu-item.menu-item--active-trail {
-    background-color: $black;
-    color: $white;
-    cursor: pointer;
-    transition: .2s ease-in-out;
-
-    a {
-      color: $white;
-    }
-
-  }
-
-  .menu-item a {
-    color: color(secondary);
-
-    &:hover {
-      border-bottom: 0;
-      color: $white;
-    }
-
-  }
-
-  .menu-item a.is-active {
-    border-bottom: 0;
-    color: $white;
-  }
-
-}
-
-//MegaMenu
-.simple-mega-menu-type-education-megamenu .name {
-  display: none;
-}
-
-//Hides required child nav item to show the megamenu
-#hm-public-theme-main-menu .menu-item--expanded:hover .mega-menu-wrapper + ul.menu {
-  display: none;
-}
-
-.menu--simple-mega-menu > .menu-item--expanded > .mega-menu-wrapper {
-  left: inherit;
-  padding: 0;
-  width: 40%;
-  z-index: 2000;
-}
-
-.menu--simple-mega-menu > .menu-item--expanded > .mega-menu-wrapper .mega-menu-background {
-  width: auto;
-}
-
-.simple-mega-menu {
-  display: flex;
-}
-
-.menu--simple-mega-menu > .menu-item--expanded > .mega-menu-wrapper .mega-menu-item {
-  flex: 1 0 100%;
-  padding-bottom: em(15);
-}
-
-.field-megamenu-left-column {
-  border-right: 1px solid color(medium-grey);
-}
-
-.field-megamenu-left-column,
-.field-megamenu-right-column {
-  @extend %source-sans;
-  flex: 1;
-  flex-basis: 50%;
-}
-
-.field-megamenu-left-header,
-.field-megamenu-right-header {
-  color: color(disabled-text);
-  letter-spacing: normal;
-  padding: em(8) em(15);
-  text-transform: uppercase;
-}
-
-#hm-public-theme-main-menu .field-megamenu-left-link,
-#hm-public-theme-main-menu .field-megamenu-right-link {
-
-  .field-item {
-    padding: em(5) em(15);
-    text-transform: none;
-
-    &:hover {
+    &.menu-item--active-trail {
       background-color: $black;
+      color: $white;
       cursor: pointer;
       transition: .2s ease-in-out;
-    }
 
-    &:hover a {
-      color: $white;
+      a {
+        color: $white;
+      }
+
     }
 
     a {
-      border-bottom: 0;
       color: color(secondary);
-    }
 
-    a:hover {
-      border-bottom: 0;
-      color: $white;
-      transition: .2s ease-in-out;
-    }
+      &:hover {
+        border-bottom: 0;
+        color: $white;
+      }
 
+      &.is-active {
+        border-bottom: 0;
+        color: $white;
+      }
+    }
   }
 
-  .field-item.menu-item--active-trail {
-    background-color: $black;
-    cursor: pointer;
-    transition: .2s ease-in-out;
+  .menu-item--expanded.menu-item--active-trail {
+
+    .menu .menu-item a,
+    .menu .menu-item.menu-item--active-trail a {
+      border-bottom: 0;
+    }
 
     a {
-      color: $white;
+      border-bottom: em(8) solid color(tertiary);
+      transition: border-bottom .2s ease-in-out;
+
+      @media screen and (max-width: 767px) {
+        border-bottom: 0;
+      }
+
     }
 
   }
 
+  .mega-menu-wrapper {
+    left: inherit;
+    padding: 0;
+    width: 40%;
+    z-index: 2000;
+
+    @media all and (max-width: $screen-md-max) {
+      width: 250px;
+    }
+
+    .mega-menu-background {
+      background: $white;
+      width: auto;
+    }
+
+    .mega-menu-item {
+      flex: 1 0 100%;
+      padding-bottom: em(15);
+    }
+
+    & + ul.menu {
+      display: none;
+    }
+
+    .simple-mega-menu {
+      background-color: $white;
+      display: flex;
+
+      &>div {
+        min-width: 200px;
+      }
+
+      //hi default label
+      .name {
+        display: none;
+      }
+
+      .field-megamenu-left-column,
+      .field-megamenu-right-column {
+        @extend %source-sans;
+        flex: 1;
+        flex-basis: 50%;
+      }
+
+      .field-megamenu-left-header,
+      .field-megamenu-right-header {
+        color: color(disabled-text);
+        letter-spacing: normal;
+        padding: em(8) em(15);
+        text-transform: uppercase;
+      }
+
+      .field-megamenu-left-link,
+      .field-megamenu-right-link {
+
+        .field-item {
+          padding: em(5) em(15);
+          text-transform: none;
+
+          &:hover {
+            background-color: $black;
+            cursor: pointer;
+            transition: .2s ease-in-out;
+          }
+
+          &:hover a {
+            color: $white;
+          }
+
+          a {
+            border-bottom: 0;
+            color: color(secondary);
+          }
+
+          a:hover {
+            border-bottom: 0;
+            color: $white;
+            transition: .2s ease-in-out;
+          }
+
+        }
+
+        .field-item.menu-item--active-trail {
+          background-color: $black;
+          cursor: pointer;
+          transition: .2s ease-in-out;
+
+          a {
+            color: $white;
+          }
+        }
+      }
+
+    }
+  }
+
+  .menu-item, .mega-menu-wrapper {
+    &.show {
+      .menu {
+        display: inline-block;
+      }
+
+      .mega-menu-wrapper {
+        display: flex;
+        opacity: 1;
+      }
+
+      .mega-menu-wrapper+.menu {
+        display: none;
+      }
+    }
+  }
 }
