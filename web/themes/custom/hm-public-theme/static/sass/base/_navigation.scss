@@ -130,6 +130,10 @@ li.pager__item.pager__item--ellipsis {
       display: none;
     }
 
+    &:hover .menu a {
+      border-bottom: 0;
+    }
+
     &:hover a {
       border-bottom: em(8) solid color(secondary);
       text-decoration: none;
@@ -225,6 +229,7 @@ li.pager__item.pager__item--ellipsis {
     }
 
     &:hover a {
+      border-bottom: 0;
       color: $white;
     }
 
