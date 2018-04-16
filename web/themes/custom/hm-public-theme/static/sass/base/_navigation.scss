@@ -29,20 +29,24 @@ li.pager__item.pager__item--ellipsis {
   display: none;
 }
 
+//Main Navigation
 #hm-public-theme-main-menu {
   margin: 0 auto;
   max-width: $max-width;
   padding: 0 $default-grid-gutter-width;
 
-  @media all and (min-width: $screen-lg-min) {
+  @media all and (min-width: 950px) {
     .menu-item:hover {
       .menu {
-        display: inline-block;
+        display: block;
+        position: absolute;
+        top: 24px;
+        z-index: 100;
       }
     }
   }
 
-  @media screen and (max-width: $screen-md-max) {
+  @media screen and (max-width: 950px) {
     background: $white;
     left: -440px; //initial position of sliding megamenu
     min-height: 100vh;
@@ -81,7 +85,7 @@ li.pager__item.pager__item--ellipsis {
     }
 
 
-    @media screen and (max-width: $screen-md-max) {
+    @media screen and (max-width: 950px) {
       display: flex;
       margin: em(10);
     }
@@ -92,7 +96,7 @@ li.pager__item.pager__item--ellipsis {
     justify-content: space-between;
     width: 100%;
 
-    @media screen and (max-width: $screen-md-max) {
+    @media screen and (max-width: 950px) {
       flex: 2;
       flex-direction: column;
       height: 100%;
@@ -102,7 +106,6 @@ li.pager__item.pager__item--ellipsis {
 
   .menu-item {
     @extend %oswald;
-    border-bottom: em(8) solid transparent;
     display: flex;
     flex-flow: column;
     letter-spacing: .114em;
@@ -117,13 +120,9 @@ li.pager__item.pager__item--ellipsis {
       // }
     }
 
-    .is-active {
+    a.is-active {
       border-bottom: em(8) solid color(tertiary);
       transition: border-bottom .2s ease-in-out;
-
-      @media screen and (max-width: $screen-md-max) {
-        border-bottom: 0;
-      }
     }
 
     //menu items from footer are hidden in medium to large screens
@@ -131,16 +130,20 @@ li.pager__item.pager__item--ellipsis {
       display: none;
     }
 
+    &:hover a {
+      border-bottom: em(8) solid color(secondary);
+      text-decoration: none;
+      transition: border-bottom .2s ease-in-out;
+      @media screen and (max-width: 950px) {
+        border-bottom: 0;
+      }
+    }
+
     a {
       color: color(dark-grey);
 
       &:hover {
-        border-bottom: em(8) solid color(secondary);
         text-decoration: none;
-        transition: border-bottom .2s ease-in-out;
-        @media screen and (max-width: $screen-md-max) {
-          border-bottom: 0;
-        }
       }
     }
 
@@ -148,13 +151,13 @@ li.pager__item.pager__item--ellipsis {
       font-weight: bold;
     }
 
-    @media all and (min-width: $screen-lg-min) {
+    @media all and (min-width: 950px) {
       svg {
         display: none;
       }
     }
 
-    @media all and (max-width: $screen-md-max) {
+    @media all and (max-width: 950px) {
       border-bottom: em(1, 16) solid $white;
       padding: em(12, 16) em(8, 16);
 
@@ -187,6 +190,17 @@ li.pager__item.pager__item--ellipsis {
     }
   }
 
+  .menu .menu-item.menu-item--active-trail {
+    border-bottom: em(8px) solid color(tertiary);
+    transition: border-bottom .2s ease-in-out;
+
+    a.is-active {
+      border-bottom: 0;
+    }
+
+  }
+
+  //Dropdown
   .menu .menu {
     background: $white;
     display: none;
@@ -242,15 +256,11 @@ li.pager__item.pager__item--ellipsis {
   }
 
   .menu-item--expanded.menu-item--active-trail {
-
-    .menu .menu-item a,
-    .menu .menu-item.menu-item--active-trail a {
-      border-bottom: 0;
-    }
+    border-bottom: em(8px) solid color(tertiary);
+    transition: border-bottom .2s ease-in-out;
 
     a {
-      border-bottom: em(8) solid color(tertiary);
-      transition: border-bottom .2s ease-in-out;
+      border-bottom: 0;
 
       @media screen and (max-width: 767px) {
         border-bottom: 0;
@@ -260,13 +270,15 @@ li.pager__item.pager__item--ellipsis {
 
   }
 
+  //Megamenu
   .mega-menu-wrapper {
     left: inherit;
     padding: 0;
+    top: 32px;
     width: 40%;
     z-index: 2000;
 
-    @media all and (max-width: $screen-md-max) {
+    @media all and (max-width: 950px) {
       width: 250px;
     }
 
@@ -281,7 +293,7 @@ li.pager__item.pager__item--ellipsis {
     }
 
     & + ul.menu {
-      display: none;
+      display: none !important; //Hide ul when there is a megamenu
     }
 
     .simple-mega-menu {
