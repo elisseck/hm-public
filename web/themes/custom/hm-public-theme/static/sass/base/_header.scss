@@ -58,7 +58,7 @@
   color: color(dark-grey);
 
   &:hover {
-    border: 0;
+    border-color: transparent;
     color: color(secondary);
     text-decoration: underline;
   }
@@ -76,7 +76,7 @@
   padding: 0;
 
   &:hover {
-    border: 0;
+    border-color: transparent;
     text-decoration: underline;
   }
 }
