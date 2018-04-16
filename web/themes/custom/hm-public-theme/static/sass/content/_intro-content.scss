@@ -5,20 +5,20 @@
   text-align: center;
 
   div {
+    @extend %med-width-content;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
   }
 
   h1 {
     @extend %oswald;
-    font-size: em(38);
+    @extend %h2;
     text-align: center;
   }
 
   p {
     @extend %source-sans;
-    font-size: em(24);
+    @extend %large-p;
     line-height: normal;
     text-align: left;
   }

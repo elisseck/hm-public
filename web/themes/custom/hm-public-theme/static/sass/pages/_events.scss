@@ -16,6 +16,10 @@
     width: 100%;
   }
 
+  @media screen and (max-width: 768px) {
+    padding: 0 15px;
+  }
+
   .bio-card--list {
     max-width: 30%;
   }
