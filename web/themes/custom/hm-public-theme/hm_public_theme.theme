@@ -45,25 +45,15 @@ function hm_public_theme_preprocess_page(&$variables) {
 /**
  * Retrieves JWT.
  *
+ * @param string $subDomain
  * @return bool|string
  */
-function get_user_jwt() {
-  $session = \Drupal::request()->getSession();
-  return thm_jwt_fetch_token($session);
-}
-
-function hm_public_theme_get_paid_link() {
-  return assemble_paid_links();
-}
-
 function assemble_paid_links($subDomain = 'da') {
-  if ($subDomain === 'da') {
-    return "https://auth-test-client.azurewebsites.net/?jwt=" . get_user_jwt();
-  } else {
-    $host = 'thehistorymakers';
-    return "https://$subDomain.$host.org/?jwt=" . get_user_jwt();
-  }
+  /** @var Drupal\thm_jwt\Generator\THMJWTURLGenerator $jwtUrl */
+  $jwtUrl  = \Drupal::service('thm_jwt.url_generator');
+  return $jwtUrl->retrieveLink($subDomain);
 }
+
 
 /**
  * Determines if current user has a specific role.
