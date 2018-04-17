@@ -62,6 +62,14 @@ li.pager__item.pager__item--ellipsis {
       left: 0;
     }
 
+    .menu--simple-mega-menu > .menu-item--expanded:hover > .mega-menu-wrapper {
+      display: none;
+    }
+
+    .menu-item.menu-item--expanded.show > .mega-menu-wrapper {
+      display: flex;
+    }
+
   }
 
   &.hm-public-theme-main-menu--open {
@@ -171,7 +179,8 @@ li.pager__item.pager__item--ellipsis {
         display: flex;
       }
 
-      &>ul.menu, & > .mega-menu-wrapper {
+      & > ul.menu,
+      & > .mega-menu-wrapper {
         position: relative;
         top: 0;
       }
@@ -374,7 +383,8 @@ li.pager__item.pager__item--ellipsis {
     }
   }
 
-  .menu-item, .mega-menu-wrapper {
+  .menu-item,
+  .mega-menu-wrapper {
     &.show {
       .menu {
         display: inline-block;
@@ -385,7 +395,7 @@ li.pager__item.pager__item--ellipsis {
         opacity: 1;
       }
 
-      .mega-menu-wrapper+.menu {
+      .mega-menu-wrapper + .menu {
         display: none;
       }
     }
