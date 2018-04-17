@@ -81,13 +81,14 @@
   }
 }
 
+//Mobile icons
 .header__bottom-row {
   display: flex;
   margin: em(10) em(25);
 
   .header__hamburger {
     display: none;
-    margin-left: em(10);
+    margin-left: em(20);
     min-width: em(22);
   }
 
@@ -96,10 +97,16 @@
     margin-left: auto;
   }
 
-  .header__hamburger, .header__search {
+  .header__hamburger,
+  .header__search {
     align-self: center;
     cursor: pointer;
-    font-size: 25px;
+    width: 36px;
+
+    svg {
+      height: 34px;
+    }
+
   }
 
   @media all and (min-width: 950px ){
@@ -116,13 +123,33 @@
   }
 
   @media all and (max-width: 950px) {
+    align-items: flex-start;
+    margin: em(20) em(20) em(30);
+
     .header__hamburger {
+
       &.show {
         display: flex;
       }
     }
   }
-}
+
+  @media all and (max-width: 520px) {
+    margin: em(20);
+
+    .header__hamburger,
+    .header__search {
+      width: 30px;
+
+      svg {
+        height: 30px;
+      }
+
+    }
+
+  }
+
+}//.header__bottom-row
 
 //this class appears in header and navigation..
 .header__logo-container {
@@ -131,6 +158,27 @@
   flex: 1;
   flex-direction: column;
   justify-content: center;
+
+  @media all and (max-width: 950px) {
+    align-items: flex-start;
+
+    .header__logo {
+      margin-left: 0;
+    }
+
+    .header__logo-copy {
+      display: none;
+    }
+
+  }
+
+  @media all and (max-width: 520px) {
+
+    .header__logo {
+      width: 85%;
+    }
+
+  }
 
   // Margin and width are there to align the logo with bottom text.
   .header__logo {

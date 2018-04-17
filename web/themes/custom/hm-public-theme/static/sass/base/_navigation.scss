@@ -33,6 +33,7 @@ li.pager__item.pager__item--ellipsis {
 #hm-public-theme-main-menu {
   margin: 0 auto;
   max-width: $max-width;
+  min-height: em(32px);
   padding: 0 $default-grid-gutter-width;
 
   @media all and (min-width: 950px) {
