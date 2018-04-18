@@ -276,6 +276,14 @@ li.pager__item.pager__item--ellipsis {
         color: $white;
       }
 
+      @media screen and (max-width: 950px) {
+        background-color: transparent;
+
+        a {
+          color: $black;
+        }
+      }
+
     }
 
     a {
@@ -286,15 +294,17 @@ li.pager__item.pager__item--ellipsis {
         font-weight: 400;
       }
 
-      &:hover {
-        border-bottom: 0;
-        color: $white;
-      }
-
+      &:hover,
       &.is-active {
         border-bottom: 0;
         color: $white;
+
+        @media screen and (max-width: 950px) {
+          color: color(tertiary);
+        }
+
       }
+
     }
   }//.menu .menu .menu-item
 
