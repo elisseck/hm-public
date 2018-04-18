@@ -31,8 +31,10 @@
       <li{{ item.attributes.addClass(classes) }}>
         {{ link(item.title, item.url) }}
           {% if item.is_expanded %}
-           {#todo: replace i for svg#}
-            <span><i class="fas fa-angle-down"></i></span>
+            <span class="accordion__arrow">
+              <span class="accordion__arrow-half"></span>
+              <span class="accordion__arrow-half"></span>
+            </span>         
           {% endif %}
 
           {% if has_megamenu(item.url) %}
