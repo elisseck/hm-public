@@ -27,179 +27,511 @@ li.pager__item.pager__item--last,
 li.pager__item.pager__item--first,
 li.pager__item.pager__item--ellipsis {
   display: none;
-}
+}//End Pager Styles
 
-//Dropdown Navigation
-#hm-public-theme-main-menu .menu-item:hover .menu {
-  display: inline-block;
-}
+//Main Navigation
+#hm-public-theme-main-menu {
+  margin: 0 auto;
+  max-width: $max-width;
+  min-height: em(32px);
+  padding: 0 $default-grid-gutter-width;
 
-.menu-item.menu-item--expanded.menu-item--active-trail a {
-  border-bottom: em(8) solid color(tertiary);
-  transition: border-bottom .2s ease-in-out;
-
-  @media screen and (max-width: 767px) {
-    border-bottom: 0;
+  @media all and (min-width: 950px) {
+    .menu-item:hover {
+      .menu {
+        display: block;
+        position: absolute;
+        top: 24px;
+        z-index: 100;
+      }
+    }
   }
 
-}
+  //Off Canvas Nav
+  @media screen and (max-width: 950px) {
+    background: color(light-grey);
+    left: -440px; //initial position of sliding megamenu
+    min-height: 100vh;
+    padding: 0 em(15, 16) em(15, 16);
+    position: absolute;
+    top: 0;
+    transition: left .2s ease-in-out;
+    width: auto;
+    z-index: 1000;
 
-.menu-item.menu-item--expanded.menu-item--active-trail {
+    &.open {
+      left: 0;
+      width: 70%;
+    }
 
-  .menu .menu-item a,
-  .menu .menu-item.menu-item--active-trail a {
-    border-bottom: 0;
+    .menu--simple-mega-menu > .menu-item--expanded:hover > .mega-menu-wrapper {
+      display: none;
+    }
+
+    .menu-item.menu-item--expanded.show > .mega-menu-wrapper {
+      background: transparent;
+      display: flex;
+    }
+
+  }//End Off Canvas Nav
+
+  &.hm-public-theme-main-menu--open {
+    left: 0;
   }
 
-}
+  //Off Canvas Logo
+  .header__logo-container {
+    align-items: center;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
 
-#hm-public-theme-main-menu .menu .menu {
-  background: $white;
-  display: none;
-  margin-top: 0.5em;
-  position: absolute;
-  width: 200px;
-  z-index: 10;
+    // Margin and width are there to align the logo with bottom text.
+    .header__logo {
+      margin-left: em(5);
+      max-width: em(380);
+    }
+
+    .header__logo-copy {
+      @extend %oswald-light;
+      color: color(dark-grey);
+    }
+
+
+    @media screen and (max-width: 950px) {
+      align-items: flex-start;
+      display: flex;
+      margin: em(20) 0 em(30);
+    }
+
+    @media all and (max-width: 520px) {
+      margin: em(20) 0;
+    }
+  }//.header__logo-container
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @media screen and (max-width: 950px) {
+      flex: 2;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-start;
+    }
+  }
 
   .menu-item {
+    @extend %oswald;
+    display: flex;
+    flex-flow: column;
+    letter-spacing: .114em;
+    position: relative;
+    text-transform: uppercase;
+
+    & .is-active {
+      color: color(tertiary);
+    }
+
+    a.is-active {
+      border-bottom: em(8) solid color(tertiary);
+      transition: border-bottom .2s ease-in-out;
+    }
+
+    &:hover a {
+      border-bottom: em(8) solid color(secondary);
+      text-decoration: none;
+      transition: border-bottom .2s ease-in-out;
+
+      @media screen and (max-width: 950px) {
+        border-bottom: 0;
+      }
+
+    }
+
+    a {
+      color: color(dark-grey);
+
+      @media screen and (max-width: 950px) {
+        font-size: em(20);
+        width: 95%;
+      }
+
+      @media screen and (max-width: 520px) {
+        font-size: em(18);
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    @media all and (max-width: 950px) {
+      border-bottom: em(1, 16) solid $white;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 700;
+      letter-spacing: normal;
+      padding: em(22) em(8, 16);
+
+      //Menu items from footer are visible in small screens
+      &.footer-menu-item {
+        display: flex;
+        font-weight: 400;
+        text-transform: none;
+      }
+
+      //Display dropdown and/or Megamenu
+      & > ul.menu,
+      & > .mega-menu-wrapper {
+        position: relative;
+        top: 0;
+      }
+
+      & > .mega-menu-wrapper > .simple-mega-menu {
+        flex-flow: column;
+        width: auto;
+      }
+
+      .field-megamenu-left-column {
+        border-bottom: 1px solid $white;
+        padding-bottom: em(15);
+      }
+
+      span {
+        cursor: pointer;
+        padding: 14px 10px 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+
+    //Menu items from footer are hidden in medium to large screens
+    &.footer-menu-item {
+      display: none;
+    }
+
+    //No bottom border on dropdown nav items
+    &:hover .menu a {
+      border-bottom: 0;
+    }
+
+    @media all and (min-width: 950px) {
+      span {
+        display: none;
+      }
+    }
+
+  }//.menu-item
+
+  .menu .menu-item.menu-item--active-trail {
+    border-bottom: em(8px) solid color(tertiary);
+    transition: border-bottom .2s ease-in-out;
+
+    @media screen and (max-width: 950px) {
+      border-bottom: em(1, 16) solid $white;
+
+      &.show {
+        border-bottom: 0;
+      }
+    }
+
+    a.is-active {
+      border-bottom: 0;
+    }
+
+  }
+
+  //Dropdown
+  .menu .menu {
+    background: $white;
+    display: none;
+    margin-top: 0.5em;
+    width: 200px;
+
+    @media screen and (max-width: 950px) {
+      background: transparent;
+      width: auto;
+    }
+  }
+
+  .menu .menu .menu-item {
     @extend %source-sans;
     border-bottom: 0;
-    display: block;
+    display: flex;
     font-size: 90%;
     line-height: 120%;
     padding: 10px 15px;
     text-transform: none;
 
-    &:hover {
+    @media screen and (max-width: 950px) {
+      border-bottom: em(1, 16) solid $white;
+      padding: em(22) em(8, 16);
+    }
+
+    &:hover,
+    &.menu-item--active-trail {
       background-color: $black;
       color: $white;
       cursor: pointer;
       transition: .2s ease-in-out;
-    }
 
-    &:hover a {
-      color: $white;
-    }
+      a {
+        border-bottom: 0;
+        color: $white;
+      }
 
-  }
+      @media screen and (max-width: 950px) {
+        background-color: transparent;
 
-  .menu-item.menu-item--active-trail {
-    background-color: $black;
-    color: $white;
-    cursor: pointer;
-    transition: .2s ease-in-out;
+        a {
+          color: $black;
+        }
+      }
 
-    a {
-      color: $white;
-    }
-
-  }
-
-  .menu-item a {
-    color: color(secondary);
-
-    &:hover {
-      border-bottom: 0;
-      color: $white;
-    }
-
-  }
-
-  .menu-item a.is-active {
-    border-bottom: 0;
-    color: $white;
-  }
-
-}
-
-//MegaMenu
-.simple-mega-menu-type-education-megamenu .name {
-  display: none;
-}
-
-//Hides required child nav item to show the megamenu
-#hm-public-theme-main-menu .menu-item--expanded:hover .mega-menu-wrapper + ul.menu {
-  display: none;
-}
-
-.menu--simple-mega-menu > .menu-item--expanded > .mega-menu-wrapper {
-  left: inherit;
-  padding: 0;
-  width: 40%;
-  z-index: 2000;
-}
-
-.menu--simple-mega-menu > .menu-item--expanded > .mega-menu-wrapper .mega-menu-background {
-  width: auto;
-}
-
-.simple-mega-menu {
-  display: flex;
-}
-
-.menu--simple-mega-menu > .menu-item--expanded > .mega-menu-wrapper .mega-menu-item {
-  flex: 1 0 100%;
-  padding-bottom: em(15);
-}
-
-.field-megamenu-left-column {
-  border-right: 1px solid color(medium-grey);
-}
-
-.field-megamenu-left-column,
-.field-megamenu-right-column {
-  @extend %source-sans;
-  flex: 1;
-  flex-basis: 50%;
-}
-
-.field-megamenu-left-header,
-.field-megamenu-right-header {
-  color: color(disabled-text);
-  letter-spacing: normal;
-  padding: em(8) em(15);
-  text-transform: uppercase;
-}
-
-#hm-public-theme-main-menu .field-megamenu-left-link,
-#hm-public-theme-main-menu .field-megamenu-right-link {
-
-  .field-item {
-    padding: em(5) em(15);
-    text-transform: none;
-
-    &:hover {
-      background-color: $black;
-      cursor: pointer;
-      transition: .2s ease-in-out;
-    }
-
-    &:hover a {
-      color: $white;
     }
 
     a {
-      border-bottom: 0;
       color: color(secondary);
-    }
 
-    a:hover {
+      @media screen and (max-width: 950px) {
+        color: $black;
+        font-weight: 400;
+      }
+
+      &:hover,
+      &.is-active {
+        border-bottom: 0;
+        color: $white;
+
+        @media screen and (max-width: 950px) {
+          color: color(tertiary);
+        }
+
+      }
+
+    }
+  }//.menu .menu .menu-item
+
+  .menu-item--expanded.menu-item--active-trail {
+    border-bottom: em(8px) solid color(tertiary);
+    transition: border-bottom .2s ease-in-out;
+
+    @media screen and (max-width: 950px) {
       border-bottom: 0;
-      color: $white;
-      transition: .2s ease-in-out;
     }
-
-  }
-
-  .field-item.menu-item--active-trail {
-    background-color: $black;
-    cursor: pointer;
-    transition: .2s ease-in-out;
 
     a {
-      color: $white;
+      border-bottom: 0;
+
+      @media screen and (max-width: 767px) {
+        border-bottom: 0;
+      }
+
     }
 
   }
 
-}
+  //Megamenu
+  .mega-menu-wrapper {
+    left: inherit;
+    padding: 0;
+    top: 32px;
+    width: 40%;
+    z-index: 2000;
+
+    @media all and (max-width: 950px) {
+      width: 100%;
+    }
+
+    .mega-menu-background {
+      background: $white;
+      width: auto;
+
+      @media all and (max-width: 950px) {
+        background: transparent;
+      }
+
+    }
+
+    .mega-menu-item {
+      flex: 1 0 100%;
+      padding-bottom: em(15);
+    }
+
+    //Hide ul when there is a megamenu
+    & + ul.menu {
+      display: none !important;
+    }
+
+    .simple-mega-menu {
+      background-color: $white;
+      display: flex;
+
+      @media all and (max-width: 950px) {
+        background-color: transparent;
+      }
+
+      & > div {
+        min-width: 200px;
+      }
+
+      //hi default label
+      .name {
+        display: none;
+      }
+
+      .field-megamenu-left-column,
+      .field-megamenu-right-column {
+        @extend %source-sans;
+        flex: 1;
+        flex-basis: 50%;
+      }
+
+      .field-megamenu-left-header,
+      .field-megamenu-right-header {
+        color: color(disabled-text);
+        letter-spacing: normal;
+        padding: em(8) em(15);
+        text-transform: uppercase;
+      }
+
+      .field-megamenu-left-link,
+      .field-megamenu-right-link {
+
+        .field-item {
+          padding: em(5) em(15);
+          text-transform: none;
+
+          &:hover {
+            background-color: $black;
+            cursor: pointer;
+            transition: .2s ease-in-out;
+
+            @media screen and (max-width: 950px) {
+              background-color: transparent;
+            }
+          }
+
+          &:hover a {
+            color: $white;
+
+            @media screen and (max-width: 950px) {
+              color: color(tertiary);
+            }
+
+          }
+
+          a {
+            border-bottom: 0;
+            color: color(secondary);
+
+            @media screen and (max-width: 950px) {
+              color: $black;
+              font-weight: 400;
+              padding: em(22) em(8, 16);
+            }
+          }
+
+          a:hover {
+            border-bottom: 0;
+            color: $white;
+            transition: .2s ease-in-out;
+
+            @media screen and (max-width: 950px) {
+              color: color(tertiary);
+            }
+          }
+
+        }
+
+        .field-item.menu-item--active-trail {
+          background-color: $black;
+          cursor: pointer;
+          transition: .2s ease-in-out;
+
+          a {
+            color: $white;
+          }
+        }
+      }
+
+    }//.simple-mega-menu
+  }//.mega-menu-wrapper
+
+  .menu-item,
+  .mega-menu-wrapper {
+    &.show {
+      border-bottom: 0;
+
+      .menu {
+        display: inline-block;
+      }
+
+      .mega-menu-wrapper {
+        display: flex;
+        opacity: 1;
+      }
+
+      .mega-menu-wrapper + .menu {
+        display: none;
+      }
+    }
+  }
+
+  //Mobile Menu Arrows
+  @media screen and (max-width: 950px) {
+
+    .menu-item {
+
+      span.accordion__arrow {
+        height: 65px;
+        padding: 0;
+        width: 50px;
+      }
+
+      span.accordion__arrow-half {
+        background-color: $black;
+        padding: 0;
+
+        &:first-of-type {
+          margin-left: 25px;
+          margin-top: 30px;
+          transform: rotate(45deg);
+        }
+
+        &:last-of-type {
+          margin-right: 5px;
+          margin-top: 30px;
+          transform: rotate(-45deg);
+        }
+
+      }
+
+    }
+
+    .menu-item.show {
+
+      .accordion__arrow-half {
+
+        &:first-of-type {
+          left: 0;
+          transform: rotate(-45deg);
+        }
+
+        &:last-of-type {
+          right: 0;
+          transform: rotate(45deg);
+        }
+      }
+
+    }
+
+  }
+
+  .header__hamburger.close.show {
+    opacity: 1;
+  }
+
+}//#hm-public-theme-main-menu
