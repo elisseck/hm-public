@@ -65,7 +65,7 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
         return 'field_favorite_color';
       case 'what_s_your_favorite_food_':
         return 'field_favorite_food';
-      case 'when_is_your_birthday_':
+      case 'what_year_were_you_born_':
         return 'field_birth_date';
     }
   }
@@ -133,10 +133,16 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
    * @param \Drupal\webform\WebformSubmissionInterface $webformSubmission
    */
   public function submitForm(array &$form, FSI $formState, WSI $webformSubmission) {
-    $matcher    = new MakerMatcher();
+    //$matcher    = new MakerMatcher();
     $formValues = $this->collectResults($formState);
-    $matcher->performSearch($formValues);
-    $data       = $matcher->prepareResults();
+    //$matcher->performSearch($formValues);
+    //$data       = $matcher->prepareResults();
+    foreach ($formValues as $key => $value) {
+      $matcher = new MakerMatcher();
+      $data    = $matcher->executeSearch($value, $key);
+      $results = $matcher->prepareResults($data, $key);
+      $output = [];
+    }
     $webformSubmission->setElementData('results', 'placeholder');
   }
 }

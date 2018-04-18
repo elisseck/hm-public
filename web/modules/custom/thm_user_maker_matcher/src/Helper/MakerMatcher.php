@@ -29,7 +29,7 @@ class MakerMatcher {
   /**
    * @var string $parseStrategy
    */
-  protected $parseStrategy = 'terms';
+  protected $parseStrategy = 'direct';
 
 
   /**
@@ -70,31 +70,23 @@ class MakerMatcher {
     }
   }
 
-  protected function executeSearch(string $fieldValue, string $fieldName) {
+  public function executeSearch(string $fieldValue, string $fieldName) {
+    $this->setParseMode();
+
     if ($fieldName === 'field_birth_date') {
-      //$fieldValue = date('m/d', $fieldValue);
       $this->query->addCondition($fieldName, $fieldValue);
     } else {
-      $this->query->addCondition($fieldName, $fieldValue, 'CONTAINS');
+      $this->query->addCondition($fieldName, $fieldValue);
     }
 
-    $this->results[$fieldName] = $this->query->execute();
+    return $this->query->execute();
   }
 
-  public function prepareResults() {
-    $items  = $this->results;
-    $output = [];
+  public function prepareResults(ResultSetInterface $data, string $field) {
 
-    /**
-     * @var string $field
-     * @var ResultSetInterface $results
-     */
-    foreach ($items as $field => $results) {
-      $output[$field] = array_map(function(ItemInterface $item) use ($field) {
-        return @$item->getField($field)->getValues();
-      }, $results->getResultItems());
-    }
+    return array_map(function(ItemInterface $item) use ($field) {
+      return @$item->getField($field)->getValues();
+    }, $data->getResultItems());
 
-    return $output;
   }
 }
