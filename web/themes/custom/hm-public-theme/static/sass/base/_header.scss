@@ -14,7 +14,7 @@
   margin: 0 auto;
   max-width: $max-width;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 950px) {
     display: none;
   }
 }
@@ -58,7 +58,7 @@
   color: color(dark-grey);
 
   &:hover {
-    border: 0;
+    border-color: transparent;
     color: color(secondary);
     text-decoration: underline;
   }
@@ -76,104 +76,124 @@
   padding: 0;
 
   &:hover {
-    border: 0;
+    border-color: transparent;
     text-decoration: underline;
   }
 }
 
+//Mobile icons
+.header__bottom-row {
+  display: flex;
+  margin: em(10) em(25);
+
+  .header__hamburger {
+    display: none;
+    margin-left: em(20);
+    min-width: em(22);
+  }
+
+  .header__search {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .header__hamburger,
+  .header__search {
+    align-self: center;
+    cursor: pointer;
+    width: 36px;
+
+    svg {
+      height: 34px;
+    }
+
+  }
+
+  @media all and (min-width: 950px ){
+
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    margin-bottom: em(45);
+
+    .header__hamburger,
+    .header__search {
+      display: none;
+    }
+  }
+
+  @media all and (max-width: 950px) {
+    align-items: flex-start;
+    margin: em(20) em(20) em(30);
+
+    .header__hamburger {
+
+      &.show {
+        display: flex;
+        opacity: 1;
+      }
+    }
+  }
+
+  @media all and (max-width: 520px) {
+    margin: em(20);
+
+    .header__hamburger,
+    .header__search {
+      width: 30px;
+
+      svg {
+        height: 30px;
+      }
+
+    }
+
+  }
+
+}//.header__bottom-row
+
+//this class appears in header and navigation..
 .header__logo-container {
   align-items: center;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: em(45);
-}
 
-// Margin and width are there to align the logo with bottom text.
-.header__logo {
-  margin-left: em(5);
-  max-width: em(380);
-}
+  @media all and (max-width: 950px) {
+    align-items: flex-start;
 
-.header__logo-copy {
-  @extend %oswald-light;
-  color: color(dark-grey);
-}
+    .header__logo {
+      margin-left: 0;
+    }
 
-#hm-public-theme-main-menu {
-  margin: 0 auto;
-  max-width: $max-width;
-  padding: 0 $default-grid-gutter-width;
+    .header__logo-copy {
+      display: none;
+    }
 
-  @media screen and (max-width: 767px) {
-    left: - em(600, 16);
-    padding: 0 em(15, 16) em(15, 16);
-    transition: left .3s ease-in-out;
-    width: 70vw;
   }
 
-  &.hm-public-theme-main-menu--open {
-    left: 0;
+  @media all and (max-width: 520px) {
+
+    .header__logo {
+      width: 85%;
+    }
+
   }
 
-  .menu {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    @media screen and (max-width: 767px) {
-      flex: 2;
-      flex-direction: column;
-      height: 100%;
-      justify-content: flex-start;
-    }
+  // Margin and width are there to align the logo with bottom text.
+  .header__logo {
+    margin-left: em(5);
+    max-width: em(380);
   }
 
-  .menu-item {
-    @extend %oswald;
-    border-bottom: em(8) solid transparent;
-    letter-spacing: .114em;
-    text-transform: uppercase;
-
-    @media screen and (max-width: 767px) {
-      border-bottom: em(1, 16) solid $white;
-      padding: em(12, 16) em(8, 16);
-  }
-
-    & .is-active {
-      color: color(tertiary);
-
-      // @media screen and (max-width: 767px) {
-      //   border-bottom: em(3,16) solid color(tertiary);
-      //   text-decoration: none;
-      // }
-    }
-
-    a:hover {
-      border-bottom: em(8) solid color(secondary);
-      transition: border-bottom .2s ease-in-out;
-
-      @media screen and (max-width: 767px) {
-        border-bottom: 0;
-      }
-    }
-
-    .is-active {
-      border-bottom: em(8) solid color(tertiary);
-      transition: border-bottom .2s ease-in-out;
-
-      @media screen and (max-width: 767px) {
-        border-bottom: 0;
-      }
-    }
-
-    a {
-      color: color(dark-grey);
-
-      &:hover { text-decoration: none; }
-    }
+  .header__logo-copy {
+    @extend %oswald-light;
+    color: color(dark-grey);
   }
 }
+
+//#hm-public-theme-main-menu moved to _navigation.scss
 
 .profile {
   margin-left: auto;
@@ -217,7 +237,7 @@
 
 .header nav {
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 950px) {
     background: color(light-grey);
     height: 100%;
     position: absolute;

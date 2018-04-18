@@ -53,7 +53,7 @@
 .accordion-block.accordion,
 .people-block.accordion {
   @extend %max-width;
-  width: 70%;
+  @extend %med-width-content;
 
   button.accordion__panel,
   .accordion__body {
@@ -72,6 +72,11 @@
 
   .accordion__body p {
     padding: 0 $default-grid-gutter-width;
+
+    @media screen and (max-width: 768px) {
+      padding: 0;
+    }
+
   }
 
 }
