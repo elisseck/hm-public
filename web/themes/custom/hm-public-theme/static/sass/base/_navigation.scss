@@ -69,6 +69,7 @@ li.pager__item.pager__item--ellipsis {
     }
 
     .menu-item.menu-item--expanded.show > .mega-menu-wrapper {
+      background: transparent;
       display: flex;
     }
 
@@ -189,7 +190,8 @@ li.pager__item.pager__item--ellipsis {
       }
 
       .field-megamenu-left-column {
-        border-bottom: 1px solid color(medium-grey);
+        border-bottom: 1px solid $white;
+        padding-bottom: em(15);
       }
 
       span {
@@ -336,12 +338,17 @@ li.pager__item.pager__item--ellipsis {
     z-index: 2000;
 
     @media all and (max-width: 950px) {
-      width: 250px;
+      width: 100%;
     }
 
     .mega-menu-background {
       background: $white;
       width: auto;
+
+      @media all and (max-width: 950px) {
+        background: transparent;
+      }
+
     }
 
     .mega-menu-item {
@@ -357,6 +364,10 @@ li.pager__item.pager__item--ellipsis {
     .simple-mega-menu {
       background-color: $white;
       display: flex;
+
+      @media all and (max-width: 950px) {
+        background-color: transparent;
+      }
 
       & > div {
         min-width: 200px;
@@ -393,21 +404,40 @@ li.pager__item.pager__item--ellipsis {
             background-color: $black;
             cursor: pointer;
             transition: .2s ease-in-out;
+
+            @media screen and (max-width: 950px) {
+              background-color: transparent;
+            }
           }
 
           &:hover a {
             color: $white;
+
+            @media screen and (max-width: 950px) {
+              color: color(tertiary);
+            }
+
           }
 
           a {
             border-bottom: 0;
             color: color(secondary);
+
+            @media screen and (max-width: 950px) {
+              color: $black;
+              font-weight: 400;
+              padding: em(22) em(8, 16);
+            }
           }
 
           a:hover {
             border-bottom: 0;
             color: $white;
             transition: .2s ease-in-out;
+
+            @media screen and (max-width: 950px) {
+              color: color(tertiary);
+            }
           }
 
         }
