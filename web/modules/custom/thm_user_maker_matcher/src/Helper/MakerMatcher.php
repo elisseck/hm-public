@@ -12,9 +12,12 @@ use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Query\ResultSetInterface;
 use Drupal\search_api\Item\ItemInterface;
+use Drupal\search_api\SearchApiException;
 
 
 class MakerMatcher {
+
+  protected $moduleName = 'thm_user_maker_matcher';
 
   /**
    * @var string $indexName
@@ -62,31 +65,22 @@ class MakerMatcher {
     $this->query->setParseMode($parseMode);
   }
 
-  public function performSearch(array $values) {
-    $this->setParseMode();
-
-    foreach ($values as $fieldName => $fieldValue) {
-      $this->executeSearch($fieldValue, $fieldName);
-    }
-  }
-
   public function executeSearch(string $fieldValue, string $fieldName) {
     $this->setParseMode();
 
-    if ($fieldName === 'field_birth_date') {
-      $this->query->addCondition($fieldName, $fieldValue);
-    } else {
-      $this->query->addCondition($fieldName, $fieldValue);
-    }
+    $this->query->addCondition($fieldName, ucfirst(strtolower($fieldValue)));
 
-    return $this->query->execute();
+    try {
+      return $this->query->execute();
+    } catch (SearchApiException $searchApiException) {
+      drupal_set_message('An error occurred.');
+      \Drupal::logger($this->moduleName)->error($searchApiException->getMessage());
+    }
   }
 
   public function prepareResults(ResultSetInterface $data, string $field) {
-
     return array_map(function(ItemInterface $item) use ($field) {
       return @$item->getField($field)->getValues();
     }, $data->getResultItems());
-
   }
 }
