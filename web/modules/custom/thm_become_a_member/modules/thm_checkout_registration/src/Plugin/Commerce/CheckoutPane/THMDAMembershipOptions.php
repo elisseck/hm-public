@@ -83,6 +83,11 @@ class THMDAMembershipOptions extends CheckoutPaneBase {
 
     switch ($triggeringElement['#op']) {
       case 'continue':
+        foreach ($this->order->getItems() as $orderItem) {
+          if ($orderItem->label() === 'HistoryMakers DA Placeholder') {
+            $this->order->removeItem($orderItem);
+          }
+        }
         $this->addToOrder($formValues['subscription_opts']);
 
         return $form_state->setRedirect('commerce_checkout.form', [

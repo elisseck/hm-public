@@ -95,6 +95,11 @@ class THMDonationOptions extends CheckoutPaneBase {
 
     switch ($triggeringElement['#op']) {
       case 'continue':
+        foreach ($this->order->getItems() as $orderItem) {
+          if ($orderItem->label() === 'HistoryMakers DA Placeholder') {
+            $this->order->removeItem($orderItem);
+          }
+        }
         $this->addToOrder($formValues['donation_opts']);
 
         $this->order->setEmail($formValues['donor_email']);
