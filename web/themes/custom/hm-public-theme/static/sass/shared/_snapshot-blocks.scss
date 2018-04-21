@@ -6,7 +6,7 @@
   .field-items {
     display: flex;
     justify-content: center;
-  
+
     @media screen and (max-width: 580px) {
       flex-direction: column;
     }
@@ -21,8 +21,8 @@
       flex: 0 1 50%;
       margin: 0 30px;
     }
-    
-    @media screen and (max-width: 580px){
+
+    @media screen and (max-width: 580px) {
       margin-bottom: 30px;
     }
 
@@ -57,7 +57,7 @@
     @media screen and (max-width: 950px) {
       font-size: 1em;
       width: 100%;
-    }   
+    }
 
   }
 
