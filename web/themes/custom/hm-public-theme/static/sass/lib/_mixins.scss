@@ -90,6 +90,10 @@
     font-size: em(30);
   }
 
+  @media screen and (max-width: 370px) {
+    font-size: em(25);
+  }  
+
 }
 
 %large-p {
@@ -110,5 +114,9 @@
   @media screen and (max-width: 600px) {
     min-height: 250px;
   }
+
+  @media screen and (max-width: 370px) {
+    height: 430px;
+  }  
 
 }
