@@ -90,13 +90,34 @@
     padding-top: em(70);
     width: 100%;
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
       display: flex;
       flex: 1;
-      justify-content: flex-end;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
       padding: em(20);
       position: relative;
       width: 100%;
+
+      h2,
+      p {
+        width: 100%;
+      }
+
+      a.button {
+        font-size: 1em;
+        width: 25%;
+      }
+
+    }
+
+    @media screen and (max-width: 520px) {
+
+      a.button {
+        width: 50%;
+      }
+
     }
 
   }
