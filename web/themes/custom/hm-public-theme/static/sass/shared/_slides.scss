@@ -150,6 +150,7 @@
 
 .event-carousel .two-column-slide  .carousel__caption {
   background-color: color(primary);
+  color: $white;
 
   a.button {
     @extend %oswald;
