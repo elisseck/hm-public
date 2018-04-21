@@ -78,10 +78,54 @@
   margin-top: em(60);
   width: 70%;
 
+  @media screen and (max-width: 950px) {
+    width: 100%;
+  }
+
+  &--image {
+
+    @media screen and (max-width: 768px) {
+      overflow: hidden;
+    }
+
+    @media screen and (max-width: 580px) {
+      margin-bottom: 15px;
+    }
+
+  }
+
   &--image img {
     float: right;
     margin-right: em(10);
     max-width: em(267);
+
+    @media screen and (max-width: 580px) {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  }
+
+  .snapshot {
+
+    @media screen and (max-width: 580px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+  }
+
+  .snapshot a.button {
+
+    @media screen and (max-width: 950px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 580px) {
+      width: 100%;
+    }
+
   }
 
 }
