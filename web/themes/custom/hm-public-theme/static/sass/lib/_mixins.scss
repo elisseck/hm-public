@@ -79,6 +79,12 @@
     width: 85%;
   }
 
+  @media screen and (max-width: 580px) {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+  }  
+
 }
 
 %h2 {
