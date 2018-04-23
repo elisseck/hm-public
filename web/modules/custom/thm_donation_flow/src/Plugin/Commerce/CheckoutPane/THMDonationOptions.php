@@ -66,6 +66,8 @@ class THMDonationOptions extends CheckoutPaneBase {
    */
   public function buildPaneForm(array $pane_form, FormStateInterface $form_state, array &$complete_form) {
 
+    $currentUser = \Drupal::currentUser();
+
     $pane_form['donation_opts'] = [
       '#type' => 'radios',
       '#title' => $this->t('Choose one'),
@@ -77,6 +79,7 @@ class THMDonationOptions extends CheckoutPaneBase {
     $pane_form['donor_email'] = [
       '#type' => 'email',
       '#title' => $this->t('Email Address'),
+      '#default_value' => $currentUser->isAuthenticated() ? $currentUser->getEmail() : '',
       '#required' => true
     ];
 
