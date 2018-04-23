@@ -6,11 +6,26 @@
   .field-items {
     display: flex;
     justify-content: center;
+
+    @media screen and (max-width: 580px) {
+      flex-direction: column;
+    }
+
   }
 
   .field-item {
     flex: 0 1 25%;
     margin: 0 15px;
+
+    @media screen and (max-width: 950px) {
+      flex: 0 1 50%;
+      margin: 0 30px;
+    }
+
+    @media screen and (max-width: 580px) {
+      margin-bottom: 30px;
+    }
+
   }
 
 }
@@ -35,9 +50,15 @@
     font-size: em(18);
   }
 
-  .button {
+  a.button {
     text-align: center;
     width: 50%;
+
+    @media screen and (max-width: 950px) {
+      font-size: 1em;
+      width: 100%;
+    }
+
   }
 
   .snapshot--download svg {
@@ -57,10 +78,54 @@
   margin-top: em(60);
   width: 70%;
 
+  @media screen and (max-width: 950px) {
+    width: 100%;
+  }
+
+  &--image {
+
+    @media screen and (max-width: 768px) {
+      overflow: hidden;
+    }
+
+    @media screen and (max-width: 580px) {
+      margin-bottom: 15px;
+    }
+
+  }
+
   &--image img {
     float: right;
     margin-right: em(10);
     max-width: em(267);
+
+    @media screen and (max-width: 580px) {
+      float: none;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+  }
+
+  .snapshot {
+
+    @media screen and (max-width: 580px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+  }
+
+  .snapshot a.button {
+
+    @media screen and (max-width: 950px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 580px) {
+      width: 100%;
+    }
+
   }
 
 }

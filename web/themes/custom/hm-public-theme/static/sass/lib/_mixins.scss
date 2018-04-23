@@ -75,8 +75,14 @@
 %med-width-content {
   width: 70%;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 950px) {
     width: 85%;
+  }
+
+  @media screen and (max-width: 580px) {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
   }
 
 }
@@ -88,6 +94,10 @@
 
   @media screen and (max-width: 900px) {
     font-size: em(30);
+  }
+
+  @media screen and (max-width: 370px) {
+    font-size: em(25);
   }
 
 }
@@ -109,6 +119,10 @@
 
   @media screen and (max-width: 600px) {
     min-height: 250px;
+  }
+
+  @media screen and (max-width: 370px) {
+    height: 430px;
   }
 
 }

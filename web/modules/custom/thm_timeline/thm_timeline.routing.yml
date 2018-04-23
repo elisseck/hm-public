@@ -1,0 +1,7 @@
+time_line:
+  path: '/timeline'
+  defaults:
+    _controller: '\Drupal\thm_timeline\Controller\TimeLineController::timeline'
+    _title: 'Timeline'
+  requirements:
+    _permission: 'access content'
