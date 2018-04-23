@@ -90,18 +90,39 @@
     padding-top: em(70);
     width: 100%;
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
       display: flex;
       flex: 1;
-      justify-content: flex-end;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
       padding: em(20);
       position: relative;
       width: 100%;
+
+      h2,
+      p {
+        width: 100%;
+      }
+
+      a.button {
+        font-size: 1em;
+        width: 25%;
+      }
+
+    }
+
+    @media screen and (max-width: 520px) {
+
+      a.button {
+        width: 50%;
+      }
+
     }
 
   }
 
-}
+}//.two-column-slide
 
 .two-column-slide.row {
   margin-left: auto;
@@ -129,15 +150,28 @@
     width: 98%;
 
     @media screen and (max-width: 768px) {
+      margin-left: 6%;
       max-width: 96%;
+      width: 93%;
+    }
+
+    @media screen and (max-width: 620px) {
+      margin-left: 8%;
+      width: 91%;
+    }
+
+    @media screen and (max-width: 400px) {
+      margin-left: 11%;
+      width: 87%;
     }
 
   }
 
 }
 
-.event-carousel .carousel__caption {
+.event-carousel .two-column-slide  .carousel__caption {
   background-color: color(primary);
+  color: $white;
 
   a.button {
     @extend %oswald;
@@ -154,19 +188,54 @@
     color: $white;
   }
 
-}
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 1em;
+    position: relative;
+    width: 100%;
 
-.carousel__caption--buttons {
-  bottom: em(60);
-  position: absolute;
-  width: 50%;
+    h2,
+    p {
+      width: 100%;
+    }
 
-  p {
-    color: $white;
-    font-size: em(18);
-    margin-bottom: em(10);
-    margin-top: em(10);
-    text-align: center;
+    a.button {
+      width: auto;
+    }
+  }
+
+  @media screen and (max-width: 460px) {
+
+    a.button {
+      flex: 1;
+      line-height: 100%;
+      width: 100%;
+    }
+  }
+
+  .carousel__caption--buttons {
+    bottom: em(60);
+    position: absolute;
+    width: 50%;
+
+    @media screen and (max-width: 767px) {
+      bottom: 0;
+      flex: 1;
+      margin-left: 10px;
+      position: relative;
+      width: auto;
+    }
+
+    p {
+      color: $white;
+      font-size: em(18);
+      margin-bottom: em(10);
+      margin-top: em(10);
+      text-align: center;
+    }
+
   }
 
 }
