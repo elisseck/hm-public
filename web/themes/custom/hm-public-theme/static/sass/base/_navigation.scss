@@ -57,7 +57,7 @@ li.pager__item.pager__item--ellipsis {
     top: 0;
     transition: left .2s ease-in-out;
     width: auto;
-    z-index: 1000;
+    z-index: 2000;
 
     &.open {
       left: 0;
