@@ -1,0 +1,12 @@
+<?php
+
+  function thm_timeline_theme($existing, $type, $theme, $path){
+    return array(
+       'timeline' => array(
+         'variables' => array('title' => '', 'markup' => '', 'content' => array(), 'pages' => '')
+       )
+    );
+  }
+
+
+ ?>

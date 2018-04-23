@@ -1,0 +1,90 @@
+<div class="timeline_cont">
+  <p> {{ markup }}</p>
+        <ul class="timeline_list">
+          {% for items in content %}
+          <li>
+            <a href="/node/{{items.nid}}">
+            <div class="img">
+              {% if items.img is not empty %}
+                <img src="/sites/default/files/{{ items.img }}" />
+              {% endif %}
+            </div></a>
+             <div class="info snapshot"> <h4>{{ items.date|date('F d, Y' ) }} </h4><h3> {{ items.name }} </h3></div>
+             <div class="content">
+
+                 {% if items.type == 'death' %}
+                      <h5> {{ items.name }} passed away </h5>
+               {% elseif items.type == "birth" %}
+                      <h5> {{ items.name }} was born </h5>
+               {% else %}
+                     <h5> {{ items.name }} </h5>
+
+               {% endif %}
+                {% if items.bio is not empty %}
+                     {{ items.bio | raw }}...
+                {% endif %}
+            </div>
+
+          </li>
+          {% endfor %}
+       </ul>
+       <div class="filters">
+           <form action="/timeline" method="get" id="views-exposed-form-timeline-new-page-1" accept-charset="UTF-8">
+             <div>
+                <div class="views-exposed-form">
+                   <div class="views-exposed-widgets clearfix">
+                      <div id="edit-year-wrapper" class="views-exposed-widget views-widget-filter-field_year_value">
+                         <label for="edit-year">Year</label>
+                         <div class="views-widget">
+                            <div class="form-item form-type-select form-item-year">
+                               <select id="edit-year" name="year" class="form-select">
+                                   <option value="">- Any -</option>
+                                  {% for year in range("now"|date("Y"), 1901) %}
+                                   <option value="{{ year }}">{{ year }}</option>
+                                  {% endfor %}
+                               </select>
+                            </div>
+                         </div>
+                      </div>
+                      <div id="edit-month-day-wrapper" class="views-exposed-widget views-widget-filter-field_month_day_value">
+                         <label for="edit-month-day"> Month/Day </label>
+                      </div>
+                      <div class="views-exposed-widget views-submit-button">
+                         <div class="form-item form-type-select form-item-month">
+                            <select id="edit-month" name="month" class="form-select">
+                               <option value="">- Any -</option>
+                               <option value="1">Jan</option>
+                               <option value="2">Feb</option>
+                               <option value="3">Mar</option>
+                               <option value="4">Apr</option>
+                               <option value="5">May</option>
+                               <option value="6">Jun</option>
+                               <option value="7">Jul</option>
+                               <option value="8">Aug</option>
+                               <option value="9">Sep</option>
+                               <option value="10">Oct</option>
+                               <option value="11">Nov</option>
+                               <option value="12">Dec</option>
+                            </select>
+                         </div>
+                         <div class="form-item form-type-select form-item-day">
+                            <select id="edit-day" name="day" class="form-select">
+                                   <option value="">- Any -</option>
+                               {% for day in range(1, 31) %}
+                                   <option value="{{ day }}">{{ day }}</option>
+                               {% endfor %}
+                            </select>
+                         </div>
+                         <input type="submit" id="edit-submit-timeline-new" name="" value="Apply" class="button js-form-submit form-submit">
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </form>
+       </div>
+  <div class="pages">
+  <nav class="pager" role="navigation" aria-labelledby="pagination-heading">
+    <ul class="pager__items js-pager__items">{{ pages | raw }}</ul>
+  </nav>
+ </div>
+</div>
