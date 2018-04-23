@@ -23,4 +23,18 @@
     text-align: left;
   }
 
+  a.button {
+    font-size: 1em;
+    width: 20%;
+  }
+
+  @media screen and (max-width: 560px) {
+
+    a.button {
+      font-size: 1.4em;
+      width: 100%;
+    }
+
+  }
+
 }
