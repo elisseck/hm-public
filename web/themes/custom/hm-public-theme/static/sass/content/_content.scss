@@ -3,9 +3,9 @@
 // Basic Block Content
 .wrapper .basic-block {
   @extend %max-width;
+  @extend %med-width-content;
   margin-bottom: em(50);
   margin-top: em(60);
-  width: 70%;
 
   p {
     font-size: em(18);
@@ -30,18 +30,32 @@ hr {
 
 }
 
+p img {
+  width: 100%;
+}
+
 .share {
-  left: em(10);
+  //left: em(10);
   position: fixed;
-  top: 41%; // we may eventually want to use js to calculate this relative to the parent container
+  top: 44%; // we may eventually want to use js to calculate this relative to the parent container
   z-index: 1000;
 
-  @media screen and (min-width: 1550px) {
-    left: 5%;
+  @media only screen and (max-width: 1500px) {
+    left: 10px;
   }
+
+  @media only screen and (max-width: 950px) {
+    top: 25%;
+  }
+
 }
 
 .share__icon {
   height: auto;
-  width: em(36);
+  width: em(30);
+
+  @media screen and (max-width: 1024px) {
+    width: em(36);
+  }
+
 }
