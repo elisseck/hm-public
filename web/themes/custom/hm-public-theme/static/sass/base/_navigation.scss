@@ -60,6 +60,7 @@ li.pager__item.pager__item--ellipsis {
     z-index: 2000;
 
     &.open {
+      border-right: 2px solid color(medium-grey);
       left: 0;
       width: 70%;
     }
@@ -137,6 +138,11 @@ li.pager__item.pager__item--ellipsis {
     a.is-active {
       border-bottom: em(8) solid color(tertiary);
       transition: border-bottom .2s ease-in-out;
+
+      @media screen and (max-width: 950px) {
+        border-bottom: 0;
+      }
+
     }
 
     &:hover a {
