@@ -12,9 +12,12 @@ use Drupal\search_api\Entity\Index;
 use Drupal\search_api\Query\QueryInterface;
 use Drupal\search_api\Query\ResultSetInterface;
 use Drupal\search_api\Item\ItemInterface;
+use Drupal\search_api\SearchApiException;
 
 
 class MakerMatcher {
+
+  protected $moduleName = 'thm_user_maker_matcher';
 
   /**
    * @var string $indexName
@@ -29,7 +32,7 @@ class MakerMatcher {
   /**
    * @var string $parseStrategy
    */
-  protected $parseStrategy = 'terms';
+  protected $parseStrategy = 'direct';
 
 
   /**
@@ -62,39 +65,22 @@ class MakerMatcher {
     $this->query->setParseMode($parseMode);
   }
 
-  public function performSearch(array $values) {
+  public function executeSearch(string $fieldValue, string $fieldName) {
     $this->setParseMode();
 
-    foreach ($values as $fieldName => $fieldValue) {
-      $this->executeSearch($fieldValue, $fieldName);
+    $this->query->addCondition($fieldName, ucfirst(strtolower($fieldValue)));
+
+    try {
+      return $this->query->execute();
+    } catch (SearchApiException $searchApiException) {
+      drupal_set_message('An error occurred.');
+      \Drupal::logger($this->moduleName)->error($searchApiException->getMessage());
     }
   }
 
-  protected function executeSearch(string $fieldValue, string $fieldName) {
-    if ($fieldName === 'field_birth_date') {
-      //$fieldValue = date('m/d', $fieldValue);
-      $this->query->addCondition($fieldName, $fieldValue);
-    } else {
-      $this->query->addCondition($fieldName, $fieldValue, 'CONTAINS');
-    }
-
-    $this->results[$fieldName] = $this->query->execute();
-  }
-
-  public function prepareResults() {
-    $items  = $this->results;
-    $output = [];
-
-    /**
-     * @var string $field
-     * @var ResultSetInterface $results
-     */
-    foreach ($items as $field => $results) {
-      $output[$field] = array_map(function(ItemInterface $item) use ($field) {
-        return @$item->getField($field)->getValues();
-      }, $results->getResultItems());
-    }
-
-    return $output;
+  public function prepareResults(ResultSetInterface $data, string $field) {
+    return array_map(function(ItemInterface $item) use ($field) {
+      return @$item->getField($field)->getValues();
+    }, $data->getResultItems());
   }
 }

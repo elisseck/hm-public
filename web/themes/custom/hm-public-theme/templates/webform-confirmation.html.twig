@@ -1,0 +1,50 @@
+{#
+/**
+ * @file
+ * Default theme implementation to webform confirmation.
+ *
+ * Available variables:
+ * - progress: Progress bar.
+ * - message: Confirmation message.
+ * - back_url: URL to the previous webform submission.
+ *
+ * @see template_preprocess_webform_confirmation()
+ *
+ * @ingroup themeable
+ */
+#}
+{{ attach_library('webform/webform.confirmation') }}
+
+{% if progress %}
+  {{ progress }}
+{% endif %}
+
+{{ breakpoint() }}
+<div{{ attributes.addClass('webform-confirmation') }}>
+
+  {% if message %}
+    {% if _context.webform.id == 'makermatcher_form' %}
+      <div class="accordion">
+        <button class="accordion__panel" data-toggle="collapse" data-target="#user-matching-results" aria-expanded="false" aria-controls="#user-matching-results" type="button">
+          Results
+          <span class="accordion__arrow">
+              <span class="accordion__arrow-half"></span>
+              <span class="accordion__arrow-half"></span>
+          </span>
+        </button>
+        <div class="accordion__body" style="" id="user-matching-results">
+          <div class="row col-sm">{{ message }}</div>
+        </div>
+      </div>
+    {% else %}
+      <div class="webform-confirmation__message">{{ message }}</div>
+    {% endif %}
+  {% endif %}
+
+  {% if back %}
+  <div class="webform-confirmation__back">
+    <a href="{{ back_url }}" rel="back" title="{{ back_label }}"{{ back_attributes }}>{{ back_label }}</a>
+  </div>
+  {% endif %}
+
+</div>

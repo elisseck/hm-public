@@ -27,6 +27,6 @@ use Drupal\search_api\Processor\FieldsProcessorPluginBase;
 class CompareBirthDates extends FieldsProcessorPluginBase {
 
   protected function processFieldValue(&$value, $type) {
-    $value = substr($value, 0, -5);
+    $value = substr($value, -4);
   }
 }
