@@ -47,7 +47,7 @@ function thm_user_maker_matcher_theme() {
 
 function thm_user_maker_matcher_webform_submission_prepare_form(WSI $webformSubmission, $op, FSI $formState) {
   if ($data = _getSession()->get(_getWebformSessionKey())) {
-    $webformSubmission->setElementData('results', $data['results']);
+    $webformSubmission->setElementData('matches', [ '#markup' => $data ]);
     $formState->set('current_page', 'webform_confirmation');
     $formState->setRebuild();
   }

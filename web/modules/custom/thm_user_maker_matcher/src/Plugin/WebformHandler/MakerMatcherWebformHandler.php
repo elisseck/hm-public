@@ -40,6 +40,8 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
 
   protected $webformSessionKeyBase = 'maker_matcher_uid_';
 
+  protected $testMarkup = '<h2>testing</h2><ul><li>One</li><li>Two</li></ul>';
+
   /**
    * @param \Drupal\Core\Form\FormStateInterface $formState
    *
@@ -65,7 +67,7 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
         return 'field_favorite_color';
       case 'what_s_your_favorite_food_':
         return 'field_favorite_food';
-      case 'when_is_your_birthday_':
+      case 'what_year_were_you_born_':
         return 'field_birth_date';
     }
   }
@@ -94,6 +96,10 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
     return \Drupal::request()->getSession();
   }
 
+  protected function titleize(string $key) {
+    return str_replace('_', ' ', substr($key, 6));
+  }
+
   /**
    * @return string
    */
@@ -114,7 +120,7 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
       foreach ($webformSubmissions as $webformSubmission) {
         $data = $webformSubmission->getData();
       }
-      if (isset($data)) $this->getSession()->set($sessionKey, $data);
+      if (isset($data)) $this->getSession()->set($sessionKey, $this->testMarkup);
     }
   }
 
@@ -133,10 +139,19 @@ class MakerMatcherWebformHandler extends WebformHandlerBase {
    * @param \Drupal\webform\WebformSubmissionInterface $webformSubmission
    */
   public function submitForm(array &$form, FSI $formState, WSI $webformSubmission) {
-    $matcher    = new MakerMatcher();
     $formValues = $this->collectResults($formState);
-    $matcher->performSearch($formValues);
-    $data       = $matcher->prepareResults();
-    $webformSubmission->setElementData('results', 'placeholder');
+    $output = [];
+
+    foreach ($formValues as $key => $value) {
+      $matcher = new MakerMatcher();
+      $data    = $matcher->executeSearch($value, $key);
+      //$results = $matcher->prepareResults($data, $key);
+      $msg = ' makers also find ' . $value . ' as their ' . $this->titleize($key);
+      $output[] = $data->getResultCount() . $msg;
+    }
+
+    $webformSubmission->setElementData('matches', [
+      '#markup' => $this->testMarkup
+    ]);
   }
 }

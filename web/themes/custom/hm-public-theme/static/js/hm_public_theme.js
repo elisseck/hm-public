@@ -36,7 +36,7 @@ $('#return-to-top').click(function() {      // When arrow is clicked
   }, 500);
 });
 
-const $scrollButton = document.querySelector('.scroll');
+var $scrollButton = document.querySelector('.scroll');
 function scrollStep() {
     // Check if we're at the top already.
     window.scrollTo(0, 0);
