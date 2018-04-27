@@ -32,6 +32,14 @@
   font-size: rem(15);
 }
 
+//IE 11
+@media all and ( -ms-high-contrast: none ) {
+  *::-ms-backdrop,
+  .header__da-links-title {
+    min-width: 230px;
+  }
+}
+
 .header__da-link-container {
   background-color: $white;
   left: 0;
@@ -200,6 +208,14 @@
   margin-right: em(22);
 }
 
+//IE 11
+@media all and ( -ms-high-contrast: none ) {
+  *::-ms-backdrop,
+  .profile {
+    min-width: 120px;
+  }
+}
+
 .profile__option { @extend %list-item-no-styles; }
 
 .profile__link,
@@ -232,6 +248,21 @@
   &:hover {
     color: color(secondary);
     cursor: pointer;
+  }
+}
+
+//IE 11
+@media all and ( -ms-high-contrast: none ) {
+  *::-ms-backdrop,
+  .social__icon {
+    width: 35px;
+  }
+}
+
+//IE10
+@media screen and ( min-width: 0\0 ) {
+  .social__icon {
+    width: 35px;
   }
 }
 

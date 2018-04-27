@@ -76,13 +76,14 @@
   width: 70%;
 
   @media screen and (max-width: 950px) {
-    width: 85%;
+    padding-left: $default-grid-gutter-width;
+    padding-right: $default-grid-gutter-width;
+    width: 100%;
   }
 
   @media screen and (max-width: 580px) {
     padding-left: 15px;
     padding-right: 15px;
-    width: 100%;
   }
 
 }

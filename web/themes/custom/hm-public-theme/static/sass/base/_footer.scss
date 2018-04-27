@@ -8,6 +8,19 @@
   width: 100%;
 }
 
+@media screen and (max-width: 768px) {
+
+  .footer .menu {
+    display: none;
+  }
+
+  .footer .address {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
+
 #hm-public-theme-footer {
   .menu-item {
     padding: em(10);

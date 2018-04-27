@@ -4,8 +4,8 @@
 .wrapper .basic-block {
   @extend %max-width;
   @extend %med-width-content;
-  margin-bottom: em(50);
-  margin-top: em(60);
+  margin-bottom: $default-grid-gutter-width;
+  margin-top: $default-grid-gutter-width;
 
   p {
     font-size: em(18);
