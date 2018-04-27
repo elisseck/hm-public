@@ -8,6 +8,14 @@
   width: 100%;
 }
 
+@media screen and (max-width: 768px) {
+
+  .footer {
+    display: none;
+  }
+
+}
+
 #hm-public-theme-footer {
   .menu-item {
     padding: em(10);
