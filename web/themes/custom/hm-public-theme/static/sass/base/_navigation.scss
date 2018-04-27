@@ -64,6 +64,10 @@ li.pager__item.pager__item--ellipsis {
       box-shadow: 0 5px 7px color(navigation-shadow);
       left: 0;
       width: 70%;
+    
+      @media screen and (max-width: 520px) {
+        width: 80%;
+      }
     }
 
     .menu--simple-mega-menu > .menu-item--expanded:hover > .mega-menu-wrapper {
@@ -400,7 +404,7 @@ li.pager__item.pager__item--ellipsis {
       .field-megamenu-right-header {
         color: color(disabled-text);
         letter-spacing: normal;
-        padding: em(8) em(15);
+        padding: em(8) em(10);
         text-transform: uppercase;
       }
 
