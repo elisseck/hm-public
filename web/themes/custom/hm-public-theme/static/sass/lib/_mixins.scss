@@ -75,13 +75,13 @@
 %med-width-content {
   width: 70%;
 
-  @media screen and (max-width: 950px) {
+  @media only screen and (max-width: 950px) {
     padding-left: $default-grid-gutter-width;
     padding-right: $default-grid-gutter-width;
     width: 100%;
   }
 
-  @media screen and (max-width: 580px) {
+  @media only screen and (max-width: 768px) {
     padding-left: 15px;
     padding-right: 15px;
   }
