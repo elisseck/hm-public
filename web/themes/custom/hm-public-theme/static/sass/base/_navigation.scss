@@ -60,8 +60,14 @@ li.pager__item.pager__item--ellipsis {
     z-index: 2000;
 
     &.open {
+      border-right: 2px solid color(medium-grey);
+      box-shadow: 0 5px 7px color(navigation-shadow);
       left: 0;
       width: 70%;
+    
+      @media screen and (max-width: 520px) {
+        width: 80%;
+      }
     }
 
     .menu--simple-mega-menu > .menu-item--expanded:hover > .mega-menu-wrapper {
@@ -137,6 +143,11 @@ li.pager__item.pager__item--ellipsis {
     a.is-active {
       border-bottom: em(8) solid color(tertiary);
       transition: border-bottom .2s ease-in-out;
+
+      @media screen and (max-width: 950px) {
+        border-bottom: 0;
+      }
+
     }
 
     &:hover a {
@@ -393,7 +404,7 @@ li.pager__item.pager__item--ellipsis {
       .field-megamenu-right-header {
         color: color(disabled-text);
         letter-spacing: normal;
-        padding: em(8) em(15);
+        padding: em(8) em(10);
         text-transform: uppercase;
       }
 
@@ -403,6 +414,10 @@ li.pager__item.pager__item--ellipsis {
         .field-item {
           padding: em(5) em(15);
           text-transform: none;
+
+          @media screen and (max-width: 580px) {
+            padding: em(12);
+          }
 
           &:hover {
             background-color: $black;
@@ -432,6 +447,11 @@ li.pager__item.pager__item--ellipsis {
               font-weight: 400;
               padding: em(22) em(8, 16);
             }
+
+            @media screen and (max-width: 580px) {
+              padding: 0;
+            }
+
           }
 
           a:hover {

@@ -2,7 +2,7 @@ var megamenuUtils = function(){
   var $hamburger = $( ".header__hamburger" );
   var $megamenu = $( "#hm-public-theme-main-menu" );
   var $menu = $( ".menu.menu--simple-mega-menu" );
-  var $spans = $( "span", $menu );
+  var $spans = $( ".accordion__arrow", $menu );
 
 
   var closeNavigation = function(){
