@@ -480,6 +480,14 @@ li.pager__item.pager__item--ellipsis {
     }//.simple-mega-menu
   }//.mega-menu-wrapper
 
+  //IE 11
+  @media all and ( -ms-high-contrast: none ) {
+    *::-ms-backdrop,
+    .mega-menu-wrapper {
+      min-width: 450px;
+    }
+  }
+
   .menu-item,
   .mega-menu-wrapper {
     &.show {
