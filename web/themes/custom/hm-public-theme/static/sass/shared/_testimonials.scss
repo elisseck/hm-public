@@ -64,6 +64,15 @@
       margin-left: em(10);
     }
 
+    @media screen and (max-width: 574px) {
+      order: 1;
+
+      img {
+        margin-left: auto;
+      }
+
+    }
+
   }
 
   .two-column-quote--content {
