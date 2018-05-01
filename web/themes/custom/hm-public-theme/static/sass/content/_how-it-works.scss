@@ -12,8 +12,14 @@
     display: flex;
     justify-content: flex-start;
     margin-right: em(15);
+    max-height: em(180);
     max-width: em(180);
     padding: 0;
+  
+    @media screen and (max-width: 728px) {
+      height: em(150);
+      width: em(150);
+    }
   }
 
   img {
@@ -37,6 +43,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 70%;
+
+    @media screen and (max-width: 580px) {
+      margin-bottom: 30px;
+      max-width: 100%;
+    }
+
   }
 
 }
