@@ -1,5 +1,54 @@
+.two-column-snapshot.read-more {
+  padding-left: $default-grid-gutter-width;
+  padding-right: $default-grid-gutter-width;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
+
 .read-more .two-column-snapshot--image {
   padding: 0;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 15px;
+    max-height: 14.4375em;
+    max-width: 50%;
+
+    img {
+      margin-right: 0;
+      max-width: 100%;
+      width: 100%;
+    }
+
+  }
+
+  @media screen and (max-width: 520px) {
+    max-width: 100%;
+
+    img {
+      max-width: 100%;
+      width: 100%;
+    }
+
+  }
+
+}
+
+.read-more .snapshot {
+
+  @media screen and (max-width: 768px) {
+    flex: 1;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
 }
 
 .read-more-state {
@@ -40,6 +89,16 @@ label.button.button--primary.read-more-trigger {
   padding: em(10);
   text-align: center;
   width: em(150);
+
+  @media screen and (max-width: 768px) {
+    font-size: 1em;
+    width: 50%;
+  }
+
+  @media screen and (max-width: 520px) {
+    width: 100%;
+  }
+
 }
 
 //Image Overlay
@@ -57,4 +116,11 @@ label.button.button--primary.read-more-trigger {
   right: em(10);
   width: em(231);
   z-index: 1;
+
+  @media screen and (max-width: 768px) {
+    height: 14.4375em;
+    right: 0;
+    width: 100%;
+  }
+
 }
