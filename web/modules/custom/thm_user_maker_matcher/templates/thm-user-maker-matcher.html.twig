@@ -1,1 +1,37 @@
-<!-- Add you custom twig html here -->
+{#
+ #  The following values are available:
+ #  - result_count
+ #  - base_url
+ #  - data
+ #    - url
+ #    - title
+ #    - image
+ #      - path
+ #      - width
+ #      - height
+ #    - role (list)
+#}
+
+<div class="list-biography-cards-w-category-filter">
+    <div class="view-content">
+        <h2>There are {{ result_count }} Makers that match your query</h2>
+        {% for item in data %}
+        <div class="bio-card--list col-sm">
+            <a href="{{ item.url }}" title="{{ item.title }}">
+                <div class="bio-card--image">
+                    <img src="{{ file_url(item.image.path) }}"
+                         typeof="Image" width="{{ item.image.width }}" height="{{ item.image.height }}">
+                </div>
+                <div class="bio-card--content">
+                    <h3>{{ item.title }}</h3>
+                    <h4>
+                        {% for role in item.roles %}
+                          {{ role }}{% if not loop.last %},{% endif %}
+                        {% endfor %}
+                    </h4>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>

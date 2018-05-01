@@ -32,7 +32,7 @@ class MakerMatcher {
   /**
    * @var string $parseStrategy
    */
-  protected $parseStrategy = 'direct';
+  protected $parseStrategy = 'terms';
 
 
   /**
@@ -68,7 +68,9 @@ class MakerMatcher {
   public function executeSearch(string $fieldValue, string $fieldName) {
     $this->setParseMode();
 
-    $this->query->addCondition($fieldName, ucfirst(strtolower($fieldValue)));
+    //$this->query->keys($fieldValue);
+
+    $this->query->addCondition($fieldName, ucfirst(strtolower($fieldValue)), 'CONTAINS');
 
     try {
       return $this->query->execute();
@@ -78,9 +80,10 @@ class MakerMatcher {
     }
   }
 
-  public function prepareResults(ResultSetInterface $data, string $field) {
-    return array_map(function(ItemInterface $item) use ($field) {
-      return @$item->getField($field)->getValues();
-    }, $data->getResultItems());
+  public function prepareResults(ResultSetInterface $data) {
+    /** @var \Drupal\search_api\Item\ItemInterface $item */
+    foreach ($data->getResultItems() as $item) {
+      yield $item->getOriginalObject()->getValue();
+    }
   }
 }

@@ -40,7 +40,11 @@ function _getSession() {
 function thm_user_maker_matcher_theme() {
   return [
     'thm_user_maker_matcher' => [
-      'render element' => 'children',
+      'variables' => [
+        'data' => null,
+        'result_count' => null,
+        'base_url' => \Drupal::request()->getHost()
+      ]
     ],
   ];
 }
@@ -52,3 +56,10 @@ function thm_user_maker_matcher_webform_submission_prepare_form(WSI $webformSubm
     $formState->setRebuild();
   }
 }
+
+function _elementExists(array $vs, string $elementName) {
+  return array_key_exists('element', $vs) &&
+    array_key_exists('#id', $vs['element']) &&
+    $vs['element']['#id'] === $elementName;
+}
+
