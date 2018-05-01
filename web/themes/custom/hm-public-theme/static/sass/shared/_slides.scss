@@ -78,6 +78,14 @@
 
   }
 
+  @media screen and (max-width: 1024px) {
+
+    a.button.button--primary {
+      max-width: 100%;
+    }
+
+  }
+
   @media screen and (max-width: 900px) {
 
     h2 {
@@ -94,6 +102,10 @@
     padding-bottom: em(70);
     padding-top: em(70);
     width: 100%;
+
+    @media screen and (max-width: 1024px) {
+      padding: 1.875em;
+    }
 
     @media screen and (max-width: 768px) {
       display: flex;
@@ -112,7 +124,7 @@
 
       a.button {
         font-size: 1em;
-        width: 25%;
+        width: 40%;
       }
 
     }

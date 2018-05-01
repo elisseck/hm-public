@@ -385,7 +385,7 @@ li.pager__item.pager__item--ellipsis {
       }
 
       & > div {
-        min-width: 200px;
+        min-width: 250px;
       }
 
       //hi default label
@@ -412,6 +412,7 @@ li.pager__item.pager__item--ellipsis {
       .field-megamenu-right-link {
 
         .field-item {
+          line-height: 120%;
           padding: em(5) em(15);
           text-transform: none;
 

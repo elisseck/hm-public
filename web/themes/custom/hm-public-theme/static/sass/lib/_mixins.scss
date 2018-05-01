@@ -116,14 +116,11 @@
 
   @media screen and (max-width: 900px) {
     height: 450px;
+    min-height: 350px;
   }
 
-  @media screen and (max-width: 600px) {
-    min-height: 250px;
-  }
-
-  @media screen and (max-width: 370px) {
-    height: 430px;
+  @media screen and (max-width: 800px) {
+    height: auto;
   }
 
 }
