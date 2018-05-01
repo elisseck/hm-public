@@ -5,6 +5,11 @@
     @extend %slide-height;
     background-position: center;
     background-size: cover;
+
+    @media screen and (max-width: 520px) {
+      height: 250px;
+    }
+
   }
 
 }
@@ -67,8 +72,16 @@
 
     a.button.button--primary {
       margin-bottom: em(15);
-      max-width: em(150);
+      max-width: 50%;
       text-align: center;
+    }
+
+  }
+
+  @media screen and (max-width: 1024px) {
+
+    a.button.button--primary {
+      max-width: 100%;
     }
 
   }
@@ -90,6 +103,10 @@
     padding-top: em(70);
     width: 100%;
 
+    @media screen and (max-width: 1024px) {
+      padding: 1.875em;
+    }
+
     @media screen and (max-width: 768px) {
       display: flex;
       flex: 1;
@@ -107,7 +124,7 @@
 
       a.button {
         font-size: 1em;
-        width: 25%;
+        width: 40%;
       }
 
     }
@@ -115,7 +132,7 @@
     @media screen and (max-width: 520px) {
 
       a.button {
-        width: 50%;
+        width: 100%;
       }
 
     }
@@ -142,6 +159,7 @@
 
 }
 
+//Event Slides
 .event-carousel {
   margin-top: 1.875em;
 
@@ -238,4 +256,4 @@
 
   }
 
-}
+}//.event-carousel .two-column-slide  .carousel__caption

@@ -132,7 +132,7 @@
 
   @media all and (max-width: 950px) {
     align-items: flex-start;
-    margin: em(20) em(20) em(30);
+    margin: em(20) em(30) em(30);
 
     .header__hamburger {
 
@@ -144,7 +144,7 @@
   }
 
   @media all and (max-width: 520px) {
-    margin: em(20);
+    margin: em(20) em(15);
 
     .header__hamburger,
     .header__search {

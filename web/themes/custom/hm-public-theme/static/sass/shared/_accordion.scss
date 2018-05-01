@@ -65,9 +65,17 @@
 }
 
 .accordion-block.accordion {
+  margin-bottom: 10px;
 
   button.accordion__panel {
     margin-bottom: 0;
+
+    div {
+      line-height: 120%;
+      text-align: left;
+      width: 90%;
+    }
+
   }
 
   .accordion__body p {
