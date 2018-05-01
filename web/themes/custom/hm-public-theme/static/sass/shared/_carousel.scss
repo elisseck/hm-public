@@ -5,6 +5,16 @@
 .hero-carousel {
   margin-bottom: em(30);
   margin-top: em(30);
+
+  @media screen and (max-width: 520px) {
+    margin-top: 0;
+
+    .carousel-inner {
+      padding: 0;
+    }
+
+  }
+
 }
 
 .two-column-quote-carousel {
@@ -63,7 +73,7 @@
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
 
   .carousel-indicators {
     display: none;
