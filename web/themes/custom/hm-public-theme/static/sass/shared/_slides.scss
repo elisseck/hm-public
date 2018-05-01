@@ -132,7 +132,7 @@
     @media screen and (max-width: 520px) {
 
       a.button {
-        width: 50%;
+        width: 100%;
       }
 
     }
@@ -159,6 +159,7 @@
 
 }
 
+//Event Slides
 .event-carousel {
   margin-top: 1.875em;
 
@@ -255,4 +256,4 @@
 
   }
 
-}
+}//.event-carousel .two-column-slide  .carousel__caption
