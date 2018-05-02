@@ -19,11 +19,10 @@
   {{ progress }}
 {% endif %}
 
-{{ breakpoint() }}
 <div{{ attributes.addClass('webform-confirmation') }}>
 
   {% if message %}
-    {% if _context.webform.id == 'makermatcher_form' %}
+    {% if _context.webform.id == 'favoritesmatcher' %}
       <div class="accordion">
         <button class="accordion__panel" data-toggle="collapse" data-target="#user-matching-results" aria-expanded="false" aria-controls="#user-matching-results" type="button">
           Results
@@ -33,7 +32,7 @@
           </span>
         </button>
         <div class="accordion__body" style="" id="user-matching-results">
-          <div class="row col-sm">{{ message }}</div>
+          {{ message }}
         </div>
       </div>
     {% else %}
