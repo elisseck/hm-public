@@ -85,11 +85,7 @@ class FavoritesMatcherHandler extends WebformHandlerBase {
       ]);
     }
 
-    return $output; // TODO: Transform 'return' to 'yield'.
-  }
-
-  protected function buildForm() {
-    $form = [];
+    return $output;
   }
 
   public function submitForm(array &$form, FSI $formState, WSI $webformSubmission) {

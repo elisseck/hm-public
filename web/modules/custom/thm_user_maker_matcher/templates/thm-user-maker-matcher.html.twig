@@ -11,10 +11,14 @@
  #      - height
  #    - role (list)
 #}
-
 <div class="list-biography-cards-w-category-filter">
     <div class="view-content">
-        <h2>There are {{ result_count }} Makers that match your query</h2>
+        {% if result_count > 10 %}
+          <h2>There are 10 Makers that match your query</h2>
+        {% else %}
+          <h2>There are {{ result_count }} Makers that match your query</h2>
+        {% endif %}
+
         {% for item in data %}
         <div class="bio-card--list col-sm">
             <a href="{{ item.url }}" title="{{ item.title }}">

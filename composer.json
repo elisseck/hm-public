@@ -54,6 +54,7 @@
         "drupal/twig_xdebug": "^1.0",
         "drupal/webform": "^5.0@RC",
         "drupal/webform_migrate": "^1.0@alpha",
+        "drupal/xhprof": "1.x-dev",
         "drush/drush": "~8.0",
         "react/child-process": "^0.5.0",
         "react/event-loop": "^0.4.3",
@@ -130,9 +131,6 @@
             },
             "drupal/commerce_shipping": {
                 "fixes shipment weight issue": "https://www.drupal.org/files/issues/Limit-by-shipment-weight-not-working-2950520-1.patch"
-            },
-            "drupal/commerce_authnet": {
-                "fixes validationDirectResponse error": "https://www.drupal.org/files/issues/2018-04-26/2958173-12.patch"
             },
             "drupal/l10n_client_ui": {
                 "Fixes invalid render array key":"https://www.drupal.org/files/issues/l10n_client-hook_toolbar-fix-2872668-3.patch"
