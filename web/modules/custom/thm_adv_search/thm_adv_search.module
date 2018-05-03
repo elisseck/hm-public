@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Contains thm_adv_search.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Block\BlockPluginInterface as BPI;
+
+/**
+ * Implements hook_help().
+ */
+function thm_adv_search_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the thm_adv_search module.
+    case 'help.page.thm_adv_search':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('custom modifications supporting search functionality') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Predicate determines if the block contains a Search API Facet.
+ *
+ * @param \Drupal\Core\Block\BlockPluginInterface $block
+ *
+ * @return bool
+ */
+function _blockIsAFacet(BPI $block) {
+  return strpos($block->getPluginId(), 'facet_block') !== false;
+}
+
+/**
+ * Loads chosen JS library for Search API Facets.
+ * @see https://www.drupal.org/project/chosen/issues/2914261
+ *
+ * Implements hook_block_view_alter().
+ *
+ * @param $build array
+ * @param $block \Drupal\Core\Block\BlockPluginInterface
+ */
+function thm_adv_search_block_view_alter(array &$build, BPI $block) {
+  if (_blockIsAFacet($block)) {
+    chosen_attach_library($build);
+  }
+}
+

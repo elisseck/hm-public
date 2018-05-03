@@ -47,7 +47,7 @@ function thm_checkout_registration_theme($existing, $type, $theme, $path) {
 }
 
 function isDigitalmakerPaymentForm($form, $formId) {
-  return $formId === 'commerce_checkout_flow_thm_digitalmaker_flow'
+  return $formId === 'commerce_checkout_flow_thm_digitalmaker_checkout_flow'
     && $form['#step_id'] === 'payment_method';
 }
 
