@@ -69,11 +69,13 @@ class FavoritesMatcherHandler extends WebformHandlerBase {
     return $output;
   }
 
-  protected function pack($data) {
+  protected function pack(\Generator $data) {
     $output = [];
 
     /** @var \Drupal\node\NodeInterface $item */
-    foreach ($data as $item) {
+    for ($i = 0; $i <= 9; $i++) {
+      $item = $data->current();
+
       $url = Url::fromRoute('entity.node.canonical',
         ['node' => $item->id()])->toString();
 
@@ -83,6 +85,8 @@ class FavoritesMatcherHandler extends WebformHandlerBase {
         'image' => $this->getImageData($item->get('field_bio_image')),
         'roles' => $this->getRoles($item->get('field_occupation')),
       ]);
+
+      $data->next();
     }
 
     return $output;

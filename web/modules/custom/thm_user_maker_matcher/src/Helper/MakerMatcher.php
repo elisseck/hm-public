@@ -69,7 +69,6 @@ class MakerMatcher {
     $this->setParseMode();
 
     $this->query->addCondition($fieldName, ucfirst(strtolower($fieldValue)));
-    $this->query->range(0, 10);
 
     try {
       return $this->query->execute();

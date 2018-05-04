@@ -11,7 +11,7 @@
  #      - height
  #    - role (list)
 #}
-<div class="list-biography-cards-w-category-filter">
+<div class="view list-biography-cards-w-category-filter">
     <div class="view-content">
         {% if result_count > 10 %}
           <h2>There are 10 Makers that match your query</h2>
@@ -37,5 +37,9 @@
             </a>
         </div>
         {% endfor %}
+
+        {% if result_count > 10 %}
+          <a class="button--primary button" href="#">See More</a>
+        {% endif %}
     </div>
 </div>
