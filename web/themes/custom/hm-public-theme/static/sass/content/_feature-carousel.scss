@@ -66,11 +66,9 @@
 
   @media screen and (max-width: 767px) {
     flex: 1;
-  }
-
-  @media screen and (max-width: 520px) {
     padding: 15px;
   }
+
 }
 
 .carousel__link--bio:hover { color: color(secondary); }
@@ -132,11 +130,11 @@
     overflow: hidden;
   }
 
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 768px) {
     max-height: 300px;
   }
 
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 580px) {
     margin-top: 75px;
   }
 }
@@ -199,11 +197,8 @@
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    text-align: left;
-  }
-
-  @media screen and (max-width: 520px) {
     padding: $default-grid-gutter-width 15px;
+    text-align: left;
   }
 
   h2 {
@@ -256,6 +251,13 @@
     @extend %source-sans-semi-bold;
     display: block;
     margin-top: em(21, 37);
+  }
+
+  @media screen and (max-width: 900px) {
+    q.carousel__quote {
+      font-size: em(30);
+    }
+
   }
 
   @media screen and (max-width: 768px) {

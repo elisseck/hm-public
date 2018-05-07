@@ -243,6 +243,10 @@ li.pager__item.pager__item--ellipsis {
     @media screen and (max-width: 950px) {
       border-bottom: em(1, 16) solid $white;
 
+      a {
+        color: color(tertiary);
+      }
+
       &.show {
         border-bottom: 0;
       }
@@ -297,7 +301,7 @@ li.pager__item.pager__item--ellipsis {
         background-color: transparent;
 
         a {
-          color: $black;
+          color: color(tertiary);
         }
       }
 
@@ -335,6 +339,7 @@ li.pager__item.pager__item--ellipsis {
 
     a {
       border-bottom: 0;
+      color: color(tertiary);
 
       @media screen and (max-width: 767px) {
         border-bottom: 0;
@@ -347,6 +352,7 @@ li.pager__item.pager__item--ellipsis {
   //Megamenu
   .mega-menu-wrapper {
     left: inherit;
+    min-width: 500px;
     padding: 0;
     top: 32px;
     width: 40%;
@@ -480,14 +486,6 @@ li.pager__item.pager__item--ellipsis {
 
     }//.simple-mega-menu
   }//.mega-menu-wrapper
-
-  //IE 11
-  @media all and ( -ms-high-contrast: none ) {
-    *::-ms-backdrop,
-    .mega-menu-wrapper {
-      min-width: 450px;
-    }
-  }
 
   .menu-item,
   .mega-menu-wrapper {
