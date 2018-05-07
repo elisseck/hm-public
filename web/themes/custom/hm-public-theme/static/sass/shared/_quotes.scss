@@ -33,11 +33,20 @@
 
 // Two Column Quote
 .two-column-quote {
+  @extend %default-gutter-width;
   margin: em(60) auto 3.75em;
   width: 50%;
 
-  @media screen and (max-width: 950px) {
+  @media screen and (max-width: 1200px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 1024px) {
     width: 100%;
+  }
+
+  @media only screen and (max-width: 768px) {
+    width: 70%;
   }
 
   &--content {
@@ -72,21 +81,24 @@
 
     &--image {
       overflow: hidden;
+      padding: 0 15px 0 0;
     }
 
   }
 
   &--image img {
     float: right;
+    height: auto;
     margin-right: em(10);
     max-width: em(267);
+    width: 100%;
 
-    @media screen and (max-width: 580px) {
+    @media screen and (max-width: 574px) {
       float: none;
       margin-bottom: 15px;
       margin-left: auto;
       margin-right: auto;
-      max-width: 100%;
+      max-width: 50%;
     }
 
   }

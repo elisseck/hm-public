@@ -1,4 +1,5 @@
 .feature-carousel.carousel.slide {
+  background: color(primary);
   margin-bottom: em(30);
 }
 
@@ -16,6 +17,10 @@
     flex-direction: row;
     top: 0;
     width: 100%;
+  }
+
+  @media screen and (max-width: 520px) {
+    font-size: 1.2em;
   }
 }
 
@@ -61,6 +66,10 @@
 
   @media screen and (max-width: 767px) {
     flex: 1;
+  }
+
+  @media screen and (max-width: 520px) {
+    padding: 15px;
   }
 }
 
@@ -115,39 +124,20 @@
   }
 }
 
-.carousel__quote {
-  font-family: 'Oswald', sans-serif;
-  font-size: rem(37);
-  font-weight: 300;
-  line-height: 127.027027027027027%;
-  quotes: '\201C' '\201D';
-  text-align: left;
-
-  @media screen and (max-width: 950px) {
-    font-size: 1.8em;
-  }
-
-  @media screen and (max-width: 767px) {
-    font-size: rem(22);
-  }
-}
-
-.carousel__cite {
-  @extend %source-sans-semi-bold;
-  display: block;
-  margin-top: em(21, 37);
-
-  @media screen and (max-width: 767px) {
-    font-size: rem(12);
-  }
-}
-
 .feature-carousel__image-container {
 
   @media screen and (max-width: 900px) {
-    height: em(400);
     margin-top: 90px;
+    max-height: 550px;
     overflow: hidden;
+  }
+
+  @media screen and (max-width: 580px) {
+    max-height: 300px;
+  }
+
+  @media screen and (max-width: 520px) {
+    margin-top: 75px;
   }
 }
 
@@ -172,12 +162,12 @@
   max-height: em(600);
 
   @media screen and (max-width: 900px) {
-    //background-color: color(primary);
     max-height: 100%;
   }
 
 }
 
+//Carousel Content Section
 .carousel-item-left .carousel__caption,
 .carousel-item-left .carousel__caption__content,
 .carousel-item-left .carousel__caption__event,
@@ -197,24 +187,42 @@
   right: auto;
   text-align: left;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1300px) {
+    margin-right: 30px;
+  }
+
+  @media screen and (max-width: 900px) {
+    margin: 0;
+    padding: $default-grid-gutter-width;
+  }
+
+  @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    font-size: rem(22);
-    padding: em(22, 22) em(30, 22) em(75, 22);
     text-align: left;
   }
 
-  .carousel__quote {
-    font-size: em(35);
+  @media screen and (max-width: 520px) {
+    padding: $default-grid-gutter-width 15px;
   }
 
   h2 {
     @extend %oswald;
     color: $white;
+    font-size: em(40);
     line-height: 120%;
     margin: 15px 0;
     width: 80%;
+
+    @media screen and (max-width: 767px) {
+      font-size: 1.4em;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 520px) {
+      font-size: 1.2em;
+    }
+
   }
 
   p {
@@ -232,6 +240,101 @@
   transition: opacity .25s ease-in-out;
 }
 
+//Quote
+.carousel-caption__quote {
+
+  q.carousel__quote {
+    font-family: 'Oswald', sans-serif;
+    font-size: em(40);
+    font-weight: 300;
+    line-height: 127.027027027027027%;
+    quotes: '\201C' '\201D';
+    text-align: left;
+  }
+
+  .carousel__cite {
+    @extend %source-sans-semi-bold;
+    display: block;
+    margin-top: em(21, 37);
+  }
+
+  @media screen and (max-width: 768px) {
+
+    q.carousel__quote {
+      font-size: 1.4em;
+    }
+
+    .carousel__cite {
+      font-size: 1em;
+      line-height: 120%;
+      margin-top: $default-grid-gutter-width;
+    }
+
+  }
+
+}
+
+//Event Content
+.feature-carousel-slide .carousel-caption__event {
+
+  @media screen and (max-width: 900px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+
+    img {
+      flex: 0 1 auto;
+      height: 100%;
+    }
+
+    .caption__event-details {
+      flex: 1 0 70%;
+    }
+
+    h2 {
+      margin: -5px 0 0;
+      padding-left: 15px;
+      width: 100%;
+    }
+
+    ul {
+      padding: 15px 15px 0;
+    }
+
+  }
+
+  @media screen and (max-width: 580px) {
+
+    .caption__event-details {
+      flex: 1 0 60%;
+    }
+
+  }
+
+}
+
+//General Content
+.carousel-caption__content {
+
+  @media screen and (max-width: 767px) {
+    margin: 0;
+
+    h2 {
+      margin-bottom: 15px;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 1em;
+      margin-top: 0;
+    }
+
+  }
+
+}
+
+// Pager Styles
 .carousel-indicators {
   left: auto;
   z-index: 500;
@@ -252,9 +355,12 @@
   width: em(10);
 }
 
-// Custom
 .feature-carousel-indicators.carousel-indicators {
   bottom: em(30);
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 
   a {
     background-color: color(carousel-pgr-alt);

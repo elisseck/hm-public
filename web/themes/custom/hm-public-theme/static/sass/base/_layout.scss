@@ -88,23 +88,69 @@ section.content.column.section-wrapper {
   .first {
     padding-left: $default-grid-gutter-width;
     padding-right: 0;
+
+    @media screen and (max-width: 950px) {
+      padding-left: 0;
+    }
+
+    @media screen and (max-width: 900px) {
+      .button {
+        margin-bottom: 15px;
+        text-align: center;
+        width: 100%;
+      }
+    }
   }
 
   .last {
     padding-left: 0;
     padding-right: $default-grid-gutter-width;
+
+    @media screen and (max-width: 950px) {
+      padding-right: 0;
+    }
+
+    @media screen and (max-width: 900px) {
+      .button {
+        margin-bottom: 15px;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
   }
 
   .block-region-custom-left {
     border-right: 1px solid color(medium-grey);
     padding-right: $default-grid-gutter-width;
+
+    @media screen and (max-width: 950px) {
+      padding-right: 0;
+    }
   }
 
   .block-region-custom-right {
     padding-left: $default-grid-gutter-width;
 
     .field-item img {
+      height: auto;
       width: 100%;
+    }
+
+    @media screen and (max-width: 950px) {
+      padding-left: 0;
+
+      .field-item img {
+        padding: 0 $default-grid-gutter-width;
+      }
+
+    }
+
+    @media screen and (max-width: 520px) {
+
+      .field-item img {
+        padding: 0 15px;
+      }
     }
 
   }
@@ -119,14 +165,9 @@ section.content.column.section-wrapper {
 
 .layout--1-2col-9-3 {
 
-  .first {
-    padding-left: $default-grid-gutter-width;
-    padding-right: $default-grid-gutter-width;
-  }
-
+  .first,
   .last {
-    padding-left: $default-grid-gutter-width;
-    padding-right: $default-grid-gutter-width;
+    @extend %default-gutter-width;
   }
 
 }

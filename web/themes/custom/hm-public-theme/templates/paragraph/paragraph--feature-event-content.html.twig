@@ -21,7 +21,9 @@
 
   <div class="carousel-caption__event">
     {{ content.field_feature_portrait|field_value }}
-    <h2>{{ content.field_feature_title|field_value }}</h2>
-    {{ content.field_feature_details|field_value }}
+    <div class="caption__event-details">
+      <h2>{{ content.field_feature_title|field_value }}</h2>
+      {{ content.field_feature_details|field_value }}
+    </div>
   </div>
 </div>
