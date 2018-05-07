@@ -3,7 +3,8 @@
 
   .view-content {
     display: flex;
-    height: 400px;
+    //height: 400px;
+    height: auto;
     overflow-x: scroll;
     width: 100vw;
   }
@@ -11,7 +12,11 @@
   .views-row {
     flex: 1 0 70%;
     margin: em(30) em(50);
-    overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+      margin: 30px 30px 30px 15px;
+    }
+
   }
 
 }
@@ -21,19 +26,36 @@
   flex-direction: row;
   padding-right: em(30);
 
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
   &--image {
-    flex: 1 0 100%;
+    flex: 1 0 auto;
     height: auto;
     margin-right: em(30);
-    max-width: 200px;
-    overflow: hidden;
-    transform: scale(1.1);
+
+    img {
+      max-height: 340px;
+      padding: 15px;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-right: 0;
+
+      img {
+        max-height: 200px;
+        padding: 0 0 15px;
+        width: 100%;
+      }
+    }
+
   }
 
   &--content {
     @extend %source-sans;
     color: $white;
-    flex: 1;
+    flex: 1 0 90%;
     line-height: normal;
   }
 
