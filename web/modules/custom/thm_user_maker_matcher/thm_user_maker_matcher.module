@@ -5,6 +5,7 @@
  * Contains thm_user_maker_matcher.module.
  */
 
+use Drupal\views\ViewExecutable;
 use Drupal\Core\Routing\RouteMatchInterface as RMI;
 use Drupal\Core\Form\FormStateInterface as FSI;
 use Drupal\webform\WebformSubmissionInterface as WSI;
@@ -43,6 +44,8 @@ function thm_user_maker_matcher_theme() {
       'variables' => [
         'data' => null,
         'result_count' => null,
+        'search_field' => null,
+        'search_entry' => null,
         'base_url' => \Drupal::request()->getHost()
       ]
     ],
@@ -61,5 +64,32 @@ function _elementExists(array $vs, string $elementName) {
   return array_key_exists('element', $vs) &&
     array_key_exists('#id', $vs['element']) &&
     $vs['element']['#id'] === $elementName;
+}
+
+function _getExposedFilters() {
+  return [
+    'field_favorite_season',
+    'field_favorite_color',
+    'field_favorite_food',
+    'field_favorite_vacation'
+  ];
+}
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * This particular implementation hides a view's exposed filters.
+ *
+ * @param ViewExecutable $view
+ */
+function thm_user_maker_matcher_views_pre_render(ViewExecutable $view) {
+  if ($view->id() === 'matching_favorites' && $view->current_display === 'page_1') {
+
+    $view->exposed_widgets['actions']['submit']['#access'] = false;
+
+    foreach(_getExposedFilters() as $filter) {
+      $view->exposed_widgets[$filter]['#access'] = false;
+    }
+  }
 }
 

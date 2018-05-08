@@ -100,6 +100,8 @@ class FavoritesMatcherHandler extends WebformHandlerBase {
 
     $webformSubmission->setElementData('favorite_choice_results', [
       '#theme'        => 'thm_user_maker_matcher',
+      '#search_field' => $values['field_name'],
+      '#search_entry' => $values['field_value'],
       '#result_count' => $results->getResultCount(),
       '#data'         => $this->pack($data)
     ]);

@@ -39,7 +39,9 @@
         {% endfor %}
 
         {% if result_count > 10 %}
-          <a class="button--primary button" href="#">See More</a>
+          <a class="button--primary button" href="/matching-favorites?{{ search_field }}={{ search_entry }}">
+              See More
+          </a>
         {% endif %}
     </div>
 </div>
