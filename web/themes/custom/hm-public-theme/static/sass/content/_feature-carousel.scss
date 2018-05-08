@@ -245,6 +245,11 @@
     line-height: 127.027027027027027%;
     quotes: '\201C' '\201D';
     text-align: left;
+
+    @media screen and (min-width: 0\0) {
+      font-size: 2em;
+    }
+
   }
 
   .carousel__cite {

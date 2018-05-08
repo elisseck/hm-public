@@ -67,6 +67,10 @@
 .accordion-block.accordion {
   margin-bottom: 10px;
 
+  @media screen and (min-width: 0\0) {
+    max-width: 70%;
+  }
+
   button.accordion__panel {
     margin-bottom: 0;
 
