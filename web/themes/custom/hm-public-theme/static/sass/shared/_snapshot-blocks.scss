@@ -203,7 +203,7 @@
 
   &--block {
     @extend %max-width;
-    width: 70%;
+    @extend %med-width-content;
 
     .field-item {
       display: flex;
