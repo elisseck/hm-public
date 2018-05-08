@@ -33,6 +33,15 @@
       color: $black;
     }
 
+    @media screen and (max-width: 768px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    
+      h1 {
+        font-size: 2em;
+      }
+    }
+
   }
 
 }//.membership
@@ -49,6 +58,11 @@
   justify-content: center;
   margin-bottom: em(60);
   text-align: center;
+
+  @media screen and (max-width: 520px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   .two-column-testimonial--header {
     margin-bottom: em(15);
@@ -69,7 +83,7 @@
     margin-top: em(15);
 
     @media screen and (max-width: 580px) {
-      font-size: 1.2em;
+      font-size: 1em;
     }
 
   }
@@ -97,6 +111,11 @@
 
     p {
       margin-top: 0;
+
+      @media screen and (max-width: 580px) {
+        font-size: 14px;
+      }
+
     }
 
     input#edit-signup-form,
@@ -117,6 +136,12 @@
     .membership--outline-box {
       border-left: 1px solid color(medium-grey);
       padding-bottom: em(60);
+
+      @media screen and (max-width: 520px) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
     }
 
   }//.membership--individual
@@ -133,6 +158,11 @@
 
     h4 {
       margin-bottom: em(30);
+
+      @media screen and (max-width: 580px) {
+        margin-bottom: 40px;
+      }
+
     }
 
     p {
@@ -147,11 +177,22 @@
         width: 100%;
       }
 
+      @media screen and (max-width: 580px) {
+        font-size: 0.9em;
+        max-height: 40px;
+      }
+
     }
 
     .membership--outline-box {
       border-right: 1px solid color(medium-grey);
       padding-bottom: em(60);
+
+      @media screen and (max-width: 520px) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
     }
 
   }//.membership--institutional
@@ -193,6 +234,15 @@
 
       svg {
         width: em(40);
+      }
+
+      @media screen and (max-width: 520px) {
+        padding: 15px;
+
+        svg {
+          width: 1.5em;
+        }
+
       }
 
     }
