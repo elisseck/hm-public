@@ -80,6 +80,11 @@ section.content.column.section-wrapper {
 //Custom Layouts
 .layout--1-1col {
   width: 100%;
+
+  @media screen and (min-width: 0\0) {
+    width: 100vw;
+  }
+
 }
 
 .layout--1-2-1col {
