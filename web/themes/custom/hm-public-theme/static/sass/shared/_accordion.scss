@@ -98,13 +98,27 @@
     display: flex;
     flex: 1 0 33.3%;
     justify-content: center;
-    margin: em(15);
+    margin: 1.5%;
     max-width: 30%;
+
+    @media screen and (max-width: 768px) {
+      margin: 1%;
+      max-width: 48%;
+    }
 
     img {
       max-height: em(200);
       max-width: em(200);
       padding: em(10);
+    }
+
+    @media screen and (max-width: 520px) {
+
+      img {
+        max-height: em(150);
+        max-width: em(150);
+      }
+
     }
 
   }
