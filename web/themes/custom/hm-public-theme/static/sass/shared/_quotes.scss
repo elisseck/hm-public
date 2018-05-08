@@ -5,14 +5,34 @@
 
 .quote-block--content {
   @extend %max-width;
-  padding: em(40) 0;
+  @extend %med-width-content;
+  @extend %default-gutter-width;
+  padding-bottom: em(40);
+  padding-top: em(40);
   text-align: center;
-  width: 60%;
+
+  @media screen and (max-width: 950px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: em(40);
+    padding-top: em(40);
+  }
 
   q {
     @extend %oswald;
     font-size: em(40);
     line-height: 120%;
+
+    @media screen and (max-width: 768px) {
+      font-size: 2em;
+    }
+
+    @media screen and (max-width: 580px) {
+      font-size: 1.4em;
+    }
+
   }
 
 }
