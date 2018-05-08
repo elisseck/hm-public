@@ -83,12 +83,7 @@
   }
 
   .accordion__body p {
-    padding: 0 $default-grid-gutter-width;
-
-    @media screen and (max-width: 768px) {
-      padding: 0;
-    }
-
+    padding: 0 15px;
   }
 
 }
