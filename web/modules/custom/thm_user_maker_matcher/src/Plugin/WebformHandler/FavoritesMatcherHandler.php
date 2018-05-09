@@ -69,11 +69,17 @@ class FavoritesMatcherHandler extends WebformHandlerBase {
     return $output;
   }
 
-  protected function pack($data) {
+  protected function pack(\Generator $data) {
     $output = [];
 
     /** @var \Drupal\node\NodeInterface $item */
-    foreach ($data as $item) {
+    for ($i = 0; $i <= 9; $i++) {
+      $item = $data->current();
+
+      if (null == $item) {
+        break;
+      }
+
       $url = Url::fromRoute('entity.node.canonical',
         ['node' => $item->id()])->toString();
 
@@ -83,13 +89,11 @@ class FavoritesMatcherHandler extends WebformHandlerBase {
         'image' => $this->getImageData($item->get('field_bio_image')),
         'roles' => $this->getRoles($item->get('field_occupation')),
       ]);
+
+      $data->next();
     }
 
-    return $output; // TODO: Transform 'return' to 'yield'.
-  }
-
-  protected function buildForm() {
-    $form = [];
+    return $output;
   }
 
   public function submitForm(array &$form, FSI $formState, WSI $webformSubmission) {
@@ -100,6 +104,8 @@ class FavoritesMatcherHandler extends WebformHandlerBase {
 
     $webformSubmission->setElementData('favorite_choice_results', [
       '#theme'        => 'thm_user_maker_matcher',
+      '#search_field' => $values['field_name'],
+      '#search_entry' => $values['field_value'],
       '#result_count' => $results->getResultCount(),
       '#data'         => $this->pack($data)
     ]);

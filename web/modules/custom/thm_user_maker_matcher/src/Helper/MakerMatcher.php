@@ -68,9 +68,7 @@ class MakerMatcher {
   public function executeSearch(string $fieldValue, string $fieldName) {
     $this->setParseMode();
 
-    //$this->query->keys($fieldValue);
-
-    $this->query->addCondition($fieldName, ucfirst(strtolower($fieldValue)), 'CONTAINS');
+    $this->query->addCondition($fieldName, ucfirst(strtolower($fieldValue)));
 
     try {
       return $this->query->execute();

@@ -30,7 +30,7 @@ class UserMatchingBlock extends BlockBase{
   public function build() {
     return [
       '#type' => 'webform',
-      '#webform' => 'makermatcher_form'
+      '#webform' => 'favoritesmatcher'
     ];
   }
 }
