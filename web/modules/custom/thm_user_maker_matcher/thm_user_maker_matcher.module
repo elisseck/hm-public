@@ -7,8 +7,6 @@
 
 use Drupal\views\ViewExecutable;
 use Drupal\Core\Routing\RouteMatchInterface as RMI;
-use Drupal\Core\Form\FormStateInterface as FSI;
-use Drupal\webform\WebformSubmissionInterface as WSI;
 
 /**
  * Implements hook_help().
@@ -26,15 +24,6 @@ function thm_user_maker_matcher_help($route_name, RMI $route_match) {
   }
 }
 
-function _getWebformSessionKey() {
-  $webformSessionKeyBase = 'maker_matcher_uid_';
-  return $webformSessionKeyBase . \Drupal::currentUser()->id();
-}
-
-function _getSession() {
-  return \Drupal::request()->getSession();
-}
-
 /**
  * Implements hook_theme().
  */
@@ -50,20 +39,6 @@ function thm_user_maker_matcher_theme() {
       ]
     ],
   ];
-}
-
-function thm_user_maker_matcher_webform_submission_prepare_form(WSI $webformSubmission, $op, FSI $formState) {
-  if ($data = _getSession()->get(_getWebformSessionKey())) {
-    $webformSubmission->setElementData('matches', [ '#markup' => $data ]);
-    $formState->set('current_page', 'webform_confirmation');
-    $formState->setRebuild();
-  }
-}
-
-function _elementExists(array $vs, string $elementName) {
-  return array_key_exists('element', $vs) &&
-    array_key_exists('#id', $vs['element']) &&
-    $vs['element']['#id'] === $elementName;
 }
 
 function _getExposedFilters() {

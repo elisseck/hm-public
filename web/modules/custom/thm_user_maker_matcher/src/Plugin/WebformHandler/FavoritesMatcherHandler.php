@@ -76,6 +76,10 @@ class FavoritesMatcherHandler extends WebformHandlerBase {
     for ($i = 0; $i <= 9; $i++) {
       $item = $data->current();
 
+      if (null == $item) {
+        break;
+      }
+
       $url = Url::fromRoute('entity.node.canonical',
         ['node' => $item->id()])->toString();
 
