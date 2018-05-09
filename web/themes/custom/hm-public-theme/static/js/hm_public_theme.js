@@ -45,3 +45,29 @@ function scrollStep() {
 if( $scrollButton ){
   $scrollButton.addEventListener('click', scrollStep);
 }
+
+//timeline js
+$(function(){
+  function getUrlVars()
+  {
+      var vars = [], hash;
+      var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
+      {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+      }
+      return vars;
+  }
+  var year = getUrlVars()["year"];
+  var month = getUrlVars()["month"];
+  var day = getUrlVars()["day"];
+    $('#edit-year').val(year); $('#edit-month').val(month); $('#edit-day').val(day);
+});
+
+$(function() {
+    $('.filters__button').click(function(){
+    $('.filters').toggleClass('open');
+  });
+})
