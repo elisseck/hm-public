@@ -3,6 +3,7 @@
 }
 
 .view.list-events .view-content {
+  @extend %default-gutter-width;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -11,13 +12,7 @@
   width: 70%;
 
   @media screen and (max-width: 950px) {
-    padding-left: $default-grid-gutter-width;
-    padding-right: $default-grid-gutter-width;
     width: 100%;
-  }
-
-  @media screen and (max-width: 768px) {
-    padding: 0 15px;
   }
 
   .bio-card--list {

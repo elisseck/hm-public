@@ -54,20 +54,9 @@
 // Two Column Quote
 .two-column-quote {
   @extend %default-gutter-width;
+  @extend %med-width-content;
   margin: em(60) auto 3.75em;
   width: 50%;
-
-  @media screen and (max-width: 1200px) {
-    width: 70%;
-  }
-
-  @media screen and (max-width: 1024px) {
-    width: 100%;
-  }
-
-  @media only screen and (max-width: 768px) {
-    width: 70%;
-  }
 
   &--content {
 
@@ -97,7 +86,9 @@
 
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
+    padding-left: 0;
+    padding-right: 0;
 
     &--image {
       overflow: hidden;
