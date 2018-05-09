@@ -36,7 +36,7 @@
     @media screen and (max-width: 768px) {
       padding-left: 15px;
       padding-right: 15px;
-    
+
       h1 {
         font-size: 2em;
       }
@@ -92,6 +92,12 @@
   .membership--institutional svg {
     margin-bottom: em(15);
     max-width: 70%;
+
+    @media screen and (min-width:0\0) {
+      height: auto;
+      max-height: 150px;
+    }
+
   }
 
   .membership--individual {
@@ -226,6 +232,8 @@
       border: 1px solid color(medium-grey);
       border-right: 0;
       border-top: 0;
+      display: flex;
+      justify-content: center;
       padding: 1em $default-grid-gutter-width;
 
       &:last-of-type {
@@ -233,6 +241,7 @@
       }
 
       svg {
+        height: 2em;
         width: em(40);
       }
 
@@ -250,6 +259,7 @@
     p {
       margin: 0;
       padding: 0;
+      width: 100%;
     }
 
   }//.membership--pricing-table

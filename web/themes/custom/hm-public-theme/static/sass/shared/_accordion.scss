@@ -107,9 +107,11 @@
     }
 
     img {
+      height: auto;
       max-height: em(200);
       max-width: em(200);
       padding: em(10);
+      width: 100%;
     }
 
     @media screen and (max-width: 520px) {
