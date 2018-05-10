@@ -73,7 +73,7 @@ class FavoritesMatcherHandler extends WebformHandlerBase {
     $output = [];
 
     /** @var \Drupal\node\NodeInterface $item */
-    for ($i = 0; $i <= 9; $i++) {
+    for ($i = 0; $i <= 8; $i++) {
       $item = $data->current();
 
       if (null == $item) {

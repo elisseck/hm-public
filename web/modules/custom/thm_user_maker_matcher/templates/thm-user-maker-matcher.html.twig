@@ -11,14 +11,14 @@
  #      - height
  #    - role (list)
 #}
-<div class="view list-biography-cards-w-category-filter">
+<h2>There are {{ result_count }} Makers that match your query</h2>
+
+{% if result_count > 10 %}
+    <h4>Click the "see more" button below to view all results</h4>
+{% endif %}
+
+<div class="list-biography-cards-w-category-filter">
     <div class="view-content">
-        <h2>There are {{ result_count }} Makers that match your query</h2>
-
-        {% if result_count > 10 %}
-          <h4>Click the "see more" button below to view all results</h4>
-        {% endif %}
-
         {% for item in data %}
         <div class="bio-card--list col-sm">
             <a href="{{ item.url }}" title="{{ item.title }}">
@@ -37,12 +37,12 @@
             </a>
         </div>
         {% endfor %}
-
-        {% if result_count > 10 %}
-          <a class="button--primary button"
-             href="/matching-favorites?{{ search_field }}={{ search_entry|capitalize }}">
-              See More
-          </a>
-        {% endif %}
     </div>
 </div>
+
+{% if result_count > 10 %}
+    <a class="button--primary button"
+       href="/matching-favorites?{{ search_field }}={{ search_entry|capitalize }}">
+        See More
+    </a>
+{% endif %}
