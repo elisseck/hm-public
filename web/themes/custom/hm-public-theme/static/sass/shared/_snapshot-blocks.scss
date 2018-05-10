@@ -3,9 +3,17 @@
   @extend %max-width;
   margin-bottom: em(60);
 
+  @media screen and (max-width: 768px) {
+    margin-bottom: 0;
+  }
+
   .field-items {
     display: flex;
     justify-content: center;
+
+    @media screen and (max-width: 768px) {
+      padding: 0 15px;
+    }
 
     @media screen and (max-width: 580px) {
       flex-direction: column;
@@ -16,20 +24,20 @@
   .field-item {
     flex: 0 1 25%;
     margin: 0 15px;
+    word-wrap: break-word;
 
     @media only screen and (max-width: 950px) {
       flex: 0 1 50%;
-      margin: 0 30px;
+      margin: 0 30px 0 0;
     }
 
     @media only screen and (max-width: 768px) {
       flex: 0 1 50%;
-      margin: 0 15px;
+      margin: 0 15px 30px 0;
     }
 
     @media only screen and (max-width: 580px) {
       flex: 1 0 auto;
-      margin-bottom: 30px;
     }
 
   }
@@ -198,23 +206,63 @@
     @extend %oswald;
     margin-bottom: em(5);
     text-align: center;
+
+    .field-snapshot-section-header .field-item {
+      justify-content: center;
+    }
+
+    @media screen and (max-width: 768px) {
+
+      .field-snapshot-section-header .field-item {
+        margin-right: 0;
+        max-width: 100%;
+      }
+
+    }
+
   }
 
   &--block {
     @extend %max-width;
-    width: 70%;
+    @extend %med-width-content;
+
+    .field-items {
+
+      @media screen and (max-width: 768px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 0;
+      }
+    }
 
     .field-item {
       display: flex;
-      flex: 1;
-    }
+      flex: 0 1 25%;
+      margin: 0 15px;
+      word-wrap: break-word;
 
-    .field-item:first-child {
-      margin-left: 0;
-    }
+      @media only screen and (max-width: 950px) {
+        flex: 0 1 50%;
+        margin: 0 30px 0 0;
+      }
 
-    .field-item:last-child {
-      margin-right: 0;
+      @media only screen and (max-width: 768px) {
+        flex: 1 0 40%;
+        max-width: 50%;
+
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
+
+      }
+
+      @media only screen and (max-width: 580px) {
+        flex: 1 0 auto;
+        margin-bottom: 30px;
+        max-width: 100%;
+      }
+
     }
 
     .snapshot {

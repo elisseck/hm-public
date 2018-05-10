@@ -6,9 +6,12 @@
   margin-right: em(15);
   padding: em(13) em(14) em(16);
 
-  @media screen and (max-width: 767px) {
-    font-size: rem(11);
+  @media screen and (max-width: 520px) {
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
   }
+
 }
 
 .button.button--primary,

@@ -52,6 +52,12 @@
     margin-top: 0;
   }
 
+  @media screen and (max-width: 767px) {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
 }
 
 .two-column-testimonial.align-content-left {
@@ -62,6 +68,15 @@
 
     img {
       margin-left: em(10);
+    }
+
+    @media screen and (max-width: 574px) {
+      order: 1;
+
+      img {
+        margin-left: auto;
+      }
+
     }
 
   }

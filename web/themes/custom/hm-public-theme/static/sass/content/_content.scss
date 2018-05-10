@@ -6,6 +6,7 @@
   @extend %med-width-content;
   margin-bottom: $default-grid-gutter-width;
   margin-top: $default-grid-gutter-width;
+  word-break: break-word;
 
   p {
     font-size: em(18);

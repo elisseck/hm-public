@@ -67,6 +67,10 @@
 .accordion-block.accordion {
   margin-bottom: 10px;
 
+  @media screen and (min-width: 0\0) {
+    max-width: 70%;
+  }
+
   button.accordion__panel {
     margin-bottom: 0;
 
@@ -79,12 +83,7 @@
   }
 
   .accordion__body p {
-    padding: 0 $default-grid-gutter-width;
-
-    @media screen and (max-width: 768px) {
-      padding: 0;
-    }
-
+    padding: 0 15px;
   }
 
 }
@@ -99,13 +98,29 @@
     display: flex;
     flex: 1 0 33.3%;
     justify-content: center;
-    margin: em(15);
+    margin: 1.5%;
     max-width: 30%;
 
+    @media screen and (max-width: 768px) {
+      margin: 1%;
+      max-width: 48%;
+    }
+
     img {
+      height: auto;
       max-height: em(200);
       max-width: em(200);
       padding: em(10);
+      width: 100%;
+    }
+
+    @media screen and (max-width: 520px) {
+
+      img {
+        max-height: em(150);
+        max-width: em(150);
+      }
+
     }
 
   }

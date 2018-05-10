@@ -28,6 +28,14 @@
   @extend %default-gutter-width;
 }
 
+@media screen and (min-width: 0\0) {
+
+  .feature-carousel .carousel-inner {
+    width: 100vw;
+  }
+
+}
+
 //Testimonial Carousel
 .testimonial-carousel.carousel.slide {
   background-color: color(carousel-bg-alt);
