@@ -388,6 +388,7 @@ li.pager__item.pager__item--ellipsis {
 
       @media all and (max-width: 950px) {
         background-color: transparent;
+        max-width: 70%;
       }
 
       & > div {
@@ -404,6 +405,7 @@ li.pager__item.pager__item--ellipsis {
         @extend %source-sans;
         flex: 1;
         flex-basis: 50%;
+        max-width: 70%;
       }
 
       .field-megamenu-left-header,
@@ -453,6 +455,7 @@ li.pager__item.pager__item--ellipsis {
               color: $black;
               font-weight: 400;
               padding: em(22) em(8, 16);
+              word-wrap: break-word;
             }
 
             @media screen and (max-width: 580px) {

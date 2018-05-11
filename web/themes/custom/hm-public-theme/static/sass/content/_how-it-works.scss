@@ -3,9 +3,9 @@
   margin-top: em(15);
 
   .two-column-snapshot {
+    @extend %med-width-content;
     margin-bottom: em(15);
     margin-top: em(15);
-    width: 100%;
   }
 
   .two-column-snapshot--image {
