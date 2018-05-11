@@ -48,8 +48,9 @@
 
       img {
         max-height: 200px;
+        margin-left: 0;
         padding: 0 0 15px;
-        width: 100%;
+        width: auto;
       }
     }
 
@@ -69,6 +70,7 @@
 
   &--intro {
     line-height: normal;
+    margin-right: 30px;
   }
 
 }

@@ -170,6 +170,7 @@
 
   @media all and (max-width: 950px) {
     align-items: flex-start;
+    min-width: 200px;
 
     .header__logo {
       margin-left: 0;
