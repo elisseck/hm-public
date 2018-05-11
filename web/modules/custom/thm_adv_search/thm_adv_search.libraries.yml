@@ -1,0 +1,11 @@
+
+chosen-facets-collection:
+  version: 0.x
+  js:
+    js/chosen-facets-collection.js: {}
+  dependencies:
+    - core/jquery
+    - core/underscore
+    - core/drupal
+    - core/jquery.once
+#    - chosen/drupal.chosen

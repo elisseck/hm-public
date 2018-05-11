@@ -45,8 +45,13 @@ function _blockIsAFacet(BPI $block) {
  * @param $block \Drupal\Core\Block\BlockPluginInterface
  */
 function thm_adv_search_block_view_alter(array &$build, BPI $block) {
+  //$xs = $build;
+
+  //drupal_set_message('here');
   if (_blockIsAFacet($block)) {
-    chosen_attach_library($build);
+    //$build['#attached']['library'][] = 'thm_adv_search/chosen-facets-collection';
+    //$build['#attached']['drupalSettings']['thm_adv_search'] = 'yo!';
+    //chosen_attach_library($build);
   }
 }
 
