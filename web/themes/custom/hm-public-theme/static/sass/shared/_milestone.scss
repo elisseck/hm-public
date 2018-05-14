@@ -3,14 +3,13 @@
 
   .view-content {
     display: flex;
-    //height: 400px;
     height: auto;
     overflow-x: scroll;
     width: 100vw;
   }
 
   .views-row {
-    flex: 1 0 70%;
+    flex: 1 0 100%;
     margin: em(30) em(50);
 
     @media screen and (max-width: 768px) {
@@ -71,6 +70,23 @@
   &--intro {
     line-height: normal;
     margin-right: 30px;
+  }
+
+}
+
+.views-field-field-timeline-intro {
+
+  .timeline-scroller {
+    flex-wrap: wrap;
+  }
+
+  .timeline-scroller--image img {
+    margin-left: 0;
+    padding: 15px 0;
+  }
+
+  .timeline-scroller--content {
+    padding-right: 0;
   }
 
 }
