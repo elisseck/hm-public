@@ -1,20 +1,82 @@
 
-(function ($, Drupal) {
+(function ($, maquette, Drupal) {
     'use strict';
+
+    var h = maquette.h,
+        projector = maquette.createProjector();
 
     Drupal.thm = Drupal.thm || {};
     Drupal.behaviors.dropdownCollection = {
         attach: function dropdownCollection(context, settings) {
-            //Drupal.thm.manageDropdownCollection(context, settings);
-            Drupal.thm.makeDropdown(context, settings);
+            Drupal.thm.manageDropdownCollection(context, settings);
+            //Drupal.thm.makeDropdown(context, settings);
         }
     };
 
+    function _getAttributes(ele) {
+        var output = {},
+            attrs  = ele.attributes;
+
+        for (var i = attrs - 1; i >= 0; i--) {
+            output[attrs[i].name] = output[i].value;
+        }
+        return output;
+    }
+
+    Drupal.thm.buildDropDown = function() {
+        var dropdownSelector = '.js-facets-dropdown-links',
+            linkSelector = '.facet-item a',
+            parent = null,
+            $lists = document.querySelectorAll(dropdownSelector);
+
+        return {
+            elements: Array.prototype.map.call($lists, function(dropDownEle) {
+                var $links = dropDownEle.querySelectorAll(linkSelector),
+                    $attrs = _getAttributes(dropDownEle);
+
+                $attrs.class += ' facets-dropdown';
+
+                if (!parent) parent = dropDownEle.parentNode;
+
+                return {
+                    render: function() {
+                        return h('select.' + $attrs['data-drupal-facet-id'], $attrs, [
+                            Drupal.thm.buildLinks($links).map(function($link) {
+                                return $link.render();
+                            })
+                        ]);
+                    }
+                };
+            }),
+            parentElement: parent
+
+        };
+    };
+
+    Drupal.thm.buildLinks = function($links) {
+        var eles = Array.prototype.map.call($links, function($link) {
+            return { render: function() {
+
+                return h('option', {key: $link}, []);
+            } };
+        });
+
+        return eles;
+    };
+
     Drupal.thm.manageDropdownCollection = function manageDropdownCollection(context, settings) {
-        var $facets = $('.js-facets-dropdown-links');
-        console.log($facets.length);
-        console.log(settings);
-        console.log(context);
+        var data = Drupal.thm.buildDropDown();
+
+        function _render() {
+            data.elements.forEach(function(ele) {
+                ele.render();
+            });
+        }
+
+        if (data.parentElement) projector.append(data.parentElement, _render);
+        /*$('.js-facets-dropdown-links').once('facets-dropdown-transform').each(function() {
+
+        });*/
     };
 
     /**
@@ -34,6 +96,8 @@
             // Preserve all attributes of the list.
             $ul.each(function() {
                 $.each(this.attributes,function(idx, elem) {
+                    console.log('attribute name: ', elem.name);
+                    console.log('attribute value: ', elem.value);
                     $dropdown.attr(elem.name, elem.value);
                 });
             });
@@ -85,26 +149,4 @@
         });
     };
 
-    function _doItDeferred($links, $defaultOption, $dropDown) {
-        var deferred   = $.Deferred(),
-            has_active = false;
-
-        $links.each(function() {
-            var $link  = $(this),
-                active = $link.hasClass('is-active'),
-                $opt   = $('<option />').attr('value', $link.attr('href')).data($link.data());
-
-            if (active) {
-                has_active = true;
-                $defaultOption.attr('value', $link.attr('href'));
-                $opt.attr('selected', 'selected');
-                $link.find('.js-facet-deactivate').remove();
-            }
-            $opt.html($link.text());
-            $dropDown.append($opt);
-        });
-
-        return deferred.promise();
-    }
-
-})(jQuery, Drupal);
+})(jQuery, maquette, Drupal);

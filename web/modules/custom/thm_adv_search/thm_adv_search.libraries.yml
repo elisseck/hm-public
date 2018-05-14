@@ -1,6 +1,10 @@
+maquette:
+  version: 3.2.1
+  js:
+    https://unpkg.com/maquette@3.2.1/dist/maquette.umd.js: { type: external }
 
 chosen-facets-collection:
-  version: 0.x
+  version: 1.x
   js:
     js/chosen-facets-collection.js: {}
   dependencies:
@@ -8,4 +12,5 @@ chosen-facets-collection:
     - core/underscore
     - core/drupal
     - core/jquery.once
+    - thm_adv_search/maquette
 #    - chosen/drupal.chosen
