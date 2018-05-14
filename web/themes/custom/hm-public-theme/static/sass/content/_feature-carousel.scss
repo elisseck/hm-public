@@ -238,7 +238,7 @@
 //Quote
 .carousel-caption__quote {
 
-  q.carousel__quote {
+  .carousel__quote {
     font-family: 'Oswald', sans-serif;
     font-size: 2em;
     font-weight: 300;
@@ -253,9 +253,10 @@
     margin-top: em(21, 37);
   }
 
-  @media screen and (max-width: 900px) {
-    q.carousel__quote {
-      font-size: em(30);
+  @media screen and (max-width: 980px) {
+
+    .carousel__quote {
+      font-size: 1.8em;
     }
 
   }
@@ -274,7 +275,7 @@
 
   }
 
-}
+}//.carousel-caption__quote
 
 //Event Content
 .feature-carousel-slide .carousel-caption__event {
