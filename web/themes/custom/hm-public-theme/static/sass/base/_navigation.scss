@@ -454,12 +454,8 @@ li.pager__item.pager__item--ellipsis {
             @media screen and (max-width: 950px) {
               color: $black;
               font-weight: 400;
-              padding: em(22) em(8, 16);
-              word-wrap: break-word;
-            }
-
-            @media screen and (max-width: 580px) {
               padding: 0;
+              word-wrap: break-word;
             }
 
           }
