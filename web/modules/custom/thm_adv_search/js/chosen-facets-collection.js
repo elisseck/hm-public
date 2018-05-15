@@ -31,8 +31,9 @@
 
         return {
             elements: Array.prototype.map.call($lists, function(dropDownEle) {
-                var $links = dropDownEle.querySelectorAll(linkSelector),
-                    $attrs = _getAttributes(dropDownEle);
+                var $links  = dropDownEle.querySelectorAll(linkSelector),
+                    $attrs  = _getAttributes(dropDownEle),
+                    facetId = dropDownEle.dataset.drupalFacetId;
 
                 $attrs.class += ' facets-dropdown';
 
@@ -40,7 +41,7 @@
 
                 return {
                     render: function() {
-                        return h('select.' + $attrs['data-drupal-facet-id'], $attrs, [
+                        return h('select', $attrs, [
                             Drupal.thm.buildLinks($links).map(function($link) {
                                 return $link.render();
                             })
@@ -54,23 +55,30 @@
     };
 
     Drupal.thm.buildLinks = function($links) {
-        var eles = Array.prototype.map.call($links, function($link) {
-            return { render: function() {
+        return Array.prototype.map.call($links, function($link) {
 
-                return h('option', {key: $link}, []);
-            } };
+            var facetItemId = $link.dataset.drupalFacetItemId;
+
+            return {
+                render: function() {
+                    return h('option#' + facetItemId, {
+                        key: facetItemId, value: $link.href,
+                    }, [ $link.innerHTML ]);
+                }
+            };
         });
-
-        return eles;
     };
 
     Drupal.thm.manageDropdownCollection = function manageDropdownCollection(context, settings) {
         var data = Drupal.thm.buildDropDown();
 
         function _render() {
-            data.elements.forEach(function(ele) {
-                ele.render();
-            });
+            /*return h('div', {class: 'foo'}, [
+                h('p', {class: 'bar'}, ['testing. . .'])
+            ]);*/
+            /*return data.elements.map(function(ele) {
+                return ele.render();
+            });*/
         }
 
         if (data.parentElement) projector.append(data.parentElement, _render);
