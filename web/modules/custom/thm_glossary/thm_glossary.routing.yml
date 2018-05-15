@@ -1,0 +1,7 @@
+glossary:
+  path: '/glossary'
+  defaults:
+    _controller: '\Drupal\thm_glossary\Controller\GlossaryController::glossary'
+    _title: 'Glossary'
+  requirements:
+    _permission: 'access content'
