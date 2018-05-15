@@ -97,13 +97,20 @@
 
     .bio-card--image {
       flex: 1;
-      //min-height: 250px;
       overflow: hidden;
 
       img {
         height: auto;
         transform: scale(1.1);
         width: 100%;
+      }
+
+    }
+
+    @media screen and (min-width: 1200px) {
+
+      .bio-card--image {
+        min-width: 300px;
       }
 
     }
@@ -125,14 +132,6 @@
       h4 {
         color: $black;
         font-size: em(16);
-
-        //Overflow at 1 line
-        // -webkit-box-orient: vertical;
-        // -webkit-line-clamp: 1;
-        // display: -webkit-box;
-        // line-height: 120%;
-        // overflow: hidden;
-        // text-overflow: ellipsis;
       }
     }
 
