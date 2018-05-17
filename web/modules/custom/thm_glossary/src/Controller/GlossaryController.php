@@ -62,11 +62,22 @@ class GlossaryController {
 
                 $tid = $item -> tid;
 
-                $content .=
-                "<li style='border:none; margin-bottom: 40px;'>
-                   <a type='$type' style='".( $type == 'bio' ? '' : 'color: #232323;' )."' href='/node/$nid'><h3 class='title'>$title</h3></a>
-                   <div class='body'>$summary</div>
-                </li>";
+                // $content .=
+                // "<li style='border:none; margin-bottom: 40px;'>
+                //    <a type='$type' style='".( $type == 'bio' ? '' : 'color: #232323;' )."' href='/node/$nid'><h3 class='title'>$title</h3></a>
+                //    <div class='body'>$summary</div>
+                // </li>";
+                if($type == 'bio'){
+                  $content .= "<li style='border:none; margin-bottom: 40px;'>
+                                 <a type='$type' href='/node/$nid'><h3 class='title'>$title</h3></a>
+                                 <div class='body'>$summary</div>
+                              </li>";
+                }else{
+                  $content .= "<li style='border:none; margin-bottom: 40px;'>
+                                 <h3 class='title'>$title</h3>
+                                 <div class='body'>$summary</div>
+                              </li>";
+                }
            }
 
 
