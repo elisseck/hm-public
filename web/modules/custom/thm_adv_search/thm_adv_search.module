@@ -63,18 +63,18 @@ function thm_adv_search_block_view_alter(array &$build, BPI $block) {
 /**
  * Implements hook_search_api_autocomplete_suggestions_alter().
  */
-function thm_adv_search_search_api_autocomplete_suggestions_alter(array &$suggestions, array $alter_params) {
+/*function thm_adv_search_search_api_autocomplete_suggestions_alter(array &$suggestions, array $alter_params) {
   drupal_set_message('suggestions alter');
   drupal_set_message(print_r($suggestions, true));
-}
+}*/
 
 /**
  * Implements hook_search_api_autocomplete_suggester_info_alter().
  */
-function thm_adv_search_search_api_autocomplete_suggester_info_alter(array &$suggesters) {
+/*function thm_adv_search_search_api_autocomplete_suggester_info_alter(array &$suggesters) {
   drupal_set_message('suggestions. . .');
   drupal_set_message(print_r($suggesters, true));
-}
+}*/
 
 /**
  * Implements hook_search_api_autocomplete_views_fulltext_fields_alter().
@@ -83,4 +83,12 @@ function thm_adv_search_search_api_autocomplete_suggester_info_alter(array &$sug
   drupal_set_message('views fulltext fields alter');
   drupal_set_message(print_r($fields, true));
 }*/
+
+/**
+ * Implements hook_search_api_db_query_alter().
+ */
+function thm_adv_search_search_api_db_query_alter(\Drupal\Core\Database\Query\SelectInterface &$db_query, \Drupal\search_api\Query\QueryInterface $query) {
+  drupal_set_message($query->getSearchId());
+  //drupal_set_message();
+}
 

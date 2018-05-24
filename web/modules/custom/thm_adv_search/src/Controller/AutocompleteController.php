@@ -13,20 +13,21 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Drupal\Component\Utility\Tags;
 use Drupal\Component\Utility\Unicode;
+use Drupal\search_api_autocomplete\SearchInterface;
 
 
 class AutocompleteController extends ControllerBase {
-  public function manage(Request $request, $field_name, $count) {
-    $output = [];
+  public function autocomplete(SearchInterface $search, Request $request) {
+    $output = ['one', 'two', 'three', 'four'];
 
-    if ($input = $request->query->get('q')) {
+    /*if ($input = $request->query->get('q')) {
       for ($i = 0; $i < $count; $i++) {
         $output[] = [
           'value' => $field_name . '_' . $i . '(' . $i . ')',
           'label' => $field_name . ' ' . $i
         ];
       }
-    }
+    }*/
 
     return new JsonResponse($output);
   }

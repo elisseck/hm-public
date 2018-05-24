@@ -1,7 +1,7 @@
 thm_adv_search.autocomplete:
-  path: '/thm-adv-search-autocomplete/{field_name}/{count}'
+  path: '/adv-search-autocomplete'
   defaults:
-    _controller: '\Drupal\thm_adv_search\Controller\AutocompleteController::manage'
-    _format: 'json'
+    _controller: '\Drupal\thm_adv_search\Controller\AutocompleteController::autocomplete'
+    _format: json
   requirements:
-    _access: 'TRUE'
+    _access: 'access content'
