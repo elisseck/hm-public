@@ -14,9 +14,9 @@ class THMJWTURLGenerator {
 
   protected $session;
 
-  protected $digitalArchiveUrl = 'https://auth-test-client.azurewebsites.net';
+  protected $digitalArchiveUrl = 'https://thmda-auth-www.azurewebsites.net';
 
-  protected $scienceDAUrl = 'https://smda.thehistorymakers.org';
+  protected $scienceDAUrl = 'https://smda-auth-www.azurewebsites.net';
 
   protected function getJwt() {
     return thm_jwt_fetch_token($this->session);
@@ -25,9 +25,9 @@ class THMJWTURLGenerator {
   public function retrieveLink($subDomain = 'da') {
     switch ($subDomain) {
       case 'da':
-        return $this->digitalArchiveUrl . '/jwt?=' . $this->getJwt();
+        return $this->digitalArchiveUrl . '?jwt=' . $this->getJwt();
       case 'smda':
-        return $this->scienceDAUrl . '/jwt?=' . $this->getJwt();
+        return $this->scienceDAUrl . '?jwt=' . $this->getJwt();
     }
   }
 
