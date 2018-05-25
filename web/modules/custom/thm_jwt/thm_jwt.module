@@ -57,9 +57,9 @@ function thm_jwt_fetch_token(SessionInterface $session) {
  * @return null|string|string[]
  */
 function thm_jwt_refresh_url(string $url, string $token) {
-  $rePattern = '/^(?P<scheme>https\:\/\/)(?P<host>[\w\.]+)(?:\?jwt=)(?P<token>[\w\.]+)/i';
+  $rePattern = '/(?P<scheme>https\:\/\/)(?P<uri>[\w\.\-\/]+)(?:\?jwt=)(?P<token>[\w\.]+)/i';
   return preg_replace_callback($rePattern, function($matches) use ($token) {
-    return $matches['scheme'] . $matches['host'] . '?jwt=' . $token;
+    return $matches['scheme'] . $matches['uri'] . '?jwt=' . $token;
   }, $url);
 }
 

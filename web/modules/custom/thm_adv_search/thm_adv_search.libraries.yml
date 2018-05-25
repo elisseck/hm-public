@@ -1,0 +1,17 @@
+easyautocomplete:
+  version: 1.3.5
+  css:
+    theme:
+      https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.css: {type: external}
+  js:
+    https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.js: {type: external}
+
+auto-complete-widget:
+  version: 1.1.x
+  js:
+    js/make-autocomplete-widget.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+    - thm_adv_search/easyautocomplete

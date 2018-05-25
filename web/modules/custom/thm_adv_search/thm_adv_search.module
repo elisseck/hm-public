@@ -5,13 +5,13 @@
  * Contains thm_adv_search.module.
  */
 
-use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Routing\RouteMatchInterface as RMI;
 use Drupal\Core\Block\BlockPluginInterface as BPI;
 
 /**
  * Implements hook_help().
  */
-function thm_adv_search_help($route_name, RouteMatchInterface $route_match) {
+function thm_adv_search_help($route_name, RMI $route_match) {
   switch ($route_name) {
     // Main module help for the thm_adv_search module.
     case 'help.page.thm_adv_search':
@@ -46,7 +46,49 @@ function _blockIsAFacet(BPI $block) {
  */
 function thm_adv_search_block_view_alter(array &$build, BPI $block) {
   if (_blockIsAFacet($block)) {
-    chosen_attach_library($build);
+    //$build['#attached']['library'][] = 'thm_adv_search/chosen-facets-collection';
+    //$build['#attached']['drupalSettings']['thm_adv_search'] = 'yo!';
+    //chosen_attach_library($build);
   }
+}
+
+/**
+ * Implements hook_search_api_autocomplete_search_info_alter().
+ */
+/*function thm_adv_search_search_api_autocomplete_search_info_alter(array &$searches) {
+  drupal_set_message('search info alter');
+  drupal_set_message(print_r($searches, true));
+}*/
+
+/**
+ * Implements hook_search_api_autocomplete_suggestions_alter().
+ */
+/*function thm_adv_search_search_api_autocomplete_suggestions_alter(array &$suggestions, array $alter_params) {
+  drupal_set_message('suggestions alter');
+  drupal_set_message(print_r($suggestions, true));
+}*/
+
+/**
+ * Implements hook_search_api_autocomplete_suggester_info_alter().
+ */
+/*function thm_adv_search_search_api_autocomplete_suggester_info_alter(array &$suggesters) {
+  drupal_set_message('suggestions. . .');
+  drupal_set_message(print_r($suggesters, true));
+}*/
+
+/**
+ * Implements hook_search_api_autocomplete_views_fulltext_fields_alter().
+ */
+/*function thm_adv_search_search_api_autocomplete_views_fulltext_fields_alter(array &$fields, \Drupal\search_api_autocomplete\SearchInterface $search, \Drupal\views\ViewExecutable $view) {
+  drupal_set_message('views fulltext fields alter');
+  drupal_set_message(print_r($fields, true));
+}*/
+
+/**
+ * Implements hook_search_api_db_query_alter().
+ */
+function thm_adv_search_search_api_db_query_alter(\Drupal\Core\Database\Query\SelectInterface &$db_query, \Drupal\search_api\Query\QueryInterface $query) {
+  drupal_set_message($query->getSearchId());
+  //drupal_set_message();
 }
 

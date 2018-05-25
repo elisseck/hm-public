@@ -7,6 +7,9 @@ core: 8.x
 libraries:
   - hm_public_theme/main
 
+#libraries-override:
+#  facets/drupal.facets.dropdown-widget: thm_adv_search/chosen-facets-collection
+
 stylesheets-remove:
   - '@fortytwo/static/css/fortytwo.css'
 
