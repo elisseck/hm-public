@@ -1,0 +1,46 @@
+.timeline_cont.glossary {
+
+  .pager__item {
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 769px) {
+    display: inline-block;
+    padding-right: 40px;
+
+    .pages {
+      background: $white;
+      display: block;
+      height: 100%;
+      margin: 0;
+      min-width: 0;
+      padding: 0 !important;
+      position: absolute;
+      right: 0;
+      width: auto;
+    }
+
+    nav.pager {
+      float: right;
+      text-align: center;
+      width: 49px;
+
+      .pager__item {
+        margin-bottom: 0;
+        position: relative;
+        text-align: center;
+
+        & > a {
+          display: block;
+          margin: 0;
+          text-align: center;
+          width: 49px;
+        }
+
+      }
+
+    }
+
+  }
+
+}

@@ -7,6 +7,18 @@
     margin-bottom: 0;
   }
 
+  .field-snapshot-block {
+
+    @media screen and (max-width: 950px) {
+      padding-left: 30px;
+    }
+
+    @media screen and (max-width: 767px) {
+      padding-left: 0;
+    }
+
+  }
+
   .field-items {
     display: flex;
     justify-content: center;
