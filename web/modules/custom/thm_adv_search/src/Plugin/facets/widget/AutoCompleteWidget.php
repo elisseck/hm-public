@@ -37,19 +37,25 @@ class AutoCompleteWidget extends WidgetPluginBase {
     foreach ($results as $result) {
       $output[] = [
         'name' => $result->getDisplayValue(),
-        'value' => $facet->id() . '%3A' . $result->getRawValue()
+        'value' => urlencode($facet->id() . ':' . $result->getRawValue())
       ];
     }
     return $output;
   }
 
+  protected function kebabify(string $s) {
+    $prefix = 'thm-adv-search-';
+    return $prefix . preg_replace('/_/m', '-', $s);
+  }
+
   public function build(FacetInterface $facet) {
     $jsonData = $this->buildResultsJson($facet->getResults(), $facet);
+    $kebabifiedId = $this->kebabify($facet->id());
+
     $build['#type'] = 'textfield';
-    $build['#attached']['library'][] = 'thm_adv_search/chosen-facets-collection';
-    $build['#attributes']['class'][] = 'js-facets-autocomplete';
-    $build['#attached']['drupalSettings']['facets']['id'] = $facet->id();
-    $build['#attached']['drupalSettings']['facets']['autocomplete_widget'][$facet->id()]['facet-data'] = $jsonData;
+    $build['#attached']['library'][] = 'thm_adv_search/auto-complete-widget';
+    $build['#attributes']['class'] = ['js-facets-autocomplete', $kebabifiedId];
+    $build['#attached']['drupalSettings']['facets']['autocomplete_widget'][$kebabifiedId]['facet-data'] = $jsonData;
     return $build;
   }
 
