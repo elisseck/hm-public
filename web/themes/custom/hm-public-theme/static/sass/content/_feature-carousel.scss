@@ -194,7 +194,7 @@
     padding: $default-grid-gutter-width;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     display: flex;
     flex-direction: column;
     padding: $default-grid-gutter-width 15px;
@@ -311,6 +311,7 @@
 
     .caption__event-details {
       flex: 1 0 60%;
+      padding-left: 15px;
     }
 
   }
