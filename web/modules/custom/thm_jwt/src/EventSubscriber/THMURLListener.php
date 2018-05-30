@@ -39,7 +39,6 @@ class THMURLListener implements EventSubscriberInterface {
 
   protected function isAQualifyingUrl(string $url) {
     return thm_jwt_request_has_return_url($url) &&
-      thm_jwt_url_has_jwt_entry($url) &&
       $this->currentUser->isAuthenticated();
   }
 
@@ -57,6 +56,7 @@ class THMURLListener implements EventSubscriberInterface {
       }
 
       $token    = thm_jwt_fetch_token($session);
+
       if ((thm_jwt_url_has_jwt_entry($url))) {
         $freshUrl = thm_jwt_refresh_url($url, $token);
       } else {

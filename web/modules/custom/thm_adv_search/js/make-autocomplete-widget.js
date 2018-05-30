@@ -15,7 +15,7 @@
             var widgetId = _getWidgetId(ele),
                 options = {
                     getValue: function(e) { return e.name; },
-                    data: settings.facets.autocomplete_widget[widgetId]['facet-data'],
+                    url: '/fetch-facet-data/' + widgetId,
                     list: {
                         match: { enabled: true },
                         onClickEvent: function() { _applyFilter($(ele).getSelectedItemData()); }
@@ -27,6 +27,7 @@
 
     function _applyFilter(data) {
         _parseUrl(window.location.href, data);
+        // TODO: Add selected filter to search-filter-mgmt block
     }
 
     function _parseUrl(url, data) {
@@ -44,11 +45,13 @@
     }
 
     function _getWidgetId(ele) {
-        var module  = 'thm-adv-search-';
+        var module  = 'thm_adv_search_';
 
-        return [].find.call(ele.classList, function(item) {
+        var id = [].find.call(ele.classList, function(item) {
             return item.startsWith(module);
         });
+
+        return id.substring(module.length);
     }
 
 })(jQuery, Drupal);
