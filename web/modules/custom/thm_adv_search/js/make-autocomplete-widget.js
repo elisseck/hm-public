@@ -40,7 +40,7 @@
                 url: '/fetch-facet-data/' + widgetId,
                 list: {
                     match: { enabled: true },
-                    onClickEvent: function() { _addFilter($(ele).getSelectedItemData()); }
+                    onChooseEvent: function() { _addFilter($(ele).getSelectedItemData()); }
                 }
             };
         $(ele).easyAutocomplete(options);
@@ -81,21 +81,21 @@
         $(Drupal.thm.filterResetCls).append($filterCtrl);
     }
     
-    function _removeFilter(evt) {
-        var $ele   = $(this),
-            $data  = _extractDataFromFilterControl($ele),
-            url    = window.location.href,
-            entry  = '';
+    function _removeFilter() {
+        var $ele  = $(this),
+            $data = _extractDataFromFilterControl($ele),
+            url   = decodeURIComponent(window.location.href),
+            entry, newUrl = null;
 
         if ($data.id) {
-            entry = encodeURIComponent($data.field + ':' + $data.id);
+            entry = $data.field + ':' + $data.id;
         } else {
-            entry = encodeURIComponent($data.field + ':' + $data.value);
+            entry = $data.field + ':' + $data.value.replace(new RegExp(/ /, 'g'), '\\+');
         }
 
-        var url = url.replace(new RegExp('^.+(f\[[0-9]+\]=' + entry + ')$'), _refreshUrl);
-        console.log('removing ', entry);
-        console.log('new url ', url)
+        newUrl = url.replace(new RegExp('^(.+)(&?f\[[0-9]+\]=' + entry + ')(.*)$', 'g'), _refreshUrl);
+        console.log(url, newUrl);
+        //window.location.replace(newUrl);
     }
 
     function _extractDataFromFilterControl($ele) {
@@ -103,13 +103,13 @@
             id: $ele.data('facetFieldId'),
             value: $ele.data('facetFieldValue'),
             field: $ele.data('facetFieldName')
-        }
+        };
     }
 
-    function _refreshUrl(match, entry, offset, string) {
-        var beginIdx = string.indexOf(entry),
-            endIdx   = match.length;
-        console.log(arguments);
+    function _refreshUrl(match, prefix, entry, suffix, offset, string) {
+        console.log('in refresher. . .', arguments);
+        var output = prefix + suffix;
+        return (output[output.length - 1] === '?') ? output.substring(0, output.length - 1) : output;
     }
 
     function _lookUpTerm(arg) {
