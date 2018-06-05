@@ -57,7 +57,7 @@ class AutocompleteController extends ControllerBase {
 
       $output[] = [
         'name' => (is_numeric($v)) ? Term::load($v)->get('name')->value : $v,
-        'value' => urlencode($facet->id() . ':' . $result->getRawValue())
+        'value' => rawurlencode($facet->id() . ':' . $result->getRawValue())
       ];
     }
     return $output;
@@ -78,7 +78,6 @@ class AutocompleteController extends ControllerBase {
       $output = $this->getCacheMgr()->get($this->cacheIdBase . $facet_id);
     }
 
-
-    return new JsonResponse($output->data);
+    return is_object($output) ? new JsonResponse($output->data) : new JsonResponse($output);
   }
 }

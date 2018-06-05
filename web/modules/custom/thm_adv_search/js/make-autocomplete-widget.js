@@ -14,19 +14,11 @@
 
     Drupal.thm.excludeWidgets = [ 'maker_category' ];
 
-    Drupal.thm.handleFilterReset = function(settings) {
-        $('#filter-reset').on('click', function(evt) {
-            evt.preventDefault();
-            window.location.replace(settings.path.baseUrl + settings.path.currentPath);
-        });
-    };
-
     Drupal.behaviors.autoComplete = {
         attach: function autoComplete(context, settings) {
             $(Drupal.thm.widgetCls).once().each(_bindAutocomplete);
 
             if (!Drupal.thm.filtersApplied) {
-                Drupal.thm.handleFilterReset(settings);
                 _applyFiltersInUrl(settings);
             }
         }
@@ -90,12 +82,12 @@
         if ($data.id) {
             entry = $data.field + ':' + $data.id;
         } else {
-            entry = $data.field + ':' + $data.value.replace(new RegExp(/ /, 'g'), '\\+');
+            entry = $data.field + ':' + $data.value;
         }
 
-        newUrl = url.replace(new RegExp('^(.+)(&?f\[[0-9]+\]=' + entry + ')(.*)$', 'g'), _refreshUrl);
-        console.log(url, newUrl);
-        //window.location.replace(newUrl);
+        newUrl = url.replace(new RegExp('^(.+?)(&?f\\[[0-9]+\\]=' + entry + ')(.*?)$', 'g'), _refreshUrl);
+        //console.log(url, newUrl);
+        window.location.replace(encodeURI(newUrl));
     }
 
     function _extractDataFromFilterControl($ele) {
@@ -107,7 +99,7 @@
     }
 
     function _refreshUrl(match, prefix, entry, suffix, offset, string) {
-        console.log('in refresher. . .', arguments);
+        //console.log('in refresher. . .', arguments);
         var output = prefix + suffix;
         return (output[output.length - 1] === '?') ? output.substring(0, output.length - 1) : output;
     }
