@@ -4,13 +4,19 @@
  * Theme override for Event detail page
  *
  * Available variables using Paragraphs:
- * -  field_event_type
  * -  field_date
  * -  field_date_and_time_details
- * -  field_address
- * -  field_event_image
- * -  field_date_image_label
- * -  field_insert_images
+ * -  field_date_image_label	
+ * -  field_this_event_has_already_occ	
+ * -  field_event_address	
+ * -  field_event_card_image		
+ * -  field_event_content_block		
+ * -  field_event_desciption		
+ * -  field_event_map		
+ * -  field_event_slide			
+ * -  field_event_type			
+ * -  field_event_video			
+      ENTER COLUMN BLOCK HERE
  *
  */
 #}
@@ -103,17 +109,20 @@
         {% endif %}
       </div>{# Close Carousel #}
     </div>
-  </div>
+  </div>{# Close one column #}
 
   <div class="row layout--1-2col-9-3 event__content">
     <div class="col-sm-12 col-md column first event__info">
       {{ content.left_9 }}
-      <h2>Description</h2>
+      <h2>{{ content.field_event_desciption|field_label }}</h2>
       <div class="event__bio">
-        {{ content.field_hon_bio01|field_value }}
+        {{ content.field_event_desciption|field_value }}
       </div>
-      {{ content.field_event_accordion|field_value }}
-      {{ content.body|field_value }}
+        {% if content.field_event_content_block	|field_value is not empty %}
+          {% for item in content.field_event_content_block	|field_value %}
+            {{ item }}
+          {% endfor %}
+        {% endif %}
     </div>
 
     <div class="col-sm-12 col-md-3 column last">

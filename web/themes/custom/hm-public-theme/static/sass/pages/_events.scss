@@ -17,6 +17,11 @@
 
   .bio-card--list {
     max-width: 30%;
+
+    a {
+      overflow: hidden;
+    }
+
   }
 
   @media screen and (max-width: 700px) {
@@ -77,8 +82,12 @@
 
 .event__content .last {
   padding-left: 0;
+}
 
-  @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
+
+  .event__content .first,
+  .event__content .last {
     margin-left: 30px;
     margin-top: em(30);
     max-width: 96%;
@@ -98,8 +107,21 @@
     width: 100%;
   }
 
+  @media screen and (max-width: 950px) {
+
+    .accordion-block.accordion {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+  }
+
+  .accordion-block.accordion .accordion__body.show {
+    width: 100%;
+  }
+
   .accordion__body {
-    padding: em(15);
+    padding: em(15) 0;
 
     @media screen and (max-width: 768px) {
       padding-left: 0;
@@ -110,16 +132,6 @@
       width: 100%;
     }
 
-  }
-
-}
-
-.event__sponsor {
-
-  img {
-    height: auto;
-    margin-top: $default-grid-gutter-width;
-    max-width: 100%;
   }
 
 }
@@ -139,4 +151,55 @@
 .event__date-and-time h2,
 .event__location h2 {
   margin-bottom: em(5);
+}
+
+//Featured Guest Block
+.event__featured-guest {
+
+  h2 {
+    padding-left: 0;
+  }
+
+  img {
+    float: left;
+    margin: 0 30px 30px 0;
+  }
+
+  @media screen and (max-width: 950px) {
+
+    img {
+      margin: 0 15px 15px 0;
+    }
+
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+}
+
+//Basic Block
+.event__featured-guest,
+.paragraph--type--basic-block-content {
+  margin-bottom: 30px;
+}
+
+//Two Column Content
+.paragraph.paragraph--type--two-column-basic-content {
+  column-count: 2;
+
+  p:first-child {
+    margin-top: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    column-count: 1;
+
+    p:first-child {
+      margin-top: 1em;
+    }
+
+  }
+
 }

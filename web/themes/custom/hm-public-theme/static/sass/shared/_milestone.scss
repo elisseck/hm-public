@@ -9,7 +9,7 @@
   }
 
   .views-row {
-    flex: 1 0 100%;
+    flex: 1 0 60%;
     margin: em(30) em(50);
 
     @media screen and (max-width: 768px) {
@@ -30,16 +30,14 @@
   }
 
   &--image {
-    flex: 1 0 auto;
+    flex: 1;
     height: auto;
     margin-right: em(30);
     max-width: 300px;
     overflow: hidden;
 
     img {
-      margin-left: 30px;
       max-height: 340px;
-      padding: 15px;
     }
 
     @media screen and (max-width: 768px) {
@@ -48,7 +46,6 @@
       img {
         margin-left: 0;
         max-height: 200px;
-        padding: 0 0 15px;
         width: auto;
       }
     }
@@ -58,9 +55,9 @@
   &--content {
     @extend %source-sans;
     color: $white;
-    flex: 1 0 90%;
+    flex: 1;
     line-height: normal;
-    padding-right: 10%;
+    margin-right: 30px;
   }
 
   h4 {
@@ -69,7 +66,6 @@
 
   &--intro {
     line-height: normal;
-    margin-right: 30px;
   }
 
 }
@@ -78,15 +74,6 @@
 
   .timeline-scroller {
     flex-wrap: wrap;
-  }
-
-  .timeline-scroller--image img {
-    margin-left: 0;
-    padding: 15px 0;
-  }
-
-  .timeline-scroller--content {
-    padding-right: 0;
   }
 
 }
