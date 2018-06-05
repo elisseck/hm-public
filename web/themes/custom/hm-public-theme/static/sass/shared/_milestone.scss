@@ -9,7 +9,7 @@
   }
 
   .views-row {
-    flex: 1 0 60%;
+    flex: 1 0 80%;
     margin: em(30) em(50);
 
     @media screen and (max-width: 768px) {
@@ -23,14 +23,13 @@
 .timeline-scroller {
   display: flex;
   flex-direction: row;
-  padding-right: em(30);
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
 
   &--image {
-    flex: 1;
+    flex: none;
     height: auto;
     margin-right: em(30);
     max-width: 300px;
@@ -41,6 +40,7 @@
     }
 
     @media screen and (max-width: 768px) {
+      margin-bottom: 15px;
       margin-right: 0;
 
       img {
