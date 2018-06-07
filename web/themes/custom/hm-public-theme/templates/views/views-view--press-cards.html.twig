@@ -20,33 +20,34 @@
                 {{ entry['#row']._entity.title.value }}
 
                 <dl>
-                  {% if entry['#row']._entity.field_publisher.value %}
+                  {% if entry['#row']._entity.field_publisher%}
                     <dt>Publication: </dt>
                     <dd> {{ entry['#row']._entity.field_publisher.value }}</dd>
                   {% endif %}
 
-                  {% if entry['#row']._entity.field_press_date.value %}
+                  {% if entry['#row']._entity.field_press_date %}
                     <dt>Date: </dt>
                     <dd> {{ entry['#row']._entity.field_press_date.value | date("l, F d, Y") }}</dd>
                   {% endif %}
 
-                  {# {% if entry['#row']._entity.field_collection.value %}
+
+                  {% if entry['#row']._entity.field_collection %}
                     <dt>Collection: </dt>
-                    <dd> {{ entry['#row']._entity.field_collection.value }}</dd>
+                    <dd> {{ entry['#row']._entity.field_collection.entity.label }}</dd>
                   {% endif %}
 
-                  {% if entry['#row']._entity.field_press_category.value %}
+                  {% if entry['#row']._entity.field_press_category %}
                     <dt>Category: </dt>
-                    <dd> {{ entry['#row']._entity.field_press_category.value }}</dd>
-                  {% endif %} #}
+                    <dd> {{ entry['#row']._entity.field_press_category.entity.label }}</dd>
+                  {% endif %}
 
-                  {% if entry['#row']._entity.field_press_program.value %}
+                  {% if entry['#row']._entity.field_press_program %}
                     <dt>Program: </dt>
                     <dd> {{ entry['#row']._entity.field_press_program.value }}</dd>
                   {% endif %}
 
                 </dl>
-                {% if entry['#row']._entity.field_pdf_upload.value %}
+                {% if entry['#row']._entity.field_pdf_upload %}
                   {{ entry['#row']._entity.field_pdf_upload['#list'][0].values }}
                   <a href="{{ file_url( entry['#row']._entity.field_pdf_upload.entity.uri.value ) }}">
                       Click here to view PDF
@@ -54,7 +55,7 @@
                 {% endif %}
 
 
-                {% if entry['#row']._entity.field_wav_upload.value %}
+                {% if entry['#row']._entity.field_wav_upload %}
                   {{ entry['#row']._entity.field_wav_upload['#list'][0].values }}
                   <a href="{{ file_url( entry['#row']._entity.field_wav_upload.entity.uri.value ) }}">
                       Click here to download audio
