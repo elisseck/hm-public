@@ -6,17 +6,17 @@
  * Available variables using Paragraphs:
  * -  field_date
  * -  field_date_and_time_details
- * -  field_date_image_label	
- * -  field_event_address	
- * -  field_event_card_image		
- * -  field_event_content_block		
- * -  field_event_desciption		
- * -  field_event_map		
- * -  field_event_slide			
- * -  field_event_type	
+ * -  field_date_image_label
+ * -  field_event_address
+ * -  field_event_card_image
+ * -  field_event_content_block
+ * -  field_event_desciption
+ * -  field_event_map
+ * -  field_event_slide
+ * -  field_event_type
       Post Event Content
- * -  field_display_post_event_content			
- * -  field_post_event_pictures	
+ * -  field_display_post_event_content
+ * -  field_post_event_pictures
  *
  */
 #}
@@ -142,30 +142,18 @@
   </div>
 
   {% if content.field_display_post_event_content|field_raw('value')|number_format(0,'.',',') is same as('1') %}
-    <div>
-    <h2>I am ready to show post content</h2>
 
-    {#{{ content.field_post_event_pictures|field_value }}#}
+    {# Show Post Event Pictures #}
+    <div class="row">
+      <div class="col-sm-12 column px-4 my-4">  
+        <div class="collage event__collage">
+          {{ content.field_post_event_pictures|field_value }}
+        </div>  
+      </div>
+    </div>  
+  {% endif %}  
 
-    <div class="collage">
-    {% for c in collageTotal %}
-      {% set collageItem = content.field_collage_paragraph[loop.index0]['#paragraph'] %}
-      <a href="{{ collageItem.field_collage_img_link.0.url }}">
-        <div class="collage__container">
-            <div class="collage__overlay"></div>
-            <img class="collage__img" src="{{ file_url(collageItem.field_collage_image.entity.uri.value) }}" alt="">
-            <div class="collage__info">
-              <div class="collage__title">{{ collageItem.field_collage_img_title.value }}</div>
-              <p>{{ collageItem.field_collage_img_caption.value }}</p>
-            </div>
-        </div>
-      </a>
-    {% endfor %}
-    </div>
-    </div>
-  {% endif %}
-
-</div>
+</div>{# <div class="contextual-region"> #}
 
 <script>
 $(document).ready(function () {

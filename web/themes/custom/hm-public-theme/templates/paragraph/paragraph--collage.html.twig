@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Image entry for collage container
+ *
+#}
+
+<a href="{{ content.field_collage_img_link|field_raw('uri') }}">
+  <div class="collage__container">
+      <div class="collage__overlay"></div>
+
+      <img class="collage__img" src={{ file_url(content.field_collage_image|field_target_entity.uri.value) }} alt={{ content.field_collage_image|field_raw('alt') }} />
+
+      <div class="collage__info">
+        <div class="collage__title">{{ content.field_collage_img_title|field_value }}</div>
+        <p>{{ content.field_collage_img_caption|field_value }}</p>
+      </div>
+  </div>
+</a>
