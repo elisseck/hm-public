@@ -8,7 +8,9 @@ function thm_hero_video_player_theme($existing, $type, $theme, $path){
     return [
         'angular' => [
             'variables' => [
-                'video' => null
+                'video' => null,
+                'title' => null,
+                'body' => null
             ],
             'template' => 'block--bundle--hero-video-player'
         ]

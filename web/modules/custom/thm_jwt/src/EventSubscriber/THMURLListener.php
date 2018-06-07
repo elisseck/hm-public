@@ -39,7 +39,6 @@ class THMURLListener implements EventSubscriberInterface {
 
   protected function isAQualifyingUrl(string $url) {
     return thm_jwt_request_has_return_url($url) &&
-      thm_jwt_url_has_jwt_entry($url) &&
       $this->currentUser->isAuthenticated();
   }
 
@@ -57,7 +56,13 @@ class THMURLListener implements EventSubscriberInterface {
       }
 
       $token    = thm_jwt_fetch_token($session);
-      $freshUrl = thm_jwt_refresh_url($url, $token);
+
+      if ((thm_jwt_url_has_jwt_entry($url))) {
+        $freshUrl = thm_jwt_refresh_url($url, $token);
+      } else {
+        $freshUrl = urldecode(explode('return=', $url)[0]) . '?jwt=' . $token;
+      }
+
       thm_jwt_redirect_to_return_url($freshUrl);
     }
   }

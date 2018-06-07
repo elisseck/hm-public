@@ -1,7 +1,7 @@
 thm_adv_search.autocomplete:
-  path: '/adv-search-autocomplete'
+  path: '/fetch-facet-data/{facet_id}'
   defaults:
-    _controller: '\Drupal\thm_adv_search\Controller\AutocompleteController::autocomplete'
+    _controller: '\Drupal\thm_adv_search\Controller\AutocompleteController::fetch'
     _format: json
   requirements:
-    _access: 'access content'
+    _access: 'TRUE'
