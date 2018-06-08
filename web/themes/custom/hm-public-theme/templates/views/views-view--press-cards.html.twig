@@ -27,7 +27,7 @@
 
                   {% if entry['#row']._entity.field_press_date %}
                     <dt>Date: </dt>
-                    <dd> {{ entry['#row']._entity.field_press_date.value | date("l, F d, Y") }}</dd>
+                    <dd> {{ entry['#row']._entity.field_press_date.value | join('') | date("l, F d, Y") }}</dd>
                   {% endif %}
 
 
@@ -47,16 +47,14 @@
                   {% endif %}
 
                 </dl>
-                {% if entry['#row']._entity.field_pdf_upload %}
-                  {{ entry['#row']._entity.field_pdf_upload['#list'][0].values }}
+                {% if entry['#row']._entity.field_pdf_upload.value %}
                   <a href="{{ file_url( entry['#row']._entity.field_pdf_upload.entity.uri.value ) }}">
                       Click here to view PDF
-                  </a>
+                  </a><br><br>
                 {% endif %}
 
 
-                {% if entry['#row']._entity.field_wav_upload %}
-                  {{ entry['#row']._entity.field_wav_upload['#list'][0].values }}
+                {% if entry['#row']._entity.field_wav_upload.value %}
                   <a href="{{ file_url( entry['#row']._entity.field_wav_upload.entity.uri.value ) }}">
                       Click here to download audio
                   </a>
