@@ -85,8 +85,7 @@
     <div class="col-sm-12 column">
       {{ content.banner }}
       {% if content.field_display_post_event_content|field_raw('value')|number_format(0,'.',',') is same as('1') %}
-        {{ drupal_block('hero_video_player_block', {video_url: 'content.field_post_event_video_url', hero_title: 'content.	field_post_event_video_title', hero_desc: 'field_post_event_video_descript'}) }}
-        {{ drupal_block('hero_video_player_block', {video_url: '<url_ref>', hero_title: '<title_ref>', hero_desc: 'content.'}) }}
+        {{ drupal_block('hero_video_player_block', {video_url: content.field_post_event_video_url|field_value, hero_title: content.	field_post_event_video_title|field_value, hero_desc: 	content.field_post_event_video_descript|field_value}) }}
       {% else %} 
       {# Carousel #}
       <div class="event-carousel two-column-snapshot-carousel carousel slide" data-ride="carousel">
