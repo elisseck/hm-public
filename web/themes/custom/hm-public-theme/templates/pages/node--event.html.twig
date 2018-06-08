@@ -6,17 +6,17 @@
  * Available variables using Paragraphs:
  * -  field_date
  * -  field_date_and_time_details
- * -  field_date_image_label	
- * -  field_this_event_has_already_occ	
- * -  field_event_address	
- * -  field_event_card_image		
- * -  field_event_content_block		
- * -  field_event_desciption		
- * -  field_event_map		
- * -  field_event_slide			
- * -  field_event_type			
- * -  field_event_video			
-      ENTER COLUMN BLOCK HERE
+ * -  field_date_image_label
+ * -  field_event_address
+ * -  field_event_card_image
+ * -  field_event_content_block
+ * -  field_event_desciption
+ * -  field_event_map
+ * -  field_event_slide
+ * -  field_event_type
+      Post Event Content
+ * -  field_display_post_event_content
+ * -  field_post_event_pictures
  *
  */
 #}
@@ -84,39 +84,45 @@
   <div class="row">
     <div class="col-sm-12 column">
       {{ content.banner }}
-      {# Carousel #}
-      <div class="event-carousel two-column-snapshot-carousel carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          {% if content.field_event_slide|field_value is not empty %}
-            {% for item in content.field_event_slide|field_value %}
-              <div class="carousel-item">
-                <div class="hero-slide--date">
-                  {{ content.field_date_image_label|field_value }}
+  
+      {% if content.field_display_post_event_content|field_raw('value')|number_format(0,'.',',') is same as('1') and content.field_post_event_video_url|field_value is not empty %}
+        {{ drupal_block('hero_video_player_block', {video_url: content.field_post_event_video_url|field_value, hero_title: content.	field_post_event_video_title|field_value, hero_desc: 	content.field_post_event_video_descript|field_value}) }}
+      {% else %} 
+        {# Carousel #}
+        <div class="event-carousel two-column-snapshot-carousel carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            {% if content.field_event_slide|field_value is not empty %}
+              {% for item in content.field_event_slide|field_value %}
+                <div class="carousel-item">
+                  <div class="hero-slide--date">
+                    {{ content.field_date_image_label|field_value }}
+                  </div>
+                  {{ item }}
                 </div>
-                {{ item }}
-              </div>
-            {% endfor %}
-          {% endif %}
-        </div>
-        {# Pager #}
-        {% if content.field_event_slide|length > 17 %}
-          <div class="centered-carousel-indicators carousel-indicators" role="menu">
-            {% for list in content.field_event_slide['#items'] %}
-              {% set item_classes = [start_index == loop.index0 ? 'active'] %}
-              <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href=".event-carousel"></a>
-            {% endfor %}
+              {% endfor %}
+            {% endif %}
           </div>
-        {% endif %}
-      </div>{# Close Carousel #}
+          {# Pager #}
+          {% if content.field_event_slide|length > 17 %}
+            <div class="centered-carousel-indicators carousel-indicators" role="menu">
+              {% for list in content.field_event_slide['#items'] %}
+                {% set item_classes = [start_index == loop.index0 ? 'active'] %}
+                <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href=".event-carousel"></a>
+              {% endfor %}
+            </div>
+          {% endif %}{# Close Pager #}
+        </div>{# Close Carousel #}
+      {% endif %}{# Close Boolean #}
+
     </div>
   </div>{# Close one column #}
 
   <div class="row layout--1-2col-9-3 event__content">
     <div class="col-sm-12 col-md column first event__info">
       {{ content.left_9 }}
-      <h2>{{ content.field_event_desciption|field_label }}</h2>
+      <h2>{{ content.field_body|field_label }}</h2>
       <div class="event__bio">
-        {{ content.field_event_desciption|field_value }}
+        {{ content.field_body|field_value }}
       </div>
         {% if content.field_event_content_block	|field_value is not empty %}
           {% for item in content.field_event_content_block	|field_value %}
@@ -139,9 +145,21 @@
         {{ content.field_event_map|field_value }}
       </div>
     </div>
-
   </div>
-</div>
+
+  {% if content.field_display_post_event_content|field_raw('value')|number_format(0,'.',',') is same as('1') %}
+
+    {# Show Post Event Pictures #}
+    <div class="row">
+      <div class="col-sm-12 column px-4 my-4">  
+        <div class="collage event__collage">
+          {{ content.field_post_event_pictures|field_value }}
+        </div>  
+      </div>
+    </div>  
+  {% endif %}  
+
+</div>{# <div class="contextual-region"> #}
 
 <script>
 $(document).ready(function () {
