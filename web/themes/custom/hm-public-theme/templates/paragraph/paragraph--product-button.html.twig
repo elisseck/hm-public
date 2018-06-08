@@ -4,12 +4,16 @@
  * Theme override for paragraph Product Button
  *
  * Available variables using Paragraphs:
- * -  field_product_button (entity reference to the store)
+ * -  field_buy_tickets (entity reference to the store)
  * -  field_product_button_text
  *
+
+  {{ drupal_dump(content.field_buy_tickets) }}
+
  */
 #}
 
-<a href="{{ content.field_product_button|field_raw('uri') }}" class="button button--primary carousel__caption--buttons">
+{#<a href="{{ content.field_buy_tickets|field_raw('uri') }}" class="button button--primary carousel__caption--buttons">
   {{ content.field_product_button_text|field_value }}
-</a>
+</a>#}
+{{ content.field_buy_tickets|field_value }}

@@ -1,7 +1,8 @@
 // Generic content styles
 
 // Basic Block Content
-.wrapper .basic-block {
+.wrapper .basic-block, 
+.basic-block {
   @extend %max-width;
   @extend %med-width-content;
   margin-bottom: $default-grid-gutter-width;
