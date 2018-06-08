@@ -1,25 +1,46 @@
 (function ($, Drupal, window, document, undefined) {
 
-  Drupal.behaviors.hm_public_theme = {
-    attach: function (context, settings) {
-      constants = Drupal.behaviors.fortytwoMain.constants;
+    Drupal.thm = Drupal.thm || {};
 
-      // Store responsive type
-      var body = $('body');
-      if (body.hasClass('layout-adaptive')) {
-        constants.LAYOUT = {
-          fluid: false,
-          adaptive: true,
-        };
-      }
-      else if (body.hasClass('layout-fluid')) {
-        constants.LAYOUT = {
-          fluid: true,
-          adaptive: false,
-        };
-      }
-    },
-  };
+    Drupal.behaviors.hm_public_theme = {
+        attach: function (context, settings) {
+
+            var constants = Drupal.behaviors.fortytwoMain.constants;
+
+            // Store responsive type
+            var body = $('body');
+            if (body.hasClass('layout-adaptive')) {
+                constants.LAYOUT = {
+                fluid: false,
+                adaptive: true
+                };
+            }
+            else if (body.hasClass('layout-fluid')) {
+                constants.LAYOUT = {
+                fluid: true,
+                adaptive: false
+                };
+            }
+
+            if (settings.path.currentPath === 'advanced-search') {
+                Drupal.thm.handleFilterReset(context, settings);
+            }
+        }
+    };
+
+    Drupal.thm.handleFilterReset = function(context, settings) {
+        var containerCls = '.thm-adv-search-filter-mgmt',
+            targetId     = '#filter-reset',
+            path         = settings.path,
+            location     = window.location;
+
+        $(containerCls).find(targetId).once('handle-filter-reset').each(function() {
+            $(targetId).on('click', function(evt) {
+                evt.preventDefault();
+                location.replace(path.baseUrl + path.currentPath);
+            });
+        });
+    };
 
 })(jQuery, Drupal, this, this.document);
 
