@@ -84,34 +84,36 @@
   <div class="row">
     <div class="col-sm-12 column">
       {{ content.banner }}
-      {% if content.field_display_post_event_content|field_raw('value')|number_format(0,'.',',') is same as('1') %}
+  
+      {% if content.field_display_post_event_content|field_raw('value')|number_format(0,'.',',') is same as('1') and content.field_post_event_video_url|field_value is not empty %}
         {{ drupal_block('hero_video_player_block', {video_url: content.field_post_event_video_url|field_value, hero_title: content.	field_post_event_video_title|field_value, hero_desc: 	content.field_post_event_video_descript|field_value}) }}
       {% else %} 
-      {# Carousel #}
-      <div class="event-carousel two-column-snapshot-carousel carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          {% if content.field_event_slide|field_value is not empty %}
-            {% for item in content.field_event_slide|field_value %}
-              <div class="carousel-item">
-                <div class="hero-slide--date">
-                  {{ content.field_date_image_label|field_value }}
+        {# Carousel #}
+        <div class="event-carousel two-column-snapshot-carousel carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            {% if content.field_event_slide|field_value is not empty %}
+              {% for item in content.field_event_slide|field_value %}
+                <div class="carousel-item">
+                  <div class="hero-slide--date">
+                    {{ content.field_date_image_label|field_value }}
+                  </div>
+                  {{ item }}
                 </div>
-                {{ item }}
-              </div>
-            {% endfor %}
-          {% endif %}
-        </div>
-        {# Pager #}
-        {% if content.field_event_slide|length > 17 %}
-          <div class="centered-carousel-indicators carousel-indicators" role="menu">
-            {% for list in content.field_event_slide['#items'] %}
-              {% set item_classes = [start_index == loop.index0 ? 'active'] %}
-              <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href=".event-carousel"></a>
-            {% endfor %}
+              {% endfor %}
+            {% endif %}
           </div>
-        {% endif %}{# Close Pager #}
-      </div>{# Close Carousel #}
-      {% endif %}
+          {# Pager #}
+          {% if content.field_event_slide|length > 17 %}
+            <div class="centered-carousel-indicators carousel-indicators" role="menu">
+              {% for list in content.field_event_slide['#items'] %}
+                {% set item_classes = [start_index == loop.index0 ? 'active'] %}
+                <a {{ item.attributes.addClass(item_classes) }} data-target="{{ target }}" data-slide-to="{{ loop.index0 }}" href=".event-carousel"></a>
+              {% endfor %}
+            </div>
+          {% endif %}{# Close Pager #}
+        </div>{# Close Carousel #}
+      {% endif %}{# Close Boolean #}
+
     </div>
   </div>{# Close one column #}
 
