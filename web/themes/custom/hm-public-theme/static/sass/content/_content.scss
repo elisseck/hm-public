@@ -1,7 +1,7 @@
 // Generic content styles
 
 // Basic Block Content
-.wrapper .basic-block, 
+.wrapper .basic-block,
 .basic-block {
   @extend %max-width;
   @extend %med-width-content;
@@ -33,7 +33,8 @@ hr {
 }
 
 p img {
-  width: 100%;
+  margin: 0.5em 0.5em 0.5em 0;
+  max-width: 100%;
 }
 
 .share {
@@ -50,11 +51,19 @@ p img {
     top: 25%;
   }
 
+  @media only screen and (max-width: 768px) {
+    top: 32%;
+  }
+
 }
 
 .share__icon {
   height: auto;
   width: em(30);
+
+  @media screen and (min-width: 0\0) {
+    height: em(30);
+  }
 
   @media screen and (max-width: 1024px) {
     width: em(36);
