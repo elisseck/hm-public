@@ -33,7 +33,8 @@ hr {
 }
 
 p img {
-  width: 100%;
+  margin: 0.5em 0.5em 0.5em 0;
+  max-width: 100%;
 }
 
 .share {
@@ -48,6 +49,10 @@ p img {
 
   @media only screen and (max-width: 950px) {
     top: 25%;
+  }
+
+  @media only screen and (max-width: 768px) {
+    top: 32%;
   }
 
 }

@@ -11,6 +11,29 @@
   margin-right: auto;
   width: 70%;
 
+  .bio-card--list {
+    margin: 0 1em 1em 0;
+    max-width: 30%;
+
+    a {
+      min-height: 150px;
+      overflow: hidden;
+    }
+
+    @media screen and (max-width: 700px) {
+
+      .bio-card--list:nth-child(2n) {
+        margin-right: 0;
+      }
+
+    }
+  }
+
+  .bio-card--image {
+    min-height: 100px;
+  }
+
+  //IE 11 Fixes
   @media screen and (min-width: 0\0) {
 
     .bio-card--list a {
@@ -29,15 +52,6 @@
 
   @media screen and (max-width: 950px) {
     width: 100%;
-  }
-
-  .bio-card--list {
-    max-width: 30%;
-
-    a {
-      overflow: hidden;
-    }
-
   }
 
   @media screen and (max-width: 700px) {
@@ -224,9 +238,9 @@
 //Video Container
 .video-container {
 
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 1024px) {
 
-    .hero-vid__right-col {
+    section.hero-vid__right-col {
       padding: 30px;
     }
 
@@ -244,6 +258,7 @@
   }
 
   @media screen and (max-width: 768px) {
+    margin-bottom: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
 
@@ -254,7 +269,6 @@
   }
 
   @media screen and (max-width: 580px) {
-    margin-bottom: 0;
 
     h2.hero-vid__title {
       font-size: 1.875em;
