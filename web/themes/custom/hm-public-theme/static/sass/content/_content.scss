@@ -56,6 +56,10 @@ p img {
   height: auto;
   width: em(30);
 
+  @media screen and (min-width:0\0) {
+    height: em(30);
+  }  
+
   @media screen and (max-width: 1024px) {
     width: em(36);
   }
