@@ -46,6 +46,16 @@
                   {% endif %}
 
                 </dl>
+
+                {# Video: #}
+                {% if entry['#row']._entity.field_video_link %}
+                  <dt>Video: </dt>
+                  <dd>{{ entry['#row']._entity.field_video_link['#list'][0].values }}
+                  <a href="{{ file_url( entry['#row']._entity.field_video_link.entity.uri.value ) }}">
+                      {{ entry['#row']._entity.field_video_link.value }}
+                  </a></dd>
+                {% endif %}
+
                 {% if entry['#row']._entity.field_pdf_upload %}
                   {{ entry['#row']._entity.field_pdf_upload['#list'][0].values }}
                   <a href="{{ file_url( entry['#row']._entity.field_pdf_upload.entity.uri.value ) }}">
