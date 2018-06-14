@@ -178,26 +178,6 @@
 
 }
 
-// Press Cards
-.press-card-row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.press-card {
-  width: rem(300);
-}
-
-.press-card__img-bg {
-  align-items: center;
-  background-color: $white;
-  display: flex;
-  justify-content: center;
-  min-height: rem(75);
-}
-
-.press-card__img { max-height: rem(65); }
-
 %product-card {
   background: $white;
   border: 1px solid color(medium-grey);
