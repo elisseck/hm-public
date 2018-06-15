@@ -14,10 +14,10 @@
   .bio-card--list {
     margin: 0 1em 1em 0;
     max-width: 30%;
+    overflow: hidden;
 
     a {
       min-height: 150px;
-      overflow: hidden;
     }
 
     @media screen and (max-width: 700px) {
