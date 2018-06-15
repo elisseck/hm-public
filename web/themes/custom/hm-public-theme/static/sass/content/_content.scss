@@ -43,6 +43,10 @@ p img {
   top: 44%; // we may eventually want to use js to calculate this relative to the parent container
   z-index: 1000;
 
+  @media screen and (min-width: 0\0) {
+    top: 320px;
+  }
+
   @media only screen and (max-width: 1500px) {
     left: 10px;
   }
