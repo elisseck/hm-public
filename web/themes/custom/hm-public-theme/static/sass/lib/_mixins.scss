@@ -47,6 +47,8 @@
   max-width: $max-width;
 
   @media screen and (min-width: 0\0) {
+    padding-left: 30px;
+    padding-right: 30px;
     width: 100vw;
   }
 

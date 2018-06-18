@@ -43,6 +43,10 @@ p img {
   top: 44%; // we may eventually want to use js to calculate this relative to the parent container
   z-index: 1000;
 
+  @media screen and (min-width: 0\0) {
+    top: 320px;
+  }
+
   @media only screen and (max-width: 1500px) {
     left: 10px;
   }
@@ -59,14 +63,15 @@ p img {
 
 .share__icon {
   height: auto;
+  max-width: 36px;
   width: em(30);
 
   @media screen and (min-width: 0\0) {
     height: em(30);
   }
 
-  @media screen and (max-width: 1024px) {
-    width: em(36);
+  @supports (-webkit-appearance: none) {
+    width: 36px;
   }
 
 }
