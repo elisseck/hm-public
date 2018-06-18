@@ -70,6 +70,11 @@
     margin-top: 15px;
   }
 
+  .snapshot-link {
+    max-width: 318px;
+    word-wrap: break-word;
+  }
+
   .snapshot-link a:before {
     background-image: url('../images/link.svg');
     background-repeat: no-repeat;
