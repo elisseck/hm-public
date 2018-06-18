@@ -63,14 +63,15 @@ p img {
 
 .share__icon {
   height: auto;
+  max-width: 36px;
   width: em(30);
 
   @media screen and (min-width: 0\0) {
     height: em(30);
   }
 
-  @media screen and (max-width: 1024px) {
-    width: em(36);
+  @supports (-webkit-appearance: none) {
+    width: 36px;
   }
 
 }
