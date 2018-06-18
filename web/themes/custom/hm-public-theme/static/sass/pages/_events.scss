@@ -1,3 +1,4 @@
+//Events
 .view.list-events {
   @extend %max-width;
 }
@@ -11,10 +12,31 @@
   margin-right: auto;
   width: 70%;
 
+  @media screen and (max-width: 1024px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+
   .bio-card--list {
+    align-content: center;
     margin: 0 1em 1em 0;
     max-width: 33%;
     overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+      max-width: 50%;
+      min-width: 45%;
+    }
+
+    @media screen and (max-width: 520px) {
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 100%;
+      min-width: 100%;
+    }
 
     .field-content {
       display: flex;
@@ -22,58 +44,39 @@
     }
 
     a {
-      min-height: 150px;
 
-      @media screen and (min-width: 0\0) {
-        min-height: 200px;
+      @media screen and (max-width: 950px) {
+        width: 100%;
       }
 
-    }
+      @media screen and (max-width: 700px) {
 
-    @media screen and (max-width: 950px) {
-      width: 100%;
-    }
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
 
-    @media screen and (max-width: 700px) {
-      max-width: 48%;
-      min-width: 40%;
+        &:nth-child(3n) {
+          margin-left: 0;
+        }
 
-      &:nth-child(2n) {
+      }
+
+      @media screen and (max-width: 550px) {
+        margin-left: 0;
         margin-right: 0;
       }
 
-      &:nth-child(3n) {
-        margin-left: 0;
+    }//a
+
+    @supports (-webkit-appearance: none) {
+
+      .bio-card--content {
+        flex: 0 1 auto;
       }
 
     }
 
-    @media screen and (max-width: 550px) {
-      margin-left: 0;
-      margin-right: 0;
-      max-width: 100%;
-      min-width: 100%;
-
-    }
-
-  }
-
-  .bio-card--image {
-    min-height: 100px;
-
-    @supports (-webkit-appearance: none) {
-      min-height: 160px;
-    }
-
-  }
-
-  @supports (-webkit-appearance: none) {
-
-    .bio-card--content {
-      flex: 0 1 auto;
-    }
-
-  }
+  }//.bio-card--list
 
   h3 {
     color: color(quaternary);
