@@ -37,9 +37,6 @@ fieldset { border: 0; }
 .form-submit,
 .form__button a {
   @extend %button;
-  @extend .button;
-
-  //width: em(100);
 }
 
 .form-submit {

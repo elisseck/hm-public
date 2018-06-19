@@ -1,0 +1,121 @@
+#checkoutprogress {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+form#commerce-checkout-flow-thm-donation-checkout-flow {
+  @extend %med-width-content;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+//Required *
+.form-wrapper .form-item span.form-required {
+  color: $red;
+}
+
+//Normalizing form elements
+.form-text {
+  margin: 0;
+}
+
+fieldset,
+.form-item,
+.authorize-net-accept-js-form.form-wrapper,
+.edit-payment-information-add-payment-method-billing-information {
+  margin: 0 0 15px;
+  padding: 0;
+}
+
+.form-item select {
+  -webkit-appearance: none;
+  border-radius: 0;
+  border: 1px solid #ccc;
+  height: 45px;
+  padding: 0 5px;
+}
+
+//Donation
+.layout-checkout-form .checkout-pane .fieldgroup > legend span.fieldset-legend.form-required,
+.layout-checkout-form .checkout-pane > legend span.fieldset-legend,
+.layout-checkout-form .checkout-pane .fieldgroup > legend span.fieldset-legend {
+  @extend %card-header;
+  color: color(quaternary);
+  font-size: em(20);
+}
+
+#edit-thm-donation-opts-donation-opts,
+.form-item.form-item-payment-information-payment-method.form-type-radio,
+.checkout-pane.checkout-pane-payment-information.form-wrapper {
+
+  input[type='radio'] + label, input[type='checkbox'] + label {
+    display: flex;
+  }
+
+  input[type='radio'] + label:before, input[type='checkbox'] + label:before {
+    align-self: center;
+    background-color: $white;
+    border-radius: 20px;
+    border: 1px solid color(medium-grey);
+    content: " ";
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+  }
+
+  input[type='radio']:checked + label:before {
+    color: color(quaternary);
+    content: "\0000B7";
+    font-size: 80px;
+    line-height: 2px;
+    z-index: 10;
+  }
+
+  input[type='radio']:checked + label {
+    color: inherit;
+  }
+
+}
+
+//Email Address
+.form-item.form-item-thm-donation-opts-donor-email.form-type-email {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  label.form-required {
+    flex: 1 0 100%;
+  }
+
+  span.form-required {
+    color: $red;
+    flex: 0;
+    margin-right: 5px;
+  }
+
+  input#edit-thm-donation-opts-donor-email {
+    flex: 1;
+  }
+
+}
+
+input#edit-thm-donation-opts-submit {
+  margin-top: 30px;
+  width: 150px;
+}
+
+li.checkout-progress--step.checkout-progress--step__previous {
+  background: color(primary);
+  color: $white;
+}
+
+//Payment information
+.authorize-net-accept-js-form.form-wrapper {
+  border-bottom: 1px solid color(medium-grey);
+  border-top: 1px solid color(medium-grey);
+  margin-bottom: 30px;
+  padding-top: 15px;
+}
