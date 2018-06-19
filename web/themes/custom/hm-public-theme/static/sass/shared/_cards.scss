@@ -45,6 +45,16 @@
     max-width: 48%;
   }
 
+  @media screen and (max-width: 767px) {
+    margin: 0 auto 1em;
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 520px) {
+    margin: 0 auto 1em;
+    max-width: 100%;
+  }
+
   &--accordion {
     background: $white;
     border: 1px solid color(medium-grey);
@@ -178,26 +188,6 @@
 
 }
 
-// Press Cards
-.press-card-row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.press-card {
-  width: rem(300);
-}
-
-.press-card__img-bg {
-  align-items: center;
-  background-color: $white;
-  display: flex;
-  justify-content: center;
-  min-height: rem(75);
-}
-
-.press-card__img { max-height: rem(65); }
-
 %product-card {
   background: $white;
   border: 1px solid color(medium-grey);
@@ -214,17 +204,4 @@
   flex-direction: column;
   margin: em(7);
   padding: em(15);
-}
-
-//Events
-.list-events {
-
-  .field-content a {
-    min-height: 300px;
-  }
-
-  .bio-card--list a .bio-card--image {
-    min-height: 150px;
-  }
-
 }

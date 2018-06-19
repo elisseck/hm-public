@@ -1,0 +1,111 @@
+// Press Cards
+.list-press-cards .view-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3.75em;
+
+  .views-row {
+    flex: 1 0 29%;
+    margin: 0 30px 30px 0;
+    max-width: 33%;
+
+    @media screen and (max-width: 1024px) {
+      flex: 1 0 auto;
+      max-width: 45%;
+    }
+
+    @media screen and (max-width: 767px) {
+      margin: 0 15px 30px 0;
+      max-width: 97%;
+    }
+
+  }
+
+  .press-card__img-bg {
+    align-items: center;
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    min-height: rem(75);
+  }
+
+  .press-card__img-bg img {
+    max-height: rem(65);
+    width: auto;
+  }
+
+  .views-field-title {
+    @extend %source-sans-semi-bold;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  .views-field-title,
+  .views-field-field-publisher,
+  .views-field-field-press-date,
+  .views-field-field-collection,
+  .views-field-field-press-category,
+  .views-field-field-press-program,
+  .views-field-field-press-link,
+  .views-field-field-video-link,
+  .views-field-field-pdf-upload,
+  .views-field-field-wav-upload {
+    display: flex;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .views-label-field-publisher,
+  .views-label-field-press-date,
+  .views-label-field-collection,
+  .views-label-field-press-category,
+  .views-label-field-press-program,
+  .views-label-field-video-link {
+    padding-right: 10px;
+  }
+
+  .views-field-field-press-link,
+  .views-field-field-pdf-upload,
+  .views-field-field-wav-upload {
+    margin-top: 15px;
+  }
+
+  .snapshot-link {
+    max-width: 318px;
+    word-wrap: break-word;
+  }
+
+  .snapshot-link a:before {
+    background-image: url('../images/link.svg');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    content: '';
+    display: inline-block;
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
+  }
+
+  .snapshot-audio a:before {
+    background-image: url('../images/audio-file-icon.svg');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    content: '';
+    display: inline-block;
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
+  }
+
+  .snapshot-download a:before {
+    background-image: url('../images/download-arrow.svg');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    content: '';
+    display: inline-block;
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
+  }
+
+}

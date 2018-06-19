@@ -42,6 +42,37 @@
   padding-bottom: em(30);
 }
 
+//Event Carousel
+.event-carousel {
+  margin-top: 1.875em;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 0;
+
+    .carousel-inner { padding: 0; }
+
+  }
+
+  .carousel-item {
+    margin-left: $default-grid-gutter-width;
+    width: 98%;
+
+    @media screen and (min-width: 0\0) {
+      margin-left: 0;
+      margin-right: 30px;
+    }
+
+    @media screen and (max-width: 767px) {
+      margin: 0;
+      max-width: 100%;
+      padding: 0;
+      width: 100%;
+    }
+
+  }
+
+}
+
 // Pagers
 .centered-carousel-indicators.carousel-indicators {
   left: 0;

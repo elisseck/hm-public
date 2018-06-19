@@ -13,7 +13,6 @@
  */
 #}
 
-{#<a href="{{ content.field_buy_tickets|field_raw('uri') }}" class="button button--primary carousel__caption--buttons">
+<a href="/product/{{ content.field_buy_tickets|field_value }}" class="button button--primary carousel__caption--buttons">
   {{ content.field_product_button_text|field_value }}
-</a>#}
-{{ content.field_buy_tickets|field_value }}
+</a>
