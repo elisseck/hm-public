@@ -45,6 +45,16 @@
     max-width: 48%;
   }
 
+  @media screen and (max-width: 767px) {
+    margin: 0 auto 1em;
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 520px) {
+    margin: 0 auto 1em;
+    max-width: 100%;
+  }
+
   &--accordion {
     background: $white;
     border: 1px solid color(medium-grey);
