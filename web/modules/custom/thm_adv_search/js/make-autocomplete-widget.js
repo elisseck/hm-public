@@ -30,6 +30,7 @@
             options  = {
                 getValue: function(e) { return e.name; },
                 url: '/fetch-facet-data/' + widgetId,
+                adjustWidth: false,
                 list: {
                     match: { enabled: true },
                     onChooseEvent: function() { _addFilter($(ele).getSelectedItemData()); }
@@ -112,6 +113,9 @@
         }).then(function(data) {
             var filterName = data.find(function(item) { return item.value.endsWith(args[1]); }).name;
             _createFilterControl({ name: filterName, field: args[0], id: args[1] });
+        }).catch(function(err) {
+            console.error('An error occurred retrieving data for the %s facet', args[0]);
+            console.error(err);
         });
     }
 
