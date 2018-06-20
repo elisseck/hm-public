@@ -70,7 +70,7 @@ function thm_checkout_registration_form_alter(&$form, FormStateInterface $formSt
 
 function getAddressFields() {
   return [
-    '.country-code', '.given-name', '.family-name', '.address-line1',
+    '.given-name', '.family-name', '.country-code', '.address-line1',
     '.address-line2', '.dependent-locality', '.sorting-code',
     '.organization', '.locality', '.administrative-area', '.postal-code'
   ];
