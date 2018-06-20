@@ -1,0 +1,6 @@
+thm_adv_search.admin.config:
+  title: 'Exclude Bundles'
+  parent: system.admin_config_search
+  description: 'Exclude Content Types from Advanced Search'
+  route_name: thm_adv_search.admin.config
+  menu_name: admin

@@ -1,0 +1,37 @@
+.list-advanced-search {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: em(60);
+  padding: 0 $default-grid-gutter-width 0 0;
+
+  .view-content {
+    display: flex;
+    flex: 1;
+    flex-flow: row wrap;
+    order: 4;
+  }
+
+  .pager {
+    align-self: center;
+    flex: 1;
+    flex-basis: 50%;
+    margin: 1.5em 0 3em;
+    order: 2;
+  }
+}
+
+.js-facets-autocomplete {
+  max-width: 100% !important;
+}
+
+.views-field-title {
+  text-align: center;
+  h3 { font-size: 1.5625em; }
+  h4 {
+    font-size: 1em;
+    line-height: 1.1;
+  }
+}
+

@@ -3,6 +3,6 @@ type: module
 description: 'custom modifications supporting search functionality'
 core: 8.x
 package: 'Custom'
+configure: thm_adv_search.admin.config
 dependencies:
   - search_api
-  - chosen
