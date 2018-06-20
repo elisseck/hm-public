@@ -35,7 +35,10 @@ form.commerce-checkout-flow-thm-donation-checkout-flow.commerce-checkout-flow {
   margin-top: 0;
 }
 
-#edit-field-intl-address-0 {
+#edit-field-intl-address-0,
+.form-item.form-item-field-cell-phone-0-value.form-type-textfield,
+.form-item.form-item-field-home-phone-0-value.form-type-textfield,
+.form-item.form-item-field-work-phone-0-value.form-type-textfield {
   margin-bottom: 0;
 }
 
@@ -155,6 +158,23 @@ li.checkout-progress--step.checkout-progress--step__previous {
   border-top: 1px solid color(medium-grey);
   margin-bottom: 30px;
   padding-top: 15px;
+}
+
+//Picture
+.form-item.form-item-user-picture-0.form-type-managed-file {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.form-item.form-item-user-picture-0.form-type-managed-file > label {
+  flex: 1;
+  flex-basis: 100%;
+}
+
+.form-item.form-item-user-picture-0.form-type-managed-file > p {
+  margin-top: 0;
+  padding-left: 30px;
 }
 
 //Hide things
