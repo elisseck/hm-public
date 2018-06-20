@@ -110,6 +110,7 @@
   max-width: 72%;
 
   @media screen and (max-width: 768px) {
+    margin-top: 0;
     max-width: 96%;
   }
 
@@ -292,4 +293,9 @@
 .event__pictures .px-4 {
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+//Hides native video play icon
+video::-webkit-media-controls {
+  opacity: 0;
 }
