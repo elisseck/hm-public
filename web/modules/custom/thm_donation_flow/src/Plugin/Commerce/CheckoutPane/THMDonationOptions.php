@@ -70,7 +70,7 @@ class THMDonationOptions extends CheckoutPaneBase {
 
     $pane_form['donation_opts'] = [
       '#type' => 'radios',
-      '#title' => $this->t('Choose one'),
+      '#title' => $this->t('Donation Amount'),
       '#default_value' => 1,
       '#required' => true,
       '#options' => $this->getDonationData(),
