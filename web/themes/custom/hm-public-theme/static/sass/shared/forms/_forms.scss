@@ -59,8 +59,8 @@ fieldset,
 
 .form-item select {
   -webkit-appearance: none;
+  border: 1px solid color(medium-grey);
   border-radius: 0;
-  border: 1px solid #ccc;
   height: 45px;
   padding: 0 5px;
 }
@@ -95,9 +95,9 @@ label {
   input[type='radio'] + label:before, input[type='checkbox'] + label:before {
     align-self: center;
     background-color: $white;
-    border-radius: 20px;
     border: 1px solid color(medium-grey);
-    content: " ";
+    border-radius: 20px;
+    content: ' ';
     display: inline-block;
     height: 20px;
     width: 20px;
@@ -105,7 +105,7 @@ label {
 
   input[type='radio']:checked + label:before {
     color: color(quaternary);
-    content: "\0000B7";
+    content: '\0000B7';
     font-size: 80px;
     line-height: 2px;
     z-index: 10;
