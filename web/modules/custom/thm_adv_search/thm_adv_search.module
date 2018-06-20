@@ -6,7 +6,8 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface as RMI;
-use Drupal\Core\Block\BlockPluginInterface as BPI;
+use Solarium\Core\Query\QueryInterface as SolrQueryInterface;
+use Drupal\search_api\Query\QueryInterface as DrupalQueryInterface;
 
 /**
  * Implements hook_help().
@@ -24,71 +25,31 @@ function thm_adv_search_help($route_name, RMI $route_match) {
   }
 }
 
-/**
- * Predicate determines if the block contains a Search API Facet.
- *
- * @param \Drupal\Core\Block\BlockPluginInterface $block
- *
- * @return bool
- */
-function _blockIsAFacet(BPI $block) {
-  return strpos($block->getPluginId(), 'facet_block') !== false;
-}
+function _applySearchExclude(SolrQueryInterface $solrQuery, DrupalQueryInterface $query) {
+  $config         = \Drupal::config('thm_adv_search.settings');
+  $bundlesConfig  = $config->get('bundles');
+  $typesToExclude = [];
 
-/**
- * Loads chosen JS library for Search API Facets.
- * @see https://www.drupal.org/project/chosen/issues/2914261
- *
- * Implements hook_block_view_alter().
- *
- * @param $build array
- * @param $block \Drupal\Core\Block\BlockPluginInterface
- */
-function thm_adv_search_block_view_alter(array &$build, BPI $block) {
-  if (_blockIsAFacet($block)) {
-    //$build['#attached']['library'][] = 'thm_adv_search/chosen-facets-collection';
-    //$build['#attached']['drupalSettings']['thm_adv_search'] = 'yo!';
-    //chosen_attach_library($build);
+  foreach ($bundlesConfig as $k => $v) {
+    if ($v) {
+      $typesToExclude[] = $k;
+    }
+  }
+
+  if (!empty($typesToExclude)) {
+    $solrQuery->createFilterQuery('ts_title')->getQuery('+ts_title:"Na\'im Akbar"');
+    drupal_set_message('here.');
   }
 }
 
 /**
- * Implements hook_search_api_autocomplete_search_info_alter().
+ * Implements hook_search_api_solr_query_alter().
+ *
+ * @param SolrQueryInterface $solarium_query
+ * @param DrupalQueryInterface $query
  */
-/*function thm_adv_search_search_api_autocomplete_search_info_alter(array &$searches) {
-  drupal_set_message('search info alter');
-  drupal_set_message(print_r($searches, true));
-}*/
-
-/**
- * Implements hook_search_api_autocomplete_suggestions_alter().
- */
-/*function thm_adv_search_search_api_autocomplete_suggestions_alter(array &$suggestions, array $alter_params) {
-  drupal_set_message('suggestions alter');
-  drupal_set_message(print_r($suggestions, true));
-}*/
-
-/**
- * Implements hook_search_api_autocomplete_suggester_info_alter().
- */
-/*function thm_adv_search_search_api_autocomplete_suggester_info_alter(array &$suggesters) {
-  drupal_set_message('suggestions. . .');
-  drupal_set_message(print_r($suggesters, true));
-}*/
-
-/**
- * Implements hook_search_api_autocomplete_views_fulltext_fields_alter().
- */
-/*function thm_adv_search_search_api_autocomplete_views_fulltext_fields_alter(array &$fields, \Drupal\search_api_autocomplete\SearchInterface $search, \Drupal\views\ViewExecutable $view) {
-  drupal_set_message('views fulltext fields alter');
-  drupal_set_message(print_r($fields, true));
-}*/
-
-/**
- * Implements hook_search_api_db_query_alter().
- */
-function thm_adv_search_search_api_db_query_alter(\Drupal\Core\Database\Query\SelectInterface &$db_query, \Drupal\search_api\Query\QueryInterface $query) {
-  drupal_set_message($query->getSearchId());
-  //drupal_set_message();
+function thm_adv_search_search_api_solr_query_alter(SolrQueryInterface $solarium_query, DrupalQueryInterface $query) {
+  if ($query->hasTag('views_advanced_search')) {
+    _applySearchExclude($solarium_query, $query);
+  }
 }
-

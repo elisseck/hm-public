@@ -25,7 +25,6 @@ class THMDonationFlow extends CheckoutFlowWithPanesBase {
           'label' => $this->t('Pick A Donation')
         ],
         'payment_method' => [
-          //Progress bar label
           'label' => $this->t('Payment Method'),
           'previous_label' => $this->t('Go Back')
         ]
