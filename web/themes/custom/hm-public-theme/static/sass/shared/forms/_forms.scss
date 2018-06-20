@@ -1,23 +1,50 @@
+//Form Containers
+form.webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
 #checkoutprogress {
   @extend %max-width;
   @extend %default-gutter-width;
-  margin-bottom: 30px;
-  margin-top: 30px;
+  margin: 30px 0;
 }
 
-form#commerce-checkout-flow-thm-donation-checkout-flow {
+form#commerce-checkout-flow-thm-donation-checkout-flow,
+form.commerce-checkout-flow-thm-donation-checkout-flow.commerce-checkout-flow {
   @extend %med-width-content;
   display: flex;
   justify-content: center;
   margin: 0 auto;
 }
 
-//Required *
-.form-wrapper .form-item span.form-required {
-  color: $red;
+#edit-field-salutation-wrapper,
+#edit-field-intl-address-wrapper,
+#edit-field-middle-initial-wrapper,
+#edit-field-cell-phone-wrapper,
+#edit-field-home-phone-wrapper,
+#edit-field-email-address-wrapper,
+#edit-user-picture-wrapper,
+.form-item.form-item-mail.form-type-email,
+.form-item.form-item-name.form-type-textfield,
+#edit-password,
+#edit-field-work-phone-wrapper {
+  @extend %med-width-content;
+  display: flex;
+  margin: 0 auto;
+}
+
+.webform-progress-tracker.progress-tracker {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+#edit-field-intl-address-0 {
+  margin-bottom: 0;
 }
 
 //Normalizing form elements
+.progress-step {
+  font-size: 1.375em;
+  font-weight: 400;
+}
+
 .form-text {
   margin: 0;
 }
@@ -36,6 +63,16 @@ fieldset,
   border: 1px solid #ccc;
   height: 45px;
   padding: 0 5px;
+}
+
+label {
+  @extend %source-sans-semi-bold;
+  line-height: normal;
+}
+
+//Required *
+.form-wrapper .form-item span.form-required {
+  color: $red;
 }
 
 //Donation
@@ -118,4 +155,9 @@ li.checkout-progress--step.checkout-progress--step__previous {
   border-top: 1px solid color(medium-grey);
   margin-bottom: 30px;
   padding-top: 15px;
+}
+
+//Hide things
+#edit-field-intl-address-0 > legend {
+  display: none;
 }
