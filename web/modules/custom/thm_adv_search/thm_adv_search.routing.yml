@@ -5,11 +5,3 @@ thm_adv_search.autocomplete:
     _format: json
   requirements:
     _access: 'TRUE'
-
-thm_adv_search.admin.config:
-  path: '/admin/config/search/bundles'
-  defaults:
-    _form: '\Drupal\thm_adv_search\Form\AdminSearchExclude'
-    _title: 'Bundles to exclude from Advanced Biography Search'
-  requirements:
-    _permission: 'administer search'
