@@ -1,0 +1,187 @@
+#edit-fieldset-licensing-01,
+#edit-fieldset-licensing-02,
+#edit-fieldset-licensing-03,
+#edit-fieldset-none,
+#edit-actions {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 60%;
+
+  .fieldset-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+
+    .form-item.form-item-title-1.form-type-select,
+    .form-item.form-item-company-school-name-36.form-type-textfield {
+      flex: 1;
+      flex-basis: 100%;
+    }
+
+    .form-item.form-item-e-mail-1.form-type-email {
+      flex: 0;
+    }
+
+    .form-item {
+      margin-right: 10px;
+    }
+
+    .form-item.form-item-first-name-1.form-type-textfield,
+    .form-item.form-item-last-name-1.form-type-textfield,
+    .form-item.form-item-city-1.form-type-textfield,
+    .form-item.form-item-city-36.form-type-textfield,
+    .form-item.form-item-state-1.form-type-textfield,
+    .form-item.form-item-state-36.form-type-textfield,
+    .form-item.form-item-primary-phone-1.form-type-textfield {
+      margin-right: 10px;
+
+      input {
+        width: 250px;
+      }
+
+    }
+
+    .form-item.form-item-work-phone-36.form-type-textfield {
+
+      input {
+        width: 250px;
+      }
+
+    }
+
+    .form-item.form-item-e-mail-1.form-type-email {
+
+      input {
+        width: 400px;
+      }
+
+    }
+
+    .form-item.form-item-mi-1.form-type-textfield,
+    .form-item.form-item-suffix-1.form-type-textfield,
+    .form-item.form-item-zip-code-1.form-type-textfield,
+    .form-item.form-item-zip-code-36.form-type-textfield {
+
+      input {
+        max-width: 75px;
+      }
+
+    }
+
+    .form-item.form-item-zip-code-36.form-type-textfield {
+
+      input {
+        width: 150px;
+      }
+
+    }
+
+    //Title Select
+    .form-item.form-item-title-1.form-type-select {
+      align-items: center;
+      display: flex;
+      flex-direction: row !important;
+      flex-wrap: wrap;
+
+      #edit-title-1 {
+        margin-left: 10px;
+      }
+
+    }
+
+    .form-item.form-type-select {
+      display: flex;
+      flex-flow: column wrap;
+    }
+
+    .form-select {
+      width: 250px;
+    }
+
+    //Textarea
+    #edit-patron-project-desc-3 {
+      width: 100%;
+    }
+
+  }//.fieldset-wrapper
+
+}
+
+#edit-organization-affiliation-type-36--wrapper,
+fieldset#edit-patrons-position-36--wrapper {
+  display: flex;
+  flex-basis: 100%;
+  flex-flow: column wrap;
+  margin-top: 15px;
+
+  & > legend {
+    border-top: 1px solid color(medium-grey);
+    padding-top: 30px;
+  }
+
+  .fieldset-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    #edit-organization-affiliation-type-36,
+    #edit-patrons-position-36 {
+      order: 2;
+    }
+
+  }
+
+}
+
+#edit-patrons-position-36--wrapper {
+  margin-top: 0;
+}
+
+//Description
+#edit-organization-affiliation-type-36--wrapper--description,
+#edit-patrons-position-36--wrapper--description {
+  @extend %source-sans-semi-bold;
+  line-height: normal;
+  margin-bottom: 10px;
+  order: 1;
+}
+
+#edit-how-did-you-learn-1--wrapper {
+  border-bottom: 1px solid color(medium-grey);
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+}
+
+.form-item.form-item-primary-phone-1.form-type-textfield {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}
+
+fieldset#edit-how-did-you-learn-1--wrapper > legend > span {
+  border-top: 1px solid color(medium-grey);
+  padding-top: 15px;
+}
+
+//Headers
+#edit-fieldset-licensing-01,
+#edit-how-did-you-learn-1--wrapper,
+#edit-fieldset-none,
+#edit-organization-affiliation-type-36--wrapper,
+#edit-patrons-position-36--wrapper,
+#edit-fieldset-licensing-02 {
+
+  & > legend .fieldset-legend {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: em(20);
+  }
+
+}
+
+//Submit
+#edit-actions {
+  justify-content: flex-start;
+}
+
+#edit-wizard-next {
+  width: 150px;
+}
