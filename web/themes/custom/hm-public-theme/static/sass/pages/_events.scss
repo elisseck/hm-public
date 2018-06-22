@@ -66,6 +66,10 @@
         margin-right: 0;
       }
 
+      .bio-card--image {
+        max-height: 175px;
+      }
+
     }//a
 
     @supports (-webkit-appearance: none) {
