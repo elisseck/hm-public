@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Theme override for paragraph Product Button
+ *
+ * Available variables using Paragraphs:
+ * -  field_form_button_label
+ * -  field_select_a_form
+ *
+ */
+#}
+{{ drupal_dump(content.field_select_a_form) }}
+{{content.field_select_a_form|field_value}}
+{{ content.field_form_button_label|field_value }}
