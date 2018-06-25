@@ -4275,7 +4275,7 @@ p img {
           flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
-  width: 70%; }
+  width: 80%; }
   .view.list-events .view-content .bio-card--list {
     -webkit-align-content: center;
         -ms-flex-line-pack: center;
@@ -4296,6 +4296,8 @@ p img {
          -moz-box-direction: normal;
           -ms-flex-direction: column;
               flex-direction: column; }
+    .view.list-events .view-content .bio-card--list a .bio-card--image {
+      max-height: 175px; }
     @supports (-webkit-appearance: none) {
       .view.list-events .view-content .bio-card--list .bio-card--content {
         -webkit-box-flex: 0;
@@ -6201,6 +6203,24 @@ video::-webkit-media-controls {
     font-size: 1.875em; }
   .video-container p.hero-vid__body{
     font-size: 1em; } }
+  @media screen and (max-width: 400px){
+  .staff-card--image{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 30%;
+    -moz-box-flex: 1;
+    -ms-flex: 1 0 30%;
+    flex: 1 0 30%; }
+  .staff-card--image{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 30%;
+    -moz-box-flex: 1;
+    -ms-flex: 1 0 30%;
+    flex: 1 0 30%; }
+  .feature-carousel-slide .carousel-caption__event h2{
+    margin: 15px 0 0;
+    padding-left: 0; }
+  .feature-carousel-slide .carousel-caption__event ul{
+    padding: 15px 15px 0 0; } }
   @media only screen and (max-width: 580px){
   .snapshot-blocks .field-item{
     -webkit-box-flex: 1;
@@ -6270,12 +6290,6 @@ video::-webkit-media-controls {
   @media screen and (max-width: 980px){
   .carousel-caption__quote .carousel__quote{
     font-size: 1.8em; } }
-  @media screen and (max-width: 400px){
-  .feature-carousel-slide .carousel-caption__event h2{
-    margin: 15px 0 0;
-    padding-left: 0; }
-  .feature-carousel-slide .carousel-caption__event ul{
-    padding: 15px 15px 0 0; } }
   @media only screen and (max-width: 1500px){
   .share{
     left: 10px; } }
