@@ -8,6 +8,12 @@
   margin: 0 auto;
   width: 60%;
 
+  @media screen and (max-width: 1024px) {
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 90%;
+  }
+
   .fieldset-wrapper {
     display: flex;
     flex-flow: row wrap;
@@ -117,6 +123,10 @@ fieldset#edit-patrons-position-36--wrapper {
   & > legend {
     border-top: 1px solid color(medium-grey);
     padding-top: 30px;
+
+    @media screen and (max-width: 1024px) {
+      border-top: none;
+    }
   }
 
   .fieldset-wrapper {
@@ -154,16 +164,32 @@ fieldset#edit-patrons-position-36--wrapper {
   border-bottom: 1px solid color(medium-grey);
   margin-bottom: 30px;
   padding-bottom: 15px;
+
+  @media screen and (max-width: 1024px) {
+    border-bottom: none;
+    margin-top: 15px;
+  }
+
 }
 
 .form-item.form-item-primary-phone-1.form-type-textfield {
   margin-bottom: 30px;
   padding-bottom: 30px;
+
+  @media screen and (max-width: 1024px) {
+    margin-bottom: 0;
+  }
+
 }
 
 fieldset#edit-how-did-you-learn-1--wrapper > legend > span {
   border-top: 1px solid color(medium-grey);
   padding-top: 15px;
+
+  @media screen and (max-width: 1024px) {
+    border-top: none;
+  }
+
 }
 
 //Headers
