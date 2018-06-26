@@ -66,7 +66,17 @@
 
 //Form button
 .button--form {
-  margin-top: 15px;
+  margin-top: 30px;
+  padding: 0;
+
+  @media screen and (max-width: 900px) {
+    margin-top: 15px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 30px 0;
+  }
+
 }
 
 .button--form a {
@@ -74,6 +84,7 @@
   @extend %button--primary;
   @extend %oswald;
   background-color: $white;
+  border: 0;
   color: color(quaternary);
   font-size: em(20);
   margin-right: 0;
