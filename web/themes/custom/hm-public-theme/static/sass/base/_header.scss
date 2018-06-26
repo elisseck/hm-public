@@ -293,9 +293,24 @@
   }
 }
 
+//Required 
+.modal-content {
+
+  .form-item.form-item-name.form-type-textfield {
+    margin: 0;
+    width: 100%;
+  }
+
+  span.form-required {
+    margin-right: 5px;
+  }
+
+}
+
 .modal input {
   margin-bottom: em(8);
   max-width: 100%;
+  width: 100%;
 }
 
 .modal-header {
