@@ -6,8 +6,8 @@
   margin-bottom: em(30);
   margin-top: em(30);
 
-  @media screen and (max-width: 520px) {
-    margin-top: 0;
+  @media screen and (max-width: 768px) {
+    margin: 0;
 
     .carousel-inner {
       padding: 0;
