@@ -1,6 +1,10 @@
 <?php
 
 use Drupal\bio_import_xml\Helpers;
+use Drupal\Core\Database\Connection;
+use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\ConfigBase;
+use Psr\Log\LoggerInterface;
 
 const MODULE_NAME = 'bio_import_xml';
 const CONFIG_ID =  MODULE_NAME . '.settings';
@@ -12,9 +16,9 @@ $log = \Drupal::logger(MODULE_NAME);
 /**
  * Loads command-line arguments into a Drupal configuration object
  *
- * @param $config \Drupal\Core\Config\ConfigFactory
+ * @param $config ConfigFactoryInterface
  *
- * @return \Drupal\Core\Config\ConfigFactoryInterface
+ * @return ConfigBase
  */
 function loadArgs($config) {
   $cfg = $config->getEditable(CONFIG_ID);
@@ -40,6 +44,11 @@ function loadArgs($config) {
   return $cfg;
 }
 
+
+/**
+ * Wrapper for the Importer's "clean" method.
+ * @param ConfigBase $config
+ */
 function clean($config) {
   $cleaned = Helpers\BioXMLMigrationCleaner::clean($config);
 
@@ -50,30 +59,56 @@ function clean($config) {
   }
 }
 
+/**
+ * Wrapper for the Importer's "ingest" method.
+ * @param Connection $database
+ * @param ConfigBase $config
+ */
 function ingest($database, $config) {
   if ($config->get(MODULE_NAME . '.rebuild_ingestion_table')) {
-    drupal_set_message('all records will be marked new.', 'status');
-    Helpers\BioXMLMigrationIngestor::ingest($database, $config, true);
+    drupal_set_message('all records will be marked new.');
+  } else {;
+    drupal_set_message('only records changed since last import will be imported');
   }
+
+  Helpers\BioXMLMigrationIngestor::ingest($database, $config, true);
 }
 
+/**
+ * Wrapper for the Importer's "import" method.
+ * @param Connection $database
+ * @param ConfigBase $config
+ * @param LoggerInterface $logger
+ */
 function import($database, $config, $logger) {
   Helpers\BioXMLMigrationImporter::import($database, $config, $logger);
 }
 
+/**
+ * Help text.  Probably not very useful as the 'help' option is under drush
+ * control.
+ */
 function help() {
   drupal_set_message('it was written. . .');
 }
 
+/**
+ * Script executor.
+ *
+ * @param Connection $database
+ * @param ConfigFactoryInterface $config
+ * @param LoggerInterface $logger
+ */
 function run($database, $config, $logger) {
   drupal_set_message('preparing configuration');
-  $config = loadArgs($config);
+  /** @var ConfigBase $cfg */
+  $cfg = loadArgs($config);
   drupal_set_message('executing sanitizing phase. . .');
-  clean($config);
+  clean($cfg);
   drupal_set_message('executing ingestion phase. . .');
-  ingest($database, $config);
+  ingest($database, $cfg);
   drupal_set_message('executing import');
-  import($database, $config, $logger);
+  import($database, $cfg, $logger);
 }
 
 if (drush_get_option('info')) {

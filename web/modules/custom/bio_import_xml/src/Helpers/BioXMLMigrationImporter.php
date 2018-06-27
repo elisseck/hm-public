@@ -7,6 +7,7 @@ use Drupal\node\Entity\Node;
 use Drupal\Component\Utility\Unicode;
 use Psr\Log\LoggerInterface;
 use Drupal\Core\Entity\EntityStorageException;
+use ProgressBar\Manager;
 use React\Promise\Deferred;
 use function React\Promise\all;
 
@@ -46,6 +47,9 @@ class BioXMLMigrationImporter {
   protected $biosProcessed = 0;
 
   protected $totalBios = 0;
+
+  /** @var Manager */
+  protected $progressManager;
 
   protected $singleValueFields = [
     'field_first_name'                => 'namefirst',
@@ -422,13 +426,9 @@ SQL;
       else if ($result == SAVED_NEW) $state = 'created';
       else if ($result == SAVED_UPDATED) $state = 'updated';
 
-      /*$report = $this->biosProcessed . " of " . $this->totalBios;
-      \Drupal::state()->set('import_counter', $report);
-
-      $percent = ($this->biosProcessed / $this->totalBios);
-      \Drupal::state()->set('import_progress', $percent);*/
-
       $deferred->resolve([ $id => $state ]);
+
+      $this->progressManager->update($this->biosProcessed);
 
       return $deferred->promise();
     }, $nodes);
@@ -521,6 +521,9 @@ SQL;
     $rs = $instance->getNewBios($instance->db);
 
     $instance->totalBios = count($rs);
+
+    $instance->progressManager = new Manager(0, $instance->totalBios);
+
 
     while (count($rs)) {
 
