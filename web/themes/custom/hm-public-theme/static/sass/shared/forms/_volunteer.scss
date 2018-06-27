@@ -1,0 +1,50 @@
+//Headers
+#edit-fieldset-personal-contact-info > legend > span{
+  @extend %card-header;
+  color: color(quaternary);
+  font-size: em(20);
+}
+
+#edit-first-page {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  margin: 0 auto;
+
+  #edit-fieldset-personal-contact-info {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 60%;
+  }
+
+  .fieldset-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .form-item.form-item-title-position-1.form-type-select {
+    flex: 1;
+    flex-basis: 100%;
+  }  
+
+  .form-item {
+    margin-right: 10px;
+  }  
+
+  .form-item.form-item-name-1.form-type-textfield {
+
+    input {
+      width: 250px;
+    }
+
+  }
+
+  .form-item.form-item-mi-1.form-type-textfield {
+
+    input {
+      max-width: 75px;
+    }
+
+  }
+
+}
