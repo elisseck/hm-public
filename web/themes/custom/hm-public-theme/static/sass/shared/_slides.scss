@@ -217,9 +217,11 @@
     }
 
     a.button {
+      bottom: 0;
       margin-left: 0;
       margin-right: 15px;
-      width: auto;
+      position: relative;
+      width: 100%;
     }
   }
 
