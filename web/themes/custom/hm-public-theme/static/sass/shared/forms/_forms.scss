@@ -1,10 +1,14 @@
 //Form Containers
-form.webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
+.webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
 #checkoutprogress,
 .webform-progress {
   @extend %max-width;
   @extend %default-gutter-width;
   margin: 30px auto;
+}
+
+#edit-first-page {
+  margin: 0 auto;
 }
 
 #edit-field-salutation-wrapper,
@@ -17,10 +21,12 @@ form.webform-submission-form.webform-submission-add-form.webform-submission-basi
 .form-item.form-item-mail.form-type-email,
 .form-item.form-item-name.form-type-textfield,
 #edit-password,
-#edit-field-work-phone-wrapper {
-  @extend %med-width-content;
+#edit-field-work-phone-wrapper,
+#edit-fieldset-personal-contact-info {
   display: flex;
+  justify-content: center;
   margin: 0 auto;
+  width: 60%;
 }
 
 //Progress Tracker
