@@ -5,10 +5,19 @@
   @extend %max-width;
   @extend %default-gutter-width;
   margin: 30px auto;
+  width: 100%;
 }
 
 #edit-first-page {
   margin: 0 auto;
+}
+
+//Buttons
+#edit-actions {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 57%;
 }
 
 #edit-field-salutation-wrapper,
@@ -22,7 +31,8 @@
 .form-item.form-item-name.form-type-textfield,
 #edit-password,
 #edit-field-work-phone-wrapper,
-#edit-fieldset-personal-contact-info {
+#edit-fieldset-personal-contact-info,
+.webform-confirmation {
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -65,13 +75,19 @@ fieldset,
 .form-item,
 .authorize-net-accept-js-form.form-wrapper,
 .edit-payment-information-add-payment-method-billing-information {
-  margin: 0 0 15px;
+  margin: 0 10px 15px 0;
   padding: 0;
 }
 
-label {
+label,
+.webform-confirmation {
   @extend %source-sans-semi-bold;
   line-height: normal;
+}
+
+.webform-confirmation {
+  align-items: center;
+  flex-direction: column;
 }
 
 .form-text {
