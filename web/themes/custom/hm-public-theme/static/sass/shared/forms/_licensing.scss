@@ -1,8 +1,7 @@
 #edit-fieldset-licensing-01,
 #edit-fieldset-licensing-02,
 #edit-fieldset-licensing-03,
-#edit-fieldset-none,
-#edit-actions {
+#edit-fieldset-none {
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -28,10 +27,6 @@
       flex: 0;
     }
 
-    .form-item {
-      margin-right: 10px;
-    }
-
     .form-item.form-item-first-name-1.form-type-textfield,
     .form-item.form-item-last-name-1.form-type-textfield,
     .form-item.form-item-city-1.form-type-textfield,
@@ -39,7 +34,6 @@
     .form-item.form-item-state-1.form-type-textfield,
     .form-item.form-item-state-36.form-type-textfield,
     .form-item.form-item-primary-phone-1.form-type-textfield {
-      margin-right: 10px;
 
       input {
         width: 250px;
@@ -155,6 +149,7 @@ fieldset#edit-patrons-position-36--wrapper {
 #edit-organization-affiliation-type-36--wrapper--description,
 #edit-patrons-position-36--wrapper--description {
   @extend %source-sans-semi-bold;
+  flex-basis: 100%;
   line-height: normal;
   margin-bottom: 10px;
   order: 1;
