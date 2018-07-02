@@ -1,7 +1,11 @@
 #edit-fieldset-licensing-01,
 #edit-fieldset-licensing-02,
 #edit-fieldset-licensing-03,
-#edit-fieldset-none {
+#edit-fieldset-none,
+#edit-fieldset-licensing-05,
+#edit-fieldset-licensinginfopane2,
+#edit-production-publication-type--wrapper,
+#edit-use-type--wrapper {
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -103,6 +107,43 @@
       width: 100%;
     }
 
+    //licensing-02
+    .form-item.form-item-patron-project-desc-3.form-type-textarea,
+    .form-item.form-item-patrons-project-type-3.form-type-select,
+    .form-item.form-item-the-historymakers-names-4.form-type-select {
+      display: flex;
+      flex-direction: column;
+
+      & > div,
+      #edit-patrons-project-type-3,
+      #edit-the-historymakers-names-4 {
+        order: 2;
+      }
+
+      #edit-patron-project-desc-3--description,
+      #edit-patrons-project-type-3--description,
+      #edit-the-historymakers-names-4--description {
+        margin-top: 0;
+        order: 1;
+      }
+
+    }
+
+    .form-item.form-item-the-historymakers-names-4.form-type-select {
+      margin-bottom: 30px;
+    }
+
+    fieldset#edit-archive-format--wrapper {
+      display: flex;
+      flex-basis: 100%;
+
+      & > legend {
+        border-top: 1px solid color(medium-grey);
+        padding-top: 15px;
+      }
+
+    }
+
   }//.fieldset-wrapper
 
 }
@@ -193,7 +234,10 @@ fieldset#edit-how-did-you-learn-1--wrapper > legend > span {
 #edit-fieldset-none,
 #edit-organization-affiliation-type-36--wrapper,
 #edit-patrons-position-36--wrapper,
-#edit-fieldset-licensing-02 {
+#edit-fieldset-licensing-02,
+#edit-archive-format--wrapper,
+#edit-production-publication-type--wrapper,
+#edit-use-type--wrapper {
 
   & > legend .fieldset-legend {
     @extend %card-header;
@@ -201,6 +245,10 @@ fieldset#edit-how-did-you-learn-1--wrapper > legend > span {
     font-size: em(20);
   }
 
+}
+
+#edit-fieldset-licensinginfopane2 > legend .fieldset-legend {
+  white-space: normal;
 }
 
 //Submit
@@ -211,3 +259,5 @@ fieldset#edit-how-did-you-learn-1--wrapper > legend > span {
 #edit-wizard-next {
   width: 150px;
 }
+
+
