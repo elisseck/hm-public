@@ -6950,9 +6950,10 @@ video::-webkit-media-controls {
   .timeline_cont.glossary .pages{
     background: #FFFFFF;
     display: block;
-    height: 100%;
+    height: 100vh;
     margin: 0;
     min-width: 0;
+    overflow: auto;
     padding: 0 !important;
     position: absolute;
     right: 0;
@@ -6966,10 +6967,24 @@ video::-webkit-media-controls {
     position: relative;
     text-align: center; }
   .timeline_cont.glossary nav.pager .pager__item > a{
-    display: block;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
     margin: 0;
-    text-align: center;
-    width: 49px; } }
+    width: 49px;
+    min-height: 49px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; } }
   @media screen and (min-width: 1200px){
   .bio-card--list a .bio-card--image{
     min-width: 300px; } }
