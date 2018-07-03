@@ -1,8 +1,15 @@
 #edit-fieldset-licensing-01,
 #edit-fieldset-licensing-02,
 #edit-fieldset-licensing-03,
-#edit-fieldset-none {
+#edit-fieldset-none,
+#edit-fieldset-licensing-05,
+#edit-fieldset-licensinginfopane2,
+#edit-production-publication-type--wrapper,
+#edit-use-type--wrapper,
+#edit-production-publication-distribution-authorization-section,
+.form-item.form-item-e-mail-1.form-type-email {
   display: flex;
+  flex: 0;
   justify-content: center;
   margin: 0 auto;
   width: 60%;
@@ -21,10 +28,6 @@
     .form-item.form-item-company-school-name-36.form-type-textfield {
       flex: 1;
       flex-basis: 100%;
-    }
-
-    .form-item.form-item-e-mail-1.form-type-email {
-      flex: 0;
     }
 
     .form-item.form-item-first-name-1.form-type-textfield,
@@ -103,6 +106,43 @@
       width: 100%;
     }
 
+    //licensing-02
+    .form-item.form-item-patron-project-desc-3.form-type-textarea,
+    .form-item.form-item-patrons-project-type-3.form-type-select,
+    .form-item.form-item-the-historymakers-names-4.form-type-select {
+      display: flex;
+      flex-direction: column;
+
+      & > div,
+      #edit-patrons-project-type-3,
+      #edit-the-historymakers-names-4 {
+        order: 2;
+      }
+
+      #edit-patron-project-desc-3--description,
+      #edit-patrons-project-type-3--description,
+      #edit-the-historymakers-names-4--description {
+        margin-top: 0;
+        order: 1;
+      }
+
+    }
+
+    .form-item.form-item-the-historymakers-names-4.form-type-select {
+      margin-bottom: 30px;
+    }
+
+    fieldset#edit-archive-format--wrapper {
+      display: flex;
+      flex-basis: 100%;
+
+      & > legend {
+        border-top: 1px solid color(medium-grey);
+        padding-top: 15px;
+      }
+
+    }
+
   }//.fieldset-wrapper
 
 }
@@ -116,19 +156,21 @@ fieldset#edit-patrons-position-36--wrapper {
 
   & > legend {
     border-top: 1px solid color(medium-grey);
-    padding-top: 30px;
+    padding-top: 15px;
 
     @media screen and (max-width: 1024px) {
       border-top: 0;
     }
   }
 
-  .fieldset-wrapper {
+  .fieldset-wrapper,
+  .form-item.form-item-intended-media-60.form-type-textfield {
     display: flex;
     flex-direction: column;
 
     #edit-organization-affiliation-type-36,
-    #edit-patrons-position-36 {
+    #edit-patrons-position-36,
+    #edit-intended-media-60 {
       order: 2;
     }
 
@@ -147,7 +189,11 @@ fieldset#edit-patrons-position-36--wrapper {
 
 //Description
 #edit-organization-affiliation-type-36--wrapper--description,
-#edit-patrons-position-36--wrapper--description {
+#edit-patrons-position-36--wrapper--description,
+#edit-production-publication-type--wrapper--description,
+#edit-use-type--wrapper--description,
+#edit-intended-media-60--description,
+#edit-production-publication-distribution-authorization--wrapper--description {
   @extend %source-sans-semi-bold;
   flex-basis: 100%;
   line-height: normal;
@@ -155,9 +201,23 @@ fieldset#edit-patrons-position-36--wrapper {
   order: 1;
 }
 
+#edit-intended-media-60--description {
+  margin-top: 0;
+}
+
+#edit-production-publication-distribution-authorization-radios--wrapper {
+  margin-bottom: 0;
+}
+
+#edit-production-publication-type-checkboxes--wrapper,
+#edit-use-type-checkboxes--wrapper,
+#edit-production-publication-distribution-authorization-radios--wrapper {
+  order: 2;
+}
+
 #edit-how-did-you-learn-1--wrapper {
   border-bottom: 1px solid color(medium-grey);
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   padding-bottom: 15px;
 
   @media screen and (max-width: 1024px) {
@@ -177,14 +237,18 @@ fieldset#edit-patrons-position-36--wrapper {
 
 }
 
-fieldset#edit-how-did-you-learn-1--wrapper > legend > span {
+#edit-how-did-you-learn-1--wrapper > legend > span {
   border-top: 1px solid color(medium-grey);
-  padding-top: 15px;
 
   @media screen and (max-width: 1024px) {
     border-top: 0;
   }
 
+}
+
+#edit-production-publication-distribution-authorization-section > legend {
+  border-top: 1px solid color(medium-grey);
+  padding-top: 15px;
 }
 
 //Headers
@@ -193,7 +257,13 @@ fieldset#edit-how-did-you-learn-1--wrapper > legend > span {
 #edit-fieldset-none,
 #edit-organization-affiliation-type-36--wrapper,
 #edit-patrons-position-36--wrapper,
-#edit-fieldset-licensing-02 {
+#edit-fieldset-licensing-02,
+#edit-archive-format--wrapper,
+#edit-production-publication-type--wrapper,
+#edit-use-type--wrapper,
+#edit-fieldset-licensinginfopane2,
+#edit-production-publication-distribution-authorization-section,
+#edit-production-publication-distribution-authorization--wrapper {
 
   & > legend .fieldset-legend {
     @extend %card-header;
@@ -203,6 +273,10 @@ fieldset#edit-how-did-you-learn-1--wrapper > legend > span {
 
 }
 
+#edit-fieldset-licensinginfopane2 > legend .fieldset-legend {
+  white-space: normal;
+}
+
 //Submit
 #edit-actions {
   justify-content: flex-start;
@@ -210,4 +284,13 @@ fieldset#edit-how-did-you-learn-1--wrapper > legend > span {
 
 #edit-wizard-next {
   width: 150px;
+}
+
+.form-item.form-item-publisher-company-60.form-type-textfield {
+  width: 100%;
+
+  input {
+    width: 100%;
+  }
+
 }
