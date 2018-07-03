@@ -46,7 +46,7 @@
        <div class="filters">
             <header class="filters__header">
                 <h2 class="filters__header-title">Filter Results</h2>
-                <button class="filters__header-button closeFilter" href="">Cancel</button>
+                <button class="filters__header-button closeFilter">Cancel</button>
             </header>
            <form action="/timeline" method="get" id="views-exposed-form-timeline-new-page-1" accept-charset="UTF-8">
              <div>
@@ -66,7 +66,7 @@
                          </div>
                       </div>
                       <div id="edit-month-day-wrapper" class="views-exposed-widget views-widget-filter-field_month_day_value">
-                         <label for="edit-month-day"> Month/Day </label>
+                         <label for="edit-month"> Month </label>
                       </div>
                       <div class="views-exposed-widget views-submit-button">
                          <div class="form-item form-type-select form-item-month">
@@ -87,6 +87,7 @@
                             </select>
                          </div>
                          <div class="form-item form-type-select form-item-day">
+                         <label for="edit-day"> Day </label>
                             <select id="edit-day" name="day" class="form-select">
                                    <option value="">- Any -</option>
                                {% for day in range(1, 31) %}
