@@ -88,10 +88,11 @@ $(function(){
 });
 
 $(function() {
-    $('.filters__button').click(function(){
-    $('.filters').toggleClass('open');
-  });
-})
+    $('.filters__button, .closeFilter').click(function(){ 
+      $('.filters').toggleClass('open');
+      $("body").toggleClass('overflowHidden');;
+    });
+});
 
 //for glossary mobile menu 
 
@@ -110,7 +111,7 @@ $(document).ready(function(){
         }
       });
     }
-    $( window ).resize(function() {
+    $(window).resize(function() {
       if($(document).width() <= 769){
       $(window).scroll(function () {
         curSP=$(document).scrollTop();
@@ -120,6 +121,7 @@ $(document).ready(function(){
           $(".pages").attr("style","");
         }
       });
+     }
     });
   }
 });
