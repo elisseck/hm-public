@@ -6330,6 +6330,39 @@ body.overflowHidden {
   .timeline-scroller--image img{
     margin-left: 0;
     width: auto; }
+  #edit-actions{
+    margin-left: 15px;
+    width: 100%; }
+  .webform-progress-tracker .progress-step{
+    margin-right: 15px; }
+  #edit-first-page #edit-fieldset-personal-contact-info,
+      #edit-first-page #edit-fieldset-emergency-contact-volunteers,
+      #edit-first-page #edit-fieldset-employer,
+      #edit-first-page #edit-fieldset-education-availability,
+      #edit-first-page #edit-fieldset-professional-experience,
+      #edit-first-page #edit-fieldset-donations,
+      #edit-first-page #edit-professional-experience--wrapper,
+      #edit-first-page #edit-donations--wrapper,
+      #edit-first-page .form-item.form-item-please-explain-why-you-want-to-be-a-volunteer-for-the-historymak.form-type-textarea,
+      #edit-volunteer-step-2 #edit-fieldset-personal-contact-info,
+      #edit-volunteer-step-2 #edit-fieldset-emergency-contact-volunteers,
+      #edit-volunteer-step-2 #edit-fieldset-employer,
+      #edit-volunteer-step-2 #edit-fieldset-education-availability,
+      #edit-volunteer-step-2 #edit-fieldset-professional-experience,
+      #edit-volunteer-step-2 #edit-fieldset-donations,
+      #edit-volunteer-step-2 #edit-professional-experience--wrapper,
+      #edit-volunteer-step-2 #edit-donations--wrapper,
+      #edit-volunteer-step-2 .form-item.form-item-please-explain-why-you-want-to-be-a-volunteer-for-the-historymak.form-type-textarea,
+      #edit-step3 #edit-fieldset-personal-contact-info,
+      #edit-step3 #edit-fieldset-emergency-contact-volunteers,
+      #edit-step3 #edit-fieldset-employer,
+      #edit-step3 #edit-fieldset-education-availability,
+      #edit-step3 #edit-fieldset-professional-experience,
+      #edit-step3 #edit-fieldset-donations,
+      #edit-step3 #edit-professional-experience--wrapper,
+      #edit-step3 #edit-donations--wrapper,
+      #edit-step3 .form-item.form-item-please-explain-why-you-want-to-be-a-volunteer-for-the-historymak.form-type-textarea{
+    width: 100%; }
   #edit-fieldset-enter-contact-information .fieldset-wrapper .form-item.form-item-state-2.form-type-select,
         #edit-fieldset-enter-contact-information .fieldset-wrapper .form-item.form-item-country-2.form-type-select,
         #edit-fieldset-enter-contact-information .fieldset-wrapper .form-item.form-item-email-2.form-type-email,
@@ -7309,6 +7342,183 @@ body.overflowHidden {
     -webkit-column-count: 1;
     -moz-column-count: 1;
     column-count: 1; } }
+  @media screen and (max-width: 600px){
+  #edit-actions{
+    width: auto; }
+  fieldset,
+    .form-item,
+    .authorize-net-accept-js-form.form-wrapper,
+    .edit-payment-information-add-payment-method-billing-information{
+    margin-right: 0; }
+  .form-item select{
+    width: 100%; }
+  #edit-wizard-next{
+    width: 100%; }
+  #edit-first-page .form-item.form-item-name-1.form-type-textfield input,
+      #edit-first-page .form-item.form-item-last-name-1.form-type-textfield input,
+      #edit-first-page .form-item.form-item-city-1.form-type-textfield input,
+      #edit-first-page .form-item.form-item-phone-1.form-type-textfield input,
+      #edit-first-page .form-item.form-item-address-13.form-type-textfield input,
+      #edit-first-page .form-item.form-item-relation-13.form-type-textfield input,
+      #edit-first-page .form-item.form-item-city-13.form-type-textfield input,
+      #edit-first-page .form-item.form-item-phone-13.form-type-textfield input,
+      #edit-first-page .form-item.form-item-occupation-title-35.form-type-textfield input,
+      #edit-first-page .form-item.form-item-work-phone-35.form-type-textfield input,
+      #edit-first-page .form-item.form-item-fax-35.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-name-1.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-last-name-1.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-city-1.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-phone-1.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-address-13.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-relation-13.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-city-13.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-phone-13.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-occupation-title-35.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-work-phone-35.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-fax-35.form-type-textfield input,
+      #edit-step3 .form-item.form-item-name-1.form-type-textfield input,
+      #edit-step3 .form-item.form-item-last-name-1.form-type-textfield input,
+      #edit-step3 .form-item.form-item-city-1.form-type-textfield input,
+      #edit-step3 .form-item.form-item-phone-1.form-type-textfield input,
+      #edit-step3 .form-item.form-item-address-13.form-type-textfield input,
+      #edit-step3 .form-item.form-item-relation-13.form-type-textfield input,
+      #edit-step3 .form-item.form-item-city-13.form-type-textfield input,
+      #edit-step3 .form-item.form-item-phone-13.form-type-textfield input,
+      #edit-step3 .form-item.form-item-occupation-title-35.form-type-textfield input,
+      #edit-step3 .form-item.form-item-work-phone-35.form-type-textfield input,
+      #edit-step3 .form-item.form-item-fax-35.form-type-textfield input{
+    width: 100%; }
+  #edit-first-page .form-item.form-item-name-1.form-type-textfield,
+    #edit-first-page .form-item.form-item-last-name-1.form-type-textfield,
+    #edit-first-page .form-item.form-item-city-1.form-type-textfield,
+    #edit-first-page .form-item.form-item-phone-1.form-type-textfield,
+    #edit-first-page .form-item.form-item-address-13.form-type-textfield,
+    #edit-first-page .form-item.form-item-relation-13.form-type-textfield,
+    #edit-first-page .form-item.form-item-city-13.form-type-textfield,
+    #edit-first-page .form-item.form-item-phone-13.form-type-textfield,
+    #edit-first-page .form-item.form-item-occupation-title-35.form-type-textfield,
+    #edit-first-page .form-item.form-item-work-phone-35.form-type-textfield,
+    #edit-first-page .form-item.form-item-fax-35.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-name-1.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-last-name-1.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-city-1.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-phone-1.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-address-13.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-relation-13.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-city-13.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-phone-13.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-occupation-title-35.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-work-phone-35.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-fax-35.form-type-textfield,
+    #edit-step3 .form-item.form-item-name-1.form-type-textfield,
+    #edit-step3 .form-item.form-item-last-name-1.form-type-textfield,
+    #edit-step3 .form-item.form-item-city-1.form-type-textfield,
+    #edit-step3 .form-item.form-item-phone-1.form-type-textfield,
+    #edit-step3 .form-item.form-item-address-13.form-type-textfield,
+    #edit-step3 .form-item.form-item-relation-13.form-type-textfield,
+    #edit-step3 .form-item.form-item-city-13.form-type-textfield,
+    #edit-step3 .form-item.form-item-phone-13.form-type-textfield,
+    #edit-step3 .form-item.form-item-occupation-title-35.form-type-textfield,
+    #edit-step3 .form-item.form-item-work-phone-35.form-type-textfield,
+    #edit-step3 .form-item.form-item-fax-35.form-type-textfield{
+    width: 100%; }
+  #edit-first-page .form-item.form-item-mi-1.form-type-textfield input,
+      #edit-first-page .form-item.form-item-suffix-1.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-mi-1.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-suffix-1.form-type-textfield input,
+      #edit-step3 .form-item.form-item-mi-1.form-type-textfield input,
+      #edit-step3 .form-item.form-item-suffix-1.form-type-textfield input{
+    max-width: 100%;
+    width: 100%; }
+  #edit-first-page .form-item.form-item-mi-1.form-type-textfield,
+    #edit-first-page .form-item.form-item-suffix-1.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-mi-1.form-type-textfield,
+    #edit-volunteer-step-2 .form-item.form-item-suffix-1.form-type-textfield,
+    #edit-step3 .form-item.form-item-mi-1.form-type-textfield,
+    #edit-step3 .form-item.form-item-suffix-1.form-type-textfield{
+    width: 100%; }
+  #edit-first-page #edit-address-1,
+      #edit-first-page .form-item.form-item-e-mail-1.form-type-email input,
+      #edit-first-page .form-item.form-item-full-name-13.form-type-textfield input,
+      #edit-first-page .form-item.form-item-address-13.form-type-textfield input,
+      #edit-first-page .form-item.form-item-work-e-mail-35.form-type-textfield input,
+      #edit-volunteer-step-2 #edit-address-1,
+      #edit-volunteer-step-2 .form-item.form-item-e-mail-1.form-type-email input,
+      #edit-volunteer-step-2 .form-item.form-item-full-name-13.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-address-13.form-type-textfield input,
+      #edit-volunteer-step-2 .form-item.form-item-work-e-mail-35.form-type-textfield input,
+      #edit-step3 #edit-address-1,
+      #edit-step3 .form-item.form-item-e-mail-1.form-type-email input,
+      #edit-step3 .form-item.form-item-full-name-13.form-type-textfield input,
+      #edit-step3 .form-item.form-item-address-13.form-type-textfield input,
+      #edit-step3 .form-item.form-item-work-e-mail-35.form-type-textfield input{
+    width: 100%; }
+  #edit-fieldset-personal-contact-info .form-item.form-item-e-mail-1.form-type-email,
+      #edit-fieldset-personal-contact-info .form-item.form-item-gender-1.form-type-select,
+      #edit-fieldset-employer .form-item.form-item-e-mail-1.form-type-email,
+      #edit-fieldset-employer .form-item.form-item-gender-1.form-type-select{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 100%;
+    -moz-box-flex: 1;
+    -ms-flex: 1 0 100%;
+    flex: 1 0 100%; }
+  #edit-fieldset-emergency-contact-volunteers .form-item.form-item-country-13.form-type-select,
+    #edit-fieldset-emergency-contact-volunteers .form-item.form-item-country-35.form-type-select,
+    #edit-fieldset-employer .form-item.form-item-country-13.form-type-select,
+    #edit-fieldset-employer .form-item.form-item-country-35.form-type-select{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 100%;
+    -moz-box-flex: 1;
+    -ms-flex: 1 0 100%;
+    flex: 1 0 100%; }
+  .form-item.form-item-address-1.form-type-textfield,
+  .form-item.form-item-state-1.form-type-textfield,
+  .form-item.form-item-zip-code-1.form-type-textfield,
+  .form-item.form-item-country-1.form-type-select,
+  .form-item.form-item-e-mail-1.form-type-email,
+  .form-item.form-item-dob-1.form-type-textfield,
+  .form-item.form-item-gender-1.form-type-select,
+  .form-item.form-item-drivers-license-1.form-type-textfield,
+  .form-item.form-item-exp-mm-dd-yy-1.form-type-textfield,
+  .form-item.form-item-full-name-13.form-type-textfield,
+  .form-item.form-item-state-13.form-type-textfield,
+  .form-item.form-item-zip-code-13.form-type-textfield,
+  .form-item.form-item-country-13.form-type-select,
+  #edit-if-yes-please-explain-1{
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    margin-right: 0;
+    width: 100%; }
+  .form-item.form-item-address-1.form-type-textfield input,
+    .form-item.form-item-address-1.form-type-textfield select,
+    .form-item.form-item-state-1.form-type-textfield input,
+    .form-item.form-item-state-1.form-type-textfield select,
+    .form-item.form-item-zip-code-1.form-type-textfield input,
+    .form-item.form-item-zip-code-1.form-type-textfield select,
+    .form-item.form-item-country-1.form-type-select input,
+    .form-item.form-item-country-1.form-type-select select,
+    .form-item.form-item-e-mail-1.form-type-email input,
+    .form-item.form-item-e-mail-1.form-type-email select,
+    .form-item.form-item-dob-1.form-type-textfield input,
+    .form-item.form-item-dob-1.form-type-textfield select,
+    .form-item.form-item-gender-1.form-type-select input,
+    .form-item.form-item-gender-1.form-type-select select,
+    .form-item.form-item-drivers-license-1.form-type-textfield input,
+    .form-item.form-item-drivers-license-1.form-type-textfield select,
+    .form-item.form-item-exp-mm-dd-yy-1.form-type-textfield input,
+    .form-item.form-item-exp-mm-dd-yy-1.form-type-textfield select,
+    .form-item.form-item-full-name-13.form-type-textfield input,
+    .form-item.form-item-full-name-13.form-type-textfield select,
+    .form-item.form-item-state-13.form-type-textfield input,
+    .form-item.form-item-state-13.form-type-textfield select,
+    .form-item.form-item-zip-code-13.form-type-textfield input,
+    .form-item.form-item-zip-code-13.form-type-textfield select,
+    .form-item.form-item-country-13.form-type-select input,
+    .form-item.form-item-country-13.form-type-select select,
+    #edit-if-yes-please-explain-1 input,
+    #edit-if-yes-please-explain-1 select{
+    width: 100%; } }
   @media screen and (max-width: 560px){
   .intro-content a.button{
     font-size: 1.4em;
