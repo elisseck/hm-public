@@ -41,6 +41,11 @@
     justify-content: center;
     margin: 0 auto;
     width: 60%;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
   }
 
   .fieldset-wrapper {
@@ -70,6 +75,15 @@
 
     input {
       width: 250px;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
     }
 
   }
@@ -79,6 +93,16 @@
 
     input {
       max-width: 75px;
+
+      @media screen and (max-width: 600px) {
+        max-width: 100%;
+        width: 100%;
+      }
+
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
     }
 
   }
@@ -89,6 +113,11 @@
   .form-item.form-item-address-13.form-type-textfield input,
   .form-item.form-item-work-e-mail-35.form-type-textfield input {
     width: 400px;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+
   }
 
   .form-item.form-item-country-1.form-type-select {
@@ -105,6 +134,10 @@
   .form-item.form-item-e-mail-1.form-type-email,
   .form-item.form-item-gender-1.form-type-select {
     flex: 0;
+
+    @media screen and (max-width: 600px) {
+      flex: 1 0 100%;
+    }
   }
 
   .form-item.form-item-gender-1.form-type-select {
@@ -138,6 +171,11 @@
   .form-item.form-item-country-13.form-type-select,
   .form-item.form-item-country-35.form-type-select {
     flex: 0;
+
+    @media screen and (max-width: 600px) {
+      flex: 1 0 100%;
+    }
+
   }
 
 }
@@ -189,4 +227,33 @@ fieldset#edit-donations--wrapper .fieldset-wrapper {
 #edit-donations-select {
   height: 200px;
   width: 400px;
+}
+
+//Mobile
+@media screen and (max-width: 600px) {
+
+  .form-item.form-item-address-1.form-type-textfield,
+  .form-item.form-item-state-1.form-type-textfield,
+  .form-item.form-item-zip-code-1.form-type-textfield,
+  .form-item.form-item-country-1.form-type-select,
+  .form-item.form-item-e-mail-1.form-type-email,
+  .form-item.form-item-dob-1.form-type-textfield,
+  .form-item.form-item-gender-1.form-type-select,
+  .form-item.form-item-drivers-license-1.form-type-textfield,
+  .form-item.form-item-exp-mm-dd-yy-1.form-type-textfield,
+  .form-item.form-item-full-name-13.form-type-textfield,
+  .form-item.form-item-state-13.form-type-textfield,
+  .form-item.form-item-zip-code-13.form-type-textfield,
+  .form-item.form-item-country-13.form-type-select,
+  #edit-if-yes-please-explain-1 {
+    flex-basis: 100%;
+    margin-right: 0;
+    width: 100%;
+
+    input,
+    select {
+      width: 100%;
+    }
+  }
+
 }

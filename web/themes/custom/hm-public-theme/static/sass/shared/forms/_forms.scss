@@ -18,6 +18,16 @@
   justify-content: center;
   margin: 0 auto;
   width: 57%;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 15px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: auto;
+  }
+
 }
 
 #webform-submission-webform-4790-page-variant-licensing-panels-variant-0-add-form #edit-actions {
@@ -54,6 +64,14 @@
   margin-top: 0;
 }
 
+@media screen and (max-width: 768px) {
+
+  .webform-progress-tracker .progress-step {
+    margin-right: 15px;
+  }
+
+}
+
 .webform-progress-tracker .progress-step .progress-text {
   line-height: normal;
   padding-top: 0;
@@ -86,6 +104,11 @@ fieldset,
 .edit-payment-information-add-payment-method-billing-information {
   margin: 0 10px 15px 0;
   padding: 0;
+
+  @media screen and (max-width: 600px) {
+    margin-right: 0;
+  }
+
 }
 
 label,
@@ -110,6 +133,11 @@ label,
   border-radius: 0;
   height: 45px;
   padding: 0 5px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+
 }
 
 //Radio Buttons
