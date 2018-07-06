@@ -17,6 +17,11 @@
 
 }
 
+.image-carousel.hero-carousel.carousel.slide .field-image-slide .field-items .field-item.carousel-item .hero-slide--image,
+.image-carousel.hero-carousel.carousel.slide .field-image-slide .field-items .field-item.carousel-item.active .hero-slide--image {
+  perspective: none;
+}
+
 .two-column-quote-carousel {
   background-color: color(carousel-bg-alt);
 }
