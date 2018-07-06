@@ -126,6 +126,7 @@ class BioXMLMigrationHelpers {
         if (strlen(trim($path)) === 0) return false;
 
         $fmPath = $config->get('bio_import_xml.fm_files_path');
+        $importErrorKey = 'bio_import_xml.image_import_errors';
         $pathToFile = end(explode('/', $path));
         $stmt = "SELECT fid FROM {file_managed} WHERE uri = :uri";
         $uri = 'public://' . preg_replace('/[^\w-.]/', '', $pathToFile);
@@ -160,10 +161,12 @@ class BioXMLMigrationHelpers {
                   return $f;
                 }
             } else {
-                \drupal_set_message($filePath . ' doesn\'t exist.');
-                // TODO: Move $placeholderUrl to config or admin form.
-                $placeholderUrl = 'http://via.placeholder.com/300x300';
-                return self::attachPlaceholderImage($placeholderUrl);
+              $errors = \Drupal::state()->get('bio_import_xml.image_import_errors');
+              array_push($errors, $filePath . ' doesn\'t exist.');
+              \Drupal::state()->set('bio_import_xml.image_import_errors', $errors);
+              // TODO: Move $placeholderUrl to config or admin form.
+              $placeholderUrl = 'http://via.placeholder.com/300x300';
+              return self::attachPlaceholderImage($placeholderUrl);
             }
         }
 

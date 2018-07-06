@@ -8,8 +8,9 @@ use Psr\Log\LoggerInterface;
 
 const MODULE_NAME = 'bio_import_xml';
 const CONFIG_ID =  MODULE_NAME . '.settings';
+const IMAGE_ERROR_STATE = MODULE_NAME . '.image_import_errors';
 
-$db =  \Drupal::database();
+$db = \Drupal::database();
 $cfg = \Drupal::service('config.factory');
 $log = \Drupal::logger(MODULE_NAME);
 
@@ -37,6 +38,8 @@ function loadArgs($config) {
 
   if (drush_get_option('reset')) {
     $cfg->set(MODULE_NAME . '.rebuild_ingestion_table', true);
+  } else {
+    $cfg->set(MODULE_NAME . '.rebuild_ingestion_table', false);
   }
 
   $cfg->save();
@@ -46,36 +49,36 @@ function loadArgs($config) {
 
 
 /**
- * Wrapper for the Importer's "clean" method.
+ * Wrapper for the Importer's `clean` method.
  * @param ConfigBase $config
  */
 function clean($config) {
   $cleaned = Helpers\BioXMLMigrationCleaner::clean($config);
 
   if ($cleaned) {
-    drupal_set_message(t('XML Document has been cleaned.'), 'status');
+    drush_print('XML Document has been cleaned.');
   } else {
-    drupal_set_message('An error occurred. Please check the error logs.', 'error');
+    drush_print('An error occurred. Please check the error logs.');
   }
 }
 
 /**
- * Wrapper for the Importer's "ingest" method.
+ * Wrapper for the Importer's `ingest` method.
  * @param Connection $database
  * @param ConfigBase $config
  */
 function ingest($database, $config) {
   if ($config->get(MODULE_NAME . '.rebuild_ingestion_table')) {
-    drupal_set_message('all records will be marked new.');
+    drush_print('all records will be marked new.');
   } else {;
-    drupal_set_message('only records changed since last import will be imported');
+    drush_print('only records changed since last import will be imported');
   }
 
   Helpers\BioXMLMigrationIngestor::ingest($database, $config, true);
 }
 
 /**
- * Wrapper for the Importer's "import" method.
+ * Wrapper for the Importer's `import` method.
  * @param Connection $database
  * @param ConfigBase $config
  * @param LoggerInterface $logger
@@ -85,11 +88,18 @@ function import($database, $config, $logger) {
 }
 
 /**
- * Help text.  Probably not very useful as the 'help' option is under drush
- * control.
+ * Writes a timestamp.  For use with coordination w/other cron jobs.
+ */
+function saveTimestamp() {
+  \Drupal::state()->set(IMPORT_TIMESTAMP_KEY, date('Y-m-d h:i:s a', time()));
+}
+
+/**
+ * Help text.  Probably not very useful as the `help` option is under drush
+ * control (currently accessible via the `info` option).
  */
 function help() {
-  drupal_set_message('it was written. . .');
+  drush_print('it was written. . .');
 }
 
 /**
@@ -100,15 +110,18 @@ function help() {
  * @param LoggerInterface $logger
  */
 function run($database, $config, $logger) {
-  drupal_set_message('preparing configuration');
+  drush_print("preparing configuration. . .\n");
   /** @var ConfigBase $cfg */
   $cfg = loadArgs($config);
-  drupal_set_message('executing sanitizing phase. . .');
+  \Drupal::state()->set(IMAGE_ERROR_STATE, []);
+  //drush_print(print_r($cfg->get()['bio_import_xml']));
+  drush_print("executing sanitizing phase. . .\n");
   clean($cfg);
-  drupal_set_message('executing ingestion phase. . .');
+  drush_print("executing ingestion phase. . .\n");
   ingest($database, $cfg);
-  drupal_set_message('executing import');
+  drush_print("executing import\n");
   import($database, $cfg, $logger);
+  \Drupal::state()->set(IMAGE_ERROR_STATE, []);
 }
 
 if (drush_get_option('info')) {
