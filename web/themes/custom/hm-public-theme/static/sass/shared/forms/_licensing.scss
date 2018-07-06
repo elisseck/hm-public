@@ -6,10 +6,8 @@
 #edit-fieldset-licensinginfopane2,
 #edit-production-publication-type--wrapper,
 #edit-use-type--wrapper,
-#edit-production-publication-distribution-authorization-section,
-.form-item.form-item-e-mail-1.form-type-email {
+#edit-production-publication-distribution-authorization-section {
   display: flex;
-  flex: 0;
   justify-content: center;
   margin: 0 auto;
   width: 60%;
@@ -24,6 +22,10 @@
     display: flex;
     flex-flow: row wrap;
 
+    .form-item.form-item-e-mail-1.form-type-email {
+      flex: 0;
+    }
+
     .form-item.form-item-title-1.form-type-select,
     .form-item.form-item-company-school-name-36.form-type-textfield {
       flex: 1;
@@ -36,14 +38,7 @@
     .form-item.form-item-city-36.form-type-textfield,
     .form-item.form-item-state-1.form-type-textfield,
     .form-item.form-item-state-36.form-type-textfield,
-    .form-item.form-item-primary-phone-1.form-type-textfield {
-
-      input {
-        width: 250px;
-      }
-
-    }
-
+    .form-item.form-item-primary-phone-1.form-type-textfield,
     .form-item.form-item-work-phone-36.form-type-textfield {
 
       input {
