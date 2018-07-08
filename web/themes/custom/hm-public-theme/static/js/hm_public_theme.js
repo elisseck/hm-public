@@ -88,7 +88,41 @@ $(function(){
 });
 
 $(function() {
-    $('.filters__button').click(function(){
-    $('.filters').toggleClass('open');
-  });
-})
+    $('.filters__button, .closeFilter').click(function(){ 
+      $('.filters').toggleClass('open');
+      $("body").toggleClass('overflowHidden');;
+    });
+});
+
+//for glossary mobile menu 
+
+$(document).ready(function(){
+  if($("body").hasClass("path-glossary")==true){
+    var p = $( ".timeline_cont.glossary" );
+    var offset = p.offset();
+    offset=offset.top;
+    if($(document).width() <= 769){
+      $(window).scroll(function () {
+        curSP=$(document).scrollTop();
+        if(curSP > offset){
+          $(".pages").attr("style","position:fixed; top:0;");
+        }else{
+          $(".pages").attr("style","");
+        }
+      });
+    }
+    $(window).resize(function() {
+      if($(document).width() <= 769){
+      $(window).scroll(function () {
+        curSP=$(document).scrollTop();
+        if(curSP > offset){
+          $(".pages").attr("style","position:fixed; top:0;");
+        }else{
+          $(".pages").attr("style","");
+        }
+      });
+     }
+    });
+  }
+});
+

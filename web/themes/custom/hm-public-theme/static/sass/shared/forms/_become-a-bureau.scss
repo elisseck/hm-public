@@ -1,0 +1,151 @@
+#edit-fieldset-enter-contact-information,
+#edit-fieldset-location-of-bureau-office,
+#edit-fieldset-do-you-have-the-following,
+#edit-fieldset-please-tell-us-why-youre-interested {
+  display: flex;
+  flex: 0;
+  justify-content: center;
+  margin: 0 auto;
+  width: 60%;
+
+  @media screen and (max-width: 1024px) {
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 90%;
+  }
+
+  @media screen and (max-width: 900px) {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  //Headers
+  & > legend .fieldset-legend {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: em(20);
+  }
+
+  #edit-please-check-all-that-apply--wrapper,
+  #edit-staff--wrapper {
+
+    & > legend .fieldset-legend {
+      @extend %source-sans-semi-bold;
+      flex-basis: 100%;
+      font-size: 16px;
+      line-height: normal;
+      margin-bottom: 10px;
+    }
+
+  }
+
+  fieldset#edit-please-check-all-that-apply--wrapper {
+    flex-basis: 100%;
+  }
+
+  .fieldset-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+
+    .form-item.form-item-state-2.form-type-select,
+    .form-item.form-item-country-2.form-type-select,
+    .form-item.form-item-email-2.form-type-email,
+    .form-item.form-item-state-15.form-type-select,
+    .form-item.form-item-country-15.form-type-select {
+      flex: 0;
+
+      @media screen and (max-width: 768px) {
+        max-width: 100%;
+        min-width: 100%;
+        width: 100%;
+      }
+
+    }
+
+    //Full-width field
+    .form-item.form-item-title-ex-dr-2.form-type-textfield {
+      flex: 1;
+      flex-basis: 100%;
+      margin-bottom: 0;
+    }
+
+    .form-item.form-item-first-name-2.form-type-textfield,
+    .form-item.form-item-last-name-2.form-type-textfield,
+    .form-item.form-item-city-2.form-type-textfield,
+    .form-item.form-item-phone-2.form-type-textfield,
+    .form-item.form-item-city-15.form-type-textfield {
+
+      input {
+        width: 250px;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+
+      }
+
+    }
+
+    .form-item.form-item-mi-2.form-type-textfield,
+    .form-item.form-item-suffix-2.form-type-textfield {
+
+      input {
+        max-width: 75px;
+      }
+
+    }
+
+    .form-item.form-item-address-2.form-type-textfield,
+    .form-item.form-item-email-2.form-type-email,
+    .form-item.form-item-address-15.form-type-textfield {
+
+      input {
+        width: 400px;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+//Section
+fieldset#edit-fieldset-location-of-bureau-office > legend,
+#edit-fieldset-please-tell-us-why-youre-interested > legend {
+  border-top: 1px solid color(medium-grey);
+  padding-top: 15px;
+}
+
+//Button Container
+#webform-submission-become-a-bureau-page-variant-become-a-bureau-panels-variant-0-add-form #edit-actions {
+  width: 60%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  #edit-title-ex-dr-2 {
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+  }
+
+}

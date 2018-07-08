@@ -1,7 +1,11 @@
+body.overflowHidden {
+  overflow-y: hidden;
+}
+
 .timeline_cont {
   display: block;
   margin: auto;
-  max-width: 100%;
+  max-width: 1440px;
 
   .filters__button {
     align-items: center;
@@ -15,7 +19,7 @@
     padding: .42857143em 1.07142857em;
     text-transform: uppercase;
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 838px) {
       display: none;
     }
 
@@ -46,7 +50,9 @@
   }
 
   .info {
-    display: inline-block;
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 10px;
   }
 
@@ -58,7 +64,7 @@
     padding: 20px;
     width: 100%;
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 838px) {
       margin: 40px 30px;
       width: 70%;
     }
@@ -77,13 +83,57 @@
     padding: 30px;
     width: 100%;
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 838px) {
       margin-left: 30px;
       width: 70%;
     }
 
   }
 
+  .filters.open form {
+    @media screen and (max-width: 838px) {
+      height: 100%;
+      overflow-y: auto;
+      padding: 30px 0 0;
+
+      label {
+        padding: 0 30px;
+      }
+      .form-type-select {
+        position: relative;
+      }
+      .form-type-select:after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid;
+        content: '';
+        display: inline-block;
+        height: 0;
+        margin-bottom: 0;
+        margin-top: -22px;
+        position: absolute;
+        right: 40px;
+        vertical-align: middle;
+        width: 0;
+      }
+      select {
+        margin: 0 30px;
+        width: calc(100% - 60px);
+      }
+      @media screen and (min-width: 838px) {
+        padding: 0;
+      }
+      &>div {
+        height: 100%;
+      }
+      .form-submit {
+        bottom: 0;
+        margin-bottom: 0;
+        position: absolute;
+        text-transform: uppercase;
+      }
+     }
+  }
   .filters {
     background: color(light-grey);
     display: inline-block;
@@ -92,21 +142,13 @@
     top: -999px;
     transition: top 500ms linear;
     width: 100%;
-
     &.open {
-      top: 40px;
+      height: 100%;
+      top: 0;
+      z-index: 503;
     }
 
-    form {
-      padding: 30px;
-
-      @media screen and (min-width: 769px) {
-        padding: 0;
-      }
-
-    }
-
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 838px) {
       margin-left: 100px;
       position: inherit;
       width: 117px;
@@ -118,7 +160,7 @@
       justify-content: space-between;
       padding: .75em .875em .5em;
 
-      @media screen and (min-width: 769px) {
+      @media screen and (min-width: 838px) {
         display: none;
       }
 
@@ -152,6 +194,24 @@
     padding: 0 20px;
     width: 100%;
   }
+  .filters .form-type-select {
+    position: relative;
+  }
+
+  .filters .form-type-select:after {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid;
+    content: '';
+    display: inline-block;
+    height: 0;
+    margin-bottom: 0;
+    margin-top: -22px;
+    position: absolute;
+    right: 10px;
+    vertical-align: middle;
+    width: 0;
+  }
 
   .filters .form-item {
     margin: 0 0 10px;
@@ -172,7 +232,7 @@
   .form-submit {
     background-color: color(secondary);
     border-radius: 0;
-    font-size: 15px !important;
+    font-size: 15px;
     height: 3.07142857em;
     width: 100%;
 
