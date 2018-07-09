@@ -1,21 +1,36 @@
 body.overflowHidden {
   overflow-y: hidden;
 }
+// the css below should fix ie11 issues on content width
+// may want to incorporate this in the proper place
+body.columns-middle .content.column{
+  width: 100%;
+}
+
+
+
+// the css above should fix ie11 issues on content width
+
+
+//removes chrome on selects from ie 11
+select::-ms-expand {
+  display: none;
+}
 
 .timeline_cont {
   display: block;
   margin: auto;
   max-width: 1440px;
-
+  width:100%;
+  
   .filters__button {
     align-items: center;
     background-color: color(quaternary);
     border-radius: 0;
     cursor: pointer;
     display: flex;
-    float: right;
     justify-content: space-around;
-    margin: 20px;
+    //margin: 20px;
     padding: .42857143em 1.07142857em;
     text-transform: uppercase;
 
@@ -23,6 +38,25 @@ body.overflowHidden {
       display: none;
     }
 
+  }
+  
+  
+  .timeline-title-wrapper{
+    align-items:flex-end;
+    display: flex;
+    justify-content: space-between;
+    margin:auto;
+    max-width: 1440px;
+    padding: 0 30px;
+    @media screen and (max-width:900px){
+      padding: 0 15px;
+    }
+    width: 100%;
+    
+    h5{
+      margin-bottom:0;
+    }
+    
   }
 
   img {
@@ -61,11 +95,13 @@ body.overflowHidden {
   }
 
   & > p {
-    padding: 20px;
+    padding: 30px;
     width: 100%;
-
+    @media screen and (max-width:900px){
+      padding: 30px 15px;
+    }
     @media screen and (min-width: 838px) {
-      margin: 40px 30px;
+      margin: 40px 0;
       width: 70%;
     }
 
@@ -76,16 +112,21 @@ body.overflowHidden {
     margin: 30px;
     min-width: 350px;
   }
-
+  .timeline-list-wrapper{
+    display:flex;
+    flex-wrap:wrap;
+  }
   .timeline_list {
     display: block;
-    float: left;
     padding: 30px;
-    width: 100%;
-
-    @media screen and (min-width: 838px) {
-      margin-left: 30px;
-      width: 70%;
+    @media screen and (max-width:900px){
+      padding: 30px 15px;
+    }
+    width: 70%;
+    
+    @media screen and (max-width: 838px) {
+      //margin-left: 30px;
+      width: 100%;
     }
 
   }
@@ -116,6 +157,7 @@ body.overflowHidden {
         vertical-align: middle;
         width: 0;
       }
+
       select {
         margin: 0 30px;
         width: calc(100% - 60px);
@@ -134,6 +176,7 @@ body.overflowHidden {
       }
      }
   }
+  
   .filters {
     background: color(light-grey);
     display: inline-block;
@@ -223,10 +266,14 @@ body.overflowHidden {
 
   .timeline_list li {
     border-top: 1px solid color(medium-grey);
+    clear:both;
     display: block;
-    float: left;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     width: 100%;
+    a{
+      color:#3b3b3b;
+      text-decoration:none;
+    }
   }
 
   .form-submit {
@@ -239,3 +286,26 @@ body.overflowHidden {
   }
 
 }
+
+@supports (-ms-ime-align:auto) {
+  .timeline_cont .timeline-list-wrapper .filters .form-type-select:after {
+    margin-top: 28px;
+  }
+  .timeline_cont .timeline-list-wrapper .filters.open .form-type-select:after {
+    margin-top: 18px;
+  }
+}
+
+@media all and (-ms-high-contrast: none) {
+  .timeline_cont .timeline-list-wrapper .filters .form-type-select:after {
+    margin-top: 28px;
+  }
+  .timeline_cont .timeline-list-wrapper .filters.open .form-type-select:after {
+    margin-top: 18px;
+  }
+  .content-wrapper{
+    padding-left: 0;
+    padding-right: 15px;
+  }
+}
+
