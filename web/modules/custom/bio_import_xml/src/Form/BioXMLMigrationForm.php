@@ -133,6 +133,16 @@ class BioXMLMigrationForm extends ConfigFormBase {
       '#title' => t('Import Filemaker XML Feed.'),
     ];
 
+    $form[$formId]['notice'] = [
+      '#markup' => <<<NOTICE
+        <div class="alert alert-info">
+          NOTE: <br>Biography imports are no longer performed using this page. <br> 
+          Please use the commmand-line script for this operation.  Only the 
+          configuration values for importing Biographies can be modified here.
+        </div>
+NOTICE
+    ];
+
     $form[$formId]['reset_flag'] = [
       '#type' => 'hidden',
       '#value' => $reset,
@@ -140,13 +150,13 @@ class BioXMLMigrationForm extends ConfigFormBase {
 
     $form[$formId]['fm_path'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Absolute path to the XML file.'),
+      '#title' => $this->t('Absolute path to the XML file. (with trailing slash!)'),
       '#default_value' => $config->get('bio_import_xml.fm_path'),
     ];
 
     $form[$formId]['fm_files_path'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Absolute path to accompanying media.'),
+      '#title' => $this->t('Absolute path to accompanying media. (with trailing slash!)'),
       '#default_value' => $config->get('bio_import_xml.fm_files_path')
     ];
 

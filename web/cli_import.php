@@ -68,13 +68,15 @@ function clean($config) {
  * @param ConfigBase $config
  */
 function ingest($database, $config) {
-  if ($config->get(MODULE_NAME . '.rebuild_ingestion_table')) {
+  $reset = $config->get(MODULE_NAME . '.rebuild_ingestion_table') ? true : false;
+
+  if ($reset) {
     drush_print('all records will be marked new.');
-  } else {;
+  } else {
     drush_print('only records changed since last import will be imported');
   }
 
-  Helpers\BioXMLMigrationIngestor::ingest($database, $config, true);
+  Helpers\BioXMLMigrationIngestor::ingest($database, $config, $reset);
 }
 
 /**

@@ -161,9 +161,7 @@ class BioXMLMigrationHelpers {
                   return $f;
                 }
             } else {
-              $errors = \Drupal::state()->get('bio_import_xml.image_import_errors');
-              array_push($errors, $filePath . ' doesn\'t exist.');
-              \Drupal::state()->set('bio_import_xml.image_import_errors', $errors);
+              self::addToErrorStateObject($filePath . ' doesn\'t exist.');
               // TODO: Move $placeholderUrl to config or admin form.
               $placeholderUrl = 'http://via.placeholder.com/300x300';
               return self::attachPlaceholderImage($placeholderUrl);
@@ -171,6 +169,13 @@ class BioXMLMigrationHelpers {
         }
 
         return false;
+    }
+
+    public static function addToErrorStateObject($msg) {
+      $imageErrorStateKey = 'bio_import_xml.image_import_errors';
+      $errors = \Drupal::state()->get($imageErrorStateKey);
+      array_push($errors, $msg);
+      \Drupal::state()->set($imageErrorStateKey, $errors);
     }
 
     public static function attachPlaceholderImage($url) {

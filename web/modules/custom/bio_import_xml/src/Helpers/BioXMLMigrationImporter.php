@@ -14,6 +14,8 @@ use function React\Promise\all;
 
 class BioXMLMigrationImporter {
 
+  protected const IMAGE_ERROR_STATE = 'bio_import_xml.image_import_errors';
+
   /**
    * @var LoggerInterface Logger reference.
    */
@@ -293,8 +295,8 @@ class BioXMLMigrationImporter {
           $this->node->set($target, $clips[$i]);
         } else {
           $msgPrefix = 'this field type is only configured for two fields.';
-          $msg = 'dropping ' . $clips[$i] . 'as there\'s no room for it.';
-          \drupal_set_message("$msgPrefix\n$msg");
+          $msg = 'dropping ' . $clips[$i] . ' as there\'s no room for it.';
+          BioXMLMigrationHelpers::addToErrorStateObject("$msgPrefix\n$msg");
         }
       }
     }
@@ -448,7 +450,7 @@ SQL;
 
   public function printReport() {
     $data = '';
-    $errors = \Drupal::state()->get('bio_import_xml.image_import_errors');
+    $errors = implode("\n", \Drupal::state()->get($this::IMAGE_ERROR_STATE));
 
     for ($i = 0; $i < count($this->report); $i++) {
       $data .= key($this->report[$i]) . "\t" . $this->report[$i][key($this->report[$i])] . "\n";
@@ -477,10 +479,6 @@ EMAIL;
   public function sendMessage($recipient = null) {
     $mailMgr = \Drupal::service('plugin.manager.mail');
 
-    $module = 'bio_import_xml';
-    $key = 'import_complete';
-
-
     $to = $recipient;
     $params = [
       'context' => [
@@ -492,8 +490,8 @@ EMAIL;
     $send = true;
     //drupal_set_message('parameters: ' . print_r($params, true));
 
-
     $result = $mailMgr->mail('system', 'mail', $to, $langCode, $params, $send);
+
     if ($result !== true) {
       \drupal_set_message(
         t('There was an issue mailing the message'), 'error'
