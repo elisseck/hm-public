@@ -1,0 +1,259 @@
+//Headers
+#edit-fieldset-personal-contact-info,
+#edit-physical-limitations-1--wrapper,
+#edit-fieldset-emergency-contact-volunteers,
+#edit-fieldset-employer,
+#edit-fieldset-education-availability,
+#edit-availability--wrapper,
+#edit-advanced-notice-how-much-is-required---wrapper,
+#edit-fieldset-professional-experience,
+#edit-fieldset-donations,
+#edit-professional-experience--wrapper,
+#edit-donations--wrapper {
+
+  & > legend > span {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: em(20);
+  }
+
+}
+
+//Main Containers
+#edit-first-page,
+#edit-volunteer-step-2,
+#edit-step3 {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  margin: 0 auto;
+
+  //Form Container
+  #edit-fieldset-personal-contact-info,
+  #edit-fieldset-emergency-contact-volunteers,
+  #edit-fieldset-employer,
+  #edit-fieldset-education-availability,
+  #edit-fieldset-professional-experience,
+  #edit-fieldset-donations,
+  #edit-professional-experience--wrapper,
+  #edit-donations--wrapper,
+  .form-item.form-item-please-explain-why-you-want-to-be-a-volunteer-for-the-historymak.form-type-textarea {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 60%;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
+  }
+
+  .fieldset-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  //Full width row
+  .form-item.form-item-title-position-1.form-type-select,
+  .form-item.form-item-occupation-title-35.form-type-textfield,
+  #edit-availability--wrapper {
+    flex: 1;
+    flex-basis: 100%;
+  }
+
+  .form-item.form-item-name-1.form-type-textfield,
+  .form-item.form-item-last-name-1.form-type-textfield,
+  .form-item.form-item-city-1.form-type-textfield,
+  .form-item.form-item-phone-1.form-type-textfield,
+  .form-item.form-item-address-13.form-type-textfield,
+  .form-item.form-item-relation-13.form-type-textfield,
+  .form-item.form-item-city-13.form-type-textfield,
+  .form-item.form-item-phone-13.form-type-textfield,
+  .form-item.form-item-occupation-title-35.form-type-textfield,
+  .form-item.form-item-work-phone-35.form-type-textfield,
+  .form-item.form-item-fax-35.form-type-textfield {
+
+    input {
+      width: 250px;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+  }
+
+  .form-item.form-item-mi-1.form-type-textfield,
+  .form-item.form-item-suffix-1.form-type-textfield {
+
+    input {
+      max-width: 75px;
+
+      @media screen and (max-width: 600px) {
+        max-width: 100%;
+        width: 100%;
+      }
+
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+  }
+
+  #edit-address-1,
+  .form-item.form-item-e-mail-1.form-type-email input,
+  .form-item.form-item-full-name-13.form-type-textfield input,
+  .form-item.form-item-address-13.form-type-textfield input,
+  .form-item.form-item-work-e-mail-35.form-type-textfield input {
+    width: 400px;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+  }
+
+  .form-item.form-item-country-1.form-type-select {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+#edit-fieldset-personal-contact-info,
+#edit-fieldset-employer {
+  padding-bottom: 30px;
+
+  .form-item.form-item-e-mail-1.form-type-email,
+  .form-item.form-item-gender-1.form-type-select {
+    flex: 0;
+
+    @media screen and (max-width: 600px) {
+      flex: 1 0 100%;
+    }
+  }
+
+  .form-item.form-item-gender-1.form-type-select {
+
+    select {
+      width: 150px;
+    }
+
+  }
+
+  .form-item.form-item-drivers-license-1.form-type-textfield {
+    flex-basis: 60%;
+
+    input {
+      width: 100%;
+    }
+
+  }
+
+}
+
+#edit-physical-limitations-1--wrapper,
+#edit-fieldset-emergency-contact-volunteers {
+  flex-basis: 100%;
+  margin-top: 30px;
+}
+
+#edit-fieldset-emergency-contact-volunteers,
+#edit-fieldset-employer {
+
+  .form-item.form-item-country-13.form-type-select,
+  .form-item.form-item-country-35.form-type-select {
+    flex: 0;
+
+    @media screen and (max-width: 600px) {
+      flex: 1 0 100%;
+    }
+
+  }
+
+}
+
+#edit-physical-limitations-1--wrapper,
+#edit-fieldset-emergency-contact-volunteers,
+fieldset#edit-fieldset-education-availability {
+
+  & > legend {
+    border-top: 1px solid color(medium-grey);
+    padding-top: 15px;
+  }
+
+}
+
+.form-item.form-item-list-previous-volunteer-experience-46.form-type-textarea {
+  padding-bottom: 30px;
+}
+
+.form-item.form-item-professional-experience-select.form-type-select.form-no-label,
+.form-item.form-item-donations-select.form-type-select.form-no-label {
+  flex-basis: 100%;
+  order: 2;
+}
+
+#edit-professional-experience--wrapper--description,
+#edit-donations--wrapper--description {
+  @extend %source-sans-semi-bold;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+
+.form-item.form-item-please-explain-why-you-want-to-be-a-volunteer-for-the-historymak.form-type-textarea {
+  border-bottom: 1px solid color(medium-grey);
+  flex-direction: column;
+  padding-bottom: 30px;
+}
+
+fieldset#edit-donations--wrapper > legend {
+  padding-top: 15px;
+}
+
+fieldset#edit-donations--wrapper .fieldset-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#edit-professional-experience-select,
+#edit-donations-select {
+  height: 200px;
+  width: 400px;
+}
+
+//Mobile
+@media screen and (max-width: 600px) {
+
+  .form-item.form-item-address-1.form-type-textfield,
+  .form-item.form-item-state-1.form-type-textfield,
+  .form-item.form-item-zip-code-1.form-type-textfield,
+  .form-item.form-item-country-1.form-type-select,
+  .form-item.form-item-e-mail-1.form-type-email,
+  .form-item.form-item-dob-1.form-type-textfield,
+  .form-item.form-item-gender-1.form-type-select,
+  .form-item.form-item-drivers-license-1.form-type-textfield,
+  .form-item.form-item-exp-mm-dd-yy-1.form-type-textfield,
+  .form-item.form-item-full-name-13.form-type-textfield,
+  .form-item.form-item-state-13.form-type-textfield,
+  .form-item.form-item-zip-code-13.form-type-textfield,
+  .form-item.form-item-country-13.form-type-select,
+  #edit-if-yes-please-explain-1 {
+    flex-basis: 100%;
+    margin-right: 0;
+    width: 100%;
+
+    input,
+    select {
+      width: 100%;
+    }
+  }
+
+}

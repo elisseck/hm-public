@@ -28,6 +28,13 @@
   top: 0;
   width: em(45);
   z-index: 500;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 1.5em;
+    padding: 15px;
+    width: 70px;
+  }
+
 }
 
 // Two Column Slide
@@ -167,6 +174,14 @@
   color: $white;
   padding-right: 85px;
 
+  @media screen and (max-width: 1024px) {
+    padding-right: 70px;
+  }
+
+  @media screen and (max-width: 900px) {
+    padding-right: 0;
+  }
+
   a.button {
     @extend %oswald;
     background-color: $white;
@@ -174,12 +189,18 @@
     font-size: em(20);
     margin-right: 0;
     text-align: center;
-    //width: 100%;
   }
 
   a.button:hover {
     background-color: color(quaternary);
     color: $white;
+  }
+
+  @media screen and (max-width: 900px) {
+    h2,
+    p {
+      padding-right: 70px;
+    }
   }
 
   @media screen and (max-width: 768px) {
@@ -196,7 +217,11 @@
     }
 
     a.button {
-      width: auto;
+      bottom: 0;
+      margin-left: 0;
+      margin-right: 15px;
+      position: relative;
+      width: 100%;
     }
   }
 

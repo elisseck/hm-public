@@ -10,7 +10,7 @@
   flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
+  width: 80%;
 
   @media screen and (max-width: 1024px) {
     width: 90%;
@@ -36,6 +36,10 @@
       margin-right: 0;
       max-width: 100%;
       min-width: 100%;
+    }
+
+    @media screen and (max-width: 400px) {
+      flex: 1 0 auto;
     }
 
     .field-content {
@@ -64,6 +68,10 @@
       @media screen and (max-width: 550px) {
         margin-left: 0;
         margin-right: 0;
+      }
+
+      .bio-card--image {
+        max-height: 175px;
       }
 
     }//a

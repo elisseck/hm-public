@@ -36,9 +36,6 @@
 
 // Shared components
 @import 'shared/cards';
-@import 'shared/forms/progress-bar';
-@import 'shared/forms/controls';
-@import 'shared/forms/forms';
 @import 'shared/accordion';
 @import 'shared/cards';
 @import 'shared/carousel';
@@ -52,6 +49,15 @@
 @import 'shared/testimonials';
 @import 'shared/img-button';
 @import 'shared/collage';
+//Forms
+@import 'shared/forms/progress-bar';
+@import 'shared/forms/controls';
+@import 'shared/forms/forms';
+@import 'shared/forms/licensing';
+@import 'shared/forms/donation';
+@import 'shared/forms/check-out';
+@import 'shared/forms/volunteer';
+@import 'shared/forms/become-a-bureau';
 
 // Content styling
 @import 'content/intro-content';

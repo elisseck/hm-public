@@ -27,13 +27,19 @@
   <div class="col-sm col-md-4 two-column-slide--content carousel__caption">
     <h2 style="color: {{ content.field_carousel_header_color|field_value }};">{{ content.field_carousel_header|field_value }}</h2>
     <p>{{ content.field_carousel_content|field_value }}</p>
+    {# Link #}
     {% if content.field_carousel_link|field_value is not empty %}
       <a href="{{ content.field_carousel_link|field_raw('uri') }}" class="button button--primary">
         {{ content.field_carousel_link|field_raw('title') }}
       </a>
     {% endif %} 
+    {# Product Button #}
     {% if content.field_carousel_product_button|field_value is not empty %}
       {{ content.field_carousel_product_button|field_value }}
+    {% endif %}
+    {# Form Button #}
+    {% if content.field_button_to_a_form|field_value is not empty %}
+      {{ content.field_button_to_a_form|field_value }}
     {% endif %}
   </div>
 </div>

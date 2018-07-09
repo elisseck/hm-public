@@ -11,9 +11,10 @@
     .pages {
       background: $white;
       display: block;
-      height: 100%;
+      height: 100vh;
       margin: 0;
       min-width: 0;
+      overflow: auto;
       padding: 0 !important;
       position: absolute;
       right: 0;
@@ -31,9 +32,11 @@
         text-align: center;
 
         & > a {
-          display: block;
+          align-items: center;
+          display: flex;
+          justify-content: center;
           margin: 0;
-          text-align: center;
+          min-height: 49px;
           width: 49px;
         }
 

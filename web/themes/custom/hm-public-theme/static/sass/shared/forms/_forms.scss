@@ -1,17 +1,42 @@
 //Form Containers
-form.webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
-#checkoutprogress {
+.webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
+#checkoutprogress,
+.webform-progress {
   @extend %max-width;
   @extend %default-gutter-width;
-  margin: 30px 0;
+  margin: 30px auto;
+  width: 100%;
 }
 
-form#commerce-checkout-flow-thm-donation-checkout-flow,
-form.commerce-checkout-flow-thm-donation-checkout-flow.commerce-checkout-flow {
-  @extend %med-width-content;
+#edit-first-page {
+  margin: 0 auto;
+}
+
+//Buttons
+#edit-actions {
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  width: 57%;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 15px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: auto;
+  }
+
+}
+
+#webform-submission-webform-4790-page-variant-licensing-panels-variant-0-add-form #edit-actions {
+  width: 60%;
+
+  input#edit-wizard-next {
+    margin-left: 3%;
+  }
+
 }
 
 #edit-field-salutation-wrapper,
@@ -24,15 +49,45 @@ form.commerce-checkout-flow-thm-donation-checkout-flow.commerce-checkout-flow {
 .form-item.form-item-mail.form-type-email,
 .form-item.form-item-name.form-type-textfield,
 #edit-password,
-#edit-field-work-phone-wrapper {
-  @extend %med-width-content;
+#edit-field-work-phone-wrapper,
+#edit-fieldset-personal-contact-info,
+.webform-confirmation {
   display: flex;
+  justify-content: center;
   margin: 0 auto;
+  width: 60%;
 }
 
+//Progress Tracker
 .webform-progress-tracker.progress-tracker {
   margin-bottom: 30px;
   margin-top: 0;
+}
+
+@media screen and (max-width: 768px) {
+
+  .webform-progress-tracker .progress-step {
+    margin-right: 15px;
+  }
+
+}
+
+.webform-progress-tracker .progress-step .progress-text {
+  line-height: normal;
+  padding-top: 0;
+}
+
+.progress-step {
+  font-size: 1.375em;
+  font-weight: 400;
+}
+
+.progress-step.is-complete {
+  background-color: color(primary);
+}
+
+.webform-progress-tracker .progress-step.is-complete .progress-text {
+  color: $white;
 }
 
 #edit-field-intl-address-0,
@@ -43,81 +98,103 @@ form.commerce-checkout-flow-thm-donation-checkout-flow.commerce-checkout-flow {
 }
 
 //Normalizing form elements
-.progress-step {
-  font-size: 1.375em;
-  font-weight: 400;
+fieldset,
+.form-item,
+.authorize-net-accept-js-form.form-wrapper,
+.edit-payment-information-add-payment-method-billing-information {
+  margin: 0 10px 15px 0;
+  padding: 0;
+
+  @media screen and (max-width: 600px) {
+    margin-right: 0;
+  }
+
+}
+
+label,
+.webform-confirmation {
+  @extend %source-sans-semi-bold;
+  line-height: normal;
+}
+
+.webform-confirmation {
+  align-items: center;
+  flex-direction: column;
 }
 
 .form-text {
   margin: 0;
 }
 
-fieldset,
-.form-item,
-.authorize-net-accept-js-form.form-wrapper,
-.edit-payment-information-add-payment-method-billing-information {
-  margin: 0 0 15px;
-  padding: 0;
-}
-
+//Select
 .form-item select {
-  -webkit-appearance: none;
+  //-webkit-appearance: none;
   border: 1px solid color(medium-grey);
   border-radius: 0;
   height: 45px;
   padding: 0 5px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+
 }
 
-label {
-  @extend %source-sans-semi-bold;
-  line-height: normal;
+//Radio Buttons
+input[type='radio'] + label, input[type='checkbox'] + label {
+  display: flex;
+}
+
+input[type='radio'] + label:before {
+  align-self: center;
+  background-color: $white;
+  border: 1px solid color(medium-grey);
+  border-radius: 20px;
+  content: ' ';
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+}
+
+input[type='radio']:checked + label:before {
+  color: color(quaternary);
+  content: '\0000B7';
+  font-size: 80px;
+  line-height: 2px;
+  z-index: 10;
+}
+
+input[type='radio']:checked + label {
+  color: inherit;
+}
+
+//Checkbox
+input[type='checkbox'] + label:before {
+  align-self: center;
+  background-color: $white;
+  border: 1px solid color(medium-grey);
+  border-radius: 0;
+  content: ' ';
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+}
+
+input[type='checkbox']:checked + label, input[type='radio']:checked + label {
+  color: color(quaternary);
+}
+
+input[type='checkbox']:checked + label:before {
+  color: color(quaternary);
+  content: '\2713';
+  font-size: 30px;
+  line-height: 8px;
+  z-index: 10;
 }
 
 //Required *
 .form-wrapper .form-item span.form-required {
   color: $red;
-}
-
-//Donation
-.layout-checkout-form .checkout-pane .fieldgroup > legend span.fieldset-legend.form-required,
-.layout-checkout-form .checkout-pane > legend span.fieldset-legend,
-.layout-checkout-form .checkout-pane .fieldgroup > legend span.fieldset-legend {
-  @extend %card-header;
-  color: color(quaternary);
-  font-size: em(20);
-}
-
-#edit-thm-donation-opts-donation-opts,
-.form-item.form-item-payment-information-payment-method.form-type-radio,
-.checkout-pane.checkout-pane-payment-information.form-wrapper {
-
-  input[type='radio'] + label, input[type='checkbox'] + label {
-    display: flex;
-  }
-
-  input[type='radio'] + label:before, input[type='checkbox'] + label:before {
-    align-self: center;
-    background-color: $white;
-    border: 1px solid color(medium-grey);
-    border-radius: 20px;
-    content: ' ';
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-  }
-
-  input[type='radio']:checked + label:before {
-    color: color(quaternary);
-    content: '\0000B7';
-    font-size: 80px;
-    line-height: 2px;
-    z-index: 10;
-  }
-
-  input[type='radio']:checked + label {
-    color: inherit;
-  }
-
 }
 
 //Email Address
@@ -136,20 +213,10 @@ label {
     margin-right: 5px;
   }
 
-  input#edit-thm-donation-opts-donor-email {
+  #edit-thm-donation-opts-donor-email {
     flex: 1;
   }
 
-}
-
-input#edit-thm-donation-opts-submit {
-  margin-top: 30px;
-  width: 150px;
-}
-
-li.checkout-progress--step.checkout-progress--step__previous {
-  background: color(primary);
-  color: $white;
 }
 
 //Payment information
@@ -175,9 +242,4 @@ li.checkout-progress--step.checkout-progress--step__previous {
 .form-item.form-item-user-picture-0.form-type-managed-file > p {
   margin-top: 0;
   padding-left: 30px;
-}
-
-//Hide things
-#edit-field-intl-address-0 > legend {
-  display: none;
 }
