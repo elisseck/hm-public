@@ -126,6 +126,7 @@ class BioXMLMigrationHelpers {
         if (strlen(trim($path)) === 0) return false;
 
         $fmPath = $config->get('bio_import_xml.fm_files_path');
+        $importErrorKey = 'bio_import_xml.image_import_errors';
         $pathToFile = end(explode('/', $path));
         $stmt = "SELECT fid FROM {file_managed} WHERE uri = :uri";
         $uri = 'public://' . preg_replace('/[^\w-.]/', '', $pathToFile);
@@ -160,14 +161,21 @@ class BioXMLMigrationHelpers {
                   return $f;
                 }
             } else {
-                \drupal_set_message($filePath . ' doesn\'t exist.');
-                // TODO: Move $placeholderUrl to config or admin form.
-                $placeholderUrl = 'http://via.placeholder.com/300x300';
-                return self::attachPlaceholderImage($placeholderUrl);
+              self::addToErrorStateObject($filePath . ' doesn\'t exist.');
+              // TODO: Move $placeholderUrl to config or admin form.
+              $placeholderUrl = 'http://via.placeholder.com/300x300';
+              return self::attachPlaceholderImage($placeholderUrl);
             }
         }
 
         return false;
+    }
+
+    public static function addToErrorStateObject($msg) {
+      $imageErrorStateKey = 'bio_import_xml.image_import_errors';
+      $errors = \Drupal::state()->get($imageErrorStateKey);
+      array_push($errors, $msg);
+      \Drupal::state()->set($imageErrorStateKey, $errors);
     }
 
     public static function attachPlaceholderImage($url) {

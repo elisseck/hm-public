@@ -133,6 +133,16 @@ class BioXMLMigrationForm extends ConfigFormBase {
       '#title' => t('Import Filemaker XML Feed.'),
     ];
 
+    $form[$formId]['notice'] = [
+      '#markup' => <<<NOTICE
+        <div class="alert alert-info">
+          NOTE: <br>Biography imports are no longer performed using this page. <br> 
+          Please use the commmand-line script for this operation.  Only the 
+          configuration values for importing Biographies can be modified here.
+        </div>
+NOTICE
+    ];
+
     $form[$formId]['reset_flag'] = [
       '#type' => 'hidden',
       '#value' => $reset,
@@ -140,38 +150,40 @@ class BioXMLMigrationForm extends ConfigFormBase {
 
     $form[$formId]['fm_path'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Absolute path to the XML file.'),
+      '#title' => $this->t('Absolute path to the XML file. (with trailing slash!)'),
       '#default_value' => $config->get('bio_import_xml.fm_path'),
     ];
 
     $form[$formId]['fm_files_path'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Absolute path to accompanying media.'),
-      '#default_value' => $config->get('bio_import_xml.fm_files_path'),
-
+      '#title' => $this->t('Absolute path to accompanying media. (with trailing slash!)'),
+      '#default_value' => $config->get('bio_import_xml.fm_files_path')
     ];
 
     $form[$formId]['email_notify'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Email to notify once process is complete.'),
-      '#default_value' => \Drupal::currentUser()->getEmail()
+      '#default_value' => $config->get('bio_import_xml.notify_email')
     ];
 
     $form[$formId]['clean_xml'] = [
       '#type' => 'submit',
       '#value' => t('1. Clean feed.'),
       '#submit' => [ '::clean' ],
+      '#attributes' => [ 'disabled' => 'disabled' ],
     ];
 
     $form[$formId]['ingest_xml'] = [
       '#type' => 'submit',
       '#value' => t('2. Validate and store feed records'),
-      '#submit' => [ '::ingest' ]
+      '#submit' => [ '::ingest' ],
+      '#attributes' => [ 'disabled' => 'disabled' ],
     ];
 
     $form[$formId]['process_data'] = [
       '#type' => 'submit',
       '#value' => t('3. Import records to website'),
+      '#attributes' => [ 'disabled' => 'disabled' ],
       '#submit' => [ '::import' ]
     ];
 
@@ -243,65 +255,6 @@ class BioXMLMigrationForm extends ConfigFormBase {
     });
 
     $loop->run();
-
-    /*$config = $this->config('bio_import_xml.settings');
-    $values = $formState->getValues();
-    $startMsg = 'The import process has begun. An email will be sent to ' .
-      $values['email_notify'] . ' once completed';
-
-    Helpers\BioXMLMigrationImporter::import(
-      \Drupal::database(), $config, \Drupal::logger('bio_import_xml'));
-
-    \drupal_set_message(t($startMsg));*/
-  }
-
-  public function resetState() {
-    \Drupal::state()->delete('import_report');
-    \Drupal::state()->delete('import_progress');
-  }
-
-
-  public function test(array &$form, FormStateInterface $formState) {
-    $res = new Ajax\AjaxResponse();
-
-    $count = 1;
-
-    \Drupal::state()->set('import_report', $count . ' of 4');
-    \Drupal::state()->set('import_progress', ($count / 4) * 100);
-    sleep(1);
-    $count++;
-
-    \Drupal::state()->set('import_report', $count . ' of 4');
-    \Drupal::state()->set('import_progress', ($count / 4) * 100);
-    sleep(1);
-    $count++;
-    \Drupal::state()->set('import_report', $count . ' of 4');
-    \Drupal::state()->set('import_progress', ($count / 4) * 100);
-
-    sleep(3);
-
-    $this->resetState();
-
-
-    return $res;
-  }
-
-  public function progress($x = 0) {
-
-    $progress = [
-      'message' => 'importing biographies',
-      'percentage' => 0
-    ];
-
-    $importReport = \Drupal::state()->get('import_report');
-    $completedPercentage = \Drupal::state()->get('import_progress');
-
-    if ($completedPercentage) {
-      $progress['message'] = t($importReport);
-      $progress['percentage'] = $completedPercentage;
-    }
-
-    return new Ajax\AjaxResponse($progress);
   }
 
   /**
@@ -315,6 +268,7 @@ class BioXMLMigrationForm extends ConfigFormBase {
     $this->configFactory->getEditable('bio_import_xml.settings')
       ->set('bio_import_xml.fm_path', $values['fm_path'])
       ->set('bio_import_xml.fm_files_path', $values['fm_files_path'])
+      ->set('bio_import_xml.notify_email', $values['email_notify'])
       ->save();
 
     parent::submitForm($form, $formState);

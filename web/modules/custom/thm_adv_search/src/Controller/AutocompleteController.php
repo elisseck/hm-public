@@ -73,7 +73,7 @@ class AutocompleteController extends ControllerBase {
     if (!$this->cachedFacetFound($facet_id)) {
       $output = $this->buildOutput($facet->getResults(), $facet);
       $this->getCacheMgr()->set($this->cacheIdBase . $facet_id,
-        $output, CacheBackendInterface::CACHE_PERMANENT);
+        $output, CacheBackendInterface::CACHE_PERMANENT, ['bio-search-facets']);
     } else {
       $output = $this->getCacheMgr()->get($this->cacheIdBase . $facet_id);
     }

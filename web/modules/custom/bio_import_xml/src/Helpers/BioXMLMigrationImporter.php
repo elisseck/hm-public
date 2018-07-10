@@ -7,11 +7,14 @@ use Drupal\node\Entity\Node;
 use Drupal\Component\Utility\Unicode;
 use Psr\Log\LoggerInterface;
 use Drupal\Core\Entity\EntityStorageException;
+use ProgressBar\Manager;
 use React\Promise\Deferred;
 use function React\Promise\all;
 
 
 class BioXMLMigrationImporter {
+
+  protected const IMAGE_ERROR_STATE = 'bio_import_xml.image_import_errors';
 
   /**
    * @var LoggerInterface Logger reference.
@@ -46,6 +49,11 @@ class BioXMLMigrationImporter {
   protected $biosProcessed = 0;
 
   protected $totalBios = 0;
+
+  protected $report = [];
+
+  /** @var Manager */
+  protected $progressManager;
 
   protected $singleValueFields = [
     'field_first_name'                => 'namefirst',
@@ -282,13 +290,13 @@ class BioXMLMigrationImporter {
       $clips = explode('$', $record->$value);
 
       for ($i = 0, $clipCount = count($clips); $i < $clipCount; $i++) {
-        if ($i <= 2) {
+        if ($i < 2) {
           $target = $targetBase . ($i + 1);
           $this->node->set($target, $clips[$i]);
         } else {
           $msgPrefix = 'this field type is only configured for two fields.';
-          $msg = 'dropping ' . $clips[$i] . 'as there\'s no room for it.';
-          \drupal_set_message("$msgPrefix\n$msg");
+          $msg = 'dropping ' . $clips[$i] . ' as there\'s no room for it.';
+          BioXMLMigrationHelpers::addToErrorStateObject("$msgPrefix\n$msg");
         }
       }
     }
@@ -422,40 +430,12 @@ SQL;
       else if ($result == SAVED_NEW) $state = 'created';
       else if ($result == SAVED_UPDATED) $state = 'updated';
 
-      /*$report = $this->biosProcessed . " of " . $this->totalBios;
-      \Drupal::state()->set('import_counter', $report);
-
-      $percent = ($this->biosProcessed / $this->totalBios);
-      \Drupal::state()->set('import_progress', $percent);*/
-
       $deferred->resolve([ $id => $state ]);
+
+      $this->progressManager->update($this->biosProcessed);
 
       return $deferred->promise();
     }, $nodes);
-  }
-
-  public function logResults($report) {
-    $msg = 'results for '.date('Y-m-d H:i:s') . '; ';
-    $this->logger->notice($msg . print_r($report, true));
-
-    return $this;
-  }
-
-  public static function update($time) {
-    $progress = [
-      'message' => 'importing biographies',
-      'percentage' => -1
-    ];
-
-    $importReport = \Drupal::state()->get('import_counter');
-    $completedPercentage = \Drupal::state()->get('import_progress');
-
-    if ($completedPercentage) {
-      $progress['message'] = t($importReport);
-      $progress['percentage'] = $completedPercentage;
-    }
-
-    return $progress;
   }
 
   protected function shiftN(&$arr, $n) {
@@ -468,42 +448,50 @@ SQL;
     return $output;
   }
 
-  protected function bio_import_xml_mail($key, &$message, $params) {
-    $options = [ 'langcode' => $message['langcode'] ];
+  public function printReport() {
+    $data = '';
+    $errors = implode("\n", \Drupal::state()->get($this::IMAGE_ERROR_STATE));
 
-    $message['from'] = \Drupal::config('system.site')->get('mail');
-    $message['body'][] = $params['message'];
-
-    switch($key) {
-      case 'import_complete':
-        $message['subject'] = 'Biography Import Successful';
-        $message['body'][] = $params['message'];
-        break;
-      case 'import_failure':
-        $message['subject'] = 'Biography Import Unsuccessful';
-        $message['body'][] = $params['message'];
-        break;
+    for ($i = 0; $i < count($this->report); $i++) {
+      $data .= key($this->report[$i]) . "\t" . $this->report[$i][key($this->report[$i])] . "\n";
     }
+
+    $msg = <<<EMAIL
+
+$this->biosProcessed of $this->totalBios biographies have been processed.
+
+Status per record:
+
+ID/Maker Name\t\t\t  Import Status
+
+$data
+
+Errors importing images:
+
+$errors
+
+EMAIL;
+
+    return $msg;
+
   }
 
   public function sendMessage($recipient = null) {
     $mailMgr = \Drupal::service('plugin.manager.mail');
 
-    $module = 'bio_import_xml';
-    $key = 'import_bios';
-
-
     $to = $recipient;
     $params = [
-      'body' => [ $this->biosProcessed . ' biographies of ' . $this->totalBios . ' have been processed.' ],
-      'subject' => 'Biography Import Successful'
+      'context' => [
+        'subject' => 'Biography Import Report',
+        'message' => $this->printReport()
+      ],
     ];
     $langCode = \Drupal::currentUser()->getPreferredLangcode();
     $send = true;
+    //drupal_set_message('parameters: ' . print_r($params, true));
 
-    //$result = \mail($to, $params['subject'], $params['body'][0], implode("\r\n", $headers));
+    $result = $mailMgr->mail('system', 'mail', $to, $langCode, $params, $send);
 
-    $result = $mailMgr->mail($module, $key, $to, $langCode, $params, NULL, $send);
     if ($result !== true) {
       \drupal_set_message(
         t('There was an issue mailing the message'), 'error'
@@ -520,7 +508,12 @@ SQL;
 
     $rs = $instance->getNewBios($instance->db);
 
+    drush_print(count($rs) . ' records will be updated.');
+
     $instance->totalBios = count($rs);
+
+    $instance->progressManager = new Manager(0, $instance->totalBios);
+
 
     while (count($rs)) {
 
@@ -536,17 +529,19 @@ SQL;
           return all($rps);
         })
         ->then(function($report) use ($instance) {
+
           foreach ($report as $id => $state) {
+            array_push($instance->report, $state);
+
             $hmIdAndTitle = explode(':', key($state));
 
             $instance
               ->updateStorage($hmIdAndTitle[0])
               ->removeDuplicates($hmIdAndTitle[1]);
           }
-          $instance->logResults($report);
         });
     }
 
-    $instance->sendMessage('tony.taylor@thirdwavellc.com');
+    $instance->sendMessage($config->get('bio_import_xml.notify_email'));
   }
 }
