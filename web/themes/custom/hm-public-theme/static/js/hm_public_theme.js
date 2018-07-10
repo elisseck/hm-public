@@ -105,9 +105,9 @@ $(document).ready(function(){
       $(window).scroll(function () {
         curSP=$(document).scrollTop();
         if(curSP > offset){
-          $(".pages").attr("style","position:fixed; top:0;");
+          $(".pages").addClass("fixed");
         }else{
-          $(".pages").attr("style","");
+          $(".pages").removeClass("fixed");
         }
       });
     }
@@ -116,9 +116,9 @@ $(document).ready(function(){
       $(window).scroll(function () {
         curSP=$(document).scrollTop();
         if(curSP > offset){
-          $(".pages").attr("style","position:fixed; top:0;");
+          $(".pages").addClass("fixed");
         }else{
-          $(".pages").attr("style","");
+          $(".pages").removeClass("fixed");
         }
       });
      }

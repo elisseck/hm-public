@@ -3,10 +3,15 @@
   .pager__item {
     margin-bottom: 30px;
   }
-
+  
+  .pages {
+    padding:10px 0;
+  }
+  
   @media screen and (max-width: 769px) {
     display: inline-block;
     padding-right: 40px;
+    width:calc(100% - 40px);
 
     .pages {
       background: $white;
@@ -20,7 +25,10 @@
       right: 0;
       width: auto;
     }
-
+    .pages.fixed{
+      position: fixed; 
+      top: 0;
+    }
     nav.pager {
       float: right;
       text-align: center;
