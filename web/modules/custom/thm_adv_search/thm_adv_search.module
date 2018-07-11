@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface as RMI;
+use Drupal\Core\Form\FormStateInterface as FSI;
 
 /**
  * Implements hook_help().
@@ -20,5 +21,14 @@ function thm_adv_search_help($route_name, RMI $route_match) {
       return $output;
 
     default:
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function thm_adv_search_form_alter(&$form, FSI $form_state, $form_id) {
+  if ($form_id === 'views_exposed_form') {
+    $form['#attributes']['class'][] = 'header-search';
   }
 }
