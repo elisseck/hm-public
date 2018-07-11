@@ -14,8 +14,6 @@ use function React\Promise\all;
 
 class BioXMLMigrationImporter {
 
-  protected const IMAGE_ERROR_STATE = 'bio_import_xml.image_import_errors';
-
   /**
    * @var LoggerInterface Logger reference.
    */
@@ -450,7 +448,7 @@ SQL;
 
   public function printReport() {
     $data = '';
-    $errors = implode("\n", \Drupal::state()->get($this::IMAGE_ERROR_STATE));
+    $errors = implode("\n", \Drupal::state()->get('bio_import_xml.image_import_errors'));
 
     for ($i = 0; $i < count($this->report); $i++) {
       $data .= key($this->report[$i]) . "\t" . $this->report[$i][key($this->report[$i])] . "\n";
