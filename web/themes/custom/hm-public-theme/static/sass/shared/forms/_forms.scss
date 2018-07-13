@@ -126,6 +126,15 @@ label,
   margin: 0;
 }
 
+//Allows the h2 titles to wraps within forms
+form {
+
+  fieldset legend {
+    white-space: normal;
+  }
+
+}
+
 //Select
 .form-item select {
   //-webkit-appearance: none;
