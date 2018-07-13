@@ -18,6 +18,12 @@
     width: 90%;
   }
 
+  @media screen and (max-width: 600px) {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
   .fieldset-wrapper {
     display: flex;
     flex-flow: row wrap;
@@ -43,6 +49,11 @@
 
       input {
         width: 250px;
+      
+        @media screen and (max-width: 600px) {
+          width: 100%;
+        }
+      
       }
 
     }
