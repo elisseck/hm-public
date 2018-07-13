@@ -42,6 +42,10 @@
       flex: 1 0 auto;
     }
 
+    .views-field.views-field-field-date {
+      min-width: 100%;
+    }
+
     .field-content {
       display: flex;
       flex-direction: column;
