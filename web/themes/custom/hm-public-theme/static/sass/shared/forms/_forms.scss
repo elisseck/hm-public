@@ -18,23 +18,28 @@
   justify-content: center;
   margin: 0 auto;
   width: 57%;
-
-  @media screen and (max-width: 768px) {
-    margin-left: 15px;
-    width: 100%;
-  }
-
-  @media screen and (max-width: 600px) {
-    width: auto;
-  }
-
 }
 
 #webform-submission-webform-4790-page-variant-licensing-panels-variant-0-add-form #edit-actions {
   width: 60%;
 
-  input#edit-wizard-next {
+  #edit-wizard-next {
     margin-left: 3%;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  #edit-actions {
+    margin-left: 0;
+    padding-left: 15px;
+    width: 100%;
+  }
+
+  #edit-wizard-prev,
+  #edit-wizard-next {
+    width: 50%;
   }
 
 }
@@ -124,6 +129,15 @@ label,
 
 .form-text {
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+
+  textarea,
+  select {
+    width: 100%;
+  }
+
 }
 
 //Allows the h2 titles to wraps within forms
