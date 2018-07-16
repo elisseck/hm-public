@@ -3,7 +3,8 @@ body.overflowHidden {
 }
 // the css below should fix ie11 issues on content width
 // may want to incorporate this in the proper place
-body.columns-middle .content.column{
+
+body.columns-middle .content.column {
   width: 100%;
 }
 
@@ -21,8 +22,8 @@ select::-ms-expand {
   display: block;
   margin: auto;
   max-width: 1440px;
-  width:100%;
-  
+  width: 100%;
+
   .filters__button {
     align-items: center;
     background-color: color(quaternary);
@@ -39,24 +40,25 @@ select::-ms-expand {
     }
 
   }
-  
-  
-  .timeline-title-wrapper{
-    align-items:flex-end;
+
+
+  .timeline-title-wrapper {
+    align-items: flex-end;
     display: flex;
     justify-content: space-between;
-    margin:auto;
+    margin: auto;
     max-width: 1440px;
     padding: 0 30px;
-    @media screen and (max-width:900px){
+    width: 100%;
+
+    @media screen and (max-width: 900px) {
       padding: 0 15px;
     }
-    width: 100%;
-    
-    h5{
-      margin-bottom:0;
+
+    h5 {
+      margin-bottom: 0;
     }
-    
+
   }
 
   img {
@@ -97,9 +99,11 @@ select::-ms-expand {
   & > p {
     padding: 30px;
     width: 100%;
-    @media screen and (max-width:900px){
+
+    @media screen and (max-width: 900px) {
       padding: 30px 15px;
     }
+
     @media screen and (min-width: 838px) {
       margin: 40px 0;
       width: 70%;
@@ -112,18 +116,21 @@ select::-ms-expand {
     margin: 30px;
     min-width: 350px;
   }
-  .timeline-list-wrapper{
-    display:flex;
-    flex-wrap:wrap;
+
+  .timeline-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
   }
+
   .timeline_list {
     display: block;
     padding: 30px;
-    @media screen and (max-width:900px){
+    width: 70%;
+
+    @media screen and (max-width: 900px) {
       padding: 30px 15px;
     }
-    width: 70%;
-    
+
     @media screen and (max-width: 838px) {
       //margin-left: 30px;
       width: 100%;
@@ -140,30 +147,36 @@ select::-ms-expand {
       label {
         padding: 0 30px;
       }
+
       .form-type-select {
         position: relative;
       }
-      
+
 
       select {
         margin: 0 30px;
         width: calc(100% - 60px);
       }
+
       @media screen and (min-width: 838px) {
         padding: 0;
       }
+
       &>div {
         height: 100%;
       }
+
       .form-submit {
         bottom: 0;
         margin-bottom: 0;
         position: absolute;
         text-transform: uppercase;
       }
+
      }
+
   }
-  
+
   .filters {
     background: color(light-grey);
     display: inline-block;
@@ -172,6 +185,7 @@ select::-ms-expand {
     top: -999px;
     transition: top 500ms linear;
     width: 100%;
+
     &.open {
       height: 100%;
       top: 0;
@@ -216,7 +230,7 @@ select::-ms-expand {
   .filters select {
     appearance: none;
     background-color: $white;
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNOTguOSwxODQuN2wxLjgsMi4xbDEzNiwxNTYuNWM0LjYsNS4zLDExLjUsOC42LDE5LjIsOC42YzcuNywwLDE0LjYtMy40LDE5LjItOC42TDQxMSwxODcuMWwyLjMtMi42ICBjMS43LTIuNSwyLjctNS41LDIuNy04LjdjMC04LjctNy40LTE1LjgtMTYuNi0xNS44djBIMTEyLjZ2MGMtOS4yLDAtMTYuNiw3LjEtMTYuNiwxNS44Qzk2LDE3OS4xLDk3LjEsMTgyLjIsOTguOSwxODQuN3oiLz48L3N2Zz4=);
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNOTguOSwxODQuN2wxLjgsMi4xbDEzNiwxNTYuNWM0LjYsNS4zLDExLjUsOC42LDE5LjIsOC42YzcuNywwLDE0LjYtMy40LDE5LjItOC42TDQxMSwxODcuMWwyLjMtMi42ICBjMS43LTIuNSwyLjctNS41LDIuNy04LjdjMC04LjctNy40LTE1LjgtMTYuNi0xNS44djBIMTEyLjZ2MGMtOS4yLDAtMTYuNiw3LjEtMTYuNiwxNS44Qzk2LDE3OS4xLDk3LjEsMTgyLjIsOTguOSwxODQuN3oiLz48L3N2Zz4=');
     background-position: 98% center;
     background-repeat: no-repeat;
     background-size: 20px;
@@ -228,6 +242,7 @@ select::-ms-expand {
     padding: 0 20px;
     width: 100%;
   }
+
   .filters .form-type-select {
     position: relative;
   }
@@ -242,14 +257,16 @@ select::-ms-expand {
 
   .timeline_list li {
     border-top: 1px solid color(medium-grey);
-    clear:both;
+    clear: both;
     display: block;
     padding-bottom: 20px;
     width: 100%;
-    a{
-      color:#3b3b3b;
-      text-decoration:none;
+
+    a {
+      color: color($tundora);
+      text-decoration: none;
     }
+
   }
 
   .form-submit {
