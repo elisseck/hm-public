@@ -146,6 +146,14 @@
       width: 150px;
     }
 
+    @media screen and (max-width: 600px) {
+
+      select {
+        width: 100%;
+      }
+
+    }
+
   }
 
   .form-item.form-item-drivers-license-1.form-type-textfield {
@@ -153,6 +161,10 @@
 
     input {
       width: 100%;
+    }
+
+    @media screen and (max-width: 600px) {
+      flex-basis: 100%;
     }
 
   }
@@ -227,24 +239,25 @@ fieldset#edit-donations--wrapper .fieldset-wrapper {
 #edit-donations-select {
   height: 200px;
   width: 400px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  
+    option {
+      padding: 10px 0;
+    }
+  
+  }
+
 }
 
 //Mobile
 @media screen and (max-width: 600px) {
 
-  .form-item.form-item-address-1.form-type-textfield,
-  .form-item.form-item-state-1.form-type-textfield,
-  .form-item.form-item-zip-code-1.form-type-textfield,
-  .form-item.form-item-country-1.form-type-select,
-  .form-item.form-item-e-mail-1.form-type-email,
-  .form-item.form-item-dob-1.form-type-textfield,
-  .form-item.form-item-gender-1.form-type-select,
-  .form-item.form-item-drivers-license-1.form-type-textfield,
-  .form-item.form-item-exp-mm-dd-yy-1.form-type-textfield,
-  .form-item.form-item-full-name-13.form-type-textfield,
-  .form-item.form-item-state-13.form-type-textfield,
-  .form-item.form-item-zip-code-13.form-type-textfield,
-  .form-item.form-item-country-13.form-type-select,
+  .form-item.form-type-textfield,
+  .form-item.form-type-select,
+  .form-item.form-type-email,
+
   #edit-if-yes-please-explain-1 {
     flex-basis: 100%;
     margin-right: 0;
