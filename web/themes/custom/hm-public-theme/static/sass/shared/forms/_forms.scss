@@ -20,15 +20,7 @@
   width: auto;
 }
 
-/*#webform-submission-webform-4790-page-variant-licensing-panels-variant-0-add-form #edit-actions {
-  max-width: 900px;
-
-  #edit-wizard-next {
-    margin-left: 3%;
-  }
-
-}*/
-
+//Buttons
 @media screen and (max-width: 950px) {
 
   #edit-actions {
@@ -53,7 +45,7 @@
 
 }
 
-#edit-field-salutation-wrapper,
+/*#edit-field-salutation-wrapper,
 #edit-field-intl-address-wrapper,
 #edit-field-middle-initial-wrapper,
 #edit-field-cell-phone-wrapper,
@@ -70,7 +62,7 @@
   justify-content: center;
   margin: 0 auto;
   width: 60%;
-}
+}*/
 
 //Progress Tracker
 .webform-progress-tracker.progress-tracker {
@@ -104,12 +96,13 @@
   color: $white;
 }
 
+/*
 #edit-field-intl-address-0,
 .form-item.form-item-field-cell-phone-0-value.form-type-textfield,
 .form-item.form-item-field-home-phone-0-value.form-type-textfield,
 .form-item.form-item-field-work-phone-0-value.form-type-textfield {
   margin-bottom: 0;
-}
+}*/
 
 //Normalizing form elements
 fieldset,
@@ -140,10 +133,10 @@ label,
   margin: 0;
 }
 
+//Textarea
 @media screen and (max-width: 768px) {
 
-  textarea,
-  select {
+  textarea {
     width: 100%;
   }
 
@@ -164,6 +157,7 @@ form {
   border: 1px solid color(medium-grey);
   border-radius: 0;
   height: 45px;
+  min-width: 150px;
   padding: 0 5px;
 
   @media screen and (max-width: 600px) {
