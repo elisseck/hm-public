@@ -15,36 +15,37 @@
 //Buttons
 #edit-actions {
   display: flex;
-  justify-content: center;
   margin: 0 auto;
-  width: 57%;
+  max-width: 900px;
+  width: auto;
 }
 
-#webform-submission-webform-4790-page-variant-licensing-panels-variant-0-add-form #edit-actions {
-  width: 60%;
-
-  #edit-wizard-next {
-    margin-left: 3%;
-  }
-
-}
-
-@media screen and (max-width: 768px) {
+//Buttons
+@media screen and (max-width: 950px) {
 
   #edit-actions {
     margin-left: 0;
-    padding-left: 15px;
+    padding-left: 30px;
     width: 100%;
   }
 
   #edit-wizard-prev,
-  #edit-wizard-next {
+  #edit-wizard-next,
+  #edit-submit {
     width: 50%;
   }
 
 }
 
-#edit-field-salutation-wrapper,
+@media screen and (max-width: 769px) {
+
+  #edit-actions {
+    padding-left: 15px;
+  }
+
+}
+
+/*#edit-field-salutation-wrapper,
 #edit-field-intl-address-wrapper,
 #edit-field-middle-initial-wrapper,
 #edit-field-cell-phone-wrapper,
@@ -61,7 +62,7 @@
   justify-content: center;
   margin: 0 auto;
   width: 60%;
-}
+}*/
 
 //Progress Tracker
 .webform-progress-tracker.progress-tracker {
@@ -95,12 +96,13 @@
   color: $white;
 }
 
+/*
 #edit-field-intl-address-0,
 .form-item.form-item-field-cell-phone-0-value.form-type-textfield,
 .form-item.form-item-field-home-phone-0-value.form-type-textfield,
 .form-item.form-item-field-work-phone-0-value.form-type-textfield {
   margin-bottom: 0;
-}
+}*/
 
 //Normalizing form elements
 fieldset,
@@ -131,10 +133,10 @@ label,
   margin: 0;
 }
 
+//Textarea
 @media screen and (max-width: 768px) {
 
-  textarea,
-  select {
+  textarea {
     width: 100%;
   }
 
@@ -155,6 +157,7 @@ form {
   border: 1px solid color(medium-grey);
   border-radius: 0;
   height: 45px;
+  min-width: 150px;
   padding: 0 5px;
 
   @media screen and (max-width: 600px) {
