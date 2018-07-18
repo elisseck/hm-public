@@ -1,3 +1,10 @@
+//Main Container
+#edit-none {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  margin: 0 auto;
+}
+
 #edit-fieldset-enter-contact-information,
 #edit-fieldset-location-of-bureau-office,
 #edit-fieldset-do-you-have-the-following,
@@ -6,17 +13,10 @@
   flex: 0;
   justify-content: center;
   margin: 0 auto;
-  width: 60%;
+  max-width: 900px;
+  width: auto;
 
-  @media screen and (max-width: 1024px) {
-    padding-left: 30px;
-    padding-right: 30px;
-    width: 90%;
-  }
-
-  @media screen and (max-width: 900px) {
-    padding-left: 0;
-    padding-right: 0;
+  @media screen and (max-width: 768px) {
     width: 100%;
   }
 
@@ -55,7 +55,7 @@
     .form-item.form-item-country-15.form-type-select {
       flex: 0;
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 600px) {
         max-width: 100%;
         min-width: 100%;
         width: 100%;
@@ -67,7 +67,6 @@
     .form-item.form-item-title-ex-dr-2.form-type-textfield {
       flex: 1;
       flex-basis: 100%;
-      margin-bottom: 0;
     }
 
     .form-item.form-item-first-name-2.form-type-textfield,
@@ -80,7 +79,7 @@
         width: 250px;
       }
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 600px) {
         width: 100%;
 
         input {
@@ -98,6 +97,15 @@
         max-width: 75px;
       }
 
+      @media screen and (max-width: 600px) {
+
+        input {
+          max-width: none;
+          width: 100%;
+        }
+
+      }
+
     }
 
     .form-item.form-item-address-2.form-type-textfield,
@@ -108,7 +116,7 @@
         width: 400px;
       }
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 600px) {
         width: 100%;
 
         input {
@@ -130,22 +138,31 @@ fieldset#edit-fieldset-location-of-bureau-office > legend,
   padding-top: 15px;
 }
 
-//Button Container
-#webform-submission-become-a-bureau-page-variant-become-a-bureau-panels-variant-0-add-form #edit-actions {
-  width: 60%;
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
-
+#edit-fieldset-location-of-bureau-office {
+  margin-top: 30px;
 }
 
-@media screen and (max-width: 768px) {
+//Mobile
+@media screen and (max-width: 600px) {
 
   #edit-title-ex-dr-2 {
     max-width: 100%;
     min-width: 100%;
     width: 100%;
+  }
+
+  .form-item.form-type-textfield,
+  .form-item.form-type-select,
+  .form-item.form-type-email {
+    flex-basis: 100%;
+    margin-right: 0;
+    width: 100%;
+
+    input,
+    select {
+      width: 100%;
+    }
+
   }
 
 }
