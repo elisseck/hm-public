@@ -16,7 +16,7 @@
     width: 90%;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
   }
 
@@ -149,6 +149,11 @@
 
   .event__bio {
     margin-bottom: $default-grid-gutter-width;
+
+    & p {
+      margin-top: 0;
+    }
+
   }
 
   .accordion-block.accordion {
@@ -200,6 +205,7 @@
 .event__info h2,
 .event__date-and-time h2,
 .event__location h2 {
+  font-size: 2em;
   margin-bottom: em(5);
 }
 
