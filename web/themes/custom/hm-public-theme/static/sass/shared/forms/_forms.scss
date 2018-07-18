@@ -15,31 +15,40 @@
 //Buttons
 #edit-actions {
   display: flex;
-  justify-content: center;
   margin: 0 auto;
-  width: 57%;
+  max-width: 900px;
+  width: auto;
 }
 
-#webform-submission-webform-4790-page-variant-licensing-panels-variant-0-add-form #edit-actions {
-  width: 60%;
+/*#webform-submission-webform-4790-page-variant-licensing-panels-variant-0-add-form #edit-actions {
+  max-width: 900px;
 
   #edit-wizard-next {
     margin-left: 3%;
   }
 
-}
+}*/
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 950px) {
 
   #edit-actions {
     margin-left: 0;
-    padding-left: 15px;
+    padding-left: 30px;
     width: 100%;
   }
 
   #edit-wizard-prev,
-  #edit-wizard-next {
+  #edit-wizard-next,
+  #edit-submit {
     width: 50%;
+  }
+
+}
+
+@media screen and (max-width: 769px) {
+
+  #edit-actions {
+    padding-left: 15px;
   }
 
 }
