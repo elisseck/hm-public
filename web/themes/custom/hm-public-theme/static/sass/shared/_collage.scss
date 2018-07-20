@@ -20,6 +20,8 @@
 @media (max-width: 800px) {
   .collage {
     column-count: 2;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
   }
 
   .collage__info {
