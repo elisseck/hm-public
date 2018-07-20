@@ -5,6 +5,7 @@
 .basic-block {
   @extend %max-width;
   @extend %med-width-content;
+  @extend %default-gutter-width;
   margin-bottom: $default-grid-gutter-width;
   margin-top: $default-grid-gutter-width;
   word-break: break-word;
