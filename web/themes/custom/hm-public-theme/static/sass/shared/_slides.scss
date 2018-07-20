@@ -43,6 +43,17 @@
 
 }
 
+@media screen and (max-width: 800px) {
+
+  .hero-slide--image,
+  .two-column-slide,
+  .two-column-slide--image {
+    height: 450px;
+    min-height: 225px;
+  }
+
+}
+
 // Two Column Slide
 .two-column-slide {
   @extend %slide-height;
