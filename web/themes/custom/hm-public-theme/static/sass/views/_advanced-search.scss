@@ -6,6 +6,43 @@
   margin-top: em(60);
   padding: 0 $default-grid-gutter-width 0 0;
 
+  .view-header {
+    @extend %oswald-light;
+    background: $black;
+    color: $white;
+    flex: 1;
+    flex-basis: 100%;
+    font-size: em(44);
+    height: em(30);
+    line-height: normal;
+    margin-bottom: em(5);
+    padding-left: em(15);
+    padding-top: em(2);
+  }
+
+  //Filters
+  .view-filters.form-group {
+    flex-basis: 50%;
+    margin: 1.5em 0 3em;
+    order: 3;
+  }
+
+  .views-exposed-form {
+    align-items: baseline;
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+  }
+
+  .form-item.form-item-items-per-page.form-type-select {
+    flex: 1;
+    margin-right: em(20);
+  }
+
+  .form-item.form-item-sort-by.form-type-select {
+    margin-right: 15px;
+  }
+
   .view-content {
     display: flex;
     flex: 1;
