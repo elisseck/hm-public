@@ -52,6 +52,16 @@
     opacity: 1;
   }
 }
+.search-form { display: none; }
+
+.header__search {
+  width: 36px;
+
+  svg {
+    height: 34px;
+  }
+
+}
 
 .header__da-link {
   @extend %source-sans;

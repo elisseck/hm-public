@@ -25,6 +25,8 @@
             if (settings.path.currentPath === 'advanced-search') {
                 Drupal.thm.handleFilterReset(context, settings);
             }
+
+            Drupal.thm.searchToggler(context, settings);
         }
     };
 
@@ -41,6 +43,35 @@
             });
         });
     };
+
+    Drupal.thm.searchToggler = function(context, settings) {
+        var $containers = ['.header__top-row ', '.header__bottom-row '],
+            targetCls   = '.header__search',
+            formCls     = '.search-form';
+
+        $($containers.join(',')).find(targetCls).once('toggle-search').each(function() {
+            $(this).on('click', function(evt) {
+                var $desktopForm = $containers[0] + formCls,
+                    $mobileForm  = $containers[1] + formCls;
+
+                if ($('html').hasClass('touchevents')) {
+                    $($mobileForm).css({ position: 'absolute' });
+                    $($mobileForm).find('.form-text').css({ width: Drupal.thm.getMobileLogoWidth() });
+                    $($mobileForm).find('.form-actions').css({ marginLeft: '0' });
+                    $($mobileForm).fadeToggle('slow');
+                } else {
+                    $($desktopForm).fadeToggle('slow');
+                }
+            });
+        });
+    };
+
+    Drupal.thm.getMobileLogoWidth = function() {
+        var widthPx = $('.header__bottom-row .header__logo').css('width'),
+            val     = parseInt(widthPx.slice(0, -2));
+
+        return [val - (val * .20), 'px'].join('');
+    }
 
 })(jQuery, Drupal, this, this.document);
 
