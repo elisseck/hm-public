@@ -1,0 +1,5 @@
+name: 'THM Forms Management'
+type: module
+description: 'Simple module used for managing general form attributes'
+core: 8.x
+package: 'Custom'
