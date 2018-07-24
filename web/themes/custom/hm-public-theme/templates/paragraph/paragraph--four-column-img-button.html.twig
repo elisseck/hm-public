@@ -1,0 +1,14 @@
+<div class="media-landing-image--card">
+  <a href="{{ content.field_button_link|field_raw('uri') }}">
+    <div class="img-button__img-container">
+      <img class="w-100 my-2" src={{ file_url(content.field_image|field_target_entity.uri.value) }} alt={{ content.field_image|field_raw('alt') }} />
+      <div class="img-button__overlay-text w-75">
+        {{ content.field_image_overlay_text | field_value }}
+      </div>
+    </div>
+
+    <div class="button button--primary w-100 text-center py-3">
+      {{ content.field_button_text | field_value }}
+    </div>
+  </a>
+</div>

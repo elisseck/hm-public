@@ -26,13 +26,30 @@
   text-align: center;
   text-transform: uppercase;
   top: 0;
-  width: em(45);
+  width: 90px;
   z-index: 500;
 
   @media screen and (max-width: 1024px) {
-    font-size: 1.5em;
+    font-size: 1.2em;
+    padding: 10px;
+    right: 12px;
+    width: 80px;
+  }
+
+  @media screen and (max-width: 767px) {
     padding: 15px;
-    width: 70px;
+    right: 0;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+
+  .hero-slide--image,
+  .two-column-slide,
+  .two-column-slide--image {
+    height: 450px;
+    min-height: 225px;
   }
 
 }

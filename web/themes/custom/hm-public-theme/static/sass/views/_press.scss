@@ -36,8 +36,8 @@
 
   .views-field-title {
     @extend %source-sans-semi-bold;
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin: 15px 0;
+    text-align: left;
   }
 
   .views-field-title,
@@ -51,8 +51,6 @@
   .views-field-field-pdf-upload,
   .views-field-field-wav-upload {
     display: flex;
-    margin-left: 15px;
-    margin-right: 15px;
   }
 
   .views-label-field-publisher,
@@ -62,12 +60,6 @@
   .views-label-field-press-program,
   .views-label-field-video-link {
     padding-right: 10px;
-  }
-
-  .views-field-field-press-link,
-  .views-field-field-pdf-upload,
-  .views-field-field-wav-upload {
-    margin-top: 15px;
   }
 
   .snapshot-link {

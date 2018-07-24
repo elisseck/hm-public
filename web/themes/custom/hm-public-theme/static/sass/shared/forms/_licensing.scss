@@ -1,3 +1,33 @@
+//Headers
+#edit-fieldset-licensing-01,
+#edit-how-did-you-learn-1--wrapper,
+#edit-fieldset-none,
+#edit-organization-affiliation-type-36--wrapper,
+#edit-patrons-position-36--wrapper,
+#edit-fieldset-licensing-02,
+#edit-archive-format--wrapper,
+#edit-production-publication-type--wrapper,
+#edit-use-type--wrapper,
+#edit-fieldset-licensinginfopane2,
+#edit-production-publication-distribution-authorization-section,
+#edit-production-publication-distribution-authorization--wrapper {
+
+  & > legend .fieldset-legend {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: em(20);
+  }
+
+}
+
+//Main Containers
+#edit-licensing-page-2,
+#edit-licensing-page-3 {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  margin: 0 auto;
+}
+
 #edit-fieldset-licensing-01,
 #edit-fieldset-licensing-02,
 #edit-fieldset-licensing-03,
@@ -8,14 +38,13 @@
 #edit-use-type--wrapper,
 #edit-production-publication-distribution-authorization-section {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0 auto;
-  width: 60%;
+  max-width: 900px;
+  width: auto;
 
-  @media screen and (max-width: 1024px) {
-    padding-left: 30px;
-    padding-right: 30px;
-    width: 90%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
 
   .fieldset-wrapper {
@@ -24,6 +53,11 @@
 
     .form-item.form-item-e-mail-1.form-type-email {
       flex: 0;
+
+      @media screen and (max-width: 600px) {
+        flex: 1;
+      }
+
     }
 
     .form-item.form-item-title-1.form-type-select,
@@ -43,6 +77,11 @@
 
       input {
         width: 250px;
+
+        @media screen and (max-width: 600px) {
+          width: 100%;
+        }
+
       }
 
     }
@@ -51,6 +90,14 @@
 
       input {
         width: 400px;
+      }
+
+      @media screen and (max-width: 600px) {
+
+        input {
+          width: 100%;
+        }
+
       }
 
     }
@@ -62,6 +109,15 @@
 
       input {
         max-width: 75px;
+      }
+
+      @media screen and (max-width: 600px) {
+
+        input {
+          max-width: none;
+          width: 100%;
+        }
+
       }
 
     }
@@ -85,6 +141,14 @@
         margin-left: 10px;
       }
 
+      @media screen and (max-width: 600px) {
+
+        #edit-title-1 {
+          margin-left: 0;
+        }
+
+      }
+
     }
 
     .form-item.form-type-select {
@@ -94,6 +158,11 @@
 
     .form-select {
       width: 250px;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+
     }
 
     //Textarea
@@ -142,20 +211,19 @@
 
 }
 
+#edit-organization-affiliation-type-36--wrapper {
+  margin-top: 15px;
+}
+
 #edit-organization-affiliation-type-36--wrapper,
 fieldset#edit-patrons-position-36--wrapper {
   display: flex;
   flex-basis: 100%;
   flex-flow: column wrap;
-  margin-top: 15px;
 
   & > legend {
     border-top: 1px solid color(medium-grey);
     padding-top: 15px;
-
-    @media screen and (max-width: 1024px) {
-      border-top: 0;
-    }
   }
 
   .fieldset-wrapper,
@@ -180,6 +248,15 @@ fieldset#edit-patrons-position-36--wrapper {
 //Select HistoryMakers
 #edit-the-historymakers-names-4 {
   height: 200px;
+
+  @media screen and (max-width: 768px) {
+
+    option {
+      padding: 10px 0;
+    }
+
+  }
+
 }
 
 //Description
@@ -213,32 +290,13 @@ fieldset#edit-patrons-position-36--wrapper {
 #edit-how-did-you-learn-1--wrapper {
   border-bottom: 1px solid color(medium-grey);
   margin-bottom: 15px;
+  margin-top: 30px;
   padding-bottom: 15px;
-
-  @media screen and (max-width: 1024px) {
-    border-bottom: 0;
-    margin-top: 15px;
-  }
-
 }
 
-.form-item.form-item-primary-phone-1.form-type-textfield {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-
-  @media screen and (max-width: 1024px) {
-    margin-bottom: 0;
-  }
-
-}
-
-#edit-how-did-you-learn-1--wrapper > legend > span {
+fieldset#edit-how-did-you-learn-1--wrapper > legend {
   border-top: 1px solid color(medium-grey);
-
-  @media screen and (max-width: 1024px) {
-    border-top: 0;
-  }
-
+  padding-top: 15px;
 }
 
 #edit-production-publication-distribution-authorization-section > legend {
@@ -246,44 +304,8 @@ fieldset#edit-patrons-position-36--wrapper {
   padding-top: 15px;
 }
 
-//Headers
-#edit-fieldset-licensing-01,
-#edit-how-did-you-learn-1--wrapper,
-#edit-fieldset-none,
-#edit-organization-affiliation-type-36--wrapper,
-#edit-patrons-position-36--wrapper,
-#edit-fieldset-licensing-02,
-#edit-archive-format--wrapper,
-#edit-production-publication-type--wrapper,
-#edit-use-type--wrapper,
-#edit-fieldset-licensinginfopane2,
-#edit-production-publication-distribution-authorization-section,
-#edit-production-publication-distribution-authorization--wrapper {
-
-  & > legend .fieldset-legend {
-    @extend %card-header;
-    color: color(quaternary);
-    font-size: em(20);
-  }
-
-}
-
 #edit-fieldset-licensinginfopane2 > legend .fieldset-legend {
   white-space: normal;
-}
-
-//Submit
-#edit-actions {
-  justify-content: flex-start;
-}
-
-#edit-wizard-next {
-  width: 150px;
-
-  @media screen and (max-width: 600px) {
-    width: 100%;
-  }
-
 }
 
 .form-item.form-item-publisher-company-60.form-type-textfield {
