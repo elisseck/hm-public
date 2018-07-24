@@ -71,7 +71,7 @@
             val     = parseInt(widthPx.slice(0, -2));
 
         return [val - (val * .20), 'px'].join('');
-    }
+    };
 
 })(jQuery, Drupal, this, this.document);
 
