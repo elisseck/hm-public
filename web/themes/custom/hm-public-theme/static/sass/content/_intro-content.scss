@@ -14,6 +14,11 @@
     @extend %oswald;
     @extend %h2;
     text-align: center;
+
+    @media screen and (max-width: 768px) {
+      text-align: left;
+    }
+
   }
 
   p {
