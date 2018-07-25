@@ -1,3 +1,4 @@
+// Advanced Search View
 .list-advanced-search {
   display: flex;
   flex: 1;
@@ -5,6 +6,59 @@
   flex-wrap: wrap;
   margin-top: em(60);
   padding: 0 $default-grid-gutter-width 0 0;
+
+  @media screen and (max-width: 767px) {
+    padding-right: 0;
+  }
+
+  .view-header {
+    @extend %oswald-light;
+    background: $black;
+    color: $white;
+    flex: 1;
+    flex-basis: 100%;
+    font-size: em(44);
+    height: em(30);
+    line-height: normal;
+    margin-bottom: em(5);
+    padding-left: em(15);
+    padding-top: em(2);
+
+    @media screen and (max-width: 767px) {
+      font-size: 1.5em;
+    }
+  }
+
+  //Filters
+  .view-filters.form-group {
+    flex-basis: 50%;
+    margin: 1.5em 0 3em;
+    order: 3;
+
+    @media screen and (max-width: 767px) {
+      margin: auto;
+    }
+  }
+
+  .views-exposed-form {
+    align-items: baseline;
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
+  }
+
+  .form-item.form-item-items-per-page.form-type-select {
+    flex: 1;
+    margin-right: em(20);
+  }
+
+  .form-item.form-item-sort-by.form-type-select {
+    margin-right: 15px;
+  }
 
   .view-content {
     display: flex;
@@ -19,14 +73,29 @@
     flex-basis: 50%;
     margin: 1.5em 0 3em;
     order: 2;
-  }
 
+    .pager__items {
+      @media screen and (max-width: 767px) {
+        width: 112%;
+      }
+    }
+  }
+}
+
+// Targets the sidebar only on the Advanced Search page
+.path-advanced-search {
+  .sidebar {
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
 }
 
 .js-facets-autocomplete {
-  max-width: 100% !important;
+  max-width: 80% !important;
 }
 
+// This
 .views-field-title {
   text-align: center;
 

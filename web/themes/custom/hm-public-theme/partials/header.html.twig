@@ -5,8 +5,8 @@
             <div class="header__da-link-container">
                 {% if logged_in %}
                     {% if paid_user %}
-                        <a class="header__da-link" href="{{ user_jwt_da }}">The HistoryMakers Digital Archive</a>
-                        <a class="header__da-link" href="{{ user_jwt_smda }}">ScienceMakers Digital Archive</a>
+                        <a class="header__da-link" target="_blank" href="{{ user_jwt_da }}">The HistoryMakers Digital Archive</a>
+                        <a class="header__da-link" target="_blank" href="{{ user_jwt_smda }}">ScienceMakers Digital Archive</a>
                     {% else %}
                         {{ upgrade_form }}
                     {% endif %}
@@ -17,6 +17,10 @@
         </div>
         {{ donation_form }}
 
+        <span class="header__search">
+          <svg id="9ba5ed8e-22cb-45b4-9cc7-e8b48f3741f1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 43.88"><title>Icon_ Search</title><path id="f053bd4b-518f-4e95-8095-0fdf5ff6c71e" data-name="Icon: Search" d="M33.84,16.9a17,17,0,1,0,0,.08Zm-5,0a12,12,0,1,1,0-.08v.08ZM40.5,44,29.8,33.32l3.5-3.52L44,40.47Z" transform="translate(0 -0.12)" style="fill:#232323"/></svg>
+        </span>
+        <div class="search-form">{{ drupal_block('views_exposed_filter_block:global_search-page_1') }}</div>
         <ul class="profile">
         {% if logged_in %}
             <li class="profile__option profile__option--account">
@@ -144,7 +148,7 @@
             The Nation’s Largest African American Video Oral History Collection
         </span>
     </a>
-
+        <div class="search-form">{{ drupal_block('views_exposed_filter_block:global_search-page_1') }}</div>
         <span class="header__search">
           <svg id="9ba5ed8e-22cb-45b4-9cc7-e8b48f3741f1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 43.88"><title>Icon_ Search</title><path id="f053bd4b-518f-4e95-8095-0fdf5ff6c71e" data-name="Icon: Search" d="M33.84,16.9a17,17,0,1,0,0,.08Zm-5,0a12,12,0,1,1,0-.08v.08ZM40.5,44,29.8,33.32l3.5-3.52L44,40.47Z" transform="translate(0 -0.12)" style="fill:#232323"/></svg>
         </span>

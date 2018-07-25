@@ -33,7 +33,7 @@ class BioXMLMigrationCleaner {
             $xml  = new \SplFileObject($xmlFile);
             $data = $xml->fread($xml->getSize());
         } catch (\RuntimeException $exc) {
-            \drupal_set_message('file not found: ' . $exc->getMessage());
+            drush_print('file not found: ' . $exc->getMessage());
             return false;
         }
 

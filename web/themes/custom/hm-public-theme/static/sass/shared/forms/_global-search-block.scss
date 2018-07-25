@@ -1,0 +1,17 @@
+
+.header-search {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-form {
+  form {
+    display: flex;
+    flex-direction: row;
+
+    #edit-actions {
+      margin: 0;
+      padding-left: 0;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Contains thm_forms.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface as FSI;
+use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Implements hook_help().
+ */
+function thm_forms_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the thm_forms module.
+    case 'help.page.thm_forms':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Simple module used for managing general form attributes') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function get_forms_manifest() {
+  $path = drupal_get_path('module','thm_forms') . '/config/thm_forms.config.yml';
+  return Yaml::parseFile($path)['forms'];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function thm_forms_form_alter(&$form, FSI $form_state, $form_id) {
+  $formsData = get_forms_manifest();
+
+  foreach ($formsData as $formID => $formClass){
+    if ($form_id === $formID) {
+      if (is_array($formClass)) {
+        $form['#attributes']['class'] = array_merge($form['#attributes']['class'], $formClass);
+      } else {
+        $form['#attributes']['class'][] = $formClass;
+      }
+    }
+  }
+}
+
+
+
