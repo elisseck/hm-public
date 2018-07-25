@@ -1,6 +1,23 @@
 //Events
 .view.list-events {
   @extend %max-width;
+
+  .pager {
+    @extend %max-width;
+    @extend %default-gutter-width;
+    margin-top: 30px;
+    width: 80%;
+
+    @media screen and (max-width: 1024px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
+  }
+
 }
 
 .view.list-events .view-content {
@@ -20,6 +37,7 @@
     width: 100%;
   }
 
+  //Cards
   .bio-card--list {
     align-content: center;
     margin: 0 1em 1em 0;
