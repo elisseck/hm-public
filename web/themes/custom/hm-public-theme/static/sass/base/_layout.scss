@@ -91,12 +91,8 @@ section.content.column.section-wrapper {
   @extend %max-width;
 
   .first {
-    padding-left: $default-grid-gutter-width;
-    padding-right: 0;
-
-    @media screen and (max-width: 950px) {
-      padding-left: 0;
-    }
+    @extend %default-gutter-width;
+    border-right: 1px solid color(medium-grey);
 
     @media screen and (max-width: 900px) {
       .button {
@@ -108,12 +104,7 @@ section.content.column.section-wrapper {
   }
 
   .last {
-    padding-left: 0;
-    padding-right: $default-grid-gutter-width;
-
-    @media screen and (max-width: 950px) {
-      padding-right: 0;
-    }
+    @extend %default-gutter-width;
 
     @media screen and (max-width: 900px) {
       .button {
@@ -125,35 +116,11 @@ section.content.column.section-wrapper {
 
   }
 
-  .block-region-custom-left {
-    border-right: 1px solid color(medium-grey);
-    padding-right: $default-grid-gutter-width;
-
-    @media screen and (max-width: 950px) {
-      padding-right: 0;
-    }
-  }
-
   .block-region-custom-right {
-    padding-left: $default-grid-gutter-width;
 
     .field-item img {
       height: auto;
       width: 100%;
-
-      @media screen and (max-width: 767px) {
-        padding: 0 15px;
-      }
-
-    }
-
-    @media screen and (max-width: 950px) {
-      padding-left: 0;
-
-      .field-item img {
-        padding: 0 $default-grid-gutter-width;
-      }
-
     }
 
   }
@@ -161,6 +128,8 @@ section.content.column.section-wrapper {
   .block-region-custom-left div,
   .block-region-custom-right div {
     margin-top: 0;
+    padding-left: 0;
+    padding-right: 0;
     width: 100%;
   }
 
