@@ -15,3 +15,12 @@ auto-complete-widget:
     - core/drupal
     - core/jquery.once
     - thm_adv_search/easyautocomplete
+
+advanced-search-filters:
+  version: 0.1.x
+  js:
+    js/adv-search-filter-ctrl.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
