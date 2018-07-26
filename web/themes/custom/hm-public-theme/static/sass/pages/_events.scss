@@ -207,7 +207,23 @@
 
   }
 
-}
+  //Basic Block
+  .field-basic-block-content .field-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    h3 {
+      flex-basis: 100%;
+    }
+
+    img {
+      margin-right: $default-grid-gutter-width;
+    }
+
+  }
+
+}//.event__info
 
 //Right column
 .event__date-and-time {
