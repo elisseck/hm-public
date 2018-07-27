@@ -38,6 +38,10 @@ function hm_public_theme_preprocess_page(&$variables) {
     }
   }
 
+  if (\Drupal::routeMatch()->getRouteName() === 'view.advanced_search.page_1') {
+    $variables['#attached']['library'][] = 'thm_adv_search/advanced-search-filters';
+  }
+
   $variables['upgrade_form']  = render_form(THMUpgradeAMemberForm::class);
   $variables['donation_form'] = render_form(THMDonationForm::class);
 }
