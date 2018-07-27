@@ -25,24 +25,41 @@ function thm_forms_help($route_name, RouteMatchInterface $route_match) {
   }
 }
 
-function get_forms_manifest() {
-  $path = drupal_get_path('module','thm_forms') . '/config/thm_forms.config.yml';
-  return Yaml::parseFile($path)['forms'];
+function manifest() {
+  $meta = [
+    'base' => drupal_get_path('module', 'thm_forms'),
+    'path' =>'/config/thm_forms.config.yml',
+    'root_key' => 'form_classes'
+  ];
+
+  return [
+    'get_path' => function() use ($meta) { return $meta['base'] . $meta['path']; },
+    'fetch' => function($data) use ($meta) { return $data[$meta['root_key']]; }
+  ];
+}
+
+function get_forms_manifest(callable $m) {
+  $manifest = call_user_func($m);
+  $path     = call_user_func($manifest['get_path']);
+  $yamlData = Yaml::parseFile($path);
+
+  return call_user_func($manifest['fetch'], $yamlData);
 }
 
 /**
  * Implements hook_form_alter().
+ *
+ * @param array $form
+ * @param FSI $form_state
+ * @param string $current_form
  */
-function thm_forms_form_alter(&$form, FSI $form_state, $form_id) {
-  $formsData = get_forms_manifest();
+function thm_forms_form_alter(&$form, FSI $form_state, $current_form) {
+  $formsData = get_forms_manifest('manifest');
 
-  foreach ($formsData as $formID => $formClass){
-    if ($form_id === $formID) {
-      if (is_array($formClass)) {
-        $form['#attributes']['class'] = array_merge($form['#attributes']['class'], $formClass);
-      } else {
-        $form['#attributes']['class'][] = $formClass;
-      }
+  foreach ($formsData as $formID => $formClasses) {
+    $cls = $form['#attributes']['class'];
+    if ($current_form === $formID) {
+      $form['#attributes']['class'] = array_merge($cls, $formClasses);
     }
   }
 }

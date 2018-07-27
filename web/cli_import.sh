@@ -5,6 +5,8 @@
 # * clean the FileMaker XML Document
 # * load the XML document contents into a transient table
 # * import the transient table contents as Biographies
+# * clear and rebuild the search index
+# * reset the cache on search facet (autocomplete) data
 #
 # NOTES:
 # =====================
