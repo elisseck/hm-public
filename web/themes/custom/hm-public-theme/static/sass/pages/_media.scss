@@ -10,7 +10,7 @@
     flex: 1;
     margin-right: $default-grid-gutter-width;
 
-    &:nth-child(4n+1) {
+    &:nth-child(4n) {
       margin-right: 0;
     }
 
