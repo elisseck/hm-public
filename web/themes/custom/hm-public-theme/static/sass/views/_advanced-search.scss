@@ -76,7 +76,8 @@
 
     .pager__items {
       @media screen and (max-width: 767px) {
-        width: 112%;
+        width: 82%;
+        margin: 0 auto;
       }
     }
   }
@@ -95,8 +96,7 @@
   max-width: 80% !important;
 }
 
-// This
-.views-field-title {
+.views-field-title, .views-field-title-product {
   text-align: center;
 
   h3 { font-size: 1.5625em; }
