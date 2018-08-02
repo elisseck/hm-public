@@ -212,6 +212,11 @@
 
 //Special Collections
 .special-collections--card {
+  flex: 1 0 31%;
+  margin: 1em 1em 1em 0;
+  max-width: 31%;
+  padding-left: 0;
+  text-align: left;
 
   &> div {
     margin-bottom: 10px;
@@ -219,7 +224,20 @@
   }
 
   img {
+    height: auto;
     transform: scale(1.1);
+    width: 100%;
+  }
+
+  h3 {
+    @extend %oswald;
+    color: color(quaternary);
+    padding-bottom: 15px;
+  }
+
+  h4 {
+    @extend %source-sans-semi-bold;
+    font-size: em(18);
   }
 
 }

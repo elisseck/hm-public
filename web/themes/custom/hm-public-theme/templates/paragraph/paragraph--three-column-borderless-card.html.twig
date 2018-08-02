@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Theme override for Event detail page
+ *
+ * Available variables using Paragraphs:
+ * -  field_card_body
+ * -  field_card_date_info
+ * -  field_card_image
+ * -  field_card_link
+ * -  field_card_link_text
+ * -  field_card_title
+ *
+ */
+#}
+
+<div class="special-collections--card">
+  <div>{{ content.field_card_image|field_value }}</div>
+  <h3>{{ content.field_card_title|field_value }}</h3>
+  <h4>{{ content.field_card_date_info|field_value }}</h4>
+  <p>{{ content.field_card_body|field_value }} ...</p>
+  <a class="button button--primary w-100 text-center py-3" href="{{ content.field_card_link|field_raw('uri') }}">{{  content.field_card_link_text|field_value}}</a>
+</div>
