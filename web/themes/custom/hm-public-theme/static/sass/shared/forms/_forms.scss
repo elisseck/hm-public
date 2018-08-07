@@ -2,7 +2,6 @@
 .webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
 #checkoutprogress,
 .webform-progress {
-  @extend %max-width;
   @extend %default-gutter-width;
   margin: 30px auto;
   width: 100%;
@@ -66,6 +65,7 @@
 
 //Progress Tracker
 .webform-progress-tracker.progress-tracker {
+  @extend %default-gutter-width;
   margin-bottom: 30px;
   margin-top: 0;
 }
@@ -277,4 +277,9 @@ input[type='checkbox']:checked + label:before {
 .form-item.form-item-user-picture-0.form-type-managed-file > p {
   margin-top: 0;
   padding-left: 30px;
+}
+
+//Description
+.form-wrapper .fieldset-wrapper .description {
+  width: 100%;
 }

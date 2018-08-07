@@ -46,12 +46,6 @@
   margin-right: auto;
   max-width: $max-width;
 
-  @media screen and (min-width: 0\0) {
-    padding-left: 30px;
-    padding-right: 30px;
-    width: 100vw;
-  }
-
   @media screen and (min-width: 0\0) and (max-width: 1440px) {
     padding-left: 0;
     padding-right: 0;
