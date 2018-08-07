@@ -1,0 +1,96 @@
+//Special Collections
+.view.list-special-collections {
+  @extend %max-width;
+
+  .pager {
+    @extend %max-width;
+    @extend %default-gutter-width;
+    margin-top: 30px;
+    width: 80%;
+
+    @media screen and (max-width: 1024px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
+  }
+
+  .view-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+
+    @media screen and (max-width: 1024px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+
+  }
+
+}
+
+//Collection Detail
+.special-collections--content {
+  margin-left: auto;
+  margin-right: auto;
+
+  .special-collections--descript,
+  .event__pictures,
+  .paragraph.paragraph--type--basic-block-content,
+  .special-collections--interviews {
+    @extend %default-gutter-width;
+    @extend %max-width;
+  }
+
+  .special-collections--blocks {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .quote-block {
+    margin: 60px 0;
+  }
+
+}
+
+.special-collections--interviews {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+  @media screen and (max-width: 1024px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  .special-collections--card {
+    margin: 0 1em 2em;
+    max-width: 300px;
+
+    p {
+      @extend %text-overflow;
+      margin-top: 0;
+    }
+
+  }
+
+}

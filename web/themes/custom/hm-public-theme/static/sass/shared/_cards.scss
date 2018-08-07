@@ -211,6 +211,31 @@
 }
 
 //Special Collections
+.special-collections {
+  flex: 1;
+  flex-basis: 31%;
+  margin: 1em;
+  max-width: 31%;
+
+  @media screen and (max-width: 768px) {
+    margin: 15px;
+    max-width: 50%;
+    min-width: 31%;
+  }
+
+  @media screen and (max-width: 520px) {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+    min-width: 100%;
+  }
+
+  @media screen and (max-width: 400px) {
+    flex: 1 0 auto;
+  }
+
+}
+
 .special-collections--card {
 
   &> div {
@@ -219,16 +244,20 @@
   }
 
   img {
+    height: auto;
     transform: scale(1.1);
+    width: 100%;
   }
 
-}
+  h3 {
+    @extend %oswald;
+    color: color(quaternary);
+    padding-bottom: 15px;
+  }
 
-@media screen and (max-width: 576px) {
-
-  li.special-collections--card {
-    margin-left: 15px;
-    margin-right: 15px;
+  h4 {
+    @extend %source-sans-semi-bold;
+    font-size: em(18);
   }
 
 }

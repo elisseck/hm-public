@@ -1,0 +1,78 @@
+{#
+/**
+ * @file
+ * Theme override for Event detail page
+ *
+ * Available variables using Paragraphs:
+ * -  field_collection_content_blocks
+ * -  field_collection_cover_image
+ * -  field_collection_date
+ * -  field_collection_description
+ * -  field_collection_gallery
+ * -  field_collection_interviews
+ * -  field_video_description
+ * -  field_video_title
+ * -  field_video_url
+ *
+ */
+#}
+
+<style>
+  /* Allows the content section background 
+  to go full width */
+  .content-wrapper {max-width: 100%;}
+</style>
+
+<div class="contextual-region">
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div class="row">
+    <div class="col-sm-12 column">
+      {{ content.banner }}
+  
+      {# Video #}
+      {{ drupal_block('hero_video_player_block', {video_url: content.field_video_url|field_value, hero_title: content.	field_video_title|field_value, hero_desc: 	content.field_video_description|field_value}) }}
+
+    </div>
+  </div>{# Close one column #}
+
+  <div class="row special-collections--content">
+    {{ page.content }}
+    {{ content.content }}
+  
+    <div class="special-collections--descript">
+      {{ content.field_collection_description|field_value }}
+    </div>
+
+    {# Collage #}
+    <div class="row event__pictures">
+      <div class="col-sm-12 column px-4 my-4">  
+        <div class="collage event__collage">
+          {{ content.field_collection_gallery|field_value }}
+        </div>  
+      </div>
+    </div> 
+  
+    {# Collection Content Block #}
+    {% if content.field_collection_content_blocks|field_value is not empty %}
+      <div class="special-collections--blocks">
+        {% for item in content.field_collection_content_blocks|field_value %}
+          {{ item }}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {# Interviews #}
+    {% if content.field_collection_interviews|field_value is not empty %}
+      <div class="special-collections--interviews">
+        {% for item in content.field_collection_interviews|field_value %}
+          {{ item }}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+
+  </div>
+
+</div>{# <div class="contextual-region"> #}

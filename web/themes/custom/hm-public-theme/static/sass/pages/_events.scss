@@ -140,8 +140,9 @@
   max-width: 72%;
 
   @media screen and (max-width: 768px) {
+    margin-left: 0;
     margin-top: 0;
-    max-width: 96%;
+    max-width: none;
   }
 
 }
@@ -154,10 +155,11 @@
 
   .event__content .first,
   .event__content .last {
-    margin-left: 30px;
+    margin-left: 0;
     margin-top: em(30);
-    max-width: 96%;
-    padding-left: 30px;
+    max-width: none;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
 }
@@ -232,6 +234,11 @@
   .video-container.px-4 {
     padding-left: 0 !important;
     padding-right: 0 !important;
+
+    @media screen and (max-width: 768px) {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
 
     h2.hero-vid__title {
       font-size: 1.875em;
