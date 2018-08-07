@@ -155,10 +155,11 @@
 
   .event__content .first,
   .event__content .last {
-    margin-left: 30px;
+    margin-left: 0;
     margin-top: em(30);
-    max-width: 96%;
+    max-width: none;
     padding-left: 15px;
+    padding-right: 15px;
   }
 
 }
