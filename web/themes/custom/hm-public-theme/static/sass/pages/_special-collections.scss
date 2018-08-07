@@ -18,45 +18,22 @@
 
   }
 
-}
+  .view-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 
-.view.list-special-collections .view-content {
-  @extend %default-gutter-width;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-
-  @media screen and (max-width: 1024px) {
-    width: 90%;
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
-
-  .special-collections--card {
-    align-content: center;
-    margin: 0 1em 1em 0;
-    max-width: 31%;
-    overflow: hidden;
+    @media screen and (max-width: 1024px) {
+      width: 90%;
+    }
 
     @media screen and (max-width: 768px) {
-      max-width: 50%;
-      min-width: 45%;
-    }
-
-    @media screen and (max-width: 520px) {
-      margin-left: 0;
-      margin-right: 0;
-      max-width: 100%;
-      min-width: 100%;
-    }
-
-    @media screen and (max-width: 400px) {
-      flex: 1 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
     }
 
   }
@@ -77,9 +54,9 @@
   }
 
   .special-collections--blocks {
-    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
   }
 
   .quote-block {
