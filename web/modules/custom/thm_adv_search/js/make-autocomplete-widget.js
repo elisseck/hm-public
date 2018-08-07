@@ -1,4 +1,3 @@
-
 (function ($, Drupal) {
     'use strict';
 
@@ -10,7 +9,9 @@
 
     Drupal.thm.widgetCls = '.js-facets-autocomplete';
 
-    Drupal.thm.taxonomyWidgets = [ 'birth_place_term' ];
+    Drupal.thm.taxonomyWidgets = [
+        'birthplace_', 'schools_', 'occupation_', 'organizations_'
+    ];
 
     Drupal.thm.excludeWidgets = [ 'maker_category' ];
 
@@ -54,8 +55,10 @@
             if (Drupal.thm.excludeWidgets.includes(args[0])) {
                 return;
             } else if (Drupal.thm.taxonomyWidgets.includes(args[0])) {
+                //console.log('perform lookup for: ', filters[filter]);
                 _lookUpTerm(filters[filter]);
             } else {
+                //console.log('create filter for: ', args[1], args[0]);
                 _createFilterControl({ name: args[1], field: args[0] });
             }
         });
@@ -66,7 +69,7 @@
                 '<div data-facet-field-name="', cfg.field, '"',
                 'data-facet-field-value="', cfg.name, '"',
                 'data-facet-field-id="', cfg.id || 0, '">',
-                cfg.name, '</div>'
+                cfg.name, ' &times;</div>'
             ].join(''),
             $filterCtrl = $(ele);
 
