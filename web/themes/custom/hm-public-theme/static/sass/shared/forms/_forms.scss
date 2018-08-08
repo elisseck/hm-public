@@ -214,31 +214,49 @@ input[type='radio']:checked + label:after {
 }
 
 //Checkbox
-input[type='checkbox'] + label:before {
-  align-self: center;
-  background-color: transparent;
+input[type='checkbox']:checked + label,
+input[type='checkbox']:not(:checked) + label {
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+input[type='checkbox']:checked + label:before,
+input[type='checkbox']:not(:checked) + label:before {
+  background: $white;
+  border: 1px solid color(medium-grey);
   border-radius: 0;
-  color: $white;
-  content: '\25A3';
-  font-size: 26px;
-  height: 28px;
-  width: 28px;
-}
-
-input[type='checkbox'] + label {
-  align-items: center;
-}
-
-input[type='checkbox']:checked + label, input[type='radio']:checked + label {
-  color: color(quaternary);
+  content: '';
+  display: inline-block;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: text-top;
+  width: 20px;
 }
 
 input[type='checkbox']:checked + label:before {
-  color: color(quaternary);
-  content: '\25A3';
-  font-size: 26px;
-  height: 28px;
-  width: 28px;
+  background: color(quaternary);
+}
+
+input[type='checkbox']:checked + label:after,
+input[type='checkbox']:not(:checked) + label:after {
+  background: $white;
+  content: '';
+  height: 10px;
+  left: 5px;
+  position: absolute;
+  top: 5px;
+  width: 10px;
+}
+
+input[type='checkbox']:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+input[type='checkbox']:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
 }
 
 //Required *
