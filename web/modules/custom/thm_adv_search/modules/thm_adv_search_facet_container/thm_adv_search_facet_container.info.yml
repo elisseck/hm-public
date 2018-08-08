@@ -1,0 +1,8 @@
+name: 'THM Advanced Search Facet Container'
+type: module
+description: 'Search Facet - Custom Block Wrapper'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - search_api
+  - thm_adv_search

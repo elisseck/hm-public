@@ -1,4 +1,32 @@
 // Advanced Search View
+
+.block-thm-adv-search-facet-container {
+  background: color(light-grey);
+  display: none;
+  left: 0;
+  position: fixed;
+  //top: -999px;
+  transition: top 500ms linear;
+  padding-left: 1em;
+  width: 100%;
+
+  .facets__header-button { right: 0; }
+
+  &.open {
+    display: inline-block;
+    overflow-y: scroll;
+    height: 100%;
+    top: 0;
+    z-index: 503;
+  }
+
+  @media screen and (min-width: 838px) {
+    margin-left: 100px;
+    position: inherit;
+    width: 117px;
+  }
+}
+
 .list-advanced-search {
   display: flex;
   flex: 1;
@@ -65,6 +93,14 @@
     flex: 1;
     flex-flow: row wrap;
     order: 4;
+  }
+
+  .view-footer {
+    display: none;
+
+    @media screen and (max-width: 767px) {
+      display: flex;
+    }
   }
 
   .pager {

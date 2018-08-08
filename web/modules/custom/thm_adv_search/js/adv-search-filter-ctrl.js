@@ -10,10 +10,18 @@
     };
 
     Drupal.thm.handleSearchFilters = function(context, settings) {
-        $('.filters__button, .closeFilter').on('click', function(evt){
-          $('.filters').toggleClass('open');
-          $("body").toggleClass('overflowHidden');
+        $('.facets__button').on('click', function(evt){
+          Drupal.thm.toggleClasses();
         });
+
+        $('.facets__header-button').on('click', function (evt) {
+          Drupal.thm.toggleClasses();
+        })
+    };
+
+    Drupal.thm.toggleClasses = function() {
+      $('.block-thm-adv-search-facet-container').toggleClass('open');
+      $('body').toggleClass('overflowHidden');
     };
 
 })(jQuery, Drupal);

@@ -57,8 +57,8 @@ function thm_forms_form_alter(&$form, FSI $form_state, $current_form) {
   $formsData = get_forms_manifest('manifest');
 
   foreach ($formsData as $formID => $formClasses) {
-    $cls = $form['#attributes']['class'];
     if ($current_form === $formID) {
+      $cls = $form['#attributes']['class'];
       $form['#attributes']['class'] = array_merge($cls, $formClasses);
     }
   }
