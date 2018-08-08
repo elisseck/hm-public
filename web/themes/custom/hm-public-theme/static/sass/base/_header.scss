@@ -55,10 +55,12 @@
 .search-form { display: none; }
 
 .header__search {
+  margin-left: auto;
   width: 36px;
+  vertical-align: baseline;
 
   svg {
-    height: 34px;
+    height: 1.375em;
   }
 
 }
@@ -216,7 +218,7 @@
 //#hm-public-theme-main-menu moved to _navigation.scss
 
 .profile {
-  margin-left: auto;
+  //margin-left: auto;
   margin-right: em(22);
 }
 
