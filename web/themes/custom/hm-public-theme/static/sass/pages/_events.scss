@@ -42,7 +42,7 @@
     align-content: center;
     margin: 0 1em 1em 0;
     max-width: 31%;
-    overflow: hidden;
+    overflow-y: hidden;
 
     @media screen and (max-width: 768px) {
       max-width: 50%;
