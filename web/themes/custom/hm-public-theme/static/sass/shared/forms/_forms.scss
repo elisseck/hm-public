@@ -19,7 +19,6 @@
   width: auto;
 }
 
-//Buttons
 @media screen and (max-width: 950px) {
 
   #edit-actions {
@@ -43,25 +42,6 @@
   }
 
 }
-
-/*#edit-field-salutation-wrapper,
-#edit-field-intl-address-wrapper,
-#edit-field-middle-initial-wrapper,
-#edit-field-cell-phone-wrapper,
-#edit-field-home-phone-wrapper,
-#edit-field-email-address-wrapper,
-#edit-user-picture-wrapper,
-.form-item.form-item-mail.form-type-email,
-.form-item.form-item-name.form-type-textfield,
-#edit-password,
-#edit-field-work-phone-wrapper,
-#edit-fieldset-personal-contact-info,
-.webform-confirmation {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  width: 60%;
-}*/
 
 //Progress Tracker
 .webform-progress-tracker.progress-tracker {
@@ -95,14 +75,6 @@
 .webform-progress-tracker .progress-step.is-complete .progress-text {
   color: $white;
 }
-
-/*
-#edit-field-intl-address-0,
-.form-item.form-item-field-cell-phone-0-value.form-type-textfield,
-.form-item.form-item-field-home-phone-0-value.form-type-textfield,
-.form-item.form-item-field-work-phone-0-value.form-type-textfield {
-  margin-bottom: 0;
-}*/
 
 //Normalizing form elements
 fieldset,
@@ -153,7 +125,6 @@ form {
 
 //Select
 .form-item select {
-  //-webkit-appearance: none;
   border: 1px solid color(medium-grey);
   border-radius: 0;
   height: 45px;
@@ -211,6 +182,12 @@ input[type='radio']:not(:checked) + label:after {
 input[type='radio']:checked + label:after {
   opacity: 1;
   transform: scale(1);
+}
+
+//Radio and Checkbox
+.form-type-radio,
+.form-type-checkbox {
+  margin-bottom: 5px;
 }
 
 //Checkbox
