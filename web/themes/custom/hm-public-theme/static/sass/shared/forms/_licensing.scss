@@ -10,7 +10,10 @@
 #edit-use-type--wrapper,
 #edit-fieldset-licensinginfopane2,
 #edit-production-publication-distribution-authorization-section,
-#edit-production-publication-distribution-authorization--wrapper {
+#edit-production-publication-distribution-authorization--wrapper,
+#edit-production-publication-type,
+#edit-use-type,
+#edit-production-publication-distribution-authorization {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -39,7 +42,9 @@
 #edit-fieldset-licensinginfopane2,
 #edit-production-publication-type--wrapper,
 #edit-use-type--wrapper,
-#edit-production-publication-distribution-authorization-section {
+#edit-production-publication-distribution-authorization-section,
+#edit-production-publication-type,
+#edit-use-type {
   display: flex;
   justify-content: flex-start;
   margin: 0 auto;
@@ -282,6 +287,7 @@ fieldset#edit-patrons-position-36--wrapper {
 }
 
 #edit-intended-media-60--description {
+  font-weight: 400;
   margin-top: 0;
 }
 
@@ -291,7 +297,10 @@ fieldset#edit-patrons-position-36--wrapper {
 
 #edit-production-publication-type-checkboxes--wrapper,
 #edit-use-type-checkboxes--wrapper,
-#edit-production-publication-distribution-authorization-radios--wrapper {
+#edit-production-publication-distribution-authorization-radios--wrapper,
+#edit-production-publication-type-checkboxes,
+#edit-use-type-checkboxes,
+#edit-production-publication-distribution-authorization-radios {
   order: 2;
 }
 
@@ -316,11 +325,25 @@ fieldset#edit-how-did-you-learn-1--wrapper > legend {
   white-space: normal;
 }
 
-.form-item.form-item-publisher-company-60.form-type-textfield {
+.form-item.form-item-intended-media-60.form-type-textfield,
+.form-item.form-item-publisher-company-60.form-type-textfield,
+.form-item.form-item-number-in-print-run-number-of-airings-60.form-type-textfield,
+.form-item.form-item-pub-start-date-60.form-type-textfield,
+.form-item.form-item-production-publication-end-duration-60.form-type-textfield {
   width: 100%;
 
   input {
     width: 100%;
   }
 
+}
+
+//Licensing/Use Type
+#edit-use-type > legend,
+#edit-production-publication-distribution-authorization > legend {
+  padding-top: 17px;
+}
+
+#edit-production-publication-distribution-authorization-section {
+  margin-top: 17px;
 }
