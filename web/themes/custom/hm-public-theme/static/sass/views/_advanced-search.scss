@@ -1,21 +1,21 @@
 // Advanced Search View
 
 .block-thm-adv-search-facet-container {
+  //top: -999px;
   background: color(light-grey);
   display: none;
   left: 0;
-  position: fixed;
-  //top: -999px;
-  transition: top 500ms linear;
   padding-left: 1em;
+  position: fixed;
+  transition: top 500ms linear;
   width: 100%;
 
   .facets__header-button { right: 0; }
 
   &.open {
     display: inline-block;
-    overflow-y: scroll;
     height: 100%;
+    overflow-y: scroll;
     top: 0;
     z-index: 503;
   }
@@ -25,6 +25,7 @@
     position: inherit;
     width: 117px;
   }
+
 }
 
 .list-advanced-search {
@@ -55,6 +56,7 @@
     @media screen and (max-width: 767px) {
       font-size: 1.5em;
     }
+
   }
 
   //Filters
@@ -66,6 +68,7 @@
     @media screen and (max-width: 767px) {
       margin: auto;
     }
+
   }
 
   .views-exposed-form {
@@ -77,6 +80,7 @@
     @media screen and (max-width: 767px) {
       flex-direction: column;
     }
+
   }
 
   .form-item.form-item-items-per-page.form-type-select {
@@ -101,6 +105,7 @@
     @media screen and (max-width: 767px) {
       display: flex;
     }
+
   }
 
   .pager {
@@ -111,21 +116,29 @@
     order: 2;
 
     .pager__items {
+
       @media screen and (max-width: 767px) {
-        width: 82%;
         margin: 0 auto;
+        width: 82%;
       }
+
     }
+
   }
+
 }
 
 // Targets the sidebar only on the Advanced Search page
 .path-advanced-search {
+
   .sidebar {
+
     @media screen and (max-width: 767px) {
       display: none;
     }
+
   }
+
 }
 
 .js-facets-autocomplete {
