@@ -1,31 +1,3 @@
-//Headers
-#edit-fieldset-licensing-01,
-#edit-how-did-you-learn-1--wrapper,
-#edit-fieldset-none,
-#edit-organization-affiliation-type-36--wrapper,
-#edit-patrons-position-36--wrapper,
-#edit-fieldset-licensing-02,
-#edit-archive-format--wrapper,
-#edit-production-publication-type--wrapper,
-#edit-use-type--wrapper,
-#edit-fieldset-licensinginfopane2,
-#edit-production-publication-distribution-authorization-section,
-#edit-production-publication-distribution-authorization--wrapper,
-#edit-production-publication-type,
-#edit-use-type,
-#edit-production-publication-distribution-authorization {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  & > legend .fieldset-legend {
-    @extend %card-header;
-    color: color(quaternary);
-    font-size: em(20);
-  }
-
-}
-
 //Main Containers
 #edit-licensing-page-2,
 #edit-licensing-page-3 {
