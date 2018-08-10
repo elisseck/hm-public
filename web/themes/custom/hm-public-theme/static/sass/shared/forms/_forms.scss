@@ -1,3 +1,17 @@
+.form--header,
+.form--header.fieldgroup.required {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  & > legend > span {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: em(20);
+  }
+
+}
+
 //Form Containers
 .webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
 #checkoutprogress,
