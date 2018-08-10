@@ -109,12 +109,17 @@
 
     @media screen and (max-width: 804px) {
       flex: 1 0 40%;
-      max-width: none;
     }
 
-    @media screen and (max-width: 600px) {
-      flex: 1 0 100%;
-    }    
+    @media screen and (max-width: 768px) {
+      flex-basis: 100% !important;
+      max-width: none;
+
+      &> div {
+        max-height: 300px;
+      }
+
+    }
 
     p {
       @extend %text-overflow;

@@ -56,8 +56,8 @@
 
 .header__search {
   margin-left: auto;
-  width: 36px;
   vertical-align: baseline;
+  width: 36px;
 
   svg {
     height: 1.375em;
@@ -257,8 +257,8 @@
   transition: color .2s ease-in-out;
   width: auto;
 
-  &:first-of-type { 
-    height: em(22); 
+  &:first-of-type {
+    height: em(22);
     max-width: 36px;
   }
 
@@ -308,7 +308,7 @@
   }
 }
 
-//Required 
+//Required
 .modal-content {
 
   .form-item.form-item-name.form-type-textfield {
