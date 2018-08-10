@@ -23,9 +23,6 @@
 #edit-first-page,
 #edit-volunteer-step-2,
 #edit-step3 {
-  @extend %max-width;
-  @extend %default-gutter-width;
-  margin: 0 auto;
 
   //Form Container
   #edit-fieldset-personal-contact-info,
