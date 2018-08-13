@@ -1,3 +1,21 @@
+fieldset.form--container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 auto;
+  max-width: 900px;
+  width: auto;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  .fieldset-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+}
+
 .form--header,
 .form--header.fieldgroup.required {
   display: flex;
@@ -10,6 +28,81 @@
     font-size: em(20);
   }
 
+}
+
+.form--border-top > legend {
+  border-top: 1px solid color(medium-grey);
+  padding-top: 15px;
+}
+
+//100% Width
+.form-field--w-100 {
+  flex: 1;
+  flex-basis: 100%;
+}
+
+//100% Input
+.form-field--input-100 input {
+  width: 100%;
+}
+
+//400px Width
+.form-field--w-large input {
+  width: 400px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+}
+
+//250px Width
+.form-field--w-medium input {
+  width: 250px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+}
+
+//75px Width
+.form-field--w-small input {
+  max-width: 75px;
+
+  @media screen and (max-width: 600px) {
+    max-width: none;
+    width: 100%;
+
+  }
+
+}
+
+//Flex 0
+.form-field--wrap {
+  flex: 0;
+
+  //IE 11 Fix
+  @media screen and (min-width: 0\0) {
+    flex: 0 100%;
+  }
+
+  @media screen and (max-width: 600px) {
+    flex: 1;
+  }
+
+}
+
+div.form-padding--bottom-15 {
+  padding-bottom: 15px;
+}
+
+//Description and/or prefix
+.field-prefix,
+.webform-element-description {
+  flex: 1;
+  flex-basis: 100%;
+  margin-bottom: 15px;
 }
 
 //Form Containers
@@ -68,7 +161,6 @@
 
 //Progress Tracker
 .webform-progress-tracker.progress-tracker {
-  @extend %default-gutter-width;
   margin-bottom: 30px;
   margin-top: 0;
 }
