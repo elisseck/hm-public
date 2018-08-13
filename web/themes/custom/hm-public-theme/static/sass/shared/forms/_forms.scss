@@ -42,12 +42,14 @@ fieldset.form--container {
 }
 
 //100% Input
-.form-field--input-100 input {
+.form-field--input-100 input,
+.form-field--input-100 select {
   width: 100%;
 }
 
 //400px Width
-.form-field--w-large input {
+.form-field--w-large input,
+.form-field--w-large select {
   width: 400px;
 
   @media screen and (max-width: 600px) {
@@ -57,7 +59,8 @@ fieldset.form--container {
 }
 
 //250px Width
-.form-field--w-medium input {
+.form-field--w-medium input,
+.form-field--w-medium select {
   width: 250px;
 
   @media screen and (max-width: 600px) {
@@ -67,7 +70,8 @@ fieldset.form--container {
 }
 
 //75px Width
-.form-field--w-small input {
+.form-field--w-small input,
+.form-field--w-small select {
   max-width: 75px;
 
   @media screen and (max-width: 600px) {
