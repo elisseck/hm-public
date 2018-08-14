@@ -1,16 +1,3 @@
-#commerce-checkout-flow-thm-donation-checkout-flow,
-form.commerce-checkout-flow-thm-donation-checkout-flow.commerce-checkout-flow {
-  @extend %med-width-content;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-li.checkout-progress--step.checkout-progress--step__previous {
-  background: color(primary);
-  color: $white;
-}
-
 //Headers
 .layout-checkout-form .checkout-pane .fieldgroup > legend span.fieldset-legend.form-required,
 .layout-checkout-form .checkout-pane > legend span.fieldset-legend,
