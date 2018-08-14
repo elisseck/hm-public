@@ -2,3 +2,43 @@
   margin-top: 30px;
   width: 150px;
 }
+
+//Adjusting Login button and spacing
+input#edit-login-returning-customer-submit {
+  margin-right: 15px;
+  width: 125px;
+}
+
+//Pick a Donation Container
+#commerce-checkout-flow-thm-donation-checkout-flow {
+  @extend %default-gutter-width;
+  @extend %max-width;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 500px;
+
+  .form-item,
+  .form-select,
+  input {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  //Credit card month and year
+  .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-month.form-type-textfield,
+  div#edit-payment-information-add-payment-method-payment-details-expiration-divider,
+  .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-year.form-type-textfield {
+    width: auto;
+  }
+
+  #cvv {
+    width: 75px;
+  }
+
+  //Pay and complete purchase button
+  #edit-actions-next {
+    width: auto;
+  }
+
+}
