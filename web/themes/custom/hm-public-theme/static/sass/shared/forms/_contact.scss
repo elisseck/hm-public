@@ -1,0 +1,13 @@
+#webform-submission-contact-add-form {
+  @extend %default-gutter-width;
+  @extend %max-width;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 500px;
+
+  #edit-actions {
+    margin: 0;
+  }
+
+}
