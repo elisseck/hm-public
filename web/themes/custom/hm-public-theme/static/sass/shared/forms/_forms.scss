@@ -18,7 +18,9 @@ div.form--container  {
 }
 
 .form--header,
-.form--header.fieldgroup.required {
+.form--header.fieldgroup.required,
+.form-wrapper__login-option.form-wrapper__returning-customer,
+.form-wrapper__login-option.form-wrapper__guest-checkout {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -194,11 +196,13 @@ div.form-padding--bottom-15 {
   font-weight: 400;
 }
 
-.progress-step.is-complete {
+.progress-step.is-complete,
+.checkout-progress--step.checkout-progress--step__previous {
   background-color: color(primary);
 }
 
-.webform-progress-tracker .progress-step.is-complete .progress-text {
+.webform-progress-tracker .progress-step.is-complete .progress-text,
+.checkout-progress--step.checkout-progress--step__previous {
   color: $white;
 }
 
@@ -370,28 +374,6 @@ input[type='checkbox']:checked + label:after {
 //Required *
 .form-wrapper .form-item span.form-required {
   color: $red;
-}
-
-//Email Address
-.form-item.form-item-thm-donation-opts-donor-email.form-type-email {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  label.form-required {
-    flex: 1 0 100%;
-  }
-
-  span.form-required {
-    color: $red;
-    flex: 0;
-    margin-right: 5px;
-  }
-
-  #edit-thm-donation-opts-donor-email {
-    flex: 1;
-  }
-
 }
 
 //Payment information
