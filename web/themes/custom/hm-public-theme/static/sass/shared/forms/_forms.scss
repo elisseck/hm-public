@@ -1,4 +1,5 @@
-fieldset.form--container {
+fieldset.form--container,
+div.form--container  {
   display: flex;
   justify-content: flex-start;
   margin: 0 auto;
@@ -131,28 +132,6 @@ div.form-padding--bottom-15 {
   margin-bottom: 15px;
 }
 
-//Form Containers
-#edit-first-page,
-#edit-volunteer-step-2,
-#edit-step3 {
-  @extend %max-width;
-  @extend %default-gutter-width;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
-#checkoutprogress,
-.webform-progress {
-  @extend %default-gutter-width;
-  margin: 30px auto;
-  width: 100%;
-}
-
-#edit-first-page {
-  margin: 0 auto;
-}
-
 //Buttons
 #edit-actions {
   display: flex;
@@ -185,7 +164,13 @@ div.form-padding--bottom-15 {
 
 }
 
-//Progress Tracker
+//Webform Progress - Progress Tracker
+.webform-progress,
+.block-commerce-checkout {
+  @extend %default-gutter-width;
+  margin: 30px auto;
+}
+
 .webform-progress-tracker.progress-tracker {
   margin-bottom: 30px;
   margin-top: 0;
