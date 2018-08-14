@@ -48,35 +48,57 @@ fieldset.form--container {
 }
 
 //400px Width
-.form-field--w-large input,
-.form-field--w-large select {
-  width: 400px;
+.form-field--w-large {
 
   @media screen and (max-width: 600px) {
     width: 100%;
+  }
+
+  input,
+  select {
+    width: 400px;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+
   }
 
 }
 
 //250px Width
-.form-field--w-medium input,
-.form-field--w-medium select {
-  width: 250px;
+.form-field--w-medium {
 
   @media screen and (max-width: 600px) {
     width: 100%;
   }
 
+  input,
+  select {
+    width: 250px;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+  }
+
 }
 
 //75px Width
-.form-field--w-small input,
-.form-field--w-small select {
-  max-width: 75px;
+.form-field--w-small {
 
   @media screen and (max-width: 600px) {
-    max-width: none;
     width: 100%;
+  }
+
+  input,
+  select {
+    width: 75px;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
 
   }
 
