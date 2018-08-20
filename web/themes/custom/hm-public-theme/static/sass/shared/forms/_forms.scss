@@ -139,7 +139,8 @@ div.form--container  {
 
 }
 
-div.form-padding--bottom-15 {
+div.form-padding--bottom-15,
+fieldset.form-padding--bottom-15 {
   padding-bottom: 15px;
 }
 
@@ -223,7 +224,7 @@ label,
 
 .progress-step.is-complete,
 .checkout-progress--step.checkout-progress--step__previous {
-  background-color: color(primary);
+  background-color: color(primary) !important;
 }
 
 .webform-progress-tracker .progress-step.is-complete .progress-text,
