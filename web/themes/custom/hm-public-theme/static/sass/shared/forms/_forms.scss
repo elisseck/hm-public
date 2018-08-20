@@ -1,3 +1,4 @@
+//Custom Form Classes
 fieldset.form--container,
 div.form--container  {
   display: flex;
@@ -13,6 +14,20 @@ div.form--container  {
   .fieldset-wrapper {
     display: flex;
     flex-flow: row wrap;
+  }
+
+}
+
+//Form Wrapper
+.form--container.form-wrapper {
+
+  @media screen and (max-width: 950px) {
+    margin: 0;
+    padding: 0 30px;
+  }
+
+  @media screen and (max-width: 769px) {
+    padding: 0 15px;
   }
 
 }
@@ -113,7 +128,9 @@ div.form--container  {
 
   //IE 11 Fix
   @media screen and (min-width: 0\0) {
-    flex: 0 100%;
+    flex: 1 1 0%;
+    max-width: 250px;
+    min-width: 0;
   }
 
   @media screen and (max-width: 600px) {
@@ -126,6 +143,41 @@ div.form-padding--bottom-15 {
   padding-bottom: 15px;
 }
 
+//Normalizing form elements
+fieldset,
+.form-item,
+.authorize-net-accept-js-form.form-wrapper,
+.edit-payment-information-add-payment-method-billing-information {
+  margin: 0 10px 15px 0;
+  padding: 0;
+
+  @media screen and (max-width: 600px) {
+    margin-right: 0;
+
+    &>input {
+      margin-right: 0;
+      width: 100%;
+    }
+  }
+
+}
+
+label,
+.webform-confirmation {
+  @extend %source-sans-semi-bold;
+  line-height: normal;
+}
+
+.webform-confirmation {
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-text {
+  margin: 0;
+}
+
+//Pre-Defined Classes
 //Description and/or prefix
 .field-prefix,
 .webform-element-description {
@@ -134,36 +186,9 @@ div.form-padding--bottom-15 {
   margin-bottom: 15px;
 }
 
-//Buttons
-#edit-actions {
-  display: flex;
-  margin: 0 auto;
-  max-width: 900px;
-  width: auto;
-}
-
-@media screen and (max-width: 950px) {
-
-  #edit-actions {
-    margin-left: 0;
-    padding-left: 30px;
-    width: 100%;
-  }
-
-  #edit-wizard-prev,
-  #edit-wizard-next,
-  #edit-submit {
-    width: 50%;
-  }
-
-}
-
-@media screen and (max-width: 769px) {
-
-  #edit-actions {
-    padding-left: 15px;
-  }
-
+//Description
+.form-wrapper .fieldset-wrapper .description {
+  width: 100%;
 }
 
 //Webform Progress - Progress Tracker
@@ -204,35 +229,6 @@ div.form-padding--bottom-15 {
 .webform-progress-tracker .progress-step.is-complete .progress-text,
 .checkout-progress--step.checkout-progress--step__previous {
   color: $white;
-}
-
-//Normalizing form elements
-fieldset,
-.form-item,
-.authorize-net-accept-js-form.form-wrapper,
-.edit-payment-information-add-payment-method-billing-information {
-  margin: 0 10px 15px 0;
-  padding: 0;
-
-  @media screen and (max-width: 600px) {
-    margin-right: 0;
-  }
-
-}
-
-label,
-.webform-confirmation {
-  @extend %source-sans-semi-bold;
-  line-height: normal;
-}
-
-.webform-confirmation {
-  align-items: center;
-  flex-direction: column;
-}
-
-.form-text {
-  margin: 0;
 }
 
 //Textarea
@@ -376,6 +372,38 @@ input[type='checkbox']:checked + label:after {
   color: $red;
 }
 
+//Buttons
+#edit-actions {
+  display: flex;
+  margin: 0 auto;
+  max-width: 900px;
+  width: auto;
+}
+
+@media screen and (max-width: 950px) {
+
+  #edit-actions {
+    margin-left: 0;
+    padding-left: 30px;
+    width: 100%;
+  }
+
+  #edit-wizard-prev,
+  #edit-wizard-next,
+  #edit-submit {
+    width: 50%;
+  }
+
+}
+
+@media screen and (max-width: 769px) {
+
+  #edit-actions {
+    padding-left: 15px;
+  }
+
+}
+
 //Payment information
 .authorize-net-accept-js-form.form-wrapper {
   border-bottom: 1px solid color(medium-grey);
@@ -399,9 +427,4 @@ input[type='checkbox']:checked + label:after {
 .form-item.form-item-user-picture-0.form-type-managed-file > p {
   margin-top: 0;
   padding-left: 30px;
-}
-
-//Description
-.form-wrapper .fieldset-wrapper .description {
-  width: 100%;
 }
