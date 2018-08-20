@@ -89,14 +89,6 @@
     margin: 60px 0;
   }
 
-  @media screen and (max-width: 768px) {
-
-    .special-collections--interviews {
-      padding: 0;
-    }
-
-  }
-
 }//.special-collections--content
 
 .special-collections--interviews {
@@ -124,7 +116,7 @@
       flex: 1 0 40%;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 600px) {
       flex-basis: 100% !important;
       max-width: none;
 
