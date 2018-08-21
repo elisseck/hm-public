@@ -1,0 +1,28 @@
+//Demographics
+#edit-gender--wrapper,
+#edit-ethnicity--wrapper {
+  flex: 1 100%;
+  max-width: 250px;
+
+  &>legend > span {
+    @extend %source-sans-semi-bold;
+    flex-basis: 100%;
+    font-size: 16px;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+
+}
+
+//More Info
+.form-item-referred {
+  padding-bottom: 30px;
+
+  & > label {
+    @extend %card-header;
+    color: color(quaternary);
+    flex: 1 100%;
+    font-size: 30px;
+  }
+
+}
