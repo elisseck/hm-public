@@ -16,13 +16,15 @@
 
 //More Info
 .form-item-referred {
-  padding-bottom: 30px;
+  @extend %default-gutter-width;
+  padding-bottom: 30px !important;
 
   & > label {
     @extend %card-header;
     color: color(quaternary);
     flex: 1 100%;
     font-size: 30px;
+    line-height: 100%;
   }
 
 }
