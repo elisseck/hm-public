@@ -142,7 +142,7 @@ div.form--container  {
 
 div.form-padding--bottom-15,
 fieldset.form-padding--bottom-15 {
-  padding-bottom: 15px;
+  padding-bottom: 15px !important;
 }
 
 div.form-padding--end-15,
@@ -150,7 +150,7 @@ fieldset.form-padding--end-15 {
   padding-bottom: 15px;
 
   @media screen and (max-width: 950px) {
-    padding-bottom: 30px;
+    padding-bottom: 30px !important;
   }
 }
 
@@ -212,6 +212,11 @@ label,
 .webform-progress-tracker.progress-tracker {
   margin-bottom: 30px;
   margin-top: 0;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
