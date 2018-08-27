@@ -16,7 +16,12 @@
   height: 1.25rem;
   margin-left: auto;
   position: relative;
-  width: 1.25rem;
+  width: 20px;
+
+  @media screen and (max-width: 420px) {
+    width: 22px;
+  }
+
 }
 
 .accordion__arrow-half {
@@ -72,6 +77,7 @@
   }
 
   button.accordion__panel {
+    line-height: 120%;
     margin-bottom: 0;
 
     div {
