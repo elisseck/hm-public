@@ -406,15 +406,34 @@ input {
 .hero-vid__right-col {
   background-color: #fff;
   padding: rem(30, 16) rem(70, 16) rem(60, 16) rem(30, 16);
+
+  @media screen and (max-width: 767px) {
+    padding: 30px;
+  }
+
 }
 
 .hero-vid__title {
   @extend %oswald;
   font-size: 2rem;
+
+  @media screen and (max-width: 900px) {
+    font-size: 1.875em;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 1.4em;
+  }
+
 }
 
 .hero-vid__body {
   @extend %source-sans;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   line-height: 120%;
+
+  @media screen and (max-width: 767px) {
+    font-size: 1em;
+  }
+
 }
