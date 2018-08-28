@@ -45,6 +45,7 @@ div.form--container  {
     @extend %card-header;
     color: color(quaternary);
     font-size: em(20);
+    line-height: 120%;
   }
 
 }
@@ -168,6 +169,7 @@ fieldset,
 
   @media screen and (max-width: 600px) {
     margin-right: 0;
+    width: 100%;
 
     &>input {
       margin-right: 0;
@@ -452,6 +454,11 @@ input[type='checkbox']:checked + label:after {
 //Thank you page
 .form--container.webform-confirmation {
   max-width: 500px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 15px;
+  }
+
 }
 
 .webform-confirmation__message  {
