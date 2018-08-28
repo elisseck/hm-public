@@ -407,6 +407,10 @@ input {
   background-color: #fff;
   padding: rem(30, 16) rem(70, 16) rem(60, 16) rem(30, 16);
 
+  @media screen and (max-width: 1024px) {
+    padding: 1.875rem 1.875rem 3.75rem;
+  }
+
   @media screen and (max-width: 767px) {
     padding: 30px;
   }
@@ -431,6 +435,10 @@ input {
   @extend %source-sans;
   font-size: 1.5em;
   line-height: 120%;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 1.2em;
+  }
 
   @media screen and (max-width: 767px) {
     font-size: 1em;
