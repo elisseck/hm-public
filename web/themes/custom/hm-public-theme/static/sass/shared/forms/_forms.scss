@@ -2,6 +2,7 @@
 fieldset.form--container,
 div.form--container  {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   margin: 0 auto;
   max-width: 900px;
@@ -141,7 +142,20 @@ div.form--container  {
 
 div.form-padding--bottom-15,
 fieldset.form-padding--bottom-15 {
+  padding-bottom: 15px !important;
+}
+
+div.form-padding--end-15,
+fieldset.form-padding--end-15 {
   padding-bottom: 15px;
+
+  @media screen and (max-width: 950px) {
+    padding-bottom: 30px !important;
+  }
+}
+
+.form-padding--top-30 {
+  padding-top: 30px;
 }
 
 //Normalizing form elements
@@ -202,6 +216,11 @@ label,
 .webform-progress-tracker.progress-tracker {
   margin-bottom: 30px;
   margin-top: 0;
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -428,4 +447,34 @@ input[type='checkbox']:checked + label:after {
 .form-item.form-item-user-picture-0.form-type-managed-file > p {
   margin-top: 0;
   padding-left: 30px;
+}
+
+//Thank you page
+.form--container.webform-confirmation {
+  max-width: 500px;
+}
+
+.webform-confirmation__message  {
+  width: 100%;
+
+  h4 {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: 30px;
+    padding-bottom: 30px;
+  }
+
+}
+
+.webform-confirmation__back {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 0 auto 0 0;
+  max-width: 500px;
+  width: auto;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 }
