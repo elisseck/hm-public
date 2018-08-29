@@ -7,7 +7,6 @@ $link = \Drupal::service('database');
 
 class TimeLineController {
 
-
     public function timeline() {
 
         function getSQLData($sql){
@@ -112,7 +111,11 @@ class TimeLineController {
                        $file = getSQLData("SELECT * from `file_managed` WHERE `fid` = '$file_id'")[0] -> uri;
                        $img = str_replace('public://', '', $file);
                        $bio_info = getSQLData("SELECT * from `node__field_description` WHERE `bundle`='bio' AND `entity_id`='$nid'")[0] -> field_description_value;
-                       $bio = substr($bio_info, 0, strpos(wordwrap($bio_info, 150), "\n"));
+                       if (strlen($bio_info) >= 150) {
+                         $bio = substr($bio_info, 0, strpos(wordwrap($bio_info, 150), "\n"));
+                       } else {
+                         $bio = substr($bio_info, 0, strpos(wordwrap($bio_info, strlen($bio_info) - 20), "\n"));
+                       }
                    }
 
                    else if($type == "milestone"){
@@ -193,7 +196,7 @@ class TimeLineController {
               '#theme' => 'timeline',
               '#title' => 'headline',
               '#resultsCount' => $resultsCount,
-              '#markup' => "Browse or search our African American History timeline. Events on the timeline include key moments in specific HistoryMaker's lives as well as important historical dates.",
+              '#markup' => "",
               '#content' => $content,
               '#pages' => $pagination,
              );
