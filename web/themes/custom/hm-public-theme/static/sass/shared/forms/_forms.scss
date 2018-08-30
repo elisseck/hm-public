@@ -33,6 +33,10 @@ div.form--container  {
 
 }
 
+.form-wrapper .form-wrapper {
+  padding: 0;
+}
+
 .form--header,
 .form--header.fieldgroup.required,
 .form-wrapper__login-option.form-wrapper__returning-customer,
@@ -186,6 +190,11 @@ label,
 .webform-confirmation {
   align-items: center;
   flex-direction: column;
+
+  @media screen and (max-width: 769px) {
+    padding: 0 15px;
+  }
+
 }
 
 .form-text {
