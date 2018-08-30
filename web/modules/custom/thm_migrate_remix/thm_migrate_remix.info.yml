@@ -1,0 +1,9 @@
+type: module
+name: THM Migrator
+description: 'Upgraded user and user data migration scripts'
+package: Custom
+core: 8.x
+dependencies:
+  - drupal:migrate
+  - migrate_plus:migrate_plus
+  - migrate_drupal
