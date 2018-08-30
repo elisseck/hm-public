@@ -217,21 +217,18 @@
   margin: 1em;
   max-width: 30%;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 820px) {
     margin: 15px;
     max-width: 50%;
     min-width: 31%;
   }
 
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 560px) {
+    flex: 1 0 100%;
     margin-left: 0;
     margin-right: 0;
     max-width: none;
     min-width: 100%;
-  }
-
-  @media screen and (max-width: 400px) {
-    flex: 1 0 100%;
   }
 
 }
