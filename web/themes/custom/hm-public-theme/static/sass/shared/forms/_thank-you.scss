@@ -1,5 +1,6 @@
 //Thank you page
 .form--container.webform-confirmation {
+  margin-top: $default-grid-gutter-width;
   max-width: 500px;
 
   @media screen and (max-width: 768px) {
@@ -15,7 +16,7 @@
     @extend %card-header;
     color: color(quaternary);
     font-size: 30px;
-    padding-bottom: 30px;
+    padding-bottom: $default-grid-gutter-width;
   }
 
 }
