@@ -309,15 +309,20 @@
 }
 
 //Required
-.modal-content {
+.user-login-form {
 
-  .form-item.form-item-name.form-type-textfield {
-    margin: 0;
+  .form-item-name,
+  .form-item-pass {
+    margin: 0 0 15px;
     width: 100%;
   }
 
   span.form-required {
     margin-right: 5px;
+  }
+
+  .form-submit {
+    margin: 0;
   }
 
 }
