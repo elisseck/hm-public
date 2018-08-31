@@ -1,13 +1,63 @@
-.item-list.store-products {
-
+//Stoe View
+.list-commerce-products {
+  @extend %max-width;
+  @extend %med-width-content;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 30px;
 
+  .view-filters.form-group {
+    display: flex;
+    flex: 1 0 20%;
 
-  @media all and (min-width: 1248px) {
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
+    //Store filter
+    .views-exposed-form.header-search {
+      flex: 0;
+      flex-direction: column;
+    }
+
   }
+
+  .view-content {
+    flex: 1;
+    flex-basis: 80%;
+  }
+
+  .pager {
+    flex: 1 100%;
+    margin-left: 20%;
+    margin-top: $default-grid-gutter-width;
+  }
+
+  .commerce-order-item-add-to-cart-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: $default-grid-gutter-width;
+    margin-top: 15px;
+  }
+
+  .form-item-quantity-0-value.form-type-number {
+
+    label {
+      width: 100%;
+    }
+
+    input {
+      width: 75px;
+    }
+
+    .form-actions {
+      flex: 1 100%;
+    }
+
+  }
+
+}
+
+.item-list.store-products {
+  display: flex;
 
   ul {
 
