@@ -333,7 +333,7 @@ input:focus, a:focus, button:focus, textarea:focus, input[type='radio']:focus + 
 .basic-block, .how-it-works, .list-commerce-products .table, .membership.row, .view.list-events, .view.list-events .pager, .event__content, .media-landing-image--button .row, .view.list-special-collections, .view.list-special-collections .pager, .special-collections--content .special-collections--descript,
 .special-collections--content .event__pictures,
 .special-collections--content .paragraph.paragraph--type--basic-block-content,
-.special-collections--content .special-collections--interviews {
+.special-collections--content .special-collections--interviews, .list-commerce-products {
   margin-left: auto;
   margin-right: auto;
   max-width: 1440px; }
@@ -369,7 +369,7 @@ input:focus, a:focus, button:focus, textarea:focus, input[type='radio']:focus + 
 
 .accordion-block.accordion,
 .people-block.accordion, .snapshot-section--block, .quote-block--content, .two-column-quote, .intro-content div, .wrapper .basic-block,
-.basic-block, .membership.row {
+.basic-block, .membership.row, .list-commerce-products {
   width: 70%; }
 
 .two-column-slide--content h2, .testimonial-carousel h2, .two-column-testimonial--header, .intro-content h1, .content h2 {
@@ -5133,6 +5133,93 @@ select::-ms-expand {
   margin-right: 0;
   max-width: 100%; }
 
+.list-commerce-products {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+     -moz-box-orient: horizontal;
+     -moz-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-top: 30px; }
+  .list-commerce-products .view-filters.form-group {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 20%;
+       -moz-box-flex: 1;
+        -ms-flex: 1 0 20%;
+            flex: 1 0 20%; }
+    .list-commerce-products .view-filters.form-group .views-exposed-form.header-search {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0;
+         -moz-box-flex: 0;
+          -ms-flex: 0;
+              flex: 0;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+         -moz-box-orient: vertical;
+         -moz-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+  .list-commerce-products .view-content {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+       -moz-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-flex-basis: 80%;
+        -ms-flex-preferred-size: 80%;
+            flex-basis: 80%; }
+  .list-commerce-products .pager {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 100%;
+       -moz-box-flex: 1;
+        -ms-flex: 1 100%;
+            flex: 1 100%;
+    margin-left: 20%;
+    margin-top: 30px; }
+  .list-commerce-products .commerce-order-item-add-to-cart-form {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+       -moz-box-orient: horizontal;
+       -moz-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    margin-bottom: 30px;
+    margin-top: 15px; }
+  .list-commerce-products .form-item-quantity-0-value.form-type-number label {
+    width: 100%; }
+  .list-commerce-products .form-item-quantity-0-value.form-type-number input {
+    width: 75px; }
+  .list-commerce-products .form-item-quantity-0-value.form-type-number .form-actions {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 100%;
+       -moz-box-flex: 1;
+        -ms-flex: 1 100%;
+            flex: 1 100%; }
+
 .item-list.store-products {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5598,7 +5685,7 @@ select::-ms-expand {
     .basic-block, .how-it-works, .list-commerce-products .table, .membership.row, .view.list-events, .view.list-events .pager, .event__content, .media-landing-image--button .row, .view.list-special-collections, .view.list-special-collections .pager, .special-collections--content .special-collections--descript,
     .special-collections--content .event__pictures,
     .special-collections--content .paragraph.paragraph--type--basic-block-content,
-    .special-collections--content .special-collections--interviews{
+    .special-collections--content .special-collections--interviews, .list-commerce-products{
     padding-left: 0;
     padding-right: 0; } }
   @media screen and (max-width: 768px){
@@ -5911,7 +5998,7 @@ select::-ms-expand {
   @media screen and (max-width: 1024px){
   .accordion-block.accordion,
     .people-block.accordion, .snapshot-section--block, .quote-block--content, .two-column-quote, .intro-content div, .wrapper .basic-block,
-    .basic-block, .membership.row{
+    .basic-block, .membership.row, .list-commerce-products{
     width: 90%; }
   .hero-slide--date{
     font-size: 20px;
@@ -5948,7 +6035,7 @@ select::-ms-expand {
   @media only screen and (max-width: 950px){
   .accordion-block.accordion,
     .people-block.accordion, .snapshot-section--block, .quote-block--content, .two-column-quote, .intro-content div, .wrapper .basic-block,
-    .basic-block, .membership.row{
+    .basic-block, .membership.row, .list-commerce-products{
     padding-left: 30px;
     padding-right: 30px;
     width: 100%; }
@@ -5971,7 +6058,7 @@ select::-ms-expand {
   @media only screen and (max-width: 768px){
   .accordion-block.accordion,
     .people-block.accordion, .snapshot-section--block, .quote-block--content, .two-column-quote, .intro-content div, .wrapper .basic-block,
-    .basic-block, .membership.row{
+    .basic-block, .membership.row, .list-commerce-products{
     padding-left: 15px;
     padding-right: 15px; }
   .snapshot-blocks .field-item{
@@ -7079,10 +7166,6 @@ select::-ms-expand {
   .people-block.accordion .row{
     padding: 0; } }
   @media all and (min-width: 1248px){
-  .item-list.store-products{
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%; }
   .item-list.store-products ul li.row{
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
