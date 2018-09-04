@@ -1,0 +1,36 @@
+//Thank you page
+.form--container.webform-confirmation {
+  margin-top: $default-grid-gutter-width;
+  max-width: 500px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 15px;
+  }
+
+}
+
+.webform-confirmation__message  {
+  width: 100%;
+
+  h4 {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: 30px;
+    padding-bottom: $default-grid-gutter-width;
+  }
+
+}
+
+.webform-confirmation__back {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin: 0 auto 0 0;
+  max-width: 500px;
+  width: auto;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+}

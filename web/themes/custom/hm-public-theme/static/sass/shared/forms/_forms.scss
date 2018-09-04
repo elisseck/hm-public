@@ -33,6 +33,10 @@ div.form--container  {
 
 }
 
+.form-wrapper .form-wrapper {
+  padding: 0;
+}
+
 .form--header,
 .form--header.fieldgroup.required,
 .form-wrapper__login-option.form-wrapper__returning-customer,
@@ -45,6 +49,7 @@ div.form--container  {
     @extend %card-header;
     color: color(quaternary);
     font-size: em(20);
+    line-height: 120%;
   }
 
 }
@@ -130,6 +135,7 @@ div.form--container  {
   //IE 11 Fix
   @media screen and (min-width: 0\0) {
     flex: 1 1 0%;
+    flex-basis: auto;
     max-width: 250px;
     min-width: 0;
   }
@@ -156,7 +162,7 @@ fieldset.form-padding--end-15 {
 
 .form-padding--top-30 {
   padding-top: 30px;
-}
+}//End Custom Classes
 
 //Normalizing form elements
 fieldset,
@@ -168,6 +174,7 @@ fieldset,
 
   @media screen and (max-width: 600px) {
     margin-right: 0;
+    width: 100%;
 
     &>input {
       margin-right: 0;
@@ -186,6 +193,11 @@ label,
 .webform-confirmation {
   align-items: center;
   flex-direction: column;
+
+  @media screen and (max-width: 769px) {
+    padding: 0 15px;
+  }
+
 }
 
 .form-text {
@@ -447,34 +459,4 @@ input[type='checkbox']:checked + label:after {
 .form-item.form-item-user-picture-0.form-type-managed-file > p {
   margin-top: 0;
   padding-left: 30px;
-}
-
-//Thank you page
-.form--container.webform-confirmation {
-  max-width: 500px;
-}
-
-.webform-confirmation__message  {
-  width: 100%;
-
-  h4 {
-    @extend %card-header;
-    color: color(quaternary);
-    font-size: 30px;
-    padding-bottom: 30px;
-  }
-
-}
-
-.webform-confirmation__back {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  margin: 0 auto 0 0;
-  max-width: 500px;
-  width: auto;
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
 }

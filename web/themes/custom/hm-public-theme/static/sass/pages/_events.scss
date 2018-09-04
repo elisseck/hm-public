@@ -332,6 +332,14 @@
 }
 
 //Collage
+@media screen and (min-width: 0\0) {
+
+  .event__pictures {
+    width: 100%;
+  }
+
+}
+
 .event__pictures .px-4 {
   padding-left: 0 !important;
   padding-right: 0 !important;
