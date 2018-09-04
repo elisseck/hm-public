@@ -13,6 +13,8 @@ vagrant_user: vagrant
 vagrant_synced_folder_default_type: nfs
 vagrant_gui: false
 
+d8blank_web_path: /var/www/d8blank/web
+
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
 vagrant_hostname: hm-public.test
@@ -142,6 +144,10 @@ apache_vhosts:
   - servername: "{{ vagrant_ip }}"
     serveralias: "dashboard.{{ vagrant_hostname }}"
     documentroot: "{{ dashboard_install_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "d8blank.{{ vagrant_hostname }}"
+    documentroot: "{{ d8blank_web_path }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
 apache_packages_state: latest
