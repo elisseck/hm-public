@@ -103,6 +103,10 @@
 
 }
 
+.snapshot--download svg {
+  height: em(15);
+}
+
 // Two column snapshot container
 .two-column-snapshot {
   @extend %max-width;
