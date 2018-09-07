@@ -10,9 +10,11 @@
  */
 #}
 
-<h3>{{ content.field_resources_header|field_value }}</h3>
-{% if content.field_resources|field_value is not empty %}
-  <ul>
-    {{ content.field_resources|field_value }}
-  </ul>  
-{% endif %} 
+<div class="resource--block">
+  <h3>{{ content.field_resources_header|field_value }}</h3>
+  {% if content.field_resources|field_value is not empty %}
+    <ul>
+      {{ content.field_resources|field_value }}
+    </ul>  
+  {% endif %} 
+</div>
