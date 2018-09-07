@@ -107,6 +107,10 @@
   height: em(15);
 }
 
+.field-collection-content-blocks .resource--block {
+  @extend %default-gutter-width;
+}
+
 // Two column snapshot container
 .two-column-snapshot {
   @extend %max-width;
