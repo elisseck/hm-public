@@ -7,6 +7,7 @@
   flex-wrap: wrap;
   margin-top: 30px;
 
+  //Page layout
   .view-filters.form-group {
     display: flex;
     flex: 1 0 20%;
@@ -21,7 +22,36 @@
       }
 
       #edit-actions {
-        margin: 0 auto 0 0;
+        margin-left: 0;
+        padding-left: 0;
+      }
+
+      @media screen and (max-width: 900px) {
+
+        .form-item.form-item-type.form-type-select {
+          margin-right: 0;
+        }
+
+        .form-item select {
+          min-width: 200px;
+        }
+
+        .form-item select option {
+          height: 45px;
+        }
+
+        .form-submit.form-submit {
+          width: 100%;
+        }
+
+        #edit-reset {
+          margin-right: 0;
+        }
+
+      }
+
+      @media screen and (max-width: 600px) {
+        flex: 1;
       }
 
     }
@@ -39,7 +69,12 @@
     flex: 1 100%;
     margin-left: 20%;
     margin-top: $default-grid-gutter-width;
-  }
+
+    @media screen and (max-width: 950px) {
+      margin-left: 0;
+    }
+
+  }//End Page layout
 
   //Form field layout
   .form-type-entity-autocomplete input.form-autocomplete.ui-autocomplete-input {
@@ -69,6 +104,12 @@
   display: flex;
 
   li {
+    margin-left: 0;
+
+    @media screen and (max-width: 900px) {
+      margin-right: 0;
+    }
+
     @extend %product-card;
     flex-direction: row;
     flex-wrap: wrap;
@@ -77,9 +118,20 @@
       flex: 1 100%;
     }
 
-    .views-field.views-field-variations,
+    .views-field.views-field-variations {
+      flex: 1 35%;
+    }
+   
     .views-field.views-field-variations-1 {
-      flex: 1 48%;
+      flex: 1 60%;
+    }
+
+    @media screen and (max-width: 520px) {
+
+      .views-field.views-field-variations,
+      .views-field.views-field-variations-1 {
+        flex: 1 100%;
+      }
     }
 
     .views-field.views-field-variations {
@@ -101,6 +153,8 @@
       }
 
       .field-product {
+        padding-bottom: 15px;
+        padding-right: 15px;
         padding-top: 15px;
       }
 
@@ -121,7 +175,26 @@
         input {
           margin: em(10) 0;
         }
+
+        #edit-actions {
+          margin-left: 0;
+        }
+
       }
+    }
+
+    @media screen and (max-width: 950px) {
+
+      #edit-actions,
+      #edit-actions .form-submit {
+        padding-left: 0;
+        width: 100%;
+      }
+
+      .form-submit {
+        width: 100%;
+      }
+
     }
 
   }//close li
