@@ -1,7 +1,7 @@
 //Store View
 .list-commerce-products {
   @extend %max-width;
-  @extend %med-width-content;
+  @extend %default-gutter-width;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -15,32 +15,41 @@
     .views-exposed-form.header-search {
       flex: 0;
       flex-direction: column;
+
+      #edit-type {
+        height: 100%;
+      }
+
+      #edit-actions {
+        margin: 0 auto 0 0;
+      }
+
     }
 
   }
 
+  //Products
   .view-content {
     flex: 1;
     flex-basis: 80%;
   }
 
+  //Pager
   .pager {
     flex: 1 100%;
     margin-left: 20%;
     margin-top: $default-grid-gutter-width;
   }
 
-  .commerce-order-item-add-to-cart-form {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-bottom: $default-grid-gutter-width;
-    margin-top: 15px;
+  //Form field layout
+  .form-type-entity-autocomplete input.form-autocomplete.ui-autocomplete-input {
+    margin-top: 0;
   }
 
-  .form-item-quantity-0-value.form-type-number {
+  .form-type-number {
 
     label {
+      margin-bottom: 0;
       width: 100%;
     }
 
@@ -54,91 +63,66 @@
 
   }
 
-}
+}//.list-commerce-products
 
 .item-list.store-products {
   display: flex;
 
-  ul {
+  li {
+    @extend %product-card;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-    li.row {
+    .views-field.views-field-body {
+      flex: 1 100%;
+    }
 
-      @extend %product-card;
+    .views-field.views-field-variations,
+    .views-field.views-field-variations-1 {
+      flex: 1 48%;
+    }
 
-      .price {
+    .views-field.views-field-variations {
+
+      .price,
+      .field-format,
+      .field-product {
+        display: flex;
+      }
+
+      .price > div:first-of-type,
+      .field-format > div:first-of-type {
         font-weight: bold;
-        margin-top: em(10);
+        padding-right: 15px;
       }
 
-      .views-field-variations-1 {
-        align-self: flex-start;
-
-        form {
-          display: flex;
-          flex-direction: column;
-
-          .form-item.form-type-select {
-            margin: 0;
-            padding: em(4) 0;
-            width: em(200); //ensure there is no blank space on the right.
-          }
-
-          input {
-            margin: em(10) 0;
-          }
-        }
+      .field-product > div:first-of-type {
+        display: none;
       }
 
+      .field-product {
+        padding-top: 15px;
+      }
 
-      @media all and (min-width: $screen-lg-min) {
+    }
 
-        flex-direction: row;
-        flex-wrap: nowrap;
+    .views-field-variations-1 {
 
-        .views-field-body {
-          width: 100%;
+      form {
+        display: flex;
+        flex-direction: column;
+
+        .form-item.form-type-select {
+          margin: 0;
+          padding: em(4) 0;
+          width: em(200); //ensure there is no blank space on the right.
         }
 
-        .views-field-variations-1 {
-          align-self: flex-end;
-
-          form {
-            align-items: flex-end;
-
-            input {
-              margin: em(10) 0 0;
-            }
-          }
+        input {
+          margin: em(10) 0;
         }
       }
     }
-  }
-}
 
-.product-detail {
-  @extend %product-card;
-
-  @media all and (min-width: 1248px) {
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
-  }
-
-  .price {
-    font-weight: bold;
-    margin-top: em(10);
-  }
-
-
-
-  //we want to have the dropdown below the label which also has an asterisk.
-  div.form-item {
-    display: flex;
-    flex-wrap: wrap;
-    width: 250px;
-  }
-
-  input {
-    margin: em(15) 0 em(10);
-  }
+  }//close li
 }
