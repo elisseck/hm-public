@@ -6,3 +6,36 @@
   color: color(quaternary);
   font-size: em(20);
 }
+
+.checkout-pane.checkout-pane-login {
+  @extend %max-width;
+  @extend %default-gutter-width;
+}
+
+//Checkout Form
+.layout-checkout-form {
+  @extend %default-gutter-width;
+  margin-left: auto;
+  margin-right: auto;
+
+  .checkout-pane.checkout-pane-thm-donation-opts {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  //Payment information form
+  .checkout-pane.checkout-pane-payment-information .fieldset-wrapper {
+
+    & #edit-payment-information-payment-method--wrapper > legend .fieldset-legend,
+    & .form-composite > legend .fieldset-legend {
+      @extend %source-sans-semi-bold;
+      flex-basis: 100%;
+      font-size: 16px;
+      line-height: normal;
+      margin-bottom: 10px;
+    }
+
+  }
+
+}
