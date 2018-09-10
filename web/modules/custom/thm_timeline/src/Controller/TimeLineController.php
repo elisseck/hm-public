@@ -111,10 +111,12 @@ class TimeLineController {
                        $file = getSQLData("SELECT * from `file_managed` WHERE `fid` = '$file_id'")[0] -> uri;
                        $img = str_replace('public://', '', $file);
                        $bio_info = getSQLData("SELECT * from `node__field_description` WHERE `bundle`='bio' AND `entity_id`='$nid'")[0] -> field_description_value;
-                       if (strlen($bio_info) >= 150) {
+                       if (strlen($bio_info) > 150) {
                          $bio = substr($bio_info, 0, strpos(wordwrap($bio_info, 150), "\n"));
+                       } else if (strlen($bio_info) < 150 && strlen($bio_info) > 100) {
+                         $bio = substr($bio_info, 0, strpos(wordwrap($bio_info), "."));
                        } else {
-                         $bio = substr($bio_info, 0, strpos(wordwrap($bio_info, strlen($bio_info) - 20), "\n"));
+                         $bio = $bio_info;
                        }
                    }
 
