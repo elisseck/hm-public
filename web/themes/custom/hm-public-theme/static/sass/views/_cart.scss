@@ -153,14 +153,24 @@
 
     @media all and ( min-width: $screen-md-min) {
       .field-item:last-of-type {
-        margin-right: 2.5em;
+        margin-right: 15px;
       }
     }
   }
 
+  #edit-actions {
+    background: transparent;
+    border: none;
+    margin-right: 0;
+  }
 
 }
 
 .cart-empty-page {
   @extend %product-card;
+}
+
+//Checkout Form
+.layout-checkout-form {
+  @extend %max-width;
 }
