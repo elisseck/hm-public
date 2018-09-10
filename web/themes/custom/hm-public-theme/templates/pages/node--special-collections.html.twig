@@ -46,13 +46,15 @@
     </div>
 
     {# Collage #}
-    <div class="row event__pictures">
-      <div class="col-sm-12 column px-4 my-4">  
-        <div class="collage event__collage">
-          {{ content.field_collection_gallery|field_value }}
-        </div>  
-      </div>
-    </div> 
+    {% if content.field_collection_gallery|field_value is not empty %}
+      <div class="row event__pictures">
+        <div class="col-sm-12 column px-4 my-4">  
+          <div class="collage event__collage">
+            {{ content.field_collection_gallery|field_value }}
+          </div>  
+        </div>
+      </div> 
+    {% endif %}
   
     {# Collection Content Block #}
     {% if content.field_collection_content_blocks|field_value is not empty %}
