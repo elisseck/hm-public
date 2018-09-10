@@ -16,7 +16,22 @@ input#edit-login-returning-customer-submit {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 500px;
+  //max-width: 500px;
+
+  //Allow both login options to side side by side
+  .checkout-pane.checkout-pane-login {
+    display: flex;
+  }
+
+  #commerce-checkout-flow-thm-donation-checkout-flow .form-item {
+    flex: 1;
+  }
+
+  .form-wrapper__login-option.form-wrapper__returning-customer {
+    border-right: 1px solid #ccc;
+    padding-right: 30px;
+    margin-right: 30px;
+  }
 
   .form-item,
   .form-select,
