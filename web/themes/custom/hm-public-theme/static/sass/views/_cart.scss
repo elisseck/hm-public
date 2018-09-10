@@ -142,14 +142,18 @@
 
   .form-actions.js-form-wrapper.form-wrapper,
   .total-price {
-    @extend %shopping-card;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
   }
 
+  .form-actions.js-form-wrapper.form-wrapper {
+    margin-bottom: $default-grid-gutter-width;
+  }
+
   .total-price {
+    @extend %shopping-card;
 
     @media all and ( min-width: $screen-md-min) {
       .field-item:last-of-type {
