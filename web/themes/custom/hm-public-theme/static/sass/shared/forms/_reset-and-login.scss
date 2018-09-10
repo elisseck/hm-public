@@ -17,3 +17,17 @@
   }
 
 }
+
+//Login form post resetting password
+.user-login-form {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  margin: $default-grid-gutter-width auto 0;
+  max-width: 900px;
+  width: auto;
+
+  #edit-actions {
+    margin-left: 0;
+  }
+
+}

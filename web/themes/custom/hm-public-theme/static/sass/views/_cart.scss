@@ -169,8 +169,3 @@
 .cart-empty-page {
   @extend %product-card;
 }
-
-//Checkout Form
-.layout-checkout-form {
-  @extend %max-width;
-}

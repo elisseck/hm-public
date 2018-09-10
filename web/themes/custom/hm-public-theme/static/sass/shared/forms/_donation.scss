@@ -16,7 +16,6 @@ input#edit-login-returning-customer-submit {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  //max-width: 500px;
 
   //Allow both login options to side side by side
   .checkout-pane.checkout-pane-login {
@@ -34,8 +33,7 @@ input#edit-login-returning-customer-submit {
   }
 
   .form-item,
-  .form-select,
-  input {
+  .form-select {
     margin-right: 0;
     width: 100%;
   }
@@ -56,4 +54,4 @@ input#edit-login-returning-customer-submit {
     width: auto;
   }
 
-}
+}//#commerce-checkout-flow-thm-donation-checkout-flow input
