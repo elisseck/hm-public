@@ -61,7 +61,8 @@
   .special-collections--descript,
   .event__pictures,
   .paragraph.paragraph--type--basic-block-content,
-  .special-collections--interviews {
+  .special-collections--interviews,
+  .paragraph.paragraph--type--two-column-basic-content {
     @extend %default-gutter-width;
     @extend %max-width;
   }
