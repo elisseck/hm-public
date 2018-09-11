@@ -57,12 +57,6 @@
     padding-top: 15px;
   }
 
-  //Payment information form
-  /*.checkout-pane.checkout-pane-payment-information > legend {
-    border-top: 1px solid color(medium-grey);
-    padding-top: 15px;
-  }*/
-
   .checkout-pane.checkout-pane-payment-information .fieldset-wrapper {
 
     & #edit-payment-information-payment-method--wrapper > legend .fieldset-legend,
@@ -83,24 +77,63 @@
     padding-top: 15px;
   }
 
+  table.cols-0 {
+    width: 100%;
+  }
+
   .view.list-commerce-checkout-order-summary table tr {
+    @extend %product-card;
+    flex-direction: row;
+    margin: 15px 0;
     vertical-align: top;
 
     td {
       padding-right: 15px;
     }
 
+    td.views-field.views-field-purchased-entity {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    td.views-field.views-field-purchased-entity > div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-right: 30px;
+    }
+
+    .field-format {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .field-format .field-items {
+      padding-left: 10px;
+    }
+
     .views-field-quantity,
     .views-field-purchased-entity .price > div:first-of-type,
-    .views-field-total-price__number {
+    .views-field-total-price__number,
+    .views-field-purchased-entity .field-format > div:first-of-type {
       font-weight: bold;
+      padding-right: 10px;
     }
 
   }
 
   .total-price {
     @extend %shopping-card;
-    align-items: flex-start;
+    //align-items: flex-start;
     margin: 30px 0;
 
     @media all and ( min-width: $screen-md-min) {
