@@ -245,8 +245,8 @@
   border: 1px solid color(medium-grey);
   display: flex;
   flex-direction: column;
-  margin: em(15);
-  padding: em(30);
+  margin: 15px;
+  padding: $default-grid-gutter-width;
 }
 
 %shopping-card {
@@ -255,5 +255,9 @@
   display: flex;
   flex-direction: column;
   margin: em(7);
-  padding: em(15);
+  padding: 15px;
+
+  @media screen and (max-width: 768px) {
+    margin: 15px;
+  }
 }

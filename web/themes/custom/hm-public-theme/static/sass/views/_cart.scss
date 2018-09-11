@@ -165,7 +165,21 @@
     margin-right: 0;
   }
 
-}
+  #edit-submit,
+  #edit-checkout {
+
+    @media screen and (max-width: 950px) {
+      width: auto;
+    }
+  
+    @media screen and (max-width: 768px) {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+  }
+
+}//cart
 
 .cart-empty-page {
   @extend %product-card;
