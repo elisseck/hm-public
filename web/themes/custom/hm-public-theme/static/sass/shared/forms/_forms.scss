@@ -2,12 +2,6 @@
 fieldset.form--container,
 div.form--container  {
   @extend %form--container;
-
-  .fieldset-wrapper {
-    display: flex;
-    flex-flow: row wrap;
-  }
-
 }
 
 //Form Wrapper
@@ -32,17 +26,7 @@ div.form--container  {
 .form--header.fieldgroup.required,
 .form-wrapper__login-option.form-wrapper__returning-customer,
 .form-wrapper__login-option.form-wrapper__guest-checkout {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  & > legend > span {
-    @extend %card-header;
-    color: color(quaternary);
-    font-size: em(20);
-    line-height: 120%;
-  }
-
+  @extend %form--header;
 }
 
 .form--border-top > legend {
@@ -103,7 +87,6 @@ fieldset.form-padding--end-15 {
 //Normalizing form elements
 fieldset,
 .form-item,
-.authorize-net-accept-js-form.form-wrapper,
 .edit-payment-information-add-payment-method-billing-information {
   margin: 0 10px 15px 0;
   padding: 0;
@@ -370,14 +353,6 @@ input[type='checkbox']:checked + label:after {
     padding-left: 15px;
   }
 
-}
-
-//Payment information
-.authorize-net-accept-js-form.form-wrapper {
-  border-bottom: 1px solid color(medium-grey);
-  border-top: 1px solid color(medium-grey);
-  margin-bottom: 30px;
-  padding-top: 15px;
 }
 
 //Picture
