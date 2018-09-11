@@ -17,6 +17,10 @@ input#edit-login-returning-customer-submit {
   flex-direction: row;
   flex-wrap: wrap;
 
+  .layout-checkout-form {
+    max-width: 500px;
+  }
+
   //Allow both login options to side side by side
   .checkout-pane.checkout-pane-login {
     display: flex;
@@ -27,14 +31,13 @@ input#edit-login-returning-customer-submit {
   }
 
   .form-wrapper__login-option.form-wrapper__returning-customer {
-    border-right: 1px solid #ccc;
-    padding-right: 30px;
-    margin-right: 30px;
+    border-right: 1px solid color(medium-grey);
+    margin-right: $default-grid-gutter-width;
+    padding-right: $default-grid-gutter-width;
   }
 
   .form-item,
   .form-select {
-    margin-right: 0;
     width: 100%;
   }
 
@@ -43,6 +46,14 @@ input#edit-login-returning-customer-submit {
   div#edit-payment-information-add-payment-method-payment-details-expiration-divider,
   .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-year.form-type-textfield {
     width: auto;
+  }
+
+  .credit-card-form__expiration .form-item {
+    margin-right: 0;
+  }
+
+  .form-item-payment-information-add-payment-method-payment-details-security-code {
+    margin-left: 10px;
   }
 
   #cvv {
@@ -74,11 +85,6 @@ input#edit-login-returning-customer-submit {
   max-width: 25px;
 }
 
-//Space between expiration and CVV
-/*.form-item-payment-information-add-payment-method-payment-details-security-code.form-type-textfield {
-  margin-left: 10px;
-}*/
-
 //Border-top
 .form-item-payment-information-add-payment-method-billing-information-address-0-address-country-code.form-type-select {
   border-top: 1px solid color(medium-grey);
@@ -89,3 +95,31 @@ input#edit-login-returning-customer-submit {
 #commerce-checkout-flow-thm-donation-checkout-flow .form-wrapper {
   width: 100%;
 }
+
+div.address-container-inline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .form-item {
+    flex: 1;
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+
+  }
+
+  //Last Name field
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-family-name.form-type-textfield {
+    margin-right: 0;
+  }
+
+  //Zip code
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-postal-code.form-type-textfield {
+    margin-right: 0;
+    max-width: 75px;
+  }
+
+}//div.address-container-inline
