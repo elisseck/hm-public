@@ -26,6 +26,7 @@
   table.cols-6 {
     display: flex;
     flex-direction: column;
+    margin-top: $default-grid-gutter-width;
 
     @media all and (max-width: $screen-sm-max) {
       flex-direction: column;
@@ -146,10 +147,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
-  }
-
-  .form-actions.js-form-wrapper.form-wrapper {
-    margin-bottom: $default-grid-gutter-width;
   }
 
   .total-price {
