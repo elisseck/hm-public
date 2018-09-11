@@ -146,3 +146,12 @@
   }
 
 }
+
+//Review
+#edit-review > fieldset {
+  @extend %form--header;
+}
+
+.layout-region-checkout-footer #edit-actions > a {
+  align-self: center;
+}
