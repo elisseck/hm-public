@@ -146,6 +146,26 @@
   @media screen and (max-width: 768px) {
     width: 100%;
   }
+
+  .fieldset-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+}
+
+%form--header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  & > legend > span {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: em(20);
+    line-height: 120%;
+  }
+
 }
 
 %form-field--w-large {

@@ -55,3 +55,37 @@ input#edit-login-returning-customer-submit {
   }
 
 }//#commerce-checkout-flow-thm-donation-checkout-flow input
+
+//Cart checkout with donations
+.form-item-thm-donation-opts-donor-email.form-type-email {
+  margin-bottom: 0;
+}
+
+#payment-information-wrapper {
+
+  .checkout-pane.checkout-pane-payment-information > legend {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+}
+
+.form-item-payment-information-add-payment-method-payment-details-expiration-divider {
+  max-width: 25px;
+}
+
+//Space between expiration and CVV
+/*.form-item-payment-information-add-payment-method-payment-details-security-code.form-type-textfield {
+  margin-left: 10px;
+}*/
+
+//Border-top
+.form-item-payment-information-add-payment-method-billing-information-address-0-address-country-code.form-type-select {
+  border-top: 1px solid color(medium-grey);
+  padding-top: 15px;
+}
+
+//Make sure the form is full width
+#commerce-checkout-flow-thm-donation-checkout-flow .form-wrapper {
+  width: 100%;
+}
