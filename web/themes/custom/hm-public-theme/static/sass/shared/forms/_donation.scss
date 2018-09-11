@@ -27,9 +27,9 @@ input#edit-login-returning-customer-submit {
   }
 
   .form-wrapper__login-option.form-wrapper__returning-customer {
-    border-right: 1px solid #ccc;
-    padding-right: 30px;
+    border-right: 1px solid color(medium-grey);
     margin-right: 30px;
+    padding-right: 30px;
   }
 
   .form-item,
@@ -73,11 +73,6 @@ input#edit-login-returning-customer-submit {
 .form-item-payment-information-add-payment-method-payment-details-expiration-divider {
   max-width: 25px;
 }
-
-//Space between expiration and CVV
-/*.form-item-payment-information-add-payment-method-payment-details-security-code.form-type-textfield {
-  margin-left: 10px;
-}*/
 
 //Border-top
 .form-item-payment-information-add-payment-method-billing-information-address-0-address-country-code.form-type-select {

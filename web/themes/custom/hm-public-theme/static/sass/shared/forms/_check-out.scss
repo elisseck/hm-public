@@ -162,16 +162,16 @@
   #edit-login {
     padding: 0;
   }
-  
+
   #edit-login-returning-customer {
     border-right: 1px solid color(medium-grey);
-    padding-right: $default-grid-gutter-width;
     margin-right: 15px;
+    padding-right: $default-grid-gutter-width;
   }
 
   #edit-login-guest {
-    margin-right: 0;
     margin-left: 15px;
+    margin-right: 0;
   }
 
 }
