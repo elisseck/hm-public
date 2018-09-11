@@ -155,3 +155,23 @@
 .layout-region-checkout-footer #edit-actions > a {
   align-self: center;
 }
+
+//Login > User or Guest
+.commerce-checkout-flow-multistep-default.commerce-checkout-flow {
+
+  #edit-login {
+    padding: 0;
+  }
+  
+  #edit-login-returning-customer {
+    border-right: 1px solid color(medium-grey);
+    padding-right: $default-grid-gutter-width;
+    margin-right: 15px;
+  }
+
+  #edit-login-guest {
+    margin-right: 0;
+    margin-left: 15px;
+  }
+
+}
