@@ -152,7 +152,8 @@
   @extend %form--header;
 }
 
-.layout-region-checkout-footer #edit-actions > a {
+.layout-region-checkout-footer #edit-actions > a,
+#edit-login-returning-customer-submit + a {
   align-self: center;
 }
 
