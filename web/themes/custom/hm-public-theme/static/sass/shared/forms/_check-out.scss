@@ -34,6 +34,17 @@
   margin-right: auto;
   width: 100%;
 
+  //Contact Info
+  .form-item.form-item-contact-information-email.form-type-email {
+    @extend %form-field--wrap;
+    flex-basis: 100%;
+  
+    #edit-contact-information-email {
+      width: 100%;
+    }
+  
+  }
+
   //Shipping information
   .checkout-pane.checkout-pane-shipping-information {
     margin-bottom: 30px;
@@ -53,8 +64,67 @@
   //Shipping method
   .field--type-entity-reference.field--name-shipping-method.field--widget-commerce-shipping-rate {
     border-top: 1px solid color(medium-grey);
-    margin-top: 30px;
     padding-top: 15px;
+  }
+
+  #edit-shipping-information-shipping-profile-address-0-address-country-code {
+    
+    .form-item.form-item-shipping-information-shipping-profile-address-0-address-country-code.form-type-select {
+      flex-basis: 100%;
+    }
+
+    .country.form-select,
+    .organization.form-text,
+    .address-line1.form-text,
+    .address-line2.form-text {
+      width: 100%;
+    }
+
+  }
+
+  //Payment Information
+  #payment-information-wrapper {
+
+    #edit-payment-information legend {
+      border-top: 1px solid color(medium-grey);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding-top: 15px;
+    }
+
+    .form-item-payment-information-add-payment-method-payment-details-number,
+    #edit-payment-information-add-payment-method-payment-details-expiration,
+    .form-item-payment-information-add-payment-method-payment-details-security-code {
+      flex: 1;
+    }
+
+    #edit-payment-information-add-payment-method-billing-information-address-0-address-country-code {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .form-item-payment-information-add-payment-method-billing-information-address-0-address-country-code {
+      @extend %form-field--wrap;
+      flex-basis: 100%;
+    }
+
+    .country.form-select,
+    .organization.form-text,
+    .address-line1.form-text,
+    .address-line2.form-text {
+      width: 100%;
+    }
+
+    .form-item-payment-information-add-payment-method-billing-information-address-0-address-administrative-area {
+      @extend %form-field--wrap;
+    }
+
+    .form-item-payment-information-add-payment-method-billing-information-address-0-address-postal-code {
+      max-width: none;
+    }
+
   }
 
   .checkout-pane.checkout-pane-payment-information .fieldset-wrapper {
@@ -68,6 +138,10 @@
       margin-bottom: 10px;
     }
 
+  }
+
+  #edit-payment-information-add-payment-method .authorize-net-accept-js-form {
+    border-top: 0;
   }
 
   //Order Summary
@@ -133,7 +207,6 @@
 
   .total-price {
     @extend %shopping-card;
-    //align-items: flex-start;
     margin: 30px 0;
 
     @media all and ( min-width: $screen-md-min) {
@@ -145,7 +218,7 @@
 
   }
 
-}
+}//.layout-checkout-form
 
 //Review
 #edit-review > fieldset {
