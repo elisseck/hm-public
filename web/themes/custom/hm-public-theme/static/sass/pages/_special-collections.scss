@@ -62,7 +62,8 @@
   .event__pictures,
   .paragraph.paragraph--type--basic-block-content,
   .special-collections--interviews,
-  .paragraph.paragraph--type--two-column-basic-content {
+  .paragraph.paragraph--type--two-column-basic-content,
+  .resource--block {
     @extend %default-gutter-width;
     @extend %max-width;
   }
