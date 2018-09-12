@@ -18,7 +18,8 @@ input#edit-login-returning-customer-submit {
   flex-wrap: wrap;
 
   .layout-checkout-form {
-    max-width: 500px;
+    max-width: 600px;
+    padding: 0;
   }
 
   //Allow both login options to side side by side
@@ -30,10 +31,55 @@ input#edit-login-returning-customer-submit {
     flex: 1;
   }
 
+  //Block for logins
+  #edit-login {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      margin-top: $default-grid-gutter-width;
+    }
+
+  }
+
   .form-wrapper__login-option.form-wrapper__returning-customer {
     border-right: 1px solid color(medium-grey);
+    flex: 1;
     margin-right: $default-grid-gutter-width;
-    padding-right: $default-grid-gutter-width;
+    padding-right: 15px;
+  
+    @media screen and (max-width: 600px) {
+      border: 0;
+      margin-right: 0;
+      padding-right: 0;
+    
+      #edit-login-returning-customer-submit {
+        margin-bottom: $default-grid-gutter-width;
+        margin-right: 0;
+        width: 100%;
+      }
+    
+    }
+
+  }
+
+  #edit-login-guest {
+    flex: 1;
+    margin-right: 0;
+  
+    @media screen and (max-width: 600px) {
+      margin-top: $default-grid-gutter-width;
+
+      &> legend {
+        border-top: 1px solid color(medium-grey);
+        padding-top: 15px;
+      }
+
+    }
+
   }
 
   .form-item,
