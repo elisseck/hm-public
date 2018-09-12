@@ -99,6 +99,20 @@
       flex: 1;
     }
 
+    @media screen and (max-width: 600px) {
+
+      .form-item-payment-information-add-payment-method-payment-details-number {
+        flex: 1 100%;
+      }
+
+      #expiration-month,
+      #expiration-year,
+      #cvv {
+        width: 100px;
+      }
+
+    }
+
     #edit-payment-information-add-payment-method-billing-information-address-0-address-country-code {
       display: flex;
       flex-direction: row;
