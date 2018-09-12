@@ -26,6 +26,7 @@
   table.cols-6 {
     display: flex;
     flex-direction: column;
+    margin-top: $default-grid-gutter-width;
 
     @media all and (max-width: $screen-sm-max) {
       flex-direction: column;
@@ -142,7 +143,6 @@
 
   .form-actions.js-form-wrapper.form-wrapper,
   .total-price {
-    @extend %shopping-card;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -150,16 +150,36 @@
   }
 
   .total-price {
+    @extend %shopping-card;
 
     @media all and ( min-width: $screen-md-min) {
       .field-item:last-of-type {
-        margin-right: 2.5em;
+        margin-right: 15px;
       }
     }
   }
 
+  #edit-actions {
+    background: transparent;
+    border: 0;
+    margin-right: 0;
+  }
 
-}
+  #edit-submit,
+  #edit-checkout {
+
+    @media screen and (max-width: 950px) {
+      width: auto;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+  }
+
+}//cart
 
 .cart-empty-page {
   @extend %product-card;

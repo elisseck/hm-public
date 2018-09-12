@@ -1,22 +1,7 @@
 //Custom Form Classes
 fieldset.form--container,
 div.form--container  {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin: 0 auto;
-  max-width: 900px;
-  width: auto;
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
-
-  .fieldset-wrapper {
-    display: flex;
-    flex-flow: row wrap;
-  }
-
+  @extend %form--container;
 }
 
 //Form Wrapper
@@ -41,17 +26,7 @@ div.form--container  {
 .form--header.fieldgroup.required,
 .form-wrapper__login-option.form-wrapper__returning-customer,
 .form-wrapper__login-option.form-wrapper__guest-checkout {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  & > legend > span {
-    @extend %card-header;
-    color: color(quaternary);
-    font-size: em(20);
-    line-height: 120%;
-  }
-
+  @extend %form--header;
 }
 
 .form--border-top > legend {
@@ -73,77 +48,22 @@ div.form--container  {
 
 //400px Width
 .form-field--w-large {
-
-  @media screen and (max-width: 600px) {
-    width: 100%;
-  }
-
-  input,
-  select {
-    width: 400px;
-
-    @media screen and (max-width: 600px) {
-      width: 100%;
-    }
-
-  }
-
+  @extend %form-field--w-large;
 }
 
 //250px Width
 .form-field--w-medium {
-
-  @media screen and (max-width: 600px) {
-    width: 100%;
-  }
-
-  input,
-  select {
-    width: 250px;
-
-    @media screen and (max-width: 600px) {
-      width: 100%;
-    }
-
-  }
-
+  @extend %form-field--w-medium;
 }
 
 //75px Width
 .form-field--w-small {
-
-  @media screen and (max-width: 600px) {
-    width: 100%;
-  }
-
-  input,
-  select {
-    width: 75px;
-
-    @media screen and (max-width: 600px) {
-      width: 100%;
-    }
-
-  }
-
+  @extend %form-field--w-small;
 }
 
 //Flex 0
 .form-field--wrap {
-  flex: 0;
-
-  //IE 11 Fix
-  @media screen and (min-width: 0\0) {
-    flex: 1 1 0%;
-    flex-basis: auto;
-    max-width: 250px;
-    min-width: 0;
-  }
-
-  @media screen and (max-width: 600px) {
-    flex: 1;
-  }
-
+  @extend %form-field--wrap;
 }
 
 div.form-padding--bottom-15,
@@ -167,7 +87,6 @@ fieldset.form-padding--end-15 {
 //Normalizing form elements
 fieldset,
 .form-item,
-.authorize-net-accept-js-form.form-wrapper,
 .edit-payment-information-add-payment-method-billing-information {
   margin: 0 10px 15px 0;
   padding: 0;
@@ -228,8 +147,12 @@ label,
 .webform-progress-tracker.progress-tracker {
   margin-bottom: 30px;
   margin-top: 0;
+}
 
-  @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
+
+  .webform-progress-tracker.progress-tracker,
+  .block-commerce-checkout {
     display: none;
   }
 
@@ -237,8 +160,13 @@ label,
 
 @media screen and (max-width: 768px) {
 
-  .webform-progress-tracker .progress-step {
+  .webform-progress-tracker .progress-step,
+  .checkout-progress--step {
     margin-right: 15px;
+  }
+
+  .checkout-progress--step {
+    font-size: em(18);
   }
 
 }
@@ -434,14 +362,6 @@ input[type='checkbox']:checked + label:after {
     padding-left: 15px;
   }
 
-}
-
-//Payment information
-.authorize-net-accept-js-form.form-wrapper {
-  border-bottom: 1px solid color(medium-grey);
-  border-top: 1px solid color(medium-grey);
-  margin-bottom: 30px;
-  padding-top: 15px;
 }
 
 //Picture

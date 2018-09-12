@@ -1,6 +1,12 @@
 #edit-thm-donation-opts-submit {
   margin-top: 30px;
   width: 150px;
+
+  @media screen and (max-width: 600px) {
+    margin-right: 0;
+    width: 100%;
+  }
+
 }
 
 //Adjusting Login button and spacing
@@ -16,12 +22,82 @@ input#edit-login-returning-customer-submit {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 500px;
+
+  @media screen and (max-width: 600px) {
+    margin-top: $default-grid-gutter-width;
+  }
+
+  .layout-checkout-form {
+    max-width: 600px;
+    padding: 0;
+  }
+
+  //Allow both login options to side side by side
+  .checkout-pane.checkout-pane-login {
+    display: flex;
+  }
+
+  #commerce-checkout-flow-thm-donation-checkout-flow .form-item {
+    flex: 1;
+  }
+
+  //Block for logins
+  #edit-login {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      margin-top: $default-grid-gutter-width;
+    }
+
+  }
+
+  .form-wrapper__login-option.form-wrapper__returning-customer {
+    border-right: 1px solid color(medium-grey);
+    flex: 1;
+    margin-right: $default-grid-gutter-width;
+    padding-right: 15px;
+
+    @media screen and (max-width: 600px) {
+      border: 0;
+      margin-right: 0;
+      padding-right: 0;
+
+      #edit-login-returning-customer-submit {
+        margin-bottom: $default-grid-gutter-width;
+        margin-right: 0;
+        width: 100%;
+      }
+
+    }
+
+  }
+
+  #edit-login-guest {
+    flex: 1;
+    margin-right: 0;
+
+    @media screen and (max-width: 600px) {
+      margin-top: $default-grid-gutter-width;
+
+      &> legend {
+        border-top: 1px solid color(medium-grey);
+        padding-top: 15px;
+      }
+
+      input#edit-login-guest-continue {
+        width: 100%;
+      }
+
+    }
+
+  }
 
   .form-item,
-  .form-select,
-  input {
-    margin-right: 0;
+  .form-select {
     width: 100%;
   }
 
@@ -30,6 +106,19 @@ input#edit-login-returning-customer-submit {
   div#edit-payment-information-add-payment-method-payment-details-expiration-divider,
   .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-year.form-type-textfield {
     width: auto;
+  }
+
+  .credit-card-form__expiration .form-item {
+    margin-right: 0;
+  }
+
+  .form-item-payment-information-add-payment-method-payment-details-security-code {
+    margin-left: 10px;
+  }
+
+  .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-month.form-type-textfield input,
+  .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-year.form-type-textfield input {
+    width: 100px;
   }
 
   #cvv {
@@ -41,4 +130,91 @@ input#edit-login-returning-customer-submit {
     width: auto;
   }
 
+  @media screen and (max-width: 950px) {
+
+    #edit-actions {
+      padding-left: 0;
+    }
+
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .credit-card-form__expiration {
+      margin-bottom: 15px;
+    }
+    
+    .credit-card-form__expiration,
+    .form-item-payment-information-add-payment-method-payment-details-security-code {
+      flex-basis: 50%;
+    }
+
+    .form-item-payment-information-add-payment-method-payment-details-security-code {
+      margin-left: 0;
+    }
+
+    #edit-actions-next {
+      margin-right: 0;
+      width: 100%;
+    }
+
+  }
+
+}//#commerce-checkout-flow-thm-donation-checkout-flow input
+
+//Cart checkout with donations
+.form-item-thm-donation-opts-donor-email.form-type-email {
+  margin-bottom: 0;
 }
+
+#payment-information-wrapper {
+
+  .checkout-pane.checkout-pane-payment-information > legend {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+}
+
+.form-item-payment-information-add-payment-method-payment-details-expiration-divider {
+  max-width: 25px;
+}
+
+//Border-top
+.form-item-payment-information-add-payment-method-billing-information-address-0-address-country-code.form-type-select {
+  border-top: 1px solid color(medium-grey);
+  padding-top: 15px;
+}
+
+//Make sure the form is full width
+#commerce-checkout-flow-thm-donation-checkout-flow .form-wrapper {
+  width: 100%;
+}
+
+div.address-container-inline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .form-item {
+    flex: 1;
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+
+  }
+
+  //Last Name field
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-family-name.form-type-textfield {
+    margin-right: 0;
+  }
+
+  //Zip code
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-postal-code.form-type-textfield {
+    margin-right: 0;
+    max-width: 75px;
+  }
+
+}//div.address-container-inline

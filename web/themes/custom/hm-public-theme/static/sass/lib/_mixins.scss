@@ -68,7 +68,6 @@
   text-overflow: ellipsis;
 }
 
-//Regulating sizing
 %default-gutter-width {
   padding: 0 30px;
 
@@ -133,4 +132,132 @@
     height: auto;
   }
 
+}
+
+//Form styles
+%form--container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 auto;
+  max-width: 900px;
+  width: auto;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  .fieldset-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+}
+
+%form--header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  & > legend > span {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: em(20);
+    line-height: 120%;
+  }
+
+}
+
+%form-field--w-large {
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+  input,
+  select {
+    width: 400px;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+  }
+}
+
+%form-field--w-medium {
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+  input,
+  select {
+    width: 250px;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+  }
+
+}
+
+%form-field--w-small {
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+  input,
+  select {
+    width: 75px;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+
+  }
+
+}
+
+//Flex 0
+%form-field--wrap {
+  flex: 0;
+
+  //IE 11 Fix
+  @media screen and (min-width: 0\0) {
+    flex: 1 1 0%;
+    flex-basis: auto;
+    max-width: 250px;
+    min-width: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+    flex: 1;
+  }
+
+}
+
+//Store
+%product-card {
+  background: $white;
+  border: 1px solid color(medium-grey);
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  padding: $default-grid-gutter-width;
+}
+
+%shopping-card {
+  background: $white;
+  border: 1px solid color(medium-grey);
+  display: flex;
+  flex-direction: column;
+  margin: em(7);
+  padding: 15px;
+
+  @media screen and (max-width: 768px) {
+    margin: 15px;
+  }
 }

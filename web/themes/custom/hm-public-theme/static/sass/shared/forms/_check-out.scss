@@ -1,8 +1,178 @@
 //Headers
-.layout-checkout-form .checkout-pane .fieldgroup > legend span.fieldset-legend.form-required,
-.layout-checkout-form .checkout-pane > legend span.fieldset-legend,
-.layout-checkout-form .checkout-pane .fieldgroup > legend span.fieldset-legend {
-  @extend %card-header;
-  color: color(quaternary);
-  font-size: em(20);
+.layout-checkout-form .checkout-pane .fieldgroup .form-required,
+.layout-checkout-form .checkout-pane,
+.layout-checkout-form .checkout-pane .fieldgroup {
+  @extend %form--header;
+}
+
+.checkout-pane.checkout-pane-login {
+  @extend %max-width;
+  @extend %default-gutter-width;
+}
+
+.layout-region.layout-region-checkout-main,
+.layout-region.layout-region-checkout-secondary {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-right: 0;
+  width: 100%;
+
+  .form-wrapper .form-wrapper {
+    width: 100%;
+  }
+
+}
+
+//Checkout Form
+.layout-checkout-form {
+  @extend %default-gutter-width;
+  @extend %form--container;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  //Shipping information
+  .checkout-pane.checkout-pane-shipping-information {
+    margin-bottom: 30px;
+  }
+
+  #edit-shipping-information-shipping-profile-address-0-address-country-code,
+  #edit-shipping-information-shipping-profile-address-0-address-container4 {
+    display: flex;
+
+    .form-item-shipping-information-shipping-profile-address-0-address-country-code.form-type-select,
+    .form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select {
+      @extend %form-field--wrap;
+    }
+
+  }
+
+  //Shipping method
+  .field--type-entity-reference.field--name-shipping-method.field--widget-commerce-shipping-rate {
+    border-top: 1px solid color(medium-grey);
+    margin-top: 30px;
+    padding-top: 15px;
+  }
+
+  .checkout-pane.checkout-pane-payment-information .fieldset-wrapper {
+
+    & #edit-payment-information-payment-method--wrapper > legend .fieldset-legend,
+    & .form-composite > legend .fieldset-legend {
+      @extend %source-sans-semi-bold;
+      flex-basis: 100%;
+      font-size: 16px;
+      line-height: normal;
+      margin-bottom: 10px;
+    }
+
+  }
+
+  //Order Summary
+  .layout-region.layout-region-checkout-secondary h3 {
+    border-top: 1px solid color(medium-grey);
+    color: color(quaternary);
+    padding-top: 15px;
+  }
+
+  table.cols-0 {
+    width: 100%;
+  }
+
+  .view.list-commerce-checkout-order-summary table tr {
+    @extend %product-card;
+    flex-direction: row;
+    margin: 15px 0;
+    vertical-align: top;
+
+    td {
+      padding-right: 15px;
+    }
+
+    td.views-field.views-field-purchased-entity {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    td.views-field.views-field-purchased-entity > div {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-right: 30px;
+    }
+
+    .field-format {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .field-format .field-items {
+      padding-left: 10px;
+    }
+
+    .views-field-quantity,
+    .views-field-purchased-entity .price > div:first-of-type,
+    .views-field-total-price__number,
+    .views-field-purchased-entity .field-format > div:first-of-type {
+      font-weight: bold;
+      padding-right: 10px;
+    }
+
+  }
+
+  .total-price {
+    @extend %shopping-card;
+    //align-items: flex-start;
+    margin: 30px 0;
+
+    @media all and ( min-width: $screen-md-min) {
+      .field-item:last-of-type {
+        margin-right: 15px;
+      }
+
+    }
+
+  }
+
+}
+
+//Review
+#edit-review > fieldset {
+  @extend %form--header;
+}
+
+.layout-region-checkout-footer #edit-actions > a,
+#edit-login-returning-customer-submit + a {
+  align-self: center;
+}
+
+//Login > User or Guest
+.commerce-checkout-flow-multistep-default.commerce-checkout-flow {
+
+  #edit-login {
+    padding: 0;
+  }
+
+  #edit-login-returning-customer {
+    border-right: 1px solid color(medium-grey);
+    margin-right: 15px;
+    padding-right: $default-grid-gutter-width;
+  }
+
+  #edit-login-guest {
+    margin-left: 15px;
+    margin-right: 0;
+  }
+
 }
