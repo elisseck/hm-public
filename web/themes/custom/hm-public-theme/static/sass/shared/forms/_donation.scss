@@ -1,6 +1,12 @@
 #edit-thm-donation-opts-submit {
   margin-top: 30px;
   width: 150px;
+
+  @media screen and (max-width: 600px) {
+    margin-right: 0;
+    width: 100%;
+  }
+
 }
 
 //Adjusting Login button and spacing
@@ -16,6 +22,10 @@ input#edit-login-returning-customer-submit {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 600px) {
+    margin-top: $default-grid-gutter-width;
+  }
 
   .layout-checkout-form {
     max-width: 600px;
@@ -33,10 +43,10 @@ input#edit-login-returning-customer-submit {
 
   //Block for logins
   #edit-login {
-    padding: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 0;
 
     @media screen and (max-width: 600px) {
       flex-direction: column;
@@ -50,18 +60,18 @@ input#edit-login-returning-customer-submit {
     flex: 1;
     margin-right: $default-grid-gutter-width;
     padding-right: 15px;
-  
+
     @media screen and (max-width: 600px) {
       border: 0;
       margin-right: 0;
       padding-right: 0;
-    
+
       #edit-login-returning-customer-submit {
         margin-bottom: $default-grid-gutter-width;
         margin-right: 0;
         width: 100%;
       }
-    
+
     }
 
   }
@@ -69,13 +79,17 @@ input#edit-login-returning-customer-submit {
   #edit-login-guest {
     flex: 1;
     margin-right: 0;
-  
+
     @media screen and (max-width: 600px) {
       margin-top: $default-grid-gutter-width;
 
       &> legend {
         border-top: 1px solid color(medium-grey);
         padding-top: 15px;
+      }
+
+      input#edit-login-guest-continue {
+        width: 100%;
       }
 
     }
@@ -102,6 +116,11 @@ input#edit-login-returning-customer-submit {
     margin-left: 10px;
   }
 
+  .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-month.form-type-textfield input,
+  .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-year.form-type-textfield input {
+    width: 100px;
+  }
+
   #cvv {
     width: 75px;
   }
@@ -109,6 +128,36 @@ input#edit-login-returning-customer-submit {
   //Pay and complete purchase button
   #edit-actions-next {
     width: auto;
+  }
+
+  @media screen and (max-width: 950px) {
+
+    #edit-actions {
+      padding-left: 0;
+    }
+
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .credit-card-form__expiration {
+      margin-bottom: 15px;
+    }
+    
+    .credit-card-form__expiration,
+    .form-item-payment-information-add-payment-method-payment-details-security-code {
+      flex-basis: 50%;
+    }
+
+    .form-item-payment-information-add-payment-method-payment-details-security-code {
+      margin-left: 0;
+    }
+
+    #edit-actions-next {
+      margin-right: 0;
+      width: 100%;
+    }
+
   }
 
 }//#commerce-checkout-flow-thm-donation-checkout-flow input
