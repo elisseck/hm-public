@@ -254,10 +254,10 @@
   border: 1px solid color(medium-grey);
   display: flex;
   flex-direction: column;
-  margin: em(7);
+  margin: 10px $default-grid-gutter-width;
   padding: 15px;
 
   @media screen and (max-width: 768px) {
-    margin: 15px;
+    margin: 0 0 15px;
   }
 }
