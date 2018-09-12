@@ -147,8 +147,12 @@ label,
 .webform-progress-tracker.progress-tracker {
   margin-bottom: 30px;
   margin-top: 0;
+}
 
-  @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
+  
+  .webform-progress-tracker.progress-tracker,
+  .block-commerce-checkout {
     display: none;
   }
 
@@ -156,8 +160,13 @@ label,
 
 @media screen and (max-width: 768px) {
 
-  .webform-progress-tracker .progress-step {
+  .webform-progress-tracker .progress-step,
+  .checkout-progress--step {
     margin-right: 15px;
+  }
+
+  .checkout-progress--step {
+    font-size: em(18);
   }
 
 }
