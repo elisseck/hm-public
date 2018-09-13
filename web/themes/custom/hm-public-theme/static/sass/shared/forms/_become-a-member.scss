@@ -1,0 +1,10 @@
+//BasicMaker
+.webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  
+  .webform-progress {
+    padding: 0;
+  }
+
+}

@@ -91,7 +91,11 @@ $('#return-to-top').click(function() {      // When arrow is clicked
 var $scrollButton = document.querySelector('.scroll');
 function scrollStep() {
     // Check if we're at the top already.
-    window.scrollTo(0, 0);
+    window.scrollTo({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth' 
+    });
 }
 
 if( $scrollButton ){
