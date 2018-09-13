@@ -97,3 +97,19 @@
   }
 
 }
+
+.back-button {
+  align-items: center;
+  background-color: transparent;
+  color: color(secondary);
+  display: inline-flex;
+  font-size: 1.125rem;
+  justify-content: space-between;
+  margin-bottom: 3.33333em;
+  width: 7.22222em;
+
+  &:hover {
+    background-color: transparent;
+  }
+
+}
