@@ -35,23 +35,11 @@
 
 }
 
-#edit-professional-experience-select,
-#edit-donations-select {
-  height: 200px;
-  width: 400px;
+#edit-professional-experience,
+#edit-donations {
+  margin-bottom: 15px;
+}
 
-  @media screen and (max-width: 768px) {
-    width: 100%;
-
-    option {
-      padding: 10px 0;
-    }
-
-  }
-
-  @media screen and (max-width: 600px) {
-    height: auto;
-    min-height: auto;
-  }
-
+.webform-checkboxes-other.field-prefix .webform-element-description {
+  margin-bottom: 5px;
 }
