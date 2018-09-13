@@ -32,7 +32,7 @@
                 <tr>
                     <td>
                         <h2>
-                            <a href="{{ url('<front>') }}" style="color: #0e69be; text-decoration: none; font-weight: bold; margin-top: 15px;">
+                            <a href="{{ url('<front>') }}" style="color: #f0511f; text-decoration: none; font-weight: bold; margin-top: 15px;">
                                 {{ site_name }}
                             </a>
                         </h2>
@@ -104,7 +104,7 @@
                     <td><a href="{{ site_login_url }}">{{ site_login_url }}</a></td>
                 </tr>
                 <tr>
-                    <td style="font-weight: bold; padding: 6px 0 6px 6px; background-color: #006699; color: white;">
+                    <td style="font-weight: bold; padding: 6px 0 6px 6px; background-color: #f0511f; color: white;">
                         {{ 'Order #@number details:'|t({'@number': order_entity.getOrderNumber}) }}
                     </td>
                 </tr>
@@ -136,12 +136,12 @@
                                 <tbody>
                                 <tr>
                                     {% if shipping_information %}
-                                        <td style="padding: 6px 0 6px 6px; font-weight: bold;  background-color: #006699; color: white;">
+                                        <td style="padding: 6px 0 6px 6px; font-weight: bold;  background-color: #f0511f; color: white;">
                                             {{ 'Shipping Information'|t }}
                                         </td>
                                     {% endif %}
                                     {% if billing_information %}
-                                        <td style="padding: 6px 0 6px 6px; font-weight: bold; background-color: #006699; color: white;">
+                                        <td style="padding: 6px 0 6px 6px; font-weight: bold; background-color: #f0511f; color: white;">
                                             {{ 'Billing Information'|t }}
                                         </td>
                                     {% endif %}
@@ -164,7 +164,7 @@
                                 </tr>
                                 {% if payment_method %}
                                     <tr>
-                                        <td style="font-weight: bold; padding: 6px 0 6px 6px; margin-top: 10px; background-color: #006699; color: white;">
+                                        <td style="font-weight: bold; padding: 6px 0 6px 6px; margin-top: 10px; background-color: #f0511f; color: white;">
                                             {{ 'Payment Method'|t }}
                                         </td>
                                     </tr>
