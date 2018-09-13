@@ -1,8 +1,13 @@
 //Headers
 .layout-checkout-form .checkout-pane .fieldgroup .form-required,
 .layout-checkout-form .checkout-pane,
-.layout-checkout-form .checkout-pane .fieldgroup {
+.layout-checkout-form .checkout-pane .fieldgroup,
+.checkout-pane.checkout-pane-thm-donation-completion h1 {
   @extend %form--header;
+}
+
+.checkout-pane.checkout-pane-thm-donation-completion h1 {
+  flex: 1 100%;
 }
 
 .checkout-pane.checkout-pane-login {
@@ -38,11 +43,11 @@
   .form-item.form-item-contact-information-email.form-type-email {
     @extend %form-field--wrap;
     flex-basis: 100%;
-  
+
     #edit-contact-information-email {
       width: 100%;
     }
-  
+
   }
 
   //Shipping information
@@ -68,7 +73,7 @@
   }
 
   #edit-shipping-information-shipping-profile-address-0-address-country-code {
-    
+
     .form-item.form-item-shipping-information-shipping-profile-address-0-address-country-code.form-type-select {
       flex-basis: 100%;
     }

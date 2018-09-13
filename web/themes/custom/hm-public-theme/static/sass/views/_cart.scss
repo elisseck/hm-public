@@ -157,7 +157,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
-  
+
     @media screen and (max-width: 768px) {
       margin-left: 15px;
     }
@@ -182,11 +182,11 @@
     background: transparent;
     border: 0;
     margin-left: $default-grid-gutter-width;
-    margin-right: $default-grid-gutter-width;  
-    max-width: none;  
+    margin-right: $default-grid-gutter-width;
+    max-width: none;
     padding: 0;
     width: auto;
-  
+
     & > input:nth-child(2n) {
       margin-right: 0;
     }
@@ -197,14 +197,14 @@
     }
 
     @media screen and (max-width: 520px) {
-      
+
       input {
         width: 100%;
       }
 
       input:first-of-type {
         margin-right: 0;
-      }      
+      }
 
     }
 
@@ -213,7 +213,7 @@
   .form-actions {
     margin-left: $default-grid-gutter-width;
     margin-right: $default-grid-gutter-width;
-  
+
     & > input:nth-child(2n) {
       margin-right: 0;
     }
