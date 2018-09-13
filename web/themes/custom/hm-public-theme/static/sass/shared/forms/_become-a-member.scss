@@ -2,9 +2,30 @@
 .webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form {
   @extend %max-width;
   @extend %default-gutter-width;
-  
+
   .webform-progress {
     padding: 0;
+  }
+
+  //Hide these form fields because they are awkwardly placed
+  .form-item.form-item-field-salutation.form-type-select,
+  .form-item-field-middle-initial-0-value {
+    display: none;
+  }
+
+  .field--name-field-intl-address,
+  .field--name-field-middle-initial,
+  .field--name-field-home-phone,
+  .form-item-field-cell-phone-0-value,
+  .field--name-field-work-phone,
+  .field--name-field-email-address,
+  .field--name-user-picture,
+  .form-item-mail,
+  .form-item-name,
+  .form-item-password.form-type-password-confirm,
+  .webform-button--next {
+    @extend %form--container;
+    max-width: 600px;
   }
 
 }
