@@ -7,6 +7,16 @@ $link = \Drupal::service('database');
 
 class GlossaryController {
 
+      protected $nameHacks = [
+        'Jesse L. Jackson' => 'Reverend Jesse L. Jackson'
+      ];
+
+      protected function hackMap($name) {
+        if (array_key_exists($name, $this->nameHacks)) {
+          return $this->nameHacks[$name];
+        }
+      }
+
       public function glossary(){
             $content = '';
             $alphabet = array('num', 'A','B','C','D','E','F','G','H','I','J','K','L',
@@ -53,6 +63,10 @@ class GlossaryController {
 
 
                 $info = getSQLData("SELECT * FROM `node_field_data` WHERE `title` = '$fullName'");
+
+                if (empty($info) && $alternateName = $this->hackMap($fullName)) {
+                  $info = getSQLData("SELECT * FROM `node_field_data` WHERE `title` = '$alternateName'");
+                }
 
                 $type = isset($info[0] -> type) ? $info[0] -> type : 'article';
 
