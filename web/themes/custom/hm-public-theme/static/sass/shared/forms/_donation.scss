@@ -15,6 +15,11 @@ input#edit-login-returning-customer-submit {
   width: 125px;
 }
 
+//Progress
+#checkoutprogress {
+  text-align: center;
+}
+
 //Pick a Donation Container
 #commerce-checkout-flow-thm-donation-checkout-flow {
   @extend %default-gutter-width;
