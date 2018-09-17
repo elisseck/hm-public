@@ -62,6 +62,7 @@
     .form-item-shipping-information-shipping-profile-address-0-address-country-code.form-type-select,
     .form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select {
       @extend %form-field--wrap;
+      max-width: none;
     }
 
   }
@@ -98,17 +99,16 @@
       padding-top: 15px;
     }
 
-    .form-item-payment-information-add-payment-method-payment-details-number,
+    .form-item-payment-information-add-payment-method-payment-details-number {
+      flex: 1 100%;
+    }
+
     #edit-payment-information-add-payment-method-payment-details-expiration,
     .form-item-payment-information-add-payment-method-payment-details-security-code {
       flex: 1;
     }
 
     @media screen and (max-width: 600px) {
-
-      .form-item-payment-information-add-payment-method-payment-details-number {
-        flex: 1 100%;
-      }
 
       #expiration-month,
       #expiration-year,
