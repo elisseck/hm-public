@@ -1,13 +1,17 @@
 //Headers
 .layout-checkout-form .checkout-pane .fieldgroup .form-required,
 .layout-checkout-form .checkout-pane,
-.layout-checkout-form .checkout-pane .fieldgroup,
-.checkout-pane.checkout-pane-thm-donation-completion h1 {
+.layout-checkout-form .checkout-pane .fieldgroup {
   @extend %form--header;
 }
 
-.checkout-pane.checkout-pane-thm-donation-completion h1 {
+.checkout-pane.checkout-pane-thm-donation-completion h1,
+.checkout-pane-thm-shippable-order-completion h1 {
+  @extend %card-header;
+  color: color(quaternary);
   flex: 1 100%;
+  font-size: 30px;
+  padding-bottom: 15px;
 }
 
 .checkout-pane.checkout-pane-login {
@@ -58,11 +62,29 @@
   #edit-shipping-information-shipping-profile-address-0-address-country-code,
   #edit-shipping-information-shipping-profile-address-0-address-container4 {
     display: flex;
+  }
 
-    .form-item-shipping-information-shipping-profile-address-0-address-country-code.form-type-select,
-    .form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select {
-      @extend %form-field--wrap;
-      max-width: none;
+  .form-item-shipping-information-shipping-profile-address-0-address-country-code.form-type-select,
+  .form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select {
+    @extend %form-field--wrap;
+    max-width: none;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .form-item.form-item-shipping-information-shipping-profile-address-0-address-family-name.form-type-textfield,
+    .form-item.form-item-shipping-information-shipping-profile-address-0-address-postal-code.form-type-textfield {
+      margin-right: 0;
+    }
+
+  }
+
+  .form-item.form-item-shipping-information-shipping-profile-address-0-address-organization.form-type-textfield,
+  .form-item.form-item-shipping-information-shipping-profile-address-0-address-address-line1.form-type-textfield,
+  .form-item.form-item-shipping-information-shipping-profile-address-0-address-address-line2.form-type-textfield.form-no-label {
+
+    input {
+      width: 100%;
     }
 
   }
@@ -70,7 +92,7 @@
   //Shipping method
   .field--type-entity-reference.field--name-shipping-method.field--widget-commerce-shipping-rate {
     border-top: 1px solid color(medium-grey);
-    padding-top: 15px;
+    margin-top: 30px;
   }
 
   #edit-shipping-information-shipping-profile-address-0-address-country-code {
@@ -321,6 +343,11 @@
     input,
     a {
       flex: 1 100%;
+    }
+
+    input {
+      margin-bottom: 30px;
+      margin-right: 0;
     }
 
     a {
