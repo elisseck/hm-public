@@ -5,6 +5,14 @@
   @extend %form--header;
 }
 
+@media screen and (max-width: 600px) {
+
+  .commerce-checkout-flow-multistep-default.commerce-checkout-flow {
+    margin-top: 30px;
+  }
+
+}
+
 .checkout-pane.checkout-pane-thm-donation-completion h1,
 .checkout-pane-thm-shippable-order-completion h1 {
   @extend %card-header;
@@ -93,6 +101,12 @@
   .field--type-entity-reference.field--name-shipping-method.field--widget-commerce-shipping-rate {
     border-top: 1px solid color(medium-grey);
     margin-top: 30px;
+
+
+    legend {
+      padding-top: 15px;
+    }
+
   }
 
   #edit-shipping-information-shipping-profile-address-0-address-country-code {
@@ -204,6 +218,7 @@
   .view.list-commerce-checkout-order-summary table tr {
     @extend %product-card;
     flex-direction: row;
+    flex-wrap: wrap;
     margin: 15px 0;
     vertical-align: top;
 
@@ -313,6 +328,15 @@
       margin-left: 0;
     }
 
+  }
+
+}
+
+#edit-contact-information,
+#edit-payment-information {
+
+  .fieldset-wrapper {
+    width: 100%;
   }
 
 }
