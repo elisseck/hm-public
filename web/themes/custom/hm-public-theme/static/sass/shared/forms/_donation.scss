@@ -101,11 +101,6 @@ input#edit-login-returning-customer-submit {
 
   }
 
-  .form-item,
-  .form-select {
-    width: 100%;
-  }
-
   //Credit card month and year
   .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-month.form-type-textfield,
   div#edit-payment-information-add-payment-method-payment-details-expiration-divider,
@@ -161,7 +156,26 @@ input#edit-login-returning-customer-submit {
 
   }
 
-}//#commerce-checkout-flow-thm-donation-checkout-flow input
+}//#commerce-checkout-flow-thm-donation-checkout-flow
+
+//Address fields 100%
+#edit-payment-information {
+
+  .field--type-address.field--name-address.field--widget-address-default .form-item,
+  .field--type-address.field--name-address.field--widget-address-default .form-select {
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
+
+  }
+
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-organization.form-type-textfield, .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-address-line1.form-type-textfield, .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-address-line2.form-type-textfield.form-no-label {
+    margin-right: 0;
+  }
+
+}
 
 //Cart checkout with donations
 .form-item-thm-donation-opts-donor-email.form-type-email {
