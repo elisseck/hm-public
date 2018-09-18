@@ -88,7 +88,7 @@
 
   }
 
-  .form-item-payment-information-add-payment-method-payment-details-number, 
+  .form-item-payment-information-add-payment-method-payment-details-number,
   .credit-card-form__expiration, .form-item-payment-information-add-payment-method-payment-details-security-code {
     flex: 1;
   }
@@ -263,13 +263,70 @@
 
   #edit-login-returning-customer {
     border-right: 1px solid color(medium-grey);
+    flex: 1;
     margin-right: 15px;
-    padding-right: $default-grid-gutter-width;
+    padding-right: 20px;
   }
 
   #edit-login-guest {
+    flex: 1;
     margin-left: 15px;
     margin-right: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    #edit-login {
+      flex-direction: column;
+      margin-top: 30px;
+    }
+
+    #edit-login-returning-customer {
+      border-bottom: 1px solid color(medium-grey);
+      border-right: 0;
+      padding: 0 0 30px;
+    }
+
+    #edit-login-guest {
+      margin-left: 0;
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  #edit-contact-information {
+    margin-top: 30px;
+  }
+
+  .checkout-pane-shipping-information input.button.form-submit {
+    margin-top: 15px;
+  }
+
+  .form-item.form-item-payment-information-add-payment-method-payment-details-number.form-type-textfield {
+    flex: 1 100%;
+  }
+
+  #edit-payment-information-add-payment-method-payment-details-expiration {
+    margin-right: 10px;
+  }
+
+  .layout-region-checkout-footer #edit-actions {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+
+    input,
+    a {
+      flex: 1 100%;
+    }
+
+    a {
+      align-self: flex-start;
+    }
+
   }
 
 }
