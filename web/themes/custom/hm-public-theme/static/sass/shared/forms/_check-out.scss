@@ -88,6 +88,20 @@
 
   }
 
+  .form-item-payment-information-add-payment-method-payment-details-number, 
+  .credit-card-form__expiration, .form-item-payment-information-add-payment-method-payment-details-security-code {
+    flex: 1;
+  }
+
+  //IE Fix
+  @media screen and (min-width: 0\0) {
+
+    .form-item-payment-information-add-payment-method-payment-details-number {
+      flex: 1 100%;
+    }
+
+  }
+
   //Payment Information
   #payment-information-wrapper {
 
@@ -97,15 +111,6 @@
       flex-direction: row;
       flex-wrap: wrap;
       padding-top: 15px;
-    }
-
-    .form-item-payment-information-add-payment-method-payment-details-number {
-      flex: 1 100%;
-    }
-
-    #edit-payment-information-add-payment-method-payment-details-expiration,
-    .form-item-payment-information-add-payment-method-payment-details-security-code {
-      flex: 1;
     }
 
     @media screen and (max-width: 600px) {
