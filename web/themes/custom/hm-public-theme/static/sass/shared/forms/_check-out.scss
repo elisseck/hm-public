@@ -1,13 +1,25 @@
 //Headers
 .layout-checkout-form .checkout-pane .fieldgroup .form-required,
 .layout-checkout-form .checkout-pane,
-.layout-checkout-form .checkout-pane .fieldgroup,
-.checkout-pane.checkout-pane-thm-donation-completion h1 {
+.layout-checkout-form .checkout-pane .fieldgroup {
   @extend %form--header;
 }
 
-.checkout-pane.checkout-pane-thm-donation-completion h1 {
+@media screen and (max-width: 600px) {
+
+  .commerce-checkout-flow-multistep-default.commerce-checkout-flow {
+    margin-top: 30px;
+  }
+
+}
+
+.checkout-pane.checkout-pane-thm-donation-completion h1,
+.checkout-pane-thm-shippable-order-completion h1 {
+  @extend %card-header;
+  color: color(quaternary);
   flex: 1 100%;
+  font-size: 30px;
+  padding-bottom: 15px;
 }
 
 .checkout-pane.checkout-pane-login {
@@ -58,10 +70,29 @@
   #edit-shipping-information-shipping-profile-address-0-address-country-code,
   #edit-shipping-information-shipping-profile-address-0-address-container4 {
     display: flex;
+  }
 
-    .form-item-shipping-information-shipping-profile-address-0-address-country-code.form-type-select,
-    .form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select {
-      @extend %form-field--wrap;
+  .form-item-shipping-information-shipping-profile-address-0-address-country-code.form-type-select,
+  .form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select {
+    @extend %form-field--wrap;
+    max-width: none;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .form-item.form-item-shipping-information-shipping-profile-address-0-address-family-name.form-type-textfield,
+    .form-item.form-item-shipping-information-shipping-profile-address-0-address-postal-code.form-type-textfield {
+      margin-right: 0;
+    }
+
+  }
+
+  .form-item.form-item-shipping-information-shipping-profile-address-0-address-organization.form-type-textfield,
+  .form-item.form-item-shipping-information-shipping-profile-address-0-address-address-line1.form-type-textfield,
+  .form-item.form-item-shipping-information-shipping-profile-address-0-address-address-line2.form-type-textfield.form-no-label {
+
+    input {
+      width: 100%;
     }
 
   }
@@ -69,7 +100,13 @@
   //Shipping method
   .field--type-entity-reference.field--name-shipping-method.field--widget-commerce-shipping-rate {
     border-top: 1px solid color(medium-grey);
-    padding-top: 15px;
+    margin-top: 30px;
+
+
+    legend {
+      padding-top: 15px;
+    }
+
   }
 
   #edit-shipping-information-shipping-profile-address-0-address-country-code {
@@ -87,6 +124,20 @@
 
   }
 
+  .form-item-payment-information-add-payment-method-payment-details-number,
+  .credit-card-form__expiration, .form-item-payment-information-add-payment-method-payment-details-security-code {
+    flex: 1;
+  }
+
+  //IE Fix
+  @media screen and (min-width: 0\0) {
+
+    .form-item-payment-information-add-payment-method-payment-details-number {
+      flex: 1 100%;
+    }
+
+  }
+
   //Payment Information
   #payment-information-wrapper {
 
@@ -98,17 +149,7 @@
       padding-top: 15px;
     }
 
-    .form-item-payment-information-add-payment-method-payment-details-number,
-    #edit-payment-information-add-payment-method-payment-details-expiration,
-    .form-item-payment-information-add-payment-method-payment-details-security-code {
-      flex: 1;
-    }
-
     @media screen and (max-width: 600px) {
-
-      .form-item-payment-information-add-payment-method-payment-details-number {
-        flex: 1 100%;
-      }
 
       #expiration-month,
       #expiration-year,
@@ -177,6 +218,7 @@
   .view.list-commerce-checkout-order-summary table tr {
     @extend %product-card;
     flex-direction: row;
+    flex-wrap: wrap;
     margin: 15px 0;
     vertical-align: top;
 
@@ -258,13 +300,84 @@
 
   #edit-login-returning-customer {
     border-right: 1px solid color(medium-grey);
+    flex: 1;
     margin-right: 15px;
-    padding-right: $default-grid-gutter-width;
+    padding-right: 20px;
   }
 
   #edit-login-guest {
+    flex: 1;
     margin-left: 15px;
     margin-right: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    #edit-login {
+      flex-direction: column;
+      margin-top: 30px;
+    }
+
+    #edit-login-returning-customer {
+      border-bottom: 1px solid color(medium-grey);
+      border-right: 0;
+      padding: 0 0 30px;
+    }
+
+    #edit-login-guest {
+      margin-left: 0;
+    }
+
+  }
+
+}
+
+#edit-contact-information,
+#edit-payment-information {
+
+  .fieldset-wrapper {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  #edit-contact-information {
+    margin-top: 30px;
+  }
+
+  .checkout-pane-shipping-information input.button.form-submit {
+    margin-top: 15px;
+  }
+
+  .form-item.form-item-payment-information-add-payment-method-payment-details-number.form-type-textfield {
+    flex: 1 100%;
+  }
+
+  #edit-payment-information-add-payment-method-payment-details-expiration {
+    margin-right: 10px;
+  }
+
+  .layout-region-checkout-footer #edit-actions {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+
+    input,
+    a {
+      flex: 1 100%;
+    }
+
+    input {
+      margin-bottom: 30px;
+      margin-right: 0;
+    }
+
+    a {
+      align-self: flex-start;
+    }
+
   }
 
 }
