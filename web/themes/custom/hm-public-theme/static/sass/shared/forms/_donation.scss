@@ -58,7 +58,7 @@ input#edit-login-returning-customer-submit {
       margin-top: $default-grid-gutter-width;
     }
 
-  }
+  }//#edit-login
 
   .form-wrapper__login-option.form-wrapper__returning-customer {
     border-right: 1px solid color(medium-grey);
@@ -99,7 +99,7 @@ input#edit-login-returning-customer-submit {
 
     }
 
-  }
+  }//#edit-login-guest
 
   //Credit card month and year
   .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-month.form-type-textfield,
@@ -117,10 +117,7 @@ input#edit-login-returning-customer-submit {
   }
 
   .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-month.form-type-textfield input,
-  .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-year.form-type-textfield input {
-    width: 100px;
-  }
-
+  .form-item.form-item-payment-information-add-payment-method-payment-details-expiration-year.form-type-textfield input,
   #cvv {
     width: 75px;
   }
@@ -142,11 +139,6 @@ input#edit-login-returning-customer-submit {
 
     .credit-card-form__expiration {
       margin-bottom: 15px;
-    }
-
-    .credit-card-form__expiration,
-    .form-item-payment-information-add-payment-method-payment-details-security-code {
-      flex-basis: 50%;
     }
 
     #edit-actions-next {
@@ -233,6 +225,7 @@ div.address-container-inline {
   }
 
   @media screen and (max-width: 600px) {
+    flex-direction: column;
 
     .form-item {
       flex: 1 100%;
