@@ -51,7 +51,6 @@ class GlossaryController {
 
                 $fullName = trim("$firstName $lastName");
 
-
                 $info = getSQLData("SELECT * FROM `node_field_data` WHERE `title` = '$fullName'");
 
                 $type = isset($info[0] -> type) ? $info[0] -> type : 'article';
