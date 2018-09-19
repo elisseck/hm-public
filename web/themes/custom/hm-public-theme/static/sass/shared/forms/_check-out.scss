@@ -35,6 +35,10 @@
   padding-right: 0;
   width: 100%;
 
+  @media screen and (min-width: 0\0) {
+    flex: 1 auto;
+  }
+
   .form-wrapper .form-wrapper {
     width: 100%;
   }
@@ -55,6 +59,7 @@
   .form-item.form-item-contact-information-email.form-type-email {
     @extend %form-field--wrap;
     flex-basis: 100%;
+    max-width: none;
 
     #edit-contact-information-email {
       width: 100%;
@@ -281,6 +286,10 @@
 
     }
 
+    @media screen and (min-width: 0\0) {
+      margin-right: 0;
+    }
+
   }
 
 }//.layout-checkout-form
@@ -376,6 +385,40 @@
 
     a {
       align-self: flex-start;
+    }
+
+  }
+
+}
+
+//IE11
+@media screen and (min-width: 0\0) {
+
+  table.cols-6 thead,
+  table.cols-6 tbody {
+    display: flex;
+    flex-flow: row wrap;
+
+    tr {
+      flex: 1 100%;
+    }
+
+  }
+
+  .checkout-pane-shipping-information .fieldset-wrapper {
+    width: 100%;
+  }
+
+  .checkout-pane-shipping-information .form-item-shipping-information-shipping-profile-address-0-address-country-code {
+    max-width: none;
+  }
+
+  .checkout-pane-shipping-information .form-item-shipping-information-shipping-profile-address-0-address-administrative-area {
+    display: flex;
+    flex-flow: row wrap;
+
+    select {
+      flex: 1 100%;
     }
 
   }
