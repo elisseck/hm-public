@@ -129,6 +129,10 @@
     flex: 1;
   }
 
+  .form-item-payment-information-add-payment-method-payment-details-security-code {
+    margin-left: 10px;
+  }
+
   //IE Fix
   @media screen and (min-width: 0\0) {
 
@@ -342,10 +346,6 @@
 }
 
 @media screen and (max-width: 600px) {
-
-  #edit-contact-information {
-    margin-top: 30px;
-  }
 
   .checkout-pane-shipping-information input.button.form-submit {
     margin-top: 15px;
