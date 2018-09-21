@@ -59,7 +59,7 @@
   .form-item.form-item-contact-information-email.form-type-email {
     @extend %form-field--wrap;
     flex-basis: 100%;
-    max-width: none;
+    max-width: none !important;
 
     #edit-contact-information-email {
       width: 100%;
@@ -80,7 +80,7 @@
   .form-item-shipping-information-shipping-profile-address-0-address-country-code.form-type-select,
   .form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select {
     @extend %form-field--wrap;
-    max-width: none;
+    max-width: none !important;
   }
 
   @media screen and (max-width: 600px) {
@@ -188,6 +188,18 @@
 
     .form-item-payment-information-add-payment-method-billing-information-address-0-address-administrative-area {
       @extend %form-field--wrap;
+
+      //IE11
+      @media screen and (min-width: 0\0) {
+        display: flex;
+        flex-flow: row wrap;
+
+        .administrative-area.form-select {
+          flex-basis: 100%;
+        }
+
+      }
+
     }
 
     .form-item-payment-information-add-payment-method-billing-information-address-0-address-postal-code {
