@@ -560,4 +560,13 @@ li.pager__item.pager__item--ellipsis {
     opacity: 1;
   }
 
+  .social.mobile-only {
+    border-left: 0;
+  
+    li:first-of-type svg {
+      margin-left: 8px;
+    }
+  
+  }
+
 }//#hm-public-theme-main-menu
