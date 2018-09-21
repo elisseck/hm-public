@@ -174,6 +174,11 @@
   .total-price {
     @extend %shopping-card;
 
+    //IE11
+    @media screen and (min-width: 0\0) {
+      margin-right: 0;
+    }
+
     @media screen and (max-width: 900px) {
       margin-left: 15px;
       margin-right: 15px;
