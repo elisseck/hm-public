@@ -1,4 +1,8 @@
 {# Makes sure the menu shows #}
+
+{# Add Donate Now here #}
+{# Add DA Links here #}
+
 {% import _self as menus %}
 
 {#
@@ -58,8 +62,27 @@
     </ul>
   {% endif %}
 {% endmacro %}
-
 <!-- End of imported menus -->
+
+<!-- Sign-up|Login -->
+<ul class="profile mobile-only menu-item">
+{% if logged_in %}
+  <li class="profile__option profile__option--account">
+    <a class="profile__link" href="/user" data-drupal-link-system-path="user">My account</a>
+  </li>
+  <li class="profile__option profile__option--logout">
+    <a class="profile__link" href="/user/logout" data-drupal-link-system-path="user/logout">Log out</a>
+  </li>
+{% else %}
+  <li class="profile__option profile__option--logout">
+    <button class="profile__link" type="button" data-toggle="modal" data-target="#loginModal">
+      Sign-up | Login
+    </button>
+  </li>
+{% endif %}
+</ul>
+
+<!-- Social Media -->
 <ul class="social mobile-only">
   <li class="social__item">
       <a href="http://www.facebook.com/pages/The-HistoryMakers/101427513238306" target="_blank">
