@@ -131,6 +131,9 @@
                 "legacy admin comments": "patches/commerce_log.templates.patch",
                 "guest checkout email addition": "patches/commerce-guest-payment-email.patch"
             },
+            "drupal/commerce_recurring": {
+                "fix cron breaking error": "https://www.drupal.org/files/issues/2018-07-09/2984703-2.patch"
+            },
             "drupal/commerce_shipping": {
                 "fixes shipment weight issue": "https://www.drupal.org/files/issues/Limit-by-shipment-weight-not-working-2950520-1.patch"
             },
