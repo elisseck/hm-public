@@ -393,17 +393,6 @@
 //IE11
 @media screen and (min-width: 0\0) {
 
-  table.cols-6 thead,
-  table.cols-6 tbody {
-    display: flex;
-    flex-flow: row wrap;
-
-    tr {
-      flex: 1 100%;
-    }
-
-  }
-
   .checkout-pane-shipping-information .fieldset-wrapper {
     width: 100%;
   }

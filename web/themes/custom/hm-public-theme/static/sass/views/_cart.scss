@@ -43,9 +43,17 @@
       }
     }
 
+    thead,
+    tbody {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
     tbody > tr,
     thead > tr {
       @extend %shopping-card;
+      flex: 1 100%;
       flex-direction: row;
       flex-wrap: wrap;
       margin: 10px 0;
