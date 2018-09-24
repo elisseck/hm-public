@@ -1,0 +1,6 @@
+thm_admin_links.users_export:
+  path: '/admin/people/export'
+  defaults:
+    _controller: '\Drupal\thm_admin_links\Controller\AdminLinksController::export'
+  requirements:
+    _permission: 'administer site configuration'
