@@ -1,0 +1,38 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: t2
+ * Date: 9/24/18
+ * Time: 1:48 PM
+ */
+
+/**
+ * Implements hook_toolbar().
+ */
+function thm_admin_links_toolbar() {
+  $items = [];
+  $items['links'] = [
+    '#cache' => [
+      'contexts' => [ 'user.permissions' ]
+    ]
+  ];
+
+  $items['links'] = [
+    '#type' => 'toolbar_item',
+    'tab' => [
+      '#type' => 'link',
+      '#title' => t('Export Users'),
+      '#url' => \Drupal\Core\Url::fromUri('internal:/people/export',
+        ['query' => [ '_format' => 'csv' ]]),
+      '#options' => [
+        'attributes' => [
+          'class' => [ 'toolbar-icon', 'trigger-toolbar-item' ],
+          'style' => [ 'color: white;', 'font-weight: bold;', 'padding-top: 1em;']
+        ]
+      ]
+    ],
+    '#weight' => 100
+  ];
+
+  return $items;
+}
