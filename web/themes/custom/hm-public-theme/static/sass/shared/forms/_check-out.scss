@@ -77,6 +77,21 @@
     display: flex;
   }
 
+  #edit-shipping-information-shipping-profile-address-0-address-container4 {
+    flex-flow: row wrap;
+
+    .form-item.form-item-shipping-information-shipping-profile-address-0-address-locality.form-type-textfield,
+    .form-item.form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select {
+      min-width: 200px;
+
+      input {
+        flex-basis: 100%;
+      }
+
+    }
+
+  }
+
   .form-item-shipping-information-shipping-profile-address-0-address-country-code.form-type-select,
   .form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select {
     @extend %form-field--wrap;
