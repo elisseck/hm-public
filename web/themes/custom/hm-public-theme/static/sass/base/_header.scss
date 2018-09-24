@@ -346,12 +346,6 @@
 
 .modal-footer { border-top: 0; }
 
-.modal-dialog {
-  @media screen and (min-width: 567px) {
-    max-width: em(700);
-  }
-}
-
 .modal__register {
   align-items: center;
   border-right: 1px solid color(medium-grey);
@@ -365,4 +359,63 @@
     display: block;
     margin-left: auto;
   }
+}
+
+//Mobile Modal
+.modal-dialog {
+  @media screen and (min-width: 768px) {
+    max-width: em(700);
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .modal-body {
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  .col-sm-6.modal__register {
+    border-bottom: 1px solid color(medium-grey);
+    border-right: 0;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    padding-bottom: 30px;
+
+    .modal__heading,
+    a.button.button--secondary {
+      margin-right: 0;
+      width: 100%;
+    }
+
+  }
+
+  .col-sm-6.modal__register,
+  .col-sm-6.modal__login {
+    flex: 1;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .col-sm-6.modal__login {
+
+    .user-login-form {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    div#edit-actions {
+      padding: 0;
+    }
+
+    #edit-submit {
+      margin: 0;
+      width: 100%;
+    }
+
+  }
+
 }
