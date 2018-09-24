@@ -1,7 +1,23 @@
 {# Makes sure the menu shows #}
 
 {# Add Donate Now here #}
+{{ donation_form }}
 {# Add DA Links here #}
+{#<div class="header__da-links">
+    <div class="header__da-links-title">Explore The HistoryMakers Archives</div>
+    <div class="header__da-link-container">
+        {% if logged_in %}
+            {% if paid_user %}
+                <a class="header__da-link" target="_blank" href="{{ user_jwt_da }}">The HistoryMakers Digital Archive</a>
+                <a class="header__da-link" target="_blank" href="{{ user_jwt_smda }}">ScienceMakers Digital Archive</a>
+            {% else %}
+                {{ upgrade_form }}
+            {% endif %}
+        {% else %}
+            <a class="header__da-link" href="/become-a-member">Become a member today!</a>
+        {% endif %}
+    </div>
+</div>#}
 
 {% import _self as menus %}
 
@@ -65,16 +81,16 @@
 <!-- End of imported menus -->
 
 <!-- Sign-up|Login -->
-<ul class="profile mobile-only menu-item">
+<ul class="profile mobile-only">
 {% if logged_in %}
-  <li class="profile__option profile__option--account">
+  <li class="menu-item footer-menu-item">
     <a class="profile__link" href="/user" data-drupal-link-system-path="user">My account</a>
   </li>
-  <li class="profile__option profile__option--logout">
+  <li class="menu-item">
     <a class="profile__link" href="/user/logout" data-drupal-link-system-path="user/logout">Log out</a>
   </li>
 {% else %}
-  <li class="profile__option profile__option--logout">
+  <li class="menu-item">
     <button class="profile__link" type="button" data-toggle="modal" data-target="#loginModal">
       Sign-up | Login
     </button>

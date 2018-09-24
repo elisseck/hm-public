@@ -562,16 +562,22 @@ li.pager__item.pager__item--ellipsis {
 
   .social.mobile-only {
     border-left: 0;
-  
+
     li:first-of-type svg {
       margin-left: 8px;
     }
-  
+
   }
 
-  .profile.mobile-only.menu-item {
-    font-size: 1.185em;
-    padding-left: 0;
+  .profile.mobile-only .menu-item {
+    font-size: 100%;
+
+    button.profile__link {
+      font-size: 1.25em;
+      padding-left: 0;
+      text-align: left;
+    }
+
   }
 
 }//#hm-public-theme-main-menu
