@@ -102,3 +102,26 @@
   height: auto;
   width: 100%;
 }
+
+.layout--1-2-1col .block-region-custom-right div .video-container[_ngcontent-c0] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: none;
+
+  .hero-vid__right-col[_ngcontent-c0] {
+    background-color: #fff;
+    padding: 30px;
+  }
+
+  //H2
+  .hero-vid__title[_ngcontent-c0] {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+
+  //Body
+  .hero-vid__body[_ngcontent-c0] {
+    font-size: 1.125em;
+  }
+
+}
