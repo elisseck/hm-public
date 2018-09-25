@@ -69,7 +69,7 @@ class THMDAUserSurvey extends CheckoutPaneBase {
     switch ($triggeringElement['#op']) {
       case 'continue':
         $webformValues = $this->bundleUserInput($formValues);
-        WebformSubmissionForm::submitValues($webformValues);
+        WebformSubmissionForm::submitFormValues($webformValues);
     }
   }
 }

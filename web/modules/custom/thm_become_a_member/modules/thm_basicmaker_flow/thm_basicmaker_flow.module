@@ -172,7 +172,7 @@ function thm_basicmaker_flow_form_submit(array &$form, FormStateInterface $formS
   $values           = $formState->getValue($form['#parents']);
   $userSurveyValues = [];
 
-  $userSurveyValues['in_draft'] = $values['in_draft'];
+  $userSurveyValues['in_draft'] = true;
 
   $tmp = array_filter($values, function($key) {
     $exclude = ['mail', 'name', 'password', 'in_draft'];
@@ -182,7 +182,7 @@ function thm_basicmaker_flow_form_submit(array &$form, FormStateInterface $formS
   $userSurveyValues['data']       = $tmp;
   $userSurveyValues['webform_id'] = 'user_profile';
 
-  WebformSubmissionForm::submitValues($userSurveyValues);
+  WebformSubmissionForm::submitFormValues($userSurveyValues);
 }
 
 function validate(&$element, FormStateInterface $formState, &$context) {
