@@ -1,26 +1,24 @@
-{# Makes sure the menu shows #}
-
-{# Add Donate Now here #}
+{# Donate Now #}
 {{ donation_form }}
-{# Add DA Links here #}
-<ul class="mobile__da-links mobile-only menu-item">
 
-    <!-- Add main navigation here -->
-      <li class="header__da-links-title">
-        Explore The HistoryMakers Archives
-        <ul class="menu-item">
-        {% if logged_in %}
-            {% if paid_user %}
-                <li><a class="header__da-link" target="_blank" href="{{ user_jwt_da }}">The HistoryMakers Digital Archive</a></li>
-                <li><a class="header__da-link" target="_blank" href="{{ user_jwt_smda }}">ScienceMakers Digital Archive</a></li>
-            {% else %}
-                <li>{{ upgrade_form }}</li>
-            {% endif %}
-        {% else %}
-            <li><a class="header__da-link" href="/become-a-member">Become a member today!</a></li>
-        {% endif %}  
-        </ul>      
-      </li>
+<ul class="mobile__da-links mobile-only menu-item">
+  <li class="header__da-links-title">
+    Explore The HistoryMakers Archives
+    <ul class="menu-item">
+    {% if logged_in %}
+      <!-- Logic does not work -->
+      {% if paid_user %}
+          <li><a class="header__da-link" target="_blank" href="{{ user_jwt_da }}">The HistoryMakers Digital Archive</a></li>
+          <li><a class="header__da-link" target="_blank" href="{{ user_jwt_smda }}">ScienceMakers Digital Archive</a></li>
+      {% else %}
+          <li>{{ upgrade_form }}</li>
+      {% endif %}
+      <!-- Logic works -->
+    {% else %}
+        <li><a class="header__da-link" href="/become-a-member">Become a member today!</a></li>
+    {% endif %}  
+    </ul>      
+  </li>
 </ul>
 
 {% import _self as menus %}
@@ -42,7 +40,7 @@
       <ul {{ attributes.removeClass('menu--simple-mega-menu') }}>
     {% endif %}
 
-    <!-- Add main navigation here -->
+    <!-- Main navigation -->
     {% for item in items %}
         {%
         set classes = [
@@ -100,46 +98,35 @@
 <!-- Social Media -->
 <ul class="social mobile-only">
   <li class="social__item">
-      <a href="http://www.facebook.com/pages/The-HistoryMakers/101427513238306" target="_blank">
-      <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" viewBox="270.3 320 71.4 152.1">
-          <title>
-          icons-vector
-          </title>
-          <path fill="currentColor" d="M341.7 320h-23.4l-3.8.1c-7.3-.1-14.3 2.7-19.4 7.9-10.2 9.5-8.7 20.3-8.7 20.3V369h-16.1v26.8h16.1v76.3h31.9v-76.2h21.5l1.9-27.1h-23.4v-16c-.4-4.1 2.6-7.8 6.7-8.3h16.7V320z"/>
-      </svg>
-      </a>
+    <a href="http://www.facebook.com/pages/The-HistoryMakers/101427513238306" target="_blank">
+    <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" viewBox="270.3 320 71.4 152.1">
+      <title>icons-vector</title>
+      <path fill="currentColor" d="M341.7 320h-23.4l-3.8.1c-7.3-.1-14.3 2.7-19.4 7.9-10.2 9.5-8.7 20.3-8.7 20.3V369h-16.1v26.8h16.1v76.3h31.9v-76.2h21.5l1.9-27.1h-23.4v-16c-.4-4.1 2.6-7.8 6.7-8.3h16.7V320z"/>
+    </svg>
+    </a>
   </li>
-
   <li class="social__item">
-      <a href="http://www.twitter.com/thehstrymakers" target="_blank">
-      <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" viewBox="212.2 331.4 187.6 129.3">
-          <title>
-          Twitter Icon
-          </title>
-          <path fill="currentColor" d="M399.8 391c-7.2 1-14.4.3-21.2-2.1 10.6-.9 17.7-5.7 20.4-12.2-3.8 2.3-15.6 4.9-22.1 2.5-.3-1.5-.7-3-1-4.2-5-18.3-22-32.9-39.8-31.2 1.4-.6 2.9-1.1 4.4-1.6 2-.7 13.5-2.6 11.6-6.6-1.5-3.6-15.6 2.7-18.2 3.5 3.5-1.3 9.3-3.6 9.9-7.6-5.5.8-10.6 3.2-14.7 6.9 1.5-1.5 2.5-3.5 2.8-5.6-14.3 9.1-22.6 27.6-29.3 45.4-4.2-4.4-9-8.3-14.2-11.5-15.5-8.2-31.6-15.3-48.1-21.2-.7 7.4 3.6 17.1 16 23.6-3.9-.1-7.8.3-11.5 1.4 1.6 8.5 6.8 15.3 21 18.7-6.4.4-9.8 1.9-12.9 5.1 3 5.8 10.2 12.8 23.1 11.3-14.4 6.2-5.9 17.7 5.8 16-18.8 19.5-49.7 20.3-69.6 1.8 47.2 64.4 149.9 38.1 165.2-23.9 11.5 0 18.2-4 22.4-8.5z"/>
-      </svg>
-      </a>
+    <a href="http://www.twitter.com/thehstrymakers" target="_blank">
+    <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" viewBox="212.2 331.4 187.6 129.3">
+      <title>Twitter Icon</title>
+      <path fill="currentColor" d="M399.8 391c-7.2 1-14.4.3-21.2-2.1 10.6-.9 17.7-5.7 20.4-12.2-3.8 2.3-15.6 4.9-22.1 2.5-.3-1.5-.7-3-1-4.2-5-18.3-22-32.9-39.8-31.2 1.4-.6 2.9-1.1 4.4-1.6 2-.7 13.5-2.6 11.6-6.6-1.5-3.6-15.6 2.7-18.2 3.5 3.5-1.3 9.3-3.6 9.9-7.6-5.5.8-10.6 3.2-14.7 6.9 1.5-1.5 2.5-3.5 2.8-5.6-14.3 9.1-22.6 27.6-29.3 45.4-4.2-4.4-9-8.3-14.2-11.5-15.5-8.2-31.6-15.3-48.1-21.2-.7 7.4 3.6 17.1 16 23.6-3.9-.1-7.8.3-11.5 1.4 1.6 8.5 6.8 15.3 21 18.7-6.4.4-9.8 1.9-12.9 5.1 3 5.8 10.2 12.8 23.1 11.3-14.4 6.2-5.9 17.7 5.8 16-18.8 19.5-49.7 20.3-69.6 1.8 47.2 64.4 149.9 38.1 165.2-23.9 11.5 0 18.2-4 22.4-8.5z"/>
+    </svg>
+    </a>
   </li>
-
   <li class="social__item">
-      <a href="http://www.youtube.com/user/TheHistoryMakers" target="_blank">
-      <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" viewBox="221.4 336.5 169 118.8">
-          <title>
-          YouTube Icon
-          </title>
-          <path fill="currentColor" d="M388.9 362.2s-1.7-11.6-6.7-16.8c-4.5-4.5-10.6-7.1-17-7.2-23.7-1.8-59.2-1.8-59.2-1.8s-35.5 0-59.1 1.7c-6.4 0-12.5 2.6-17 7.2-5.1 5.1-6.7 16.8-6.7 16.8-1.1 9.1-1.6 18.2-1.7 27.3v12.8c.1 9.1.6 18.3 1.7 27.3 0 0 1.7 11.6 6.7 16.8 6.4 6.7 14.9 6.5 18.6 7.2 13.5 1.3 57.4 1.7 57.4 1.7s35.5 0 59.2-1.8c6.4 0 12.5-2.6 17-7.2 5.1-5.1 6.7-16.8 6.7-16.8 1-9.1 1.6-18.2 1.7-27.3v-12.8c-.1-8.9-.6-18-1.6-27.1zm-100.3 55.7v-47.4l45.7 23.8-45.7 23.6z"/>
-      </svg>
-      </a>
+    <a href="http://www.youtube.com/user/TheHistoryMakers" target="_blank">
+    <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" viewBox="221.4 336.5 169 118.8">
+      <title>YouTube Icon</title>
+      <path fill="currentColor" d="M388.9 362.2s-1.7-11.6-6.7-16.8c-4.5-4.5-10.6-7.1-17-7.2-23.7-1.8-59.2-1.8-59.2-1.8s-35.5 0-59.1 1.7c-6.4 0-12.5 2.6-17 7.2-5.1 5.1-6.7 16.8-6.7 16.8-1.1 9.1-1.6 18.2-1.7 27.3v12.8c.1 9.1.6 18.3 1.7 27.3 0 0 1.7 11.6 6.7 16.8 6.4 6.7 14.9 6.5 18.6 7.2 13.5 1.3 57.4 1.7 57.4 1.7s35.5 0 59.2-1.8c6.4 0 12.5-2.6 17-7.2 5.1-5.1 6.7-16.8 6.7-16.8 1-9.1 1.6-18.2 1.7-27.3v-12.8c-.1-8.9-.6-18-1.6-27.1zm-100.3 55.7v-47.4l45.7 23.8-45.7 23.6z"/>
+    </svg>
+    </a>
   </li>
-
   <li class="social__item">
-      <a href="http://www.linkedin.com/company/the-historymakers" target="_blank">
-      <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" viewBox="244.9 337.6 122.2 116.8">
-          <title>
-          LinkedIn Icon
-          </title>
-          <path fill="currentColor" d="M287.1 454.4h26.2v-44c-.1-2.2.2-4.3.9-6.4 2-5.7 7.4-9.5 13.4-9.6 9.5 0 13.3 7.2 13.3 17.8v42.2h26.2v-45.2c0-24.2-12.9-35.5-30.2-35.5-9.8-.4-19 4.7-23.8 13.3h.2v-11.4h-26.2c.4 7.4 0 78.8 0 78.8zM272.7 454.4v-78.8h-26.2v78.8h26.2M259.5 364.8c9.1 0 14.9-6 14.9-13.6s-5.7-13.6-14.6-13.6c-8.9 0-14.9 5.9-14.9 13.6s5.7 13.6 14.5 13.6h.1z"/>
-      </svg>
-      </a>
+    <a href="http://www.linkedin.com/company/the-historymakers" target="_blank">
+    <svg class="social__icon" xmlns="http://www.w3.org/2000/svg" viewBox="244.9 337.6 122.2 116.8">
+      <title>LinkedIn Icon</title>
+      <path fill="currentColor" d="M287.1 454.4h26.2v-44c-.1-2.2.2-4.3.9-6.4 2-5.7 7.4-9.5 13.4-9.6 9.5 0 13.3 7.2 13.3 17.8v42.2h26.2v-45.2c0-24.2-12.9-35.5-30.2-35.5-9.8-.4-19 4.7-23.8 13.3h.2v-11.4h-26.2c.4 7.4 0 78.8 0 78.8zM272.7 454.4v-78.8h-26.2v78.8h26.2M259.5 364.8c9.1 0 14.9-6 14.9-13.6s-5.7-13.6-14.6-13.6c-8.9 0-14.9 5.9-14.9 13.6s5.7 13.6 14.5 13.6h.1z"/>
+    </svg>
+    </a>
   </li>
 </ul>
