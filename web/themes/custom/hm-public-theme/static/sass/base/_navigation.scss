@@ -580,4 +580,25 @@ li.pager__item.pager__item--ellipsis {
 
   }
 
+  .mobile__da-links.mobile-only.menu-item {
+
+    .header__da-links-title {
+      //color: color(dark-grey);
+      font-size: 1.25em;
+      font-weight: 700;
+    }
+
+    .header__da-links-title .menu-item {
+      border-bottom: 0;
+      padding: 0;
+    }
+
+    .menu-item a.header__da-link {
+      font-size: 18px;
+      font-weight: 400;
+      text-transform: none;
+    }
+
+  }
+
 }//#hm-public-theme-main-menu

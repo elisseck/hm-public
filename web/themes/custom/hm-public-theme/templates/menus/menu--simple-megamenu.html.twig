@@ -3,21 +3,25 @@
 {# Add Donate Now here #}
 {{ donation_form }}
 {# Add DA Links here #}
-{#<div class="header__da-links">
-    <div class="header__da-links-title">Explore The HistoryMakers Archives</div>
-    <div class="header__da-link-container">
+<ul class="mobile__da-links mobile-only menu-item">
+
+    <!-- Add main navigation here -->
+      <li class="header__da-links-title">
+        Explore The HistoryMakers Archives
+        <ul class="menu-item">
         {% if logged_in %}
             {% if paid_user %}
-                <a class="header__da-link" target="_blank" href="{{ user_jwt_da }}">The HistoryMakers Digital Archive</a>
-                <a class="header__da-link" target="_blank" href="{{ user_jwt_smda }}">ScienceMakers Digital Archive</a>
+                <li><a class="header__da-link" target="_blank" href="{{ user_jwt_da }}">The HistoryMakers Digital Archive</a></li>
+                <li><a class="header__da-link" target="_blank" href="{{ user_jwt_smda }}">ScienceMakers Digital Archive</a></li>
             {% else %}
-                {{ upgrade_form }}
+                <li>{{ upgrade_form }}</li>
             {% endif %}
         {% else %}
-            <a class="header__da-link" href="/become-a-member">Become a member today!</a>
-        {% endif %}
-    </div>
-</div>#}
+            <li><a class="header__da-link" href="/become-a-member">Become a member today!</a></li>
+        {% endif %}  
+        </ul>      
+      </li>
+</ul>
 
 {% import _self as menus %}
 
@@ -38,10 +42,8 @@
       <ul {{ attributes.removeClass('menu--simple-mega-menu') }}>
     {% endif %}
 
-    <!-- Add man navigation here -->
-
+    <!-- Add main navigation here -->
     {% for item in items %}
-
         {%
         set classes = [
           'menu-item',
@@ -72,9 +74,6 @@
         {% endif %}
       </li>
     {% endfor %}
-
-    <!-- Add footer nav here -->
-
     </ul>
   {% endif %}
 {% endmacro %}
@@ -86,7 +85,7 @@
   <li class="menu-item footer-menu-item">
     <a class="profile__link" href="/user" data-drupal-link-system-path="user">My account</a>
   </li>
-  <li class="menu-item">
+  <li class="menu-item footer-menu-item">
     <a class="profile__link" href="/user/logout" data-drupal-link-system-path="user/logout">Log out</a>
   </li>
 {% else %}
