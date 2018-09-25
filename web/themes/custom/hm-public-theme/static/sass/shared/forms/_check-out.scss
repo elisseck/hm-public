@@ -81,10 +81,14 @@
     flex-flow: row wrap;
 
     .form-item.form-item-shipping-information-shipping-profile-address-0-address-locality.form-type-textfield,
-    .form-item.form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select {
-      min-width: 200px;
+    .form-item.form-item-shipping-information-shipping-profile-address-0-address-administrative-area.form-type-select,
+    .form-item.form-item-shipping-information-shipping-profile-address-0-address-postal-code {
+      display: flex !important;
+      flex: 1;
+      flex-flow: row wrap;
 
-      input {
+      input,
+      select {
         flex-basis: 100%;
       }
 
