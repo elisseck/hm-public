@@ -569,6 +569,15 @@ li.pager__item.pager__item--ellipsis {
 
   }
 
+  .mobile-only #make-a-donation {
+    padding-left: 0.5em;
+  
+    #edit-donation-form {
+      width: 100%;
+    }
+
+  }
+
   .profile.mobile-only .menu-item {
     font-size: 100%;
 
@@ -583,7 +592,6 @@ li.pager__item.pager__item--ellipsis {
   .mobile__da-links.mobile-only.menu-item {
 
     .header__da-links-title {
-      //color: color(dark-grey);
       font-size: 1.25em;
       font-weight: 700;
     }
@@ -596,6 +604,7 @@ li.pager__item.pager__item--ellipsis {
     .menu-item a.header__da-link {
       font-size: 18px;
       font-weight: 400;
+      padding: 0 0.5em 0.5em;
       text-transform: none;
     }
 
