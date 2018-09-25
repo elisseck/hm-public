@@ -18,12 +18,7 @@ function hm_public_theme_preprocess_page(&$variables) {
     $variables['login_form'] = render_form(UserLoginForm::class);
   }
 
-  $variables['paid_user']  = current_user_has_role('thm_paid_member');
-
-  if ($variables['paid_user']) {
-    $variables['user_jwt_da']   = assemble_paid_links();
-    $variables['user_jwt_smda'] = assemble_paid_links('smda');
-  }
+  inject_jwturls($variables);
 
   /** @var \Drupal\node\NodeInterface $node */
   $node = \Drupal::routeMatch()->getParameter('node');
@@ -42,8 +37,8 @@ function hm_public_theme_preprocess_page(&$variables) {
     $variables['#attached']['library'][] = 'thm_adv_search/advanced-search-filters';
   }
 
-  $variables['upgrade_form']  = render_form(THMUpgradeAMemberForm::class);
-  $variables['donation_form'] = render_form(THMDonationForm::class);
+  inject_forms($variables);
+
 }
 
 /**
@@ -164,4 +159,23 @@ function hm_public_theme_preprocess_block(&$variables) {
     strstr($variables['attributes']['id'], $theme)) {
     $variables['attributes']['id'] = str_replace($theme . '-', '', $variables['attributes']['id']);
   }
+}
+
+function hm_public_theme_preprocess_menu__simple_megamenu(&$variables) {
+  inject_jwturls($variables);
+  inject_forms($variables);
+}
+
+function inject_jwturls(&$variables) {
+  $variables['paid_user']  = current_user_has_role('thm_paid_member');
+
+  if ($variables['paid_user']) {
+    $variables['user_jwt_da']   = assemble_paid_links();
+    $variables['user_jwt_smda'] = assemble_paid_links('smda');
+  }
+}
+
+function inject_forms(&$variables) {
+  $variables['upgrade_form']  = render_form(THMUpgradeAMemberForm::class);
+  $variables['donation_form'] = render_form(THMDonationForm::class);
 }
