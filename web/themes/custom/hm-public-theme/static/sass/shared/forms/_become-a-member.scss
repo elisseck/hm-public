@@ -9,7 +9,8 @@
 
   //Hide these form fields because they are awkwardly placed
   .form-item.form-item-field-salutation.form-type-select,
-  .form-item-field-middle-initial-0-value {
+  #edit-field-middle-initial-wrapper,
+  #edit-field-email-address-wrapper {
     display: none;
   }
 
@@ -23,9 +24,128 @@
   .form-item-mail,
   .form-item-name,
   .form-item-password.form-type-password-confirm,
-  .webform-button--next {
+  .webform-button--next,
+  .field--name-field-cell-phone,
+  .form-item-mail.form-type-email,
+  .form-item-name.form-type-textfield {
     @extend %form--container;
     max-width: 600px;
+  }
+
+  //Headers
+  .form-wrapper.panel.panel-default > legend {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: em(30);
+    line-height: 120%;
+  }
+
+  .form-item.form-item-field-intl-address-0-address-country-code.form-type-select {
+    display: flex;
+    flex-flow: row wrap;
+
+    select,
+    input {
+      flex-basis: 100%;
+    }
+
+  }
+
+  .form-item {
+    margin-right: 0;
+    width: 100%;
+
+    input,
+    select {
+      width: 100%;
+    }
+
+  }
+
+  .form-item.form-item-field-intl-address-0-address-given-name.form-type-textfield,
+  .form-item.form-item-field-intl-address-0-address-locality.form-type-textfield,
+  .form-item.form-item-field-intl-address-0-address-administrative-area.form-type-select {
+    margin-right: 15px;
+  }
+
+  //End of section
+  #edit-field-intl-address-0-address-container4,
+  .form-item.form-item-mail.form-type-email {
+    border-bottom: 1px solid color(medium-grey);
+    margin-bottom: 15px;
+    padding-bottom: 30px;
+  }
+
+  //Remove extra margin
+  .form-item.form-item-field-home-phone-0-value.form-type-textfield,
+  .form-item.form-item-field-work-phone-0-value.form-type-textfield {
+    margin-bottom: 0;
+  }
+
+  //Add missing margin
+  .form-item.form-item-mail.form-type-email {
+    margin-bottom: 15px;
+  }
+
+  //Upload picture
+  .form-item.form-item-user-picture-0.form-type-managed-file {
+    background: $white;
+    border: 1px solid color(medium-grey);
+    padding: 15px;
+  }
+
+  //Username section
+  .form-item.form-item-name.form-type-textfield {
+    display: flex;
+
+    #edit-name {
+      margin-bottom: 15px;
+      order: 2;
+    }
+
+    #edit-name--description {
+      margin-top: 0;
+      order: 1;
+    }
+
+  }
+
+  //Password section
+  #edit-password {
+    display: flex;
+
+    .form-item.form-item-password-pass1.form-type-password.password-parent {
+      order: 2;
+    }
+
+    .form-item.form-item-password-pass2.form-type-password.confirm-parent {
+      order: 3;
+    }
+
+    #edit-password--description {
+      margin-bottom: 5px;
+      order: 1;
+    }
+
+  }
+
+  //Button
+  #edit-actions {
+    margin-top: 15px;
+    max-width: 600px;
+
+    @media screen and (max-width: 600px) {
+      padding: 0;
+    }
+
+    input {
+      min-width: 150px;
+    }
+
+    #edit-wizard-next {
+      margin-left: 0;
+    }
+
   }
 
 }

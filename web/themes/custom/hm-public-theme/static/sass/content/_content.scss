@@ -86,3 +86,8 @@ p img {
   }
 
 }
+
+article .form-item.form-item-.form-type-item.form-no-label {
+  @extend %max-width;
+  padding: $default-grid-gutter-width;
+}
