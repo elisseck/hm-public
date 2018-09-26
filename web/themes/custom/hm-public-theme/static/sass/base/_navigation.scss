@@ -604,11 +604,18 @@ li.pager__item.pager__item--ellipsis {
     .menu-item a.header__da-link,
     #edit-upgrade-form {
       background: transparent;
+      border: none;
       color: $black;
       font-size: 18px;
       font-weight: 400;
-      padding: 0 0.5em 0.5em;
+      margin-bottom: 0;
+      padding: 0 0 0 0.5em;
+      text-align: left;
       text-transform: none;
+    }
+
+    #edit-upgrade-form:hover {
+      border: none;
     }
 
   }
