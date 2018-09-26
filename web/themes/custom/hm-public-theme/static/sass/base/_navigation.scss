@@ -571,7 +571,7 @@ li.pager__item.pager__item--ellipsis {
 
   .mobile-only #make-a-donation {
     padding-left: 0.5em;
-  
+
     #edit-donation-form {
       width: 100%;
     }
@@ -601,7 +601,10 @@ li.pager__item.pager__item--ellipsis {
       padding: 0;
     }
 
-    .menu-item a.header__da-link {
+    .menu-item a.header__da-link,
+    #edit-upgrade-form {
+      background: transparent;
+      color: $black;
       font-size: 18px;
       font-weight: 400;
       padding: 0 0.5em 0.5em;
