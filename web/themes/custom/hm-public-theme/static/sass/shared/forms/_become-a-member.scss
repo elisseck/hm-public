@@ -153,36 +153,14 @@
 
 }
 
-@media screen and (max-width: 768px) {
+//Upgrade
+#edit-thmda-membership-opts {
 
-  #edit-personal-info {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  #edit-user-survey-submit {
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
-}
-
-@media screen and (max-width: 520px) {
-
-  #edit-user-survey-cancel {
-    margin: 15px 15px 0;
-  }
-
-}
-
-.checkout-pane.checkout-pane-user-survey {
-
-  #edit-user-survey-submit {
-    margin-top: 15px;
+  #edit-thmda-membership-opts-submit {
     min-width: 150px;
   }
 
-  #edit-user-survey-cancel {
+  #edit-thmda-membership-opts-cancel {
     align-self: center;
   }
 
