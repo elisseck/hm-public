@@ -80,6 +80,10 @@ $('.carousel').carousel({
   pause: "true"
 });
 
+//Open first accordion
+$(".accordion__panel").first().removeClass("collapsed");
+$(".accordion__body").first().addClass("show");
+
 $(window).scroll(function() {
 });
 $('#return-to-top').click(function() {      // When arrow is clicked

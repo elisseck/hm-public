@@ -9,14 +9,41 @@
 
 }
 
+.webform-confirmation {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  margin-top: $default-grid-gutter-width;
+}
+
 .webform-confirmation__message  {
   width: 100%;
+
+  h1 {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: $default-grid-gutter-width;
+    padding-bottom: 15px;
+  }
 
   h4 {
     @extend %card-header;
     color: color(quaternary);
     font-size: 30px;
     padding-bottom: $default-grid-gutter-width;
+  }
+
+  ul {
+    color: $page-font-color;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: $default-grid-gutter-width;
+    margin-left: 20px;
+
+    li {
+      list-style: circle;
+      margin-bottom: 10px;
+    }
+
   }
 
 }
@@ -31,6 +58,41 @@
 
   @media screen and (max-width: 768px) {
     width: 100%;
+  }
+
+}
+
+//Upgraded
+.checkout-pane-thmda-signup-completion {
+  display: flex;
+  flex-flow: row wrap;
+
+  h1 {
+    @extend %card-header;
+    color: color(quaternary);
+    flex-basis: 100%;
+    font-size: $default-grid-gutter-width;
+    padding-bottom: 15px;
+  }
+
+  ul {
+    color: $page-font-color;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: $default-grid-gutter-width;
+    margin-left: 20px;
+
+    li {
+      list-style: circle;
+      margin-bottom: 10px;
+    }
+
+  }
+
+  a.button.button--primary {
+    margin-top: 15px;
+    min-width: 150px;
+    text-align: center;
   }
 
 }

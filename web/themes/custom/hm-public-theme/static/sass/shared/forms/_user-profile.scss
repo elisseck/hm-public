@@ -50,7 +50,7 @@
   @extend %default-gutter-width;
   padding-bottom: 30px !important;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
 
     .form-item.form-item-referred.form-type-select {
       padding: 0;
@@ -127,6 +127,93 @@
 
     #edit-wizard-next {
       margin-left: 0;
+    }
+
+  }
+
+}
+
+//User profile - Upgrade
+@media screen and (max-width: 768px) {
+
+  #edit-personal-info {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #edit-user-survey-submit {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+}
+
+@media screen and (max-width: 520px) {
+
+  #edit-user-survey-cancel {
+    margin: 15px 15px 0;
+  }
+
+}
+
+.checkout-pane.checkout-pane-user-survey {
+
+  #edit-user-survey-submit {
+    margin-top: 15px;
+    min-width: 150px;
+  }
+
+  #edit-user-survey-cancel {
+    align-self: center;
+  }
+
+}
+
+//Extra Next button
+form.commerce-checkout-flow-thm-digitalmaker-checkout-flow.commerce-checkout-flow #edit-user-survey {
+
+  #edit-actions--2 {
+    display: none;
+  }
+
+}
+
+//Payment Information step
+div#edit-payment-information-add-payment-method {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+
+  #commerce-checkout-flow-thm-digitalmaker-checkout-flow {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
+
+#commerce-checkout-flow-thm-digitalmaker-checkout-flow {
+
+  #edit-actions {
+    margin: 15px 0 0;
+
+    @media screen and (max-width: 950px) {
+      padding: 0;
+    }
+
+    @media screen and (max-width: 520px) {
+      display: flex;
+      flex-flow: column wrap;
+    }
+
+    a {
+      align-self: center;
+
+      @media screen and (max-width: 520px) {
+        align-self: flex-start;
+        margin-top: 15px;
+      }
+
     }
 
   }
