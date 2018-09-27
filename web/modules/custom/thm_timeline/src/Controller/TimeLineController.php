@@ -62,7 +62,7 @@ class TimeLineController {
              entity_id as nid FROM `node__field_death_date` WHERE field_death_date_value $dateSelector
              UNION SELECT @type := 'milestone' as type,
              DATE_FORMAT(field_timeline_year_value, '%m/%d/%Y') as date, entity_id as nid FROM `paragraph__field_timeline_year`
-             WHERE field_timeline_year_value $dateSelector
+             WHERE DATE_FORMAT(field_timeline_year_value, '%m/%d/%Y') $dateSelector
              ORDER BY DATE_FORMAT(STR_TO_DATE(date, '%m/%d/%Y'), '%Y-%m-%d')";
 
              $limit = "DESC LIMIT 20 OFFSET $page_offset";
