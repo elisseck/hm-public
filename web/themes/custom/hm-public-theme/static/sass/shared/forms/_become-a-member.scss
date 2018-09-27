@@ -5,7 +5,7 @@
 
   .webform-progress {
     padding: 0;
-  
+
     @media screen and (min-width: 0\0) {
       padding-left: $default-grid-gutter-width;
       padding-right: $default-grid-gutter-width;
@@ -154,11 +154,16 @@
 
     #edit-wizard-next {
       margin-left: 0;
+
+      @media screen and (max-width: 520px) {
+        width: 100%;
+      }
+
     }
 
   }
 
-}
+}//Close form
 
 //Upgrade
 #edit-thmda-membership-opts {
