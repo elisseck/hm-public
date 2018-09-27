@@ -5,6 +5,12 @@
 
   .webform-progress {
     padding: 0;
+
+    @media screen and (min-width: 0\0) {
+      padding-left: $default-grid-gutter-width;
+      padding-right: $default-grid-gutter-width;
+    }
+
   }
 
   //Hide these form fields because they are awkwardly placed
@@ -91,6 +97,7 @@
   .form-item.form-item-user-picture-0.form-type-managed-file {
     background: $white;
     border: 1px solid color(medium-grey);
+    max-width: 600px;
     padding: 15px;
   }
 
@@ -147,11 +154,16 @@
 
     #edit-wizard-next {
       margin-left: 0;
+
+      @media screen and (max-width: 520px) {
+        width: 100%;
+      }
+
     }
 
   }
 
-}
+}//Close form
 
 //Upgrade
 #edit-thmda-membership-opts {
