@@ -2,9 +2,6 @@
 namespace Drupal\thm_timeline\Controller;
 
 
-$link = \Drupal::service('database');
-
-
 class TimeLineController {
 
     public function timeline() {
@@ -64,7 +61,7 @@ class TimeLineController {
              UNION SELECT  @type := 'death' as type, field_death_date_value  as date,
              entity_id as nid FROM `node__field_death_date` WHERE field_death_date_value $dateSelector
              UNION SELECT @type := 'milestone' as type,
-             field_timeline_year_value as date, entity_id as nid FROM `paragraph__field_timeline_year`
+             DATE_FORMAT(field_timeline_year_value, '%m/%d/%Y') as date, entity_id as nid FROM `paragraph__field_timeline_year`
              WHERE field_timeline_year_value $dateSelector
              ORDER BY DATE_FORMAT(STR_TO_DATE(date, '%m/%d/%Y'), '%Y-%m-%d')";
 
@@ -83,7 +80,7 @@ class TimeLineController {
             FROM `node__field_birth_date` WHERE field_birth_date_value <> '?'
             UNION SELECT  @type := 'death' as type, field_death_date_value  as date,
             entity_id as nid FROM `node__field_death_date` WHERE field_death_date_value <> '?'
-            UNION SELECT @type := 'milestone' as type, field_timeline_year_value as date, entity_id
+            UNION SELECT @type := 'milestone' as type, DATE_FORMAT(field_timeline_year_value, '%m/%d/%Y') as date, entity_id
             as nid FROM `paragraph__field_timeline_year` WHERE field_timeline_year_value <> '?'
             ORDER BY DATE_FORMAT(STR_TO_DATE(date, '%m/%d/%Y'), '%Y-%m-%d') DESC LIMIT 20 OFFSET $page_offset";
             $resultsCount = getSQLData("SELECT COUNT( * ) as count FROM (SELECT * FROM `node__field_birth_date` WHERE field_birth_date_value <> '?'
@@ -129,6 +126,7 @@ class TimeLineController {
 
                    array_push($content, $final);
              }
+             //uasort($content, [$this, 'dateCmp']);
           }
 
 
@@ -196,16 +194,5 @@ class TimeLineController {
               '#content' => $content,
               '#pages' => $pagination,
              );
-
-
-
     }
-
-
-
-
 }
-
-
-
-?>
