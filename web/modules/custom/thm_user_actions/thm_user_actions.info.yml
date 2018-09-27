@@ -1,0 +1,5 @@
+name: 'THM User Actions'
+type: module
+description: 'Handles custom user actions'
+core: 8.x
+package: 'Custom'
