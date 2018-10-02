@@ -10,8 +10,13 @@
  */
 #}
 
-<hr>
-<h2 id="testimonials" class="two-column-testimonial--header">
-  {{ content.field_two_col_testimonial_header }}
-</h2>
-{{ content.field_two_col_testimonial_block }}
+<div class="contextual-region">
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <hr>
+  <h2 id="testimonials" class="two-column-testimonial--header">
+    {{ content.field_two_col_testimonial_header }}
+  </h2>
+  {{ content.field_two_col_testimonial_block }}
+</div>  
