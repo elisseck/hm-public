@@ -118,7 +118,7 @@ class TimeLineController {
                        $file = getSQLData("SELECT * from `file_managed` WHERE `fid` = '$image_id'");
                        $img =  isset($file[0]) ? str_replace('public://', '', $file[0] -> uri) : '';
                        $milestone_intro = getSQLData("SELECT * from `paragraph__field_timeline_intro` where `entity_id` = '$nid'")[0] -> field_timeline_intro_value;
-                       $bio = substr($milestone_intro, 0, strpos(wordwrap($milestone_intro, 150), "\n"));
+                       $bio = substr(strip_tags($milestone_intro), 0, 400);
                        $nid = getSQLData("SELECT * from `node__field_timeline_entry` where `field_timeline_entry_target_id` = '$nid'")[0] -> entity_id;
                    }
 
@@ -126,7 +126,6 @@ class TimeLineController {
 
                    array_push($content, $final);
              }
-             //uasort($content, [$this, 'dateCmp']);
           }
 
 
