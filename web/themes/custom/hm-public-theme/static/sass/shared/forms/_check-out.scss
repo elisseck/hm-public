@@ -225,7 +225,7 @@
       max-width: none;
     }
 
-  }
+  }//#payment-information-wrapper
 
   .checkout-pane.checkout-pane-payment-information .fieldset-wrapper {
 
@@ -440,6 +440,22 @@
       flex: 1 100%;
     }
 
+  }
+
+}
+
+//Digitalmaker Payment Method
+//Margin-right
+#edit-payment-information-add-payment-method-payment-details .form-item.form-item-payment-information-add-payment-method-payment-details-number.form-type-textfield {
+  margin-right: 15px;
+}
+
+#edit-payment-information-add-payment-method-billing-information-address-0 {
+
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-given-name.form-type-textfield,
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-locality.form-type-textfield,
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-administrative-area.form-type-select {
+    margin-right: 15px;
   }
 
 }
