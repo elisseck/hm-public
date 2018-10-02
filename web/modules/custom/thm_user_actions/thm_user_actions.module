@@ -27,3 +27,16 @@ function thm_user_actions_entity_update(EntityInterface $entity) {
     return false;
   }
 }
+
+/**
+ * Implements hook_entity_create().
+ */
+function thm_user_actions_entity_create(EntityInterface $entity) {
+  $entityType = $entity->getEntityTypeId();
+  $uid = $entity->id();
+  $entity->label();
+
+  if ($entityType === 'user') {
+    drupal_set_message('created ' . $entity->label());
+  }
+}
