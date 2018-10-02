@@ -3,7 +3,7 @@
   @extend %max-width;
   margin-bottom: em(60);
   margin-top: em(15);
-  width: 80%;
+  width: auto;
 
   @media screen and (max-width: 1024px) {
     width: 100%;
