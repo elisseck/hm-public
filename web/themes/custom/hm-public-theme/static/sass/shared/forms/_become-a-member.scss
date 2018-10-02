@@ -1,5 +1,7 @@
 //BasicMaker
-.webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form {
+.webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
+//Digitalmaker
+#commerce-checkout-flow-thm-digitalmaker-checkout-flow {
   @extend %max-width;
   @extend %default-gutter-width;
 
@@ -76,9 +78,15 @@
 
   //End of section
   #edit-field-intl-address-0-address-container4,
-  .form-item.form-item-mail.form-type-email {
+  .form-item.form-item-mail.form-type-email,
+  #edit-thmda-access-registration-field-intl-address-0 {
     border-bottom: 1px solid color(medium-grey);
     margin-bottom: 15px;
+    padding-bottom: 30px;
+  }
+
+  .form-item.form-item-thmda-access-registration-field-email-address-0-value.form-type-textfield {
+    border-bottom: 1px solid color(medium-grey);
     padding-bottom: 30px;
   }
 
@@ -174,6 +182,96 @@
 
   #edit-thmda-membership-opts-cancel {
     align-self: center;
+  }
+
+}
+
+#commerce-checkout-flow-thm-digitalmaker-checkout-flow {
+
+  //Hide these form fields because they are awkwardly placed
+  .form-item.form-item-thmda-access-registration-field-salutation.form-type-select,
+  .form-item.form-item-thmda-access-registration-field-middle-initial-0-value.form-type-textfield,
+  #edit-field-email-address-wrapper {
+    display: none;
+  }
+
+  .form-item.form-item-thmda-access-registration-field-intl-address-0-address-given-name.form-type-textfield,
+  .form-item.form-item-thmda-access-registration-field-intl-address-0-address-locality.form-type-textfield,
+  .form-item.form-item-thmda-access-registration-field-intl-address-0-address-administrative-area.form-type-select {
+    margin-right: 15px;
+  }
+
+  div#edit-thmda-access-registration .form__row {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0;
+    width: 100%;
+
+    .form__field {
+      margin-right: 0;
+      width: 100%;
+
+      //Remove the extra margin-bottom
+      .form-item.form-item-thmda-access-registration-field-home-phone-0-value.form-type-textfield,
+      .form-item.form-item-thmda-access-registration-field-work-phone-0-value.form-type-textfield,
+      .form-item.form-item-thmda-access-registration-field-cell-phone-0-value.form-type-textfield {
+        margin-bottom: 0;
+      }
+
+    }
+
+  }
+
+  //Password content organization
+  .form-item.form-item-thmda-access-registration-register-name.form-type-textfield,
+  #edit-thmda-access-registration-register-password {
+    display: flex;
+    flex-flow: row wrap;
+
+    input,
+    .form-item.form-item-thmda-access-registration-register-password-pass1.form-type-password.password-parent {
+      order: 2;
+    }
+
+    p {
+      order: 1;
+    }
+
+    .form-item.form-item-thmda-access-registration-register-password-pass2.form-type-password.confirm-parent {
+      order: 3;
+    }
+
+  }
+
+  //Buttons
+  .form__button.form__button--cancel {
+    align-self: center;
+    order: 2;
+
+    @media screen and (max-width: 520px) {
+      flex-basis: 100%;
+      margin-top: 15px;
+    }
+
+    a {
+      background: transparent;
+      color: color(secondary);
+      padding: 0;
+    }
+
+  }
+
+  .form__button.form__button--primary {
+    order: 1;
+
+    @media screen and (max-width: 520px) {
+      flex-basis: 100%;
+    }
+
+    .form-submit.form-submit {
+      min-width: 150px;
+    }
+
   }
 
 }
