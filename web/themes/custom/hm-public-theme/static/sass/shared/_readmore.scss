@@ -2,12 +2,15 @@
   padding-left: $default-grid-gutter-width;
   padding-right: $default-grid-gutter-width;
 
+  @media screen and (max-width: 900px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    padding-left: 15px;
-    padding-right: 15px;
   }
 
 }

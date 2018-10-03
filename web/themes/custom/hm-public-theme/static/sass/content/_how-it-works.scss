@@ -9,6 +9,10 @@
     width: 100%;
   }
 
+  @media screen and (max-width: 900px) {
+    padding: 0;
+  }
+
   .two-column-snapshot {
     margin-bottom: em(15);
     margin-top: em(15);
