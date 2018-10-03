@@ -14,7 +14,7 @@
     width: 100%;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 800px) {
     margin: 0 0 15px;
 
     .carousel-inner {
@@ -37,6 +37,12 @@
   //css below removes padding from sides of slides which was causing that weird action
   padding: 0;
   width: calc(100% - 60px);
+
+  @media screen and (max-width: 900px) {
+    margin-left: 0;
+    margin-right: 0;
+    width: auto;
+  }
 
   @media screen and (max-width: 768px) {
     width: 100%;

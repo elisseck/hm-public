@@ -15,7 +15,7 @@
     width: 100%;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 900px) {
     padding-bottom: em(40);
     padding-top: em(40);
   }
@@ -86,13 +86,13 @@
 
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 900px) {
     padding-left: 0;
     padding-right: 0;
 
     &--image {
       overflow: hidden;
-      padding: 0 15px 0 0;
+      padding: 0;
     }
 
   }
@@ -112,6 +112,18 @@
       max-width: 50%;
     }
 
+  }
+
+}
+
+.two-column-quote.two-column-testimonial.align-content-left:nth-child(2n+1) img {
+
+  @media screen and (max-width: 900px) {
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 574px) {
+    margin-right: auto;
   }
 
 }
