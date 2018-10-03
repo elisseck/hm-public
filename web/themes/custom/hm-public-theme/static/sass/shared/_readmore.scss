@@ -70,6 +70,10 @@
   opacity: 1;
 }
 
+.read-more-wrap {
+  padding-bottom: 15px;
+}
+
 .read-more-state ~ .read-more-trigger:before {
   content: 'Read More';
 }
