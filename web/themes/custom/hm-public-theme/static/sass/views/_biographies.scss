@@ -22,46 +22,41 @@
 
   //Filters
   .view-filters.form-group {
-    flex-basis: 50%;
-    margin: 1.5em 0 3em;
-    order: 3;
+    flex-basis: 100%;
+    margin-top: 15px;
   }
 
-  .views-exposed-form {
-    align-items: baseline;
+  .views-exposed-form.header-search {
     display: flex;
-    flex: 1;
+    flex-flow: row wrap;
     justify-content: flex-end;
-  }
-
-  .form-item.form-item-items-per-page.form-type-select {
-    flex: 1;
-    margin-right: em(20);
-  }
-
-  .form-item.form-item-sort-by.form-type-select {
-    margin-right: 15px;
-  }
-
-  #edit-submit-biography-cards-w-category-filter {
-    background-color: color(secondary);
+  
+    #edit-actions {
+      margin: 0;
+    
+      input {
+        margin-left: 15px;
+        margin-right: 0;
+        min-width: 150px;
+      }
+    
+    }
+  
   }
 
   //List
   .view-content {
     display: flex;
     flex: 1;
+    flex-basis: 100%;
     flex-flow: row wrap;
-    order: 4;
   }
 
   //Pager
   .pager {
     align-self: center;
     flex: 1;
-    flex-basis: 50%;
     margin: 1.5em 0 3em;
-    order: 2;
   }
 
 }//.view.list-biography-card

@@ -99,3 +99,8 @@ article .form-item.form-item-.form-type-item.form-no-label {
   @extend %default-gutter-width;
   margin-top: 30px;
 }
+
+#return-to-top {
+  position: absolute;
+  left: 0;
+}
