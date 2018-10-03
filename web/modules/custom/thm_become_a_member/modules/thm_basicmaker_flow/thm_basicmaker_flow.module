@@ -128,35 +128,6 @@ function thm_basicmaker_flow_form_alter(&$form, FormStateInterface $formState, $
         $anonUser, 'default');
       $form['account_form'] = $userForm->buildForm($anonUser,$form, $formState);
 
-      $form['mail'] = [
-        '#type' => 'email',
-        '#title' => t('Email address'),
-        '#weight' => 50,
-        '#required' => TRUE,
-      ];
-      $form['name'] = [
-        '#type' => 'textfield',
-        '#title' => t('Username'),
-        '#maxlength' => UserInterface::USERNAME_MAX_LENGTH,
-        '#description' => t("Several special characters are allowed, including space, period (.), hyphen (-), apostrophe ('), underscore (_), and the @ sign."),
-        '#weight' => 51,
-        '#required' => TRUE,
-        '#attributes' => [
-          'class' => ['username'],
-          'autocorrect' => 'off',
-          'autocapitalize' => 'off',
-          'spellcheck' => 'false',
-        ],
-        '#default_value' => '',
-      ];
-      $form['password'] = [
-        '#type' => 'password_confirm',
-        '#weight' => 52,
-        '#size' => 60,
-        '#description' => t('Provide a password for the new account in both fields.'),
-        '#required' => TRUE,
-      ];
-
     } else if (this_is_the_right_page($els, 'user_profile')) {
 
       $values    = $formState->getValue($form['#parents']);
