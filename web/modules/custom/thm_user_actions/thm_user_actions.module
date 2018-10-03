@@ -17,7 +17,7 @@ use Drupal\Core\Form\FormStateInterface as FSI;
  * @param $entity EntityInterface
  * @return bool|\Symfony\Component\HttpFoundation\RedirectResponse
  */
-/*function thm_user_actions_entity_update(EntityInterface $entity) {
+function thm_user_actions_entity_update(EntityInterface $entity) {
   $entityType = $entity->getEntityTypeId();
   $uid = $entity->id();
 
@@ -27,7 +27,7 @@ use Drupal\Core\Form\FormStateInterface as FSI;
   } else {
     return false;
   }
-}*/
+}
 
 
 /**
