@@ -1,0 +1,8 @@
+ajax_form_disabler:
+  version: 0.0.1
+  js:
+    js/user-form.ajax.disable.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once

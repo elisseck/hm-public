@@ -8,6 +8,7 @@
 
 use Drupal\Core\Entity\EntityInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Form\FormStateInterface as FSI;
 
 
 /**
@@ -16,7 +17,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  * @param $entity EntityInterface
  * @return bool|\Symfony\Component\HttpFoundation\RedirectResponse
  */
-function thm_user_actions_entity_update(EntityInterface $entity) {
+/*function thm_user_actions_entity_update(EntityInterface $entity) {
   $entityType = $entity->getEntityTypeId();
   $uid = $entity->id();
 
@@ -26,17 +27,19 @@ function thm_user_actions_entity_update(EntityInterface $entity) {
   } else {
     return false;
   }
-}
+}*/
+
 
 /**
- * Implements hook_entity_create().
+ * Implements hook_form_alter().
+ *
+ * This particular hook is used to inject a JS file that will unbind the user
+ * account form ajax functionality.
+ *
+ * @param array $form
+ * @param FSI $form_state
+ * @param string $form_id
  */
-function thm_user_actions_entity_create(EntityInterface $entity) {
-  $entityType = $entity->getEntityTypeId();
-  $uid = $entity->id();
-  $entity->label();
-
-  if ($entityType === 'user') {
-    drupal_set_message('created ' . $entity->label());
-  }
+function thm_user_actions_form_user_form_alter(&$form, FSI $form_state, $form_id) {
+  $form['#attached']['library'] = 'thm_user_actions/ajax_form_disabler';
 }
