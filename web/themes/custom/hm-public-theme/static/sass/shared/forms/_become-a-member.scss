@@ -85,6 +85,24 @@
     padding-bottom: 30px;
   }
 
+  //Addressing fields
+  #edit-field-intl-address-0 {
+    margin-right: 0;
+    width: 100%;
+
+    .form-item.form-item-field-intl-address-0-address-postal-code.form-type-textfield,
+    .form-item.form-item-field-intl-address-0-address-locality.form-type-textfield,
+    .form-item.form-item-field-intl-address-0-address-administrative-area.form-type-textfield {
+      margin-right: 15px;
+    }
+
+    .form-item.form-item-field-intl-address-0-address-locality.form-type-textfield,
+    .form-item.form-item-field-intl-address-0-address-postal-code.form-type-textfield {
+      margin-right: 0;
+    }
+
+  }
+
   .form-item.form-item-thmda-access-registration-field-email-address-0-value.form-type-textfield {
     border-bottom: 1px solid color(medium-grey);
     padding-bottom: 30px;
@@ -107,41 +125,6 @@
     border: 1px solid color(medium-grey);
     max-width: 600px;
     padding: 15px;
-  }
-
-  //Username section
-  .form-item.form-item-name.form-type-textfield {
-    display: flex;
-
-    #edit-name {
-      margin-bottom: 15px;
-      order: 2;
-    }
-
-    #edit-name--description {
-      margin-top: 0;
-      order: 1;
-    }
-
-  }
-
-  //Password section
-  #edit-password {
-    display: flex;
-
-    .form-item.form-item-password-pass1.form-type-password.password-parent {
-      order: 2;
-    }
-
-    .form-item.form-item-password-pass2.form-type-password.confirm-parent {
-      order: 3;
-    }
-
-    #edit-password--description {
-      margin-bottom: 5px;
-      order: 1;
-    }
-
   }
 
   //Button
@@ -218,27 +201,6 @@
         margin-bottom: 0;
       }
 
-    }
-
-  }
-
-  //Password content organization
-  .form-item.form-item-thmda-access-registration-register-name.form-type-textfield,
-  #edit-thmda-access-registration-register-password {
-    display: flex;
-    flex-flow: row wrap;
-
-    input,
-    .form-item.form-item-thmda-access-registration-register-password-pass1.form-type-password.password-parent {
-      order: 2;
-    }
-
-    p {
-      order: 1;
-    }
-
-    .form-item.form-item-thmda-access-registration-register-password-pass2.form-type-password.confirm-parent {
-      order: 3;
     }
 
   }
