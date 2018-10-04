@@ -18,19 +18,11 @@
       padding-right: 15px;
     }
 
-    @media screen and (max-width: 768px) {
-      //padding-left: 0;
-    }
-
   }
 
   .field-items {
     display: flex;
     justify-content: center;
-
-    @media screen and (max-width: 768px) {
-      //padding: 0 15px;
-    }
 
     @media screen and (max-width: 580px) {
       flex-direction: column;
@@ -200,7 +192,7 @@
     .field-past-winners-block .field-items {
       padding: 0;
     }
-  
+
   }
 
   @media screen and (max-width: 580px) {
@@ -208,7 +200,7 @@
     .field-past-winners-block .field-item {
       margin-right: 0;
     }
-  
+
   }
 
 }
@@ -329,16 +321,16 @@
 
   &--content {
     margin-bottom: em(10);
-  
+
     @media screen and (max-width: 768px) {
-      
+
       .field-snapshot-section-intro .field-item {
         margin-right: 0;
         max-width: none;
       }
-      
+
     }
-  
+
   }
 
 }//.snapshot-section
