@@ -64,7 +64,7 @@
     width: 65%;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     flex: 1;
     padding: 15px;
   }
@@ -93,7 +93,7 @@
     padding: em(30);
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 }
@@ -191,10 +191,10 @@
 
   @media screen and (max-width: 900px) {
     margin: 0;
-    padding: $default-grid-gutter-width;
+    padding: $default-grid-gutter-width 15px;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
     padding: 15px;
@@ -209,7 +209,7 @@
     margin: 15px 0;
     width: 80%;
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
       font-size: 1.4em;
       width: 100%;
     }
@@ -297,12 +297,19 @@
 
     h2 {
       margin: -5px 0 0;
-      padding-left: 15px;
       width: 100%;
     }
 
     ul {
       padding: 15px 15px 0;
+    }
+
+  }
+
+  @media screen and (max-width: 768px) {
+
+    p {
+      font-size: 1em;
     }
 
   }
@@ -334,7 +341,7 @@
 //General Content
 .carousel-caption__content {
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     margin: 0;
 
     h2 {
@@ -356,7 +363,7 @@
   left: auto;
   z-index: 500;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 768px) {
     bottom: em(50);
     left: 0;
     margin: 0 auto;
