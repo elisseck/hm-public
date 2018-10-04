@@ -35,13 +35,15 @@
   .webform-button--next,
   .field--name-field-cell-phone,
   .form-item-mail.form-type-email,
-  .form-item-name.form-type-textfield {
+  .form-item-name.form-type-textfield,
+  .form-wrapper.password-confirm--wrapper {
     @extend %form--container;
     max-width: 600px;
   }
 
   //Headers
-  .form-wrapper.panel.panel-default > legend {
+  .form-wrapper.panel.panel-default > legend,
+  .form-wrapper.password-confirm--wrapper {
     @extend %card-header;
     color: color(quaternary);
     font-size: em(30);
@@ -78,8 +80,8 @@
 
   //End of section
   #edit-field-intl-address-0-address-container4,
-  .form-item.form-item-mail.form-type-email,
-  #edit-thmda-access-registration-field-intl-address-0 {
+  #edit-thmda-access-registration-field-intl-address-0,
+  .form-wrapper.password-confirm--wrapper {
     border-bottom: 1px solid color(medium-grey);
     margin-bottom: 15px;
     padding-bottom: 30px;
