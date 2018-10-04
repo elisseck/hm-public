@@ -14,16 +14,21 @@ use Drupal\Core\Form\FormStateInterface as FSI;
 /**
  * Implements hook_entity_update().
  *
+ * This sends a user back to their profile page once they've updated
+ * (and saved) their account info. If an admin changes a user's info
+ * (not their own), they won't be redirected.
+ *
  * @param $entity EntityInterface
  * @return bool|\Symfony\Component\HttpFoundation\RedirectResponse
  */
 function thm_user_actions_entity_update(EntityInterface $entity) {
   $entityType = $entity->getEntityTypeId();
   $uid = $entity->id();
+  $path = \Drupal::service('path.current')->getPath();
 
-  if ($entityType === 'user') {
+  if ($entityType === 'user' && $uid === \Drupal::currentUser()->id() && $path === "/user/$uid/edit") {
     $response = new RedirectResponse("/user/$uid");
-    $response->send();
+    return $response->send();
   } else {
     return false;
   }
