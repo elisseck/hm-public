@@ -3,9 +3,8 @@
 namespace Drupal\page_banner\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\file\Entity\File;
 
 /**
  * Provides a 'Page Banner' Block.
@@ -18,7 +17,12 @@ use Drupal\file\Entity\File;
  */
 class PageBanner extends BlockBase {
 
-// BLOCK FORM
+  /**
+   * @param $form
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *
+   * @return array
+   */
   public function blockForm($form, FormStateInterface $form_state) {
     $form = parent::blockForm($form, $form_state);
     $config = $this->getConfiguration();
@@ -79,46 +83,88 @@ class PageBanner extends BlockBase {
     return $form;
   }
 
+  /**
+   * (Attempts to) retrieve an image. Returns false if no image is found.
+   *
+   * @param $fid
+   *
+   * @return bool|string
+   */
   protected function getImagePath($fid) {
     if (!$fid || is_null($fid)) return false;
 
     $file = \Drupal\file\Entity\File::load($fid);
-    //drupal_set_message('file id: ' . $fid);
 
-    //drupal_set_message('file is null: ' . (is_null($file) ? 'yep' : 'nope'));
     return file_url_transform_relative(file_create_url($file->getFileUri()));
   }
 
+  /**
+   * Used specifically for images/files--makes sure this isn't treated as
+   * a temporary file (these are automatically deleted after six hours).
+   *
+   * @param $fid
+   *
+   * @return bool
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
   public function permanentify($fid) {
     if (!$fid || is_null($fid)) return false;
     $file = \Drupal\file\Entity\File::load($fid);
 
     $file->setPermanent();
     $file->save();
+    return true;
   }
 
   /**
    * {@inheritdoc}
    */
-
-// BLOCK SUBMIT
   public function blockSubmit($form, FormStateInterface $form_state) {
     $values = $form_state->getValues();
+    $msg = 'An error occurred attempting to load or save an image: ';
+
     if (!empty($values['highlight_section_image'])) {
-      //drupal_set_message('highlight image id: ' . print_r($values['highlight_section_image'], true));
-      $this->permanentify($values['highlight_section_image'][0]);
+      try {
+        $this->permanentify($values['highlight_section_image'][0]);
+      } catch (EntityStorageException $exc) {
+        \Drupal::logger('page_banner')->error($msg . $exc->getMessage());
+        drupal_set_message($msg . ' <br>Please check the dblog for more information');
+        return false;
+      }
+
       $this->setConfigurationValue('highlight_section_image', $values['highlight_section_image']);
+    } else {
+      $this->setConfigurationValue('highlight_section_image', '');
     }
     if (!empty($values['background_image'])) {
-      $this->permanentify($values['background_image'][0]);
+      try {
+        $this->permanentify($values['background_image'][0]);
+      } catch (EntityStorageException $exc) {
+        \Drupal::logger('page_banner')->error($msg . $exc->getMessage());
+        drupal_set_message($msg . ' <br>Please check the dblog for more information');
+        return false;
+      }
+
       $this->setConfigurationValue('background_image', $values['background_image']);
-    }       
+    } else {
+      $this->setConfigurationValue('background_image', '');
+    }
     $this->setConfigurationValue('background_color', $values['background_color']);   
     $this->setConfigurationValue('highlight_section', $form_state->getValue('highlight_section')); 
     $this->setConfigurationValue('highlight_section_name', $form_state->getValue('highlight_section_name'));   
     $this->setConfigurationValue('feature_occupation', $form_state->getValue('feature_occupation'));
+
+    return true;
   }
 
+  /**
+   * Determines how to extract a value given a configuration object and a key.
+   *
+   * @param $config
+   * @param $value
+   *
+   * @return bool|string
+   */
   public function existy($config, $value) {
     if (array_key_exists($value, $config)) {
       if (is_array($config[$value]) && count($config[$value]) > 0) {
@@ -129,14 +175,15 @@ class PageBanner extends BlockBase {
     }
 
     return false;
-    //return (array_key_exists($value, $config) && !empty($config[$value])) ?
-    //    $config[$value] : false;
   }
 
-// BLOCK BUILD
+  /**
+   * Responsible for placing configuration data into the twig for rendering.
+   *
+   * @return array
+   */
   public function build() {
     $config = $this->getConfiguration();
-    //drupal_set_message(print_r($config, true));
     
     return [
       '#theme' => 'page_banner',
