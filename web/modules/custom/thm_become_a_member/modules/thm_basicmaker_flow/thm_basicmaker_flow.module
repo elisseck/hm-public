@@ -81,6 +81,19 @@ function populateTempUserObject($formValues) {
   return $userData;
 }
 
+function raw_address_hack($addressData, $uid) {
+  $data = $addressData[0]['address'];
+
+  $result = db_insert('user__field_intl_address')->fields([
+    $uid, 'en', $data['country_code'], $data['administrative_area'],
+    $data['locality'], NULL, $data['postal_code'], NULL,
+    $data['address_line1'], $data['address_line2'], $data['organization'],
+    $data['given_name'], NULL, $data['family_name']
+  ])->execute();
+
+  drupal_set_message('insert returned ' . $result);
+}
+
 function create_user($session, $accountData) {
   $profileData  = $session->get('profile');
 
@@ -93,10 +106,15 @@ function create_user($session, $accountData) {
   ]);
 
   foreach ($profileData as $fieldName => $fieldValue) {
-    $account->set($fieldName, $fieldValue);
+    if ($fieldName === 'field_intl_address' && $fieldValue === null) {
+      $account->set('field_intl_address', $accountData['field_intl_address'][0]['address']);
+    } else {
+      $account->set($fieldName, $fieldValue);
+    }
   }
 
-  $account->save();
+  $status = $account->save();
+
   user_login_finalize($account);
   _user_mail_notify('register_no_approval_required', $account);
   drupal_set_message('An account has been created for ' . $account->getDisplayName());
