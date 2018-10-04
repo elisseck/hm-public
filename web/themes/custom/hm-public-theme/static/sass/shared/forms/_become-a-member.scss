@@ -185,7 +185,11 @@
 
   .form-item.form-item-thmda-access-registration-field-intl-address-0-address-given-name.form-type-textfield,
   .form-item.form-item-thmda-access-registration-field-intl-address-0-address-locality.form-type-textfield,
-  .form-item.form-item-thmda-access-registration-field-intl-address-0-address-administrative-area.form-type-select {
+  .form-item.form-item-thmda-access-registration-field-intl-address-0-address-administrative-area.form-type-select,
+  .form-item.form-item-payment-information-add-payment-method-payment-details-number.form-type-textfield,
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-given-name.form-type-textfield,
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-locality.form-type-textfield,
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-administrative-area.form-type-select {
     margin-right: 15px;
   }
 
