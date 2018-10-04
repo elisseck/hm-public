@@ -6,6 +6,10 @@
   padding: 0;
   width: 100%;
 
+  @media screen and (max-width: 950px) {
+    height: em(200);
+  }
+
   h2 {
     @extend %oswald-light;
     align-self: flex-end;
@@ -13,6 +17,16 @@
     font-size: em(52);
     padding-bottom: 1em;
     padding-left: $default-grid-gutter-width;
+  }
+
+  @media screen and (max-width: 600px) {
+    height: auto;
+
+    h2 {
+      font-size: em(30);
+      padding: 15px;
+    }
+
   }
 
   .page-banner--highlight {
@@ -23,8 +37,16 @@
     display: flex;
     flex-wrap: wrap;
     height: 100%;
+    max-width: 500px;
     padding: em(20) em(30) em(30);
-    width: 500px;
+
+    @media screen and (max-width: 950px) {
+      padding: 30px 15px;
+    }
+
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
 
     p {
       align-self: flex-start;
@@ -40,6 +62,11 @@
       font-size: em(22);
       margin-top: 45%;
       z-index: 10;
+
+      @media screen and (max-width: 950px) {
+        margin-top: 50px;
+      }
+
     }
 
     .page-banner--feature-occupation {
