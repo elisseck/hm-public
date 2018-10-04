@@ -84,7 +84,9 @@
   .form-wrapper.password-confirm--wrapper {
     border-bottom: 1px solid color(medium-grey);
     margin-bottom: 15px;
+    margin-right: 0;
     padding-bottom: 30px;
+    width: 100%;
   }
 
   //Addressing fields
@@ -117,7 +119,8 @@
   }
 
   //Add missing margin
-  .form-item.form-item-mail.form-type-email {
+  .form-item.form-item-mail.form-type-email,
+  .form-item.form-item-field-intl-address-0-address-locality.form-type-textfield {
     margin-bottom: 15px;
   }
 
