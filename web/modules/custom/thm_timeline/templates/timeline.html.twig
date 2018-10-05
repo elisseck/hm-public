@@ -19,7 +19,11 @@
             
             {% for items in content %}
             <li>
+              {% if (items.type == 'death' or items.type == 'birth') %}
               <a href="/node/{{items.nid}}">
+              {% else %}
+              <a href="/background">
+              {% endif %}
                 <div class="img">
                   {% if items.img is not empty %}
                     <img src="/sites/default/files/{{ items.img }}" />
