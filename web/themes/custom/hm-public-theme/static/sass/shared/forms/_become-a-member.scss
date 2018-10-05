@@ -41,13 +41,21 @@
     max-width: 600px;
   }
 
+  fieldset.form-wrapper.password-confirm--wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   //Headers
   .form-wrapper.panel.panel-default > legend,
-  .form-wrapper.password-confirm--wrapper {
+  .form-wrapper.password-confirm--wrapper > legend span {
     @extend %card-header;
     color: color(quaternary);
-    font-size: em(30);
     line-height: 120%;
+  }
+
+  .form-wrapper.panel.panel-default > legend {
+    font-size: em(30);
   }
 
   .form-item.form-item-field-intl-address-0-address-country-code.form-type-select {
@@ -100,7 +108,6 @@
       margin-right: 15px;
     }
 
-    .form-item.form-item-field-intl-address-0-address-locality.form-type-textfield,
     .form-item.form-item-field-intl-address-0-address-postal-code.form-type-textfield {
       margin-right: 0;
     }
