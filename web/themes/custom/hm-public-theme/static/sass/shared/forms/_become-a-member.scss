@@ -1,6 +1,5 @@
 //BasicMaker
 .webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
-//Digitalmaker
 #commerce-checkout-flow-thm-digitalmaker-checkout-flow {
   @extend %max-width;
   @extend %default-gutter-width;
@@ -75,6 +74,7 @@
 
     input,
     select {
+      max-width: 600px; //Fixes IE overflow problem
       width: 100%;
     }
 
