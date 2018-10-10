@@ -2889,13 +2889,11 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/devel",
-                "reference": "32fb025e312f372b870c1d721c61f6be2bddcb75"
+                "reference": "cf7a3c406d8ccdd233f9f98779a8db652450b2de"
             },
             "require": {
-                "drupal/core": "~8.0"
-            },
-            "suggest": {
-                "symfony/var-dumper": "Pretty print complex values better with var-dumper available"
+                "drupal/core": "~8.0",
+                "symfony/var-dumper": "~2.7|^3"
             },
             "type": "drupal-module",
             "extra": {
@@ -2903,8 +2901,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2+27-dev",
-                    "datestamp": "1537451581",
+                    "version": "8.x-1.2+28-dev",
+                    "datestamp": "1537451880",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -2963,7 +2961,7 @@
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2018-09-20T13:57:12+00:00"
+            "time": "2018-10-09T06:32:56+00:00"
         },
         {
             "name": "drupal/drush_delete",
