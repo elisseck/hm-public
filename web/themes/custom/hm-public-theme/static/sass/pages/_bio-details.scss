@@ -16,9 +16,9 @@
     display: flex;
     font-size: 3.3125rem;
     height: 1.88679em;
-    margin: 0 auto 30px; 
+    margin: 0 auto 30px;
     max-width: $max-width;
-  
+
     @media screen and (max-width: 900px) {
       font-size: em(30);
       height: auto;
@@ -157,7 +157,7 @@
   .share {
     left: em(10);
     position: fixed;
-    top: 55%; 
+    top: 55%;
   }
 
   .share__icon {
@@ -184,10 +184,10 @@
 
   .sponsor__img { max-width: 100%; }
 
-  .accordion__panel { 
+  .accordion__panel {
     line-height: 120%;
     margin-bottom: 1rem;
-    text-transform: uppercase; 
+    text-transform: uppercase;
   }
 
   .bio-detail__accordion {
