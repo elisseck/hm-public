@@ -226,29 +226,46 @@
   }
 }//.bio-card--list
 
-#makercategorynavigation,
-#pressyearnavigation {
-  margin-right: 3%;
-  margin-top: em(60);
-  padding: 0 em(15) 0 0;
+//Side navigation moves to mobile navigation
+.col-sm-12.col-md-3.column.first.side-navigation {
 
-  //Maker Category Navigation
-  .menu {
-    border-top: 1px solid color(medium-grey);
-    padding-top: em(15);
+  @media screen and (max-width: 950px) {
+    display: none;
+  }
 
-    .menu-item {
-      display: inherit;
-      margin: em(5) 0;
-    }
+}
 
-    .menu-item a {
-      @extend %source-sans-semi-bold;
-      color: color(dark-grey);
-    }
+.side-navigation {
 
-    .menu-item.active-trail a.is-active {
-      color: color(secondary);
+  .basic-block {
+    width: 100%;
+  }
+
+  #makercategorynavigation,
+  #pressyearnavigation {
+    margin-right: 3%;
+    margin-top: em(60);
+    padding: 0 0 0 $default-grid-gutter-width;
+
+    //Maker Category Navigation
+    .menu {
+      border-top: 1px solid color(medium-grey);
+      padding-top: em(15);
+
+      .menu-item {
+        display: inherit;
+        margin: em(5) 0;
+      }
+
+      .menu-item a {
+        @extend %source-sans-semi-bold;
+        color: color(dark-grey);
+      }
+
+      .menu-item.active-trail a.is-active {
+        color: color(secondary);
+      }
+
     }
 
   }
