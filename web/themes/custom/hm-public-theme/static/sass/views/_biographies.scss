@@ -235,6 +235,15 @@
 
 }
 
+.no__side-navigation.col-md-9.column.last {
+
+  @media screen and (max-width: 950px) {
+    flex: 1;
+    max-width: none;
+  }
+
+}
+
 .side-navigation {
 
   .basic-block {
