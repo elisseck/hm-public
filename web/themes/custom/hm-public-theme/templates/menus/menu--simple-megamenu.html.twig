@@ -51,14 +51,14 @@
       %}
       <li{{ item.attributes.addClass(classes) }}>
         {{ link(item.title, item.url) }}
-          {% if item.is_expanded %}
-            <span class="accordion__arrow">
-              <span class="accordion__arrow-half"></span>
-              <span class="accordion__arrow-half"></span>
-            </span>         
-          {% endif %}
+        {% if item.is_expanded %}
+          <span class="accordion__arrow">
+            <span class="accordion__arrow-half"></span>
+            <span class="accordion__arrow-half"></span>
+          </span>         
+        {% endif %}
 
-          {% if has_megamenu(item.url) %}
+        {% if has_megamenu(item.url) %}
           <div class="mega-menu-wrapper">
             <div class="mega-menu-background"></div>
             {{ view_megamenu(item.url) }}
