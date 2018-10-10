@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Theme override for Biography pages
+ * this will enable the mobile conversion of the side navigation
+ *
+ */
+#}
+
+<div class="page-wrapper">
+
+    {% include directory ~ '/partials/header.html.twig' %}
+
+    {{ page.navigation }}
+    {{ page.highlighted }}
+
+    <div class="row">
+      <div class="col-sm-12 column">{{ page.banner }}</div>
+    </div>
+    <div class="row layout--1-2col-3-9">
+      <div class="col-sm-12 col-md-3 column first side-navigation">
+        {{ page.sidebar_first }}
+      </div>
+      <div class="col-sm-12 col-md-9 column last">
+        {{ page.content }}
+      </div>
+    </div>
+
+</div>
+{% include directory ~ '/partials/footer.html.twig' %}
