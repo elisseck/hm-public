@@ -9,6 +9,7 @@ use Drupal\user\Form\UserLoginForm;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\thm_become_a_member\Form\THMUpgradeAMemberForm;
 use Drupal\thm_donation_flow\Form\THMDonationForm;
+use Drupal\thm_donation_flow\Form\THMMobileDonationForm;
 
 function hm_public_theme_preprocess_page(&$variables) {
   // You will most likely want to show and render the form for anonymous users.
@@ -163,7 +164,10 @@ function hm_public_theme_preprocess_block(&$variables) {
 
 function hm_public_theme_preprocess_menu__simple_megamenu(&$variables) {
   inject_jwturls($variables);
-  inject_forms($variables);
+  inject_forms($variables, [
+    'upgrade_form' => THMUpgradeAMemberForm::class,
+    'donation_form' => THMMobileDonationForm::class
+  ]);
 }
 
 function inject_jwturls(&$variables) {
@@ -175,7 +179,13 @@ function inject_jwturls(&$variables) {
   }
 }
 
-function inject_forms(&$variables) {
-  $variables['upgrade_form']  = render_form(THMUpgradeAMemberForm::class);
-  $variables['donation_form'] = render_form(THMDonationForm::class);
+function inject_forms(&$variables, $mapping = null) {
+  if (!$mapping) {
+    $variables['upgrade_form'] = render_form(THMUpgradeAMemberForm::class);
+    $variables['donation_form'] = render_form(THMDonationForm::class);
+  } else {
+    foreach ($mapping as $varName => $className) {
+      $variables[$varName] = render_form($className);
+    }
+  }
 }
