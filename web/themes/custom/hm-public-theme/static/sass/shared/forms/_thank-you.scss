@@ -13,6 +13,7 @@
   @extend %max-width;
   @extend %default-gutter-width;
   margin-top: $default-grid-gutter-width;
+  max-width: 900px;
 }
 
 .webform-confirmation__message  {
