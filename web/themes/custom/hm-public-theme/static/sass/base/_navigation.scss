@@ -421,7 +421,7 @@ li.pager__item.pager__item--ellipsis {
 
         .field-item {
           line-height: 120%;
-          padding: em(5) em(15);
+          padding: 0.5em em(15);
           text-transform: none;
 
           @media screen and (max-width: 580px) {
@@ -616,6 +616,22 @@ li.pager__item.pager__item--ellipsis {
 
     #edit-upgrade-form:hover {
       border: 0;
+    }
+
+  }
+
+  //Mobile only navigation
+  .simple-mega-menu.mega-menu-item.simple-mega-menu-type-mobile-navigation.view-mode-default {
+    display: none !important;
+    max-width: none;
+
+    @media screen and (max-width: 950px) {
+      display: block !important;
+    }
+
+    .field-megamenu-left-link .field-item {
+      border-bottom: 0.0625em solid $white;
+      padding: 1.375em 0.5em;
     }
 
   }
