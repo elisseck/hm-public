@@ -1,8 +1,13 @@
+.list-press-cards .view-header {
+  @extend %source-sans-semi-bold;
+  margin-top: $default-grid-gutter-width;
+}
+
 // Press Cards
 .list-press-cards .view-content {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 3.75em;
+  margin-top: $default-grid-gutter-width;
 
   .views-row {
     flex: 1 0 29%;
