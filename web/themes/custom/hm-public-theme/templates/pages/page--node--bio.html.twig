@@ -1,13 +1,15 @@
 <div class="page-wrapper">
 
-    {% include directory ~ '/partials/header.html.twig' %}
+  {% include directory ~ '/partials/header.html.twig' %}
 
-    {{ page.navigation }}
+  {{ page.navigation }}
 
-    {{ page.highlighted }}
+  {{ page.highlighted }}
 
-    {{ page.banner }}
-
+  <div class="row">
+    <div class="col-sm-12 column">{{ page.banner }}</div>
+  </div>
+  <div class="row layout--1-2col-3-9">
     <main class="main">
       <a id="main-content" tabindex="-1"></a>
 
@@ -86,7 +88,7 @@
                   {% endif %}
                 </div>
                 {{ field_bio_image }}
-                <h3>Profession</h3>
+                <h3 class="info__profession">Profession</h3>
                 <dl>
                   <dt>Category:</dt>
                   <dd>
@@ -307,6 +309,7 @@
       </div>
 
     </main>
-  </div>
+  </div>{# Close layout--1-2col-3-9 #}
+</div>{# Close page-wrapper #}
 
-  {% include directory ~ '/partials/footer.html.twig' %}
+{% include directory ~ '/partials/footer.html.twig' %}
