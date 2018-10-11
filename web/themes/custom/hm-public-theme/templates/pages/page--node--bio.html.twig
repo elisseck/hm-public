@@ -73,7 +73,7 @@
         {# End Social Media Share #}
 
         <div class="row">
-          <section class="col-sm-3">
+          <section class="info__column col-sm-5 col-md-3">
             <h2 class="sr-only">Information about {{ node.title.value }}</h2>
 
             {# Profession #}
@@ -168,11 +168,11 @@
             {# End Related Makers #}
 
           </section>
-          <div class="col-sm-9">
+          <div class="bio__column col-sm-7 col-md-9">
             <div class="row">
 
               {# Body #}
-              <section class="col-sm-9 bio-detail__main-content">
+              <section class="col-sm bio-detail__main-content">
                 <h2>Biography</h2>
                 {% autoescape %}
                   <p>{{ node.body.value|raw|nl2br }}</p>
@@ -254,9 +254,11 @@
 
                 <div class="collapse accordion__body" id="findingAids">
                     <div>
-                      {% for key, value in node.field_bio_pdf %}
-                        <li><a href="{{file_url(node.field_bio_pdf[key].entity.uri.value)}}">{{ node.field_bio_pdf[key].entity.filename.value }}</a></li>
-                      {% endfor %}
+                      <ul>
+                        {% for key, value in node.field_bio_pdf %}
+                          <li><a href="{{file_url(node.field_bio_pdf[key].entity.uri.value)}}">{{ node.field_bio_pdf[key].entity.filename.value }}</a></li>
+                        {% endfor %}
+                      </ul>
                     </div>
                 </div>
             </div>

@@ -30,7 +30,7 @@
 
   }
 
-  h2, 
+  h2,
   .info h3 {
     @extend %card-header;
     color: color(quaternary);
@@ -48,7 +48,7 @@
     line-height: 1.7rem;
   }
 
-  .info dt, 
+  .info dt,
   .info dd {
     font-size: em(20);
     line-height: 1.7rem;
@@ -172,12 +172,12 @@
     left: em(10);
     position: fixed;
     top: 55%;
-  
+
     @media screen and (max-width: 768px) {
       left: unset;
       top: unset;
     }
-  
+
   }
 
   .share__icon {
@@ -228,6 +228,118 @@
     @extend %source-sans-semi-bold;
     font-size: em(20);
     padding-bottom: 15px;
+  }
+
+}
+
+.row.video-container {
+  flex-flow: row wrap;
+}
+
+.row.next-vid__preview div {
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+//Responsive styles
+@media screen and (max-width: 900px) {
+
+  .info__column {
+    padding-left: 0;
+  }
+  
+  .bio__column {
+    padding-right: 0;
+  }
+
+  .bio__column .row {
+    flex-flow: column wrap;
+
+    .bio-detail__main-content {
+      flex: 1 100%;
+      max-width: none;
+      order: 2;
+    
+      h2 {
+        margin-bottom: 15px;
+      }
+
+      p:first-of-type {
+        margin-top: 0;
+      }
+
+    }
+
+    .sponsor {
+      flex: 1 100%;
+      margin-bottom: 30px;
+      max-width: none;
+      order: 1;
+
+      h2 {
+        margin-bottom: 15px;
+      }
+
+      .sponsor__img {
+        max-width: 186px;
+      }
+
+    }
+
+  }//.bio__column .row
+
+  .bio__column .archive .row {
+    flex-direction: row;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .info__column {
+    padding-left: 0;
+  }
+
+  .node--type-bio h3.info__profession {
+    padding-top: 30px;
+  }
+
+  .bio__column {
+    padding-left: 0;
+  }
+  
+  .video-container section {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  
+  .next-vid {
+    display: none;
+  }
+
+  #findingAids li {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+}
+
+@media screen and (max-width: 575px) {
+
+  .info__column {
+    padding-right: 0;
+  }
+
+  .node--type-bio h3.info__profession {
+    padding-top: 50px;
+  }
+
+  .node--type-bio .discover__heading {
+    margin: 50px 0;
+  }
+
+  .bio__column {
+    padding-left: 0;
   }
 
 }
