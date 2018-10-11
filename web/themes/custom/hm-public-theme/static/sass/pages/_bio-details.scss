@@ -1,11 +1,14 @@
 // This is a class only applied to individual biography nodes
+.page-wrapper .layout--1-2col-3-9 {
+  @extend %max-width;
+}
 
 .main { background-color: color(light-grey); }
 
 .node--type-bio {
   .container {
     max-width: none;
-    padding: 0 rem(55);
+    padding: 0 30px;
   }
 
   .page-title {
@@ -27,15 +30,26 @@
 
   }
 
-  h2 {
+  h2, 
+  .info h3 {
     @extend %card-header;
     color: color(quaternary);
     font-size: 30px;
     line-height: 120%;
   }
 
+  h3.info__profession {
+    padding-top: 15px;
+  }
+
   p {
     color: $black;
+    font-size: em(20);
+    line-height: 1.7rem;
+  }
+
+  .info dt, 
+  .info dd {
     font-size: em(20);
     line-height: 1.7rem;
   }
@@ -158,6 +172,12 @@
     left: em(10);
     position: fixed;
     top: 55%;
+  
+    @media screen and (max-width: 768px) {
+      left: unset;
+      top: unset;
+    }
+  
   }
 
   .share__icon {
