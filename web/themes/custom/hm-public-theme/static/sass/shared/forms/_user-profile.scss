@@ -34,6 +34,11 @@
   flex: 1 100%;
   margin-bottom: 0;
 
+  //IE 11 fix
+  @media screen and (min-width: 0\0) {
+    flex: 1 auto;
+  }
+
   &>legend > span {
     @extend %source-sans-semi-bold;
     color: $page-font-color;
