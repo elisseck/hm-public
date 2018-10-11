@@ -1,3 +1,21 @@
+.page-wrapper .layout--1-2col-3-9 {
+  @extend %max-width;
+
+  .first.side-navigation {
+    padding: 0;
+  }
+
+  .no__side-navigation.last {
+    padding: 0 0 0 30px;
+  
+    @media screen and (max-width: 950px) {
+      padding-left: 0;
+    }
+
+  }
+
+}
+
 .list-biography-cards-w-category-filter {
   display: flex;
   flex: 1;
@@ -172,6 +190,7 @@
 
     .bio-card--image {
       flex: 1;
+      min-height: 200px;
       overflow: hidden;
 
       img {
@@ -185,6 +204,7 @@
     @media screen and (min-width: 1200px) {
 
       .bio-card--image {
+        min-height: 300px;
         min-width: 300px;
       }
 
