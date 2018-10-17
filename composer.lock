@@ -575,19 +575,20 @@
         },
         {
             "name": "consolidation/output-formatters",
-            "version": "3.2.1",
+            "version": "3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/output-formatters.git",
-                "reference": "d78ef59aea19d3e2e5a23f90a055155ee78a0ad5"
+                "reference": "853d2d462a191d44a25a5593d8fe2c4a1e59e382"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/d78ef59aea19d3e2e5a23f90a055155ee78a0ad5",
-                "reference": "d78ef59aea19d3e2e5a23f90a055155ee78a0ad5",
+                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/853d2d462a191d44a25a5593d8fe2c4a1e59e382",
+                "reference": "853d2d462a191d44a25a5593d8fe2c4a1e59e382",
                 "shasum": ""
             },
             "require": {
+                "dflydev/dot-access-data": "^1.1.0",
                 "php": ">=5.4.0",
                 "symfony/console": "^2.8|^3|^4",
                 "symfony/finder": "^2.5|^3|^4"
@@ -626,7 +627,7 @@
                 }
             ],
             "description": "Format text by applying transformations provided by plug-in formatters.",
-            "time": "2018-05-25T18:02:34+00:00"
+            "time": "2018-10-16T01:14:51+00:00"
         },
         {
             "name": "cweagans/composer-patches",
@@ -1762,17 +1763,17 @@
         },
         {
             "name": "drupal/commerce_migrate",
-            "version": "2.0.0-beta4",
+            "version": "2.0.0-beta5",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/commerce_migrate",
-                "reference": "8.x-2.0-beta4"
+                "reference": "8.x-2.0-beta5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/commerce_migrate-8.x-2.0-beta4.zip",
-                "reference": "8.x-2.0-beta4",
-                "shasum": "77e56003542c21fb6583b8cf0de46d9fe20c6770"
+                "url": "https://ftp.drupal.org/files/projects/commerce_migrate-8.x-2.0-beta5.zip",
+                "reference": "8.x-2.0-beta5",
+                "shasum": "44515feaa3b4aaf746185bc636f3714f328e11e4"
             },
             "require": {
                 "drupal/commerce": "^2.0",
@@ -1791,8 +1792,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-beta4",
-                    "datestamp": "1536813784",
+                    "version": "8.x-2.0-beta5",
+                    "datestamp": "1539244381",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -2889,7 +2890,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/devel",
-                "reference": "cf7a3c406d8ccdd233f9f98779a8db652450b2de"
+                "reference": "46ab1195eff51aed6fa2607fcc753b8e5d453203"
             },
             "require": {
                 "drupal/core": "~8.0",
@@ -2901,8 +2902,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2+28-dev",
-                    "datestamp": "1537451880",
+                    "version": "8.x-1.2+29-dev",
+                    "datestamp": "1539067380",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -2961,7 +2962,7 @@
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             },
-            "time": "2018-10-09T06:32:56+00:00"
+            "time": "2018-10-10T19:04:05+00:00"
         },
         {
             "name": "drupal/drush_delete",
@@ -3016,20 +3017,20 @@
         },
         {
             "name": "drupal/entity",
-            "version": "1.0.0-beta4",
+            "version": "1.0.0-rc1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity",
-                "reference": "8.x-1.0-beta4"
+                "reference": "8.x-1.0-rc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/entity-8.x-1.0-beta4.zip",
-                "reference": "8.x-1.0-beta4",
-                "shasum": "00c1ae1fd4942285564af4325c0c98f895dac754"
+                "url": "https://ftp.drupal.org/files/projects/entity-8.x-1.0-rc1.zip",
+                "reference": "8.x-1.0-rc1",
+                "shasum": "f2dcd7afd0d36b6f261b10a204057a5c801ad20b"
             },
             "require": {
-                "drupal/core": "~8.5"
+                "drupal/core": "^8.6"
             },
             "type": "drupal-module",
             "extra": {
@@ -3037,11 +3038,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta4",
-                    "datestamp": "1528452184",
+                    "version": "8.x-1.0-rc1",
+                    "datestamp": "1539272580",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -3079,17 +3080,17 @@
         },
         {
             "name": "drupal/entity_reference_revisions",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/entity_reference_revisions",
-                "reference": "8.x-1.5"
+                "reference": "8.x-1.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/entity_reference_revisions-8.x-1.5.zip",
-                "reference": "8.x-1.5",
-                "shasum": "417250a105afe8febef508c7f981d02cb138752d"
+                "url": "https://ftp.drupal.org/files/projects/entity_reference_revisions-8.x-1.6.zip",
+                "reference": "8.x-1.6",
+                "shasum": "82d515de04d3a75fb677ed82241a6aff3f54ab47"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -3103,8 +3104,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.5",
-                    "datestamp": "1527241084",
+                    "version": "8.x-1.6",
+                    "datestamp": "1539588781",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5317,7 +5318,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/XHProf",
-                "reference": "dc70f355ee4b1fe49e1351ca6c68707fd913dcd6"
+                "reference": "03636cb96b111fe62a63be7709cdca5870688279"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -5328,8 +5329,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-beta1+49-dev",
-                    "datestamp": "1521454385",
+                    "version": "8.x-1.0-beta1+50-dev",
+                    "datestamp": "1521629284",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -5379,7 +5380,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/xhprof"
             },
-            "time": "2018-03-21T10:43:24+00:00"
+            "time": "2018-10-12T12:04:52+00:00"
         },
         {
             "name": "drush/drush",
@@ -5996,33 +5997,34 @@
         },
         {
             "name": "jakub-onderka/php-console-highlighter",
-            "version": "v0.3.2",
+            "version": "v0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JakubOnderka/PHP-Console-Highlighter.git",
-                "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5"
+                "reference": "9f7a229a69d52506914b4bc61bfdb199d90c5547"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Highlighter/zipball/7daa75df45242c8d5b75a22c00a201e7954e4fb5",
-                "reference": "7daa75df45242c8d5b75a22c00a201e7954e4fb5",
+                "url": "https://api.github.com/repos/JakubOnderka/PHP-Console-Highlighter/zipball/9f7a229a69d52506914b4bc61bfdb199d90c5547",
+                "reference": "9f7a229a69d52506914b4bc61bfdb199d90c5547",
                 "shasum": ""
             },
             "require": {
-                "jakub-onderka/php-console-color": "~0.1",
-                "php": ">=5.3.0"
+                "ext-tokenizer": "*",
+                "jakub-onderka/php-console-color": "~0.2",
+                "php": ">=5.4.0"
             },
             "require-dev": {
                 "jakub-onderka/php-code-style": "~1.0",
-                "jakub-onderka/php-parallel-lint": "~0.5",
+                "jakub-onderka/php-parallel-lint": "~1.0",
                 "jakub-onderka/php-var-dump-check": "~0.1",
                 "phpunit/phpunit": "~4.0",
                 "squizlabs/php_codesniffer": "~1.5"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "JakubOnderka\\PhpConsoleHighlighter": "src/"
+                "psr-4": {
+                    "JakubOnderka\\PhpConsoleHighlighter\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6036,7 +6038,8 @@
                     "homepage": "http://www.acci.cz/"
                 }
             ],
-            "time": "2015-04-20T18:58:01+00:00"
+            "description": "Highlight PHP code in terminal",
+            "time": "2018-09-29T18:48:56+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -6220,16 +6223,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.0.4",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "fa6ee28600d21d49b2b4e1006b48426cec8e579c"
+                "reference": "d0230c5c77a7e3cfa69446febf340978540958c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/fa6ee28600d21d49b2b4e1006b48426cec8e579c",
-                "reference": "fa6ee28600d21d49b2b4e1006b48426cec8e579c",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/d0230c5c77a7e3cfa69446febf340978540958c0",
+                "reference": "d0230c5c77a7e3cfa69446febf340978540958c0",
                 "shasum": ""
             },
             "require": {
@@ -6245,7 +6248,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0-dev"
+                    "dev-master": "4.1-dev"
                 }
             },
             "autoload": {
@@ -6267,7 +6270,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2018-09-18T07:03:24+00:00"
+            "time": "2018-10-10T09:24:14+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -6521,23 +6524,23 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.9.8",
+            "version": "v0.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "ed3c32c4304e1a678a6e0f9dc11dd2d927d89555"
+                "reference": "9aaf29575bb8293206bb0420c1e1c87ff2ffa94e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/ed3c32c4304e1a678a6e0f9dc11dd2d927d89555",
-                "reference": "ed3c32c4304e1a678a6e0f9dc11dd2d927d89555",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/9aaf29575bb8293206bb0420c1e1c87ff2ffa94e",
+                "reference": "9aaf29575bb8293206bb0420c1e1c87ff2ffa94e",
                 "shasum": ""
             },
             "require": {
                 "dnoegel/php-xdg-base-dir": "0.1",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
-                "jakub-onderka/php-console-highlighter": "0.3.*",
+                "jakub-onderka/php-console-highlighter": "0.3.*|0.4.*",
                 "nikic/php-parser": "~1.3|~2.0|~3.0|~4.0",
                 "php": ">=5.4.0",
                 "symfony/console": "~2.3.10|^2.4.2|~3.0|~4.0",
@@ -6591,7 +6594,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2018-09-05T11:40:09+00:00"
+            "time": "2018-10-13T15:16:03+00:00"
         },
         {
             "name": "react/child-process",
@@ -9244,16 +9247,16 @@
         },
         {
             "name": "geerlingguy/drupal-vm",
-            "version": "4.9.0",
+            "version": "4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/geerlingguy/drupal-vm.git",
-                "reference": "4fc4a3a89231e8d4cea077e6541c771f1b46d66c"
+                "reference": "1b5014b41c765a476c4dc668b123e85668f4d86e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/geerlingguy/drupal-vm/zipball/4fc4a3a89231e8d4cea077e6541c771f1b46d66c",
-                "reference": "4fc4a3a89231e8d4cea077e6541c771f1b46d66c",
+                "url": "https://api.github.com/repos/geerlingguy/drupal-vm/zipball/1b5014b41c765a476c4dc668b123e85668f4d86e",
+                "reference": "1b5014b41c765a476c4dc668b123e85668f4d86e",
                 "shasum": ""
             },
             "type": "vm",
@@ -9279,7 +9282,7 @@
                 "virtual machine",
                 "vm"
             ],
-            "time": "2018-06-01T15:22:24+00:00"
+            "time": "2018-10-10T19:35:25+00:00"
         },
         {
             "name": "jcalderonzumba/gastonjs",
