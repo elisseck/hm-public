@@ -37,5 +37,9 @@
       {{ content.field_snapshot_cta|field_value }}
     </ul>  
   {% endif %} 
+
+  {% if content.field_snapshot_block_button|field_value is not empty %}
+    {{ content.field_snapshot_block_button|field_value }}
+  {% endif %}   
   
 </div>
