@@ -1,6 +1,11 @@
 // This is a class only applied to individual biography nodes
 .page-wrapper .layout--1-2col-3-9 {
   @extend %max-width;
+
+  .main {
+    width: 100%;
+  }
+
 }
 
 .main { background-color: color(light-grey); }
@@ -176,6 +181,10 @@
     @media screen and (max-width: 768px) {
       left: unset;
       top: unset;
+    }
+
+    li {
+      height: 50px;
     }
 
   }
