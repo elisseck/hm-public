@@ -40,6 +40,11 @@
     max-width: 500px;
     padding: em(20) em(30) em(30);
 
+    //IE 11
+    @media screen and (min-width: 0\0) {
+      max-width: 25%;
+    }
+
     @media screen and (max-width: 950px) {
       padding: 30px 15px;
     }
