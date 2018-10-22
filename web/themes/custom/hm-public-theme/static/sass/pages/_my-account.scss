@@ -1,0 +1,26 @@
+.my-account {
+  @extend %max-width;
+  @extend %default-gutter-width;
+
+  //Update button
+  #userDetails a {
+    text-align: center;
+    width: 100%;
+  }
+
+  .my-account__content .contextual-region > div {
+    border-top: 1px solid color(medium-grey);
+    padding-top: 15px;
+  }
+
+  .my-account__content .block {
+    margin-top: 30px;
+
+    h2 {
+      @extend %h2;
+      margin-bottom: 30px;
+    }
+
+  }
+
+}//.my-account
