@@ -5,8 +5,9 @@ video {
   margin: 0 auto;
 }
 
-vg-player {
+vg-player[_ngcontent-c0] {
   height: auto;
+  padding-bottom: 34px;
 }
 
 .vg-controls {
