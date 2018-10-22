@@ -130,6 +130,10 @@
   margin: 0 em(16) em(32);
   min-width: 30%;
   padding: 0;
+  overflow: hidden;
+  align-content: center;
+  width: 100%;
+  max-width: 300px;
 
   @media screen and (max-width: 768px) {
     margin-right: 0;
@@ -187,6 +191,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    width: 100%;
 
     .bio-card--image {
       flex: 1;
