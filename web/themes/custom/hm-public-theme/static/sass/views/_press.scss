@@ -8,15 +8,17 @@
     width: 100%;
 
     &::after {
-      background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 30 50" xml:space="preserve"><path fill="#941A1D" transform="translate(12 15)" d="M6.2 14.2l-1.4-1.4 4.3-4.3-4.3-4.3 1.4-1.4 5.7 5.7z"/></svg>'), linear-gradient(90deg, rgba(204, 204, 204, 0), color(light-grey) 40%);
+      background-image: url('../images/scroll-right.png'), linear-gradient(90deg, rgba(204, 204, 204, 0), color(light-grey) 50%);
       background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 50px;
       content: '';
       display: inline-block;
-      height: 77px;
+      height: 72px;
       position: absolute;
       right: 0;
       top: 0;
-      width: 50px;
+      width: 32px;
       z-index: 1;
     }
 
@@ -35,7 +37,7 @@
       background-image: linear-gradient(90deg, rgba(204, 204, 204, 0), color(light-grey) 40%);
       content: '';
       display: inline-block;
-      height: 50px;
+      height: 72px;
       position: relative;
       vertical-align: middle;
       width: 40px;
