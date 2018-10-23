@@ -3,6 +3,11 @@
   @extend %default-gutter-width;
   width: 100%;
 
+  @media screen and (min-width: 0\0) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
   .press__tab {
     position: relative;
     width: 100%;
