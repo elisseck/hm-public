@@ -23,4 +23,35 @@
 
   }
 
+  .my-account__content {
+
+    //My Favorites Block
+    #webform-4 form {
+      display: flex;
+      flex-flow: row wrap;
+    
+      .form-item {
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1;
+      }
+
+      .form-required {
+        margin-right: 5px;
+      }
+
+      .form-item select,
+      .form-item input {
+        width: 90%;
+      }
+
+      .webform-button--submit {
+        margin-right: 0;
+        width: 150px;
+      }
+    
+    }
+
+  }
+
 }//.my-account
