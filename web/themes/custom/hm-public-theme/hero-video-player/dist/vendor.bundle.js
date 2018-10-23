@@ -551,11 +551,13 @@ var Notification = /*@__PURE__*/ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Observable; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_toSubscriber__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/toSubscriber.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__internal_symbol_observable__ = __webpack_require__("../../../../rxjs/_esm5/internal/symbol/observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_pipe__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/pipe.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config__ = __webpack_require__("../../../../rxjs/_esm5/internal/config.js");
-/** PURE_IMPORTS_START _util_toSubscriber,_internal_symbol_observable,_util_pipe,_config PURE_IMPORTS_END */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_canReportError__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/canReportError.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_toSubscriber__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/toSubscriber.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__internal_symbol_observable__ = __webpack_require__("../../../../rxjs/_esm5/internal/symbol/observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_pipe__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/pipe.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config__ = __webpack_require__("../../../../rxjs/_esm5/internal/config.js");
+/** PURE_IMPORTS_START _util_canReportError,_util_toSubscriber,_internal_symbol_observable,_util_pipe,_config PURE_IMPORTS_END */
+
 
 
 
@@ -575,16 +577,16 @@ var Observable = /*@__PURE__*/ (function () {
     };
     Observable.prototype.subscribe = function (observerOrNext, error, complete) {
         var operator = this.operator;
-        var sink = Object(__WEBPACK_IMPORTED_MODULE_0__util_toSubscriber__["a" /* toSubscriber */])(observerOrNext, error, complete);
+        var sink = Object(__WEBPACK_IMPORTED_MODULE_1__util_toSubscriber__["a" /* toSubscriber */])(observerOrNext, error, complete);
         if (operator) {
             operator.call(sink, this.source);
         }
         else {
-            sink._addParentTeardownLogic(this.source || (__WEBPACK_IMPORTED_MODULE_3__config__["a" /* config */].useDeprecatedSynchronousErrorHandling && !sink.syncErrorThrowable) ?
+            sink.add(this.source || (__WEBPACK_IMPORTED_MODULE_4__config__["a" /* config */].useDeprecatedSynchronousErrorHandling && !sink.syncErrorThrowable) ?
                 this._subscribe(sink) :
                 this._trySubscribe(sink));
         }
-        if (__WEBPACK_IMPORTED_MODULE_3__config__["a" /* config */].useDeprecatedSynchronousErrorHandling) {
+        if (__WEBPACK_IMPORTED_MODULE_4__config__["a" /* config */].useDeprecatedSynchronousErrorHandling) {
             if (sink.syncErrorThrowable) {
                 sink.syncErrorThrowable = false;
                 if (sink.syncErrorThrown) {
@@ -599,11 +601,16 @@ var Observable = /*@__PURE__*/ (function () {
             return this._subscribe(sink);
         }
         catch (err) {
-            if (__WEBPACK_IMPORTED_MODULE_3__config__["a" /* config */].useDeprecatedSynchronousErrorHandling) {
+            if (__WEBPACK_IMPORTED_MODULE_4__config__["a" /* config */].useDeprecatedSynchronousErrorHandling) {
                 sink.syncErrorThrown = true;
                 sink.syncErrorValue = err;
             }
-            sink.error(err);
+            if (Object(__WEBPACK_IMPORTED_MODULE_0__util_canReportError__["a" /* canReportError */])(sink)) {
+                sink.error(err);
+            }
+            else {
+                console.warn(err);
+            }
         }
     };
     Observable.prototype.forEach = function (next, promiseCtor) {
@@ -628,7 +635,7 @@ var Observable = /*@__PURE__*/ (function () {
         var source = this.source;
         return source && source.subscribe(subscriber);
     };
-    Observable.prototype[__WEBPACK_IMPORTED_MODULE_1__internal_symbol_observable__["a" /* observable */]] = function () {
+    Observable.prototype[__WEBPACK_IMPORTED_MODULE_2__internal_symbol_observable__["a" /* observable */]] = function () {
         return this;
     };
     Observable.prototype.pipe = function () {
@@ -639,7 +646,7 @@ var Observable = /*@__PURE__*/ (function () {
         if (operations.length === 0) {
             return this;
         }
-        return Object(__WEBPACK_IMPORTED_MODULE_2__util_pipe__["b" /* pipeFromArray */])(operations)(this);
+        return Object(__WEBPACK_IMPORTED_MODULE_3__util_pipe__["b" /* pipeFromArray */])(operations)(this);
     };
     Observable.prototype.toPromise = function (promiseCtor) {
         var _this = this;
@@ -657,7 +664,7 @@ var Observable = /*@__PURE__*/ (function () {
 
 function getPromiseCtor(promiseCtor) {
     if (!promiseCtor) {
-        promiseCtor = __WEBPACK_IMPORTED_MODULE_3__config__["a" /* config */].Promise || Promise;
+        promiseCtor = __WEBPACK_IMPORTED_MODULE_4__config__["a" /* config */].Promise || Promise;
     }
     if (!promiseCtor) {
         throw new Error('no Promise impl found');
@@ -1114,6 +1121,7 @@ var SubjectSubscription = /*@__PURE__*/ (function (_super) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Subscriber; });
+/* unused harmony export SafeSubscriber */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__("../../../../tslib/tslib.es6.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_isFunction__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/isFunction.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Observer__ = __webpack_require__("../../../../rxjs/_esm5/internal/Observer.js");
@@ -1148,11 +1156,10 @@ var Subscriber = /*@__PURE__*/ (function (_super) {
                     break;
                 }
                 if (typeof destinationOrNext === 'object') {
-                    if (isTrustedSubscriber(destinationOrNext)) {
-                        var trustedSubscriber = destinationOrNext[__WEBPACK_IMPORTED_MODULE_4__internal_symbol_rxSubscriber__["a" /* rxSubscriber */]]();
-                        _this.syncErrorThrowable = trustedSubscriber.syncErrorThrowable;
-                        _this.destination = trustedSubscriber;
-                        trustedSubscriber._addParentTeardownLogic(_this);
+                    if (destinationOrNext instanceof Subscriber) {
+                        _this.syncErrorThrowable = destinationOrNext.syncErrorThrowable;
+                        _this.destination = destinationOrNext;
+                        destinationOrNext.add(_this);
                     }
                     else {
                         _this.syncErrorThrowable = true;
@@ -1182,14 +1189,12 @@ var Subscriber = /*@__PURE__*/ (function (_super) {
         if (!this.isStopped) {
             this.isStopped = true;
             this._error(err);
-            this._unsubscribeParentSubscription();
         }
     };
     Subscriber.prototype.complete = function () {
         if (!this.isStopped) {
             this.isStopped = true;
             this._complete();
-            this._unsubscribeParentSubscription();
         }
     };
     Subscriber.prototype.unsubscribe = function () {
@@ -1209,14 +1214,6 @@ var Subscriber = /*@__PURE__*/ (function (_super) {
     Subscriber.prototype._complete = function () {
         this.destination.complete();
         this.unsubscribe();
-    };
-    Subscriber.prototype._addParentTeardownLogic = function (parentTeardownLogic) {
-        this._parentSubscription = this.add(parentTeardownLogic);
-    };
-    Subscriber.prototype._unsubscribeParentSubscription = function () {
-        if (this._parentSubscription !== null) {
-            this._parentSubscription.unsubscribe();
-        }
     };
     Subscriber.prototype._unsubscribeAndRecycle = function () {
         var _a = this, _parent = _a._parent, _parents = _a._parents;
@@ -1367,9 +1364,7 @@ var SafeSubscriber = /*@__PURE__*/ (function (_super) {
     };
     return SafeSubscriber;
 }(Subscriber));
-function isTrustedSubscriber(obj) {
-    return obj instanceof Subscriber || ('syncErrorThrowable' in obj && obj[__WEBPACK_IMPORTED_MODULE_4__internal_symbol_rxSubscriber__["a" /* rxSubscriber */]]);
-}
+
 //# sourceMappingURL=Subscriber.js.map
 
 
@@ -1781,9 +1776,11 @@ var SubscribeOnObservable = /*@__PURE__*/ (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Observable__ = __webpack_require__("../../../../rxjs/_esm5/internal/Observable.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AsyncSubject__ = __webpack_require__("../../../../rxjs/_esm5/internal/AsyncSubject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__operators_map__ = __webpack_require__("../../../../rxjs/_esm5/internal/operators/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_isArray__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/isArray.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_isScheduler__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/isScheduler.js");
-/** PURE_IMPORTS_START _Observable,_AsyncSubject,_operators_map,_util_isArray,_util_isScheduler PURE_IMPORTS_END */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_canReportError__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/canReportError.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_isArray__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/isArray.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_isScheduler__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/isScheduler.js");
+/** PURE_IMPORTS_START _Observable,_AsyncSubject,_operators_map,_util_canReportError,_util_isArray,_util_isScheduler PURE_IMPORTS_END */
+
 
 
 
@@ -1791,7 +1788,7 @@ var SubscribeOnObservable = /*@__PURE__*/ (function (_super) {
 
 function bindCallback(callbackFunc, resultSelector, scheduler) {
     if (resultSelector) {
-        if (Object(__WEBPACK_IMPORTED_MODULE_4__util_isScheduler__["a" /* isScheduler */])(resultSelector)) {
+        if (Object(__WEBPACK_IMPORTED_MODULE_5__util_isScheduler__["a" /* isScheduler */])(resultSelector)) {
             scheduler = resultSelector;
         }
         else {
@@ -1800,7 +1797,7 @@ function bindCallback(callbackFunc, resultSelector, scheduler) {
                 for (var _i = 0; _i < arguments.length; _i++) {
                     args[_i] = arguments[_i];
                 }
-                return bindCallback(callbackFunc, scheduler).apply(void 0, args).pipe(Object(__WEBPACK_IMPORTED_MODULE_2__operators_map__["a" /* map */])(function (args) { return Object(__WEBPACK_IMPORTED_MODULE_3__util_isArray__["a" /* isArray */])(args) ? resultSelector.apply(void 0, args) : resultSelector(args); }));
+                return bindCallback(callbackFunc, scheduler).apply(void 0, args).pipe(Object(__WEBPACK_IMPORTED_MODULE_2__operators_map__["a" /* map */])(function (args) { return Object(__WEBPACK_IMPORTED_MODULE_4__util_isArray__["a" /* isArray */])(args) ? resultSelector.apply(void 0, args) : resultSelector(args); }));
             };
         }
     }
@@ -1833,7 +1830,12 @@ function bindCallback(callbackFunc, resultSelector, scheduler) {
                         callbackFunc.apply(context, args.concat([handler]));
                     }
                     catch (err) {
-                        subject.error(err);
+                        if (Object(__WEBPACK_IMPORTED_MODULE_3__util_canReportError__["a" /* canReportError */])(subject)) {
+                            subject.error(err);
+                        }
+                        else {
+                            console.warn(err);
+                        }
                     }
                 }
                 return subject.subscribe(subscriber);
@@ -1894,9 +1896,11 @@ function dispatchError(state) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Observable__ = __webpack_require__("../../../../rxjs/_esm5/internal/Observable.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__AsyncSubject__ = __webpack_require__("../../../../rxjs/_esm5/internal/AsyncSubject.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__operators_map__ = __webpack_require__("../../../../rxjs/_esm5/internal/operators/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_isScheduler__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/isScheduler.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_isArray__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/isArray.js");
-/** PURE_IMPORTS_START _Observable,_AsyncSubject,_operators_map,_util_isScheduler,_util_isArray PURE_IMPORTS_END */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_canReportError__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/canReportError.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_isScheduler__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/isScheduler.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_isArray__ = __webpack_require__("../../../../rxjs/_esm5/internal/util/isArray.js");
+/** PURE_IMPORTS_START _Observable,_AsyncSubject,_operators_map,_util_canReportError,_util_isScheduler,_util_isArray PURE_IMPORTS_END */
+
 
 
 
@@ -1904,7 +1908,7 @@ function dispatchError(state) {
 
 function bindNodeCallback(callbackFunc, resultSelector, scheduler) {
     if (resultSelector) {
-        if (Object(__WEBPACK_IMPORTED_MODULE_3__util_isScheduler__["a" /* isScheduler */])(resultSelector)) {
+        if (Object(__WEBPACK_IMPORTED_MODULE_4__util_isScheduler__["a" /* isScheduler */])(resultSelector)) {
             scheduler = resultSelector;
         }
         else {
@@ -1913,7 +1917,7 @@ function bindNodeCallback(callbackFunc, resultSelector, scheduler) {
                 for (var _i = 0; _i < arguments.length; _i++) {
                     args[_i] = arguments[_i];
                 }
-                return bindNodeCallback(callbackFunc, scheduler).apply(void 0, args).pipe(Object(__WEBPACK_IMPORTED_MODULE_2__operators_map__["a" /* map */])(function (args) { return Object(__WEBPACK_IMPORTED_MODULE_4__util_isArray__["a" /* isArray */])(args) ? resultSelector.apply(void 0, args) : resultSelector(args); }));
+                return bindNodeCallback(callbackFunc, scheduler).apply(void 0, args).pipe(Object(__WEBPACK_IMPORTED_MODULE_2__operators_map__["a" /* map */])(function (args) { return Object(__WEBPACK_IMPORTED_MODULE_5__util_isArray__["a" /* isArray */])(args) ? resultSelector.apply(void 0, args) : resultSelector(args); }));
             };
         }
     }
@@ -1952,7 +1956,12 @@ function bindNodeCallback(callbackFunc, resultSelector, scheduler) {
                         callbackFunc.apply(context, args.concat([handler]));
                     }
                     catch (err) {
-                        subject.error(err);
+                        if (Object(__WEBPACK_IMPORTED_MODULE_3__util_canReportError__["a" /* canReportError */])(subject)) {
+                            subject.error(err);
+                        }
+                        else {
+                            console.warn(err);
+                        }
                     }
                 }
                 return subject.subscribe(subscriber);
@@ -3414,6 +3423,7 @@ var ZipSubscriber = /*@__PURE__*/ (function (_super) {
     ZipSubscriber.prototype._complete = function () {
         var iterators = this.iterators;
         var len = iterators.length;
+        this.unsubscribe();
         if (len === 0) {
             this.destination.complete();
             return;
@@ -3422,7 +3432,8 @@ var ZipSubscriber = /*@__PURE__*/ (function (_super) {
         for (var i = 0; i < len; i++) {
             var iterator = iterators[i];
             if (iterator.stillUnsubscribed) {
-                this.add(iterator.subscribe(iterator, i));
+                var destination = this.destination;
+                destination.add(iterator.subscribe(iterator, i));
             }
             else {
                 this.active--;
@@ -4731,7 +4742,8 @@ var DelaySubscriber = /*@__PURE__*/ (function (_super) {
     };
     DelaySubscriber.prototype._schedule = function (scheduler) {
         this.active = true;
-        this.add(scheduler.schedule(DelaySubscriber.dispatch, this.delay, {
+        var destination = this.destination;
+        destination.add(scheduler.schedule(DelaySubscriber.dispatch, this.delay, {
             source: this, destination: this.destination, scheduler: scheduler
         }));
     };
@@ -4753,9 +4765,11 @@ var DelaySubscriber = /*@__PURE__*/ (function (_super) {
         this.errored = true;
         this.queue = [];
         this.destination.error(err);
+        this.unsubscribe();
     };
     DelaySubscriber.prototype._complete = function () {
         this.scheduleNotification(__WEBPACK_IMPORTED_MODULE_4__Notification__["a" /* Notification */].createComplete());
+        this.unsubscribe();
     };
     return DelaySubscriber;
 }(__WEBPACK_IMPORTED_MODULE_3__Subscriber__["a" /* Subscriber */]));
@@ -4845,6 +4859,7 @@ var DelayWhenSubscriber = /*@__PURE__*/ (function (_super) {
     DelayWhenSubscriber.prototype._complete = function () {
         this.completed = true;
         this.tryComplete();
+        this.unsubscribe();
     };
     DelayWhenSubscriber.prototype.removeSubscription = function (subscription) {
         subscription.unsubscribe();
@@ -4857,7 +4872,8 @@ var DelayWhenSubscriber = /*@__PURE__*/ (function (_super) {
     DelayWhenSubscriber.prototype.tryDelay = function (delayNotifier, value) {
         var notifierSubscription = Object(__WEBPACK_IMPORTED_MODULE_4__util_subscribeToResult__["a" /* subscribeToResult */])(this, delayNotifier, value);
         if (notifierSubscription && !notifierSubscription.closed) {
-            this.add(notifierSubscription);
+            var destination = this.destination;
+            destination.add(notifierSubscription);
             this.delayNotifierSubscriptions.push(notifierSubscription);
         }
     };
@@ -4898,6 +4914,7 @@ var SubscriptionDelaySubscriber = /*@__PURE__*/ (function (_super) {
         this.parent.error(err);
     };
     SubscriptionDelaySubscriber.prototype._complete = function () {
+        this.unsubscribe();
         this.subscribeToSource();
     };
     SubscriptionDelaySubscriber.prototype.subscribeToSource = function () {
@@ -5380,7 +5397,8 @@ var ExhaustMapSubscriber = /*@__PURE__*/ (function (_super) {
     };
     ExhaustMapSubscriber.prototype._innerSub = function (result, value, index) {
         var innerSubscriber = new __WEBPACK_IMPORTED_MODULE_2__InnerSubscriber__["a" /* InnerSubscriber */](this, undefined, undefined);
-        this.add(innerSubscriber);
+        var destination = this.destination;
+        destination.add(innerSubscriber);
         Object(__WEBPACK_IMPORTED_MODULE_3__util_subscribeToResult__["a" /* subscribeToResult */])(this, result, value, index, innerSubscriber);
     };
     ExhaustMapSubscriber.prototype._complete = function () {
@@ -5388,6 +5406,7 @@ var ExhaustMapSubscriber = /*@__PURE__*/ (function (_super) {
         if (!this.hasSubscription) {
             this.destination.complete();
         }
+        this.unsubscribe();
     };
     ExhaustMapSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
         this.destination.next(innerValue);
@@ -5396,7 +5415,8 @@ var ExhaustMapSubscriber = /*@__PURE__*/ (function (_super) {
         this.destination.error(err);
     };
     ExhaustMapSubscriber.prototype.notifyComplete = function (innerSub) {
-        this.remove(innerSub);
+        var destination = this.destination;
+        destination.remove(innerSub);
         this.hasSubscription = false;
         if (this.hasCompleted) {
             this.destination.complete();
@@ -5486,7 +5506,8 @@ var ExpandSubscriber = /*@__PURE__*/ (function (_super) {
             }
             else {
                 var state = { subscriber: this, result: result, value: value, index: index };
-                this.add(this.scheduler.schedule(ExpandSubscriber.dispatch, 0, state));
+                var destination_1 = this.destination;
+                destination_1.add(this.scheduler.schedule(ExpandSubscriber.dispatch, 0, state));
             }
         }
         else {
@@ -5495,20 +5516,23 @@ var ExpandSubscriber = /*@__PURE__*/ (function (_super) {
     };
     ExpandSubscriber.prototype.subscribeToProjection = function (result, value, index) {
         this.active++;
-        this.add(Object(__WEBPACK_IMPORTED_MODULE_4__util_subscribeToResult__["a" /* subscribeToResult */])(this, result, value, index));
+        var destination = this.destination;
+        destination.add(Object(__WEBPACK_IMPORTED_MODULE_4__util_subscribeToResult__["a" /* subscribeToResult */])(this, result, value, index));
     };
     ExpandSubscriber.prototype._complete = function () {
         this.hasCompleted = true;
         if (this.hasCompleted && this.active === 0) {
             this.destination.complete();
         }
+        this.unsubscribe();
     };
     ExpandSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
         this._next(innerValue);
     };
     ExpandSubscriber.prototype.notifyComplete = function (innerSub) {
         var buffer = this.buffer;
-        this.remove(innerSub);
+        var destination = this.destination;
+        destination.remove(innerSub);
         this.active--;
         if (buffer && buffer.length > 0) {
             this._next(buffer.shift());
@@ -6327,7 +6351,8 @@ var MergeMapSubscriber = /*@__PURE__*/ (function (_super) {
     };
     MergeMapSubscriber.prototype._innerSub = function (ish, value, index) {
         var innerSubscriber = new __WEBPACK_IMPORTED_MODULE_3__InnerSubscriber__["a" /* InnerSubscriber */](this, undefined, undefined);
-        this.add(innerSubscriber);
+        var destination = this.destination;
+        destination.add(innerSubscriber);
         Object(__WEBPACK_IMPORTED_MODULE_1__util_subscribeToResult__["a" /* subscribeToResult */])(this, ish, value, index, innerSubscriber);
     };
     MergeMapSubscriber.prototype._complete = function () {
@@ -6335,6 +6360,7 @@ var MergeMapSubscriber = /*@__PURE__*/ (function (_super) {
         if (this.active === 0 && this.buffer.length === 0) {
             this.destination.complete();
         }
+        this.unsubscribe();
     };
     MergeMapSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
         this.destination.next(innerValue);
@@ -6454,7 +6480,8 @@ var MergeScanSubscriber = /*@__PURE__*/ (function (_super) {
     };
     MergeScanSubscriber.prototype._innerSub = function (ish, value, index) {
         var innerSubscriber = new __WEBPACK_IMPORTED_MODULE_5__InnerSubscriber__["a" /* InnerSubscriber */](this, undefined, undefined);
-        this.add(innerSubscriber);
+        var destination = this.destination;
+        destination.add(innerSubscriber);
         Object(__WEBPACK_IMPORTED_MODULE_3__util_subscribeToResult__["a" /* subscribeToResult */])(this, ish, value, index, innerSubscriber);
     };
     MergeScanSubscriber.prototype._complete = function () {
@@ -6465,6 +6492,7 @@ var MergeScanSubscriber = /*@__PURE__*/ (function (_super) {
             }
             this.destination.complete();
         }
+        this.unsubscribe();
     };
     MergeScanSubscriber.prototype.notifyNext = function (outerValue, innerValue, outerIndex, innerIndex, innerSub) {
         var destination = this.destination;
@@ -6474,7 +6502,8 @@ var MergeScanSubscriber = /*@__PURE__*/ (function (_super) {
     };
     MergeScanSubscriber.prototype.notifyComplete = function (innerSub) {
         var buffer = this.buffer;
-        this.remove(innerSub);
+        var destination = this.destination;
+        destination.remove(innerSub);
         this.active--;
         if (buffer.length > 0) {
             this._next(buffer.shift());
@@ -6616,16 +6645,19 @@ var ObserveOnSubscriber = /*@__PURE__*/ (function (_super) {
         this.unsubscribe();
     };
     ObserveOnSubscriber.prototype.scheduleMessage = function (notification) {
-        this.add(this.scheduler.schedule(ObserveOnSubscriber.dispatch, this.delay, new ObserveOnMessage(notification, this.destination)));
+        var destination = this.destination;
+        destination.add(this.scheduler.schedule(ObserveOnSubscriber.dispatch, this.delay, new ObserveOnMessage(notification, this.destination)));
     };
     ObserveOnSubscriber.prototype._next = function (value) {
         this.scheduleMessage(__WEBPACK_IMPORTED_MODULE_2__Notification__["a" /* Notification */].createNext(value));
     };
     ObserveOnSubscriber.prototype._error = function (err) {
         this.scheduleMessage(__WEBPACK_IMPORTED_MODULE_2__Notification__["a" /* Notification */].createError(err));
+        this.unsubscribe();
     };
     ObserveOnSubscriber.prototype._complete = function () {
         this.scheduleMessage(__WEBPACK_IMPORTED_MODULE_2__Notification__["a" /* Notification */].createComplete());
+        this.unsubscribe();
     };
     return ObserveOnSubscriber;
 }(__WEBPACK_IMPORTED_MODULE_1__Subscriber__["a" /* Subscriber */]));
@@ -6709,15 +6741,18 @@ var OnErrorResumeNextSubscriber = /*@__PURE__*/ (function (_super) {
     };
     OnErrorResumeNextSubscriber.prototype._error = function (err) {
         this.subscribeToNextSource();
+        this.unsubscribe();
     };
     OnErrorResumeNextSubscriber.prototype._complete = function () {
         this.subscribeToNextSource();
+        this.unsubscribe();
     };
     OnErrorResumeNextSubscriber.prototype.subscribeToNextSource = function () {
         var next = this.nextSources.shift();
         if (next) {
             var innerSubscriber = new __WEBPACK_IMPORTED_MODULE_4__InnerSubscriber__["a" /* InnerSubscriber */](this, undefined, undefined);
-            this.add(innerSubscriber);
+            var destination = this.destination;
+            destination.add(innerSubscriber);
             Object(__WEBPACK_IMPORTED_MODULE_5__util_subscribeToResult__["a" /* subscribeToResult */])(this, next, undefined, undefined, innerSubscriber);
         }
         else {
@@ -6965,9 +7000,7 @@ function reduce(accumulator, seed) {
         };
     }
     return function reduceOperatorFunction(source) {
-        return Object(__WEBPACK_IMPORTED_MODULE_3__util_pipe__["a" /* pipe */])(Object(__WEBPACK_IMPORTED_MODULE_0__scan__["a" /* scan */])(function (acc, value, index) {
-            return accumulator(acc, value, index + 1);
-        }), Object(__WEBPACK_IMPORTED_MODULE_1__takeLast__["a" /* takeLast */])(1))(source);
+        return Object(__WEBPACK_IMPORTED_MODULE_3__util_pipe__["a" /* pipe */])(Object(__WEBPACK_IMPORTED_MODULE_0__scan__["a" /* scan */])(function (acc, value, index) { return accumulator(acc, value, index + 1); }), Object(__WEBPACK_IMPORTED_MODULE_1__takeLast__["a" /* takeLast */])(1))(source);
     };
 }
 //# sourceMappingURL=reduce.js.map
@@ -7585,7 +7618,7 @@ var SequenceEqualSubscriber = /*@__PURE__*/ (function (_super) {
         _this._a = [];
         _this._b = [];
         _this._oneComplete = false;
-        _this.add(compareTo.subscribe(new SequenceEqualCompareToSubscriber(destination, _this)));
+        _this.destination.add(compareTo.subscribe(new SequenceEqualCompareToSubscriber(destination, _this)));
         return _this;
     }
     SequenceEqualSubscriber.prototype._next = function (value) {
@@ -7604,6 +7637,7 @@ var SequenceEqualSubscriber = /*@__PURE__*/ (function (_super) {
         else {
             this._oneComplete = true;
         }
+        this.unsubscribe();
     };
     SequenceEqualSubscriber.prototype.checkValues = function () {
         var _c = this, _a = _c._a, _b = _c._b, comparor = _c.comparor;
@@ -7639,6 +7673,14 @@ var SequenceEqualSubscriber = /*@__PURE__*/ (function (_super) {
             this.checkValues();
         }
     };
+    SequenceEqualSubscriber.prototype.completeB = function () {
+        if (this._oneComplete) {
+            this.emit(this._a.length === 0 && this._b.length === 0);
+        }
+        else {
+            this._oneComplete = true;
+        }
+    };
     return SequenceEqualSubscriber;
 }(__WEBPACK_IMPORTED_MODULE_1__Subscriber__["a" /* Subscriber */]));
 
@@ -7654,9 +7696,11 @@ var SequenceEqualCompareToSubscriber = /*@__PURE__*/ (function (_super) {
     };
     SequenceEqualCompareToSubscriber.prototype._error = function (err) {
         this.parent.error(err);
+        this.unsubscribe();
     };
     SequenceEqualCompareToSubscriber.prototype._complete = function () {
-        this.parent._complete();
+        this.parent.completeB();
+        this.unsubscribe();
     };
     return SequenceEqualCompareToSubscriber;
 }(__WEBPACK_IMPORTED_MODULE_1__Subscriber__["a" /* Subscriber */]));
@@ -7701,7 +7745,7 @@ function shareReplay(bufferSize, windowTime, scheduler) {
         bufferSize = Number.POSITIVE_INFINITY;
     }
     if (windowTime === void 0) {
-        windowTime = Number.MAX_VALUE;
+        windowTime = Number.POSITIVE_INFINITY;
     }
     return function (source) { return source.lift(shareReplayOperator(bufferSize, windowTime, scheduler)); };
 }
@@ -8194,7 +8238,8 @@ var SwitchMapSubscriber = /*@__PURE__*/ (function (_super) {
             innerSubscription.unsubscribe();
         }
         var innerSubscriber = new __WEBPACK_IMPORTED_MODULE_2__InnerSubscriber__["a" /* InnerSubscriber */](this, undefined, undefined);
-        this.add(innerSubscriber);
+        var destination = this.destination;
+        destination.add(innerSubscriber);
         this.innerSubscription = Object(__WEBPACK_IMPORTED_MODULE_3__util_subscribeToResult__["a" /* subscribeToResult */])(this, result, value, index, innerSubscriber);
     };
     SwitchMapSubscriber.prototype._complete = function () {
@@ -8202,12 +8247,14 @@ var SwitchMapSubscriber = /*@__PURE__*/ (function (_super) {
         if (!innerSubscription || innerSubscription.closed) {
             _super.prototype._complete.call(this);
         }
+        this.unsubscribe();
     };
     SwitchMapSubscriber.prototype._unsubscribe = function () {
         this.innerSubscription = null;
     };
     SwitchMapSubscriber.prototype.notifyComplete = function (innerSub) {
-        this.remove(innerSub);
+        var destination = this.destination;
+        destination.remove(innerSub);
         this.innerSubscription = null;
         if (this.isStopped) {
             _super.prototype._complete.call(this);
@@ -10417,9 +10464,9 @@ var observable = typeof Symbol === 'function' && Symbol.observable || '@@observa
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return rxSubscriber; });
 /* unused harmony export $$rxSubscriber */
 /** PURE_IMPORTS_START  PURE_IMPORTS_END */
-var rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'function')
-    ? /*@__PURE__*/ Symbol.for('rxSubscriber')
-    : '@@rxSubscriber';
+var rxSubscriber = typeof Symbol === 'function'
+    ? /*@__PURE__*/ Symbol('rxSubscriber')
+    : '@@rxSubscriber_' + /*@__PURE__*/ Math.random();
 var $$rxSubscriber = rxSubscriber;
 //# sourceMappingURL=rxSubscriber.js.map
 
@@ -10549,6 +10596,34 @@ function UnsubscriptionErrorImpl(errors) {
 UnsubscriptionErrorImpl.prototype = /*@__PURE__*/ Object.create(Error.prototype);
 var UnsubscriptionError = UnsubscriptionErrorImpl;
 //# sourceMappingURL=UnsubscriptionError.js.map
+
+
+/***/ }),
+
+/***/ "../../../../rxjs/_esm5/internal/util/canReportError.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = canReportError;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Subscriber__ = __webpack_require__("../../../../rxjs/_esm5/internal/Subscriber.js");
+/** PURE_IMPORTS_START _Subscriber PURE_IMPORTS_END */
+
+function canReportError(observer) {
+    while (observer) {
+        var _a = observer, closed_1 = _a.closed, destination = _a.destination, isStopped = _a.isStopped;
+        if (closed_1 || isStopped) {
+            return false;
+        }
+        else if (destination && destination instanceof __WEBPACK_IMPORTED_MODULE_0__Subscriber__["a" /* Subscriber */]) {
+            observer = destination;
+        }
+        else {
+            observer = null;
+        }
+    }
+    return true;
+}
+//# sourceMappingURL=canReportError.js.map
 
 
 /***/ }),
@@ -11393,6 +11468,7 @@ function tryCatch(fn) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var canReportError_1 = __webpack_require__("../../../../rxjs/internal/util/canReportError.js");
 var toSubscriber_1 = __webpack_require__("../../../../rxjs/internal/util/toSubscriber.js");
 var observable_1 = __webpack_require__("../../../../rxjs/internal/symbol/observable.js");
 var pipe_1 = __webpack_require__("../../../../rxjs/internal/util/pipe.js");
@@ -11417,7 +11493,7 @@ var Observable = (function () {
             operator.call(sink, this.source);
         }
         else {
-            sink._addParentTeardownLogic(this.source || (config_1.config.useDeprecatedSynchronousErrorHandling && !sink.syncErrorThrowable) ?
+            sink.add(this.source || (config_1.config.useDeprecatedSynchronousErrorHandling && !sink.syncErrorThrowable) ?
                 this._subscribe(sink) :
                 this._trySubscribe(sink));
         }
@@ -11440,7 +11516,12 @@ var Observable = (function () {
                 sink.syncErrorThrown = true;
                 sink.syncErrorValue = err;
             }
-            sink.error(err);
+            if (canReportError_1.canReportError(sink)) {
+                sink.error(err);
+            }
+            else {
+                console.warn(err);
+            }
         }
     };
     Observable.prototype.forEach = function (next, promiseCtor) {
@@ -11574,11 +11655,10 @@ var Subscriber = (function (_super) {
                     break;
                 }
                 if (typeof destinationOrNext === 'object') {
-                    if (isTrustedSubscriber(destinationOrNext)) {
-                        var trustedSubscriber = destinationOrNext[rxSubscriber_1.rxSubscriber]();
-                        _this.syncErrorThrowable = trustedSubscriber.syncErrorThrowable;
-                        _this.destination = trustedSubscriber;
-                        trustedSubscriber._addParentTeardownLogic(_this);
+                    if (destinationOrNext instanceof Subscriber) {
+                        _this.syncErrorThrowable = destinationOrNext.syncErrorThrowable;
+                        _this.destination = destinationOrNext;
+                        destinationOrNext.add(_this);
                     }
                     else {
                         _this.syncErrorThrowable = true;
@@ -11608,14 +11688,12 @@ var Subscriber = (function (_super) {
         if (!this.isStopped) {
             this.isStopped = true;
             this._error(err);
-            this._unsubscribeParentSubscription();
         }
     };
     Subscriber.prototype.complete = function () {
         if (!this.isStopped) {
             this.isStopped = true;
             this._complete();
-            this._unsubscribeParentSubscription();
         }
     };
     Subscriber.prototype.unsubscribe = function () {
@@ -11635,14 +11713,6 @@ var Subscriber = (function (_super) {
     Subscriber.prototype._complete = function () {
         this.destination.complete();
         this.unsubscribe();
-    };
-    Subscriber.prototype._addParentTeardownLogic = function (parentTeardownLogic) {
-        this._parentSubscription = this.add(parentTeardownLogic);
-    };
-    Subscriber.prototype._unsubscribeParentSubscription = function () {
-        if (this._parentSubscription !== null) {
-            this._parentSubscription.unsubscribe();
-        }
     };
     Subscriber.prototype._unsubscribeAndRecycle = function () {
         var _a = this, _parent = _a._parent, _parents = _a._parents;
@@ -11793,9 +11863,7 @@ var SafeSubscriber = (function (_super) {
     };
     return SafeSubscriber;
 }(Subscriber));
-function isTrustedSubscriber(obj) {
-    return obj instanceof Subscriber || ('syncErrorThrowable' in obj && obj[rxSubscriber_1.rxSubscriber]);
-}
+exports.SafeSubscriber = SafeSubscriber;
 //# sourceMappingURL=Subscriber.js.map
 
 /***/ }),
@@ -11984,9 +12052,9 @@ exports.observable = typeof Symbol === 'function' && Symbol.observable || '@@obs
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'function')
-    ? Symbol.for('rxSubscriber')
-    : '@@rxSubscriber';
+exports.rxSubscriber = typeof Symbol === 'function'
+    ? Symbol('rxSubscriber')
+    : '@@rxSubscriber_' + Math.random();
 exports.$$rxSubscriber = exports.rxSubscriber;
 //# sourceMappingURL=rxSubscriber.js.map
 
@@ -12009,6 +12077,33 @@ function UnsubscriptionErrorImpl(errors) {
 UnsubscriptionErrorImpl.prototype = Object.create(Error.prototype);
 exports.UnsubscriptionError = UnsubscriptionErrorImpl;
 //# sourceMappingURL=UnsubscriptionError.js.map
+
+/***/ }),
+
+/***/ "../../../../rxjs/internal/util/canReportError.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Subscriber_1 = __webpack_require__("../../../../rxjs/internal/Subscriber.js");
+function canReportError(observer) {
+    while (observer) {
+        var _a = observer, closed_1 = _a.closed, destination = _a.destination, isStopped = _a.isStopped;
+        if (closed_1 || isStopped) {
+            return false;
+        }
+        else if (destination && destination instanceof Subscriber_1.Subscriber) {
+            observer = destination;
+        }
+        else {
+            observer = null;
+        }
+    }
+    return true;
+}
+exports.canReportError = canReportError;
+//# sourceMappingURL=canReportError.js.map
 
 /***/ }),
 
@@ -12212,9 +12307,12 @@ and limitations under the License.
 ***************************************************************************** */
 /* global Reflect, Promise */
 
-var extendStatics = Object.setPrototypeOf ||
-    ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-    function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
 
 function __extends(d, b) {
     extendStatics(d, b);
@@ -12222,12 +12320,15 @@ function __extends(d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
 
-var __assign = Object.assign || function __assign(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
     }
-    return t;
+    return __assign.apply(this, arguments);
 }
 
 function __rest(s, e) {
@@ -12271,8 +12372,8 @@ function __generator(thisArg, body) {
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -12340,7 +12441,7 @@ function __asyncGenerator(thisArg, _arguments, generator) {
     return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
     function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
     function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
     function fulfill(value) { resume("next", value); }
     function reject(value) { resume("throw", value); }
     function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
@@ -12349,13 +12450,15 @@ function __asyncGenerator(thisArg, _arguments, generator) {
 function __asyncDelegator(o) {
     var i, p;
     return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { if (o[n]) i[n] = function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; }; }
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
 }
 
 function __asyncValues(o) {
     if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator];
-    return m ? m.call(o) : typeof __values === "function" ? __values(o) : o[Symbol.iterator]();
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 }
 
 function __makeTemplateObject(cooked, raw) {
