@@ -33,7 +33,8 @@
       .form-item {
         display: flex;
         flex-flow: row wrap;
-        flex: 1;
+        flex: 1 auto;
+        max-width: 90%;
       }
 
       .form-required {
@@ -42,7 +43,8 @@
 
       .form-item select,
       .form-item input {
-        width: 90%;
+        flex: 1;
+        min-width: 250px;
       }
 
       .webform-button--submit {
