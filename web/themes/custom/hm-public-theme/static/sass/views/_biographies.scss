@@ -115,6 +115,7 @@
   .pager {
     align-self: center;
     flex: 1;
+    flex-basis: 100%;
     margin: 1.5em 0 3em;
   }
 
@@ -238,6 +239,10 @@
       width: 100%;
       z-index: 2;
 
+      @media screen and (min-width: 0\0) {
+        height: auto;
+        min-height: 100px;
+      }
 
       h3 {
         font-family: $oswald;
@@ -283,6 +288,11 @@
 
   .basic-block {
     width: 100%;
+  
+    @media screen and (min-width: 0\0) {
+      padding-left: 30px;
+    }
+
   }
 
   #makercategorynavigation {
