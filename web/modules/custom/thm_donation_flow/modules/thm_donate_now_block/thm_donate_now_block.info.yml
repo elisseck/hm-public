@@ -1,0 +1,9 @@
+name: 'THM "Donate Now!" Block'
+type: module
+description: 'Reusable Donation CTA button'
+core: 8.x
+package: 'Custom'
+
+dependencies:
+  - custom:thm_donation_flow
+  - custom:thm_direct_checkout
