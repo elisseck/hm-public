@@ -29,12 +29,17 @@
     #webform-4 form {
       display: flex;
       flex-flow: row wrap;
-    
+
       .form-item {
         display: flex;
-        flex-flow: row wrap;
         flex: 1 auto;
-        max-width: 90%;
+        flex-flow: row wrap;
+      
+        @media screen and (max-width: 950px) {
+          margin-right: 0;
+          width: 100%;
+        }
+
       }
 
       .form-required {
@@ -44,18 +49,37 @@
       .form-item select,
       .form-item input {
         flex: 1;
-        min-width: 250px;
+      
+        @media screen and (max-width: 768px) {
+          width: 100%;
+        }
+      
       }
 
       #edit-actions {
         flex: 1 100%;
+        margin-left: 14px;
+      
+        @media screen and (max-width: 950px) {
+          padding-left: 0;
+        }
+      
       }
 
       .webform-button--submit {
         margin-right: 0;
         width: 150px;
+      
+        @media screen and (max-width: 950px) {
+          width: 50%;
+        }
+
+        @media screen and (max-width: 575px) {
+          width: 100%;
+        }
+      
       }
-    
+
     }
 
   }
