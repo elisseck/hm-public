@@ -80,6 +80,24 @@
       
       }
 
+    }//Favorites Block
+
+    //Order History
+    #commerce-order-item-add-to-cart-form-commerce-product-1 {
+      
+      #edit-submit--2 {
+        width: 150px;
+      
+        @media screen and (max-width: 950px) {
+          width: 50%;
+        }
+
+        @media screen and (max-width: 575px) {
+          width: 100%;
+        }
+      
+      }
+
     }
 
   }
