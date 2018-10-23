@@ -34,7 +34,7 @@
         display: flex;
         flex: 1 auto;
         flex-flow: row wrap;
-      
+
         @media screen and (max-width: 950px) {
           margin-right: 0;
           width: 100%;
@@ -49,27 +49,27 @@
       .form-item select,
       .form-item input {
         flex: 1;
-      
+
         @media screen and (max-width: 768px) {
           width: 100%;
         }
-      
+
       }
 
       #edit-actions {
         flex: 1 100%;
         margin-left: 14px;
-      
+
         @media screen and (max-width: 950px) {
           padding-left: 0;
         }
-      
+
       }
 
       .webform-button--submit {
         margin-right: 0;
         width: 150px;
-      
+
         @media screen and (max-width: 950px) {
           width: 50%;
         }
@@ -77,7 +77,7 @@
         @media screen and (max-width: 575px) {
           width: 100%;
         }
-      
+
       }
 
       //Results
@@ -86,7 +86,7 @@
         max-width: none;
         padding: 0;
         width: 100%;
-      
+
         h2 {
           font-size: 30px;
           margin: 15px 0;
@@ -104,15 +104,15 @@
         a.button--primary.button {
           min-width: 150px;
           text-align: center;
-        
+
           @media screen and (max-width: 950px) {
             width: 50%;
           }
-  
+
           @media screen and (max-width: 575px) {
             width: 100%;
           }
-        
+
         }
 
       }
@@ -120,11 +120,19 @@
     }//Favorites Block
 
     //Order History
+    #views-block-my-order-history-block-1 {
+
+      .card {
+        margin-bottom: 30px;
+      }
+
+    }
+
     #commerce-order-item-add-to-cart-form-commerce-product-1 {
-      
+
       #edit-submit--2 {
         width: 150px;
-      
+
         @media screen and (max-width: 950px) {
           width: 50%;
         }
@@ -132,7 +140,7 @@
         @media screen and (max-width: 575px) {
           width: 100%;
         }
-      
+
       }
 
     }
