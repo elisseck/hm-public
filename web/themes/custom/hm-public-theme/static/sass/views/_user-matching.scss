@@ -1,0 +1,39 @@
+.list-matching-favorites {
+  @extend %default-gutter-width;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 30px;
+
+  .view-header {
+    @extend %oswald-light;
+    background: transparent;
+    color: $black;
+    flex: 1;
+    flex-basis: 100%;
+    font-size: 30px;
+    height: em(30);
+    line-height: normal;
+    margin-bottom: em(5);
+    padding-left: 0;
+    padding-top: em(2);
+  }
+
+  //List
+  .view-content {
+    display: flex;
+    flex: 1;
+    flex-basis: 100%;
+    flex-flow: row wrap;
+  }
+
+  //Pager
+  .pager {
+    align-self: center;
+    flex: 1;
+    flex-basis: 100%;
+    margin: 1.5em 0 3em;
+  }
+
+}//.view
