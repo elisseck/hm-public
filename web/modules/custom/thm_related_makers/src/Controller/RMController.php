@@ -71,6 +71,14 @@ class RMController extends ControllerBase {
     ];
   }
 
+  protected function flattenValues(array $data, string $key) {
+    $output = [];
+    foreach ($data as $datum) {
+      array_push($output, $datum[$key]);
+    }
+    return implode(',', $output);
+  }
+
   /**
    * Page content processor.
    *
@@ -83,30 +91,18 @@ class RMController extends ControllerBase {
     $node  = $this->getNode($nid);
     $terms = $this->getSearchTerms($node);
 
-    /** @var ViewExecutable $colorView */
-    $colorView      = Views::getView('related_makers_by_color');
-    $birthPlaceView = Views::getView('related_makers_by_birthplace');
-    $occupationView = Views::getView('related_makers_by_occupation');
-    $educationView  = Views::getView('related_makers_by_education');
+    $x = 1 + 1;
+    $edu = $this->flattenValues($terms['education'], 'value');
 
-
-    $build['related_content'] = [
-      'by_color' => $colorView->buildRenderable(
-        'block_1', [$terms['favorite_color']])
+    // TODO: Refactor the `Education`(Schools) view to handle multiple arguments.
+    return [
+      '#theme' => 'thm_related_makers_full_page',
+      '#data' => [
+        'favorite_color' => $terms['favorite_color'],
+        'birth_place'    => $this->flattenValues($terms['birthplace'], 'target_id'),
+        'occupation'     => $this->flattenValues($terms['occupation'], 'target_id'),
+        'education'      => $terms['education'][0]['value']
+      ]
     ];
-    $build['related_content']['by_birthplace'] = [
-      'by_birthplace' => $birthPlaceView->buildRenderable(
-        'block_1', [$terms['birthplace']])
-    ];
-    $build['related_content']['by_occupation'] = [
-      'by_occupation' => $occupationView->buildRenderable(
-        'block_1', [$terms['occupation']])
-    ];
-    $build['related_content']['by_education'] = [
-      'by_education' => $educationView->buildRenderable(
-        'block_1', [$terms['education']])
-    ];
-
-    return $build;
   }
 }
