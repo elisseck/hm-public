@@ -215,13 +215,22 @@
       padding-left: 0;
     }
 
+    svg {
+      width: 23px;
+    }
+
   }
 
   .sponsor__img { max-width: 100%; }
 
+  .accordion__arrow {
+    width: 23px;
+  }
+
   .accordion__panel {
     line-height: 120%;
     margin-bottom: 1rem;
+    text-align: left;
     text-transform: uppercase;
   }
 
