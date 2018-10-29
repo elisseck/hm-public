@@ -216,6 +216,7 @@
     }
 
     svg {
+      margin-right: 5px;
       width: 23px;
     }
 
@@ -224,7 +225,15 @@
   .sponsor__img { max-width: 100%; }
 
   .accordion__arrow {
-    width: 23px;
+    width: 20px;
+  }
+
+  @supports (-moz-appearance:meterbar) {
+
+    .accordion__arrow {
+      width: 23px;
+    }
+
   }
 
   .accordion__panel {
@@ -269,10 +278,14 @@
 @media screen and (max-width: 900px) {
 
   .info__column {
+    flex: 1 100%;
+    max-width: 40%;
     padding-left: 0;
   }
 
   .bio__column {
+    flex: 1;
+    max-width: none;
     padding-right: 0;
   }
 
@@ -317,20 +330,17 @@
     flex-direction: row;
   }
 
+  .node--type-bio .back-button {
+    flex-basis: 100%;
+    justify-content: flex-start;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
 
-  .info__column {
-    padding-left: 0;
-  }
-
   .node--type-bio h3.info__profession {
     padding-top: 30px;
-  }
-
-  .bio__column {
-    padding-left: 0;
   }
 
   .video-container section {
@@ -349,9 +359,10 @@
 
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 600px) {
 
   .info__column {
+    max-width: none;
     padding-right: 0;
   }
 
