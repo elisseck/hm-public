@@ -89,7 +89,7 @@
       width: 100%;
     }
 
-    a[href*="flag"] {
+    a[href*='flag'] {
       background: url('../images/add-favorite.svg') center center no-repeat;
       color: transparent;
       display: inline-block;
@@ -97,7 +97,7 @@
       margin-top: em(16);
     }
 
-    a[href*="unflag"] {
+    a[href*='unflag'] {
       background: url('../images/remove-favorite.svg') center center no-repeat;
       color: transparent;
       display: inline-block;
@@ -208,7 +208,7 @@
     font-size: rem(18);
     justify-content: space-between;
     margin-bottom: em(60, 18);
-    width: em(130, 18);
+    width: auto;
 
     @media screen and (max-width: 900px) {
       margin-bottom: 0;
@@ -228,7 +228,7 @@
     width: 20px;
   }
 
-  @supports (-moz-appearance:meterbar) {
+  @supports (-moz-appearance: meterbar) {
 
     .accordion__arrow {
       width: 23px;
