@@ -66,6 +66,7 @@ li.pager__item.pager__item--ellipsis {
       width: 70%;
 
       @media screen and (max-width: 520px) {
+        height: 100%;
         width: 80%;
       }
     }
@@ -123,7 +124,7 @@ li.pager__item.pager__item--ellipsis {
     @media screen and (max-width: 950px) {
       flex: 2;
       flex-direction: column;
-      height: 100%;
+      height: auto;
       justify-content: flex-start;
     }
   }
