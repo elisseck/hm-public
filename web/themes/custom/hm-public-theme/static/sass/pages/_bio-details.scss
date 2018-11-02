@@ -8,6 +8,18 @@
 
 }
 
+@media screen and (max-width: 400px) {
+
+  .layout--1-2col-3-9 .row {
+    flex-direction: column;
+  }
+
+  .back-button.scroll {
+    max-width: 150px;
+  }
+
+}
+
 .main { background-color: color(light-grey); }
 
 .node--type-bio {
@@ -225,6 +237,7 @@
   .sponsor__img { max-width: 100%; }
 
   .accordion__arrow {
+    align-self: center;
     width: 20px;
   }
 
@@ -237,6 +250,7 @@
   }
 
   .accordion__panel {
+    display: flex;
     line-height: 120%;
     margin-bottom: 1rem;
     text-align: left;
