@@ -145,6 +145,21 @@
 
     }
 
-  }
+    article {
+
+      .user-picture,
+      .field-intl-address {
+        display: none;
+      }
+
+      div.form-item.form-type-item.form-no-label {
+        margin-bottom: 0;
+        margin-top: 0;
+        padding-left: 0;
+      }
+
+    }
+
+  }//.my-account__content
 
 }//.my-account
