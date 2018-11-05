@@ -112,3 +112,37 @@
   }
 
 }
+
+//Donate Button
+.block.block-thm-donate-now-block {
+  @extend %default-gutter-width;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  width: 100%;
+
+  @media screen and (max-width: 520px) {
+    margin-bottom: 30px;
+  }
+
+  #make-a-donation-block {
+    display: flex;
+    width: 100%;
+  }
+
+  #edit-block-donation-form {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 150px;
+  
+    @media screen and (max-width: 950px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 520px) {
+      width: 100%;
+    }
+  
+  }
+
+}
