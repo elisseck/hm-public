@@ -97,8 +97,49 @@
         }
 
         .list-biography-cards-w-category-filter {
+          margin-bottom: 30px;
           margin-top: 30px;
           padding-right: 0;
+
+          @media screen and (max-width: 950px) {
+            padding: 0;
+          }
+
+        }
+
+        .bio-card--list {
+          margin: 1%;
+
+          &:nth-child(3n+1) {
+            margin-left: 0;
+          }
+
+          &:nth-child(3n) {
+            margin-right: 0;
+          }
+
+          @media screen and (max-width: 768px) {
+            max-width: 48%;
+            min-width: 48%;
+
+            &:nth-child(3n+1) {
+              margin-left: 1%;
+            }
+
+            &:nth-child(3n) {
+              margin-right: 1%;
+            }
+
+            &:nth-child(2n+1) {
+              margin-left: 0;
+            }
+
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+
+          }
+
         }
 
         .bio-card--list a .bio-card--content {

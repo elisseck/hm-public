@@ -46,58 +46,58 @@
 
     &:nth-child(4n) {
       margin-right: 0;
-    }  
-    
+    }
+
     @media screen and (max-width: 950px) {
       width: 30%;
-      
+
       &:nth-child(4n+1) {
         margin-left: 2%;
       }
-  
+
       &:nth-child(4n) {
         margin-right: 2%;
-      } 
+      }
 
       &:nth-child(3n+1) {
         margin-left: 0;
       }
-  
+
       &:nth-child(3n) {
         margin-right: 0;
-      } 
+      }
 
-    } 
-    
+    }
+
     @media screen and (max-width: 600px) {
       margin: 1%;
       width: 49%;
-      
+
       &:nth-child(4n+1) {
         margin-left: 1%;
       }
-  
+
       &:nth-child(4n) {
         margin-right: 1%;
-      } 
+      }
 
       &:nth-child(3n+1) {
         margin-left: 1%;
       }
-  
+
       &:nth-child(3n) {
         margin-right: 1%;
-      } 
+      }
 
       &:nth-child(2n+1) {
         margin-left: 0;
       }
-  
+
       &:nth-child(2n) {
         margin-right: 0;
-      }       
+      }
 
-    }     
+    }
 
     .views-field.views-field-title {
       background: $white;
