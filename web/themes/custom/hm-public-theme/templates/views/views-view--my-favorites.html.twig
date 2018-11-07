@@ -1,13 +1,13 @@
 {#<h2 class="view-block__title">{{view.storage.label}}</h2>#}
 {% if rows[0]['#rows'] %}
-  {% set selectedWorkGrouped = rows[0]['#rows']|batch(3) %}
+  {% set selectedWorkGrouped = rows[0]['#rows']|batch(6) %}
 
     {% for group in selectedWorkGrouped %}
       <div class="row">
 
         {% for entry in group %}
 
-          <div class="col-md-4 favorite">
+          <div class="favorite">
 
           <div class="favorite__flag">
             {{ entry['#view'].query.displayHandler.handlers.field.link_flag.original_value }}
