@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains thm_maker_category_block.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function thm_maker_category_block_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the thm_maker_category_block module.
+    case 'help.page.thm_maker_category_block':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A custom block designed to render each category in the &#039;Maker Category&#039; taxonomy.  This block also renders a random bio photo representing each category.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function thm_maker_category_block_theme() {
+  return [
+    'thm_maker_category_block' => [
+      'variables' => [ 'data' => null ],
+      'render element' => 'children',
+    ],
+  ];
+}

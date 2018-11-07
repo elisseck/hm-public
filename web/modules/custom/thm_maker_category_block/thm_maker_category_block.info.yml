@@ -1,0 +1,5 @@
+name: 'THM Maker Category Block'
+type: module
+description: 'A custom block designed to render each category in the "Maker Category" taxonomy.  This block also renders a random bio photo representing each category.'
+core: 8.x
+package: 'Custom'

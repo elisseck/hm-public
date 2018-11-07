@@ -1,0 +1,19 @@
+<!-- Add you custom twig html here -->
+{#
+  - THM Maker Category Block
+  - variables:
+  -
+  - data: contains array consisting of:
+  -  maker_category_id: id of maker category
+  -  maker_category_name: name of maker category
+  -  maker_category_desc: maker category text content
+  -  maker_category_img: random image from bio in respective maker category
+#}
+
+{% for item in data %}
+<div>
+  <h2>{{ item.maker_category_name }}</h2>
+  <img src="{{ item.maker_category_img }}">
+  <h4>{{ item.maker_category_desc }}</h4>
+</div>
+{% endfor %}
