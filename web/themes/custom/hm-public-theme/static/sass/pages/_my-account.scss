@@ -25,7 +25,7 @@
 
   .my-account__content {
 
-    //My Favorites Block
+    //Favorites Matcher
     #webform-4 form {
       display: flex;
       flex-flow: row wrap;
@@ -170,7 +170,16 @@
 
       }
 
-    }//Favorites Block
+    }//Favorites Matcher
+
+    //My Favorites
+    #views-block-my-favorites-block-1 {
+
+      .pager {
+        margin-top: 30px;
+      }
+
+    }
 
     //Order History
     #views-block-my-order-history-block-1 {
