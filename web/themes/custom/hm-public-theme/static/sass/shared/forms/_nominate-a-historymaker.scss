@@ -17,3 +17,12 @@
 #edit-fieldset-nominee-contact-details {
   margin-top: 30px;
 }
+
+#edit-maker-category--wrapper > legend {
+  margin-bottom: 0;
+}
+
+#edit-maker-category--wrapper > legend > span {
+  font-size: 16px;
+  color: color($page-font-color);
+}
