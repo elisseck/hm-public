@@ -356,6 +356,14 @@ input[type='checkbox']:checked + label:after {
 
 }
 
+@media screen and (max-width: 900px) {
+
+  #edit-actions {
+    padding-left: 15px;
+  }
+
+}
+
 @media screen and (max-width: 769px) {
 
   #edit-actions {
