@@ -1,0 +1,20 @@
+#views-block-newsletter-archive-block-1 {
+  padding-bottom: 15px;
+}
+
+.view.list-newsletter-archive table {
+  margin-bottom: 30px;
+  width: 100%;
+
+  tbody {
+    display: flex;
+    flex-flow: column wrap;
+    max-height: 200px;
+  }
+
+  .newsletter-archive:nth-child(2),
+  .newsletter-archive:nth-child(5) {
+    background: color(light-grey);
+  }
+
+}
