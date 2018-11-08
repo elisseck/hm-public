@@ -91,9 +91,6 @@ class RMController extends ControllerBase {
     $node  = $this->getNode($nid);
     $terms = $this->getSearchTerms($node);
 
-    $x = 1 + 1;
-    $edu = $this->flattenValues($terms['education'], 'value');
-
     // TODO: Refactor the `Education`(Schools) view to handle multiple arguments.
     return [
       '#theme' => 'thm_related_makers_full_page',
