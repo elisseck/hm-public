@@ -140,6 +140,23 @@
 
           }
 
+          @media screen and (max-width: 400px) {
+            max-width: none;
+            min-width: 100%;
+
+            a .bio-card--image {
+              background: $black;
+            }
+
+            a .bio-card--image img {
+              height: 100%;
+              margin-left: auto;
+              margin-right: auto;
+              width: auto;
+            }
+
+          }
+
         }
 
         .bio-card--list a .bio-card--content {
