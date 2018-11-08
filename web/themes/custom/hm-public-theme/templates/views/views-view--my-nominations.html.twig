@@ -14,7 +14,6 @@
             <ul class="list-group list-group-flush">
                 {% for nomination in nominations %}
                     {% set data = nomination['#row']._entity.data %}
-                    {{ devel_breakpoint() }}
                     <li class="list-group-item">{{ data.first_name_personal_1 }} {{ data.last_name_personal_1 }} </li>
                 {% endfor %}
             </ul>
