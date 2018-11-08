@@ -106,10 +106,15 @@
             padding: 0;
           }
 
+          //IE
+          .view-content {
+            height: 100%
+          }
+
         }
 
         .bio-card--list {
-          margin: 1%;
+          margin: 0 1% 15px 1%;
 
           &:nth-child(3n+1) {
             margin-left: 0;
