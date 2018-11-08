@@ -99,6 +99,22 @@
 
     }
 
+    @media screen and (max-width: 400px) {
+      width: 100%;
+
+      a .bio-card--image {
+        background: $black;
+      }
+
+      a .bio-card--image img {
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+      }
+
+    }
+
     .views-field.views-field-title {
       background: $white;
       height: auto;
