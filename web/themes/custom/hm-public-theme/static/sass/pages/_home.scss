@@ -104,13 +104,25 @@
 }
 
 .layout--1-2-1col .block-region-custom-right div .video-container[_ngcontent-c0] {
+  flex-direction: column;
   max-width: none;
   padding-left: 0 !important;
   padding-right: 0 !important;
 
+  .col-md-8.hero-vid__left-col {
+    max-width: none;
+    width: 100%;
+  }
+
   .hero-vid__right-col[_ngcontent-c0] {
     background-color: $white;
+    max-width: none;
     padding: 30px;
+    width: 100%;
+  }
+
+  .vg-volume .volumeKnob {
+    width: 0.85714286em !important;
   }
 
   //H2
