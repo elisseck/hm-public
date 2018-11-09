@@ -16,6 +16,11 @@
 
 #edit-fieldset-nominee-contact-details {
   margin-top: 30px;
+
+  @media screen and (max-width: 950px) {
+    margin-top: 30px;
+  }
+
 }
 
 #edit-maker-category--wrapper > legend {
