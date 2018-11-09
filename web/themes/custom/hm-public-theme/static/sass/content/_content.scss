@@ -1,5 +1,10 @@
 // Generic content styles
 
+//Make sure nothing sits on top of IPE
+#panels-ipe-tray {
+  z-index: 9999;
+}
+
 // Basic Block Content
 .wrapper .basic-block,
 .basic-block {
