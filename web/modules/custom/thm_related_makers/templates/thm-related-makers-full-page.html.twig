@@ -8,14 +8,71 @@
 #  - maker_type (list)
 #  - occupations (list)
 #}
-<h2>Related by Color</h2>
-{{ drupal_view('related_makers_by_color', 'block_1', data.favorite_color) }}
 
-<h2>Related by Birthplace</h2>
-{{ drupal_view('related_makers_by_birthplace', 'block_1', data.birth_place) }}
+<div class="related-makers">
 
-<h2>Related by Occupation</h2>
-{{ drupal_view('related_makers_by_occupation', 'block_1', data.occupation) }}
+  {# Related by Birthplace #}
+  <div class="accordion">
+      <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#related-by-birthplace" aria-expanded="true" aria-controls="related-by-birthplace">
+          Related by Birthplace
+          <span class="accordion__arrow">
+              <span class="accordion__arrow-half"></span>
+              <span class="accordion__arrow-half"></span>
+          </span>
+      </button>
+      <div class="collapse show accordion__body" id="related-by-birthplace">
+          <div class="card">
+            {{ drupal_view('related_makers_by_birthplace', 'block_1', data.birth_place) }}
+          </div>
+      </div>
+  </div>
 
-<h2>Related by Education</h2>
-{{ drupal_view('related_makers_by_education', 'block_1', data.education) }}
+  {# Related by Color #}
+  <div class="accordion">
+      <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#related-by-color" aria-expanded="true" aria-controls="related-by-color">
+          Related by Color
+          <span class="accordion__arrow">
+              <span class="accordion__arrow-half"></span>
+              <span class="accordion__arrow-half"></span>
+          </span>
+      </button>
+      <div class="collapse show accordion__body" id="related-by-color">
+          <div class="card">
+            {{ drupal_view('related_makers_by_color', 'block_1', data.favorite_color) }}
+          </div>
+      </div>
+  </div>
+
+  {# Related by Education #}
+  <div class="accordion">
+      <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#related-by-education" aria-expanded="true" aria-controls="related-by-education">
+          Related by Education
+          <span class="accordion__arrow">
+              <span class="accordion__arrow-half"></span>
+              <span class="accordion__arrow-half"></span>
+          </span>
+      </button>
+      <div class="collapse show accordion__body" id="related-by-education">
+          <div class="card">
+            {{ drupal_view('related_makers_by_education', 'block_1', data.education) }}
+          </div>
+      </div>
+  </div>
+
+  {# Related by Occupation #}
+  <div class="accordion">
+      <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#related-by-occupation" aria-expanded="true" aria-controls="related-by-occupation">
+          Related by Occupation
+          <span class="accordion__arrow">
+              <span class="accordion__arrow-half"></span>
+              <span class="accordion__arrow-half"></span>
+          </span>
+      </button>
+      <div class="collapse show accordion__body" id="related-by-occupation">
+          <div class="card">
+            {{ drupal_view('related_makers_by_occupation', 'block_1', data.occupation) }}
+          </div>
+      </div>
+  </div>
+
+</div>{#related-makers#}

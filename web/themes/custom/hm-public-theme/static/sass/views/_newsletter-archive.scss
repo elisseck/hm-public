@@ -15,7 +15,7 @@
   .newsletter-archive:nth-child(2),
   .newsletter-archive:nth-child(5) {
     background: color(light-grey);
-  
+
     //IE 11
     @media screen and (min-width: 0\0) {
       background: $white;
