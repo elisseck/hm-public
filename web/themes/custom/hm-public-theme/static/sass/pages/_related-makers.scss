@@ -14,6 +14,15 @@
       margin-right: 2%;
     }
 
+    @media screen and (max-width: 650px) {
+      width: 100%;
+    
+      &:nth-child(2n+1) {
+        margin-right: 0;
+      }
+    
+    }
+
     .card {
       background: transparent;
       border: 0;
