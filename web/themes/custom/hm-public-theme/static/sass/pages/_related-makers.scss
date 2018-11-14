@@ -1,0 +1,75 @@
+.related-makers {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+
+    &:nth-child(2n+1) {
+      margin-right: 2%;
+    }
+
+    .card {
+      background: transparent;
+      border: 0;
+    }
+
+  }//accordion
+
+  .view.list-related-makers-by-color,
+  .view.list-related-makers-by-birthplace,
+  .view.list-related-makers-by-education,
+  .view.list-related-makers-by-occupation {
+
+    .view-content {
+      display: flex;
+      flex-flow: row wrap;
+
+      .bio-card--related.favorite__card {
+        width: 100%;
+      }
+
+      .bio-card--related__img {
+        max-width: 120px;
+      }
+
+      .bio-card--related__img img {
+        height: 100%;
+        transform: scale(1.1);
+        width: 100%;
+      }
+
+      .bio-card__info {
+        align-items: flex-start;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+      }
+
+      h3.bio-card__name a:hover {
+        text-decoration: none;
+      }
+
+      h4.bio-card__job {
+        text-align: left;
+
+        a {
+          color: $black;
+        }
+
+      }
+
+    }//view-content
+
+    nav.pager {
+      padding: 30px 0;
+    }
+
+  }
+
+}//related-makers
