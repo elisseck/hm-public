@@ -107,12 +107,8 @@ article .form-item.form-item-.form-type-item.form-no-label {
 
 //1-2 Col Layout
 #return-to-top {
-  left: 0;
+  left: 30px;
   position: absolute;
-
-  @media screen and (max-width: 950px) {
-    left: 30px;
-  }
 
   @media screen and (max-width: 900px) {
     left: 15px;
