@@ -162,8 +162,9 @@
 
             {# Related Makers #}
             <section class="discover">
-              <h2 class="discover__heading">Discover Other Related HistoryMakers</h2>
+              <h2>Recommended Related Makers</h2>
               {{ page.content.relatedmakersblock }}
+              <a class="button button--primary" href="/related-to/{{ node.id }}">More Related Makers</a>
             </section>
             {# End Related Makers #}
 
@@ -185,7 +186,7 @@
               <section class="col-sm-3 sponsor">
                 <h2>Sponsored by {{ node.field_sponsor.value }}</h2>
                 <div>
-                  <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="">
+                  <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="Profile picture">
                 </div>
               </section>
               {% endif %}
