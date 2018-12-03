@@ -41,29 +41,23 @@
   }
 
   .view-header {
-    @extend %oswald-light;
-    background: $black;
-    color: $white;
-    flex: 1;
-    flex-basis: 100%;
-    font-size: em(44);
+    background: transparent;
+    color: $black;
+    flex: 1 100%;
+    font-size: 30px;
     height: em(30);
     line-height: normal;
     margin-bottom: em(5);
-    padding-left: em(15);
+    order: 2;
+    padding-left: 0;
     padding-top: em(2);
-
-    @media screen and (max-width: 767px) {
-      font-size: 1.5em;
-    }
-
   }
 
   //Filters
   .view-filters.form-group {
-    flex-basis: 50%;
+    flex-basis: 100%;
     margin: 1.5em 0 3em;
-    order: 3;
+    order: 1;
 
     @media screen and (max-width: 767px) {
       margin: auto;
@@ -94,9 +88,9 @@
 
   .view-content {
     display: flex;
-    flex: 1;
+    flex: 1 100%;
     flex-flow: row wrap;
-    order: 4;
+    order: 3;
   }
 
   .view-footer {
@@ -112,10 +106,9 @@
 
   .pager {
     align-self: center;
-    flex: 1;
-    flex-basis: 50%;
+    flex: 1 100%;
     margin: 1.5em 0 3em;
-    order: 2;
+    order: 4;
 
     .pager__items {
 
@@ -143,8 +136,39 @@
 
 }
 
+.block-facet--autocomplete-widget, 
+.block-facets {
+
+  h2 {
+    @extend %oswald-light;
+    background-color: color(secondary);
+    border-radius: 0;
+    color: $white;
+    display: flex;
+    font-size: 1.25em;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.55556em 0.83333em;
+    width: 100%;
+  }
+
+  .form-item- {
+    margin: 0 0 15px;
+  }
+
+  .facets-widget-checkbox {
+    background: $white;
+    margin-bottom: 15px;
+    padding: 15px 10px;
+  }
+
+}
+
 .js-facets-autocomplete {
-  max-width: 80% !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  max-width: 100% !important;
 }
 
 .views-field-title, .views-field-title-product {
