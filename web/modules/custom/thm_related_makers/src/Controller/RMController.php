@@ -11,9 +11,8 @@ namespace Drupal\thm_related_makers\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\Entity\Node;
 use Drupal\Core\Render\Renderer;
-use Drupal\views\Views;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\views\ViewExecutable;
+use Drupal\taxonomy\Entity\Term;
 
 
 class RMController extends ControllerBase {
@@ -65,6 +64,7 @@ class RMController extends ControllerBase {
   public function getSearchTerms(Node $node): array {
     return [
       'favorite_color' => $node->get('field_favorite_color')->value,
+      'employment'     => $node->get('field_employment')->getValue(),
       'birthplace'     => $node->get('field_birth_place_term')->getValue(),
       'occupation'     => $node->get('field_occupation')->getValue(),
       'education'      => $node->get('field_schools')->getValue()
@@ -79,6 +79,20 @@ class RMController extends ControllerBase {
     return implode(',', $output);
   }
 
+  protected function tidToName(int $termId) {
+    return Term::load($termId)->getName();
+  }
+
+  protected function convertTermIdsToTermNames(array $terms) {
+    $output = [];
+    foreach ($terms as $key => $term) {
+      $output[$key] = implode(',', array_map(function($tid){
+        return $this->tidToName($tid['target_id']);
+      }, $term));
+    }
+    return $output;
+  }
+
   /**
    * Page content processor.
    *
@@ -88,16 +102,22 @@ class RMController extends ControllerBase {
    */
   public function content(int $nid): array {
 
-    $node  = $this->getNode($nid);
-    $terms = $this->getSearchTerms($node);
+    $node   = $this->getNode($nid);
+    $terms  = $this->getSearchTerms($node);
+    $values = $this->convertTermIdsToTermNames([
+      'birth_place' => $terms['birthplace'],
+      'occupation'  => $terms['occupation']
+    ]);
 
-    // TODO: Refactor the `Education`(Schools) view to handle multiple arguments.
     return [
       '#theme' => 'thm_related_makers_full_page',
       '#data' => [
         'favorite_color' => $terms['favorite_color'],
+        'employment'     => $terms['employment'][0]['value'],
         'birth_place'    => $this->flattenValues($terms['birthplace'], 'target_id'),
+        'birthplace_str' => $values['birth_place'],
         'occupation'     => $this->flattenValues($terms['occupation'], 'target_id'),
+        'occupation_str' => $values['occupation'],
         'education'      => $terms['education'][0]['value']
       ]
     ];

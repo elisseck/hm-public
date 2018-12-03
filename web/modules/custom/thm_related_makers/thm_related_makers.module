@@ -10,6 +10,9 @@ use Drupal\search_api\Entity\Index;
 use Drupal\node\NodeInterface;
 use Drupal\file\Entity\File;
 use Drupal\taxonomy\Entity\Term;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_help().
@@ -24,6 +27,32 @@ function thm_related_makers_help($route_name, RouteMatchInterface $route_match) 
       return $output;
 
     default:
+  }
+}
+
+function _get_node_title_of_nid_url_param() {
+  $currentNid = \Drupal::routeMatch()->getParameter('nid');
+  return empty($currentNid) ? '' : Node::load($currentNid)->getTitle();
+}
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * @param $view ViewExecutable
+ * @param $query QueryPluginBase
+ */
+function thm_related_makers_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  $relatedMakerViews = [
+    'related_makers_employment_', 'related_makers_by_occupation',
+    'related_makers_by_birthplace', 'related_makers_by_education'
+  ];
+
+  if (in_array($view->id(), $relatedMakerViews)) {
+    $query->where[0]['conditions'][] = [
+      'field' => 'node_field_data.title',
+      'value' => _get_node_title_of_nid_url_param(),
+      'operator' => '<>'
+    ];
   }
 }
 

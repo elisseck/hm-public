@@ -29,12 +29,17 @@ class AutoCompleteWidget extends WidgetPluginBase {
     return 'thm_adv_search_' . $s;
   }
 
+  protected function normalizeId(string $facetId) {
+    return rtrim(ucwords(str_replace('_', ' ', $facetId)));
+  }
+
   public function build(FacetInterface $facet) {
     $clsId = $this->prefixify($facet->id());
 
     $build['#type'] = 'textfield';
     $build['#attached']['library'][] = 'thm_adv_search/auto-complete-widget';
     $build['#attributes']['class'] = [/*'form-autocomplete',*/ 'js-facets-autocomplete', $clsId];
+    $build['#attributes']['placeholder'] = 'Enter ' . $this->normalizeId($facet->id());
     return $build;
   }
 }
