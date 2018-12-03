@@ -14,7 +14,7 @@
   {# Related by Birthplace #}
   <div class="accordion">
       <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#related-by-birthplace" aria-expanded="true" aria-controls="related-by-birthplace">
-          Related by Birthplace
+          Related by Birthplace ({{ data.birthplace_str }})
           <span class="accordion__arrow">
               <span class="accordion__arrow-half"></span>
               <span class="accordion__arrow-half"></span>
@@ -27,18 +27,18 @@
       </div>
   </div>
 
-  {# Related by Color #}
+  {# Related by Employment #}
   <div class="accordion">
-      <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#related-by-color" aria-expanded="true" aria-controls="related-by-color">
-          Related by Color
+      <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#related-by-employment" aria-expanded="true" aria-controls="related-by-employment">
+          Related by Employment ({{ data.employment }})
           <span class="accordion__arrow">
               <span class="accordion__arrow-half"></span>
               <span class="accordion__arrow-half"></span>
           </span>
       </button>
-      <div class="collapse show accordion__body" id="related-by-color">
+      <div class="collapse show accordion__body" id="related-by-employment">
           <div class="card">
-            {{ drupal_view('related_makers_by_color', 'block_1', data.favorite_color) }}
+            {{ drupal_view('related_makers_employment_', 'block_1', data.employment) }}
           </div>
       </div>
   </div>
@@ -46,7 +46,7 @@
   {# Related by Education #}
   <div class="accordion">
       <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#related-by-education" aria-expanded="true" aria-controls="related-by-education">
-          Related by Education
+          Related by Education ({{ data.education }})
           <span class="accordion__arrow">
               <span class="accordion__arrow-half"></span>
               <span class="accordion__arrow-half"></span>
@@ -62,7 +62,7 @@
   {# Related by Occupation #}
   <div class="accordion">
       <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#related-by-occupation" aria-expanded="true" aria-controls="related-by-occupation">
-          Related by Occupation
+          Related by Occupation ({{ data.occupation_str }})
           <span class="accordion__arrow">
               <span class="accordion__arrow-half"></span>
               <span class="accordion__arrow-half"></span>
