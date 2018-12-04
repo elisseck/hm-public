@@ -10,7 +10,7 @@
     Drupal.thm.widgetCls = '.js-facets-autocomplete';
 
     Drupal.thm.taxonomyWidgets = [
-        'birthplace_', 'schools_', 'occupation_', 'organizations_'
+        'birthplace_', 'occupation_', 'organizations_'
     ];
 
     Drupal.thm.excludeWidgets = [ 'maker_category' ];
