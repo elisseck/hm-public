@@ -71,6 +71,7 @@
   .view-content {
     flex: 1;
     flex-basis: 80%;
+    margin-top: 15px;
   }
 
   //Pager
@@ -204,4 +205,34 @@
     }
 
   }//close li
+}
+
+//My Cart button
+.my-cart--button {
+  @extend %default-gutter-width;
+  position: absolute;
+  right: 0;
+
+  a {
+    text-align: center;
+    width: 154px;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .my-cart--button {
+    width: 100%;
+
+    a {
+      width: 100%;
+    }
+
+  }
+
+  form#views-exposed-form-commerce-products-page-2 {
+    margin-top: 30px;
+  }
+
 }
