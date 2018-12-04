@@ -33,7 +33,6 @@
   flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: em(60);
   padding: 0 $default-grid-gutter-width 0 0;
 
   @media screen and (max-width: 767px) {
@@ -56,7 +55,7 @@
   //Filters
   .view-filters.form-group {
     flex-basis: 100%;
-    margin: 1.5em 0 3em;
+    margin: 1.5em 0;
     order: 1;
 
     @media screen and (max-width: 767px) {
@@ -69,13 +68,30 @@
     align-items: baseline;
     display: flex;
     flex: 1;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    align-items: flex-end;
 
     @media screen and (max-width: 767px) {
       flex-direction: column;
     }
 
-  }
+    .form-item {
+      margin-bottom: 0;
+    }
+
+    input#edit-search-api-fulltext {
+      width: 450px;
+    }
+
+    #edit-actions {
+      margin: 0;
+    }
+
+    #edit-submit-advanced-search {
+      width: 150px;
+    }
+
+  }//.views-exposed-form
 
   .form-item.form-item-items-per-page.form-type-select {
     flex: 1;
@@ -98,7 +114,7 @@
 
     .field-content-alignment { display: none; }
 
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 950px) {
       display: flex;
     }
 
@@ -145,6 +161,7 @@
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 130px;
   width: 100%;
 }
 
