@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface as RMI;
+use Solarium\Core\Query\QueryInterface as SolrQuery;
+use Drupal\search_api\Query\QueryInterface as DrupalQuery;
 
 /**
  * Implements hook_help().
@@ -20,5 +22,24 @@ function thm_adv_search_help($route_name, RMI $route_match) {
       return $output;
 
     default:
+  }
+}
+
+/**
+ * @param \Solarium\Core\Query\QueryInterface $solarium_query
+ */
+function _apply_biography_filter(SolrQuery $solarium_query) {
+  $solarium_query->addFilterQuery($solarium_query->createFilterQuery('type', 'bio', '=', null, []));
+}
+
+/**
+ * Implements hook_search_api_solr_query_alter().
+ *
+ * @param $solarium_query SolrQuery
+ * @param $query DrupalQuery
+ */
+function thm_adv_search_search_api_solr_query_alter(SolrQuery $solarium_query, DrupalQuery $query) {
+  if ($query->getSearchId() === 'views_page:advanced_search__page_1') {
+    _apply_biography_filter($solarium_query);
   }
 }
