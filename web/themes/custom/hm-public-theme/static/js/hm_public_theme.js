@@ -36,12 +36,11 @@
             path         = settings.path,
             location     = window.location;
 
-        $(containerCls).find(targetId).once('handle-filter-reset').each(function() {
-            $(targetId).on('click', function(evt) {
-                evt.preventDefault();
-                location.replace(path.baseUrl + path.currentPath);
-            });
-        });
+        $(containerCls).find(targetId).once('handle-filters')
+          .on('click', function(evt) {
+            evt.preventDefault();
+            location.replace(path.baseUrl + path.currentPath);
+          });
     };
 
     Drupal.thm.searchToggler = function(context, settings) {
