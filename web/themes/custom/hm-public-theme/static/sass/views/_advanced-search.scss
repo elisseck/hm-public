@@ -136,7 +136,30 @@
 
 }
 
-.block-facet--autocomplete-widget, 
+.block-facets__header {
+  @extend %oswald-light;
+  border-radius: 0;
+  color: color(quaternary);
+  display: flex;
+  font-size: 1.875em;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.thm-adv-search-filter-mgmt {
+  cursor: pointer;
+
+  .button {
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
+  }
+
+}
+
+.block-facet--autocomplete-widget,
 .block-facets {
 
   h2 {
