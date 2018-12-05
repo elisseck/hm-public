@@ -1,7 +1,5 @@
 // Advanced Search View
-
 .block-thm-adv-search-facet-container {
-  //top: -999px;
   background: color(light-grey);
   display: none;
   left: 0;
@@ -152,6 +150,7 @@
 
 }
 
+//Filter Biographies
 .block-facets__header {
   @extend %oswald-light;
   border-radius: 0;
@@ -165,15 +164,22 @@
   width: 100%;
 }
 
+//Reset button
 .thm-adv-search-filter-mgmt {
   cursor: pointer;
 
   .button {
     margin-bottom: 15px;
+    margin-right: 0;
     text-align: center;
     width: 100%;
   }
 
+}
+
+//Remove padding-right on basic-block
+.side-navigation .basic-block {
+  padding-right: 0;
 }
 
 .block-facet--autocomplete-widget,
@@ -205,6 +211,11 @@
 
 }
 
+.block-facets {
+  @extend %default-gutter-width;
+  padding-right: 0;
+}
+
 .js-facets-autocomplete {
   border-radius: 0 !important;
   box-shadow: none !important;
@@ -220,5 +231,22 @@
     font-size: 1em;
     line-height: 1.1;
   }
+
+}
+
+//Facets Button
+button.facets__button {
+  align-items: center;
+  background-color: color(secondary);
+  border-radius: 0;
+  display: flex;
+  padding: 8px 10px;
+  width: 150px;
+  justify-content: center;
+
+  svg.filters__button-icon {
+    margin-right: 10px;
+  }
+
 
 }
