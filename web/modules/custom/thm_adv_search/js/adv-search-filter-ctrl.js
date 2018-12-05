@@ -10,11 +10,11 @@
     };
 
     Drupal.thm.handleSearchFilters = function(context, settings) {
-        $('.facets__button').on('click', function(evt){
+        $('.facets__button').once('search-facets-toggle').on('click', function(evt){
           Drupal.thm.toggleClasses();
         });
 
-        $('.facets__header-button').on('click', function (evt) {
+        $('.facets__header-button').once('search-facets-cancel').on('click', function (evt) {
           Drupal.thm.toggleClasses();
         })
     };
