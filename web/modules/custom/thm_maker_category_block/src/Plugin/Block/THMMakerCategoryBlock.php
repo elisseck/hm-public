@@ -110,6 +110,11 @@ SQL;
 
     $results = $this->getMakerCategories();
 
+    // annoying hack entered because the data is `unclean`
+    $results = array_filter($results, function(Term $result) {
+      return !in_array($result->getName(), ['EducationMaker', 'CivicMaker']);
+    });
+
     $makerCats = array_map(function(Term $result) {
       return [
         'maker_category_id' => $result->id(),
