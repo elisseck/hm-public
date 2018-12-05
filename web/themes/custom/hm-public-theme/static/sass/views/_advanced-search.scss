@@ -27,15 +27,11 @@
 }
 
 .list-advanced-search {
+  @extend %default-gutter-width;
   display: flex;
   flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 0 $default-grid-gutter-width 0 0;
-
-  @media screen and (max-width: 767px) {
-    padding-right: 0;
-  }
 
   .view-header {
     background: transparent;
@@ -55,11 +51,6 @@
     flex-basis: 100%;
     margin: 1.5em 0;
     order: 1;
-
-    @media screen and (max-width: 767px) {
-      margin: auto;
-    }
-
   }
 
   .views-exposed-form {
@@ -68,10 +59,6 @@
     flex: 1;
     justify-content: flex-start;
     align-items: flex-end;
-
-    @media screen and (max-width: 767px) {
-      flex-direction: column;
-    }
 
     .form-item {
       margin-bottom: 0;
@@ -85,8 +72,44 @@
       margin: 0;
     }
 
-    #edit-submit-advanced-search {
-      width: 150px;
+    #edit-submit-advanced-search,
+    .button.js-form-submit.form-submit {
+      margin-right: 0;
+      min-width: 150px;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 950px) {
+      
+      .form-item {
+        flex: 1 100%;
+      }
+
+      input#edit-search-api-fulltext,
+      .form-autocomplete.form-text.ui-autocomplete-input,
+      .form-actions.form-wrapper {
+        width: 100%;
+      }
+
+      #edit-actions {
+        flex: 1;
+      }
+
+    }  
+
+    @media screen and (max-width: 520px) {
+      flex-direction: column;
+
+      #edit-submit-advanced-search,
+      .button.js-form-submit.form-submit {
+        margin-top: 30px;
+        padding: 0;
+      }
+
+      #edit-actions {
+        padding: 0;
+      }
+
     }
 
   }//.views-exposed-form
@@ -107,6 +130,7 @@
     order: 3;
   }
 
+  //Mobile filters button
   .view-footer {
     display: none;
 
@@ -114,6 +138,8 @@
 
     @media screen and (max-width: 950px) {
       display: flex;
+      flex-basis: 100%;
+      justify-content: flex-end;
     }
 
   }
@@ -123,29 +149,6 @@
     flex: 1 100%;
     margin: 1.5em 0 3em;
     order: 4;
-
-    .pager__items {
-
-      @media screen and (max-width: 767px) {
-        margin: 0 auto;
-        width: 82%;
-      }
-
-    }
-
-  }
-
-}
-
-// Targets the sidebar only on the Advanced Search page
-.path-advanced-search {
-
-  .sidebar {
-
-    @media screen and (max-width: 767px) {
-      display: none;
-    }
-
   }
 
 }
