@@ -50,6 +50,11 @@ function get_config() {
   return \Drupal::config('thm_forms.settings');
 }
 
+function _form_has_search_id(array $form, string $searchFormId) {
+  return isset($form['search_api_fulltext']) &&
+    $form['search_api_fulltext']['#search_id'] === $searchFormId;
+}
+
 /**
  * Implements hook_form_alter().
  *
@@ -63,6 +68,14 @@ function thm_forms_form_alter(&$form, FSI $form_state, $current_form) {
 
   if ($config->get('thm_forms.debug_toggle')) {
     drupal_set_message('form ID is present: ' . $current_form);
+  }
+
+  if ($current_form === 'upgrade_to_thmda' && \Drupal::currentUser()->id()) {
+    $form['#token'] = null;
+  } else if ($current_form === 'views_exposed_form') {
+    if (_form_has_search_id($form, 'advanced_search')) {
+      $form['search_api_fulltext']['#attributes']['placeholder'] = 'Search Biographies';
+    }
   }
 
   foreach ($formsData as $formID => $formClasses) {
