@@ -13,15 +13,17 @@
 {% for item in data %}
   {#
     note to template devs:
-    There's a category that shouldn't be: CivicMaker.
+    There are categories that shouldn't be: CivicMaker and EducationMaker (atm).
     Likely due to data in FileMaker, but this is quicker than getting
     them to clean up their data.
   #}
-  {% if item.maker_category_name != 'CivicMaker' %}
+  {% if item.maker_category_name not in ['CivicMaker', 'EducationMaker'] %}
 <div>
-  <h2>{{ item.maker_category_name }}</h2>
-  <img src="{{ item.maker_category_img }}">
-  <h4>{{ item.maker_category_desc }}</h4>
+  <a href="/biographies/{{ item.maker_category_name|lower }}">
+    <h2>{{ item.maker_category_name }}</h2>
+    <img src="{{ item.maker_category_img }}">
+    <h4>{{ item.maker_category_desc }}</h4>
+  </a>
 </div>
   {% endif %}
 {% endfor %}
