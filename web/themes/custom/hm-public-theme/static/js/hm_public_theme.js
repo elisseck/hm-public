@@ -43,17 +43,28 @@
           });
     };
 
+    function elementIsVisible(ele) {
+      return window.getComputedStyle(ele, null).getPropertyValue('display') !== 'none';
+    }
+
     Drupal.thm.searchToggler = function(context, settings) {
         var $containers = ['.header__top-row '],
             targetCls   = '.header__search',
             formCls     = '.search-form';
 
-        $($containers.join(',')).find(targetCls).once('toggle-search').each(function() {
-            $(this).on('click', function(evt) {
-                var $desktopForm = $containers[0] + formCls;
-                $($desktopForm).fadeToggle('slow');
+        if (!elementIsVisible(document.querySelector($containers[0]))) {
+          $('.header__bottom-row').find(targetCls).once('mobile-search')
+            .on('click', function(evt) {
+              $('.header__bottom-row ' + formCls).fadeToggle('slow');
+            })
+        } else {
+          $($containers.join(',')).find(targetCls).once('toggle-search').each(function () {
+            $(this).on('click', function (evt) {
+              var $desktopForm = $containers[0] + formCls;
+              $($desktopForm).fadeToggle('slow');
             });
-        });
+          });
+        }
     };
 
 })(jQuery, Drupal, this, this.document);
