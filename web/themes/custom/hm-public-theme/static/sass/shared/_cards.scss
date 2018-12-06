@@ -165,7 +165,26 @@
   flex: 1;
   flex-direction: column;
   margin: 0 1% 1%;
-  max-width: 31%;
+  max-width: 48%;
+
+  @media screen and (min-width: 1100px) {
+    max-width: 31%;
+
+    &:nth-child(3n+1) {
+      margin-left: 0;
+    }
+
+  }
+
+  @media screen and (max-width: 450px) {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+  }
+
+  &:nth-child(2n+1) {
+    margin-left: 0;
+  }
 
   a {
     color: color(dark-grey);
@@ -177,6 +196,7 @@
     }
 
     .maker-card--image {
+      background: $black;
       height: auto;
       max-height: 180px;
       order: 1;
@@ -185,8 +205,11 @@
     }
 
     img {
+      margin-left: auto;
+      margin-right: auto;
       max-height: 230px;
       transform: scale(1.1);
+
     }
 
     h3 {
