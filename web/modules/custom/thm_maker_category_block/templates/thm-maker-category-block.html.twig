@@ -18,11 +18,13 @@
     them to clean up their data.
   #}
   {% if item.maker_category_name not in ['CivicMaker', 'EducationMaker'] %}
-<div>
+<div class="maker-card">
   <a href="/biographies/{{ item.maker_category_name|lower }}">
-    <h2>{{ item.maker_category_name }}</h2>
-    <img src="{{ item.maker_category_img }}">
-    <h4>{{ item.maker_category_desc }}</h4>
+    <h3>{{ item.maker_category_name }}</h3>
+    <div class="maker-card--image">
+      <img src="{{ item.maker_category_img }}">
+    </div>
+    <p>{{ item.maker_category_desc }}</p>
   </a>
 </div>
   {% endif %}

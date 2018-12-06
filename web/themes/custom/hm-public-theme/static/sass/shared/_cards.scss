@@ -155,37 +155,51 @@
 }
 
 //Maker
-.list-maker-category-cards {
+.block-thm-maker-category-block {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
 }
 
 .maker-card {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin: 0 1% 1%;
+  max-width: 31%;
 
   a {
     color: color(dark-grey);
+    display: flex;
+    flex-flow: column wrap;
 
     &:hover {
       text-decoration: none;
     }
 
-    img {
+    .maker-card--image {
       height: auto;
+      max-height: 180px;
+      order: 1;
+      overflow: hidden;
       padding: 0;
+    }
+
+    img {
+      max-height: 230px;
+      transform: scale(1.1);
     }
 
     h3 {
       @extend %card-header;
       font-size: em(25);
-      margin-top: 15px;
+      margin-top: 10px;
+      order: 2;
     }
 
     p {
       @extend %text-overflow;
       margin-top: 0;
+      order: 3;
     }
 
   }

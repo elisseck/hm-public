@@ -54,11 +54,10 @@
   }
 
   .views-exposed-form {
-    align-items: baseline;
+    align-items: flex-end;
     display: flex;
     flex: 1;
     justify-content: flex-start;
-    align-items: flex-end;
 
     .form-item {
       margin-bottom: 0;
@@ -80,7 +79,7 @@
     }
 
     @media screen and (max-width: 950px) {
-      
+
       .form-item {
         flex: 1 100%;
       }
@@ -95,7 +94,7 @@
         flex: 1;
       }
 
-    }  
+    }
 
     @media screen and (max-width: 520px) {
       flex-direction: column;
@@ -243,9 +242,9 @@ button.facets__button {
   background-color: color(secondary);
   border-radius: 0;
   display: flex;
+  justify-content: center;
   padding: 8px 10px;
   width: 150px;
-  justify-content: center;
 
   svg.filters__button-icon {
     margin-right: 10px;
