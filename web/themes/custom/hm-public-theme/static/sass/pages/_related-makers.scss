@@ -23,6 +23,15 @@
 
     }
 
+    .accordion__panel {
+      line-height: 120%;
+      text-align: left;
+    }
+
+    .accordion__arrow {
+      padding-left: 20px;
+    }
+
     .card {
       background: transparent;
       border: 0;
