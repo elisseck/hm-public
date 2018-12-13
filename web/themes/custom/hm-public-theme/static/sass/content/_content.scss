@@ -115,3 +115,11 @@ article .form-item.form-item-.form-type-item.form-no-label {
   }
 
 }
+
+.hide { display: none !important; }
+
+.animated { animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.fadeIn { animation-name: fadeIn; }

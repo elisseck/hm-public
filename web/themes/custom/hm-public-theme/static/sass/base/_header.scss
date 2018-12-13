@@ -6,6 +6,19 @@
   background-color: color(light-grey);
   color: color(dark-grey);
   width: 100%;
+
+  .header__search-close {
+    display: block;
+    margin-left: auto;
+    vertical-align: baseline;
+    width: 36px;
+  }
+
+  .header__search-close svg {
+    width: 20px;
+    height: 20px;
+  }
+
 }
 
 .header__top-row {
