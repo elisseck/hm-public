@@ -55,11 +55,22 @@
         if (!elementIsVisible(document.querySelector($containers[0]))) {
           $('.header__bottom-row').find(targetCls).once('mobile-search')
             .on('click', function(evt) {
-              $('.header__bottom-row ' + formCls).fadeToggle('slow');
+              $('.header__bottom-row ' + formCls).fadeToggle();
+
+              $(".header__search-close").removeClass("hide");
+              $(".header__search").addClass("hide");
             })
+
+          //Mobile close search icon is selected to close form
+          $('.header__search-close').click(function() {   
+
+            $('.header__bottom-row ' + formCls).fadeToggle();
+            $(".header__search").removeClass("hide");
+            $(".header__search-close").addClass("hide");
+          });
         } else {
           $($containers.join(',')).find(targetCls).once('toggle-search').each(function () {
-            //Search icon is selected to open form
+            //Desktop search icon is selected to open form
             $(this).on('click', function (evt) {
               var $desktopForm = $containers[0] + formCls;
               $($desktopForm).fadeToggle();
@@ -68,7 +79,7 @@
               $(".header__search").addClass("hide");
             });
 
-            //Close search icon is selected to close form
+            //Desktop close search icon is selected to close form
             $('.header__search-close').click(function() {   
               var $desktopForm = $containers[0] + formCls;
 
