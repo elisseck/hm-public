@@ -59,10 +59,24 @@
             })
         } else {
           $($containers.join(',')).find(targetCls).once('toggle-search').each(function () {
+            //Search icon is selected to open form
             $(this).on('click', function (evt) {
               var $desktopForm = $containers[0] + formCls;
-              $($desktopForm).fadeToggle('slow');
+              $($desktopForm).fadeToggle();
+
+              $(".header__search-close").removeClass("hide");
+              $(".header__search").addClass("hide");
             });
+
+            //Close search icon is selected to close form
+            $('.header__search-close').click(function() {   
+              var $desktopForm = $containers[0] + formCls;
+
+              $($desktopForm).fadeToggle();
+              $(".header__search").removeClass("hide");
+              $(".header__search-close").addClass("hide");
+            });
+
           });
         }
     };
