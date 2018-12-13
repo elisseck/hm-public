@@ -29,6 +29,31 @@
 
   }
 
+  .page-banner--content {
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 60px;
+    text-align: right;
+
+    @media screen and (max-width: 950px) {
+      padding-bottom: 30px;
+      padding-top: 30px;
+    }
+
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+
+  }
+
+  .page-banner--highlight-name {
+    @extend %oswald;
+    font-size: em(22);
+    z-index: 10;
+  }
+
   .page-banner--highlight {
     align-items: flex-end;
     background-position: center;
@@ -46,51 +71,13 @@
     }
 
     @media screen and (max-width: 950px) {
+      height: auto;
       padding: 30px 15px;
     }
 
     @media screen and (max-width: 600px) {
       display: none;
     }
-
-    p {
-      align-self: flex-start;
-      flex: 1 0 100%;
-      margin-top: 0;
-      z-index: 10;
-    }
-
-    .page-banner--highlight-name {
-      @extend %oswald;
-      align-content: flex-end;
-      flex-basis: 100%;
-      font-size: em(22);
-      margin-top: 45%;
-      z-index: 10;
-
-      @media screen and (max-width: 950px) {
-        margin-top: 50px;
-      }
-
-    }
-
-    .page-banner--feature-occupation {
-      line-height: 100%;
-      padding-top: em(8);
-      z-index: 10;
-    }
-
-    // Applies gradient over image for white text
-    // &:before {
-    //   background-image: linear-gradient(transparent, $black);
-    //   bottom: 0;
-    //   content: '';
-    //   left: 0;
-    //   opacity: .3;
-    //   position: absolute;
-    //   right: 0;
-    //   top: 0;
-    // }
 
   }
 
