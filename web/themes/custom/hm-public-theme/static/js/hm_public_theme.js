@@ -43,6 +43,8 @@
           });
     };
 
+    //Global search function
+
     function elementIsVisible(ele) {
       return window.getComputedStyle(ele, null).getPropertyValue('display') !== 'none';
     }
@@ -57,16 +59,16 @@
             .on('click', function(evt) {
               $('.header__bottom-row ' + formCls).fadeToggle();
 
-              $(".header__search-close").removeClass("hide");
-              $(".header__search").addClass("hide");
+              $(".header__search-close").removeClass("mobile-hide");
+              $(".header__search").addClass("mobile-hide");
             })
 
           //Mobile close search icon is selected to close form
           $('.header__search-close').click(function() {   
 
             $('.header__bottom-row ' + formCls).fadeToggle();
-            $(".header__search").removeClass("hide");
-            $(".header__search-close").addClass("hide");
+            $(".header__search").removeClass("mobile-hide");
+            $(".header__search-close").addClass("mobile-hide");
           });
         } else {
           $($containers.join(',')).find(targetCls).once('toggle-search').each(function () {
@@ -91,6 +93,8 @@
           });
         }
     };
+
+  //End global search function
 
 })(jQuery, Drupal, this, this.document);
 

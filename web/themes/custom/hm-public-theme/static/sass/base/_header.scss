@@ -145,7 +145,8 @@
 
   }
 
-  .header__search-close.mobile {
+  .header__search-close.mobile-hide,
+  .header__search.mobile-hide {
     display: none;
   }
 
@@ -187,6 +188,7 @@
     }
 
     .header__search-close {
+      margin-top: 4px;
       width: 30px;
     }
 
@@ -194,10 +196,6 @@
       height: 26px;
       vertical-align: -webkit-baseline-middle;
       width: 30px;
-    }
-
-    .header__search-close.mobile {
-      display: block;
     }
 
   }
@@ -456,6 +454,7 @@
 .search--mobile.search--toggle {
   left: 0;
   padding-bottom: 30px;
+  position: absolute;
   right: 0;
   top: 76px;
 }
