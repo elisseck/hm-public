@@ -5,6 +5,10 @@
   flex-wrap: wrap;
   margin-top: 30px;
 
+  @media screen and (min-width: 0\0) {
+    padding: 0 30px;
+  }
+
   .accordion {
     display: flex;
     flex-direction: column;
