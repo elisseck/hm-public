@@ -327,6 +327,7 @@
 
 //Maker Category Content block
 .maker-category--content {
+  @extend %max-width;
   @extend %default-gutter-width;
   margin-top: 30px;
 }
