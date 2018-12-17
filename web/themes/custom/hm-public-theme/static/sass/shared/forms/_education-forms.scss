@@ -1,0 +1,22 @@
+//Back to School
+//Higher Education
+#webform-submission-back-to-school-for-higher-ed-add-form {
+
+  .fieldset-wrapper {
+    max-width: 900px;
+  }
+
+  .form-field--wrap {
+    display: flex;
+    flex-flow: column;
+  }
+  
+  @media screen and (max-width: 600px) {
+
+    .form-field--wrap {
+      flex: 1 100%;
+    }
+
+  }
+
+}
