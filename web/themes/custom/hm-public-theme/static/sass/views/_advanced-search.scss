@@ -152,7 +152,7 @@
 
 }
 
-//Filter Biographies
+//Filter Biographies Header
 .block-facets__header {
   @extend %oswald-light;
   border-radius: 0;
@@ -165,6 +165,18 @@
   margin-top: 130px;
   width: 100%;
 }
+
+//Mobile Facet block Header
+#facetcontainerblock {
+  width: 100%;
+  padding: 0 15px;
+}
+
+.facets__header .block-facets__header {
+  margin: 30px auto;
+}
+
+.filter__controls .field-content-alignment { display: none; }
 
 //Reset button
 .thm-adv-search-filter-mgmt {
