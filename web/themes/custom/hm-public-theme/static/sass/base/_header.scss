@@ -454,9 +454,10 @@
 .search--mobile.search--toggle {
   left: 0;
   padding-bottom: 30px;
+  padding-top: 30px;
   position: absolute;
   right: 0;
-  top: 76px;
+  top: 56px;
 }
 .search--mobile {
   @extend %default-gutter-width;
