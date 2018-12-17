@@ -242,7 +242,7 @@ function thm_related_makers_perform_search($node, $testMode = false, $limit = nu
 
   if (!is_bool($node)) {
     $terms = thm_related_makers_build_term_string($node);
-    //drupal_set_message("terms: $terms");
+    $query->addCondition('type', 'bio');
     $query->addCondition('nid', $node->id(), '<>');
   }
 
