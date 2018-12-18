@@ -10,6 +10,7 @@
  *
  */
 #}
+
 <div class="contextual-region">
   {{ title_prefix }}
   {{ title_suffix }}
@@ -19,9 +20,9 @@
       <h1>{{ content.field_intro_header|field_value }}</h1>
       {{ content.field_intro_content|field_value }}
       {% if content.field_intro_button|field_value is not empty %}
-        <a href="{{ content.field_intro_button|field_raw('uri') }}" class="button button--primary">
-          {{ content.field_intro_button|field_raw('title') }}
-        </a>
+        {% for item in content.field_intro_button|field_value %}
+          {{ item }}
+        {% endfor %} 
       {% endif %}
     </div>
   </div>
