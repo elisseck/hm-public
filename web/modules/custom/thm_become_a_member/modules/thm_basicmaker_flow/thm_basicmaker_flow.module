@@ -206,9 +206,11 @@ function validate(&$element, FormStateInterface $formState, &$context) {
  *
  */
 function thm_basicmaker_flow_webform_element_alter(array &$element, FormStateInterface $form_state, array $context) {
-  if ($element['#webform_id'] === 'basicmaker_membership_flow--mail' ||
+  if (array_key_exists('#webform_id', $element)) {
+    if ($element['#webform_id'] === 'basicmaker_membership_flow--mail' ||
       $element['#webform_id'] === 'basicmaker_membership_flow--name') {
-    $element['#element_validate'][] = 'validate';
+      $element['#element_validate'][] = 'validate';
+    }
   }
 }
 
