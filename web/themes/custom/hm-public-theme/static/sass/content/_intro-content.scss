@@ -26,11 +26,11 @@
     @extend %large-p;
     line-height: normal;
     text-align: left;
-  
+
     @media screen and (max-width: 900px) {
       margin-bottom: 30px;
     }
-  
+
   }
 
   a {
@@ -38,7 +38,7 @@
     @extend %button--primary;
     color: $white;
     font-size: 1em;
-  
+
     &:hover {
       @extend %button--primary-focus;
       text-decoration: none;

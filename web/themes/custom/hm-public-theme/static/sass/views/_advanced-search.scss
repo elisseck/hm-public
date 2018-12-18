@@ -256,8 +256,8 @@ button.facets__button {
 //Mobile Facet block Header
 #facetcontainerblock {
   @extend %default-gutter-width;
-  width: 100%;
   padding-bottom: 30px !important;
+  width: 100%;
 
   .facets__header {
     align-items: baseline;
@@ -301,7 +301,7 @@ button.facets__button {
       flex-flow: column wrap;
 
       div {
-        padding: 15px 0;;
+        padding: 15px 0;
       }
 
     }
