@@ -64,7 +64,9 @@
   .header__da-links:hover & {
     opacity: 1;
   }
+
 }
+
 .search-form {
   display: none;
   transition: top .3s ease-in-out;
@@ -459,10 +461,11 @@
   right: 0;
   top: 56px;
 }
+
 .search--mobile {
   @extend %default-gutter-width;
   background-color: color(light-grey);
-  box-shadow: 0 5px 7px rgba(0, 0, 0, .2);
+  box-shadow: 0 5px 7px color(mobile-shadow);
   position: fixed;
   top: -300px;
   transition: top .3s ease-in-out;
