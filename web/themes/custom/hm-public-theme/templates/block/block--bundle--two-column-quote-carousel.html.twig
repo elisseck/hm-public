@@ -8,6 +8,7 @@
  *
  */
 #}
+
 <div class="contextual-region">
   {{ title_prefix }}
   {{ title_suffix }}
@@ -16,7 +17,6 @@
     <div class="carousel-inner">
       {{ content.field_quote_block }}
     </div>
-      {# {% if content.field_two_column_slide %} #}
       {% if content.field_quote_block|length > 17 %}
         <div class="centered-carousel-indicators carousel-indicators" role="menu">
           {% for list in content.field_quote_block['#items'] %}
@@ -28,9 +28,10 @@
   </div>
 
 </div>
+
 <script>
-$(document).ready(function () {
-  $('.two-column-quote-carousel').find('.field-item').addClass('carousel-item');
-  $('.two-column-quote-carousel').find('.field-item').first().addClass('active');
-});
+  $(document).ready(function () {
+    $('.two-column-quote-carousel').find('.field-item').addClass('carousel-item');
+    $('.two-column-quote-carousel').find('.field-item').first().addClass('active');
+  });
 </script>

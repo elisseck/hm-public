@@ -23,214 +23,215 @@
  * @ingroup themeable
  */
 #}
+
 <table style="margin: 15px auto 0 auto; max-width: 768px; font-family: arial,sans-serif; border: 1px solid #cccccc;">
     <tbody>
-    <tr>
+      <tr>
         <td>
-            <table style="margin-left: auto; margin-right: auto; max-width: 768px;">
-                <tbody>
-                <tr>
-                    <td>
-                        <h2>
-                            <a href="{{ url('<front>') }}" style="color: #f0511f; text-decoration: none; font-weight: bold; margin-top: 15px;">
-                                <img alt="The HistoryMakers Logo" height="39" width="500" src="https://devwww.thehistorymakers.org/themes/custom/hm-public-theme/static/images/THM_logo.png" />
-                            </a>
-                        </h2>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <table style="min-width: 450px; margin: 5px auto 0 auto; padding: 40px 30px 30px 10px;">
-                <tbody>
-                <tr>
-                    <td style="padding-bottom: 20px">
-                        Thanks for your donation!
-                    </td>
-                </tr>
-                <tr>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, mi id bibendum euismod,
-                        velit enim aliquam odio, at laoreet lacus velit vel risus. Quisque accumsan, massa nec
-                        commodo vulputate, nisl nisl tincidunt velit, ut porta libero quam non lorem. Cras maximus
-                        dui at nisl venenatis suscipit. Quisque porta auctor tellus at aliquet. Integer dapibus,
-                        est sit amet feugiat congue, enim risus blandit ligula, eu faucibus odio arcu vitae augue.
-                        Pellentesque nibh orci, posuere quis magna id, malesuada eleifend tellus. Suspendisse turpis
-                        nunc, accumsan vitae consequat in, fringilla eu massa. Curabitur scelerisque rutrum fermentum.
-                        Cras luctus egestas erat vitae mattis. Etiam at ligula ac arcu condimentum vehicula. Maecenas
-                        nec purus pellentesque, fermentum tortor quis, lacinia tortor. Ut lacus orci, iaculis sed nisi
-                        a, mollis lobortis neque. Sed ultrices, nibh vitae efficitur pellentesque, ex purus fermentum
-                        mauris, non sagittis urna ante a diam. Sed accumsan, lorem a condimentum interdum, metus erat
-                        viverra felis, ac lacinia enim dui a lorem. Nam congue, mauris sit amet pellentesque imperdiet,
-                        nisl libero mollis ante, sit amet mollis ligula arcu non arcu. In a est a nisi semper tincidunt
-                        quis eget erat.
-                    </p>
-                    <p>
-                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In
-                        eget enim nec quam finibus commodo. Nullam id laoreet nunc. Sed hendrerit nisi at augue
-                        scelerisque, vel lobortis ligula luctus. Integer dapibus gravida sodales. Aliquam erat
-                        volutpat. Praesent aliquam scelerisque bibendum. Nam massa ex, pretium quis pulvinar a,
-                        luctus ac lectus. Phasellus porttitor, justo id pharetra fringilla, ante lacus posuere orci,
-                        sed pellentesque mi felis vitae tortor. Mauris ultrices nunc in justo vulputate tincidunt.
-                        Donec tincidunt, mauris molestie cursus fringilla, orci mi pellentesque augue, non scelerisque
-                        nisi tortor eu neque. Vestibulum eu ex vitae dolor imperdiet viverra. Aliquam pretium augue sed
-                        auctor lobortis. Mauris ipsum lorem, dapibus sit amet vehicula id, pretium eget lorem. Sed quam
-                        velit, ullamcorper eu eros et, viverra auctor magna. Cras eget massa at quam molestie congue eu
-                        quis justo.
-                    </p>
-                </tr>
-                <tr>
-                    <td style="padding-bottom: 20px">
-                        To complete the registration process, you must visit the verification URL below:
-                        <a href="#">link to {{ site_name }} Digital Archives</a>
-                        Once you have completed this step your account will be activated and ready to use. In the meantime, if you
-                        have any questions or comments, simply reply to this e-mail and someone from {{ site_name }} will get in
-                        touch with you.
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-bottom: 20px">
-                        Sincerely,
-                        {{ site_name }}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-bottom: 20px">
-                        Want to manage your order online?
-                        If you need to check the status of your order, please visit our home page at {{ site_name }} and click on
-                        "My account" in the menu or login with the following link:
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="{{ site_login_url }}">{{ site_login_url }}</a></td>
-                </tr>
-                <tr>
-                    <td style="font-weight: bold; padding: 6px 0 6px 6px; background-color: #f0511f; color: white;">
-                        {{ 'Order #@number details:'|t({'@number': order_entity.getOrderNumber}) }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {% block order_items %}
-                            <table style="padding-top: 15px; padding-bottom:15px; width: 100%">
-                                <tbody style="text-align: left;">
-                                {% for order_item in order_entity.getItems %}
-                                    <tr>
-                                        <td>
-                                            {{ order_item.getQuantity|number_format }} x
-                                        </td>
-                                        <td>
-                                            <span>{{ order_item.label }}</span>
-                                            <span style="float: right;">{{ order_item.getTotalPrice|commerce_price_format }}</span>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-                        {% endblock %}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {% if (billing_information or shipping_information) %}
-                            <table style="width: 100%; padding-top: 15px; padding-bottom: 15px; text-align: left;">
-                                <tbody>
-                                <tr>
-                                    {% if shipping_information %}
-                                        <td style="padding: 6px 0 6px 6px; font-weight: bold;  background-color: #f0511f; color: white;">
-                                            {{ 'Shipping Information'|t }}
-                                        </td>
-                                    {% endif %}
-                                    {% if billing_information %}
-                                        <td style="padding: 6px 0 6px 6px; font-weight: bold; background-color: #f0511f; color: white;">
-                                            {{ 'Billing Information'|t }}
-                                        </td>
-                                    {% endif %}
-                                </tr>
-                                <tr>
-                                    {% if shipping_information %}
-                                        <td>
-                                            {% block shipping_information %}
-                                                {{ shipping_information }}
-                                            {% endblock %}
-                                        </td>
-                                    {% endif %}
-                                    {% if billing_information %}
-                                        <td>
-                                            {% block billing_information %}
-                                                {{ billing_information }}
-                                            {% endblock %}
-                                        </td>
-                                    {% endif %}
-                                </tr>
-                                {% if payment_method %}
-                                    <tr>
-                                        <td style="font-weight: bold; padding: 6px 0 6px 6px; margin-top: 10px; background-color: #f0511f; color: white;">
-                                            {{ 'Payment Method'|t }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            {% block payment_method %}
-                                                {{ payment_method }}
-                                            {% endblock %}
-                                        </td>
-                                    </tr>
-                                {% endif %}
-                                </tbody>
-                            </table>
-                        {% endif %}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p style="margin-bottom: 0;">
-                            {{ 'Subtotal: @subtotal'|t({'@subtotal': totals.subtotal|commerce_price_format}) }}
-                        </p>
-                    </td>
-                </tr>
-                {% for adjustment in totals.adjustments %}
-                    <tr>
-                        <td>
-                            <p style="margin-bottom: 0;">
-                                {{ adjustment.label }}: {{ adjustment.total|commerce_price_format }}
-                            </p>
-                        </td>
-                    </tr>
-                {% endfor %}
-                <tr>
-                    <td>
-                        <p style="font-size: 24px; padding-top: 15px; padding-bottom: 5px;">
-                            {{ 'Order Total: @total'|t({'@total': order_entity.getTotalPrice|commerce_price_format}) }}
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-bottom: 20px;">
-                        {% block additional_information %}
-                            {{ 'Thank you for your order!'|t }}
-                        {% endblock %}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-bottom: 20px;">
-                        Where can I get help with reviewing my order?
-                        To learn more about managing your orders on The HistoryMakers, please visit our help page.
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-bottom: 20px;">
-                        Please note: This e-mail message is an automated notification. Please do not reply to this message.
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-bottom: 20px;">Thanks again for shopping with us.</td>
-                </tr>
-                <tr>
-                    <td>{{ site_name }}</td>
-                </tr>
-                </tbody>
-            </table>
+          <table style="margin-left: auto; margin-right: auto; max-width: 768px;">
+            <tbody>
+              <tr>
+                  <td>
+                      <h2>
+                          <a href="{{ url('<front>') }}" style="color: #f0511f; text-decoration: none; font-weight: bold; margin-top: 15px;">
+                              <img alt="The HistoryMakers Logo" height="39" width="500" src="https://devwww.thehistorymakers.org/themes/custom/hm-public-theme/static/images/THM_logo.png" />
+                          </a>
+                      </h2>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+          <table style="min-width: 450px; margin: 5px auto 0 auto; padding: 40px 30px 30px 10px;">
+            <tbody>
+              <tr>
+                  <td style="padding-bottom: 20px">
+                      Thanks for your donation!
+                  </td>
+              </tr>
+              <tr>
+                  <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, mi id bibendum euismod,
+                      velit enim aliquam odio, at laoreet lacus velit vel risus. Quisque accumsan, massa nec
+                      commodo vulputate, nisl nisl tincidunt velit, ut porta libero quam non lorem. Cras maximus
+                      dui at nisl venenatis suscipit. Quisque porta auctor tellus at aliquet. Integer dapibus,
+                      est sit amet feugiat congue, enim risus blandit ligula, eu faucibus odio arcu vitae augue.
+                      Pellentesque nibh orci, posuere quis magna id, malesuada eleifend tellus. Suspendisse turpis
+                      nunc, accumsan vitae consequat in, fringilla eu massa. Curabitur scelerisque rutrum fermentum.
+                      Cras luctus egestas erat vitae mattis. Etiam at ligula ac arcu condimentum vehicula. Maecenas
+                      nec purus pellentesque, fermentum tortor quis, lacinia tortor. Ut lacus orci, iaculis sed nisi
+                      a, mollis lobortis neque. Sed ultrices, nibh vitae efficitur pellentesque, ex purus fermentum
+                      mauris, non sagittis urna ante a diam. Sed accumsan, lorem a condimentum interdum, metus erat
+                      viverra felis, ac lacinia enim dui a lorem. Nam congue, mauris sit amet pellentesque imperdiet,
+                      nisl libero mollis ante, sit amet mollis ligula arcu non arcu. In a est a nisi semper tincidunt
+                      quis eget erat.
+                  </p>
+                  <p>
+                      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In
+                      eget enim nec quam finibus commodo. Nullam id laoreet nunc. Sed hendrerit nisi at augue
+                      scelerisque, vel lobortis ligula luctus. Integer dapibus gravida sodales. Aliquam erat
+                      volutpat. Praesent aliquam scelerisque bibendum. Nam massa ex, pretium quis pulvinar a,
+                      luctus ac lectus. Phasellus porttitor, justo id pharetra fringilla, ante lacus posuere orci,
+                      sed pellentesque mi felis vitae tortor. Mauris ultrices nunc in justo vulputate tincidunt.
+                      Donec tincidunt, mauris molestie cursus fringilla, orci mi pellentesque augue, non scelerisque
+                      nisi tortor eu neque. Vestibulum eu ex vitae dolor imperdiet viverra. Aliquam pretium augue sed
+                      auctor lobortis. Mauris ipsum lorem, dapibus sit amet vehicula id, pretium eget lorem. Sed quam
+                      velit, ullamcorper eu eros et, viverra auctor magna. Cras eget massa at quam molestie congue eu
+                      quis justo.
+                  </p>
+              </tr>
+              <tr>
+                  <td style="padding-bottom: 20px">
+                      To complete the registration process, you must visit the verification URL below:
+                      <a href="#">link to {{ site_name }} Digital Archives</a>
+                      Once you have completed this step your account will be activated and ready to use. In the meantime, if you
+                      have any questions or comments, simply reply to this e-mail and someone from {{ site_name }} will get in
+                      touch with you.
+                  </td>
+              </tr>
+              <tr>
+                  <td style="padding-bottom: 20px">
+                      Sincerely,
+                      {{ site_name }}
+                  </td>
+              </tr>
+              <tr>
+                  <td style="padding-bottom: 20px">
+                      Want to manage your order online?
+                      If you need to check the status of your order, please visit our home page at {{ site_name }} and click on
+                      "My account" in the menu or login with the following link:
+                  </td>
+              </tr>
+              <tr>
+                  <td><a href="{{ site_login_url }}">{{ site_login_url }}</a></td>
+              </tr>
+              <tr>
+                  <td style="font-weight: bold; padding: 6px 0 6px 6px; background-color: #f0511f; color: white;">
+                      {{ 'Order #@number details:'|t({'@number': order_entity.getOrderNumber}) }}
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      {% block order_items %}
+                          <table style="padding-top: 15px; padding-bottom:15px; width: 100%">
+                              <tbody style="text-align: left;">
+                              {% for order_item in order_entity.getItems %}
+                                  <tr>
+                                      <td>
+                                          {{ order_item.getQuantity|number_format }} x
+                                      </td>
+                                      <td>
+                                          <span>{{ order_item.label }}</span>
+                                          <span style="float: right;">{{ order_item.getTotalPrice|commerce_price_format }}</span>
+                                      </td>
+                                  </tr>
+                              {% endfor %}
+                              </tbody>
+                          </table>
+                      {% endblock %}
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      {% if (billing_information or shipping_information) %}
+                          <table style="width: 100%; padding-top: 15px; padding-bottom: 15px; text-align: left;">
+                              <tbody>
+                              <tr>
+                                  {% if shipping_information %}
+                                      <td style="padding: 6px 0 6px 6px; font-weight: bold;  background-color: #f0511f; color: white;">
+                                          {{ 'Shipping Information'|t }}
+                                      </td>
+                                  {% endif %}
+                                  {% if billing_information %}
+                                      <td style="padding: 6px 0 6px 6px; font-weight: bold; background-color: #f0511f; color: white;">
+                                          {{ 'Billing Information'|t }}
+                                      </td>
+                                  {% endif %}
+                              </tr>
+                              <tr>
+                                  {% if shipping_information %}
+                                      <td>
+                                          {% block shipping_information %}
+                                              {{ shipping_information }}
+                                          {% endblock %}
+                                      </td>
+                                  {% endif %}
+                                  {% if billing_information %}
+                                      <td>
+                                          {% block billing_information %}
+                                              {{ billing_information }}
+                                          {% endblock %}
+                                      </td>
+                                  {% endif %}
+                              </tr>
+                              {% if payment_method %}
+                                  <tr>
+                                      <td style="font-weight: bold; padding: 6px 0 6px 6px; margin-top: 10px; background-color: #f0511f; color: white;">
+                                          {{ 'Payment Method'|t }}
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          {% block payment_method %}
+                                              {{ payment_method }}
+                                          {% endblock %}
+                                      </td>
+                                  </tr>
+                              {% endif %}
+                              </tbody>
+                          </table>
+                      {% endif %}
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <p style="margin-bottom: 0;">
+                          {{ 'Subtotal: @subtotal'|t({'@subtotal': totals.subtotal|commerce_price_format}) }}
+                      </p>
+                  </td>
+              </tr>
+              {% for adjustment in totals.adjustments %}
+                  <tr>
+                      <td>
+                          <p style="margin-bottom: 0;">
+                              {{ adjustment.label }}: {{ adjustment.total|commerce_price_format }}
+                          </p>
+                      </td>
+                  </tr>
+              {% endfor %}
+              <tr>
+                  <td>
+                      <p style="font-size: 24px; padding-top: 15px; padding-bottom: 5px;">
+                          {{ 'Order Total: @total'|t({'@total': order_entity.getTotalPrice|commerce_price_format}) }}
+                      </p>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="padding-bottom: 20px;">
+                      {% block additional_information %}
+                          {{ 'Thank you for your order!'|t }}
+                      {% endblock %}
+                  </td>
+              </tr>
+              <tr>
+                  <td style="padding-bottom: 20px;">
+                      Where can I get help with reviewing my order?
+                      To learn more about managing your orders on The HistoryMakers, please visit our help page.
+                  </td>
+              </tr>
+              <tr>
+                  <td style="padding-bottom: 20px;">
+                      Please note: This e-mail message is an automated notification. Please do not reply to this message.
+                  </td>
+              </tr>
+              <tr>
+                  <td style="padding-bottom: 20px;">Thanks again for shopping with us.</td>
+              </tr>
+              <tr>
+                  <td>{{ site_name }}</td>
+              </tr>
+            </tbody>
+          </table>
         </td>
     </tr>
-    </tbody>
+  </tbody>
 </table>
