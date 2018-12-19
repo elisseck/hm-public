@@ -293,6 +293,11 @@ button.facets__button {
       padding: 0 0 30px;
       text-align: left;
       width: auto;
+    
+      &:hover {
+        border-color: transparent;
+      }
+    
     }
 
     //Applied filters
