@@ -11,12 +11,12 @@
 
 
 <div class="contextual-region">
-{{ title_prefix }}
-{{ title_suffix }}
+  {{ title_prefix }}
+  {{ title_suffix }}
+
   <div class="image-carousel hero-carousel carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       {{ content.field_image_slide }}
-      {# {% if content.field_image_slide %} #}
       {% if content.field_image_slide|length > 17 %}
         <div class="centered-carousel-indicators carousel-indicators" role="menu">
           {% for list in content.field_image_slide['#items'] %}
@@ -30,8 +30,8 @@
 </div>
 
 <script>
-$(document).ready(function () {
-  $('.image-carousel').find('.field-item').addClass('carousel-item');
-  $('.image-carousel').find('.field-item').first().addClass('active');
-});
+  $(document).ready(function () {
+    $('.image-carousel').find('.field-item').addClass('carousel-item');
+    $('.image-carousel').find('.field-item').first().addClass('active');
+  });
 </script>

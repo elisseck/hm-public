@@ -32,12 +32,14 @@
  * @see template_preprocess_block()
  */
 #}
+
 {%
   set classes = [
     'block',
     'block-' ~ configuration.provider|clean_class,
   ]
 %}
+
 <div class="contextual-region">
 
   <div{{ attributes.addClass(classes) }}>

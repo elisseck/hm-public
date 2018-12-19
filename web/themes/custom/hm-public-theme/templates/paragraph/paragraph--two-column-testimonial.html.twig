@@ -22,10 +22,12 @@
     <q>{{ content.field_two_col_testimonial_quote|field_value }}</q>
     <p class="two-column-testimonial--byline">{{ content.field_two_col_testimonial_byline|field_value }}</p>
     <p class="two-column-testimonial--credit">{{ content.field_two_col_testimonial_credit|field_value }}</p>
+
     {% if content.field_two_col_testimonial_button|field_value is not empty %}
       <a href="{{ content.field_two_col_testimonial_button|field_raw('uri') }}" class="button button--primary">
         {{ content.field_two_col_testimonial_button|field_raw('title') }}
       </a>
     {% endif %} 
+
   </div>
 </div>
