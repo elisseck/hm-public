@@ -22,7 +22,7 @@
   <a href="/biographies/{{ item.maker_category_name|lower }}">
     <h3>{{ item.maker_category_name }}</h3>
     <div class="maker-card--image">
-      <img src="{{ item.maker_category_img }}">
+      <img src="{{ item.maker_category_img }}" alt="{{ item.current_maker_img_name }}">
     </div>
     <p>{{ item.maker_category_desc }}</p>
   </a>

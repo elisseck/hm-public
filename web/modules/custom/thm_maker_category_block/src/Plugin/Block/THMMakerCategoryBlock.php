@@ -44,21 +44,22 @@ class THMMakerCategoryBlock extends BlockBase {
   }
 
   /**
-   * Retrieve all fids (file ids) for biographies for a given category id
-   * (taxonomy term id)
+   * Retrieve all fids (file ids) and relative titles for biographies for a
+   * given category id (taxonomy term id)
    *
    * @param $categoryId
-   * @param Connection $db
+   * @param \Drupal\Core\Database\Connection $db
    *
-   * @return StatementInterface|int|null
+   * @return \Drupal\Core\Database\StatementInterface|int|null
    */
-  protected function getFidsForCategory($categoryId, Connection $db) {
+  protected function getCategoryData($categoryId, Connection $db) {
     $stmt = <<<SQL
-SELECT image.field_bio_image_target_id
+SELECT image.field_bio_image_target_id AS fid, details.title
 FROM
     node
     INNER JOIN {node__field_maker_category} maker ON node.nid = maker.entity_id
     INNER JOIN {node__field_bio_image} image ON node.nid = image.entity_id
+    INNER JOIN {node_field_data} details ON node.nid = details.nid
 WHERE
     node.type = :type AND
     maker.field_maker_category_target_id = :category
@@ -68,16 +69,17 @@ SQL;
   }
 
   /**
+   * Fetches a random item from the collection of data returned.
+   *
    * @param int $makerCategoryId
    *
    * @return mixed
    */
-  protected function getRandomFid(int $makerCategoryId) {
-    $fids = $this->getFidsForCategory($makerCategoryId, $this->db);
-
-    $listOfFids = $fids->fetchCol();
-    $idx = mt_rand(0, (count($listOfFids) - 1));
-    return $listOfFids[$idx];
+  protected function getRandomObject(int $makerCategoryId) {
+    $results = $this->getCategoryData($makerCategoryId, $this->db);
+    $data = $results->fetchAll();
+    $idx = mt_rand(0, (count($data) - 1));
+    return $data[$idx];
   }
 
   /**
@@ -116,11 +118,14 @@ SQL;
     });
 
     $makerCats = array_map(function(Term $result) {
+      $record = $this->getRandomObject($result->id());
+
       return [
         'maker_category_id' => $result->id(),
         'maker_category_name' => $result->getName(),
         'maker_category_desc' => $result->getDescription(),
-        'maker_category_img' => $this->getImagePath($this->getRandomFid($result->id()))
+        'current_maker_img_name' => $record->title,
+        'maker_category_img' => $this->getImagePath($record->fid)
       ];
     }, $results);
 
