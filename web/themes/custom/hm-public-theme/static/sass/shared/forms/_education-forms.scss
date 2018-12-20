@@ -22,11 +22,23 @@
 
   #ajax-wrapper,
   #ajax-wrapper--2 {
-    flex-basis: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
   }
 
   #ajax-wrapper--2 {
     margin-bottom: 30px;
+  }
+
+  #edit-lesson-plan-photo-upload {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .upload_lesson_plan_remove_button,
+  .lesson_plan_photo_remove_button {
+    margin-top: 15px;
   }
 
 }
