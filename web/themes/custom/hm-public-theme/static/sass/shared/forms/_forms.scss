@@ -123,6 +123,17 @@ label,
   margin: 0;
 }
 
+.js-form-file.form-file {
+  max-width: 50%;
+  width: 50%;
+
+  @media screen and (max-width: 600px) {
+    max-width: none;
+    width: 100%;
+  }
+
+}
+
 //Pre-Defined Classes
 //Description and/or prefix
 .field-prefix,
