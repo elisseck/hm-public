@@ -59,10 +59,70 @@
       });
     }
 
+    if (!Array.prototype.includes) {
+      Object.defineProperty(Array.prototype, 'includes', {
+        value: function(searchElement, fromIndex) {
+
+          if (this == null) {
+            throw new TypeError('"this" is null or not defined');
+          }
+
+          // 1. Let O be ? ToObject(this value).
+          var o = Object(this);
+
+          // 2. Let len be ? ToLength(? Get(O, "length")).
+          var len = o.length >>> 0;
+
+          // 3. If len is 0, return false.
+          if (len === 0) {
+            return false;
+          }
+
+          // 4. Let n be ? ToInteger(fromIndex).
+          //    (If fromIndex is undefined, this step produces the value 0.)
+          var n = fromIndex | 0;
+
+          // 5. If n ≥ 0, then
+          //  a. Let k be n.
+          // 6. Else n < 0,
+          //  a. Let k be len + n.
+          //  b. If k < 0, let k be 0.
+          var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+          function sameValueZero(x, y) {
+            return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
+          }
+
+          // 7. Repeat, while k < len
+          while (k < len) {
+            // a. Let elementK be the result of ? Get(O, ! ToString(k)).
+            // b. If SameValueZero(searchElement, elementK) is true, return true.
+            if (sameValueZero(o[k], searchElement)) {
+              return true;
+            }
+            // c. Increase k by 1.
+            k++;
+          }
+
+          // 8. Return false
+          return false;
+        }
+      });
+    }
+
     if (!String.prototype.startsWith) {
       String.prototype.startsWith = function(searchString, position){
         position = position || 0;
         return this.substr(position, searchString.length) === searchString;
+      };
+    }
+
+    if (!String.prototype.endsWith) {
+      String.prototype.endsWith = function(search, this_len) {
+        if (this_len === undefined || this_len > this.length) {
+          this_len = this.length;
+        }
+        return this.substring(this_len - search.length, this_len) === search;
       };
     }
 
@@ -162,14 +222,19 @@
     function _lookUpTerm(arg) {
         var args = arg.split(':');
 
-        fetch('/fetch-facet-data/' + args[0]).then(function(response) {
-            return response.json();
-        }).then(function(data) {
+        $.ajax({
+          method: 'GET',
+          dataType: 'json',
+          url: '/fetch-facet-data/' + args[0],
+          success: function(data) {
+            data = JSON.parse(data);
             var filterName = data.find(function(item) { return item.value.endsWith(args[1]); }).name;
             _createFilterControl({ name: filterName, field: args[0], id: args[1] });
-        }).catch(function(err) {
+          },
+          error: function(err) {
             console.error('An error occurred retrieving data for the %s facet', args[0]);
             console.error(err);
+          }
         });
     }
 
