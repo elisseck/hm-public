@@ -1,4 +1,4 @@
-# The History Makers Public Site
+# The HistoryMakers Public Site
 
 This project repository contains the Drupal 8 scaffolding for the public THM site. In addition, it includes Drupal VM as a composer dependency.
 
