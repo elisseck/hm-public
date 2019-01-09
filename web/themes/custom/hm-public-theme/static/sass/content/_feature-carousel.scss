@@ -3,6 +3,15 @@
   margin-bottom: em(30);
 }
 
+.feature-carousel-slide a {
+  color: white;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+}
+
 .carousel__links {
   @extend %oswald;
   font-size: rem(25);
