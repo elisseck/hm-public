@@ -30,6 +30,13 @@
   @media screen and (max-width: 950px) {
     display: none;
   }
+
+  .search-form {
+    margin-top: -8px;
+    position: relative;
+    top: 8px;
+  }
+
 }
 
 .header__da-links {
