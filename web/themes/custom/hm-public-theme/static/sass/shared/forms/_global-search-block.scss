@@ -1,6 +1,11 @@
 .header-search {
   display: flex;
   flex-direction: row;
+
+  .form-item.form-item-search-api-fulltext.form-type-search-api-autocomplete.form-no-label {
+    margin-bottom: 0;
+  }
+
 }
 
 .search-form {
