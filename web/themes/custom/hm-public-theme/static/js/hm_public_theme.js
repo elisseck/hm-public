@@ -106,6 +106,9 @@ $('.carousel').carousel({
 //Open first accordion
 $(".accordion__panel").first().removeClass("collapsed");
 $(".accordion__body").first().addClass("show");
+//EXCEPT bio detail page
+$(".mobile-only-details .accordion__panel").addClass("collapsed");
+$("#aboutInfo").removeClass("show");
 
 $(window).scroll(function() {
 });

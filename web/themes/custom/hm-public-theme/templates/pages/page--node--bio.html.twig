@@ -10,8 +10,7 @@
   <div class="row layout--1-2col-3-9">
     <main class="main">
       <a id="main-content" tabindex="-1"></a>
-      <div class="container">
-
+      <div class="container row">
         {# Social Media Share #}
         <section>
           <h2 class="sr-only">Share on Social Media</h2>
@@ -73,241 +72,339 @@
         </section>
         {# End Social Media Share #}
 
-        <div class="row">
-          <section class="info__column col-sm-5 col-md-3">
+        <div class="col-sm-5 col-md-3 info__column">
+          <section class="">
             <h2 class="sr-only">Information about {{ node.title.value }}</h2>
 
-            {# Profession #}
+            {# Bio Image #}
             <div class="info">
-              <section>
-                <div>
-                  <img class="info__headshot" src="{{file_url(node.field_bio_image.entity.uri.value)}}" alt="">
-                  {% if logged_in %}
-                    <div class="info__favorites">
-                      {{ drupal_view('flag_favorites', 'block_1') }}
-                    </div>
-                  {% endif %}
-                </div>
-                {{ field_bio_image }}
-                <h3 class="info__profession">Profession</h3>
-                <dl>
-                  <dt>Category:</dt>
-                  <dd>
-                      {% for key, value in node.field_maker_category %}
-                        {{ node.field_maker_category[key].entity.label }}<br />
+              <div>
+                <img class="info__headshot" src="{{file_url(node.field_bio_image.entity.uri.value)}}" alt="Profile image of {{ node.title.value }}">
+                {% if logged_in %}
+                  <div class="info__favorites">
+                    {{ drupal_view('flag_favorites', 'block_1') }}
+                  </div>
+                {% endif %}
+              </div>
+              {{ field_bio_image }}
+
+              {# Profession #}
+              <div class="desktop-only">
+                <section>  
+                  <h3 class="info__profession">Profession</h3>
+                  <dl>
+                    <dt>Category:</dt>
+                    <dd>
+                        {% for key, value in node.field_maker_category %}
+                          {{ node.field_maker_category[key].entity.label }}<br />
+                        {% endfor %}
+                    </dd>
+
+                    <dt>Occupation(s):</dt>
+                    <dd>
+                      {% for key, value in node.field_occupation %}
+                        {{ node.field_occupation[key].entity.label }}<br />
                       {% endfor %}
-                  </dd>
+                    </dd>
 
-                  <dt>Occupation(s):</dt>
-                  <dd>
-                    {% for key, value in node.field_occupation %}
-                      {{ node.field_occupation[key].entity.label }}<br />
-                    {% endfor %}
-                  </dd>
+                  </dl>
+                </section>  
+                {# End Profession #}
 
-                </dl>
-              </section>
-              {# End Profession #}
+                {# Favorites #}
+                <section>
+                  <h3>Favorites</h3>
+                  <dl>
+                    {% if node.field_favorite_color.value %}
+                      <dt>Favorite Color:</dt>
+                      <dd>{{ node.field_favorite_color.value }}</dd>
+                    {% endif %}
 
-              {# Favorites #}
-              <section>
-                <h3>Favorites</h3>
-                <dl>
-                  {% if node.field_favorite_color.value %}
-                    <dt>Favorite Color:</dt>
-                    <dd>{{ node.field_favorite_color.value }}</dd>
-                  {% endif %}
+                    {% if node.field_favorite_food.value %}
+                      <dt>Favorite Food:</dt>
+                      <dd>{{ node.field_favorite_food.value }}</dd>
+                    {% endif %}
 
-                  {% if node.field_favorite_food.value %}
-                    <dt>Favorite Food:</dt>
-                    <dd>{{ node.field_favorite_food.value }}</dd>
-                  {% endif %}
+                    {% if node.field_favorite_season.value %}
+                      <dt>Favorite Time of Year:</dt>
+                      <dd>{{ node.field_favorite_season.value }}</dd>
+                    {% endif %}
 
-                  {% if node.field_favorite_season.value %}
-                    <dt>Favorite Time of Year:</dt>
-                    <dd>{{ node.field_favorite_season.value }}</dd>
-                  {% endif %}
+                    {% if node.field_favorite_vacation.value %}
+                      <dt>Favorite Vacation Spot:</dt>
+                      <dd>{{ node.field_favorite_vacation.value }}</dd>
+                    {% endif %}
 
-                  {% if node.field_favorite_vacation.value %}
-                    <dt>Favorite Vacation Spot:</dt>
-                    <dd>{{ node.field_favorite_vacation.value }}</dd>
-                  {% endif %}
+                    {% if node.field_favorite_quote.value %}
+                      <dt>Favorite Quote:</dt>
+                      <dd>{{ node.field_favorite_quote.value | striptags }}</dd>
+                    {% endif %}
+                  </dl>
+                </section>
+                {# End Favorites #}
 
-                  {% if node.field_favorite_quote.value %}
-                    <dt>Favorite Quote:</dt>
-                    <dd>{{ node.field_favorite_quote.value | striptags }}</dd>
-                  {% endif %}
-                </dl>
-              </section>
-              {# End Favorites #}
+                {# Birthplace #}
+                {% if node.field_birth_date[0].value  %}
+                <section>
+                  <h3>Birthplace</h3>
+                  <dl>
+                    <dt>Born:</dt>
+                    <dd>{{ node.field_birth_date[0].value }}</dd>
 
-              {# Birthplace #}
-              {% if node.field_birth_date[0].value  %}
-              <section>
-                <h3>Birthplace</h3>
-                <dl>
-                  <dt>Born:</dt>
-                  <dd>{{ node.field_birth_date[0].value }}</dd>
+                    {% if node.field_birth_place_term[0].entity.label %}
+                      <dt>Birth Location:</dt>
+                      <dd>{{ node.field_birth_place_term[0].entity.label }}</dd>
+                    {% endif %}
 
-                  {% if node.field_birth_place_term[0].entity.label %}
-                    <dt>Birth Location:</dt>
-                    <dd>{{ node.field_birth_place_term[0].entity.label }}</dd>
-                  {% endif %}
+                  </dl>
+                </section>
+                {% endif %}
+                {# End Birthplace #}
+              </div>{# <div class="desktop-only"> #}
+            </div>{# <div class="info"> #}
+          </section>  
+          
 
-                </dl>
-              </section>
-              {% endif %}
-              {# End Birthplace #}
+          {# Mobile only #}
+          <div class="accordion mobile-only-details">
+            <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#aboutInfo" aria-expanded="true" aria-controls="aboutInfo">
+                About {{ node.title.value }}
+                <span class="accordion__arrow">
+                    <span class="accordion__arrow-half"></span>
+                    <span class="accordion__arrow-half"></span>
+                </span>
+            </button>
 
+            <div class="accordion__body collapse show" id="aboutInfo">
+              <div class="card-block info">
+                <section>  
+                  <h3 class="info__profession">Profession</h3>
+                  <dl>
+                    <dt>Category:</dt>
+                    <dd>
+                        {% for key, value in node.field_maker_category %}
+                          {{ node.field_maker_category[key].entity.label }}<br />
+                        {% endfor %}
+                    </dd>
+
+                    <dt>Occupation(s):</dt>
+                    <dd>
+                      {% for key, value in node.field_occupation %}
+                        {{ node.field_occupation[key].entity.label }}<br />
+                      {% endfor %}
+                    </dd>
+
+                  </dl>
+                </section>  
+                {# End Profession #}
+
+                {# Favorites #}
+                <section>
+                  <h3>Favorites</h3>
+                  <dl>
+                    {% if node.field_favorite_color.value %}
+                      <dt>Favorite Color:</dt>
+                      <dd>{{ node.field_favorite_color.value }}</dd>
+                    {% endif %}
+
+                    {% if node.field_favorite_food.value %}
+                      <dt>Favorite Food:</dt>
+                      <dd>{{ node.field_favorite_food.value }}</dd>
+                    {% endif %}
+
+                    {% if node.field_favorite_season.value %}
+                      <dt>Favorite Time of Year:</dt>
+                      <dd>{{ node.field_favorite_season.value }}</dd>
+                    {% endif %}
+
+                    {% if node.field_favorite_vacation.value %}
+                      <dt>Favorite Vacation Spot:</dt>
+                      <dd>{{ node.field_favorite_vacation.value }}</dd>
+                    {% endif %}
+
+                    {% if node.field_favorite_quote.value %}
+                      <dt>Favorite Quote:</dt>
+                      <dd>{{ node.field_favorite_quote.value | striptags }}</dd>
+                    {% endif %}
+                  </dl>
+                </section>
+                {# End Favorites #}
+
+                {# Birthplace #}
+                {% if node.field_birth_date[0].value  %}
+                <section>
+                  <h3>Birthplace</h3>
+                  <dl>
+                    <dt>Born:</dt>
+                    <dd>{{ node.field_birth_date[0].value }}</dd>
+
+                    {% if node.field_birth_place_term[0].entity.label %}
+                      <dt>Birth Location:</dt>
+                      <dd>{{ node.field_birth_place_term[0].entity.label }}</dd>
+                    {% endif %}
+
+                  </dl>
+                </section>
+                {% endif %}
+                {# End Birthplace #}
+              </div>
             </div>
+          </div>            
 
-            {# Related Makers #}
-            <section class="discover">
-              {#{{ page.content.relatedmakersblock }}#}
-              <a class="button button--primary" href="/related-to/{{ node.id }}">See Related Makers</a>
+          {# Related Makers #}
+          <section class="discover desktop-only">
+            {#{{ page.content.relatedmakersblock }}#}
+            <a class="button button--primary" href="/related-to/{{ node.id }}">See Related Makers</a>
+          </section>
+        </div>{# <div class="row"> #}
+
+        <div class="bio__column col-sm-7 col-md-9">
+          <div class="row">
+
+            {# Body #}
+            <section class="col-sm bio-detail__main-content">
+              <h2>Biography</h2>
+              {% autoescape %}
+                <p>{{ node.body.value|raw|nl2br }}</p>
+              {% endautoescape %}
             </section>
 
+            {# Sponsored by #}
+            {% if node.field_sponsor.value %}
+            <section class="col-sm-3 sponsor">
+              <h2>Sponsored by {{ node.field_sponsor.value }}</h2>
+              <div>
+                <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="Profile picture">
+              </div>
+            </section>
+            {% endif %}
+
+          </div>{# <div class="row"> #}
+
+          {# Mobile Related Makers #}
+          <section class="discover mobile-only-details">
+            {#{{ page.content.relatedmakersblock }}#}
+            <a class="button button--primary" href="/related-to/{{ node.id }}">See Related Makers</a>
           </section>
-          <div class="bio__column col-sm-7 col-md-9">
-            <div class="row">
 
-              {# Body #}
-              <section class="col-sm bio-detail__main-content">
-                <h2>Biography</h2>
-                {% autoescape %}
-                  <p>{{ node.body.value|raw|nl2br }}</p>
-                {% endautoescape %}
-              </section>
+          {# Video Selections #}
+          {% if node.field_web_clip1.value %}
+          <section>
+            <div class="accordion">
+              <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#videoInAccordion" aria-expanded="true" aria-controls="videoInAccordion">
+                Selected Video Oral History Segments
+                <span class="accordion__arrow">
+                  <span class="accordion__arrow-half"></span>
+                  <span class="accordion__arrow-half"></span>
+                </span>
+              </button>
 
-              {# Sponsored by #}
-              {% if node.field_sponsor.value %}
-              <section class="col-sm-3 sponsor">
-                <h2>Sponsored by {{ node.field_sponsor.value }}</h2>
-                <div>
-                  <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="Profile picture">
-                </div>
-              </section>
-              {% endif %}
-
+              <div class="accordion__body collapse show" id="videoInAccordion">
+                  <div class="card-block">
+                    {{ drupal_block('bio_video_player_block') }}
+                  </div>
+              </div>
             </div>
+          </section>
+          {% endif %}
+          {# End Video Selections #}
 
-            {# Video Selections #}
-            {% if node.field_web_clip1.value %}
-            <section>
-                <div class="accordion">
-                  <button class="accordion__panel" type="button" data-toggle="collapse" data-target="#videoInAccordion" aria-expanded="true" aria-controls="videoInAccordion">
-                      Selected Video Oral History Segments
-                      <span class="accordion__arrow">
-                          <span class="accordion__arrow-half"></span>
-                          <span class="accordion__arrow-half"></span>
-                      </span>
-                  </button>
+          {#  List of DA Stories #}
+          {% if node.field_dastories %}
+          <div class="accordion bio-detail__accordion">
+            <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#storyList" aria-expanded="false" aria-controls="storyList">
+              List of Stories
+              <span class="accordion__arrow">
+                  <span class="accordion__arrow-half"></span>
+                  <span class="accordion__arrow-half"></span>
+              </span>
+            </button>
 
-                  <div class="accordion__body collapse show" id="videoInAccordion">
-                      <div class="card-block">
-                        {{ drupal_block('bio_video_player_block') }}
-                      </div>
+            <div class="collapse accordion__body" id="storyList">
+              <div>
+                <ul>
+                  {% for key, value in node.field_dastories %}
+                    <li>{{ node.field_dastories[key].value | replace({'\\': ''}) }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {#  End List of DA Stories #}
+
+          {# Learning Aids #}
+          {% if node.field_bio_pdf.value %}
+
+          <div class="accordion">
+            <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#findingAids" aria-expanded="false" aria-controls="findingAids">
+                Finding Aids
+                <span class="accordion__arrow">
+                    <span class="accordion__arrow-half"></span>
+                    <span class="accordion__arrow-half"></span>
+                </span>
+            </button>
+
+            <div class="collapse accordion__body" id="findingAids">
+              <div>
+                <ul>
+                  {% for key, value in node.field_bio_pdf %}
+                    <li><a href="{{file_url(node.field_bio_pdf[key].entity.uri.value)}}">{{ node.field_bio_pdf[key].entity.filename.value }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {# End Learning Aids #}
+
+          {# Archival Photos #}
+          {% if node.field_archival_image1.entity.uri.value %}
+
+          <div class="accordion">
+            <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#archivePhotos" aria-expanded="false" aria-controls="archivePhotos">
+                Archival Photos
+                <span class="accordion__arrow">
+                    <span class="accordion__arrow-half"></span>
+                    <span class="accordion__arrow-half"></span>
+                </span>
+            </button>
+
+            <div class="collapse accordion__body" id="archivePhotos">
+              <div class="archive">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <img class="archive__photo" src="{{file_url(node.field_archival_image1.entity.uri.value)}}" alt="">
+                  </div>
+                  <div class="col-sm-6">
+                    <img class="archive__photo" src="{{file_url(node.field_archival_image2.entity.uri.value)}}" alt="">
                   </div>
                 </div>
-            </section>
-            {% endif %}
-            {# End Video Selections #}
-
-            {#  List of DA Stories #}
-            {% if node.field_dastories %}
-            <div class="accordion bio-detail__accordion">
-                <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#storyList" aria-expanded="false" aria-controls="storyList">
-                    List of Stories
-                    <span class="accordion__arrow">
-                        <span class="accordion__arrow-half"></span>
-                        <span class="accordion__arrow-half"></span>
-                    </span>
-                </button>
-
-                <div class="collapse accordion__body" id="storyList">
-                    <div>
-                        <ul>
-                          {% for key, value in node.field_dastories %}
-                            <li>{{ node.field_dastories[key].value | replace({'\\': ''}) }}</li>
-                          {% endfor %}
-                        </ul>
-                      </div>
-                </div>
+              </div>
             </div>
-            {% endif %}
-            {#  End List of DA Stories #}
-
-            {# Learning Aids #}
-            {% if node.field_bio_pdf.value %}
-
-            <div class="accordion">
-                <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#findingAids" aria-expanded="false" aria-controls="findingAids">
-                    Finding Aids
-                    <span class="accordion__arrow">
-                        <span class="accordion__arrow-half"></span>
-                        <span class="accordion__arrow-half"></span>
-                    </span>
-                </button>
-
-                <div class="collapse accordion__body" id="findingAids">
-                    <div>
-                      <ul>
-                        {% for key, value in node.field_bio_pdf %}
-                          <li><a href="{{file_url(node.field_bio_pdf[key].entity.uri.value)}}">{{ node.field_bio_pdf[key].entity.filename.value }}</a></li>
-                        {% endfor %}
-                      </ul>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-            {# End Learning Aids #}
-
-            {# Archival Photos #}
-            {% if node.field_archival_image1.entity.uri.value %}
-
-            <div class="accordion">
-                <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#archivePhotos" aria-expanded="false" aria-controls="archivePhotos">
-                    Archival Photos
-                    <span class="accordion__arrow">
-                        <span class="accordion__arrow-half"></span>
-                        <span class="accordion__arrow-half"></span>
-                    </span>
-                </button>
-
-                <div class="collapse accordion__body" id="archivePhotos">
-                    <div class="archive">
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <img class="archive__photo" src="{{file_url(node.field_archival_image1.entity.uri.value)}}" alt="">
-                        </div>
-                        <div class="col-sm-6">
-                          <img class="archive__photo" src="{{file_url(node.field_archival_image2.entity.uri.value)}}" alt="">
-                        </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-            {# End Archival Photos #}
-
           </div>
+          {% endif %}
+          {# End Archival Photos #}
 
-          <button class="back-button scroll" title="Back to top">
-              <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 23 12"
-              width='11px'>
-             <path fill-rule="evenodd"  fill="rgb(146, 28, 33)"
-              d="M11.501,0.007 L23.002,12.011 L0.001,12.011 L11.501,0.007 Z"/>
-             </svg>
-              Back to Top
-          </button>
         </div>
-      </div>
 
-    </main>
+        {# Back to top button #}
+        <button class="back-button scroll" title="Back to top">
+          <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 23 12"
+          width='11px'>
+          <path fill-rule="evenodd"  fill="rgb(146, 28, 33)"
+          d="M11.501,0.007 L23.002,12.011 L0.001,12.011 L11.501,0.007 Z"/>
+          </svg>
+            Back to Top
+        </button>
+        </div>
+      </div>{# <div class="container"> #}
+
+    </main>{# <main class="main"> #}
   </div>{# Close layout--1-2col-3-9 #}
 </div>{# Close page-wrapper #}
 
