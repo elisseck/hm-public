@@ -1,3 +1,12 @@
 .mobile-only {
   @extend %mobile-only;
 }
+
+.mobile-only-details {
+  display: none;
+
+  @media screen and (max-width: 600px) {
+    display: block;
+  }
+
+}
