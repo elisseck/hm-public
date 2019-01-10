@@ -21,7 +21,7 @@ class THMCorporateSignup extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['signup_form'] = [
       '#type' => 'submit',
-      '#value' => t('Contact Us')
+      '#value' => t('Sign Up')
     ];
 
     return $form;

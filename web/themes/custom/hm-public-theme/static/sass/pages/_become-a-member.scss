@@ -267,3 +267,28 @@
   }//.membership--pricing-table
 
 }//.membership.row 
+
+//Make buttons and header match circle color
+.signup-basicmaker {
+
+  #edit-signup-form {
+    background: color(secondary);
+  }
+
+}
+
+.membership.row .membership--individual.membership--digitalmaker {
+
+  h3 {
+    color: color(primary);
+  }
+
+}
+
+.membership--institutional {
+
+  #edit-signup-form--2 {
+    background: color(quaternary);
+  }
+
+}
