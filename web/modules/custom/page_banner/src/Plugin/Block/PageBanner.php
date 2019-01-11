@@ -118,6 +118,34 @@ class PageBanner extends BlockBase {
     return $urlParts[count($urlParts) - 1];
   }
 
+  protected function getCategoryResources($categoryId, Connection $db) {
+    $stmt = <<<SQL
+SELECT image.field_bio_image_target_id, node_data.title, node.nid
+FROM
+    node
+    INNER JOIN {node_field_data} node_data on node.nid = node_data.nid
+    INNER JOIN {node__field_maker_category} maker ON node.nid = maker.entity_id
+    INNER JOIN {node__field_bio_image} image ON node.nid = image.entity_id
+WHERE
+    node.type = :type AND
+    maker.field_maker_category_target_id = :category
+SQL;
+
+    return $db->query($stmt, [ ':type' => 'bio', ':category' => $categoryId ]);
+  }
+
+  protected function getOccupations($nid, Connection $db) {
+    $stmt = <<<SQL
+SELECT occupation.field_occupation_target_id
+FROM
+    {node__field_occupation} occupation
+WHERE
+    occupation.entity_id = :nid
+SQL;
+
+    return $db->query($stmt, [ ':nid' => $nid ]);
+  }
+
   /**
    * Retrieve all fids (file ids) for biographies for a given category id
    * (taxonomy term id)
@@ -277,12 +305,38 @@ SQL;
     }
   }
 
+  public function getImage(array $config) {
+    if ($imgPath = $this->existy($config, 'highlight_section_image')) {
+      return $imgPath;
+    } else {
+      $termName = $this->getTermNameFromBioViewUrl(
+        Url::fromRoute('<current>')->toString()
+      );
+
+    }
+  }
+
   /**
    * Responsible for placing configuration data into the twig for rendering.
    *
    * @return array
    */
   public function build() {
+    // TODO: Refactor this class to where a random background image with
+    //  associated title, nid (transformed into page-alias?) and
+    //  'imploded' occupations are the rule and not the exception as is
+    //  the status quo.
+    //  -- I'd like to keep in mind that we should short circuit the heavier
+    //  random data retrieval whenever we can.  With that being said, background
+    //  color, image and section may remain.  It's name, image, and occupation
+    //  that require a random resource if a 'featured' resource isn't specified.
+    //  -- Given some thought to the matter (more would always be useful), this
+    //  should begin by no longer returning an array literal.  We have deter-
+    //  mined that background_color, background_image, and highlight_section are
+    //  static values and will stay as such.  The other three items, it seems,
+    //  may be best suited to a segregated process where the returned value
+    //  should be an associative array which will be concatenated onto the
+    //  existing array before sending through the render pipeline.
     $config = $this->getConfiguration();
     
     return [
@@ -298,5 +352,4 @@ SQL;
       ]
     ];
   }
-
-} //The End
+}
