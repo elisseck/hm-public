@@ -10,7 +10,7 @@
   -  maker_category_img: random image from bio in respective maker category
 #}
 
-{% for item in data %}
+{% for item in data|sort %}
   {#
     note to template devs:
     There are categories that shouldn't be: CivicMaker and EducationMaker (atm).
