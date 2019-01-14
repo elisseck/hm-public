@@ -310,7 +310,8 @@
           {# End Video Selections #}
 
           {#  List of DA Stories #}
-          {% if node.field_dastories %}
+          {#{% if node.field_dastories %}#}
+          {% if node.field_dastories|length > 0 %}
           <div class="accordion bio-detail__accordion">
             <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#storyList" aria-expanded="false" aria-controls="storyList">
               List of Stories
