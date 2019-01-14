@@ -195,11 +195,22 @@ class BioXMLMigrationImporter {
     return urldecode($text);
   }
 
+  protected function clearMultiValueField($field) {
+    for ($i = 0; $i < $this->node->$field->count(); $i++) {
+      $this->node->$field->removeItem($i);
+      $i--;
+    }
+  }
+
   protected function populateMultiValueFields($record) {
     foreach ($this->multiValueFields as $field => $value) {
       if (strlen(trim($record->$value)) && !empty($record->$value)) {
         $dollarValues = BioXMLMigrationHelpers::migrateThmExplode(
           '$', stripslashes($record->$value));
+
+        if ($field === 'field_dastories' && $this->node->$field->count() > 0) {
+          $this->clearMultiValueField($field);
+        }
 
         foreach ($dollarValues as $val) {
           $valuesInField = $this->node->$field->getValue();
@@ -229,6 +240,9 @@ class BioXMLMigrationImporter {
         $this->db, $this->config, stripslashes($record->$value));
 
       if (($imageField) && !empty($imageField->getSize())) {
+        if (!empty($this->node->$field->getValue())) {
+          $this->node->$field->removeItem(0);
+        }
         $this->node->$field->appendItem($imageField);
       }
     }
@@ -303,13 +317,22 @@ class BioXMLMigrationImporter {
   }
 
   protected function createOrLoadNode($record) {
-    if ($this->nidExists($record->nid)) {
+    if ($this->nidExists($record->nid) && Node::load($record->nid) !== null) {
       $this->node = $this->loadExistingNode($record);
     } else {
       //$this->newNodes[] = $record->hm_id;
       $this->node = Node::create([ 'type' => 'bio' ]);
       $this->node->setOwnerId($this->importXmlUser);
     }
+
+    return $this;
+  }
+
+  protected function updateNidOnStorageRecord($nid, $hmId) {
+    $this->db->update($this->storageTable)
+      ->fields(['nid' => $nid])
+      ->condition('hm_id', $hmId)
+      ->execute();
 
     return $this;
   }
@@ -428,6 +451,10 @@ SQL;
       else if ($result == SAVED_NEW) $state = 'created';
       else if ($result == SAVED_UPDATED) $state = 'updated';
 
+      if ($state != 'failed') {
+        $id .= ':' . $node->id();
+      }
+
       $deferred->resolve([ $id => $state ]);
 
       $this->progressManager->update($this->biosProcessed);
@@ -536,6 +563,11 @@ EMAIL;
             $instance
               ->updateStorage($hmIdAndTitle[0])
               ->removeDuplicates($hmIdAndTitle[1]);
+
+            if (count($hmIdAndTitle) > 2) {
+              $instance->updateNidOnStorageRecord(
+                $hmIdAndTitle[0], $hmIdAndTitle[2]);
+            }
           }
         });
     }

@@ -113,12 +113,12 @@ class RMController extends ControllerBase {
       '#theme' => 'thm_related_makers_full_page',
       '#data' => [
         'favorite_color' => $terms['favorite_color'],
-        'employment'     => $terms['employment'][0]['value'],
+        'employment'     => @$terms['employment'][0]['value'],
         'birth_place'    => $this->flattenValues($terms['birthplace'], 'target_id'),
         'birthplace_str' => $values['birth_place'],
         'occupation'     => $this->flattenValues($terms['occupation'], 'target_id'),
         'occupation_str' => $values['occupation'],
-        'education'      => $terms['education'][0]['value']
+        'education'      => @$terms['education'][0]['value']
       ]
     ];
   }
