@@ -8,6 +8,7 @@
  * -  highlight_section_name
  * -  highlight_section_image
  * -  feature_occupation
+ * -  highlight_section_link
  *
  */
 #}
@@ -15,6 +16,9 @@
 {# {{ drupal_dump(banner_data) }} #}
 
 <div style="background-image: url('{{ banner_data.background_image }}'); background-color: {{ banner_data.background_color }}; background-size: cover;">
+  {% if banner_data.highlight_section_link %}
+  <a href="{{ banner_data.highlight_section_link }}">
+  {% endif %}
   <div class="page-banner row col-lg-12">
     <h2 class="col-sm-6">{{ drupal_title() }}</h2>
     <div class="col-sm-3 page-banner--content">
@@ -24,4 +28,7 @@
     </div>
     <div class="page-banner--highlight col-sm-3" style="background-image: url('{{ banner_data.highlight_section_image }}');" alt="{{ banner_data.highlight_section_name }}"></div>  
   </div>
+  {% if banner_data.highlight_section_link %}
+  </a>
+  {% endif %}
 </div>

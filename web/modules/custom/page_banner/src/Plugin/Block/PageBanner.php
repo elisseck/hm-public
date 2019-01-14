@@ -8,6 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Database\StatementInterface;
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Provides a 'Page Banner' Block.
@@ -120,10 +121,10 @@ class PageBanner extends BlockBase {
 
   protected function getCategoryResources($categoryId, Connection $db) {
     $stmt = <<<SQL
-SELECT image.field_bio_image_target_id, node_data.title, node.nid
+SELECT image.field_bio_image_target_id AS fid, node_data.title, node.nid
 FROM
     node
-    INNER JOIN {node_field_data} node_data on node.nid = node_data.nid
+    INNER JOIN {node_field_data} node_data ON node.nid = node_data.nid
     INNER JOIN {node__field_maker_category} maker ON node.nid = maker.entity_id
     INNER JOIN {node__field_bio_image} image ON node.nid = image.entity_id
 WHERE
@@ -134,16 +135,33 @@ SQL;
     return $db->query($stmt, [ ':type' => 'bio', ':category' => $categoryId ]);
   }
 
+  /**
+   * @param int $makerCategoryId
+   *
+   * @return
+   */
+  protected function getRandomResource(int $makerCategoryId) {
+    $results = $this->getCategoryResources(
+      $makerCategoryId, \Drupal::database())->fetchAll();
+
+    $idx = mt_rand(0, (count($results) - 1));
+    return $results[$idx];
+  }
+
   protected function getOccupations($nid, Connection $db) {
     $stmt = <<<SQL
-SELECT occupation.field_occupation_target_id
+SELECT occupation.field_occupation_target_id as tid
 FROM
     {node__field_occupation} occupation
 WHERE
     occupation.entity_id = :nid
 SQL;
 
-    return $db->query($stmt, [ ':nid' => $nid ]);
+    $data = $db->query($stmt, [ ':nid' => $nid ])->fetchAll();
+
+    return implode(', ', array_map(function($datum){
+      return Term::load($datum->tid)->getName();
+    }, $data));
   }
 
   /**
@@ -317,6 +335,39 @@ SQL;
   }
 
   /**
+   * @param int $nid
+   *
+   * @return string
+   */
+  public function getAlias(int $nid) {
+    return \Drupal::service('path.alias_manager')
+      ->getAliasByPath('/node/'.$nid);
+  }
+
+  public function getDynamicBioInfo() {
+    $res = null;
+
+    $termName = $this->getTermNameFromBioViewUrl(
+      Url::fromRoute('<current>')->toString());
+
+    if ($termName === 'biographies') {
+      $res = $this->getRandomResource(
+        $this->getRandomCategoryId($this->getMakerCategoryIds()));
+    } else {
+      $res = $this->getRandomResource($this->getTermIdFromName($termName));
+    }
+
+    $occ = $this->getOccupations($res->nid, \Drupal::database());
+
+    return [
+      'highlight_section_image' => $this->getImagePath($res->fid),
+      'highlight_section_name' => $res->title,
+      'feature_occupation' => $occ,
+      'highlight_section_link' => $this->getAlias($res->nid)
+    ];
+  }
+
+  /**
    * Responsible for placing configuration data into the twig for rendering.
    *
    * @return array
@@ -338,18 +389,28 @@ SQL;
     //  should be an associative array which will be concatenated onto the
     //  existing array before sending through the render pipeline.
     $config = $this->getConfiguration();
-    
-    return [
+
+
+    $build = [
       '#theme' => 'page_banner',
       '#cache' => [ 'max-age' => 0 ],
       '#banner_data' => [
-        'background_color' => $this->existy($config, 'background_color'), 
-        'background_image' => $this->existy($config, 'background_image'), 
-        'highlight_section' => $this->existy($config, 'highlight_section'), 
-        'highlight_section_name' => $this->existy($config, 'highlight_section_name'),       
-        'highlight_section_image' => $this->loadImageResource($config),
+        'background_color' => $this->existy($config, 'background_color'),
+        'background_image' => $this->existy($config, 'background_image'),
+        'highlight_section' => $this->existy($config, 'highlight_section'),
+        'highlight_section_name' => $this->existy($config, 'highlight_section_name'),
+        'highlight_section_image' => $this->existy($config, 'highlight_section_image'),
         'feature_occupation' => $this->existy($config, 'feature_occupation'),
       ]
     ];
+
+    if (!$this->existy($config, 'highlight_section_name') &&
+        !$this->existy($config, 'highlight_section_image') &&
+        !$this->existy($config, 'feature_occupation')) {
+      $build['#banner_data'] = array_merge(
+        $build['#banner_data'], $this->getDynamicBioInfo());
+    }
+    
+    return $build;
   }
 }
