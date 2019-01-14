@@ -134,7 +134,7 @@ class BioXMLMigrationHelpers {
         $result = $db->query($stmt, [':uri' => $uri]);
         $fid = $result->fetchCol();
 
-        $action = (!empty($fid)) ? 'update' : 'add';
+        $action = 'add';
 
         if ($action === 'update') {
             $file = File::load($fid[0]);
