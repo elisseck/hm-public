@@ -42,6 +42,11 @@ function hm_public_theme_preprocess_page(&$variables) {
 
 }
 
+function get_path_from_request() {
+  $path = \Drupal::request()->getPathInfo();
+  return explode('/', $path);
+}
+
 /**
  * Retrieves JWT.
  *
@@ -149,6 +154,13 @@ function hm_public_theme_theme_registry_alter(&$registry) {
  * @param $variables
  */
 function hm_public_theme_preprocess_block(&$variables) {
+  $routeName = \Drupal::routeMatch()->getRouteName();
+
+  if ($routeName === 'commerce_checkout.form') {
+    $pathArray = get_path_from_request();
+    $variables['form_type'] = $pathArray[count($pathArray) - 1];
+  }
+
   // Replace first occurance of block- to clean up the ID's.
   if (array_key_exists('id', $variables['attributes']) &&
     substr($variables['attributes']['id'], 0, 6) === 'block-') {
