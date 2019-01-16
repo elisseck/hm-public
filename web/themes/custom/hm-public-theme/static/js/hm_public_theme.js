@@ -99,8 +99,8 @@
 })(jQuery, Drupal, this, this.document);
 
 $('.carousel').carousel({
-  interval: 5000,
-  pause: "true"
+  interval: 9000,
+  pause: 'hover'
 });
 
 //Open first accordion
