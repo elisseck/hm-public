@@ -73,6 +73,15 @@
     @extend %oswald;
     font-size: em(35);
     margin-bottom: em(15);
+  
+    @media screen and (max-width: 950px) {
+      font-size: em(30);
+    }
+
+    @media screen and (max-width: 600px) {
+      font-size: em(20);
+    }
+  
   }
 
   h4 {
@@ -291,4 +300,16 @@
     background: color(quaternary);
   }
 
+}
+
+.signup-basicmaker #edit-signup-form:hover {
+  background: $white;
+  color: color(secondary);
+  border-color: color(secondary);
+}
+
+.membership--institutional #edit-signup-form--2:hover {
+  background: $white;
+  color: color(quaternary);
+  border-color: color(quaternary);
 }
