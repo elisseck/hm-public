@@ -9,10 +9,11 @@
   }
 
   .views-row {
-    flex: 1 0 80%;
+    flex: 1 0 60%;
     margin: em(30) em(50);
 
     @media screen and (max-width: 768px) {
+      flex: 1 0 80%;
       margin: 30px 30px 30px 15px;
     }
 
