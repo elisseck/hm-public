@@ -128,7 +128,7 @@
         {% endif %}
 
         {# Video #}
-        {% if content.field_post_event_video_url	|field_value is not empty %}
+        {% if content.field_post_event_video_url|field_value is not empty %}
           {{ drupal_block('hero_video_player_block', {video_url: content.field_post_event_video_url|field_value, hero_title: content.	field_post_event_video_title|field_value, hero_desc: 	content.field_post_event_video_descript|field_value}) }}
         {% endif %}
 
