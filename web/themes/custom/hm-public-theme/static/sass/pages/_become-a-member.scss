@@ -73,7 +73,7 @@
     @extend %oswald;
     font-size: em(35);
     margin-bottom: em(15);
-  
+
     @media screen and (max-width: 950px) {
       font-size: em(30);
     }
@@ -81,7 +81,7 @@
     @media screen and (max-width: 600px) {
       font-size: em(20);
     }
-  
+
   }
 
   h4 {
@@ -275,7 +275,7 @@
 
   }//.membership--pricing-table
 
-}//.membership.row 
+}//.membership.row
 
 //Make buttons and header match circle color
 .signup-basicmaker {
@@ -304,12 +304,12 @@
 
 .signup-basicmaker #edit-signup-form:hover {
   background: $white;
-  color: color(secondary);
   border-color: color(secondary);
+  color: color(secondary);
 }
 
 .membership--institutional #edit-signup-form--2:hover {
   background: $white;
-  color: color(quaternary);
   border-color: color(quaternary);
+  color: color(quaternary);
 }
