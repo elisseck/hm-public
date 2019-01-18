@@ -136,6 +136,7 @@ li.pager__item.pager__item--ellipsis {
     letter-spacing: .114em;
     position: relative;
     text-transform: uppercase;
+    z-index: 500;
 
     & .is-active {
       color: color(tertiary);
@@ -642,3 +643,8 @@ li.pager__item.pager__item--ellipsis {
   }
 
 }//#hm-public-theme-main-menu
+
+//Autocomplete ul
+.ui-widget.ui-widget-content {
+  z-index: 1000;
+}
