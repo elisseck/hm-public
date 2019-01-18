@@ -28,9 +28,8 @@ class THMCorporateSignup extends FormBase {
   }
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $contact = '?subject=RE: Corporate Membership Inquiry';
     $form_state->setRedirectUrl(
-      Url::fromUri('internal:/form/contact' . $contact));
+      Url::fromUri('internal:/form/institutional-member-form'));
   }
 
 }
