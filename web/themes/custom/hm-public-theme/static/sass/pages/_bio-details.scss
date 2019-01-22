@@ -388,8 +388,27 @@
     max-width: 100%;
   }
 
-  .next-vid {
-    display: none;
+  .node--type-bio .video-container h3 {
+    margin-top: 15px;
+    padding-bottom: 0;
+  }
+
+  .bio__column .row .next-vid__preview {
+    flex-direction: row;
+  }
+
+  .row.next-vid__preview div {
+    flex: 0;
+    max-width: none;
+
+    .next-vid__thumb[_ngcontent-c0] {
+      max-width: 100px;
+    }
+
+  }
+
+  .row.next-vid__preview div.next-vid__title {
+    flex: 1;
   }
 
   #findingAids li {
