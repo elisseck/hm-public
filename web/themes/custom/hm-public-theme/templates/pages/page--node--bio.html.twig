@@ -138,7 +138,7 @@
 
                     {% if node.field_birth_place_term[0].entity.label %}
                       <dt>Birth Location:</dt>
-                      <dd>{{ node.field_birth_place_term[0].entity.label }}</dd>
+                      <dd>{{ node.field_birth_place_term[0].entity.label }}, {{ node.field_state[0].value }}</dd>
                     {% endif %}
 
                   </dl>
