@@ -79,10 +79,14 @@
       margin-top: 10px;
     }
 
-    @media screen and (max-width: 900px) {
+  }
+
+  @media screen and (max-width: 900px) {
+    
+    .intro-content .intro-content__content a {
       margin-right: 10px;
     }
-
+    
   }
 
 }
