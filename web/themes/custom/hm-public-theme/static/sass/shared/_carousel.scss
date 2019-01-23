@@ -41,10 +41,6 @@
   @media screen and (max-width: 900px) {
     margin-left: 0;
     margin-right: 0;
-    width: auto;
-  }
-
-  @media screen and (max-width: 768px) {
     width: 100%;
   }
 
@@ -68,7 +64,7 @@
 .event-carousel {
   margin-top: 1.875em;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 900px) {
     margin-top: 0;
 
     .carousel-inner { padding: 0; }
@@ -84,13 +80,18 @@
       margin-right: 30px;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 900px) {
       margin: 0;
       max-width: 100%;
       padding: 0;
       width: 100%;
     }
 
+  }
+
+  .two-column-slide .carousel__caption a.button {
+    max-width: none;
+    width: auto;
   }
 
 }
