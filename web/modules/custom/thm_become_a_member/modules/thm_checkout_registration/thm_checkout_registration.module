@@ -31,19 +31,20 @@ function thm_checkout_registration_help($route_name, RouteMatchInterface $route_
  * Implements hook_theme().
  */
 function thm_checkout_registration_theme($existing, $type, $theme, $path) {
-  /** @var \Drupal\thm_jwt\Generator\THMJWTURLGenerator $jwtUrlService */
-  $jwtUrlService = \Drupal::service('thm_jwt.url_generator');
-  return [
+  $tempStore = \Drupal::service('user.private_tempstore')->get('thm_jwt');
+  $token = $tempStore->get('user_jwt');
+  $build = [
     'thm_registration_info' => [
       'render element' => 'form'
     ],
     'thm_checkout_registration_complete' => [
       'render element' => 'form',
       'variables' => [
-        'user_jwt_da' => $jwtUrlService->retrieveLink()
+        'user_jwt_da' => $token
       ]
     ]
   ];
+  return $build;
 }
 
 function isDigitalmakerPaymentForm($form, $formId) {
@@ -60,6 +61,7 @@ function thm_checkout_registration_form_alter(&$form, FormStateInterface $formSt
   if (isDigitalmakerPaymentForm($form, $formId)) {
     $form['match_registration_data'] = [
       '#type' => 'checkbox',
+      '#weight' => '0',
       '#title' => t('Check if billing info matches registration info.'),
       '#ajax' => [
         'callback' => 'loadDataIntoBillingForm'

@@ -6,6 +6,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Drupal\jwt\Authentication\Event\JwtAuthGenerateEvent;
 use Drupal\jwt\Authentication\Event\JwtAuthEvents;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\user\Entity\User;
 
 /**
  * Class THMJWTGenerator.
@@ -51,7 +52,8 @@ class THMJWTGenerator implements EventSubscriberInterface {
    * @return string
    */
   protected function getAccess() {
-    return in_array('thm_paid_member', $this->currentUser->getRoles()) ? 'All' : 'None';
+    $user = User::load(\Drupal::currentUser()->id());
+    return in_array('thm_paid_member', $user->getRoles()) ? 'All' : 'None';
   }
 
   /**
