@@ -31,7 +31,7 @@ function thm_checkout_registration_help($route_name, RouteMatchInterface $route_
  * Implements hook_theme().
  */
 function thm_checkout_registration_theme($existing, $type, $theme, $path) {
-  $tempStore = \Drupal::service('user.private_tempstore')->get('thm_jwt');
+  $tempStore = \Drupal::service('tempstore.private')->get('thm_jwt');
   $token = $tempStore->get('user_jwt');
   $build = [
     'thm_registration_info' => [
