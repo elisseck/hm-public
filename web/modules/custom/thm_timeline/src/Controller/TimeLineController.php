@@ -182,7 +182,7 @@ class TimeLineController {
 
              return array(
               '#theme' => 'timeline',
-              '#title' => 'headline',
+              '#title' => 'Timeline',
               '#resultsCount' => $resultsCount,
               '#markup' => "",
               '#content' => $content,
