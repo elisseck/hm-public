@@ -97,7 +97,7 @@ function thm_jwt_url_has_jwt_entry($url) {
  */
 function _cacheToken(string $token, SessionInterface $session) {
   $session->set(JWT_CACHE, $token);
-  $tempStore = \Drupal::service('user.private_tempstore')->get('thm_jwt');
+  $tempStore = \Drupal::service('tempstore.private')->get('thm_jwt');
   $tempStore->set('user_jwt', $token);
 }
 
