@@ -104,6 +104,12 @@
   <div class="row layout--1-2col-9-3 event__content">
     <div class="col-sm-12 col-md column first event__info">
       {{ content.left_9 }}
+      
+      {# Video #}
+      {% if content.field_post_event_video_url|field_value is not empty %}
+        {{ drupal_block('hero_video_player_block', {video_url: content.field_post_event_video_url|field_value, hero_title: content.	field_post_event_video_title|field_value, hero_desc: 	content.field_post_event_video_descript|field_value}) }}
+      {% endif %}
+
       <h2>{{ content.field_body|field_label }}</h2>
       <div class="event__bio">
         {{ content.field_body|field_value }}
@@ -116,10 +122,7 @@
           {% endfor %}
         {% endif %}
 
-        {# Video #}
-        {% if content.field_post_event_video_url|field_value is not empty %}
-          {{ drupal_block('hero_video_player_block', {video_url: content.field_post_event_video_url|field_value, hero_title: content.	field_post_event_video_title|field_value, hero_desc: 	content.field_post_event_video_descript|field_value}) }}
-        {% endif %}
+        {# Note: moved the video block from here to the top.  The two event content blocks were in place originally to allow the video to dissect the content #}
 
         {# Event Content Block 2 #}
         {% if content.field_event_content_block_2	|field_value is not empty %}
