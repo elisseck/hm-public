@@ -27,7 +27,7 @@ class THMDAComplete extends CheckoutPaneBase {
   /**
    * @var UserInterface
    */
-  protected $user;
+  public $user;
 
   public function assignRole() {
     $this->user->addRole('thm_paid_member');

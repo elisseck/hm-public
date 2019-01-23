@@ -20,7 +20,7 @@ function hm_public_theme_preprocess_page(&$variables) {
     $variables['login_form'] = render_form(UserLoginForm::class);
   }
 
-  inject_jwturls($variables);
+  if (current_user_has_role('thm_paid_member') === true) inject_jwturls($variables);
 
   /** @var \Drupal\node\NodeInterface $node */
   $node = \Drupal::routeMatch()->getParameter('node');
@@ -69,7 +69,9 @@ function assemble_paid_links($subDomain = 'da') {
  * @return bool
  */
 function current_user_has_role($roleId) {
-  return User::load(\Drupal::currentUser()->id())->hasRole($roleId);
+  $user = User::load(\Drupal::currentUser()->id());
+  $userHasRole = $user->hasRole($roleId);
+  return $userHasRole;
 }
 
 /**
@@ -189,7 +191,7 @@ function get_checkout_flow_name_from_parameter_bag(ParameterBag $pBag) {
 }
 
 function hm_public_theme_preprocess_menu__simple_megamenu(&$variables) {
-  inject_jwturls($variables);
+  if (current_user_has_role('thm_paid_member') === true) inject_jwturls($variables);
   inject_forms($variables, [
     'upgrade_form' => THMUpgradeAMemberForm::class,
     'donation_form' => THMMobileDonationForm::class
@@ -197,12 +199,9 @@ function hm_public_theme_preprocess_menu__simple_megamenu(&$variables) {
 }
 
 function inject_jwturls(&$variables) {
-  $variables['paid_user']  = current_user_has_role('thm_paid_member');
-
-  if ($variables['paid_user']) {
-    $variables['user_jwt_da']   = assemble_paid_links();
-    $variables['user_jwt_smda'] = assemble_paid_links('smda');
-  }
+  $variables['paid_user']     = true;
+  $variables['user_jwt_da']   = assemble_paid_links();
+  $variables['user_jwt_smda'] = assemble_paid_links('smda');
 }
 
 function inject_forms(&$variables, $mapping = null) {
