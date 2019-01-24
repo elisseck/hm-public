@@ -9,6 +9,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\TempStore\PrivateTempStore;
 
 const JWT_CACHE = 'user_jwt_';
 
@@ -44,8 +45,8 @@ function thm_jwt_theme() {
   ];
 }
 
-function thm_jwt_fetch_token(SessionInterface $session) {
-  return _fetchToken($session);
+function thm_jwt_fetch_token(SessionInterface $session, $tokenType) {
+  return _fetchToken($session, $tokenType);
 }
 
 /**
@@ -94,29 +95,66 @@ function thm_jwt_url_has_jwt_entry($url) {
  *
  * @param string $token
  * @param SessionInterface $session
+ * @param string $tokenType
  */
-function _cacheToken(string $token, SessionInterface $session) {
-  $session->set(JWT_CACHE, $token);
+function _cacheToken(string $token, $tokenType) {
+  //$session->set(JWT_CACHE, $token);
+  /** @var PrivateTempStore $tempStore */
   $tempStore = \Drupal::service('tempstore.private')->get('thm_jwt');
   $tempStore->set('user_jwt', $token);
+  $tempStore->set('jwt_expires', strtotime('+24 hours'));
+  $tempStore->set('token_type', $tokenType);
+}
+
+function _userHasUpgraded($stored, $current) {
+  return $stored === 'science' && $current === 'all';
+}
+
+function _tokenHasExpired($timeStamp){
+  return time() < $timeStamp;
+}
+
+function _userWasDowngraded($stored, $current) {
+  return $stored === 'all' && $current === 'science';
+}
+
+function _clearTempStore(PrivateTempStore $tempStore) {
+  $tempStore->delete('user_jwt');
+  $tempStore->delete('jwt_expires');
+  $tempStore->delete('token_type');
 }
 
 /**
  * Retrieves JWT via session storage or direct generation.
  *
  * @param SessionInterface $session
+ * @param string $tokenType
  *
  * @return bool|string
  */
-function _fetchToken(SessionInterface $session) {
-  $token = $session->get(JWT_CACHE);
+function _fetchToken(SessionInterface $session, $tokenType) {
+  /** @var PrivateTempStore $tempStore */
+  $tempStore = \Drupal::service('tempstore.private')->get('thm_jwt');
+  $token = $tempStore->get('user_jwt');
+  $storedTokenType = $tempStore->get('token_type');
+
+  $getNewToken = function() use ($session, $tokenType) {
+    $newToken = _generateToken();
+    _cacheToken($newToken, $tokenType);
+    return $newToken;
+  };
 
   if (isset($token)) {
+    if (_userHasUpgraded($storedTokenType, $tokenType) ||
+      _tokenHasExpired($tempStore->get('jwt_expires')) ||
+      _userWasDowngraded($storedTokenType, $tokenType)) {
+        _clearTempStore($tempStore);
+        return $getNewToken();
+    } else {
       return $token;
+    }
   } else {
-    $newToken = _generateToken();
-    _cacheToken($newToken, $session);
-    return $newToken;
+    return $getNewToken();
   }
 }
 
