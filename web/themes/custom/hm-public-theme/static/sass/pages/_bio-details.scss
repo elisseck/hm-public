@@ -456,3 +456,16 @@
 #storyList .button.button--primary {
   margin-bottom: 15px;
 }
+
+.bio__column {
+
+  .bio-detail__main-content,
+  .sponsor {
+    margin-top: 30px;
+  
+    @media screen and (max-width: 600px) {
+      margin-top: 0;
+    }
+  }
+
+}
