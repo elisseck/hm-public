@@ -87,7 +87,7 @@ class GlossaryController {
 
             return array(
              '#theme' => 'glossary',
-             '#title' => 'TEST',
+             '#title' => 'Glossary',
              '#resultsCount' => '',
              '#markup' => "",
              '#content' => $content,
