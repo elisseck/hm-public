@@ -38,12 +38,12 @@ class THMDAUserSurvey extends CheckoutPaneBase {
       '#op' => 'continue'
     ];
 
-    $pane_form['cancel'] = [
+    /*$pane_form['cancel'] = [
       '#type' => 'link',
       '#title' => $this->t('go back'),
       '#url' => Url::fromUri('internal:/checkout/' . $this->order->id() . '/membership_options'),
       '#op' => 'cancel'
-    ];
+    ];*/
 
     return $pane_form;
   }

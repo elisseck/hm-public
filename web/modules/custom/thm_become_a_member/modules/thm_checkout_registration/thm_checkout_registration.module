@@ -59,6 +59,7 @@ function isDigitalmakerPaymentForm($form, $formId) {
  */
 function thm_checkout_registration_form_alter(&$form, FormStateInterface $formState, $formId) {
   if (isDigitalmakerPaymentForm($form, $formId)) {
+    $form['payment_information']['#weight'] = '-20';
     $form['match_registration_data'] = [
       '#type' => 'checkbox',
       '#weight' => '0',

@@ -14,20 +14,20 @@ class THMJWTURLGenerator {
 
   protected $session;
 
-  protected $digitalArchiveUrl = 'https://thmda-auth-www.azurewebsites.net';
+  protected $digitalArchiveUrl = 'https://thmdigital.thehistorymakers.org';
 
-  protected $scienceDAUrl = 'https://smda-auth-www.azurewebsites.net';
+  protected $scienceDAUrl = 'https://smdigital.thehistorymakers.org';
 
-  protected function getJwt() {
-    return thm_jwt_fetch_token($this->session);
+  protected function getJwt($tokenType) {
+    return thm_jwt_fetch_token($this->session, $tokenType);
   }
 
-  public function retrieveLink($subDomain = 'da') {
+  public function retrieveLink($subDomain, $tokenType) {
     switch ($subDomain) {
       case 'da':
-        return $this->digitalArchiveUrl . '?jwt=' . $this->getJwt();
+        return $this->digitalArchiveUrl . '?jwt=' . $this->getJwt($tokenType);
       case 'smda':
-        return $this->scienceDAUrl . '?jwt=' . $this->getJwt();
+        return $this->scienceDAUrl . '?jwt=' . $this->getJwt($tokenType);
     }
   }
 

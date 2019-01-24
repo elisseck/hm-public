@@ -20,7 +20,10 @@ function hm_public_theme_preprocess_page(&$variables) {
     $variables['login_form'] = render_form(UserLoginForm::class);
   }
 
-  if (current_user_has_role('thm_paid_member') === true) inject_jwturls($variables);
+  if (current_user_has_role('authenticated') &&
+      !current_user_has_role('thm_paid_member')) inject_smdajwt($variables, 'science');
+
+  if (current_user_has_role('thm_paid_member')) inject_jwturls($variables, 'all');
 
   /** @var \Drupal\node\NodeInterface $node */
   $node = \Drupal::routeMatch()->getParameter('node');
@@ -52,12 +55,13 @@ function get_path_from_request() {
  * Retrieves JWT.
  *
  * @param string $subDomain
+ * @param string $tokenType
  * @return bool|string
  */
-function assemble_paid_links($subDomain = 'da') {
+function assemble_paid_links($subDomain, $tokenType) {
   /** @var Drupal\thm_jwt\Generator\THMJWTURLGenerator $jwtUrl */
   $jwtUrl  = \Drupal::service('thm_jwt.url_generator');
-  return $jwtUrl->retrieveLink($subDomain);
+  return $jwtUrl->retrieveLink($subDomain, $tokenType);
 }
 
 
@@ -191,17 +195,23 @@ function get_checkout_flow_name_from_parameter_bag(ParameterBag $pBag) {
 }
 
 function hm_public_theme_preprocess_menu__simple_megamenu(&$variables) {
-  if (current_user_has_role('thm_paid_member') === true) inject_jwturls($variables);
+  if (current_user_has_role('authenticated') &&
+    !current_user_has_role('thm_paid_member')) inject_smdajwt($variables, 'science');
+  if (current_user_has_role('thm_paid_member') === true) inject_jwturls($variables, 'all');
   inject_forms($variables, [
     'upgrade_form' => THMUpgradeAMemberForm::class,
     'donation_form' => THMMobileDonationForm::class
   ]);
 }
 
-function inject_jwturls(&$variables) {
+function inject_smdajwt(&$variables, $tokenType) {
+  $variables['user_jwt_smda'] = assemble_paid_links('smda', $tokenType);
+}
+
+function inject_jwturls(&$variables, $tokenType) {
   $variables['paid_user']     = true;
-  $variables['user_jwt_da']   = assemble_paid_links();
-  $variables['user_jwt_smda'] = assemble_paid_links('smda');
+  $variables['user_jwt_da']   = assemble_paid_links('da', $tokenType);
+  $variables['user_jwt_smda'] = assemble_paid_links('smda', $tokenType);
 }
 
 function inject_forms(&$variables, $mapping = null) {

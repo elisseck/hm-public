@@ -53,7 +53,15 @@ class THMJWTGenerator implements EventSubscriberInterface {
    */
   protected function getAccess() {
     $user = User::load(\Drupal::currentUser()->id());
-    return in_array('thm_paid_member', $user->getRoles()) ? 'All' : 'None';
+    $roles = $user->getRoles();
+
+    if (in_array('thm_paid_member', $roles)) {
+      return 'All';
+    } else if (in_array('authenticated', $roles)) {
+      return 'ScienceMakersOnly';
+    } else {
+      return 'None';
+    }
   }
 
   /**
