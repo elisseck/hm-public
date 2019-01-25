@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Template for the order receipt.
+ * Order receipt for Membership and/or store purchase
  *
  * Available variables:
  * - site_name:  The name of the site.
@@ -43,8 +43,9 @@
         </table>
         <table style="min-width: 450px; margin: 5px auto 0 auto; padding: 40px 30px 30px 10px;">
           <tbody>
+
+          {# If a DigitalMaker purchase #}
           {% if process_type == 'digital' %}
-          {# markup for memberships will appear in order emails #}
           <tr>
             <td style="padding-bottom: 20px">
               Welcome to The HistoryMakers community, {{ billing_information.commerce_customer_first_name }}! We are so glad to have you as our DigitalMaker. We are so pleased to have you join our network of users. As a DigitalMaker you will receive the following benefits at no charge on {{ url('<front>') }}:
@@ -62,22 +63,14 @@
               </ul>
             </td>
           </tr>
-          <tr>
-            <td style="padding-bottom: 20px">
-              To complete the registration process, you must visit the verification URL below:
-              <a href="#">link to {{ site_name }} Digital Archives</a>
-              Once you have completed this step your account will be activated and ready to use. In the meantime, if you have any questions or comments, simply reply to this e-mail and someone from {{ site_name }} will get in
-              touch with you.
-            </td>
-          </tr>
+
+          {# If a store purchase #}
           {% elseif process_type == 'shippable' %}
-          {# markup for items from the store will appear in order emails #}
           <tr>
             <td>
-              <h2>Thanks for purchasing a shippable thing!</h2>
+              <h2>Thank you for your purchase!</h2>
               <p>
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eget enim nec quam finibus commodo. Nullam id laoreet nunc. Sed hendrerit nisi at augue scelerisque, vel lobortis ligula luctus. Integer dapibus gravida sodales. Aliquam erat
-                volutpat. Praesent aliquam scelerisque bibendum. Nam massa ex, pretium quis pulvinar a, luctus ac lectus. Phasellus porttitor, justo id pharetra fringilla, ante lacus posuere orci, sed pellentesque mi felis vitae tortor. Mauris ultrices nunc in justo vulputate tincidunt. Donec tincidunt, mauris molestie cursus fringilla, orci mi pellentesque augue, non scelerisque nisi tortor eu neque. Vestibulum eu ex vitae dolor imperdiet viverra. Aliquam pretium augue sed auctor lobortis. Mauris ipsum lorem, dapibus sit amet vehicula id, pretium eget lorem. Sed quam velit, ullamcorper eu eros et, viverra auctor magna. Cras eget massa at quam molestie congue eu quis justo.
+                  Insert copy here
               </p>
             </td>
           </tr>
@@ -90,7 +83,7 @@
           </tr>
           <tr>
             <td style="padding-bottom: 20px">
-              Want to manage your order online?
+              Want to manage your order and donation history online?
               If you need to check the status of your order, please visit our home page at {{ site_name }} and click on
               "My account" in the menu or login with the following link:
             </td>
@@ -204,12 +197,6 @@
                 {% block additional_information %}
                     {{ 'Thank you for your order!'|t }}
                 {% endblock %}
-            </td>
-          </tr>
-          <tr>
-            <td style="padding-bottom: 20px;">
-              Where can I get help with reviewing my order?
-              To learn more about managing your orders on The HistoryMakers, please visit our help page.
             </td>
           </tr>
           <tr>
