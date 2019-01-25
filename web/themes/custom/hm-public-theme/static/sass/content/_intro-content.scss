@@ -63,7 +63,7 @@
 }
 
 //Within the 1-2-1col layout
-.layout--1-2-1col .block-region-custom-left div, 
+.layout--1-2-1col .block-region-custom-left div,
 .layout--1-2-1col .block-region-custom-right div {
 
   .intro-content__content {
@@ -71,7 +71,7 @@
     flex-flow: row wrap;
     margin-bottom: 30px;
     margin-top: 30px;
-  
+
     h1,
     p {
       flex-basis: 100%;
@@ -84,11 +84,11 @@
   }
 
   @media screen and (max-width: 900px) {
-    
+
     .intro-content .intro-content__content a {
       margin-right: 10px;
     }
-    
+
   }
 
 }
