@@ -45,25 +45,16 @@
             <tbody>
               <tr>
                   <td style="padding-bottom: 20px">
-                      Thanks you for your donation!
+                      <p>Thank you for your donation!<p>
+                      <p>The HistoryMakers is a 501 (c ) (3) not for profit tax exempt organization and this donation is tax deductible to the fullest extent permitted under the law.</p>
                   </td>
               </tr>
-              <tr>
+              {#<tr>
                   <td style="padding-bottom: 20px">
                       Sincerely,
                       {{ site_name }}
                   </td>
-              </tr>
-              <tr>
-                  <td style="padding-bottom: 20px">
-                      Want to manage your order and donation history online?
-                      Please visit our home page at {{ site_name }} and click on
-                      "My account" in the menu or login with the following link:
-                  </td>
-              </tr>
-              <tr>
-                  <td><a href="{{ site_login_url }}">{{ site_login_url }}</a></td>
-              </tr>
+              </tr>#}
               <tr>
                   <td style="font-weight: bold; padding: 6px 0 6px 6px; background-color: #f0511f; color: white;">
                       {{ 'Order #@number details:'|t({'@number': order_entity.getOrderNumber}) }}
@@ -134,7 +125,6 @@
                                           {% block payment_method %}
                                               {{ payment_method }}
                                           {% endblock %}
-                                          <p>The HistoryMakers is a 501 (c ) (3) not for profit tax exempt organization and this donation is tax deductible to the fullest extent permitted under the law.</p>
                                       </td>
                                   </tr>
                               {% endif %}
@@ -174,15 +164,25 @@
                   </td>
               </tr>
               <tr>
+                  <td>{{ site_name }}</td>
+              </tr>
+              <tr>
+                  <td style="padding-bottom: 20px">
+                      Want to manage your order and donation history online?
+                      Please visit our home page at {{ site_name }} and click on
+                      "My account" in the menu or login with the following link:
+                  </td>
+              </tr>
+              <tr>
+                  <td><a href="{{ site_login_url }}">{{ site_login_url }}</a></td>
+              </tr>
+              <tr>
                   <td style="padding-bottom: 20px;">
                       Please note: This e-mail message is an automated notification. Please do not reply to this message.
                   </td>
               </tr>
               <tr>
                   <td style="padding-bottom: 20px;">Thanks again for shopping with us.</td>
-              </tr>
-              <tr>
-                  <td>{{ site_name }}</td>
               </tr>
             </tbody>
           </table>
