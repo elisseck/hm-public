@@ -1,6 +1,9 @@
 {% set userInfo = rows[0]['#view'].result[0]._entity.fields %}
 {% set isPaidMember = false %}
-<img class="user-info__img" src="{{ file_url( userInfo.user_picture.entity.uri.value ) }}">
+
+{% if userInfo.user_picture.entity.uri.value is not empty %}
+    <img class="user-info__img" src="{{ file_url( userInfo.user_picture.entity.uri.value ) }}">
+{% endif %}
 
 {% for role in userInfo.roles %}
     {% if role.value.target_id == 'thm_paid_member' %}
