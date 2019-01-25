@@ -265,3 +265,8 @@
 .cart-empty-page {
   @extend %product-card;
 }
+
+.view.list-commerce-checkout-order-summary .field-product img {
+  height: auto;
+  max-width: 200px;
+}
