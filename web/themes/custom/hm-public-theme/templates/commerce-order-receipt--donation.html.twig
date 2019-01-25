@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Template for the order receipt.
+ * Donation receipt template
  *
  * Available variables:
  * - site_name:  The name of the site.
@@ -45,21 +45,7 @@
             <tbody>
               <tr>
                   <td style="padding-bottom: 20px">
-                      Thanks for your donation!
-                  </td>
-              </tr>
-              <tr>
-                  <ul>
-                    <li>Date: </li>
-                    <li>Time: </li>
-                  </ul>
-                  <p>The HistoryMakers is a 501 (c ) (3) not for profit tax exempt organization and this donation of {{ '@total'|t({'@total': order_entity.getTotalPrice|commerce_price_format}) }} is tax deductible to the fullest extent permitted under the law.</p>
-              </tr>
-              <tr>
-                  <td style="padding-bottom: 20px">
-                      To complete the registration process, you can visit the URL below:
-                      <a href="{{ url('/become-a-member') }}">link to {{ site_name }} </a>
-                      Once you have completed this step your account will be activated and ready to use. In the meantime, if you have any questions or comments, simply go to {{ site_name }} <a href="{{ url('/contact-us') }}">.
+                      Thanks you for your donation!
                   </td>
               </tr>
               <tr>
@@ -70,8 +56,8 @@
               </tr>
               <tr>
                   <td style="padding-bottom: 20px">
-                      Want to manage your order online?
-                      If you need to check the status of your order, please visit our home page at {{ site_name }} and click on
+                      Want to manage your order and donation history online?
+                      Please visit our home page at {{ site_name }} and click on
                       "My account" in the menu or login with the following link:
                   </td>
               </tr>
@@ -148,6 +134,7 @@
                                           {% block payment_method %}
                                               {{ payment_method }}
                                           {% endblock %}
+                                          <p>The HistoryMakers is a 501 (c ) (3) not for profit tax exempt organization and this donation is tax deductible to the fullest extent permitted under the law.</p>
                                       </td>
                                   </tr>
                               {% endif %}
@@ -186,12 +173,6 @@
                       {% endblock %}
                   </td>
               </tr>
-              {#<tr>
-                  <td style="padding-bottom: 20px;">
-                      Where can I get help with reviewing my order?
-                      To learn more about managing your orders on The HistoryMakers, please visit our help page.
-                  </td>
-              </tr>#}
               <tr>
                   <td style="padding-bottom: 20px;">
                       Please note: This e-mail message is an automated notification. Please do not reply to this message.
