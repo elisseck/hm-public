@@ -10,6 +10,7 @@ use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\TempStore\PrivateTempStore;
+use Firebase\JWT\JWT;
 
 const JWT_CACHE = 'user_jwt_';
 
@@ -124,6 +125,11 @@ function _clearTempStore(PrivateTempStore $tempStore) {
   $tempStore->delete('token_type');
 }
 
+function _parseToken($jwt) {
+  $key = 'secret-squirrel-flashes-you-in-public-without-fear-of-apprehension';
+  return JWT::decode($jwt, $key, ['HS256']);
+}
+
 /**
  * Retrieves JWT via session storage or direct generation.
  *
@@ -146,14 +152,18 @@ function _fetchToken(SessionInterface $session, $tokenType) {
 
   if (isset($token)) {
     if (_userHasUpgraded($storedTokenType, $tokenType) ||
-      _tokenHasExpired($tempStore->get('jwt_expires')) ||
       _userWasDowngraded($storedTokenType, $tokenType)) {
-        _clearTempStore($tempStore);
-        return $getNewToken();
-    } else {
-      return $token;
+      _clearTempStore($tempStore);
+      $token = $getNewToken();
     }
   } else {
+    return $getNewToken();
+  }
+
+  try {
+    _parseToken($token);
+    return $token;
+  } catch (Firebase\JWT\ExpiredException $e) {
     return $getNewToken();
   }
 }
