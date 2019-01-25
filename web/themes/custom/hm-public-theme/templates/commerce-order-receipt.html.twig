@@ -69,18 +69,15 @@
           <tr>
             <td>
               <h2>Thank you for your purchase!</h2>
-              <p>
-                  Insert copy here
-              </p>
             </td>
           </tr>
           {% endif %}
-          <tr>
+          {#<tr>
             <td style="padding-bottom: 20px">
               Sincerely,
                 {{ site_name }}
             </td>
-          </tr>
+          </tr>#}
           <tr>
             <td style="font-weight: bold; padding: 6px 0 6px 6px; background-color: #f0511f; color: white;">
                 {{ 'Order #@number details:'|t({'@number': order_entity.getOrderNumber}) }}
