@@ -82,16 +82,6 @@
             </td>
           </tr>
           <tr>
-            <td style="padding-bottom: 20px">
-              Want to manage your order and donation history online?
-              If you need to check the status of your order, please visit our home page at {{ site_name }} and click on
-              "My account" in the menu or login with the following link:
-            </td>
-          </tr>
-          <tr>
-            <td><a href="{{ site_login_url }}">{{ site_login_url }}</a></td>
-          </tr>
-          <tr>
             <td style="font-weight: bold; padding: 6px 0 6px 6px; background-color: #f0511f; color: white;">
                 {{ 'Order #@number details:'|t({'@number': order_entity.getOrderNumber}) }}
             </td>
@@ -198,6 +188,16 @@
                     {{ 'Thank you for your order!'|t }}
                 {% endblock %}
             </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 20px">
+              Want to manage your order and donation history online?
+              If you need to check the status of your order, please visit our home page at {{ site_name }} and click on
+              "My account" in the menu or login with the following link:
+            </td>
+          </tr>
+          <tr>
+            <td><a href="{{ site_login_url }}">{{ site_login_url }}</a></td>
           </tr>
           <tr>
             <td style="padding-bottom: 20px;">
