@@ -62,9 +62,11 @@
 
 //1-2-1col layout
 .layout--1-2-1col .block-region-custom-left div,
-.layout--1-2-1col .block-region-custom-right div {
+.layout--1-2-1col .block-region-custom-right div,
+.layout--1-2-1col div.first,
+.layout--1-2-1col div.last {
 
-  .testimonial-carousel.carousel.slide,
+  .testimonial-carousel.carousel.slide, .testimonial-carousel.carousel.slide
   .quote-block {
     background: transparent;
   }
