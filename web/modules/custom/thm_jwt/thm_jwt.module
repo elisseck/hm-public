@@ -126,7 +126,7 @@ function _clearTempStore(PrivateTempStore $tempStore) {
 }
 
 function _parseToken($jwt) {
-  $key = 'secret-squirrel-flashes-you-in-public-without-fear-of-apprehension';
+  $key = \Drupal::service('key.repository')->getKey('testing')->getKeyValue();
   return JWT::decode($jwt, $key, ['HS256']);
 }
 

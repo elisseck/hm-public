@@ -208,7 +208,7 @@ class BioXMLMigrationImporter {
         $dollarValues = BioXMLMigrationHelpers::migrateThmExplode(
           '$', stripslashes($record->$value));
 
-        if ($field === 'field_dastories' && $this->node->$field->count() > 0) {
+        if (in_array($field, ['field_dastories', 'field_datitle']) && $this->node->$field->count() > 0) {
           $this->clearMultiValueField($field);
         }
 
