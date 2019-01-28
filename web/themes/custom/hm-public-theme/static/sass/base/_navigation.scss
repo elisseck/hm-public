@@ -287,28 +287,6 @@ li.pager__item.pager__item--ellipsis {
       padding: em(22) em(8, 16);
     }
 
-    &:hover,
-    &.menu-item--active-trail {
-      background-color: $black;
-      color: $white;
-      cursor: pointer;
-      transition: .2s ease-in-out;
-
-      a {
-        border-bottom: 0;
-        color: $white;
-      }
-
-      @media screen and (max-width: 950px) {
-        background-color: transparent;
-
-        a {
-          color: color(tertiary);
-        }
-      }
-
-    }
-
     a {
       color: color(secondary);
 
@@ -330,6 +308,37 @@ li.pager__item.pager__item--ellipsis {
 
     }
   }//.menu .menu .menu-item
+
+  .menu .menu .menu-item:hover,
+  .menu .menu .menu-item.menu-item--active-trail {
+    background-color: $black;
+    color: $white;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+
+    a {
+      border-bottom: 0;
+      color: $white;
+    }
+
+    @media screen and (max-width: 950px) {
+      background-color: transparent;
+
+      a {
+        color: color(tertiary);
+      }
+    }
+
+  }
+
+  //Specificity for when the li active status is not being applied to an active link
+  li.menu-item.menu-item--active-trail .menu li.menu-item > a.is-active {
+    color: color(secondary);
+  }
+
+  li.menu-item.menu-item--active-trail .menu li.menu-item.menu-item--active-trail > a.is-active {
+    color: $white;
+  }
 
   .menu-item--expanded.menu-item--active-trail {
     border-bottom: em(8px) solid color(tertiary);
