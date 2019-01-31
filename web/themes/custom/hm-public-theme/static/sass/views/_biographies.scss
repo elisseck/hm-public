@@ -65,6 +65,12 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
+    margin-left: auto;
+    width: auto;
+
+    @media screen and (max-width: 1024px) and (min-width: 950px) {
+      width: 100%;
+    }
 
     #edit-actions {
       margin: 0;

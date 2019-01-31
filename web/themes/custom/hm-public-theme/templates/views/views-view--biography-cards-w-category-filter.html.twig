@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Theme override for People view and custom blocks.
+ *
+ * Content Type created using Paragraphs
+ * -  Paragraph Label: People
+ * -  Paragraph Field: field_accordion_people
+ *
+ * Available Fields
+ * -  header
+ * -  sort
+ * -  view
+ * -  pager
+ *
+ */
+#}
+
+{#{{ drupal_dump(_context|keys) }}#}
+{# {{ drupal_dump(_context.view.display.display.display_title) }} #}
+
+<div class="view list-biography-cards-w-category-filter">
+  <div class="view-header">{{ header }}</div>
+
+  {# Advanced Search Button #}
+  <div><a class="button button--secondary" href="/advanced-search">Advanced Biography Search</a></div>
+
+  {# views-exposed-form header-search #}
+  {{ exposed }}
+
+  {# View #}
+  {{ rows }}
+
+  {# Pager #}
+  {{ pager }}
+
+</div>{# view list-biography-cards-w-category-filter #}
