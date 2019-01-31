@@ -227,7 +227,7 @@
           dataType: 'json',
           url: '/fetch-facet-data/' + args[0],
           success: function(data) {
-            data = JSON.parse(data);
+            //data = JSON.parse(data);
             var filterName = data.find(function(item) { return item.value.endsWith(args[1]); }).name;
             _createFilterControl({ name: filterName, field: args[0], id: args[1] });
           },
