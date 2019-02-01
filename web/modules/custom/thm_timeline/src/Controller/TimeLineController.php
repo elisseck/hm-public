@@ -183,6 +183,7 @@ class TimeLineController {
              return array(
               '#theme' => 'timeline',
               '#title' => 'Timeline',
+              '#cache' => [ 'max-age' => 0 ],
               '#resultsCount' => $resultsCount,
               '#markup' => "",
               '#content' => $content,

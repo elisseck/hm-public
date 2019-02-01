@@ -22,7 +22,7 @@ class THMDonationFlow extends CheckoutFlowWithPanesBase {
           'label' => $this->t('Login')
         ],
         'donation_options' => [
-          'label' => $this->t('Pick A Donation')
+          'label' => $this->t('Select a Donation Amount')
         ],
         'payment_method' => [
           'label' => $this->t('Payment Method'),
