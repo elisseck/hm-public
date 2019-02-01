@@ -77,9 +77,7 @@ function thm_forms_form_alter(&$form, FSI $form_state, $current_form) {
       $form['search_api_fulltext']['#attributes']['placeholder'] = 'Search Biographies';
     }
   } else if ($current_form === 'commerce_checkout_flow_thm_donation_checkout_flow') {
-    $title = $form['actions']['next']['#value'];
     $form['actions']['next']['#value'] = 'Pay and Complete Your Donation';
-    drupal_set_message('button title: ' . $title);
   }
 
   foreach ($formsData as $formID => $formClasses) {
