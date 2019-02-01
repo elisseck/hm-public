@@ -72,6 +72,10 @@
       width: 100%;
     }
 
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
     #edit-actions {
       margin: 0;
       max-width: none;
@@ -93,16 +97,18 @@
       }
 
       @media screen and (max-width: 768px) {
-        flex-basis: 100%;
+        flex-basis: auto;
         justify-content: flex-end;
       }
 
-    }
+      @media screen and (max-width: 600px) {
+        flex-basis: 100%;
+        margin-bottom: 15px;
 
-    @media screen and (max-width: 768px) {
+        input {
+          width: 100%;
+        }
 
-      .form-item.form-item-items-per-page.form-type-select {
-        margin-right: 0;
       }
 
     }
@@ -336,4 +342,21 @@
   @extend %max-width;
   @extend %default-gutter-width;
   margin-top: 30px;
+}
+
+//Advanced Search button
+.view.list-biography-cards-w-category-filter .advanced-search--button {
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+
+    a {
+      margin-bottom: 15px;
+      margin-right: 0;
+      text-align: center;
+      width: 100%;
+    }
+
+  }
+
 }
