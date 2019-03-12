@@ -268,6 +268,12 @@ class BioXMLMigrationImporter {
     return $this;
   }
 
+  protected function clearTaxonomyFieldInNode($field) {
+    if (in_array($field, ['field_maker_category']) && $this->node->$field->count() > 0) {
+      $this->clearMultiValueField($field);
+    }
+  }
+
   protected function populateTaxonomyFields($record) {
     foreach ($this->taxonomyFields as $v) {
       $vocab = $v[0];
@@ -279,6 +285,8 @@ class BioXMLMigrationImporter {
         $tags = BioXMLMigrationHelpers::getTags($record->$value, $vocab);
 
         if (count($tags)) {
+          $this->clearTaxonomyFieldInNode($field);
+
           foreach ($tags as $tag) {
             $tagsInField = $this->node->$field->getValue();
             $key = 'target_id';
