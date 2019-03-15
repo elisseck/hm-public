@@ -83,12 +83,26 @@ class THMDAMembershipOptions extends CheckoutPaneBase {
 
     switch ($triggeringElement['#op']) {
       case 'continue':
-        foreach ($this->order->getItems() as $orderItem) {
+        $orderItems = $this->order->getItems();
+        $ignore = false;
+        //drupal_set_message('cart contains: ' . count($orderItems) . ' items.');
+
+        foreach ($orderItems as $orderItem) {
+          //drupal_set_message('currently in order: ' . $orderItem->getPurchasedEntity()->id() . ' - ' . $orderItem->label());
           if ($orderItem->label() === 'HistoryMakers DA Placeholder') {
             $this->order->removeItem($orderItem);
           }
+          if ($orderItem->getPurchasedEntity()->id() === $formValues['subscription_opts']) {
+            $ignore = true;
+          } else {
+            $this->order->removeItem($orderItem);
+          }
         }
-        $this->addToOrder($formValues['subscription_opts']);
+        //drupal_set_message('currently selected: ' . $formValues['subscription_opts']);
+
+        if (!$ignore) {
+          $this->addToOrder($formValues['subscription_opts']);
+        }
 
         return $form_state->setRedirect('commerce_checkout.form', [
           'commerce_order' => $this->order->id(),
