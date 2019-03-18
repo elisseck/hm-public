@@ -42,11 +42,17 @@ class THMURLListener implements EventSubscriberInterface {
       $this->currentUser->isAuthenticated();
   }
 
+  protected function getTokenType(AccountInterface $user) {
+    $roles = $user->getRoles();
+    return in_array('thm_paid_member', $roles) ? 'All' : 'ScienceMakersOnly';
+  }
+
   public function handle(KernelEvent $event) {
     $request    = $event->getRequest();
     $requestUri = $request->getRequestUri();
 
     if ($this->isAQualifyingUrl($requestUri)) {
+      $tokenType = $this->getTokenType($this->currentUser);
       $session  = $request->getSession();
 
       if (strpos($requestUri, '%3D') !== false) {
@@ -55,7 +61,7 @@ class THMURLListener implements EventSubscriberInterface {
         $url = explode('return=', $requestUri)[1];
       }
 
-      $token    = thm_jwt_fetch_token($session);
+      $token = thm_jwt_fetch_token($session, $tokenType);
 
       if ((thm_jwt_url_has_jwt_entry($url))) {
         $freshUrl = thm_jwt_refresh_url($url, $token);
