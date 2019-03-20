@@ -1,0 +1,6 @@
+thm_jwt.admin:
+  title: 'Manage Digital Archive URLs'
+  description: 'Provides a single reference for DA URLs'
+  parent: system.admin_config_content
+  route_name: thm_jwt.digital_access_config
+  weight: 101

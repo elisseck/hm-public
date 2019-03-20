@@ -5,3 +5,11 @@ thm_jwt.archive_unauthorized:
     _title: 'Digital Archive Access'
   requirements:
     _permission: 'access content'
+
+thm_jwt.digital_access_config:
+  path: '/admin/config/digital-access-urls'
+  defaults:
+    _form: '\Drupal\thm_jwt\Form\URLConfigForm'
+    _title: 'Digital Archive URLs'
+  requirements:
+    _permission: 'administer site configuration'

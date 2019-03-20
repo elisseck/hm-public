@@ -14,7 +14,8 @@ class THMJWTURLGenerator {
 
   protected $session;
 
-  protected $digitalArchiveUrl = 'https://thmdigital.thehistorymakers.org';
+  /** @var \Drupal\Core\Config\ImmutableConfig  */
+  protected $config;
 
   protected $scienceDAUrl = 'https://smdigital.thehistorymakers.org';
 
@@ -25,13 +26,14 @@ class THMJWTURLGenerator {
   public function retrieveLink($subDomain, $tokenType) {
     switch ($subDomain) {
       case 'da':
-        return $this->digitalArchiveUrl . '?jwt=' . $this->getJwt($tokenType);
+        return $this->config->get('digital_archive_urls.main') . '?jwt=' . $this->getJwt($tokenType);
       case 'smda':
-        return $this->scienceDAUrl . '?jwt=' . $this->getJwt($tokenType);
+        return $this->config->get('digital_archive_urls.science') . '?jwt=' . $this->getJwt($tokenType);
     }
   }
 
   public function __construct(SessionInterface $session) {
     $this->session = $session;
+    $this->config = \Drupal::config('digital_archive_urls.settings');
   }
 }
