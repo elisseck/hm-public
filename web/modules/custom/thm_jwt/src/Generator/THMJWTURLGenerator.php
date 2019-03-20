@@ -17,8 +17,6 @@ class THMJWTURLGenerator {
   /** @var \Drupal\Core\Config\ImmutableConfig  */
   protected $config;
 
-  protected $scienceDAUrl = 'https://smdigital.thehistorymakers.org';
-
   protected function getJwt($tokenType) {
     return thm_jwt_fetch_token($this->session, $tokenType);
   }
