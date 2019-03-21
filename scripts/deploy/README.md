@@ -1,4 +1,3 @@
-
 - all secrets SSH/Devsite Access/MySQL have been shared with Orin Fink via lastpass
 
 deployment to q/a:
@@ -17,5 +16,7 @@ deployment to prod
 - deployment is done in two phases
   - code/media retrieval and installation is done automatically
   - symlinking the deployment directory `/data/THM-deploy-tmp` to apache directories `/var/www/hm-public` are manual
+- rebuild the cache:
+  - goto `/var/www/hm-public/web` and `../vendor/bin/drupal cr all` or `../vendor/bin/drush cc`
 - updating core:
   - at the moment, done automatically due to a version mismatch
