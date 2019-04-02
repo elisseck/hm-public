@@ -39,3 +39,6 @@ fm_files
 fm_import
 
 /dist/
+
+# Rocketeer logs
+.rocketeer/logs
