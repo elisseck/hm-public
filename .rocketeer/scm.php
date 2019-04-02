@@ -10,7 +10,7 @@ return [
 
     // The SSH/HTTPS address to your repository
     // Example: https://github.com/vendor/website.git
-    'repository' => 'https://github.com/thirdwavellc/hm-public.git',
+    'repository' => 'git@github.com:thirdwavellc/hm-public.git',
 
     // The repository credentials : you can leave those empty
     // if you're using SSH or if your repository is public
@@ -19,8 +19,8 @@ return [
     // to be prompted (public repo, etc) set the values to null
     // UPDATE 03/12/2019 - Username and Password ARE MANDATORY for proper
     // usage!
-    'username'   => '',
-    'password'   => '',
+    'username'   => null,
+    'password'   => null,
 
     // The branch to deploy
     'branch'     => 'env/qa',

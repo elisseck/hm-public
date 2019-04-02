@@ -39,7 +39,7 @@ return [
     'connections'      => [
         'dev' => [
             'host'      => 'd8dev.thehistorymakers.org',
-            'username'  => '',
+            'username'  => 'devuser',
             'password'  => '',
             'key'       => '',
             'keyphrase' => '',
