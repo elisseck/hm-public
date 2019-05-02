@@ -7,3 +7,8 @@ vagrant_synced_folders:
     destination: /var/www/drupalvm
     type: nfs
     create: true
+
+mysql_databases:
+  - name: drupal
+    encoding: latin1
+    collation: latin1_swedish_ci
