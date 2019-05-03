@@ -76,7 +76,8 @@ Get into vagrant machine and switch to root user and import the DB to mysql.
 ## First boot of app after DB import
 
 Upon starting the DB after an import, step through the install and enter DB credentials.  Then you will also need to rebuild the Cache.  This can be accomplished by going into the vagrant host `vagrant ssh` and issuing a Drush coammand
-
+    
+    cd /var/www/drupalvm/web
     drush cr
     
 ## Adding items to the SOLR index.
