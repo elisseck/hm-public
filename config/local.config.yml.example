@@ -45,4 +45,4 @@ installed_extras:
 
 
 post_provision_scripts:
- - "../examples/scripts/configure-solr.sh"
+  - "../../../../scripts/provisioning/solr-config.sh"
