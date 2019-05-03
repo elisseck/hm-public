@@ -64,18 +64,14 @@ Then, replace all instances of the source database name with the local drupal da
     
 Push the sql file into the vagrant host and cleanup the file. Or, use `vagrant upload` command.
 
-    rsync local/thm_livedev_backup.{current_file}.sql vagrant@192.168.88.88:/home/vagrant   
-    rm local/*
+    vagrant upload ../_backports/local/thm_livedev_backup.20190501_204210.sql
 
-    
-Now back out to the project directory, get into the vagrant machine and switch to root user.
+Get into vagrant machine and switch to root user and import the DB to mysql.
 
-    cd ../../hm-public/
     vagrant ssh
     sudo su root
-    cd /home/vagrant
-    mysql < thm_livedev_backup.{current_file}.sql
-    rm thm_livedev_backup.{current_file}.sql
+    mysql < /home/vagrant/thm_livedev_backup.{current_file}.sql
+    rm /home/vagrant/thm_livedev_backup.{current_file}.sql
 
 ## First boot of app after DB import
 
