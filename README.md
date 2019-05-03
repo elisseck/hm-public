@@ -83,6 +83,12 @@ Upon starting the DB after an import, step through the install and enter DB cred
 
     drush cr
     
+## Adding items to the SOLR index.
+
+When you first start up, and after you've imported the DB, the Solr collection will need to be populated with the data from the database.  In order to do this, run the following.
+
+    drush sapi-c && drush sapi-r && drush sapi-i
+    
 ## Working on this project
 
 In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.
