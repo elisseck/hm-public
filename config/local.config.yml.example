@@ -46,3 +46,6 @@ installed_extras:
 
 post_provision_scripts:
   - "../../../../scripts/provisioning/solr-config.sh"
+
+extra_packages:
+  - php7.1-bcmath
