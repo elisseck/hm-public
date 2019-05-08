@@ -43,6 +43,49 @@ If you would like to add a new core dependency to the project, we use [Composer]
 
 This allows us to easily manage and share dependencies between a team of developers.
 
+## Getting MySQL Dump into your local build
+
+In order to safely make a backup from anothe database server
+
+    mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database --user=devuser --password | gzip -c > ./backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz
+
+Bring the backup down to local
+  
+    rsync -v devuser@devwww.thehistorymakers.org:~/backports/db/ production/
+
+Once you have the DB backup locally, you can unzip it using gunzip
+    
+    cp production/{specific-file-you-want} local 
+    gunzip local/thm_livedev_backup.{current_file}.sql.gzip
+
+Then, replace all instances of the source database name with the local drupal database name. For example on Mac OS (sed requires the file extension after -i)
+
+    sed -i '.sql' 's/thm_livedev/drupal/g' local/thm_livedev_backup.{current_file}.sql
+    
+Push the sql file into the vagrant host and cleanup the file. Or, use `vagrant upload` command.
+
+    vagrant upload ../_backports/local/thm_livedev_backup.20190501_204210.sql
+
+Get into vagrant machine and switch to root user and import the DB to mysql.
+
+    vagrant ssh
+    sudo su root
+    mysql < /home/vagrant/thm_livedev_backup.{current_file}.sql
+    rm /home/vagrant/thm_livedev_backup.{current_file}.sql
+
+## First boot of app after DB import
+
+Upon starting the DB after an import, step through the install and enter DB credentials.  Then you will also need to rebuild the Cache.  This can be accomplished by going into the vagrant host `vagrant ssh` and issuing a Drush coammand
+    
+    cd /var/www/drupalvm/web
+    drush cr
+    
+## Adding items to the SOLR index.
+
+When you first start up, and after you've imported the DB, the Solr collection will need to be populated with the data from the database.  In order to do this, run the following.
+
+    drush sapi-c && drush sapi-r && drush sapi-i
+    
 ## Working on this project
 
 In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.
