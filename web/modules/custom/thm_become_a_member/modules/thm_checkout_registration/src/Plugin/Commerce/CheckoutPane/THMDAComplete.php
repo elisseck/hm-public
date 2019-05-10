@@ -31,6 +31,8 @@ class THMDAComplete extends CheckoutPaneBase {
 
   public function assignRole() {
     $this->user->addRole('thm_paid_member');
+    #TODO: add logic that also places an end date on the subscription
+
     try {
       $this->user->save();
     } catch (EntityStorageException $exc) {

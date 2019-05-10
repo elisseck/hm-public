@@ -53,11 +53,13 @@ class THMDAMembershipOptions extends CheckoutPaneBase {
     $pane_form['subscription_opts'] = [
       '#type' => 'radios',
       '#title' => $this->t('Choose one'),
-      '#default_value' => 1,
+      '#default_value' => 4,
       '#required' => true,
       '#options' => [
         1 => $this->t('$30/One month membership'),
-        3 => $this->t('$300/One year membership')
+        3 => $this->t('$300/One year membership'),
+        78 => $this->t('$30/30 days access')
+
       ]
     ];
 
