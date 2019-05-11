@@ -16,16 +16,21 @@
         }
     ],
     "require": {
+        "commerceguys/intl": "1.0.4",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/bulkdelete": "1.x-dev",
         "drupal/chosen": "^2.5",
-        "drupal/commerce": "2.4",
+        "drupal/commerce": "2.12",
         "drupal/commerce_authnet": "1.x-dev",
         "drupal/commerce_migrate": "^2.0@alpha",
-        "drupal/commerce_recurring": "^1.0@beta",
+        "drupal/commerce_order": "2.12",
+        "drupal/commerce_payment": "2.12",
+        "drupal/commerce_price": "2.12",
+        "drupal/commerce_recurring": "1.0-beta4",
         "drupal/commerce_shipping": "^2.0@beta",
+        "drupal/commerce_store": "2.12",
         "drupal/config_update": "^1.5",
         "drupal/console": "^1.0.1",
         "drupal/core": "~8.4",
@@ -131,12 +136,8 @@
         "enable-patching": true,
         "patches": {
             "drupal/commerce": {
-                "order comment support": "patches/commerce-add-order-comments-2908196-4.patch",
                 "legacy admin comments": "patches/commerce_log.templates.patch",
                 "guest checkout email addition": "patches/commerce-guest-payment-email.patch"
-            },
-            "drupal/commerce_recurring": {
-                "fix cron breaking error": "https://www.drupal.org/files/issues/2018-07-09/2984703-3.patch"
             },
             "drupal/commerce_shipping": {
                 "fixes shipment weight issue": "https://www.drupal.org/files/issues/Limit-by-shipment-weight-not-working-2950520-1.patch"
