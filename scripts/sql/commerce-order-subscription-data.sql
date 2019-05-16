@@ -36,4 +36,4 @@ FROM drupal.commerce_subscription s -- start w/ subscription data.
        JOIN commerce_order__billing_period cobp -- has the end date that will trigger the renewal
             ON cso.orders_target_id = cobp.entity_id
 
-WHERE ufd.name = "MichMeadows";
+WHERE ufd.name = "hjackson334";
