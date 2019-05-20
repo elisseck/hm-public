@@ -43,6 +43,24 @@ If you would like to add a new core dependency to the project, we use [Composer]
 
 This allows us to easily manage and share dependencies between a team of developers.
 
+## Ensure your local environment uses a sandbox Authorize.net configuration
+
+It is **imperative** that you create a local configuration for the Authorize.net feature.  Without this step, you risk creating orders against a configuration intended for another environment since there is an _option_ to configure these secrets through the Drupal GUI.  
+
+In order to use a local configuration, place the following block within a `settings.local.php` file inside `/web/sites/default`
+
+```php
+/**
+* Local configuration for the Authorize.net test environment
+*/
+
+$config['commerce_payment.commerce_payment_gateway.authorize_net']['configuration'] = [
+ 'api_login' => '{your authorize.net api login}',
+ 'transaction_key' => '{your authorize.net api transaction key}',
+ 'client_key' => '{your authorize.net client key}',
+ 'mode' => 'test'
+];
+```
 
 ## Getting MySQL Dump into your local build
 
