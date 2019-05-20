@@ -65,7 +65,7 @@
         "drupal/webform": "5.0.0-rc21",
         "drupal/webform_migrate": "^1.0@alpha",
         "drupal/xhprof": "1.x-dev",
-        "drush/drush": "~8.0",
+        "drush/drush": "^9.6",
         "guiguiboy/php-cli-progress-bar": "^0.0.4",
         "react/child-process": "^0.5.0",
         "react/event-loop": "^0.4.3",
