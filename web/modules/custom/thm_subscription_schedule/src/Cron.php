@@ -57,7 +57,7 @@ class Cron implements CronInterface {
     $subscription_storage = $this->entityTypeManager->getStorage('commerce_subscription');
     
     /**
-     * Clean up the active transactions that have already specified an end date that has passed
+     * Clean up the active transactions that have already specified an end date that has passed.
      * By canceling the subscription, we inherently then delete the draft order that is pending
      * and we thereby block the order from being closed
      */
@@ -72,6 +72,7 @@ class Cron implements CronInterface {
       $expired_time = $overdue_subscription->getEndDate()->getTimeStamp();
       $scheduled_change = new ScheduledChange('state', 'canceled', $expired_time);
       $overdue_subscription->setScheduledChanges($scheduled_change->toArray());
+      $overdue_subscription->applyScheduledChanges();
       $overdue_subscription->save();
     }
   }
