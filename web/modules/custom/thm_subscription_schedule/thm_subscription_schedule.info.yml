@@ -1,0 +1,7 @@
+name: 'THM Subscription Schedules'
+package: Custom
+type: module
+description: 'Sets up a cron job to handle special subscription rules'
+dependencies:
+  - commerce:commerce_recurring
+core: 8.x

@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for the The HistoryMakers Subscription Scheduler module.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function thm_subscription_schedule_cron() {
+  \Drupal::service('thm_subscription_schedule.cron')->run();
+}
+
+
+

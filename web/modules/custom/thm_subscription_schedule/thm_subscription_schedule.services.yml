@@ -1,0 +1,4 @@
+services:
+  thm_subscription_schedule.cron:
+    class: \Drupal\thm_subscription_schedule\Cron
+    arguments: ['@entity_type.manager', '@commerce_recurring.order_manager', '@datetime.time']
