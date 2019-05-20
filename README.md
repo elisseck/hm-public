@@ -43,35 +43,27 @@ If you would like to add a new core dependency to the project, we use [Composer]
 
 This allows us to easily manage and share dependencies between a team of developers.
 
+
 ## Getting MySQL Dump into your local build
 
-In order to safely make a backup from anothe database server
+In order to safely make a backup from another database server
 
     mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database --user=devuser --password | gzip -c > ./backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz
 
-Bring the backup down to local
+Bring the backup down to local and push it up into the vagrant machine
   
-    rsync -v devuser@devwww.thehistorymakers.org:~/backports/db/ production/
+    rsync -v devuser@devwww.thehistorymakers.org:~/backports/db/ ./
+    vagrant upload ./thm_livedev_backup.20190501_204210.sql.gzip
 
-Once you have the DB backup locally, you can unzip it using gunzip
-    
-    cp production/{specific-file-you-want} local 
-    gunzip local/thm_livedev_backup.{current_file}.sql.gzip
-
-Then, replace all instances of the source database name with the local drupal database name. For example on Mac OS (sed requires the file extension after -i)
-
-    sed -i '.sql' 's/thm_livedev/drupal/g' local/thm_livedev_backup.{current_file}.sql
-    
-Push the sql file into the vagrant host and cleanup the file. Or, use `vagrant upload` command.
-
-    vagrant upload ../_backports/local/thm_livedev_backup.20190501_204210.sql
-
-Get into vagrant machine and switch to root user and import the DB to mysql.
+Get into vagrant machine and switch to root user, unzip the db, replace instances of the source database name with the drupal name, import the DB to mysql and remove the imported file (unless you want to keep it around for repeat testing)
 
     vagrant ssh
     sudo su root
-    mysql < /home/vagrant/thm_livedev_backup.{current_file}.sql
-    rm /home/vagrant/thm_livedev_backup.{current_file}.sql
+    cd /home/vagrant
+    gunzip thm_livedev_backup.{current_file}.sql.gzip
+    sed -i 's/thm_livedev/drupal/g' thm_livedev_backup.{current_file}.sql
+    mysql < thm_livedev_backup.{current_file}.sql
+    rm thm_livedev_backup.{current_file}.sql
 
 ## First boot of app after DB import
 
