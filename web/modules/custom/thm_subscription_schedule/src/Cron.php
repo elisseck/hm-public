@@ -55,7 +55,34 @@ class Cron implements CronInterface {
   public function run() {
 
     $subscription_storage = $this->entityTypeManager->getStorage('commerce_subscription');
-    
+    /**
+     * Ensure that any subscriptions without an end date specified will get the end date of the
+     * original order's billing schedule end date. This rule assumes then that there is only one
+     * billing cycle to be assumed and we are automatically cancelling the user's subscription
+     * at the end of the first billing period.
+     */
+    $no_end_subscription_ids = $subscription_storage->getQuery()
+      ->notExists('ends')
+      ->execute();
+
+    $no_end_subscriptions = $subscription_storage->loadMultiple($no_end_subscription_ids);
+    foreach($no_end_subscriptions as $no_end_subscription){
+
+      $billing_schedule = $no_end_subscription->getBillingSchedule();
+      $config = $billing_schedule->getPluginConfiguration();
+
+      $date_mod_instruction = '+' . $config['interval']['number'] . ' ' . $config['interval']['unit'];
+      $cancel_date = $no_end_subscription->getStartDate()->modify($date_mod_instruction);
+      $cancel_date->modify('-12 hour');
+      $cancel_timestamp = $cancel_date->getTimeStamp();
+      $no_end_subscription->setEndTime($cancel_timestamp);
+
+      $scheduled_change = new ScheduledChange('state', 'canceled', $cancel_timestamp);
+      $no_end_subscription->setScheduledChanges($scheduled_change->toArray());
+      $no_end_subscription->save();
+    }
+
+
     /**
      * Clean up the active transactions that have already specified an end date that has passed.
      * By canceling the subscription, we inherently then delete the draft order that is pending
