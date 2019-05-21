@@ -1,0 +1,33 @@
+//Reset your password form
+#user-pass {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: $default-grid-gutter-width auto 0;
+  max-width: 900px;
+  width: auto;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex: 1 100%;
+  }
+
+}
+
+//Login form post resetting password
+.user-login-form {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  margin: $default-grid-gutter-width auto 0;
+  max-width: 900px;
+  width: auto;
+
+  #edit-actions {
+    margin-left: 0;
+  }
+
+}

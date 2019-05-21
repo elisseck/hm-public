@@ -1,0 +1,7 @@
+thm_forms.admin_form:
+  path: '/admin/settings/thm-forms'
+  defaults:
+    _form: '\Drupal\thm_forms\Form\THMFormsClassMgmtForm'
+    _title: 'Form Class Management'
+  requirements:
+    _permission: 'administer site configuration'

@@ -2,9 +2,10 @@
 @import 'lib/basicimports';
 
 // Import config.
-@import "config/colors";
-@import "config/media-grid";
-@import "config/transitions";
+@import 'config/colors';
+@import 'config/media-grid';
+@import 'config/transitions';
+@import 'config/dims';
 
 // Import grid.
 // Removed from import in favor of Bootstrap 4's grid for the moment
@@ -18,24 +19,85 @@
 @import 'lib/icomoon';
 
 // Put your own mixins in this file
-@import 'lib/mixins';
 @import 'lib/functions';
+@import 'lib/mixins';
 
 // Import assets
 @import 'assets/pageelements';
 
 // Basic layout styling
-@import 'base/layout';
-@import 'base/header';
+@import 'base/buttons';
 @import 'base/footer';
+@import 'base/header';
+@import 'base/layout';
 @import 'base/navigation';
 @import 'base/sidebars';
 @import 'base/tabs';
-@import 'base/buttons';
+@import 'base/mobile';
+
+// Shared components
+@import 'shared/cards';
+@import 'shared/accordion';
+@import 'shared/cards';
+@import 'shared/carousel';
+@import 'shared/snapshot-blocks';
+@import 'shared/quotes';
+@import 'shared/slides';
+@import 'shared/readmore';
+@import 'shared/milestone';
+@import 'shared/view-blocks';
+@import 'shared/testimonials';
+@import 'shared/collage';
+//Forms
+@import 'shared/forms/progress-bar';
+@import 'shared/forms/controls';
+@import 'shared/forms/forms';
+@import 'shared/forms/licensing';
+@import 'shared/forms/donation';
+@import 'shared/forms/check-out';
+@import 'shared/forms/volunteer';
+@import 'shared/forms/become-a-bureau';
+@import 'shared/forms/global-search-block';
+@import 'shared/forms/progress-bar';
+@import 'shared/forms/contact';
+@import 'shared/forms/sponsor-an-event';
+@import 'shared/forms/user-profile';
+@import 'shared/forms/thank-you';
+@import 'shared/forms/reset-and-login';
+@import 'shared/forms/authorize-net';
+@import 'shared/forms/become-a-member';
+@import 'shared/forms/nominate-a-historymaker';
+@import 'shared/forms/education-forms';
+
+// Content styling
+@import 'content/intro-content';
+@import 'content/page-banner';
+@import 'content/page-title';
+@import 'content/feature-carousel';
+@import 'content/content';
+@import 'content/how-it-works';
+@import 'content/store';
 
 // Specific page styling
 @import 'pages/home';
 @import 'pages/bio-details';
+@import 'pages/user-profile';
+@import 'pages/become-a-member';
+@import 'pages/events';
+@import 'pages/timeline';
+@import 'pages/glossary';
+@import 'pages/media';
+@import 'pages/special-collections';
+@import 'pages/my-account';
+@import 'pages/related-makers';
 
 // Views styling
 @import 'views/biographies';
+@import 'views/people';
+@import 'views/store';
+@import 'views/cart';
+@import 'views/advanced-search';
+@import 'views/press';
+@import 'views/user-matching';
+@import 'views/newsletter-archive';
+@import 'views/search';

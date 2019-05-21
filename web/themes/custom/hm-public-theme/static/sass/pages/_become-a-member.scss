@@ -1,0 +1,315 @@
+.member {
+
+  &--anchor-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: em(15);
+    margin-top: em(15);
+
+    ul li {
+      display: inline;
+    }
+
+    ul li a {
+      text-align: center;
+      width: em(120);
+    }
+
+  }
+
+  &--content {
+    color: color(quaternary);
+    margin-bottom: em(15);
+    margin-top: em(15);
+    text-align: center;
+
+    h1 {
+      @extend %oswald;
+      font-size: em(40);
+      margin: 0 auto;
+    }
+
+    p {
+      color: $black;
+    }
+
+    @media screen and (max-width: 768px) {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      h1 {
+        font-size: 2em;
+      }
+    }
+
+  }
+
+}//.membership
+
+#becomeamembercontentblock {
+  margin-bottom: $default-grid-gutter-width;
+}
+
+// Pricing Block
+.membership.row {
+  @extend %max-width;
+  @extend %med-width-content;
+  display: flex;
+  justify-content: center;
+  margin-bottom: em(60);
+  text-align: center;
+
+  @media screen and (max-width: 520px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .two-column-testimonial--header {
+    margin-bottom: em(15);
+    margin-top: 0;
+  }
+
+  h3 {
+    @extend %oswald;
+    font-size: em(35);
+    margin-bottom: em(15);
+
+    @media screen and (max-width: 950px) {
+      font-size: em(30);
+    }
+
+    @media screen and (max-width: 600px) {
+      font-size: em(20);
+    }
+
+  }
+
+  h4 {
+    @extend %oswald;
+    color: $black;
+    font-size: em(25);
+    margin-bottom: em(15);
+    margin-top: em(15);
+
+    @media screen and (max-width: 580px) {
+      font-size: 1em;
+    }
+
+  }
+
+  .membership--individual img,
+  .membership--institutional img {
+    margin-bottom: em(15);
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 180px;
+    max-width: 180px;
+
+    @media screen and (min-width: 0\0) {
+      height: auto;
+      max-height: 150px;
+    }
+
+    @media screen and (max-width: 650px) {
+      max-height: 100px;
+      max-width: 100px;
+    }
+
+  }
+
+  .membership--individual {
+    border-right: 1px solid color(medium-grey);
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    h3 {
+      color: color(secondary);
+    }
+
+    h4 {
+      margin-bottom: em(5);
+    }
+
+    p {
+      margin-top: 0;
+
+      @media screen and (max-width: 580px) {
+        font-size: 14px;
+      }
+
+    }
+
+    input#edit-signup-form,
+    input#edit-membership-form {
+      margin-bottom: 30px;
+      margin-right: 0;
+      width: 80%;
+
+      @media screen and (max-width: 520px) {
+        font-size: 0.9em;
+      }
+
+    }
+
+    .membership--outline-box {
+      border-left: 1px solid color(medium-grey);
+      padding-bottom: em(60);
+
+      @media screen and (max-width: 520px) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+    }
+
+  }//.membership--individual
+
+  .membership--institutional {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    h3 {
+      color: color(quaternary);
+    }
+
+    h4 {
+      margin-bottom: em(30);
+
+      @media screen and (max-width: 580px) {
+        margin-bottom: 40px;
+      }
+
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    input#edit-signup-form--2 {
+      margin-bottom: 30px;
+      margin-right: 0;
+      width: 80%;
+
+      @media screen and (max-width: 580px) {
+        font-size: 0.9em;
+        max-height: 40px;
+      }
+
+    }
+
+    .membership--outline-box {
+      border-right: 1px solid color(medium-grey);
+      padding-bottom: em(60);
+
+      @media screen and (max-width: 520px) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+    }
+
+  }//.membership--institutional
+
+  .membership--pricing-table {
+    @extend %source-sans-semi-bold;
+    border-top: 1px solid color(medium-grey);
+    text-align: left;
+
+    tr:nth-child(odd) {
+      background-color: color(medium-grey);
+      margin: 0;
+
+      td {
+        border-right: 0;
+      }
+
+    }
+
+    tr:nth-child(even) {
+      background-color: $white;
+      margin: 0;
+
+      td {
+        text-align: center;
+      }
+
+    }
+
+    td {
+      border: 1px solid color(medium-grey);
+      border-right: 0;
+      border-top: 0;
+      display: flex;
+      justify-content: center;
+      padding: 1em $default-grid-gutter-width;
+
+      &:last-of-type {
+        border-right: 1px solid color(medium-grey);
+      }
+
+      svg {
+        height: 2em;
+        width: em(40);
+      }
+
+      @media screen and (max-width: 520px) {
+        padding: 15px;
+
+        svg {
+          width: 1.5em;
+        }
+
+      }
+
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+  }//.membership--pricing-table
+
+}//.membership.row
+
+//Make buttons and header match circle color
+.signup-basicmaker {
+
+  #edit-signup-form {
+    background: color(secondary);
+  }
+
+}
+
+.membership.row .membership--individual.membership--digitalmaker {
+
+  h3 {
+    color: color(primary);
+  }
+
+}
+
+.membership--institutional {
+
+  #edit-signup-form--2 {
+    background: color(quaternary);
+  }
+
+}
+
+.signup-basicmaker #edit-signup-form:hover {
+  background: $white;
+  border-color: color(secondary);
+  color: color(secondary);
+}
+
+.membership--institutional #edit-signup-form--2:hover {
+  background: $white;
+  border-color: color(quaternary);
+  color: color(quaternary);
+}

@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Theme override for custom block Resources Block.
+ *
+ * Available variables using Paragraphs:
+ * -  field_resources_header
+ * -  field_resources
+ *
+ */
+#}
+
+<div class="resource--block">
+  <h3>{{ content.field_resources_header|field_value }}</h3>
+  {% if content.field_resource|field_value is not empty %}
+    <ul>
+      {{ content.field_resource|field_value }}
+    </ul>  
+  {% endif %} 
+</div>

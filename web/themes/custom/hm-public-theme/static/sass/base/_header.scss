@@ -1,142 +1,283 @@
+// We need to be able to extend a class in this unique case
+// because we do not have control over the markup.
+// sass-lint:disable placeholder-in-extend
+
 .header {
   background-color: color(light-grey);
   color: color(dark-grey);
   width: 100%;
+
+  .header__search-close {
+    display: block;
+    margin-left: auto;
+    vertical-align: baseline;
+    width: 36px;
+  }
+
+  .header__search-close svg {
+    height: 20px;
+    width: 20px;
+  }
+
 }
 
 .header__top-row {
   align-items: center;
   display: flex;
+  margin: 0 auto;
+  max-width: $max-width;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 950px) {
     display: none;
   }
+
+  .search-form {
+    margin-top: -8px;
+    position: relative;
+    top: 8px;
+  }
+
+}
+
+.header__da-links {
+  background-color: $white;
+  cursor: pointer;
+  padding: em(16, 15) em(20, 15);
+  position: relative;
+}
+
+.header__da-links-title {
+  @extend %source-sans-semi-bold;
+  color: color(secondary);
+  font-size: rem(15);
+}
+
+//IE 11
+@media all and ( -ms-high-contrast: none ) {
+  *::-ms-backdrop,
+  .header__da-links-title {
+    min-width: 230px;
+  }
+}
+
+.header__da-link-container {
+  background-color: $white;
+  left: 0;
+  opacity: 0;
+  padding: em(16, 15) em(20, 15);
+  position: absolute;
+  width: 100%;
+
+  .header__da-links:hover & {
+    opacity: 1;
+  }
+
+}
+
+.search-form {
+  display: none;
+  transition: top .3s ease-in-out;
+}
+
+.header__search {
+  margin-left: auto;
+  vertical-align: baseline;
+  width: 36px;
+
+  svg {
+    height: 1.375em;
+  }
+
 }
 
 .header__da-link {
+  @extend %source-sans;
+  display: block;
+  font-size: rem(14);
+  margin-top: em(10, 14);
+}
+
+.header__top-row .make-a-donation #edit-donation-form {
   @extend %source-sans-semi-bold;
-  background-color: $white;
-  color: color(secondary);
-  font-size: rem(15);
-  padding: em(16, 15) em(20, 15);
+  background: transparent;
+  color: color(dark-grey);
 
   &:hover {
+    border-color: transparent;
     color: color(secondary);
+    text-decoration: underline;
+  }
+
+  &:focus {
+    border: 0;
   }
 }
 
-.header__donate-link {
-  @extend %source-sans-semi-bold;
-  color: color(dark-grey);
-  padding: em(16, 15) em(20, 15);
+.header__top-row .upgrade-to-thmda #edit-upgrade-form {
+  @extend %source-sans;
+  background: transparent;
+  color: color(secondary);
+  font-size: rem(15);
+  padding: 0;
 
   &:hover {
+    border-color: transparent;
+    text-decoration: underline;
+  }
+}
+
+//Mobile icons
+.header__bottom-row {
+  display: flex;
+  margin: em(10) em(25);
+
+  .header__hamburger {
+    display: none;
+    margin-left: em(20);
+    min-width: em(22);
+  }
+
+  .header__search {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .header__hamburger,
+  .header__search {
+    align-self: center;
+    cursor: pointer;
+    width: 36px;
+
+    svg {
+      height: 34px;
+    }
+
+  }
+
+  .header__search-close.mobile-hide,
+  .header__search.mobile-hide {
+    display: none;
+  }
+
+  @media all and (min-width: 950px ) {
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    margin-bottom: em(45);
+
+    .header__hamburger,
+    .header__search {
+      display: none;
+    }
+  }
+
+  @media all and (max-width: 950px) {
+
+
+    .header__hamburger {
+
+      &.show {
+        display: flex;
+        opacity: 1;
+      }
+    }
+  }
+
+  @media all and (max-width: 950px) {
+    margin: em(20) em(15);
+
+    .header__hamburger,
+    .header__search {
+      width: 30px;
+
+      svg {
+        height: 30px;
+      }
+
+    }
+
+    .header__search-close {
+      margin-top: 4px;
+      width: 30px;
+    }
+
+    .header__search-close svg {
+      height: 26px;
+      vertical-align: -webkit-baseline-middle;
+      width: 30px;
+    }
+
+  }
+
+}//.header__bottom-row
+
+//this class appears in header and navigation..
+.header__logo-container {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+
+  @media all and (max-width: 950px) {
+    align-items: flex-start;
+    min-width: 200px;
+
+    .header__logo {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .header__logo-copy {
+      display: none;
+    }
+
+  }
+
+  @media all and (max-width: 520px) {
+
+    .header__logo {
+      width: 85%;
+    }
+
+  }
+
+  // Margin and width are there to align the logo with bottom text.
+  .header__logo {
+    margin-left: em(5);
+    max-width: em(380);
+  }
+
+  .header__logo-copy {
+    @extend %oswald-light;
     color: color(dark-grey);
   }
 }
 
-.header__logo-container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: em(45);
-}
-
-// Margin and width are there to align the logo with bottom text.
-.header__logo {
-  margin-left: em(5);
-  max-width: em(380);
-}
-
-.header__logo-copy {
-  @extend %oswald-light;
-  color: color(dark-grey);
-}
-
-#hm-public-theme-main-menu {
-  margin: 0 auto;
-  max-width: em(1240);
-  padding: 0 em(55);
-
-  @media screen and (max-width: 767px) {
-    left: - em(600, 16);
-    padding: 0 em(15, 16) em(15, 16);
-    transition: left .3s ease-in-out;
-    width: 70vw;
-  }
-
-  &.hm-public-theme-main-menu--open {
-    left: 0;
-  }
-
-  .menu {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    @media screen and (max-width: 767px) {
-      flex: 2;
-      flex-direction: column;
-      height: 100%;
-      justify-content: flex-start;
-    }
-  }
-
-  .menu-item {
-    @extend %oswald;
-    border-bottom: em(8) solid transparent;
-    letter-spacing: .114em;
-    text-transform: uppercase;
-
-    @media screen and (max-width: 767px) {
-      border-bottom: em(1, 16) solid $white;
-      padding: em(12, 16) em(8, 16);
-  }
-
-    & .is-active {
-      color: color(tertiary);
-
-      // @media screen and (max-width: 767px) {
-      //   border-bottom: em(3,16) solid color(tertiary);
-      //   text-decoration: none;
-      // }
-    }
-
-    a:hover {
-      border-bottom: em(8) solid color(secondary);
-      transition: border-bottom .2s ease-in-out;
-
-      @media screen and (max-width: 767px) {
-        border-bottom: 0;
-      }
-    }
-
-    .is-active {
-      border-bottom: em(8) solid color(tertiary);
-      transition: border-bottom .2s ease-in-out;
-
-      @media screen and (max-width: 767px) {
-        border-bottom: 0;
-      }
-    }
-
-    a {
-      color: color(dark-grey);
-
-      &:hover { text-decoration: none; }
-    }
-  }
-}
+//#hm-public-theme-main-menu moved to _navigation.scss
 
 .profile {
-  margin-left: auto;
+  //margin-left: auto;
   margin-right: em(22);
+}
+
+//IE 11
+@media all and ( -ms-high-contrast: none ) {
+  *::-ms-backdrop,
+  .profile {
+    min-width: 120px;
+  }
 }
 
 .profile__option { @extend %list-item-no-styles; }
 
-.profile__link { color: color(dark-grey);}
+.profile__link,
+.profile__link:hover {
+  background-color: transparent;
+  color: color(dark-grey);
+}
+
+.profile__link:hover { text-decoration: underline; }
 
 .social {
   @extend %list-no-styles;
@@ -155,7 +296,10 @@
   transition: color .2s ease-in-out;
   width: auto;
 
-  &:first-of-type { height: em(22); }
+  &:first-of-type {
+    height: em(22);
+    max-width: 36px;
+  }
 
   &:hover {
     color: color(secondary);
@@ -163,13 +307,198 @@
   }
 }
 
+.social__icon-instagram {height: 23px;}
+
+//IE 11
+@media all and ( -ms-high-contrast: none ) {
+  *::-ms-backdrop,
+  .social__icon {
+    width: 35px;
+  }
+}
+
+//IE10
+@media screen and ( min-width: 0\0 ) {
+  .social__icon {
+    width: 35px;
+  }
+}
+
 .header nav {
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 950px) {
     background: color(light-grey);
     height: 100%;
     position: absolute;
     top: 0;
     z-index: 2000;
   }
+}
+
+// Sign Up / In Modal
+.modal {
+
+  .description {
+    @extend %sr-only;
+  }
+
+  .button {
+    @extend .button--secondary;
+    min-width: 100px;
+    text-align: center;
+  }
+}
+
+//Required
+.user-login-form {
+
+  .form-item-name,
+  .form-item-pass {
+    margin: 0 0 15px;
+    width: 100%;
+  }
+
+  span.form-required {
+    margin-right: 5px;
+  }
+
+  .form-submit {
+    margin: 0;
+  }
+
+}
+
+.modal input {
+  margin-bottom: em(8);
+  max-width: 100%;
+  width: 100%;
+}
+
+.modal-header {
+  border-bottom: 0;
+  justify-content: flex-end;
+}
+
+.modal__heading {
+  @extend %oswald;
+
+  font-size: em(28);
+}
+
+.modal-footer { border-top: 0; }
+
+.modal__register {
+  align-items: center;
+  border-right: 1px solid color(medium-grey);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal__login {
+  .button {
+    display: block;
+    margin-left: auto;
+  }
+}
+
+//Mobile Modal
+.modal-dialog {
+  @media screen and (min-width: 768px) {
+    max-width: em(700);
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .modal-body {
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  .col-sm-6.modal__register {
+    border-bottom: 1px solid color(medium-grey);
+    border-right: 0;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    padding-bottom: 30px;
+
+    .modal__heading,
+    a.button.button--secondary {
+      margin-right: 0;
+      width: 100%;
+    }
+
+  }
+
+  .col-sm-6.modal__register,
+  .col-sm-6.modal__login {
+    flex: 1;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .col-sm-6.modal__login {
+
+    .user-login-form {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    div#edit-actions {
+      padding: 0;
+    }
+
+    #edit-submit {
+      margin: 0;
+      width: 100%;
+    }
+
+  }
+
+}
+
+//Mobile Search
+.search--mobile.search--toggle {
+  left: 0;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  position: absolute;
+  right: 0;
+  top: 56px;
+}
+
+.search--mobile {
+  @extend %default-gutter-width;
+  background-color: color(light-grey);
+  box-shadow: 0 5px 7px color(mobile-shadow);
+  position: fixed;
+  top: -300px;
+  transition: top .3s ease-in-out;
+  width: 100%;
+  z-index: 900;
+
+  .form-item.form-item-search-api-fulltext.form-type-search-api-autocomplete.form-no-label {
+    flex: 1 100%;
+    margin-right: 10px;
+
+    #edit-search-api-fulltext {
+      width: 100%;
+    }
+
+  }
+
+  #edit-actions {
+    flex: 1;
+
+    #edit-submit-global-search {
+      margin-right: 0;
+      width: 120px;
+    }
+
+  }
+
 }

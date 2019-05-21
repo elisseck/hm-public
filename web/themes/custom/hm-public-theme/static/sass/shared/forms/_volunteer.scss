@@ -1,0 +1,45 @@
+#edit-professional-experience .fieldset-wrapper,
+#edit-donations .fieldset-wrapper {
+  display: flex;
+
+  .form-item-professional-experience-select,
+  .form-item-donations-select {
+    order: 2;
+  }
+
+}
+
+//This is not a fieldset like all the other form items
+.form-item-please-explain-why-you-want-to-be-a-volunteer-for-the-historymak {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 15px auto 0;
+  max-width: 900px;
+  width: auto;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  label {
+    @extend %card-header;
+    border-top: 1px solid color(medium-grey);
+    color: color(quaternary);
+    font-size: em(30);
+  }
+
+  &> div {
+    margin-bottom: 30px;
+  }
+
+}
+
+#edit-professional-experience,
+#edit-donations {
+  margin-bottom: 15px;
+}
+
+.webform-checkboxes-other.field-prefix .webform-element-description {
+  margin-bottom: 5px;
+}

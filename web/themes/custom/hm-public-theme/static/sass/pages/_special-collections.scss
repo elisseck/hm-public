@@ -1,0 +1,138 @@
+//Special Collections
+.view.list-special-collections {
+  @extend %max-width;
+
+  .pager {
+    @extend %max-width;
+    @extend %default-gutter-width;
+    margin-top: 30px;
+    width: 80%;
+
+    @media screen and (max-width: 1024px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
+  }
+
+  .view-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+
+    @media screen and (max-width: 1024px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 768px) {
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+
+  }
+
+}
+
+//Collection Detail
+.special-collections--video {
+
+  .video-container {
+
+    @media screen and (max-width: 768px) {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+  }
+
+}
+
+.special-collections--content {
+  margin-left: auto;
+  margin-right: auto;
+
+  .special-collections--descript,
+  .event__pictures,
+  .paragraph.paragraph--type--basic-block-content,
+  .special-collections--interviews,
+  .paragraph.paragraph--type--two-column-basic-content,
+  .resource--block {
+    @extend %default-gutter-width;
+    @extend %max-width;
+  }
+
+  .special-collections--descript,
+  .paragraph.paragraph--type--basic-block-content {
+
+    @media screen and (min-width: 0\0) {
+      padding: 0 30px;
+    }
+
+    @media screen and (min-width: 0\0) and (max-width: 768px) {
+      padding: 0 15px;
+    }
+
+  }
+
+  .special-collections--blocks {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .quote-block {
+    margin: 60px 0;
+  }
+
+}//.special-collections--content
+
+.special-collections--interviews {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+  @media screen and (max-width: 1024px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+  .special-collections--card {
+    margin: 0 1em 2em;
+    max-width: 300px;
+
+    @media screen and (max-width: 804px) {
+      flex: 1 0 40%;
+    }
+
+    @media screen and (max-width: 600px) {
+      flex-basis: 100% !important;
+      max-width: none;
+
+      &> div {
+        max-height: 300px;
+      }
+
+    }
+
+    p {
+      @extend %text-overflow;
+      margin-top: 0;
+    }
+
+  }
+
+}//.special-collections--interviews

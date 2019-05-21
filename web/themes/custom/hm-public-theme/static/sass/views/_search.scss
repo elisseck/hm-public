@@ -1,0 +1,14 @@
+.list-global-search {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  margin-top: 30px;
+
+  .pager {
+    margin-top: 30px;
+  }
+
+}
+
+.search-item {
+  margin-bottom: 15px;
+}

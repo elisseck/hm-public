@@ -3,3 +3,224 @@
  * @file
  * hm_public_theme theme implementation file.
  */
+
+use Drupal\user\Entity\User;
+use Drupal\user\Form\UserLoginForm;
+use Drupal\commerce_order\Entity\OrderInterface;
+use Drupal\thm_become_a_member\Form\THMUpgradeAMemberForm;
+use Drupal\thm_donation_flow\Form\THMDonationForm;
+use Drupal\thm_donation_flow\Form\THMMobileDonationForm;
+use Symfony\Component\HttpFoundation\ParameterBag;
+
+function hm_public_theme_preprocess_page(&$variables) {
+  // You will most likely want to show and render the form for anonymous users.
+  $variables['login_form'] = FALSE;
+
+  if (!\Drupal::currentUser()->id()) {
+    $variables['login_form'] = render_form(UserLoginForm::class);
+  }
+
+  if (current_user_has_role('authenticated') &&
+      !current_user_has_role('thm_paid_member')) inject_smdajwt($variables, 'science');
+
+  if (current_user_has_role('thm_paid_member')) inject_jwturls($variables, 'all');
+
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    // You can get nid and anything else you need from the node object.
+    $variables["nid"] = $node->id();
+    $variables["node_title"] = $node->getTitle();
+    $variables["body"] = $node->hasField('body') ? $node->body->value : '';
+    if ($node->bundle() === "bio") {
+      $variables["field_web_clip1"] = $node->field_web_clip1->value;
+    }
+  }
+
+  if (\Drupal::routeMatch()->getRouteName() === 'view.advanced_search.page_1') {
+    $variables['#attached']['library'][] = 'thm_adv_search/advanced-search-filters';
+  }
+
+  inject_forms($variables);
+
+}
+
+function get_path_from_request() {
+  $path = \Drupal::request()->getPathInfo();
+  return explode('/', $path);
+}
+
+/**
+ * Retrieves JWT.
+ *
+ * @param string $subDomain
+ * @param string $tokenType
+ * @return bool|string
+ */
+function assemble_paid_links($subDomain, $tokenType) {
+  /** @var Drupal\thm_jwt\Generator\THMJWTURLGenerator $jwtUrl */
+  $jwtUrl  = \Drupal::service('thm_jwt.url_generator');
+  return $jwtUrl->retrieveLink($subDomain, $tokenType);
+}
+
+
+/**
+ * Determines if current user has a specific role.
+ *
+ * @param string $roleId
+ *
+ * @return bool
+ */
+function current_user_has_role($roleId) {
+  $user = User::load(\Drupal::currentUser()->id());
+  $userHasRole = $user->hasRole($roleId);
+  return $userHasRole;
+}
+
+/**
+ * Renders a form.
+ *
+ * @param \Drupal\Core\Form\FormInterface|string $className
+ *   The value must be one of the following:
+ *   - The name of a class that implements \Drupal\Core\Form\FormInterface.
+ *   - An instance of a class that implements \Drupal\Core\Form\FormInterface.
+ *
+ * @return \Drupal\Component\Render\MarkupInterface|mixed
+ */
+function render_form($className){
+  $form     = \Drupal::formBuilder()->getForm($className);
+  /** @var Drupal\Core\Render\Renderer $renderer */
+  $renderer = \Drupal::service('renderer');
+  return $renderer->renderPlain($form);
+}
+
+/**
+ * Implements hook_theme_suggestions for both a Custom Block and a View
+ */
+function hm_public_theme_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());
+  }
+}
+
+function hm_public_theme_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  if (isset($variables['view']->element['#view_id'])) {
+    $suggestions[] = 'views_view__' . $variables['view']->element['#view_id'];
+  }
+}
+
+/**
+ * Provides variables to the twig responsible for formatting order receipt
+ * emails.
+ *
+ * @param $vars
+ */
+function hm_public_theme_preprocess_commerce_order_receipt(&$vars) {
+  $config                 = \Drupal::config('system.site');
+  $host                   = 'http://' . \Drupal::request()->getHost();
+  $vars['site_name']      = $config->get('name');
+  $vars['site_url']       = $host;
+  $vars['site_login_url'] = $host . '/user/login';
+  $vars['process_type']   = get_commerce_order_item_type($vars['order_entity']);
+}
+
+function get_commerce_order_item_type(OrderInterface $order) {
+  $orderItems = $order->getItems();
+
+  if (count($orderItems) > 0) {
+    return $orderItems[0]->getPurchasedEntity()->getOrderItemTypeId();
+  } else {
+    return null;
+  }
+}
+
+/**
+ * Removes `fortytwo_preprocess_block` from the registry.
+ *
+ * @param $registry
+ */
+function hm_public_theme_theme_registry_alter(&$registry) {
+  $parentBlockRef = 'fortytwo_preprocess_block';
+
+  foreach ($registry as $key => $item) {
+    if (strpos($key, 'block') !== false) {
+      $index = array_search($parentBlockRef, $item['preprocess functions']);
+      if ($index) {
+        unset($registry[$key]['preprocess functions'][$index]);
+      }
+    }
+  }
+}
+
+/**
+ * Serves as a replacement for `fortytwo_preprocess_block`, but a bit more
+ * defensive as the use of Page Manager rewrites blocks in a manner that
+ * triggers warnings.
+ *
+ * @param $variables
+ */
+function hm_public_theme_preprocess_block(&$variables) {
+  $routeName = \Drupal::routeMatch()->getRouteName();
+
+  $attrs = \Drupal::request()->attributes;
+
+  if ($routeName === 'commerce_checkout.form') {
+    $flowType = get_checkout_flow_name_from_parameter_bag($attrs);
+    $variables['flow_type'] = $flowType;
+  }
+
+  // Replace first occurance of block- to clean up the ID's.
+  if (array_key_exists('id', $variables['attributes']) &&
+    substr($variables['attributes']['id'], 0, 6) === 'block-') {
+    $variables['attributes']['id'] = substr($variables['attributes']['id'], 6);
+  }
+
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+  if (array_key_exists('id', $variables['attributes']) &&
+    strstr($variables['attributes']['id'], $theme)) {
+    $variables['attributes']['id'] = str_replace($theme . '-', '', $variables['attributes']['id']);
+  }
+}
+
+function get_checkout_flow_name_from_parameter_bag(ParameterBag $pBag) {
+  if ($orderData = $pBag->get('commerce_order')) {
+    $values = $orderData->get('checkout_flow')->getValue();
+
+    if (count($values) > 0 && array_key_exists('target_id', $values[0])) {
+      return $values[0]['target_id'];
+    }
+  }
+  return false;
+}
+
+function hm_public_theme_preprocess_menu__simple_megamenu(&$variables) {
+  if (current_user_has_role('authenticated') &&
+    !current_user_has_role('thm_paid_member')) inject_smdajwt($variables, 'science');
+  if (current_user_has_role('thm_paid_member') === true) inject_jwturls($variables, 'all');
+  inject_forms($variables, [
+    'upgrade_form' => THMUpgradeAMemberForm::class,
+    'donation_form' => THMMobileDonationForm::class
+  ]);
+}
+
+function inject_smdajwt(&$variables, $tokenType) {
+  $variables['user_jwt_smda'] = assemble_paid_links('smda', $tokenType);
+}
+
+function inject_jwturls(&$variables, $tokenType) {
+  $variables['paid_user']     = true;
+  $variables['user_jwt_da']   = assemble_paid_links('da', $tokenType);
+  $variables['user_jwt_smda'] = assemble_paid_links('smda', $tokenType);
+}
+
+function inject_forms(&$variables, $mapping = null) {
+  if (!$mapping) {
+    $variables['upgrade_form'] = render_form(THMUpgradeAMemberForm::class);
+    $variables['donation_form'] = render_form(THMDonationForm::class);
+  } else {
+    foreach ($mapping as $varName => $className) {
+      $variables[$varName] = render_form($className);
+    }
+  }
+}

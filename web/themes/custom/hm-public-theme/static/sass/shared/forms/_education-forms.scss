@@ -1,0 +1,44 @@
+//Back to School
+//Higher Education
+#webform-submission-back-to-school-for-higher-ed-add-form {
+
+  .fieldset-wrapper .fieldset-wrapper {
+    max-width: 900px;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .form-field--wrap {
+      flex: 1 100%;
+    }
+
+  }
+
+}
+
+//Share your lesson plan form
+#webform-submission-share-your-lesson-plan-add-form {
+  margin-top: 30px;
+
+  #ajax-wrapper,
+  #ajax-wrapper--2 {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+  }
+
+  #ajax-wrapper--2 {
+    margin-bottom: 30px;
+  }
+
+  #edit-lesson-plan-photo-upload {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .upload_lesson_plan_remove_button,
+  .lesson_plan_photo_remove_button {
+    margin-top: 15px;
+  }
+
+}

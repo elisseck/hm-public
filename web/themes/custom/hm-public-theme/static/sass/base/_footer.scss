@@ -1,9 +1,44 @@
 .footer {
   align-items: center;
+  background-color: $white;
   display: flex;
   flex-direction: column;
+  margin-top: em(60);
   padding: em(35) 0 em(85);
   width: 100%;
+
+  a.footer__logo-container {
+    margin-top: 30px;
+    text-align: center;
+
+    @media screen and (max-width: 768px) {
+
+      svg {
+        width: 80%;
+      }
+
+    }
+
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .footer {
+    padding: em(30) 0;
+  }
+
+  .footer .menu {
+    display: none;
+  }
+
+  .footer .address {
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+  }
+
 }
 
 #hm-public-theme-footer {

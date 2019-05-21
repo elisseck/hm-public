@@ -1,0 +1,193 @@
+<?php
+
+/**
+ * @file
+ * Contains jwt_url.module.
+ */
+
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Messenger\MessengerInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\TempStore\PrivateTempStore;
+use Firebase\JWT\JWT;
+
+const JWT_CACHE = 'user_jwt_';
+
+/**
+ * Implements hook_help().
+ *
+ * @param string $route_name Name of route.
+ *
+ * @return string|bool
+ */
+function thm_jwt_help($route_name) {
+  switch ($route_name) {
+    // Main module help for the thm_jwt module.
+    case 'help.page.thm_jwt':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Serves to craft JWTs for authentication and access to remote THM services.') . '</p>';
+      return $output;
+
+    default:
+      return false;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function thm_jwt_theme() {
+  return [
+    'thm_jwt' => [
+      'variables' => [ 'jwt_url' => null ]
+    ]
+  ];
+}
+
+function thm_jwt_fetch_token(SessionInterface $session, $tokenType) {
+  return _fetchToken($session, $tokenType);
+}
+
+/**
+ * Replaces (invalid) JWT in referral URL. Returns URL with newly issued JWT.
+ *
+ * @param string $url
+ * @param string $token
+ *
+ * @return null|string|string[]
+ */
+function thm_jwt_refresh_url(string $url, string $token) {
+  $rePattern = '/(?P<scheme>https\:\/\/)(?P<uri>[\w\.\-\/]+)(?:\?jwt=)(?P<token>[\w\.]+)/i';
+  return preg_replace_callback($rePattern, function($matches) use ($token) {
+    return $matches['scheme'] . $matches['uri'] . '?jwt=' . $token;
+  }, $url);
+}
+
+/**
+ * Redirects to URL specified.
+ *
+ * @param string $url
+ *
+ * @return Symfony\Component\HttpFoundation\Response
+ */
+function thm_jwt_redirect_to_return_url(string $url) {
+  return RedirectResponse::create($url)->send();
+}
+
+/**
+ * Predicate that determines if url's query string has the parameter `return`.
+ * @param $query
+ *
+ * @return bool
+ */
+function thm_jwt_request_has_return_url($query) {
+  return strpos($query, 'return') !== false;
+}
+
+function thm_jwt_url_has_jwt_entry($url) {
+  return strpos($url, 'jwt') !== false;
+}
+
+
+/**
+ * Adds a token to the session.
+ *
+ * @param string $token
+ * @param SessionInterface $session
+ * @param string $tokenType
+ */
+function _cacheToken(string $token, $tokenType) {
+  //$session->set(JWT_CACHE, $token);
+  /** @var PrivateTempStore $tempStore */
+  $tempStore = \Drupal::service('tempstore.private')->get('thm_jwt');
+  $tempStore->set('user_jwt', $token);
+  $tempStore->set('jwt_expires', strtotime('+24 hours'));
+  $tempStore->set('token_type', $tokenType);
+}
+
+function _userHasUpgraded($stored, $current) {
+  return $stored === 'science' && $current === 'all';
+}
+
+function _tokenHasExpired($timeStamp){
+  return time() < $timeStamp;
+}
+
+function _userWasDowngraded($stored, $current) {
+  return $stored === 'all' && $current === 'science';
+}
+
+function _clearTempStore(PrivateTempStore $tempStore) {
+  $tempStore->delete('user_jwt');
+  $tempStore->delete('jwt_expires');
+  $tempStore->delete('token_type');
+}
+
+function _parseToken($jwt) {
+  $key = \Drupal::service('key.repository')->getKey('testing')->getKeyValue();
+  return JWT::decode($jwt, $key, ['HS256']);
+}
+
+/**
+ * Retrieves JWT via session storage or direct generation.
+ *
+ * @param SessionInterface $session
+ * @param string $tokenType
+ *
+ * @return bool|string
+ */
+function _fetchToken(SessionInterface $session, $tokenType) {
+  /** @var PrivateTempStore $tempStore */
+  $tempStore = \Drupal::service('tempstore.private')->get('thm_jwt');
+  $token = $tempStore->get('user_jwt');
+  $storedTokenType = $tempStore->get('token_type');
+
+  $getNewToken = function() use ($session, $tokenType) {
+    $newToken = _generateToken();
+    _cacheToken($newToken, $tokenType);
+    return $newToken;
+  };
+
+  if (isset($token)) {
+    if (_userHasUpgraded($storedTokenType, $tokenType) ||
+      _userWasDowngraded($storedTokenType, $tokenType)) {
+      _clearTempStore($tempStore);
+      $token = $getNewToken();
+    }
+  } else {
+    return $getNewToken();
+  }
+
+  try {
+    _parseToken($token);
+    return $token;
+  } catch (Firebase\JWT\ExpiredException $e) {
+    return $getNewToken();
+  }
+}
+
+/**
+ * Generates JWT.
+ *
+ * @return bool|string
+ */
+function _generateToken() {
+  /** @var \Drupal\jwt\Authentication\Provider\JwtAuth $auth */
+  $auth = \Drupal::getContainer()->get('jwt.authentication.jwt');
+  return $auth->generateToken();
+}
+
+/**
+ * Wrapper for successor to `drupal_set_message`.
+ *
+ * @param string $msgText
+ * @param string $level
+ *
+ * @return MessengerInterface
+ */
+function _setMessage(string $msgText = '', string $level = 'status') {
+  $msgr = \Drupal::messenger();
+  return $msgr->addMessage($msgText, $level);
+}

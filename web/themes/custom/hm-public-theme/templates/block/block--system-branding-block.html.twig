@@ -1,4 +1,5 @@
 {% extends "block.html.twig" %}
+
 {#
 /**
  * @file
@@ -13,7 +14,9 @@
  * - site_slogan: Slogan for site as defined in Site information settings.
  */
 #}
+
 {% set attributes = attributes.addClass('site-branding') %}
+
 {% block content %}
   {% if site_logo %}
     <a href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="logo">

@@ -1,0 +1,93 @@
+.page-banner {
+  display: flex;
+  height: em(276);
+  margin: 0 auto;
+  max-width: $max-width;
+  padding: 0;
+  width: 100%;
+
+  @media screen and (max-width: 950px) {
+    height: em(200);
+  }
+
+  h2 {
+    @extend %oswald-light;
+    align-self: flex-end;
+    color: $white;
+    font-size: em(52);
+    padding-bottom: 1em;
+    padding-left: $default-grid-gutter-width;
+  }
+
+  @media screen and (max-width: 900px) {
+    height: auto;
+    min-height: 164px;
+
+    h2 {
+      font-size: em(30);
+      padding: 15px;
+    }
+
+  }
+
+  @media screen and (max-width: 600px) {
+    min-height: unset;
+  }
+
+  .page-banner--content {
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 60px;
+    text-align: right;
+
+    @media screen and (max-width: 950px) {
+      padding-bottom: 30px;
+      padding-top: 30px;
+    }
+
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+
+  }
+
+  .page-banner--highlight-name {
+    @extend %oswald;
+    font-size: em(22);
+    z-index: 10;
+  }
+
+  .page-banner--highlight {
+    align-items: flex-end;
+    background-position: center;
+    background-size: cover;
+    color: $white;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    max-width: 500px;
+    padding: em(20) em(30) em(30);
+
+    //IE 11
+    @media screen and (min-width: 0\0) {
+      max-width: 25%;
+    }
+
+    @media screen and (max-width: 950px) {
+      height: auto;
+      padding: 30px 15px;
+    }
+
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+
+  }
+
+}
+
+.block-page-banner a {
+  text-decoration: none;
+}

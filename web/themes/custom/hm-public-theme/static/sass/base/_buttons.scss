@@ -1,20 +1,27 @@
-.button.button {
+.button.button,
+%button {
   @extend %source-sans-semi-bold;
   border-radius: 0;
   font-size: rem(16);
-  padding: em(16) em(14);
+  margin-right: em(15);
+  padding: em(13) em(14) em(16);
 
-  @media screen and (max-width: 767px) {
-    font-size: rem(11);
+  @media screen and (max-width: 520px) {
+    margin-bottom: 15px;
+    text-align: center;
+    width: 100%;
   }
+
 }
 
-.button.button--primary {
+.button.button--primary,
+%button--primary {
   background-color: color(primary);
   border: em(1) solid transparent;
 }
 
-.button.button--secondary {
+.button.button--secondary,
+%button--secondary {
   background-color: color(secondary);
   border: em(1) solid transparent;
 }
@@ -26,14 +33,15 @@
 
 // hover and focus state
 .button.button--primary:hover,
-.button.button--primary:focus {
+.button.button--primary:focus,
+%button--primary-focus {
   background-color: $white;
   border: em(1) solid color(primary);
   color: color(primary);
 }
 
 .button.button--secondary:hover,
-.button.button--secondary:focus {
+.button.button--secondary:focus, {
   background-color: $white;
   border: em(1) solid color(secondary);
   color: color(secondary);
@@ -46,3 +54,101 @@
   color: color(quaternary);
 }
 
+//Membership Button
+.button.button--primary.button--membership {
+  @extend %oswald;
+  font-size: em(30);
+  line-height: 120%;
+  margin: em(10) 0;
+  padding: 30px 15px;
+}
+
+//Form button
+.button--form {
+  margin-top: 30px;
+  padding: 0;
+
+  @media screen and (max-width: 900px) {
+    margin-top: 15px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 30px 0;
+  }
+
+}
+
+.button--form a {
+  @extend %button;
+  @extend %button--primary;
+  @extend %oswald;
+  background-color: $white;
+  border: 0;
+  color: color(quaternary);
+  font-size: em(20);
+  margin-right: 0;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    background-color: color(quaternary);
+    color: $white;
+  }
+
+}
+
+.back-button {
+  align-items: center;
+  background-color: transparent;
+  color: color(secondary);
+  display: inline-flex;
+  font-size: 1.125rem;
+  justify-content: space-between;
+  margin-bottom: 3.33333em;
+  width: 7.22222em;
+
+  &:hover {
+    background-color: transparent;
+  }
+
+}
+
+//Donate Button
+.block.block-thm-donate-now-block {
+  @extend %default-gutter-width;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  width: 100%;
+
+  @media screen and (max-width: 520px) {
+    margin-bottom: 30px;
+  }
+
+  #make-a-donation-block {
+    display: flex;
+    width: 100%;
+  }
+
+  #edit-block-donation-form {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 150px;
+
+    @media screen and (max-width: 950px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 520px) {
+      width: 100%;
+    }
+
+  }
+
+}
+
+.bio__column .button.bio-detail__da-button {
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+}

@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains thm_adv_search_facet_container.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function thm_adv_search_facet_container_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the thm_adv_search_facet_container module.
+    case 'help.page.thm_adv_search_facet_container':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Search Facet - Custom Block Wrapper') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function thm_adv_search_facet_container_theme() {
+  return [
+    'thm_adv_search_facet_container' => [
+      'variables' => []
+    ],
+  ];
+}

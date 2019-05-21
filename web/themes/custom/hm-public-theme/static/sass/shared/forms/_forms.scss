@@ -1,0 +1,401 @@
+//Custom Form Classes
+fieldset.form--container,
+div.form--container  {
+  @extend %form--container;
+}
+
+//Form Wrapper
+.form--container.form-wrapper {
+
+  @media screen and (max-width: 950px) {
+    margin: 0;
+    padding: 0 30px;
+  }
+
+  @media screen and (max-width: 769px) {
+    padding: 0 15px;
+  }
+
+}
+
+.form-wrapper .form-wrapper {
+  padding: 0;
+}
+
+.form--header,
+.form--header.fieldgroup.required,
+.form-wrapper__login-option.form-wrapper__returning-customer,
+.form-wrapper__login-option.form-wrapper__guest-checkout {
+  @extend %form--header;
+}
+
+.form--border-top > legend {
+  border-top: 1px solid color(medium-grey);
+  padding-top: 15px;
+}
+
+//100% Width
+.form-field--w-100 {
+  flex: 1;
+  flex-basis: 100%;
+}
+
+//100% Input
+.form-field--input-100 input,
+.form-field--input-100 select {
+  width: 100%;
+}
+
+//400px Width
+.form-field--w-large {
+  @extend %form-field--w-large;
+}
+
+//250px Width
+.form-field--w-medium {
+  @extend %form-field--w-medium;
+}
+
+//75px Width
+.form-field--w-small {
+  @extend %form-field--w-small;
+}
+
+//Flex 0
+.form-field--wrap {
+  @extend %form-field--wrap;
+}
+
+div.form-padding--bottom-15,
+fieldset.form-padding--bottom-15 {
+  padding-bottom: 15px !important;
+}
+
+div.form-padding--end-15,
+fieldset.form-padding--end-15 {
+  padding-bottom: 15px;
+
+  @media screen and (max-width: 950px) {
+    padding-bottom: 30px !important;
+  }
+}
+
+.form-padding--top-30 {
+  padding-top: 30px;
+}//End Custom Classes
+
+//Normalizing form elements
+fieldset,
+.form-item,
+.edit-payment-information-add-payment-method-billing-information {
+  margin: 0 10px 15px 0;
+  padding: 0;
+
+  @media screen and (max-width: 600px) {
+    margin-right: 0;
+    width: 100%;
+
+    &>input {
+      margin-right: 0;
+      width: 100%;
+    }
+  }
+
+}
+
+label,
+.webform-confirmation {
+  @extend %source-sans-semi-bold;
+  line-height: normal;
+}
+
+.webform-confirmation {
+  align-items: center;
+  flex-direction: column;
+
+  @media screen and (max-width: 769px) {
+    padding: 0 15px;
+  }
+
+}
+
+.form-text {
+  margin: 0;
+}
+
+.js-form-file.form-file {
+  max-width: 50%;
+  width: 50%;
+
+  @media screen and (max-width: 600px) {
+    max-width: none;
+    width: 100%;
+  }
+
+}
+
+//Pre-Defined Classes
+//Description and/or prefix
+.field-prefix,
+.webform-element-description {
+  flex: 1;
+  flex-basis: 100%;
+  margin-bottom: 15px;
+}
+
+//Description
+.form-wrapper .fieldset-wrapper .description {
+  width: 100%;
+}
+
+//Webform Progress - Progress Tracker
+.webform-progress,
+.block-commerce-checkout {
+  @extend %default-gutter-width;
+  margin: 30px auto;
+}
+
+.webform-progress-tracker.progress-tracker {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+@media screen and (max-width: 600px) {
+
+  .webform-progress-tracker.progress-tracker,
+  .block-commerce-checkout {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .webform-progress-tracker .progress-step,
+  .checkout-progress--step {
+    margin-right: 15px;
+  }
+
+  .checkout-progress--step {
+    font-size: em(18);
+  }
+
+}
+
+.webform-progress-tracker .progress-step .progress-text {
+  line-height: normal;
+  padding-top: 0;
+}
+
+.progress-step {
+  font-size: 1.375em;
+  font-weight: 400;
+}
+
+.progress-step.is-complete,
+.checkout-progress--step.checkout-progress--step__previous {
+  background-color: color(primary) !important;
+}
+
+.webform-progress-tracker .progress-step.is-complete .progress-text,
+.checkout-progress--step.checkout-progress--step__previous {
+  color: $white;
+}
+
+//Textarea
+@media screen and (max-width: 768px) {
+
+  textarea {
+    width: 100%;
+  }
+
+}
+
+//Allows the h2 titles to wraps within forms
+form {
+
+  fieldset legend {
+    white-space: normal;
+  }
+
+}
+
+//Select
+.form-item select {
+  border: 1px solid color(medium-grey);
+  border-radius: 0;
+  height: 45px;
+  min-width: 150px;
+  padding: 0 5px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+}
+
+//Radio Buttons
+input[type='radio']:checked + label,
+input[type='radio']:not(:checked) + label {
+  color: $page-font-color;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 20px;
+  padding-left: 28px;
+  position: relative;
+}
+
+input[type='radio']:checked + label:before,
+input[type='radio']:not(:checked) + label:before {
+  background: $white;
+  border: 1px solid color(medium-grey);
+  border-radius: 100%;
+  content: '';
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 20px;
+}
+
+input[type='radio']:checked + label:after,
+input[type='radio']:not(:checked) + label:after {
+  background: color(quaternary);
+  border-radius: 100%;
+  content: '';
+  height: 12px;
+  left: 4px;
+  position: absolute;
+  top: 4px;
+  transition: all 0.2s ease;
+  width: 12px;
+}
+
+input[type='radio']:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+input[type='radio']:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+//Radio and Checkbox
+.form-type-radio,
+.form-type-checkbox {
+  margin-bottom: 5px;
+}
+
+input[type='checkbox']:checked + label,
+input[type='radio']:checked + label {
+  color: color(quaternary);
+}
+
+//Checkbox
+input[type='checkbox']:checked + label,
+input[type='checkbox']:not(:checked) + label {
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+input[type='checkbox']:checked + label:before,
+input[type='checkbox']:not(:checked) + label:before {
+  background: $white;
+  border: 1px solid color(medium-grey);
+  border-radius: 0;
+  content: '';
+  display: inline-block;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: text-top;
+  width: 20px;
+}
+
+input[type='checkbox']:checked + label:before {
+  background: color(quaternary);
+}
+
+input[type='checkbox']:checked + label:after,
+input[type='checkbox']:not(:checked) + label:after {
+  background: $white;
+  content: '';
+  height: 10px;
+  left: 5px;
+  position: absolute;
+  top: 5px;
+  width: 10px;
+}
+
+input[type='checkbox']:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+
+input[type='checkbox']:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+//Required *
+.form-wrapper .form-item span.form-required {
+  color: $red;
+}
+
+//Buttons
+#edit-actions {
+  display: flex;
+  margin: 0 auto;
+  max-width: 900px;
+  width: auto;
+}
+
+@media screen and (max-width: 950px) {
+
+  #edit-actions {
+    margin-left: 0;
+    padding-left: 30px;
+    width: 100%;
+  }
+
+  #edit-wizard-prev,
+  #edit-wizard-next,
+  #edit-submit {
+    width: 50%;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+
+  #edit-actions {
+    padding-left: 15px;
+  }
+
+}
+
+@media screen and (max-width: 769px) {
+
+  #edit-actions {
+    padding-left: 15px;
+  }
+
+}
+
+//Picture
+.form-item.form-item-user-picture-0.form-type-managed-file {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.form-item.form-item-user-picture-0.form-type-managed-file > label {
+  flex: 1;
+  flex-basis: 100%;
+}
+
+.form-item.form-item-user-picture-0.form-type-managed-file > p {
+  margin-top: 0;
+  padding-left: 30px;
+}

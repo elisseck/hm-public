@@ -1,0 +1,134 @@
+// Generic content styles
+
+//Make sure nothing sits on top of IPE
+#panels-ipe-tray {
+  z-index: 9999;
+}
+
+// Basic Block Content
+.wrapper .basic-block,
+.basic-block {
+  @extend %max-width;
+  @extend %med-width-content;
+  @extend %default-gutter-width;
+  margin-bottom: $default-grid-gutter-width;
+  margin-top: $default-grid-gutter-width;
+  word-break: break-word;
+
+  p {
+    font-size: em(18);
+  }
+
+}
+
+//Remove margin and padding when in the <aside>
+.sidebar.first .basic-block {
+  margin: 30px 0;
+  padding: 0;
+  width: 100%;
+}
+
+hr {
+  margin-top: em(60);
+}
+
+.content {
+
+  h2 {
+    @extend %h2;
+    margin-bottom: em(15);
+  }
+
+  h3 {
+    font-family: $oswald;
+  }
+
+}
+
+p img {
+  margin: 0.5em 0.5em 0.5em 0;
+  max-width: 100%;
+}
+
+.share {
+  position: fixed;
+  top: 339px;
+  z-index: 1000;
+
+  @media screen and (min-width: 0\0) {
+    top: 320px;
+  }
+
+  @media only screen and (max-width: 1500px) {
+    padding-left: 5px;
+  }
+
+  @media only screen and (max-width: 950px) {
+    top: 216px;
+  }
+
+  //Change orientation to the bottom on mobile
+  @media only screen and (max-width: 768px) {
+    bottom: 0;
+    display: flex;
+    left: unset;
+    padding-left: 0;
+    right: 0;
+    top: unset;
+
+    li {
+      margin-right: 15px;
+    }
+
+  }
+
+}
+
+.share__image {
+  display: none;
+}
+
+.share__icon {
+  height: auto;
+  max-width: 36px;
+  width: em(30);
+
+  @media screen and (min-width: 0\0) {
+    height: em(30);
+  }
+
+  @supports (-webkit-appearance: none) {
+    width: 36px;
+  }
+
+}
+
+article .form-item.form-item-.form-type-item.form-no-label {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  margin-top: 30px;
+}
+
+//1-2 Col Layout
+#return-to-top {
+  left: 30px;
+  position: absolute;
+
+  @media screen and (max-width: 900px) {
+    left: 15px;
+  }
+
+}
+
+.hide { display: none !important; }
+
+.animated { animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.fadeIn { animation-name: fadeIn; }
+
+.view-header {
+  font-size: 30px;
+  margin-bottom: 15px;
+}

@@ -1,0 +1,32 @@
+#webform-submission-contact-add-form,
+#webform-submission-contact-page-variant-contact-us-panels-variant-0-add-form {
+  @extend %default-gutter-width;
+  @extend %max-width;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  max-width: 500px;
+
+  #edit-actions {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .form-item, .form-item input {
+      width: 100%;
+    }
+
+    #edit-actions {
+      padding: 0;
+
+      input {
+        margin-right: 0;
+      }
+
+    }
+
+  }
+
+}

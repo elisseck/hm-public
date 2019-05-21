@@ -33,6 +33,7 @@
  * @see search_preprocess_block()
  */
 #}
+
 {%
   set classes = [
     'block',
@@ -40,6 +41,7 @@
     'container-inline',
   ]
 %}
+
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}

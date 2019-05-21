@@ -1,0 +1,44 @@
+<header class="facets__header">
+    <h2 class="block-facets__header">Filter Biographies</h2>
+    <div class="filter__controls">
+        {{ drupal_entity('block_content', 98) }}
+    </div>
+    <button class="facets__header-button closeFilter">Cancel</button>
+</header>
+<div class="facets__birthplace block-facets">
+    <h2>Birthplace</h2>
+    {{ drupal_block('facet_block:birthplace_') }}
+</div>
+<div class="facets__maker-category block-facets">
+    <h2>Maker Category</h2>
+    {{ drupal_block('facet_block:maker_category_') }}
+</div>
+<div class="facets__schools block-facets">
+    <h2>Schools</h2>
+    {{ drupal_block('facet_block:schools_') }}
+</div>
+<div class="facets__employment block-facets">
+    <h2>Employment</h2>
+    {{ drupal_block('facet_block:employment_') }}
+</div>
+<div class="facets__favorite-food block-facets">
+    <h2>Favorite Food</h2>
+    {{ drupal_block('facet_block:favorite_food_') }}
+</div>
+<div class="facets__favorite-season block-facets">
+    <h2>Favorite Season</h2>
+    {{ drupal_block('facet_block:favorite_season_') }}
+</div>
+<div class="facets__favorite-vacation block-facets">
+    <h2>Favorite Vacation Destination</h2>
+    {{ drupal_block('facet_block:favorite_vacation_destination_') }}
+</div>
+<div class="facets__occupation block-facets">
+    <h2>Occupation</h2>
+    {{ drupal_block('facet_block:occupation_') }}
+</div>
+<div class="facets__organizations block-facets">
+    <h2>Organizations</h2>
+    {{ drupal_block('facet_block:organizations_') }}
+</div>
+{#<button class="facets__header-button closeFilter">Cancel</button>#}

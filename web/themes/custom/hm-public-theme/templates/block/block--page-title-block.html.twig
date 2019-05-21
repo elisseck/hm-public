@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Theme override for page titles.
+ *
+ * Available variables:
+ * - title_attributes: HTML attributes for the page title element.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title: The page title, for use in the actual content.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - flow_type: The type of checkout flow a user is currently working through;
+ *              May only appear on commerce checkout pages.
+ */
+#}
+
+<div id="pagetitle">
+  {% if flow_type is defined %}
+    {% if flow_type == 'donation' %}
+      {% set title = 'Donation' %}
+    {% elseif flow_type == 'digitalmaker_flow' %}
+      {% set title = 'Join' %}
+    {% endif %}
+    <h1 class="page-title">{{ title }}</h1>
+  {% else %}
+    {{ content }}
+  {% endif %}
+</div>

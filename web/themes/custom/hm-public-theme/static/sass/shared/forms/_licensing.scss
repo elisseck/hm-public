@@ -1,0 +1,37 @@
+//Select HistoryMakers
+#edit-the-historymakers-names-4 {
+  height: 200px;
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+
+    option {
+      padding: 10px 0;
+    }
+
+  }
+
+}
+
+#edit-fieldset-licensinginfopane2 > legend .fieldset-legend {
+  white-space: normal;
+}
+
+//Extra margin-bottom
+.form-item-e-mail-1.form-type-email,
+.form-item-work-email-36,
+.form-item.form-item-intended-media-60 {
+  margin-bottom: 30px;
+}
+
+//Move checkboxes below the description
+//The :before setting for description does not seem to work here
+#edit-production-publication-type-checkboxes,
+#edit-use-type-checkboxes {
+  margin-bottom: 15px;
+  order: 2;
+}
+
+#edit-production-publication-distribution-authorization-radios {
+  order: 2;
+}

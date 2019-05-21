@@ -1,0 +1,20 @@
+<?php
+
+/**
+ *
+ * @return array
+ */
+  function thm_timeline_theme(){
+    return array(
+       'timeline' => [
+         'variables' => [
+           'title' => '',
+           'markup' => '',
+           'content' => array(),
+           'pages' => '',
+           'resultsCount' => ''
+         ]
+       ]
+    );
+  }
+

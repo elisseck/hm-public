@@ -1,0 +1,15 @@
+<div class="timeline_cont glossary">
+  <div class="pages">
+    <nav class="pager">
+      <ul class="pager__items js-pager__items">
+      {% for item in pages %}
+           <li id="l_{{item}}" class="pager__item {{  (item == currentPage) ? 'is-active' : '' }}"> <a href="?page={{item}}" > {{ (item == 'num') ? '#'  : item }} </a></li>
+      {% endfor %}
+      </ul>
+    </nav>
+  </div>
+
+  <ul class="timeline_list glossary__list">
+    {{ content | raw }}
+  </ul>
+</div>

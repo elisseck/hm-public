@@ -1,0 +1,13 @@
+{% set collageTotal = content['#block_content'].field_collage_paragraph.value %}
+
+<div class="px-4 my-4">
+    <div class="contextual-region">
+      {{ title_prefix }}
+      {{ title_suffix }}
+
+      <div class="collage">
+        {{ content.field_collage_paragraph|field_value }}
+      </div>      
+
+    </div>
+</div>

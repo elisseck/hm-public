@@ -1,24 +1,84 @@
 // This is a class only applied to individual biography nodes
+.page-wrapper .layout--1-2col-3-9 {
+  @extend %max-width;
+
+  .main {
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+
+  .layout--1-2col-3-9 .row {
+    flex-direction: column;
+  }
+
+  .back-button.scroll {
+    max-width: 150px;
+  }
+
+}
 
 .main { background-color: color(light-grey); }
 
 .node--type-bio {
   .container {
+    @extend %default-gutter-width;
+    margin-left: 0;
+    margin-right: 0;
     max-width: none;
-    padding: 0 rem(55);
   }
 
   .page-title {
-    @extend %oswald-light;
+    @extend %oswald;
+    @extend %default-gutter-width;
     align-items: center;
-    background-color: color(quaternary);
     color: $white;
     display: flex;
-    font-size: rem(53);
-    height: em(100, 53);
-    margin: 0 auto rem(45);
-    max-width: 77.5em;
-    padding: 0 em(55, 53);
+    font-size: 3.3125rem;
+    height: 1.88679em;
+    margin: 0 auto 30px;
+    max-width: $max-width;
+
+    @media screen and (max-width: 900px) {
+      font-size: em(30);
+      height: auto;
+      padding: 15px;
+    }
+
+  }
+
+  .info__column {
+    padding: 0;
+  }
+
+  h2,
+  .info h3 {
+    @extend %card-header;
+    color: color(quaternary);
+    font-size: 30px;
+    line-height: 120%;
+  }
+
+  h3.info__profession {
+    padding-top: 15px;
+  }
+
+  p {
+    color: $black;
+    font-size: em(20);
+    line-height: 1.7rem;
+  }
+
+  .info dt,
+  .info dd {
+    font-size: em(20);
+    line-height: 1.7rem;
+  }
+
+  .bio-detail__main-content {
+    padding-bottom: 30px;
   }
 
   .info {
@@ -27,12 +87,58 @@
     margin-bottom: em(30, 15);
     overflow: hidden;
     padding: rem(15);
+
+    @media screen and (max-width: 600px) {
+      margin-bottom: 0;
+    }
+
   }
 
   .info__headshot {
     margin-bottom: em(30);
     transform: scale(1.2);
     width: 100%;
+
+    @media screen and (max-width: 600px) {
+      margin-bottom: 0;
+    }
+
+  }
+
+  .info__favorites {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    a {
+      display: none;
+      height: em(50);
+      // opacity: 0;
+      width: 100%;
+    }
+
+    a[href*='flag'] {
+      background: url('../images/add-favorite.svg') center center no-repeat;
+      color: transparent;
+      display: inline-block;
+      height: em(32);
+      margin-top: em(16);
+    }
+
+    a[href*='unflag'] {
+      background: url('../images/remove-favorite.svg') center center no-repeat;
+      color: transparent;
+      display: inline-block;
+      height: em(32);
+      margin-top: em(16);
+      width: em(104);
+    }
+  }
+
+  .info__favorites-icon {
+    position: absolute;
+    right: em(32);
+    top: em(15);
   }
 
   .discover__heading {
@@ -46,14 +152,30 @@
     width: 100%;
   }
 
+  .discover .button {
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .discover .bio-card:hover {
+    text-decoration: none;
+  }
+
   .bio-card {
     display: flex;
     margin-bottom: em(15);
+    overflow: hidden;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .bio-card__img {
     height: 100%;
     max-width: 120px;
+    transform: scale(1.1);
     width: 50%;
   }
 
@@ -61,6 +183,7 @@
     background-color: $white;
     flex: 2;
     padding: em(12);
+    z-index: 2;
   }
 
   .bio-card__name {
@@ -86,6 +209,263 @@
 
   .archive__photo {
     max-width: 100%;
+  }
+
+  .share {
+    left: em(10);
+    position: fixed;
+    top: 55%;
+
+    @media screen and (max-width: 768px) {
+      left: unset;
+      top: unset;
+    }
+
+    li {
+      height: 50px;
+    }
+
+  }
+
+  .share__icon {
+    height: auto;
+    width: em(36);
+  }
+
+  .archive {
+    margin: em(36) 0;
+  }
+
+  .back-button {
+    @extend %source-sans-semi-bold;
+
+    align-items: center;
+    background-color: transparent;
+    color: color(secondary);
+    display: inline-flex;
+    font-size: rem(18);
+    justify-content: space-between;
+    margin-bottom: em(60, 18);
+    width: auto;
+
+    @media screen and (max-width: 900px) {
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+
+    svg {
+      margin-right: 5px;
+      width: 23px;
+    }
+
+  }
+
+  .sponsor__img { max-width: 100%; }
+
+  .accordion__arrow {
+    align-self: center;
+    width: 20px;
+  }
+
+  @supports (-moz-appearance: meterbar) {
+
+    .accordion__arrow {
+      padding-left: 15px;
+    }
+
+  }
+
+  .accordion__panel {
+    display: flex;
+    line-height: 120%;
+    margin-bottom: 1rem;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .bio-detail__accordion {
+
+    ul {
+      margin-bottom: 30px;
+    }
+
+    li {
+      font-size: em(20);
+      line-height: 1.7rem;
+      margin-bottom: 5px;
+    }
+
+  }
+
+  .video-container h3 {
+    @extend %source-sans-semi-bold;
+    font-size: em(20);
+    padding-bottom: 15px;
+  }
+
+}
+
+.row.video-container {
+  flex-flow: row wrap;
+}
+
+.row.next-vid__preview div {
+  flex: 0 0 auto;
+  max-width: 100%;
+}
+
+//Responsive styles
+@media screen and (max-width: 900px) {
+
+  .info__column {
+    flex: 1 100%;
+    max-width: 40%;
+    padding-left: 0;
+  }
+
+  .bio__column {
+    flex: 1;
+    max-width: none;
+    padding-right: 0;
+  }
+
+  .bio__column .row {
+    flex-flow: column wrap;
+
+    .bio-detail__main-content {
+      flex: 1 100%;
+      max-width: none;
+      order: 2;
+
+      h2 {
+        margin-bottom: 15px;
+      }
+
+      p:first-of-type {
+        margin-top: 0;
+      }
+
+    }
+
+    .sponsor {
+      flex: 1 100%;
+      margin-bottom: 30px;
+      max-width: none;
+      order: 1;
+
+      h2 {
+        margin-bottom: 15px;
+      }
+
+      .sponsor__img {
+        max-width: 186px;
+      }
+
+    }
+
+  }//.bio__column .row
+
+  .bio__column .archive .row,
+  .bio__column .row.video-container {
+    flex-direction: row;
+  }
+
+  .node--type-bio .back-button {
+    flex-basis: 100%;
+    justify-content: flex-start;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .node--type-bio h3.info__profession {
+    padding-top: 30px;
+  }
+
+  .video-container section {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .node--type-bio .video-container h3 {
+    margin-top: 15px;
+    padding-bottom: 0;
+  }
+
+  .bio__column .row .next-vid__preview {
+    flex-direction: row;
+  }
+
+  .row.next-vid__preview div {
+    flex: 0;
+    max-width: none;
+
+    .next-vid__thumb[_ngcontent-c0] {
+      max-width: 100px;
+    }
+
+  }
+
+  .row.next-vid__preview div.next-vid__title {
+    flex: 1;
+  }
+
+  #findingAids li {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .info__column {
+    max-width: none;
+    padding-right: 0;
+  }
+
+  .node--type-bio .discover__heading {
+    margin: 50px 0;
+  }
+
+  .node--type-bio h3.info__profession {
+    padding-top: 15px;
+  }
+
+  .bio__column {
+    padding-left: 0;
+    padding-top: 15px;
+  }
+
+}
+
+.info .desktop-only,
+.discover.desktop-only {
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+
+}
+
+.node--type-bio .mobile-only-details .accordion__panel {
+  margin-bottom: 0;
+}
+
+#storyList .button.button--primary {
+  margin-bottom: 15px;
+}
+
+.bio__column {
+
+  .bio-detail__main-content,
+  .sponsor {
+    margin-top: 30px;
+
+    @media screen and (max-width: 600px) {
+      margin-top: 0;
+    }
   }
 
 }

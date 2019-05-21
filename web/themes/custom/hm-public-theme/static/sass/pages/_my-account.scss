@@ -1,0 +1,273 @@
+.my-account {
+  @extend %max-width;
+  @extend %default-gutter-width;
+
+  //IE 11
+  @media screen and (min-width: 0\0) {
+    padding-left: 30px;
+  }
+
+  //Update button
+  #userDetails a {
+    text-align: center;
+    width: 100%;
+  }
+
+  .my-account__content > .contextual-region > div {
+    border-top: 1px solid color(medium-grey);
+    padding-top: 15px;
+  }
+
+  .my-account__content .block {
+    margin-top: 30px;
+
+    h2 {
+      @extend %h2;
+      margin-bottom: 30px;
+    }
+
+  }
+
+  .my-account__content {
+
+    //Favorites Matcher
+    #webform-4 form {
+      display: flex;
+      flex-flow: row wrap;
+
+      .form-item {
+        display: flex;
+        flex: 1 auto;
+        flex-flow: row wrap;
+
+        @media screen and (max-width: 950px) {
+          margin-right: 0;
+          width: 100%;
+        }
+
+      }
+
+      .form-required {
+        margin-right: 5px;
+      }
+
+      .form-item select,
+      .form-item input {
+        flex: 1;
+
+        @media screen and (max-width: 768px) {
+          flex: 1 auto;
+          width: 100%;
+        }
+
+      }
+
+      #edit-actions {
+        flex: 1 100%;
+        margin-left: 14px;
+
+        @media screen and (max-width: 950px) {
+          padding-left: 0;
+        }
+
+      }
+
+      .webform-button--submit {
+        margin-right: 0;
+        width: 150px;
+
+        @media screen and (max-width: 950px) {
+          width: 50%;
+        }
+
+        @media screen and (max-width: 575px) {
+          width: 100%;
+        }
+
+      }
+
+      //Results
+      .webform-confirmation {
+        margin: 0;
+        max-width: none;
+        padding: 0;
+        width: 100%;
+
+        h2 {
+          font-size: 30px;
+          margin: 15px 0;
+        }
+
+        h4 {
+          font-size: 20px;
+        }
+
+        .list-biography-cards-w-category-filter {
+          margin-bottom: 30px;
+          margin-top: 30px;
+          padding-right: 0;
+
+          @media screen and (max-width: 950px) {
+            padding: 0;
+          }
+
+          //IE
+          .view-content {
+            height: 100%;
+          }
+
+        }
+
+        .bio-card--list {
+          margin: 0 1% 15px;
+
+          &:nth-child(3n+1) {
+            margin-left: 0;
+          }
+
+          &:nth-child(3n) {
+            margin-right: 0;
+          }
+
+          @media screen and (max-width: 768px) {
+            max-width: 48%;
+            min-width: 48%;
+
+            &:nth-child(3n+1) {
+              margin-left: 1%;
+            }
+
+            &:nth-child(3n) {
+              margin-right: 1%;
+            }
+
+            &:nth-child(2n+1) {
+              margin-left: 0;
+            }
+
+            &:nth-child(2n) {
+              margin-right: 0;
+            }
+
+          }
+
+          @media screen and (max-width: 400px) {
+            max-width: none;
+            min-width: 100%;
+
+            a .bio-card--image {
+              background: $black;
+            }
+
+            a .bio-card--image img {
+              height: 100%;
+              margin-left: auto;
+              margin-right: auto;
+              width: auto;
+            }
+
+          }
+
+        }
+
+        .bio-card--list a .bio-card--content {
+
+          //IE 11
+          @media screen and (min-width: 0\0) {
+            min-height: 125px;
+          }
+
+          h3 {
+            font-size: 25px;
+          }
+
+          h4 {
+            font-size: 16px;
+          }
+
+        }
+
+        a.button--primary.button {
+          margin-bottom: 30px;
+          min-width: 150px;
+          text-align: center;
+
+          //IE 11
+
+          @media screen and (max-width: 950px) {
+            width: 50%;
+          }
+
+          @media screen and (max-width: 575px) {
+            width: 100%;
+          }
+
+        }
+
+      }
+
+    }//Favorites Matcher
+
+    //My Favorites
+    #views-block-my-favorites-block-1 {
+
+      .pager {
+        margin-top: 30px;
+      }
+
+    }
+
+    //Order History
+    #views-block-my-order-history-block-1 {
+
+      .card {
+        margin-bottom: 30px;
+      }
+
+    }
+
+    #commerce-order-item-add-to-cart-form-commerce-product-1 {
+
+      #edit-submit--2 {
+        width: 150px;
+
+        @media screen and (max-width: 950px) {
+          width: 50%;
+        }
+
+        @media screen and (max-width: 575px) {
+          width: 100%;
+        }
+
+      }
+
+    }
+
+    article {
+
+      .user-picture,
+      .field-intl-address {
+        display: none;
+      }
+
+      div.form-item.form-type-item.form-no-label {
+        margin-bottom: 0;
+        margin-top: 0;
+        padding-left: 0;
+      }
+
+    }
+
+    //My Submissions
+    .basic-block.text-left {
+      padding-left: 0;
+      width: 100%;
+    }
+
+    #views-block-my-nominations-block-1 .pager {
+      margin-top: 30px;
+    }
+
+  }//.my-account__content
+
+}//.my-account

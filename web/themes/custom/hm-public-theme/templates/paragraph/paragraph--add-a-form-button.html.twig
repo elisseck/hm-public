@@ -1,0 +1,28 @@
+{#
+/**
+ * @file
+ * Theme override for paragraph Product Button
+ *
+ * Available variables using Paragraphs:
+ * -  field_form_button_label
+ * -  field_select_a_form
+ *
+ */
+#}
+
+{# {{ drupal_dump(content.field_select_a_form[0]['#url']) }}
+
+<ul>
+  <li>#url:{{ content.field_select_a_form[0]['#url'] }}</li>
+  <br>
+  <li>test: 
+    {% set url = content.field_select_a_form[0]['#url']|split('?') %}
+    {{ url[0] }}
+  </li>
+  <br>
+  <li>#routeParameters: {{ content.field_select_a_form[0]['#url']['#routeParameters']['webform'] }}</li>
+</ul> #}
+
+<div class="button--form">
+{{ content.field_select_a_form|field_value }}
+</div>

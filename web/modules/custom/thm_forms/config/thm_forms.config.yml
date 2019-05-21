@@ -1,0 +1,22 @@
+##
+#
+# Adding classes to forms:
+#
+# Add a form id to the manifest.
+#
+# Single class
+# forms:
+#   form_id1:
+#     - form-classname
+#
+# Multiple classes
+# forms:
+#   form_id1:
+#     - form-classname1
+#     - form-classname2
+#
+##
+
+form_classes:
+  views_exposed_form:
+    - header-search

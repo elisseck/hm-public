@@ -1,0 +1,5 @@
+name: THM TimeLine
+type: module
+description: 'Creates timeline for timeline page'
+package: Custom
+core: 8.x

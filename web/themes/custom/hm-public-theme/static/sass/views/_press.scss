@@ -1,0 +1,237 @@
+.press__year-navigation {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  width: 100%;
+
+  @media screen and (min-width: 0\0) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .press__tab {
+    position: relative;
+    width: 100%;
+
+    &::after {
+      background-image: url('../images/scroll-right.png'), linear-gradient(90deg, color(press-gradient), color(light-grey) 50%);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 50px;
+      content: '';
+      display: inline-block;
+      height: 72px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 32px;
+      z-index: 1;
+    }
+
+  }
+
+  ul.menu {
+    line-height: 30px;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 100%;
+
+    &::after {
+      background-image: linear-gradient(90deg, color(press-gradient), color(light-grey) 40%);
+      content: '';
+      display: inline-block;
+      height: 72px;
+      position: relative;
+      vertical-align: middle;
+      width: 100px;
+      z-index: 2;
+    }
+
+  }
+
+  li.menu-item {
+    display: inline-block;
+    font-size: 16px;
+    margin: 1em 0;
+    padding: 5px 15px;
+    position: relative;
+
+    &::after {
+      background: color(secondary);
+      bottom: 0;
+      content: '';
+      display: none;
+      height: 3px;
+      left: 0;
+      position: absolute;
+      right: 0;
+    }
+
+    &--selected:after {
+      display: block;
+    }
+
+  }
+
+  .menu-item.active-trail {
+    background: color(secondary);
+
+    a {
+      color: $white;
+    }
+
+  }
+
+}
+
+.view.list-press-cards {
+  @extend %default-gutter-width;
+}
+
+.list-press-cards .view-header {
+  @extend %source-sans-semi-bold;
+  margin-top: $default-grid-gutter-width;
+}
+
+// Press Cards
+.list-press-cards .view-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: $default-grid-gutter-width;
+
+  .views-row {
+    flex: 1 0 29%;
+    margin: 0 30px 30px 0;
+    max-width: 33%;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+
+    @media screen and (max-width: 1024px) {
+      flex: 1;
+      max-width: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-basis: 45%;
+      margin: 0 15px 30px 0;
+      max-width: none;
+
+      &:nth-child(3n) {
+        margin-right: 15px;
+      }
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+
+    }
+
+    @media screen and (max-width: 600px) {
+      flex-basis: 100%;
+      margin: 0 0 30px;
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+
+    }
+
+  }
+
+  .press-card__img-bg {
+    align-items: center;
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    min-height: rem(75);
+  }
+
+  .press-card__img-bg img {
+    max-height: rem(65);
+    width: auto;
+  }
+
+  .views-field-title {
+    @extend %source-sans-semi-bold;
+    margin: 15px 0;
+    text-align: left;
+  }
+
+  .views-field-title,
+  .views-field-field-publisher,
+  .views-field-field-press-date,
+  .views-field-field-collection,
+  .views-field-field-press-category,
+  .views-field-field-press-program,
+  .views-field-field-press-link,
+  .views-field-field-video-link,
+  .views-field-field-pdf-upload,
+  .views-field-field-wav-upload {
+    display: flex;
+  }
+
+  .views-field-field-press-link {
+    word-break: break-word;
+  }
+
+  .views-label-field-publisher,
+  .views-label-field-press-date,
+  .views-label-field-collection,
+  .views-label-field-press-category,
+  .views-label-field-press-program,
+  .views-label-field-video-link {
+    padding-right: 10px;
+  }
+
+  .snapshot-link {
+    max-width: 318px;
+    word-wrap: break-word;
+
+    @media screen and (max-width: 600px) {
+      max-width: none;
+    }
+
+  }
+
+  .snapshot-link a:before {
+    background-image: url('../images/link.svg');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    content: '';
+    display: inline-block;
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
+  }
+
+  .snapshot-audio a:before {
+    background-image: url('../images/audio-file-icon.svg');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    content: '';
+    display: inline-block;
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
+  }
+
+  .snapshot-download a:before {
+    background-image: url('../images/download-arrow.svg');
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    content: '';
+    display: inline-block;
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
+  }
+
+}

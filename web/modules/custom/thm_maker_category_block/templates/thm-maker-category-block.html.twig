@@ -1,0 +1,31 @@
+<!-- Add you custom twig html here -->
+{#
+  - THM Maker Category Block
+  - variables:
+  -
+  - data: contains array consisting of:
+  -  maker_category_id: id of maker category
+  -  maker_category_name: name of maker category
+  -  maker_category_desc: maker category text content
+  -  maker_category_img: random image from bio in respective maker category
+#}
+
+{% for item in data|sort %}
+  {#
+    note to template devs:
+    There are categories that shouldn't be: CivicMaker and EducationMaker (atm).
+    Likely due to data in FileMaker, but this is quicker than getting
+    them to clean up their data.
+  #}
+  {% if item.maker_category_name not in ['CivicMaker', 'EducationMaker'] %}
+<div class="maker-card">
+  <a href="/biographies/{{ item.maker_category_name|lower }}">
+    <h3>{{ item.maker_category_name }}</h3>
+    <div class="maker-card--image">
+      <img src="{{ item.maker_category_img }}" alt="{{ item.current_maker_img_name }}">
+    </div>
+    <p>{{ item.maker_category_desc }}</p>
+  </a>
+</div>
+  {% endif %}
+{% endfor %}

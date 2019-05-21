@@ -1,0 +1,5 @@
+name: THM Admin Links
+description: Adds links to the Administrative Toolbar.
+package: Custom
+type: module
+core: 8.x

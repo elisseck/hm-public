@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Theme override for Event Featured Guest Block
+ *
+ * Available variables using Paragraphs:
+ * -  field_featured_guest_content	
+ * -  field_featured_guest_name	
+ * -  field_featured_guest_picture		
+ *
+ */
+#}
+
+<div class="event__featured-guest row col-12"> 
+  <h2 class="col-12">{{ content.field_featured_guest_name | field_value }}</h2>
+  <div class="pull-left">
+    {{ content.field_featured_guest_picture | field_value }}
+    {{ content.field_featured_guest_content | field_value }}
+  </div>
+</div>

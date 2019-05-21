@@ -1,4 +1,4 @@
-# The History Makers Public Site
+# The HistoryMakers Public Site
 
 This project repository contains the Drupal 8 scaffolding for the public THM site. In addition, it includes Drupal VM as a composer dependency.
 
@@ -28,7 +28,7 @@ vagrant_synced_folders:
 ```
 5. Front the root of the project, run `vagrant plugin install vagrant-bindfs` in your terminal.
 6. From the root of the project, run `vagrant up` in your terminal. the first time you run the command, Drupal VM will create a new virtual machine for you. This will take a few minutes to download and setup.
-7. Visit http://dashboard.hm-public.dev/ to take a look at the VM dashboard. From there, you will find links to the following
+7. Visit http://dashboard.hm-public.test/ to take a look at the VM dashboard. From there, you will find links to the following
     * The Drupal site itself.
     * The database management UI (uses [Adminer](https://www.adminer.org/)).
     * A page for viewing log files on the Apache server.(uses [Pimp my log](http://pimpmylog.com/)).
@@ -43,6 +43,59 @@ If you would like to add a new core dependency to the project, we use [Composer]
 
 This allows us to easily manage and share dependencies between a team of developers.
 
+## Ensure your local environment uses a sandbox Authorize.net configuration
+
+It is **imperative** that you create a local configuration for the Authorize.net feature.  Without this step, you risk creating orders against a configuration intended for another environment since there is an _option_ to configure these secrets through the Drupal GUI.  
+
+In order to use a local configuration, place the following block within a `settings.local.php` file inside `/web/sites/default`
+
+```php
+/**
+* Local configuration for the Authorize.net test environment
+*/
+
+$config['commerce_payment.commerce_payment_gateway.authorize_net']['configuration'] = [
+ 'api_login' => '{your authorize.net api login}',
+ 'transaction_key' => '{your authorize.net api transaction key}',
+ 'client_key' => '{your authorize.net client key}',
+ 'mode' => 'test'
+];
+```
+
+## Getting MySQL Dump into your local build
+
+In order to safely make a backup from another database server
+
+    mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database --user=devuser --password | gzip -c > ./backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz
+
+Bring the backup down to local and push it up into the vagrant machine
+  
+    rsync -v devuser@devwww.thehistorymakers.org:~/backports/db/ ./
+    vagrant upload ./thm_livedev_backup.20190501_204210.sql.gzip
+
+Get into vagrant machine and switch to root user, unzip the db, replace instances of the source database name with the drupal name, import the DB to mysql and remove the imported file (unless you want to keep it around for repeat testing)
+
+    vagrant ssh
+    sudo su root
+    cd /home/vagrant
+    gunzip thm_livedev_backup.{current_file}.sql.gzip
+    sed -i 's/thm_livedev/drupal/g' thm_livedev_backup.{current_file}.sql
+    mysql < thm_livedev_backup.{current_file}.sql
+    rm thm_livedev_backup.{current_file}.sql
+
+## First boot of app after DB import
+
+Upon starting the DB after an import, step through the install and enter DB credentials.  Then you will also need to rebuild the Cache.  This can be accomplished by going into the vagrant host `vagrant ssh` and issuing a Drush coammand
+    
+    cd /var/www/drupalvm/web
+    drush cr
+    
+## Adding items to the SOLR index.
+
+When you first start up, and after you've imported the DB, the Solr collection will need to be populated with the data from the database.  In order to do this, run the following.
+
+    drush sapi-c && drush sapi-r && drush sapi-i
+    
 ## Working on this project
 
 In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.

@@ -1,0 +1,133 @@
+.two-column-snapshot.read-more {
+  padding-left: $default-grid-gutter-width;
+  padding-right: $default-grid-gutter-width;
+
+  @media screen and (max-width: 900px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+}
+
+.read-more .two-column-snapshot--image {
+  padding: 0;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 15px;
+    max-height: 14.4375em;
+    max-width: 50%;
+
+    img {
+      margin-right: 0;
+      max-width: 100%;
+      width: 100%;
+    }
+
+  }
+
+  @media screen and (max-width: 520px) {
+    max-width: 100%;
+
+    img {
+      max-width: 100%;
+      width: 100%;
+    }
+
+  }
+
+}
+
+.read-more .snapshot {
+
+  @media screen and (max-width: 768px) {
+    flex: 1;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+.read-more-state {
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+.read-more-target {
+  font-size: 0;
+  max-height: 0;
+  opacity: 0;
+  transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  font-size: inherit;
+  max-height: 999em;
+  opacity: 1;
+}
+
+.read-more-wrap {
+  padding-bottom: 15px;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Read More';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'Read Less';
+}
+
+.read-more-trigger {
+  @extend %source-sans-semi-bold;
+  color: $white;
+  cursor: pointer;
+}
+
+//Read More button
+label.button.button--primary.read-more-trigger {
+  padding: em(10);
+  text-align: center;
+  width: em(150);
+
+  @media screen and (max-width: 768px) {
+    font-size: 1em;
+    width: 50%;
+  }
+
+  @media screen and (max-width: 520px) {
+    width: 100%;
+  }
+
+}
+
+//Image Overlay
+.readmore {
+  height: em(231);
+  position: absolute;
+  right: em(10);
+  width: em(231);
+}
+
+.readmore--image-overlay {
+  background: color(quaternary-overlay);
+  height: em(231);
+  position: absolute;
+  right: em(10);
+  width: em(231);
+  z-index: 1;
+
+  @media screen and (max-width: 768px) {
+    height: 14.4375em;
+    right: 0;
+    width: 100%;
+  }
+
+}

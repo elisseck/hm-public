@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Contains thm_adv_search.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface as RMI;
+use Solarium\Core\Query\QueryInterface as SolrQuery;
+use Drupal\search_api\Query\QueryInterface as DrupalQuery;
+
+/**
+ * Implements hook_help().
+ */
+function thm_adv_search_help($route_name, RMI $route_match) {
+  switch ($route_name) {
+    // Main module help for the thm_adv_search module.
+    case 'help.page.thm_adv_search':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('custom modifications supporting search functionality') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * @param \Solarium\Core\Query\QueryInterface $solarium_query
+ */
+function _apply_biography_filter(SolrQuery $solarium_query) {
+  $solarium_query->addFilterQuery(
+    $solarium_query->createFilterQuery('bios_only')
+      ->setQuery('ss_field_hm_id:[* TO *]'));
+}
+
+/**
+ * Implements hook_search_api_solr_query_alter().
+ *
+ * @param $solarium_query SolrQuery
+ * @param $query DrupalQuery
+ */
+function thm_adv_search_search_api_solr_query_alter(SolrQuery $solarium_query, DrupalQuery $query) {
+  if ($query->getSearchId() === 'views_page:advanced_search__page_1') {
+    _apply_biography_filter($solarium_query);
+  }
+}

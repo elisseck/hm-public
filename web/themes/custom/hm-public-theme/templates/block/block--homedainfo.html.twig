@@ -19,33 +19,33 @@
     <img src="{{ file_url(content.field_da_image.0['#item'].entity.uri.value) }}" alt="{{ content.field_da_image.0['#item'].alt }}" >
 
     {% if content.field_quote_1[0]['#context'].value|render is not empty %}
-    <div class="da__quotes">
-        <q class="da__quote">{{ content.field_quote_1[0]['#context'].value }}</q>
-        <cite class="da__cite">
-            <span class="da__cite-name">{{ content.field_quote_1_author[0]['#context'].value }}</span>
-            {{ content.field_quote_1_author_job[0]['#context'].value }}
-        </cite>    
-    </div>
+      <div class="da__quotes">
+          <q class="da__quote">{{ content.field_quote_1[0]['#context'].value }}</q>
+          <cite class="da__cite">
+              <span class="da__cite-name">{{ content.field_quote_1_author[0]['#context'].value }}</span>
+              {{ content.field_quote_1_author_job[0]['#context'].value }}
+          </cite>    
+      </div>
     {% endif %}
 
     {% if content.field_quote_2[0]['#context'].value|render is not empty %}
-    <div class="da__quotes">
-        <q class="da__quote">{{ content.field_quote_2[0]['#context'].value }}</q>
-        <cite class="da__cite">
-            <span class="da__cite-name">{{ content.field_quote_2_author[0]['#context'].value }}</span>
-            {{ content.field_quote_2_author_job[0]['#context'].value }}
-        </cite>    
-    </div>
+      <div class="da__quotes">
+          <q class="da__quote">{{ content.field_quote_2[0]['#context'].value }}</q>
+          <cite class="da__cite">
+              <span class="da__cite-name">{{ content.field_quote_2_author[0]['#context'].value }}</span>
+              {{ content.field_quote_2_author_job[0]['#context'].value }}
+          </cite>    
+      </div>
     {% endif %}
 
     {% if content.field_quote_3[0]['#context'].value|render is not empty %}
-    <div class="da__quotes">
-        <q class="da__quote">{{ content.field_quote_3[0]['#context'].value }}</q>
-        <cite class="da__cite">
-            <span class="da__cite-name">{{ content.field_quote_3_author[0]['#context'].value }}</span>
-            {{ content.field_quote_3_author_job[0]['#context'].value }}
-        </cite>    
-    </div>
+      <div class="da__quotes">
+          <q class="da__quote">{{ content.field_quote_3[0]['#context'].value }}</q>
+          <cite class="da__cite">
+              <span class="da__cite-name">{{ content.field_quote_3_author[0]['#context'].value }}</span>
+              {{ content.field_quote_3_author_job[0]['#context'].value }}
+          </cite>    
+      </div>
     {% endif %}
     
 </div>

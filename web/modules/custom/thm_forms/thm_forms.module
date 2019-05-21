@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * @file
+ * Contains thm_forms.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface as FSI;
+use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Implements hook_help().
+ */
+function thm_forms_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the thm_forms module.
+    case 'help.page.thm_forms':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Simple module used for managing general form attributes') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function manifest() {
+  $meta = [
+    'base' => drupal_get_path('module', 'thm_forms'),
+    'path' =>'/config/thm_forms.config.yml',
+    'root_key' => 'form_classes'
+  ];
+
+  return [
+    'get_path' => function() use ($meta) { return $meta['base'] . $meta['path']; },
+    'fetch' => function($data) use ($meta) { return $data[$meta['root_key']]; }
+  ];
+}
+
+function get_forms_manifest(callable $m) {
+  $manifest = call_user_func($m);
+  $path     = call_user_func($manifest['get_path']);
+  $yamlData = Yaml::parseFile($path);
+
+  return call_user_func($manifest['fetch'], $yamlData);
+}
+
+function get_config() {
+  return \Drupal::config('thm_forms.settings');
+}
+
+function _form_has_search_id(array $form, string $searchFormId) {
+  return isset($form['search_api_fulltext']) &&
+    $form['search_api_fulltext']['#search_id'] === $searchFormId;
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param array $form
+ * @param FSI $form_state
+ * @param string $current_form
+ */
+function thm_forms_form_alter(&$form, FSI $form_state, $current_form) {
+  $formsData = get_forms_manifest('manifest');
+  $config    = get_config();
+
+  if ($config->get('thm_forms.debug_toggle')) {
+    drupal_set_message('form ID is present: ' . $current_form);
+  }
+
+  if ($current_form === 'upgrade_to_thmda' && \Drupal::currentUser()->id()) {
+    $form['#token'] = null;
+  } else if ($current_form === 'views_exposed_form') {
+    if (_form_has_search_id($form, 'advanced_search')) {
+      $form['search_api_fulltext']['#attributes']['placeholder'] = 'Search Biographies';
+    }
+  } else if ($current_form === 'commerce_checkout_flow_thm_donation_checkout_flow') {
+    $form['actions']['next']['#value'] = 'Pay and Complete Your Donation';
+  }
+
+  foreach ($formsData as $formID => $formClasses) {
+    if ($current_form === $formID) {
+      $cls = $form['#attributes']['class'];
+      $form['#attributes']['class'] = array_merge($cls, $formClasses);
+    }
+  }
+}
+
+
+

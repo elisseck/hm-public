@@ -1,0 +1,35 @@
+.authorize-net-accept-js-form.form-wrapper {
+  border-top: 1px solid color(medium-grey);
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 10px 30px 0;
+  padding: 15px 0 0;
+
+  @media screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: 0;
+    width: 100%;
+
+    &>input {
+      margin-right: 0;
+      width: 100%;
+    }
+
+  }
+
+}
+
+#payment-errors {
+  color: $red;
+  flex: 1 100%;
+}
+
+form.commerce-checkout-flow-thm-digitalmaker-checkout-flow.commerce-checkout-flow {
+
+  .authorize-net-accept-js-form.form-wrapper {
+    margin-right: 0;
+  }
+
+}

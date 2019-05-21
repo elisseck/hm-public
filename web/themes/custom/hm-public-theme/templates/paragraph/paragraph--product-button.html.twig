@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Theme override for paragraph Product Button
+ *
+ * Available variables using Paragraphs:
+ * -  field_buy_tickets (entity reference to the store)
+ * -  field_product_button_text
+ *
+
+  {{ drupal_dump(content.field_buy_tickets) }}
+
+ */
+#}
+
+<a href="/product/{{ content.field_buy_tickets|field_value }}" class="button button--primary carousel__caption--buttons">
+  {{ content.field_product_button_text|field_value }}
+</a>

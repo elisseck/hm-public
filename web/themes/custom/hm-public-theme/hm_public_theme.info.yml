@@ -7,6 +7,9 @@ core: 8.x
 libraries:
   - hm_public_theme/main
 
+#libraries-override:
+#  facets/drupal.facets.dropdown-widget: thm_adv_search/chosen-facets-collection
+
 stylesheets-remove:
   - '@fortytwo/static/css/fortytwo.css'
 
@@ -21,7 +24,5 @@ regions:
   sidebar_second: 'Second sidebar'
   page_bottom: 'Page bottom'
   footer: 'Footer'
-  left_3: '3-Left'
-  right_9: '9-Right'
-  left_9: '9-Left' 
-  right_3: '3-Right'
+  custom_left: 'Left'
+  custom_right: 'Right'

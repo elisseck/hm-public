@@ -1,0 +1,245 @@
+//Store View
+.list-commerce-products {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 30px;
+
+  @media screen and (min-width: 0\0) {
+    padding-left: $default-grid-gutter-width;
+    padding-right: $default-grid-gutter-width;
+  }
+
+  //Page layout
+  .view-filters.form-group {
+    display: flex;
+    flex: 1 0 20%;
+
+    @media screen and (min-width: 0\0) {
+      min-width: 170px;
+    }
+
+    //Store filter
+    .views-exposed-form.header-search {
+      flex: 0;
+      flex-direction: column;
+
+      @media screen and (max-width: 900px) {
+
+        .form-item.form-item-type.form-type-select {
+          margin-right: 0;
+        }
+
+        .form-item select {
+          min-width: 200px;
+        }
+
+        .form-item select option {
+          height: 45px;
+        }
+
+        .form-submit.form-submit {
+          width: 100%;
+        }
+
+        #edit-reset {
+          margin-right: 0;
+        }
+
+      }
+
+      @media screen and (max-width: 600px) {
+        flex: 1;
+      }
+
+    }
+
+    .views-exposed-form.header-search #edit-type {
+      height: auto;
+    }
+
+    .views-exposed-form.header-search #edit-actions {
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+  }
+
+  //Products
+  .view-content {
+    flex: 1;
+    flex-basis: 80%;
+    margin-top: 15px;
+  }
+
+  //Pager
+  .pager {
+    flex: 1 100%;
+    margin-left: 20%;
+    margin-top: $default-grid-gutter-width;
+
+    @media screen and (max-width: 950px) {
+      margin-left: 0;
+    }
+
+  }//End Page layout
+
+  //Form field layout
+  .form-type-entity-autocomplete input.form-autocomplete.ui-autocomplete-input {
+    margin-top: 0;
+  }
+
+  .form-type-number {
+
+    label {
+      margin-bottom: 0;
+      width: 100%;
+    }
+
+    input {
+      width: 75px;
+    }
+
+    .form-actions {
+      flex: 1 100%;
+    }
+
+  }
+
+}//.list-commerce-products
+
+.item-list.store-products {
+  display: flex;
+
+  li {
+    @extend %product-card;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 0;
+
+    @media screen and (min-width: 0\0) {
+      min-width: 950px;
+    }
+
+    @media screen and (max-width: 900px) {
+      margin-right: 0;
+    }
+
+    .views-field.views-field-body {
+      flex: 1 100%;
+    }
+
+    @media screen and (max-width: 520px) {
+
+      .views-field.views-field-variations,
+      .views-field.views-field-variations-1 {
+        flex: 1 100%;
+      }
+    }
+
+    .views-field.views-field-variations {
+      flex: 1 35%;
+
+      .price,
+      .field-format,
+      .field-product {
+        display: flex;
+      }
+
+      .price > div:first-of-type,
+      .field-format > div:first-of-type {
+        font-weight: bold;
+        padding-right: 15px;
+      }
+
+      .field-product > div:first-of-type {
+        display: none;
+      }
+
+      .field-product {
+        padding-bottom: 15px;
+        padding-right: 15px;
+        padding-top: 15px;
+      }
+
+    }
+
+    .views-field.views-field-variations-1 {
+      flex: 1 60%;
+
+      form {
+        display: flex;
+        flex-direction: column;
+
+        .form-item.form-type-select {
+          margin: 0;
+          padding: em(4) 0;
+          width: em(200); //ensure there is no blank space on the right.
+        }
+
+        input {
+          margin: em(10) 0;
+        }
+
+        #edit-actions {
+          margin-left: 0;
+        }
+
+      }
+    }
+
+    @media screen and (max-width: 950px) {
+
+      #edit-actions,
+      #edit-actions .form-submit {
+        padding-left: 0;
+        width: 100%;
+      }
+
+      .form-submit {
+        width: 100%;
+      }
+
+    }
+
+  }//close li
+
+  img {
+    height: auto;
+    max-width: 220px;
+  }
+
+}
+
+//My Cart button
+.my-cart--button {
+  @extend %default-gutter-width;
+  position: absolute;
+  right: 0;
+  z-index: 100;
+
+  a {
+    text-align: center;
+    width: 154px;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .my-cart--button {
+    width: 100%;
+
+    a {
+      width: 100%;
+    }
+
+  }
+
+  form#views-exposed-form-commerce-products-page-2 {
+    margin-top: 30px;
+  }
+
+}

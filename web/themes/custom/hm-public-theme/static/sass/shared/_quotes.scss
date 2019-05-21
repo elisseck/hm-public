@@ -1,0 +1,129 @@
+//Quote Block
+.quote-block {
+  background-color: color(carousel-bg-alt);
+}
+
+.quote-block--content {
+  @extend %max-width;
+  @extend %med-width-content;
+  @extend %default-gutter-width;
+  padding-bottom: em(40);
+  padding-top: em(40);
+  text-align: center;
+
+  @media screen and (max-width: 950px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 900px) {
+    padding-bottom: em(40);
+    padding-top: em(40);
+  }
+
+  q {
+    @extend %oswald;
+    font-size: em(40);
+    line-height: 120%;
+
+    @media screen and (max-width: 768px) {
+      font-size: 2em;
+    }
+
+    @media screen and (max-width: 580px) {
+      font-size: 1.875em;
+    }
+
+  }
+
+}
+
+.quote-block--credits {
+  margin-top: em(15);
+
+  cite {
+    @extend %source-sans-semi-bold;
+    font-style: normal;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+}
+
+// Two Column Quote
+.two-column-quote {
+  @extend %default-gutter-width;
+  @extend %med-width-content;
+  margin: em(60) auto 3.75em;
+  width: 50%;
+
+  &--content {
+
+    @media screen and (max-width: 580px) {
+      padding: 0;
+
+      h4 p {
+        font-size: 1em;
+      }
+
+    }
+
+    h4 {
+      @extend %oswald;
+    }
+
+    h4 p {
+      font-size: em(22);
+      line-height: 120%;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    h4 + p {
+      @extend %source-sans-semi-bold;
+    }
+
+  }
+
+  @media screen and (max-width: 900px) {
+    padding-left: 0;
+    padding-right: 0;
+
+    &--image {
+      overflow: hidden;
+      padding: 0;
+    }
+
+  }
+
+  &--image img {
+    float: right;
+    height: auto;
+    margin-right: em(10);
+    max-width: em(267);
+    width: 100%;
+
+    @media screen and (max-width: 574px) {
+      float: none;
+      margin-bottom: 15px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 50%;
+    }
+
+  }
+
+}
+
+.two-column-quote.two-column-testimonial.align-content-left:nth-child(2n+1) img {
+
+  @media screen and (max-width: 900px) {
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 574px) {
+    margin-right: auto;
+  }
+
+}

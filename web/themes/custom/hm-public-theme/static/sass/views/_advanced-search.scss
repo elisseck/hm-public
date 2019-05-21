@@ -1,0 +1,336 @@
+// Advanced Search View
+.block-thm-adv-search-facet-container {
+  background: color(light-grey);
+  display: none;
+  left: 0;
+  padding-left: 1em;
+  position: fixed;
+  transition: top 500ms linear;
+  width: 100%;
+
+  .facets__header-button { right: 0; }
+
+  &.open {
+    display: inline-block;
+    height: 100%;
+    overflow-y: scroll;
+    top: 0;
+    z-index: 503;
+  }
+
+  @media screen and (min-width: 950px) {
+    margin-left: 100px;
+    position: inherit;
+    width: 117px;
+  }
+
+}
+
+.list-advanced-search {
+  @extend %default-gutter-width;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .view-header {
+    background: transparent;
+    color: $black;
+    flex: 1 100%;
+    font-size: 30px;
+    height: em(30);
+    line-height: normal;
+    margin-bottom: em(5);
+    order: 2;
+    padding-left: 0;
+    padding-top: em(2);
+  }
+
+  //Filters
+  .view-filters.form-group {
+    flex-basis: 100%;
+    margin: 1.5em 0;
+    order: 1;
+  }
+
+  .views-exposed-form {
+    align-items: flex-end;
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+
+    .form-item {
+      margin-bottom: 0;
+    }
+
+    input#edit-search-api-fulltext {
+      width: 450px;
+    }
+
+    #edit-actions {
+      margin: 0;
+    }
+
+    #edit-submit-advanced-search,
+    .button.js-form-submit.form-submit {
+      margin-right: 0;
+      min-width: 150px;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 950px) {
+
+      .form-item {
+        flex: 1 100%;
+      }
+
+      input#edit-search-api-fulltext,
+      .form-autocomplete.form-text.ui-autocomplete-input,
+      .form-actions.form-wrapper {
+        width: 100%;
+      }
+
+      #edit-actions {
+        flex: 1;
+      }
+
+    }
+
+    @media screen and (max-width: 520px) {
+      flex-direction: column;
+
+      #edit-submit-advanced-search,
+      .button.js-form-submit.form-submit {
+        margin-top: 30px;
+        padding: 0;
+      }
+
+      #edit-actions {
+        padding: 0;
+      }
+
+    }
+
+  }//.views-exposed-form
+
+  .form-item.form-item-items-per-page.form-type-select {
+    flex: 1;
+    margin-right: em(20);
+  }
+
+  .form-item.form-item-sort-by.form-type-select {
+    margin-right: 15px;
+  }
+
+  .view-content {
+    display: flex;
+    flex: 1 100%;
+    flex-flow: row wrap;
+    order: 3;
+  }
+
+  //Mobile filters button
+  .view-footer {
+    display: none;
+
+    .field-content-alignment { display: none; }
+
+    @media screen and (max-width: 950px) {
+      display: flex;
+      flex-basis: 100%;
+      justify-content: flex-end;
+    }
+
+  }
+
+  .pager {
+    align-self: center;
+    flex: 1 100%;
+    margin: 1.5em 0 3em;
+    order: 4;
+  }
+
+}
+
+//Filter Biographies Header
+.block-facets__header {
+  @extend %oswald-light;
+  border-radius: 0;
+  color: color(quaternary);
+  display: flex;
+  font-size: 1.875em;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 130px;
+  width: 100%;
+}
+
+//Reset button
+.thm-adv-search-filter-mgmt {
+  cursor: pointer;
+
+  .button {
+    margin-bottom: 15px;
+    margin-right: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+}
+
+//Remove padding-right on basic-block
+.side-navigation .basic-block {
+  padding-right: 0;
+}
+
+.block-facet--autocomplete-widget,
+.block-facets {
+
+  h2 {
+    @extend %oswald-light;
+    background-color: color(secondary);
+    border-radius: 0;
+    color: $white;
+    display: flex;
+    font-size: 1.25em;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.55556em 0.83333em;
+    width: 100%;
+  }
+
+  .form-item- {
+    margin: 0 0 15px;
+  }
+
+  .facets-widget-checkbox {
+    background: $white;
+    margin-bottom: 15px;
+    padding: 15px 10px;
+  }
+
+}
+
+.block-facets {
+  @extend %default-gutter-width;
+  padding-right: 0;
+}
+
+.js-facets-autocomplete {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  max-width: 100% !important;
+}
+
+.views-field-title, .views-field-title-product {
+  text-align: center;
+
+  h3 { font-size: 1.5625em; }
+
+  h4 {
+    font-size: 1em;
+    line-height: 1.1;
+    padding-bottom: 15px;
+  }
+
+}
+
+//Facets Button
+button.facets__button {
+  align-items: center;
+  background-color: color(secondary);
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  padding: 8px 10px;
+  width: 150px;
+
+  svg.filters__button-icon {
+    margin-right: 10px;
+  }
+
+}
+
+//Mobile Facet block Header
+#facetcontainerblock {
+  @extend %default-gutter-width;
+  padding-bottom: 30px !important;
+  width: 100%;
+
+  .facets__header {
+    align-items: baseline;
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 30px;
+
+    .block-facets__header {
+      color: $black;
+      flex: 1;
+      justify-content: center;
+      margin: 15px auto;
+      order: 2;
+      text-align: center;
+    }
+
+    .filter__controls,
+    .facets__header-button.closeFilter {
+      flex: 1;
+      margin: 0;
+      padding: 0;
+    }
+
+    .filter__controls {
+      order: 1;
+    }
+
+    //Reset Button
+    .thm-adv-search-filter-mgmt .button {
+      background-color: transparent;
+      color: color(secondary);
+      margin: 0;
+      padding: 0 0 30px;
+      text-align: left;
+      width: auto;
+
+      &:hover {
+        border-color: transparent;
+      }
+
+    }
+
+    //Applied filters
+    .thm-adv-search-filter-mgmt {
+      display: flex;
+      flex-flow: column wrap;
+
+      div {
+        padding: 15px 0;
+      }
+
+    }
+
+    //Cancel Button
+    .facets__header-button.closeFilter {
+      background: transparent;
+      color: color(secondary);
+      order: 3;
+      text-align: right;
+    }
+
+  }//.facets__header
+
+  .filter__controls .field-content-alignment { display: none; }
+
+  //Facets
+  .block-facets {
+    padding: 0;
+
+    .easy-autocomplete input {
+      width: 100%;
+    }
+
+  }
+
+}

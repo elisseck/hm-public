@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function thm_commerce_shipment_weight_views_data_alter(array &$data) {
+  $data['commerce_order']['order_state_changer'] = [
+    'title' => t('State'),
+    'help' => t('Order state changer.'),
+    'field' => [
+      'id' => 'order_state_changer',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme().
+ */
+function thm_commerce_shipment_weight_theme($existing, $type, $theme, $path) {
+  return [
+    'thm_shippable_order_complete' => [ 'render element' => 'form']
+  ];
+}

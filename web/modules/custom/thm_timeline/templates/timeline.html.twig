@@ -1,0 +1,117 @@
+
+<div class="timeline_cont">
+        <div class="timeline-title-wrapper">
+          <h5> Showing {{ resultsCount  }} results</h5>
+          <button class="filters__button">
+              <svg  class="filters__button-icon" height="27px" viewBox="0 0 24 27" width="24px" xmlns="http://www.w3.org/2000/svg">
+                  <title >
+                      Icon for Filter Button
+                  </title>
+                  <g  fill="#FFF" fill-rule="nonzero">
+                      <path  d="M22.336422 12.623774h-1.868784c-.474612-1.956227-2.254407-3.453963-4.30117-3.453963-2.046764 0-3.796895 1.46717-4.30117 3.453964H1.09754C.474612 12.623774 0 13.11283 0 13.754717c0 .641887.474612 1.130943 1.09754 1.130943h10.79742c.474613 1.956227 2.254407 3.453963 4.271508 3.453963 2.0171 0 3.796895-1.46717 4.30117-3.453963h1.868784c.622928 0 1.09754-.489056 1.09754-1.130943 0-.641887-.504275-1.130943-1.09754-1.130943zm-6.169954 3.85132c-1.4535 0-2.64003-1.22264-2.64003-2.720377 0-1.497736 1.18653-2.720377 2.64003-2.720377 1.4535 0 2.640028 1.22264 2.640028 2.720377 0 1.497736-1.156866 2.720377-2.640028 2.720377zM1.096152 5.71585h1.9553c.47401 1.956225 2.251556 3.45396 4.295732 3.45396s3.792095-1.467168 4.295733-3.45396H22.33781c.62214 0 1.096152-.489058 1.096152-1.130944 0-.641887-.474012-1.130944-1.096152-1.130944H11.61329C11.13928 1.497736 9.361736 0 7.31756 0 5.273382 0 3.525463 1.436604 3.05145 3.453962H1.096153C.474012 3.453962 0 3.94302 0 4.584906 0 5.226792.503638 5.71585 1.096152 5.71585zm6.221406-3.851322c1.451662 0 2.63669 1.222642 2.63669 2.720378 0 1.497736-1.185028 2.720377-2.63669 2.720377-1.45166 0-2.63669-1.22264-2.63669-2.720377 0-1.497736 1.18503-2.720378 2.63669-2.720378zM22.33781 21.28415H11.642917c-.474012-1.956225-2.251557-3.45396-4.295733-3.45396S3.55509 19.297357 3.05145 21.28415H1.096153C.474012 21.28415 0 21.77321 0 22.415095c0 .641887.474012 1.130944 1.096152 1.130944h1.9553C3.52546 25.502264 5.303007 27 7.347183 27s3.792095-1.46717 4.295733-3.453962H22.33781c.62214 0 1.096152-.489057 1.096152-1.130944 0-.641886-.503637-1.130943-1.096152-1.130943zM7.347184 25.135473c-1.45166 0-2.63669-1.222642-2.63669-2.720378 0-1.497736 1.18503-2.720377 2.63669-2.720377 1.451662 0 2.63669 1.22264 2.63669 2.720377 0 1.497736-1.155403 2.720378-2.63669 2.720378z"></path>
+                  </g>
+              </svg>
+              <span _ngcontent-c2="">Filters</span>
+          </button>
+        </div>
+        <div class="timeline-list-wrapper">
+          <ul class="timeline_list">
+            
+            {% for items in content %}
+            <li>
+              {% if (items.type == 'death' or items.type == 'birth') %}
+              <a href="/node/{{items.nid}}">
+              {% else %}
+              <a href="/background">
+              {% endif %}
+                <div class="img">
+                  {% if items.img is not empty %}
+                    <img src="/sites/default/files/{{ items.img }}" />
+                  {% endif %}
+                </div>
+                 <div class="info snapshot"> <h4>{{ items.date|date('F d, Y' ) }} </h4><h3> {{ items.name }} </h3></div>
+                 <div class="content">
+
+                     {% if items.type == 'death' %}
+                          <h5> {{ items.name }} passed away </h5>
+                   {% elseif items.type == "birth" %}
+                          <h5> {{ items.name }} was born </h5>
+                   {% else %}
+                         <h5> {{ items.name }} </h5>
+
+                   {% endif %}
+                    {% if items.bio is not empty %}
+                         {{ items.bio | raw }}...
+                    {% endif %}
+                </div>
+              </a>
+            </li>
+            {% endfor %}
+         </ul>
+
+         <div class="filters">
+              <header class="filters__header">
+                  <h2 class="filters__header-title">Filter Results</h2>
+                  <button class="filters__header-button closeFilter">Cancel</button>
+              </header>
+             <form action="/timeline" method="get" id="views-exposed-form-timeline-new-page-1" accept-charset="UTF-8">
+               <div>
+                  <div class="views-exposed-form">
+                     <div class="views-exposed-widgets clearfix">
+                        <div id="edit-year-wrapper" class="views-exposed-widget views-widget-filter-field_year_value">
+                           <label for="edit-year">Year</label>
+                           <div class="views-widget">
+                              <div class="form-item form-type-select form-item-year">
+                                 <select id="edit-year" name="year" class="form-select">
+                                     <option value="">- Any -</option>
+                                    {% for year in range("now"|date("Y"), 1901) %}
+                                     <option value="{{ year }}">{{ year }}</option>
+                                    {% endfor %}
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                        <div id="edit-month-day-wrapper" class="views-exposed-widget views-widget-filter-field_month_day_value">
+                           <label for="edit-month"> Month </label>
+                        </div>
+                        <div class="views-exposed-widget views-submit-button">
+                           <div class="form-item form-type-select form-item-month">
+                              <select id="edit-month" name="month" class="form-select">
+                                 <option value="">- Any -</option>
+                                 <option value="1">Jan</option>
+                                 <option value="2">Feb</option>
+                                 <option value="3">Mar</option>
+                                 <option value="4">Apr</option>
+                                 <option value="5">May</option>
+                                 <option value="6">Jun</option>
+                                 <option value="7">Jul</option>
+                                 <option value="8">Aug</option>
+                                 <option value="9">Sep</option>
+                                 <option value="10">Oct</option>
+                                 <option value="11">Nov</option>
+                                 <option value="12">Dec</option>
+                              </select>
+                           </div>
+                           <div class="form-item form-type-select form-item-day">
+                           <label for="edit-day"> Day </label>
+                              <select id="edit-day" name="day" class="form-select">
+                                     <option value="">- Any -</option>
+                                 {% for day in range(1, 31) %}
+                                     <option value="{{ day }}">{{ day }}</option>
+                                 {% endfor %}
+                              </select>
+                           </div>
+                           <input type="submit" id="edit-submit-timeline-new" name="" value="Apply" class="button js-form-submit form-submit">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </form>
+         </div>
+    <div class="pages">
+    <nav class="pager" role="navigation" aria-labelledby="pagination-heading">
+      <ul class="pager__items js-pager__items">{{ pages | raw }}</ul>
+    </nav>
+  </div>
+ </div>
+</div>

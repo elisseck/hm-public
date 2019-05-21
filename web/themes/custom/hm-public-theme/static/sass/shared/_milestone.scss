@@ -1,0 +1,81 @@
+.list-timeline-scroller {
+  background-color: color(quaternary);
+
+  .view-content {
+    display: flex;
+    height: auto;
+    overflow-x: scroll;
+    width: 100vw;
+  }
+
+  .views-row {
+    flex: 1 0 60%;
+    margin: em(30) em(50);
+
+    @media screen and (max-width: 768px) {
+      flex: 1 0 80%;
+      margin: 30px 30px 30px 15px;
+    }
+
+  }
+
+}
+
+.timeline-scroller {
+  display: flex;
+  flex-direction: row;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  &--image {
+    flex: none;
+    height: auto;
+    margin-right: em(30);
+    max-width: 300px;
+    overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 15px;
+      margin-right: 0;
+
+      img {
+        margin-left: 0;
+        width: auto;
+      }
+    }
+
+  }
+
+  &--content {
+    @extend %source-sans;
+    color: $white;
+    flex: 1;
+    line-height: normal;
+    margin-right: 30px;
+  }
+
+  h4 {
+    @extend %oswald;
+  }
+
+  &--intro {
+    line-height: normal;
+
+    a {
+      color: $white;
+      text-decoration: underline;
+    }
+
+  }
+
+}
+
+.views-field-field-timeline-intro {
+
+  .timeline-scroller {
+    flex-wrap: wrap;
+  }
+
+}

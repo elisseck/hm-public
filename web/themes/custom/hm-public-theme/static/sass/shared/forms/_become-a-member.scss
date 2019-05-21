@@ -1,0 +1,255 @@
+//BasicMaker
+.webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
+#commerce-checkout-flow-thm-digitalmaker-checkout-flow {
+  @extend %max-width;
+  @extend %default-gutter-width;
+
+  .webform-progress {
+    padding: 0;
+
+    @media screen and (min-width: 0\0) {
+      padding-left: $default-grid-gutter-width;
+      padding-right: $default-grid-gutter-width;
+    }
+
+  }
+
+  //Hide these form fields because they are awkwardly placed
+  .form-item.form-item-field-salutation.form-type-select,
+  #edit-field-middle-initial-wrapper,
+  #edit-field-email-address-wrapper {
+    display: none;
+  }
+
+  .field--name-field-intl-address,
+  .field--name-field-middle-initial,
+  .field--name-field-home-phone,
+  .form-item-field-cell-phone-0-value,
+  .field--name-field-work-phone,
+  .field--name-field-email-address,
+  .field--name-user-picture,
+  .form-item-mail,
+  .form-item-name,
+  .form-item-password.form-type-password-confirm,
+  .webform-button--next,
+  .field--name-field-cell-phone,
+  .form-item-mail.form-type-email,
+  .form-item-name.form-type-textfield,
+  .form-wrapper.password-confirm--wrapper {
+    @extend %form--container;
+    max-width: 600px;
+  }
+
+  fieldset.form-wrapper.password-confirm--wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  //Headers
+  .form-wrapper.panel.panel-default > legend,
+  .form-wrapper.password-confirm--wrapper > legend span {
+    @extend %card-header;
+    color: color(quaternary);
+    line-height: 120%;
+  }
+
+  .form-wrapper.panel.panel-default > legend {
+    font-size: em(30);
+  }
+
+  .form-item.form-item-field-intl-address-0-address-country-code.form-type-select {
+    display: flex;
+    flex-flow: row wrap;
+
+    select,
+    input {
+      flex-basis: 100%;
+    }
+
+  }
+
+  .form-item {
+    margin-right: 0;
+    width: 100%;
+
+    input,
+    select {
+      max-width: 600px; //Fixes IE overflow problem
+      width: 100%;
+    }
+
+  }
+
+  .form-item.form-item-field-intl-address-0-address-given-name.form-type-textfield,
+  .form-item.form-item-field-intl-address-0-address-locality.form-type-textfield,
+  .form-item.form-item-field-intl-address-0-address-administrative-area.form-type-select {
+    margin-right: 15px;
+  }
+
+  //End of section
+  #edit-field-intl-address-0-address-container4,
+  #edit-thmda-access-registration-field-intl-address-0,
+  .form-wrapper.password-confirm--wrapper {
+    border-bottom: 1px solid color(medium-grey);
+    margin-bottom: 15px;
+    margin-right: 0;
+    padding-bottom: 30px;
+    width: 100%;
+  }
+
+  //Addressing fields
+  #edit-field-intl-address-0 {
+    margin-right: 0;
+    width: 100%;
+
+    .form-item.form-item-field-intl-address-0-address-postal-code.form-type-textfield,
+    .form-item.form-item-field-intl-address-0-address-locality.form-type-textfield,
+    .form-item.form-item-field-intl-address-0-address-administrative-area.form-type-textfield {
+      margin-right: 15px;
+    }
+
+    .form-item.form-item-field-intl-address-0-address-postal-code.form-type-textfield {
+      margin-right: 0;
+    }
+
+  }
+
+  .form-item.form-item-thmda-access-registration-field-email-address-0-value.form-type-textfield {
+    border-bottom: 1px solid color(medium-grey);
+    padding-bottom: 30px;
+  }
+
+  //Remove extra margin
+  .form-item.form-item-field-home-phone-0-value.form-type-textfield,
+  .form-item.form-item-field-work-phone-0-value.form-type-textfield {
+    margin-bottom: 0;
+  }
+
+  //Add missing margin
+  .form-item.form-item-mail.form-type-email,
+  .form-item.form-item-field-intl-address-0-address-locality.form-type-textfield {
+    margin-bottom: 15px;
+  }
+
+  //Upload picture
+  .form-item.form-item-user-picture-0.form-type-managed-file {
+    background: $white;
+    border: 1px solid color(medium-grey);
+    max-width: 600px;
+    padding: 15px;
+  }
+
+  //Button
+  #edit-actions {
+    margin-top: 15px;
+    max-width: 600px;
+
+    @media screen and (max-width: 950px) {
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0;
+    }
+
+    input {
+      justify-content: center;
+      min-width: 150px;
+    }
+
+    #edit-wizard-next {
+      margin-left: 0;
+
+      @media screen and (max-width: 520px) {
+        width: 100%;
+      }
+
+    }
+
+  }
+
+}//Close form
+
+//Upgrade
+#edit-thmda-membership-opts {
+
+  #edit-thmda-membership-opts-submit {
+    min-width: 150px;
+  }
+
+  #edit-thmda-membership-opts-cancel {
+    align-self: center;
+  }
+
+}
+
+#commerce-checkout-flow-thm-digitalmaker-checkout-flow {
+
+  //Hide these form fields because they are awkwardly placed
+  .form-item.form-item-thmda-access-registration-field-salutation.form-type-select,
+  .form-item.form-item-thmda-access-registration-field-middle-initial-0-value.form-type-textfield,
+  #edit-field-email-address-wrapper {
+    display: none;
+  }
+
+  .form-item.form-item-thmda-access-registration-field-intl-address-0-address-given-name.form-type-textfield,
+  .form-item.form-item-thmda-access-registration-field-intl-address-0-address-locality.form-type-textfield,
+  .form-item.form-item-thmda-access-registration-field-intl-address-0-address-administrative-area.form-type-select,
+  .form-item.form-item-payment-information-add-payment-method-payment-details-number.form-type-textfield,
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-given-name.form-type-textfield,
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-locality.form-type-textfield,
+  .form-item.form-item-payment-information-add-payment-method-billing-information-address-0-address-administrative-area.form-type-select {
+    margin-right: 15px;
+  }
+
+  div#edit-thmda-access-registration .form__row {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0;
+    width: 100%;
+
+    .form__field {
+      margin-right: 0;
+      width: 100%;
+
+      //Remove the extra margin-bottom
+      .form-item.form-item-thmda-access-registration-field-home-phone-0-value.form-type-textfield,
+      .form-item.form-item-thmda-access-registration-field-work-phone-0-value.form-type-textfield,
+      .form-item.form-item-thmda-access-registration-field-cell-phone-0-value.form-type-textfield {
+        margin-bottom: 0;
+      }
+
+    }
+
+  }
+
+  //Buttons
+  .form__button.form__button--cancel {
+    align-self: center;
+    order: 2;
+
+    @media screen and (max-width: 520px) {
+      flex-basis: 100%;
+      margin-top: 15px;
+    }
+
+    a {
+      background: transparent;
+      color: color(secondary);
+      padding: 0;
+    }
+
+  }
+
+  .form__button.form__button--primary {
+    order: 1;
+
+    @media screen and (max-width: 520px) {
+      flex-basis: 100%;
+    }
+
+    .form-submit.form-submit {
+      min-width: 150px;
+    }
+
+  }
+
+}

@@ -1,0 +1,157 @@
+.full-screen-carousel {
+  margin-bottom: em(60);
+}
+
+.hero-carousel {
+  margin-bottom: em(30);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: em(30);
+  max-width: 1440px;
+  width: calc(100% - 60px); //ensures that slides have 30px either side
+
+  @media screen and (max-width: 1500px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 800px) {
+    margin: 0 0 15px;
+
+    .carousel-inner {
+      padding: 0;
+    }
+
+  }
+
+}
+
+.two-column-quote-carousel {
+  background-color: color(carousel-bg-alt);
+}
+
+.two-column-quote-carousel .carousel-inner,
+.two-column-snapshot-carousel .carousel-inner,
+.hero-carousel .carousel-inner {
+  @extend %max-width;
+  @extend %default-gutter-width;
+  //css below removes padding from sides of slides which was causing that weird action
+  padding: 0;
+  width: calc(100% - 60px);
+
+  @media screen and (max-width: 900px) {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+}
+
+@media screen and (min-width: 0\0) {
+
+  .feature-carousel .carousel-inner {
+    width: 100vw;
+  }
+
+}
+
+//Testimonial Carousel
+.testimonial-carousel.carousel.slide {
+  background-color: color(carousel-bg-alt);
+  padding-bottom: em(30);
+}
+
+//1-2-1col layout
+.layout--1-2-1col .block-region-custom-left div,
+.layout--1-2-1col .block-region-custom-right div,
+.layout--1-2-1col div.first,
+.layout--1-2-1col div.last {
+
+  .testimonial-carousel.carousel.slide, .testimonial-carousel.carousel.slide
+  .quote-block {
+    background: transparent;
+  }
+
+}
+
+//Event Carousel
+.event-carousel {
+  margin-top: 1.875em;
+
+  @media screen and (max-width: 900px) {
+    margin-top: 0;
+
+    .carousel-inner { padding: 0; }
+
+  }
+
+  .carousel-item {
+    margin-left: $default-grid-gutter-width;
+    width: 98%;
+
+    @media screen and (min-width: 0\0) {
+      margin-left: 0;
+      margin-right: 30px;
+    }
+
+    @media screen and (max-width: 900px) {
+      margin: 0;
+      max-width: 100%;
+      padding: 0;
+      width: 100%;
+    }
+
+  }
+
+  .two-column-slide .carousel__caption a.button {
+    max-width: none;
+    width: auto;
+  }
+
+}
+
+// Pagers
+.centered-carousel-indicators.carousel-indicators {
+  left: 0;
+
+  a {
+    background-color: color(disabled-text);
+    border-radius: 100%;
+    height: em(8);
+    margin-right: em(10);
+    width: em(8);
+  }
+
+  a.active {
+    background-color: $white;
+  }
+
+}
+
+.hero-carousel .centered-carousel-indicators.carousel-indicators {
+  bottom: em(30);
+}
+
+.right-carousel-indicators.carousel-indicators {
+  bottom: em(30);
+
+  a {
+    background-color: color(medium-grey);
+    border-radius: em(100);
+    height: em(15);
+    margin-right: em(15);
+    width: em(15);
+  }
+
+  a.active {
+    background-color: color(dark-grey);
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+
+  .carousel-indicators {
+    display: none;
+  }
+
+}
