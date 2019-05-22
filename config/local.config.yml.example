@@ -1,4 +1,5 @@
 drupal_core_path: "/var/www/drupalvm/web"
+php_version: "7.2"
 vagrant_synced_folders:
   # The first synced folder will be used for the default Drupal installation, if
   # any of the build_* settings are 'true'. By default the folder is set to
@@ -48,7 +49,7 @@ post_provision_scripts:
   - "../../../../scripts/provisioning/solr-config.sh"
 
 extra_packages:
-  - php7.1-bcmath
+  - php7.2-bcmath
 
 # Add support for SSL on local hostnames.
 
