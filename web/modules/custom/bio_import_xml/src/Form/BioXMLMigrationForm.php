@@ -136,9 +136,10 @@ class BioXMLMigrationForm extends ConfigFormBase {
     $form[$formId]['notice'] = [
       '#markup' => <<<NOTICE
         <div class="alert alert-info">
-          NOTE: <br>Biography imports are no longer performed using this page. <br> 
-          Please use the commmand-line script for this operation.  Only the 
-          configuration values for importing Biographies can be modified here.
+          <p>Biography imports are no longer performed using this page, but the settings for the process <strong>are</strong> configured here.</p>
+          <p>Please use the commmand-line script for this operation if necessary to run ad-hoc.</p>
+          <p>The current cron job is run per the crontab settings for the devwww user.</p>
+          <p>To see the current cron settings, run <code>crontab -l</code> as the devwww user on the server.</p>
         </div>
 NOTICE
     ];
