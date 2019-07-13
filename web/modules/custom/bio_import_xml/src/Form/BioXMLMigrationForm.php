@@ -167,11 +167,10 @@ NOTICE
       '#default_value' => $config->get('bio_import_xml.notify_email')
     ];
 
-    $form[$formId]['clean_xml'] = [
-      '#type' => 'submit',
-      '#value' => t('1. Clean feed.'),
-      '#submit' => [ '::clean' ],
-      '#attributes' => [ 'disabled' => 'disabled' ],
+    $form[$formId]['rebuild_ingestion_table'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Rebuild the ingestion table so that ALL bios are imported.'),
+      '#default_value' => $config->get('bio_import_xml.rebuild_ingestion_table')
     ];
 
     return parent::buildForm($form, $form_state);
@@ -247,6 +246,7 @@ NOTICE
       ->set('bio_import_xml.fm_path', $values['fm_path'])
       ->set('bio_import_xml.fm_files_path', $values['fm_files_path'])
       ->set('bio_import_xml.notify_email', $values['email_notify'])
+      ->set('bio_import_xml.rebuild_ingestion_table', $values['rebuild_ingestion_table'])
       ->save();
 
     parent::submitForm($form, $formState);
