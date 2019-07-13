@@ -173,29 +173,6 @@ NOTICE
       '#attributes' => [ 'disabled' => 'disabled' ],
     ];
 
-    $form[$formId]['ingest_xml'] = [
-      '#type' => 'submit',
-      '#value' => t('2. Validate and store feed records'),
-      '#submit' => [ '::ingest' ],
-      '#attributes' => [ 'disabled' => 'disabled' ],
-    ];
-
-    $form[$formId]['process_data'] = [
-      '#type' => 'submit',
-      '#value' => t('3. Import records to website'),
-      '#attributes' => [ 'disabled' => 'disabled' ],
-      '#submit' => [ '::import' ]
-    ];
-
-
-    $form[$formId]['spacer'] = [
-      '#markup' => '<hr class="clearfix" />',
-    ];
-
-    $form[$formId]['table'] = $this->renderNewBiosGrid();
-
-    $form[$formId]['pager'] = [ '#type' => 'pager' ];
-
     return parent::buildForm($form, $form_state);
   }
 
