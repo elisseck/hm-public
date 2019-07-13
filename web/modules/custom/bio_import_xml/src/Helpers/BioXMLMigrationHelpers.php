@@ -1,6 +1,8 @@
 <?php
 
+
 namespace Drupal\bio_import_xml\Helpers;
+ini_set('memory_limit', '4G');
 
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Config\ConfigBase;
