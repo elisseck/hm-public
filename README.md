@@ -13,7 +13,7 @@ This project repository contains the Drupal 8 scaffolding for the public THM sit
         * You might need to enable mbstring and phpunit manually on your machine. You can do this by running `sudo apt-get install php7.0-mbstring` and `sudo apt-get install phpunit`.
         * You will need to install NFS, which is a distributed file system protocol used between your local machine and the virtual machine generated with `vagrant up`. You can do so by running `sudo apt install nfs-kernel-server`. You might also have to run `sudo apt install nfs-common` if you have mounting issues after installing. More information about that here: https://help.ubuntu.com/lts/serverguide/network-file-system.html.
 
-2. From your terminal, clone the repository locally using `git clone git@github.com:sardell/hm-public.git`.
+2. From your terminal, clone the repository locally using `git clone git@github.com:/TheHistoryMakers/hm-public.git`.
 3. From the root of the project, install all Composer dependencies by running `composer install`.
 4. Inside the config folder, create a new file called `local.config.yml` and add the following, keeping in mind to fill in the path to your project locally without the double curly braces:
 ```
