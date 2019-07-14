@@ -66,12 +66,12 @@ $config['commerce_payment.commerce_payment_gateway.authorize_net']['configuratio
 
 In order to safely make a backup from another database server
 
-    mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database --user=devuser --password | gzip -c > ./backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz
+    mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database --user=devuser --password | gzip -c > ./_backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz
 
 Bring the backup down to local and push it up into the vagrant machine
   
-    rsync -v devuser@devwww.thehistorymakers.org:~/backports/db/ ./
-    vagrant upload ./thm_livedev_backup.20190501_204210.sql.gzip
+    rsync -v devuser@devwww.thehistorymakers.org:~/_backports/db/* ../_backports/production/
+    vagrant upload ../_backports/production/thm_livedev_backup.20190501_204210.sql.gzip
 
 Get into vagrant machine and switch to root user, unzip the db, replace instances of the source database name with the drupal name, import the DB to mysql and remove the imported file (unless you want to keep it around for repeat testing)
 
