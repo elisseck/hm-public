@@ -95,7 +95,18 @@ Upon starting the DB after an import, step through the install and enter DB cred
 When you first start up, and after you've imported the DB, the Solr collection will need to be populated with the data from the database.  In order to do this, run the following.
 
     drush sapi-c && drush sapi-r && drush sapi-i
-    
+
+## Local configuration for XML Import paths
+
+You will want to update the local path that should be used in the XML import script if you are testing that functionality.  
+The settings can be managed in the Drupal Administration interface by visiting the `/admin/settings/thm-migrate` URL on 
+your local host, or, navigate to "Configuration > Content Authoring > Import Biographies" in the Drupal administration screens.
+
+## Running _full_ import of Bios
+
+A full import of Bios can be run by updating the configuration in the Administration screens and checking the box that
+indicates rebuilding of the ingestion tables.
+
 ## Working on this project
 
 In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.
