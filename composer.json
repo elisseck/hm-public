@@ -1,12 +1,29 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "name": "TheHistoryMakers/hm-public",
+    "description": "The public website for The HistoryMakers organization.",
     "type": "project",
     "license": "GPL-2.0+",
+    "homepage": "https://www.thehistorymakers.org/",
+    "readme": "README.md",
     "authors": [
         {
-            "name": "",
-            "role": ""
+            "name": "August McKinney",
+            "role": "UI/UX"
+        },
+
+        {
+            "name": "Tony Taylor",
+            "role": "PHP Application, Drupal"
+        },
+
+        {
+            "name": "Nadia Bajwa",
+            "role": "Project Management"
+        },
+
+        {
+            "name": "Orin Fink",
+            "role": "Technical Leadership"
         }
     ],
     "repositories": [
