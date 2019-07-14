@@ -4,7 +4,7 @@ This project repository contains the Drupal 8 scaffolding for the public THM sit
 
 ## Getting started
 1. Ensure you have the following dependencies installed on your machine:
-    * [PHP 7](http://php.net/)
+    * [PHP 7.2](http://php.net/)
     * [Composer](https://getcomposer.org/) >= 1.2.3
     * [Ansible](http://docs.ansible.com/ansible/latest/intro.html) >= 2.3.1.0 (Used by Vagrant. We recommend using `brew install ansible` if you're on a Mac.)
     * [Vagrant](https://www.vagrantup.com/intro/index.html) >= 1.9.0

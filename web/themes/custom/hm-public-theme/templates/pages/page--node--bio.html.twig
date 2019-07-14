@@ -293,7 +293,9 @@
           </section>
           {% endif %}
           {# End Video Selections #}
-          <a class="button button--primary bio-detail__da-button" href="https://thmdigital.thehistorymakers.org" target="_blank">Click Here To Explore The Archive Today!</a>
+          {% if node.field_thm_da_link[0].url|length > 0 %}
+          <a class="button button--primary bio-detail__da-button" href="{{  node.field_thm_da_link[0].url}}" target="_blank">Click Here To Explore The Archive Today!</a>
+          {%  endif %}
           {#  List of DA Stories #}
           {% if node.field_dastories|length > 0 %}
           <div class="accordion bio-detail__accordion">
