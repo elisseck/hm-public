@@ -13,7 +13,7 @@ This project repository contains the Drupal 8 scaffolding for the public THM sit
         * You might need to enable mbstring and phpunit manually on your machine. You can do this by running `sudo apt-get install php7.0-mbstring` and `sudo apt-get install phpunit`.
         * You will need to install NFS, which is a distributed file system protocol used between your local machine and the virtual machine generated with `vagrant up`. You can do so by running `sudo apt install nfs-kernel-server`. You might also have to run `sudo apt install nfs-common` if you have mounting issues after installing. More information about that here: https://help.ubuntu.com/lts/serverguide/network-file-system.html.
 
-2. From your terminal, clone the repository locally using `git clone git@github.com:sardell/hm-public.git`.
+2. From your terminal, clone the repository locally using `git clone git@github.com:/TheHistoryMakers/hm-public.git`.
 3. From the root of the project, install all Composer dependencies by running `composer install`.
 4. Inside the config folder, create a new file called `local.config.yml` and add the following, keeping in mind to fill in the path to your project locally without the double curly braces:
 ```
@@ -66,12 +66,12 @@ $config['commerce_payment.commerce_payment_gateway.authorize_net']['configuratio
 
 In order to safely make a backup from another database server
 
-    mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database --user=devuser --password | gzip -c > ./backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz
+    mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database --user=devuser --password | gzip -c > ./_backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz
 
 Bring the backup down to local and push it up into the vagrant machine
   
-    rsync -v devuser@devwww.thehistorymakers.org:~/backports/db/ ./
-    vagrant upload ./thm_livedev_backup.20190501_204210.sql.gzip
+    rsync -v devuser@devwww.thehistorymakers.org:~/_backports/db/* ../_backports/production/
+    vagrant upload ../_backports/production/thm_livedev_backup.20190501_204210.sql.gzip
 
 Get into vagrant machine and switch to root user, unzip the db, replace instances of the source database name with the drupal name, import the DB to mysql and remove the imported file (unless you want to keep it around for repeat testing)
 
