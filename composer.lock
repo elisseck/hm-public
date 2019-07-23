@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c98b0e574ad3ca0725ae20466954c397",
+    "content-hash": "c4111f9db4a5bc19f2a6ef0cab25921b",
     "packages": [
         {
             "name": "ajgl/breakpoint-twig-extension",
@@ -2721,7 +2721,6 @@
                     }
                 },
                 "patches_applied": {
-                    "legacy admin comments": "patches/commerce_log.templates.patch",
                     "guest checkout email addition": "patches/commerce-guest-payment-email.patch"
                 }
             },
@@ -6264,6 +6263,74 @@
             }
         },
         {
+            "name": "drupal/views_data_export",
+            "version": "1.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/views_data_export.git",
+                "reference": "8.x-1.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views_data_export-8.x-1.0-beta1.zip",
+                "reference": "8.x-1.0-beta1",
+                "shasum": "f698c1072169017f28e58a4b026d3f3cff904c96"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/csv_serialization": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta1",
+                    "datestamp": "1525280285",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Steven Jones",
+                    "homepage": "https://www.drupal.org/user/99644"
+                },
+                {
+                    "name": "amoebanath",
+                    "homepage": "https://www.drupal.org/user/2810799"
+                },
+                {
+                    "name": "james.williams",
+                    "homepage": "https://www.drupal.org/user/592268"
+                },
+                {
+                    "name": "jamsilver",
+                    "homepage": "https://www.drupal.org/user/476732"
+                },
+                {
+                    "name": "jhedstrom",
+                    "homepage": "https://www.drupal.org/user/208732"
+                },
+                {
+                    "name": "nerdstein",
+                    "homepage": "https://www.drupal.org/user/1557710"
+                }
+            ],
+            "description": "Plugin to export views data into various file formats.",
+            "homepage": "https://www.drupal.org/project/views_data_export",
+            "support": {
+                "source": "https://git.drupalcode.org/project/views_data_export"
+            }
+        },
+        {
             "name": "drupal/webform",
             "version": "5.0.0-rc21",
             "source": {
@@ -6497,6 +6564,62 @@
             "homepage": "https://www.drupal.org/project/webform",
             "support": {
                 "source": "http://cgit.drupalcode.org/webform"
+            }
+        },
+        {
+            "name": "drupal/webform_views",
+            "version": "5.0.0-alpha7",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/webform_views.git",
+                "reference": "8.x-5.0-alpha7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform_views-8.x-5.0-alpha7.zip",
+                "reference": "8.x-5.0-alpha7",
+                "shasum": "6c9bb51735a106729dcfa08372e987ebf95d38f2"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/webform": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-5.x": "5.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-5.0-alpha7",
+                    "datestamp": "1557288185",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bucefal91",
+                    "homepage": "https://www.drupal.org/user/504128"
+                },
+                {
+                    "name": "jrockowitz",
+                    "homepage": "https://www.drupal.org/user/371407"
+                },
+                {
+                    "name": "ws.agency",
+                    "homepage": "https://www.drupal.org/user/2851415"
+                }
+            ],
+            "description": "Webform integration with views.",
+            "homepage": "https://www.drupal.org/project/webform_views",
+            "support": {
+                "source": "https://git.drupalcode.org/project/webform_views"
             }
         },
         {
