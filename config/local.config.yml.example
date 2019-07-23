@@ -1,3 +1,6 @@
+vagrant_memory: 4096
+php_memory_limit: "2048M"
+
 drupal_core_path: "/var/www/drupalvm/web"
 php_version: "7.2"
 vagrant_synced_folders:
