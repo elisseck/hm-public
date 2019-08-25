@@ -33,6 +33,8 @@
         }
     ],
     "require": {
+        "civicrm/civicrm-core": "dev-master",
+        "civicrm/civicrm-drupal-8": "dev-master",
         "commerceguys/intl": "1.0.4",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
@@ -51,7 +53,7 @@
         "drupal/config_update": "^1.5",
         "drupal/console": "^1.0.1",
         "drupal/core": "~8.4",
-        "drupal/csv_serialization": "^1.4",
+        "drupal/csv_serialization": "2.x-dev",
         "drupal/devel": "^2.1",
         "drupal/drush_delete": "^2.2",
         "drupal/facets": "^1.0@beta",
@@ -163,6 +165,7 @@
             "drupal/l10n_client_ui": {
                 "Fixes invalid render array key":"https://www.drupal.org/files/issues/l10n_client-hook_toolbar-fix-2872668-3.patch"
             }
+
         }
     }
 }
