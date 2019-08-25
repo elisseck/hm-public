@@ -36,10 +36,8 @@ function loadArgs($config) {
     $cfg->set(MODULE_NAME . '.notify_email', $notify);
   }
 
-  if (drush_get_option('reset')) {
-    $cfg->set(MODULE_NAME . '.rebuild_ingestion_table', true);
-  } else {
-    $cfg->set(MODULE_NAME . '.rebuild_ingestion_table', false);
+  if ($reset = drush_get_option('reset')) {
+    $cfg->set(MODULE_NAME . '.rebuild_ingestion_table', $reset);
   }
 
   $cfg->save();
@@ -116,7 +114,7 @@ function run($database, $config, $logger) {
   /** @var ConfigBase $cfg */
   $cfg = loadArgs($config);
   \Drupal::state()->set(IMAGE_ERROR_STATE, []);
-  //drush_print(print_r($cfg->get()['bio_import_xml']));
+  drush_print(print_r($cfg->get()['bio_import_xml']));
   drush_print("executing sanitizing phase. . .\n");
   clean($cfg);
   drush_print("executing ingestion phase. . .\n");

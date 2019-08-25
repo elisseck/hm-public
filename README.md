@@ -4,7 +4,7 @@ This project repository contains the Drupal 8 scaffolding for the public THM sit
 
 ## Getting started
 1. Ensure you have the following dependencies installed on your machine:
-    * [PHP 7](http://php.net/)
+    * [PHP 7.2](http://php.net/)
     * [Composer](https://getcomposer.org/) >= 1.2.3
     * [Ansible](http://docs.ansible.com/ansible/latest/intro.html) >= 2.3.1.0 (Used by Vagrant. We recommend using `brew install ansible` if you're on a Mac.)
     * [Vagrant](https://www.vagrantup.com/intro/index.html) >= 2.2.4
@@ -13,7 +13,7 @@ This project repository contains the Drupal 8 scaffolding for the public THM sit
         * You might need to enable mbstring and phpunit manually on your machine. You can do this by running `sudo apt-get install php7.0-mbstring` and `sudo apt-get install phpunit`.
         * You will need to install NFS, which is a distributed file system protocol used between your local machine and the virtual machine generated with `vagrant up`. You can do so by running `sudo apt install nfs-kernel-server`. You might also have to run `sudo apt install nfs-common` if you have mounting issues after installing. More information about that here: https://help.ubuntu.com/lts/serverguide/network-file-system.html.
 
-2. From your terminal, clone the repository locally using `git clone git@github.com:sardell/hm-public.git`.
+2. From your terminal, clone the repository locally using `git clone git@github.com:/TheHistoryMakers/hm-public.git`.
 3. From the root of the project, install all Composer dependencies by running `composer install`.
 4. Inside the config folder, create a new file called `local.config.yml` and add the following, keeping in mind to fill in the path to your project locally without the double curly braces:
 ```
@@ -66,12 +66,12 @@ $config['commerce_payment.commerce_payment_gateway.authorize_net']['configuratio
 
 In order to safely make a backup from another database server
 
-    mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database --user=devuser --password | gzip -c > ./backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz
+    mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database --user=devuser --password | gzip -c > ./_backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz
 
 Bring the backup down to local and push it up into the vagrant machine
   
-    rsync -v devuser@devwww.thehistorymakers.org:~/backports/db/ ./
-    vagrant upload ./thm_livedev_backup.20190501_204210.sql.gzip
+    rsync -v devuser@devwww.thehistorymakers.org:~/_backports/db/* ../_backports/production/
+    vagrant upload ../_backports/production/thm_livedev_backup.20190501_204210.sql.gzip
 
 Get into vagrant machine and switch to root user, unzip the db, replace instances of the source database name with the drupal name, import the DB to mysql and remove the imported file (unless you want to keep it around for repeat testing)
 
@@ -95,7 +95,18 @@ Upon starting the DB after an import, step through the install and enter DB cred
 When you first start up, and after you've imported the DB, the Solr collection will need to be populated with the data from the database.  In order to do this, run the following.
 
     drush sapi-c && drush sapi-r && drush sapi-i
-    
+
+## Local configuration for XML Import paths
+
+You will want to update the local path that should be used in the XML import script if you are testing that functionality.  
+The settings can be managed in the Drupal Administration interface by visiting the `/admin/settings/thm-migrate` URL on 
+your local host, or, navigate to "Configuration > Content Authoring > Import Biographies" in the Drupal administration screens.
+
+## Running _full_ import of Bios
+
+A full import of Bios can be run by updating the configuration in the Administration screens and checking the box that
+indicates rebuilding of the ingestion tables.
+
 ## Working on this project
 
 In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.
