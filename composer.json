@@ -155,7 +155,6 @@
         "enable-patching": true,
         "patches": {
             "drupal/commerce": {
-                "legacy admin comments": "patches/commerce_log.templates.patch",
                 "guest checkout email addition": "patches/commerce-guest-payment-email.patch"
             },
             "drupal/commerce_shipping": {
