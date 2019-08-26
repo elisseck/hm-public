@@ -4,9 +4,9 @@
 # passwordless mysql dump made possible
 # by the .my.cnf in the home directory of
 # the devuser account on remote machine
-echo "creating the snapshot on the live server"
-knife ssh -z "name:www.thehistorymakers.org" "mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database | gzip -c > ./_backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz"
-echo "snapshot created on live server"
+# echo "creating the snapshot on the live server"
+# knife ssh -z "name:www.thehistorymakers.org" "mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database | gzip -c > ./_backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz"
+# echo "snapshot created on live server"
 
 ##
 # pull backup to the office backup server
@@ -23,12 +23,26 @@ echo "snapshot created on live server"
 # echo "pulled backup from office server to local drive"
 
 ##
-# or directly from production
+# or pull backups directly from production
 ##
-echo "pulling backup directly from production to local drive"
-rsync -avzhe ssh www.thehistorymakers.org:_backports/db/* ./_backports/db/production/
-echo "pulling backup directly from production to local drive"
+# echo "pulling backup directly from production to local drive"
+# rsync -avzhe ssh www.thehistorymakers.org:_backports/db/* ./_backports/db/production/
+# echo "pulling backup directly from production to local drive"
 
 
-knife ssh -z --ssh-identity-file "~/.vagrant.d/insecure_private_key" --ssh-user vagrant "name:hm-public.test" "uptime"
 
+##
+# or pull onto the QA Server
+##
+# echo "sync production snapshot to qa server"
+# knife ssh -z "name:d8dev.thehistorymakers.org" "rsync -avzhe ssh devuser@www.thehistorymakers.org:~/_backports/db/* ./_backports/db/production/"
+# echo "snapshot sync'd to office backup server"
+
+
+
+# backup the QA server database.
+# echo "creating the snapshot on the qa server"
+# knife ssh -z "name:d8dev.thehistorymakers.org" "mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database | gzip -c > ./_backports/db/qa/thm_qa_backup.$(date +%Y%m%d_%H%M%S).sql.gz"
+# echo "snapshot created on live server"
+
+/var/www/hm-public/web/sites/default/files
