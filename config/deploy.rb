@@ -8,7 +8,10 @@ set :deploy_to, '/var/www/hm-public'
 set :composer_install_flags, '--no-dev --no-interaction --quiet --optimize-autoloader'
 
 append :linked_files, 'web/sites/default/settings.php'
+append :linked_files, 'web/sites/default/civicrm.settings.php'
 append :linked_dirs, 'web/sites/default/files'
+append :linked_dirs, 'vendor/civicrm/civicrm-core/packages'
+
 
 before 'deploy:starting', 'drupal:site_offline'
 after 'deploy:finished', 'drupal:site_online'
