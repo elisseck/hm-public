@@ -116,5 +116,8 @@ In this project, we use [GitHub Flow](https://guides.github.com/introduction/flo
 The QA server deployments _may_ be handled by Capistrano config
 The production server has a deploy.sh script in the home directory of the devuser that outlines the steps necessary
 
+## CiviCRM Installation
 
+The following patch is critical to use in order to get Civi to Run
+https://github.com/mattwire/civicrm-core/commit/e7e176259f89af7fdda0a2940171d313f98f678f#diff-7b0caad195353c8c5d49bbf5f053daf6
     

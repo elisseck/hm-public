@@ -166,6 +166,9 @@
             },
             "drupal/l10n_client_ui": {
                 "Fixes invalid render array key":"https://www.drupal.org/files/issues/l10n_client-hook_toolbar-fix-2872668-3.patch"
+            },
+            "civicrm/civicrm-core": {
+                "Resolves issue upon installation of Civi": "https://github.com/mattwire/civicrm-core/commit/e7e176259f89af7fdda0a2940171d313f98f678f.patch"
             }
 
         }
