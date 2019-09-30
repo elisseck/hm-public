@@ -8,7 +8,6 @@ set :deploy_to, '/var/www/hm-public'
 set :composer_install_flags, '--no-dev --no-interaction --quiet --optimize-autoloader'
 
 append :linked_files, 'web/sites/default/settings.php'
-append :linked_files, 'web/sites/default/civicrm.settings.php'
 append :linked_dirs, 'web/sites/default/files'
 append :linked_dirs, 'vendor/civicrm/civicrm-core/packages'
 
@@ -28,6 +27,7 @@ namespace :drupal do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
         execute 'vendor/drush/drush/drush', 'state:set system.maintenance_mode 1 --input-format=integer'
+        execute 'vendor/drush/drush/drush', 'cache:rebuild'
       end
     end
   end
@@ -37,6 +37,7 @@ namespace :drupal do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
         execute 'vendor/drush/drush/drush', 'state:set system.maintenance_mode 0 --input-format=integer'
+        execute 'vendor/drush/drush/drush', 'cache:rebuild'
       end
     end
   end
