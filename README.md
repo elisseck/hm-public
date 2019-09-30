@@ -110,3 +110,11 @@ indicates rebuilding of the ingestion tables.
 ## Working on this project
 
 In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.
+
+
+## Running deployments
+The QA server deployments _may_ be handled by Capistrano config
+The production server has a deploy.sh script in the home directory of the devuser that outlines the steps necessary
+
+
+    
