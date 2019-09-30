@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 
+# this script is not meant to be run directly, rather, it
+# provides examples for running actions locally or on given
+# environments with variables as necessary.
 
-# THM_WORKING_DIRECTORY="/home/devuser/_backports/db/production"
-# THM_ZIPPED_FILE="thm_livedev_backup.20190825_180931.sql.gz"
-# THM_SQL_FILE="thm_livedev_backup.20190825_180931.sql"
-# REMOTE_DB_SCHEMA="thm_livedev"
-# LOCAL_DB_SCHEMA="thm_livedev"
+# export THM_WORKING_DIRECTORY="/home/devuser/_backports/db/drupalvm"
+# export THM_ZIPPED_FILE="drupal_backup.20190930_045440.sql.gz"
+# export THM_SQL_FILE="drupal_backup.20190930_045440.sql"
+# export REMOTE_DB_SCHEMA="drupal"
+# export LOCAL_DB_SCHEMA="thm_livedev"
 
-
-export THM_WORKING_DIRECTORY="/var/www/drupalvm/_backports/db/production"
-export THM_ZIPPED_FILE="thm_livedev_backup.20190929_230120.sql.gz"
-export THM_SQL_FILE="thm_livedev_backup.20190929_230120.sql"
-export REMOTE_DB_SCHEMA="thm_livedev"
-export LOCAL_DB_SCHEMA="drupal"
+# export THM_WORKING_DIRECTORY="/var/www/drupalvm/_backports/db/production"
+# export THM_ZIPPED_FILE="thm_livedev_backup.20190929_230120.sql.gz"
+# export THM_SQL_FILE="thm_livedev_backup.20190929_230120.sql"
+# export REMOTE_DB_SCHEMA="thm_livedev"
+# export LOCAL_DB_SCHEMA="drupal"
 
 echo "unzipping database"
 gunzip -f ${THM_WORKING_DIRECTORY}/${THM_ZIPPED_FILE}

@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
 
+# this script is not meant to be run directly, rather, it
+# provides examples for running actions locally or on given
+# environments with variables as necessary.
+#
+# Furthermore, this script assumes knife zero is installed on the user's local machine
+# and that access to the Thirdwave cms backuports server is available.
+
 # passwordless mysql dump made possible
 # by the .my.cnf in the home directory of
 # the devuser account on remote machine
