@@ -44,5 +44,3 @@
 # echo "creating the snapshot on the qa server"
 # knife ssh -z "name:d8dev.thehistorymakers.org" "mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database | gzip -c > ./_backports/db/qa/thm_qa_backup.$(date +%Y%m%d_%H%M%S).sql.gz"
 # echo "snapshot created on live server"
-
-/var/www/hm-public/web/sites/default/files
