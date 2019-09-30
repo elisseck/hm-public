@@ -8,6 +8,8 @@
 # knife ssh -z "name:www.thehistorymakers.org" "mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database | gzip -c > ./_backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz"
 # echo "snapshot created on live server"
 
+
+
 ##
 # pull backup to the office backup server
 ##
@@ -44,3 +46,14 @@
 # echo "creating the snapshot on the qa server"
 # knife ssh -z "name:d8dev.thehistorymakers.org" "mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database | gzip -c > ./_backports/db/qa/thm_qa_backup.$(date +%Y%m%d_%H%M%S).sql.gz"
 # echo "snapshot created on live server"
+
+
+
+# or, if dumping from local drupalvm machine
+# sudo su
+# cd /var/www/drupalvm
+# mkdir -p ./_backports/db/local/
+# mysqldump --databases drupal --single-transaction --set-gtid-purged=OFF --add-drop-database | gzip -c > ./_backports/db/local/drupal_backup.$(date +%Y%m%d_%H%M%S).sql.gz
+
+# then to push it back up... back out to local machine
+# and scp the file up
