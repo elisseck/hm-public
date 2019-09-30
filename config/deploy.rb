@@ -28,7 +28,6 @@ namespace :drupal do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
         execute 'vendor/drush/drush/drush', 'state:set system.maintenance_mode 1 --input-format=integer'
-        execute 'vendor/drush/drush/drush', 'cache:rebuild'
       end
     end
   end
