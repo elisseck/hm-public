@@ -43,3 +43,10 @@ fm_import
 # Rocketeer logs
 .rocketeer/logs
 *.iml
+
+# Capistrano logs
+log
+
+# DB Backports
+_backports
+civicrm.settings.php

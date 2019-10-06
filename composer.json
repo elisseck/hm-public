@@ -1,12 +1,29 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "name": "the-historymakers/hm-public",
+    "description": "The public website for The HistoryMakers organization.",
     "type": "project",
     "license": "GPL-2.0+",
+    "homepage": "https://www.thehistorymakers.org/",
+    "readme": "README.md",
     "authors": [
         {
-            "name": "",
-            "role": ""
+            "name": "August McKinney",
+            "role": "UI/UX"
+        },
+
+        {
+            "name": "Tony Taylor",
+            "role": "PHP Application, Drupal"
+        },
+
+        {
+            "name": "Nadia Bajwa",
+            "role": "Project Management"
+        },
+
+        {
+            "name": "Orin Fink",
+            "role": "Technical Leadership"
         }
     ],
     "repositories": [
@@ -16,6 +33,8 @@
         }
     ],
     "require": {
+        "civicrm/civicrm-core": "5.16.3",
+        "civicrm/civicrm-drupal-8": "dev-master",
         "commerceguys/intl": "1.0.4",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
@@ -23,7 +42,7 @@
         "drupal/bulkdelete": "1.x-dev",
         "drupal/chosen": "^2.5",
         "drupal/commerce": "2.12",
-        "drupal/commerce_authnet": "1.x-dev",
+        "drupal/commerce_authnet": "^1.1",
         "drupal/commerce_migrate": "^2.0@alpha",
         "drupal/commerce_order": "2.12",
         "drupal/commerce_payment": "2.12",
@@ -34,8 +53,8 @@
         "drupal/config_update": "^1.5",
         "drupal/console": "^1.0.1",
         "drupal/core": "~8.4",
-        "drupal/csv_serialization": "^1.4",
-        "drupal/devel": "1.x-dev",
+        "drupal/csv_serialization": "2.x-dev",
+        "drupal/devel": "^2.1",
         "drupal/drush_delete": "^2.2",
         "drupal/facets": "^1.0@beta",
         "drupal/flag": "4.0.0-alpha2",
@@ -43,17 +62,18 @@
         "drupal/geolocation": "^1.11",
         "drupal/google_analytics": "^2.3",
         "drupal/honeypot": "^1.27",
-        "drupal/jwt": "^1.0@alpha",
+        "drupal/jwt": "^1.0",
         "drupal/memcache": "^2.0",
         "drupal/metatag": "^1.3",
         "drupal/migrate_manifest": "1.5",
-        "drupal/migrate_tools": "4.0-beta1",
+        "drupal/migrate_tools": "^4.3",
         "drupal/migrate_upgrade": "3.0.0-rc2",
-        "drupal/page_manager": "^4.0@beta",
+        "drupal/page_manager": "^4.0",
         "drupal/panels": "^4.2",
         "drupal/paragraphs": "^1.2",
         "drupal/pathauto": "^1.0",
         "drupal/profile": "^1.0@RC",
+        "drupal/readonlymode": "^1.0",
         "drupal/search_api": "^1.5",
         "drupal/search_api_autocomplete": "^1.0",
         "drupal/search_api_solr": "^1.2",
@@ -62,14 +82,17 @@
         "drupal/twig_field_value": "^1.1",
         "drupal/twig_tweak": "2.0.0-rc2",
         "drupal/twig_xdebug": "^1.0",
+        "drupal/views_data_export": "^1.0",
         "drupal/webform": "5.0.0-rc21",
         "drupal/webform_migrate": "^1.0@alpha",
+        "drupal/webform_views": "^5.0",
         "drupal/xhprof": "1.x-dev",
         "drush/drush": "^9.6",
         "guiguiboy/php-cli-progress-bar": "^0.0.4",
         "react/child-process": "^0.5.0",
         "react/event-loop": "^0.4.3",
         "react/promise": "^2.5.1",
+        "roundearth/civicrm-composer-plugin": "dev-master",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },
@@ -135,8 +158,10 @@
         },
         "enable-patching": true,
         "patches": {
+            "drupal/core": {
+                "cache issue when starting a site that has not had memcache module enabled": "https://www.drupal.org/files/issues/2019-09-18/2766509-69.patch"
+            },
             "drupal/commerce": {
-                "legacy admin comments": "patches/commerce_log.templates.patch",
                 "guest checkout email addition": "patches/commerce-guest-payment-email.patch"
             },
             "drupal/commerce_shipping": {
@@ -144,7 +169,11 @@
             },
             "drupal/l10n_client_ui": {
                 "Fixes invalid render array key":"https://www.drupal.org/files/issues/l10n_client-hook_toolbar-fix-2872668-3.patch"
+            },
+            "civicrm/civicrm-core": {
+                "Resolves issue upon installation of Civi": "https://github.com/mattwire/civicrm-core/commit/e7e176259f89af7fdda0a2940171d313f98f678f.patch"
             }
+
         }
     }
 }

@@ -136,9 +136,10 @@ class BioXMLMigrationForm extends ConfigFormBase {
     $form[$formId]['notice'] = [
       '#markup' => <<<NOTICE
         <div class="alert alert-info">
-          NOTE: <br>Biography imports are no longer performed using this page. <br> 
-          Please use the commmand-line script for this operation.  Only the 
-          configuration values for importing Biographies can be modified here.
+          <p>Biography imports are no longer performed using this page, but the settings for the process <strong>are</strong> configured here.</p>
+          <p>Please use the commmand-line script for this operation if necessary to run ad-hoc.</p>
+          <p>The current cron job is run per the crontab settings for the devwww user.</p>
+          <p>To see the current cron settings, run <code>crontab -l</code> as the devwww user on the server.</p>
         </div>
 NOTICE
     ];
@@ -166,35 +167,11 @@ NOTICE
       '#default_value' => $config->get('bio_import_xml.notify_email')
     ];
 
-    $form[$formId]['clean_xml'] = [
-      '#type' => 'submit',
-      '#value' => t('1. Clean feed.'),
-      '#submit' => [ '::clean' ],
-      '#attributes' => [ 'disabled' => 'disabled' ],
+    $form[$formId]['rebuild_ingestion_table'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Rebuild the ingestion table so that ALL bios are imported.'),
+      '#default_value' => $config->get('bio_import_xml.rebuild_ingestion_table')
     ];
-
-    $form[$formId]['ingest_xml'] = [
-      '#type' => 'submit',
-      '#value' => t('2. Validate and store feed records'),
-      '#submit' => [ '::ingest' ],
-      '#attributes' => [ 'disabled' => 'disabled' ],
-    ];
-
-    $form[$formId]['process_data'] = [
-      '#type' => 'submit',
-      '#value' => t('3. Import records to website'),
-      '#attributes' => [ 'disabled' => 'disabled' ],
-      '#submit' => [ '::import' ]
-    ];
-
-
-    $form[$formId]['spacer'] = [
-      '#markup' => '<hr class="clearfix" />',
-    ];
-
-    $form[$formId]['table'] = $this->renderNewBiosGrid();
-
-    $form[$formId]['pager'] = [ '#type' => 'pager' ];
 
     return parent::buildForm($form, $form_state);
   }
@@ -269,6 +246,7 @@ NOTICE
       ->set('bio_import_xml.fm_path', $values['fm_path'])
       ->set('bio_import_xml.fm_files_path', $values['fm_files_path'])
       ->set('bio_import_xml.notify_email', $values['email_notify'])
+      ->set('bio_import_xml.rebuild_ingestion_table', $values['rebuild_ingestion_table'])
       ->save();
 
     parent::submitForm($form, $formState);
