@@ -49,3 +49,4 @@ log
 
 # DB Backports
 _backports
+civicrm.settings.php
