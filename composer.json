@@ -158,6 +158,9 @@
         },
         "enable-patching": true,
         "patches": {
+            "drupal/core": {
+                "cache issue when starting a site that has not had memcache module enabled": "https://www.drupal.org/files/issues/2019-09-18/2766509-69.patch"
+            },
             "drupal/commerce": {
                 "guest checkout email addition": "patches/commerce-guest-payment-email.patch"
             },
