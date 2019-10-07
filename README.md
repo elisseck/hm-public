@@ -111,6 +111,17 @@ indicates rebuilding of the ingestion tables.
 
 In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.
 
+## Building the theme
+
+We use Gulp to process the theme SASS and other preprocessing tasks.  For example:
+
+    cd web/themes/custom/hm-public-theme
+    npm install
+    gulp clean
+    gulp sass-compile
+    
+We currently commit the compiled CSS files to the code repo rather than building at deploy time.
+
 
 ## Running deployments
 The QA server deployments _may_ be handled by Capistrano config
