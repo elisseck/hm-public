@@ -132,10 +132,22 @@ The production server has a deploy.sh script in the home directory of the devuse
 The following patch is critical to use in order to get Civi to Run 
 https://github.com/mattwire/civicrm-core/commit/e7e176259f89af7fdda0a2940171d313f98f678f#diff-7b0caad195353c8c5d49bbf5f053daf6
 
+
+### Bower
+
+Bower is required in order to install CiviCRM at this time.
+It will be easiest to install the npm and bower with nvm so you do not have to 
+install bower globally with sudo.
+
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+    nvm use
+    npm install bower -g
+    
+### CiviCRM Cron config
+
 Install the cv tool as described 
 
-    https://github.com/civicrm/cv
-
+  https://github.com/civicrm/cv
 
 ### CiviCRM Cron config
 
@@ -146,5 +158,7 @@ qa: /var/www/hm-public/current/
 
 prod /var/www/hm-public/
 
+
+  
 
 
