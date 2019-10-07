@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fd12e03ffdae257dc15378ef9c94cd94",
+    "content-hash": "1e510f9305fbb4d8b7fd30289c96825f",
     "packages": [
         {
             "name": "ajgl/breakpoint-twig-extension",
@@ -323,6 +323,9 @@
                     "zetacomponents/mail": {
                         "CiviCRM Custom Patches for ZetaCompoents mail": "tools/scripts/composer/patches/civicrm-custom-patches-zetacompoents-mail.patch"
                     }
+                },
+                "patches_applied": {
+                    "Resolves issue upon installation of Civi": "https://github.com/mattwire/civicrm-core/commit/e7e176259f89af7fdda0a2940171d313f98f678f.patch"
                 }
             },
             "autoload": {
@@ -4080,7 +4083,8 @@
                     "recurse": false,
                     "replace": false,
                     "merge-extra": false
-                }
+                },
+                "patches_applied": []
             },
             "autoload": {
                 "psr-4": {
