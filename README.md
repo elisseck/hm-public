@@ -151,14 +151,14 @@ Install the cv tool as described
 
 ### CiviCRM Cron config
 
-Change directory to the docroot
+Create a cron file `civicrm` in the `/etc/cron.d/` folder.  Place the following
 
-drupalvm: /var/www/drupalvm/
-qa: /var/www/hm-public/current/
+    */5 * * * * www-data /usr/bin/php /usr/local/bin/cv api job.execute --cwd=/var/www/hm-public
 
-prod /var/www/hm-public/
+If you are not getting results, it may be helpful to create a directory in /var/log/ called `civicrm` 
+make sure the directory is owned by `www-data` and then append the following string at the end of the cron
+command in `/etc/cron.d/civicrm` that was created above.
 
-
-  
-
-
+     {previous cron command} 1> /var/log/civicrm/civi-cron.log 2> /var/log/civicrm/civi-cron.err
+     
+You should expect something like 
