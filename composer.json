@@ -74,6 +74,7 @@
         "drupal/pathauto": "^1.0",
         "drupal/profile": "^1.0@RC",
         "drupal/readonlymode": "^1.0",
+        "drupal/redirect": "^1.4",
         "drupal/search_api": "^1.5",
         "drupal/search_api_autocomplete": "^1.0",
         "drupal/search_api_solr": "^1.2",
