@@ -631,6 +631,34 @@ li.pager__item.pager__item--ellipsis {
 
   }
 
+
+  .mobile__donate-links.mobile-only.menu-item {
+
+    .header__donate-links-title {
+      font-size: 1.25em;
+      font-weight: 700;
+    }
+
+    .header__donate-links-title .menu-item {
+      border-bottom: 0;
+      padding: 0;
+    }
+
+    a.header__donate-link{
+      background: transparent;
+      border: 0;
+      color: $black;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 0;
+      padding: 0 0 0 0.5em;
+      text-align: left;
+      text-transform: none;
+    }
+
+  }
+
+
   //Mobile only navigation
   .simple-mega-menu.mega-menu-item.simple-mega-menu-type-mobile-navigation.view-mode-default {
     display: none !important;
