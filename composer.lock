@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "201d671dd104530bddab6d85743d69c7",
+    "content-hash": "05282c4d68219a37778aa07dfc69a92d",
     "packages": [
         {
             "name": "ajgl/breakpoint-twig-extension",
@@ -10207,6 +10207,42 @@
             "time": "2019-01-01T16:15:09+00:00"
         },
         {
+            "name": "roundearth/civicrm-composer-plugin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/roundearth/civicrm-composer-plugin.git",
+                "reference": "5e50154bf2872185904b758d7f9cb2a9b7584c2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/roundearth%2Fcivicrm-composer-plugin/repository/archive.zip?sha=5e50154bf2872185904b758d7f9cb2a9b7584c2e",
+                "reference": "5e50154bf2872185904b758d7f9cb2a9b7584c2e",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1",
+                "pear/archive_tar": "^1.4",
+                "symfony/filesystem": "^2.7 || ^3.0 || ^4.0",
+                "symfony/process": "^2.7 || ^3.0 || ^4.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Roundearth\\CivicrmComposerPlugin\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Roundearth\\CivicrmComposerPlugin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "A composer plugin to assist with installing CiviCRM.",
+            "time": "2019-10-03T14:55:46+00:00"
+        },
+        {
             "name": "sabberworm/php-css-parser",
             "version": "8.3.0",
             "source": {
@@ -14748,7 +14784,8 @@
         "drupal/simple_megamenu": 10,
         "drupal/swiftmailer": 10,
         "drupal/webform_migrate": 15,
-        "drupal/xhprof": 20
+        "drupal/xhprof": 20,
+        "roundearth/civicrm-composer-plugin": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
