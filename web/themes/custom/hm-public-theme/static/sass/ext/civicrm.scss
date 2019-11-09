@@ -1,7 +1,46 @@
-#crm-main-content-wrapper {
+
+#crm-container, .crm-container {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 2rem;
+
+  input {
+    height: 1.8rem;
+    opacity: unset;
+  }
+
+  .crm-submit-buttons,
+  .action-link {
+    height: 2.4rem;
+    margin: 4px 0 4px 2px;
+  }
+
+}
+
+.form-layout-compressed {
 
   input[type='checkbox'] {
     opacity: 100;
+    height: 1.6rem;
+    line-height: 1.4rem;
   }
 
+}
+
+div.crm-container label {
+  line-height: 1.8rem;
+}
+
+input.crm-form-radio + label,
+input.crm-form-checkbox + label {
+  margin-left: 0px;
+}
+
+.crm-container .listing-box,
+.crm-container .listing-box-tall {
+  width: auto;
+  max-width: 30rem;
+  height: 7.25rem;
+  overflow: auto;
+  border: 1px solid #999999;
 }
