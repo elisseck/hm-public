@@ -132,6 +132,20 @@ The production server has a deploy.sh script in the home directory of the devuse
 The following patch is critical to use in order to get Civi to Run 
 https://github.com/mattwire/civicrm-core/commit/e7e176259f89af7fdda0a2940171d313f98f678f#diff-7b0caad195353c8c5d49bbf5f053daf6
 
+### CiviCRM THeme
+
+We use the Shoreditch CiviCRM theme to present a 'flat' design that matches the design fo the site.
+https://github.com/civicrm/org.civicrm.shoreditch
+
+Install Shoreditch by using the following ... run as an appropriate www-data user if necessary.
+
+    # Navigate to your extension directory, e.g.
+    cd sites/default/files/civicrm/ext
+    
+    # Download and enable the extension
+    git clone https://github.com/civicrm/org.civicrm.shoreditch
+    cv en org.civicrm.shoreditch
+
 
 ### Bower
 
@@ -162,3 +176,22 @@ command in `/etc/cron.d/civicrm` that was created above.
      {previous cron command} 1> /var/log/civicrm/civi-cron.log 2> /var/log/civicrm/civi-cron.err
      
 You should expect something like 
+
+
+# Solr server
+
+We utilize Solr for the search index on this site.
+
+## Solr server on QA Server
+
+The solr server is installed at `/home/devuser/bin/solr-6.6.5`
+
+The server can be started by 
+
+    cd /home/devuser/bin/solr-6.6.5/bin`
+    solr start
+
+You will know it is running by checking the Drupal Status report
+
+
+# CiviCRM 
