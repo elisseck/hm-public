@@ -33,7 +33,7 @@
         }
     ],
     "require": {
-        "civicrm/civicrm-core": "5.16.3",
+        "civicrm/civicrm-core": "^5.19.0",
         "civicrm/civicrm-drupal-8": "dev-master",
         "commerceguys/intl": "1.0.4",
         "composer/installers": "^1.2",
@@ -93,7 +93,6 @@
         "react/child-process": "^0.5.0",
         "react/event-loop": "^0.4.3",
         "react/promise": "^2.5.1",
-        "roundearth/civicrm-composer-plugin": "dev-master",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },
@@ -159,9 +158,6 @@
         },
         "enable-patching": true,
         "patches": {
-            "drupal/core": {
-                "cache issue when starting a site that has not had memcache module enabled": "https://www.drupal.org/files/issues/2019-09-18/2766509-69.patch"
-            },
             "drupal/commerce": {
                 "guest checkout email addition": "patches/commerce-guest-payment-email.patch"
             },
@@ -172,7 +168,7 @@
                 "Fixes invalid render array key":"https://www.drupal.org/files/issues/l10n_client-hook_toolbar-fix-2872668-3.patch"
             },
             "civicrm/civicrm-core": {
-                "Resolves issue upon installation of Civi": "https://github.com/mattwire/civicrm-core/commit/e7e176259f89af7fdda0a2940171d313f98f678f.patch"
+                "Resolves issue with warnings in reports on CiviCRM ": "https://github.com/civicrm/civicrm-core/commit/a8ada91688e6326d7a36eb50419e65bae0edf1b3.patch"
             }
 
         }
