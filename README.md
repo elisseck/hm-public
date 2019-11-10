@@ -193,5 +193,9 @@ The server can be started by
 
 You will know it is running by checking the Drupal Status report
 
+## Solr server on Production Serve
+
+The solr server is installed at `/home/devuser/bin/solr-6.6.0/bin/solr`
+
 
 # CiviCRM 
