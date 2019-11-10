@@ -48,3 +48,8 @@ input.crm-form-checkbox + label {
   overflow: auto;
   border: 1px solid #999999;
 }
+
+/* remove checkmark from buttons on contribute form */
+#hm-public-theme-content i.crm-i.fa-check:before {
+  content:none;
+}
