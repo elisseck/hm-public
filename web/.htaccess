@@ -131,6 +131,19 @@ AddEncoding gzip svgz
   # Rewrite install.php during installation to see if mod_rewrite is working
   RewriteRule ^core/install.php core/install.php?rewrite=ok [QSA,L]
 
+
+  # Custom rewrite map for the MARC record redirection.
+  # This rule is in place before the following rules by design to ensure
+  # they run prior to passing everything to index.php for Drupal to deal with
+  # This redirection map must also use the L so that the other redirections do
+  # not take effect either.
+  # The pattern that will be handled by the map is as follows.
+  # /biography-router/by-accession/{A2002.048}  ->   {/biography/naim-akbar-40}
+  # this feature relies on the marcmap being defined in the vhost.conf at the
+  # apache config level since maps can not be defined in the .htaccess scope
+
+  RewriteRule "^biography-router/by-accession/(.*)" "${marcmapdb:$1}" [R=301,L]
+
   # Pass all requests not referring directly to files in the filesystem to
   # index.php.
   RewriteCond %{REQUEST_FILENAME} !-f
