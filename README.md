@@ -107,6 +107,13 @@ your local host, or, navigate to "Configuration > Content Authoring > Import Bio
 A full import of Bios can be run by updating the configuration in the Administration screens and checking the box that
 indicates rebuilding of the ingestion tables.
 
+Note the bio import now also needs to export the Accession route map after it runs and the Apache map needs to be
+converted to the db format.
+
+    @hm-public.www sqlq --file ../scripts/sql/select-marc-url-redirects.sql --result-file ../marc-map.txt \
+    
+    httxt2dbm -i marc-map.txt -o marc-map.map
+
 ## Working on this project
 
 In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.
