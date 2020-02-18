@@ -72,7 +72,7 @@
         "drupal/page_manager": "^4.0",
         "drupal/panels": "^4.2",
         "drupal/paragraphs": "^1.2",
-        "drupal/pathauto": "^1.5.0",
+        "drupal/pathauto": "^1.6.0",
         "drupal/profile": "^1.0",
         "drupal/readonlymode": "^1.0",
         "drupal/redirect": "^1.4",
