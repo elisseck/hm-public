@@ -49,6 +49,10 @@ input.crm-form-checkbox + label {
   border: 1px solid #999999;
 }
 
+.crm-container input[type=checkbox] {
+  opacity: 100;
+}
+
 /* remove checkmark from buttons on contribute form */
 #hm-public-theme-content i.crm-i.fa-check:before {
   content:none;
