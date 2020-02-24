@@ -682,6 +682,6 @@ li.pager__item.pager__item--ellipsis {
 }//#hm-public-theme-main-menu
 
 //Autocomplete ul
-.ui-widget.ui-widget-content {
-  z-index: 1000;
+ul.ui-widget.ui-autocomplete {
+  z-index: 500;
 }
