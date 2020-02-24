@@ -180,7 +180,10 @@ class BioXMLMigrationImporter {
   protected function populateSingleValueFields($record) {
     foreach ($this->singleValueFields as $field => $value) {
 
-      if (strlen(trim($record->$value)) && !empty($record->$value)) {
+      if (substr(strtolower($field),0,15)=='field_favorite_') {
+        $this->node->set($field, stripslashes(trim($record->$value)));
+      }
+      elseif (strlen(trim($record->$value)) && !empty($record->$value)) {
         $truncateMig = Unicode::truncate(
           $record->$value, 240, true, true,
           1
@@ -385,7 +388,7 @@ class BioXMLMigrationImporter {
   protected function removeDuplicates($title) {
     // TODO: Refactor this statement. Currently assumes there will be one duplicate.
     $stmt = <<<SQL
-SELECT 
+SELECT
   MIN(nid) AS old_nid,
   COUNT(title) AS nid_count
 FROM {node_field_data}
