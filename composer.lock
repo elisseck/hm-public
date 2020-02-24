@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ba31f758910b47913a383dd9fd7e696",
+    "content-hash": "94a921284ba26d8d84bb0e41d3e43dc1",
     "packages": [
         {
             "name": "ajgl/breakpoint-twig-extension",
@@ -229,16 +229,16 @@
         },
         {
             "name": "civicrm/civicrm-core",
-            "version": "5.19.1",
+            "version": "5.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-core.git",
-                "reference": "6b6c3de61e250c3c448ec8596e746c58f8fcc1e7"
+                "reference": "46f1bdb54ef62a2df0a7f6d28ba1b21940ebc1fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/6b6c3de61e250c3c448ec8596e746c58f8fcc1e7",
-                "reference": "6b6c3de61e250c3c448ec8596e746c58f8fcc1e7",
+                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/46f1bdb54ef62a2df0a7f6d28ba1b21940ebc1fa",
+                "reference": "46f1bdb54ef62a2df0a7f6d28ba1b21940ebc1fa",
                 "shasum": ""
             },
             "require": {
@@ -262,15 +262,17 @@
                 "phpoffice/phpword": "^0.15.0",
                 "psr/log": "~1.1",
                 "psr/simple-cache": "~1.0.1",
-                "symfony/config": "^2.8.44 || ~3.0",
-                "symfony/dependency-injection": "^2.8.44 || ~3.0",
-                "symfony/event-dispatcher": "^2.8.44 || ~3.0",
-                "symfony/filesystem": "^2.8.44 || ~3.0",
-                "symfony/finder": "^2.8.44 || ~3.0",
+                "symfony/config": "^2.8.50 || ~3.0",
+                "symfony/dependency-injection": "^2.8.50 || ~3.0",
+                "symfony/event-dispatcher": "^2.8.50 || ~3.0",
+                "symfony/filesystem": "^2.8.50 || ~3.0",
+                "symfony/finder": "^2.8.50 || ~3.0",
                 "symfony/polyfill-iconv": "~1.0",
-                "symfony/process": "^2.8.44 || ~3.0",
+                "symfony/process": "^2.8.50 || ~3.0",
                 "tecnickcom/tcpdf": "6.2.*",
                 "totten/ca-config": "~17.05",
+                "tplaner/when": "~3.0.0",
+                "xkerman/restricted-unserialize": "~1.1",
                 "zetacomponents/base": "1.9.*",
                 "zetacomponents/mail": "dev-master"
             },
@@ -308,7 +310,7 @@
                         "url": "https://github.com/angular/bower-angular-sanitize/archive/v1.5.11.zip"
                     },
                     "angular-ui-sortable": {
-                        "url": "https://github.com/angular-ui/ui-sortable/archive/v0.12.11.zip"
+                        "url": "https://github.com/angular-ui/ui-sortable/archive/v0.19.0.zip"
                     },
                     "angular-ui-utils": {
                         "url": "https://github.com/angular-ui/ui-utils/archive/v0.1.1.zip"
@@ -355,7 +357,7 @@
                         ]
                     },
                     "ckeditor": {
-                        "url": "https://github.com/ckeditor/ckeditor-releases/archive/4.9.2.zip"
+                        "url": "https://github.com/ckeditor/ckeditor-releases/archive/4.13.0.zip"
                     },
                     "crossfilter-1.3.x": {
                         "url": "https://github.com/crossfilter/crossfilter/archive/1.3.14.zip",
@@ -558,9 +560,7 @@
                         "CiviCRM Custom Patches for ZetaCompoents mail": "tools/scripts/composer/patches/civicrm-custom-patches-zetacompoents-mail.patch"
                     }
                 },
-                "patches_applied": {
-                    "Resolves issue with warnings in reports on CiviCRM ": "https://github.com/civicrm/civicrm-core/commit/a8ada91688e6326d7a36eb50419e65bae0edf1b3.patch"
-                }
+                "patches_applied": []
             },
             "autoload": {
                 "psr-0": {
@@ -604,25 +604,25 @@
                 }
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
-            "time": "2019-11-09T02:33:35+00:00"
+            "time": "2020-02-18T06:35:12+00:00"
         },
         {
             "name": "civicrm/civicrm-cxn-rpc",
-            "version": "v0.19.01.08",
+            "version": "v0.19.01.09",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-cxn-rpc.git",
-                "reference": "5a142bc4d24b7f8c830f59768b405ec74d582f22"
+                "reference": "3ea668bc651adb4d61e96276f55e76ae22baea7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-cxn-rpc/zipball/5a142bc4d24b7f8c830f59768b405ec74d582f22",
-                "reference": "5a142bc4d24b7f8c830f59768b405ec74d582f22",
+                "url": "https://api.github.com/repos/civicrm/civicrm-cxn-rpc/zipball/3ea668bc651adb4d61e96276f55e76ae22baea7a",
+                "reference": "3ea668bc651adb4d61e96276f55e76ae22baea7a",
                 "shasum": ""
             },
             "require": {
                 "phpseclib/phpseclib": "1.0.*",
-                "psr/log": "~1.1"
+                "psr/log": "~1.0"
             },
             "type": "library",
             "autoload": {
@@ -641,11 +641,11 @@
                 }
             ],
             "description": "RPC library for CiviConnect",
-            "time": "2019-01-08T19:20:09+00:00"
+            "time": "2020-02-05T03:24:26+00:00"
         },
         {
             "name": "civicrm/civicrm-drupal-8",
-            "version": "dev-master",
+            "version": "5.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-drupal-8.git",
@@ -2812,28 +2812,28 @@
         },
         {
             "name": "dompdf/dompdf",
-            "version": "v0.8.3",
+            "version": "v0.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/dompdf.git",
-                "reference": "75f13c700009be21a1965dc2c5b68a8708c22ba2"
+                "reference": "6782abfc090b132134cd6cea0ec6d76f0fce2c56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/75f13c700009be21a1965dc2c5b68a8708c22ba2",
-                "reference": "75f13c700009be21a1965dc2c5b68a8708c22ba2",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/6782abfc090b132134cd6cea0ec6d76f0fce2c56",
+                "reference": "6782abfc090b132134cd6cea0ec6d76f0fce2c56",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-mbstring": "*",
-                "phenx/php-font-lib": "0.5.*",
-                "phenx/php-svg-lib": "0.3.*",
-                "php": ">=5.4.0"
+                "phenx/php-font-lib": "^0.5.1",
+                "phenx/php-svg-lib": "^0.3.3",
+                "php": "^7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8|^5.5|^6.5",
-                "squizlabs/php_codesniffer": "2.*"
+                "phpunit/phpunit": "^7.5",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "suggest": {
                 "ext-gd": "Needed to process images",
@@ -2874,7 +2874,7 @@
             ],
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
-            "time": "2018-12-14T02:40:31+00:00"
+            "time": "2020-02-20T03:52:51+00:00"
         },
         {
             "name": "drupal-composer/drupal-scaffold",
@@ -8548,16 +8548,16 @@
         },
         {
             "name": "league/csv",
-            "version": "9.4.1",
+            "version": "9.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "bf83acc23a7d60978fce36a384f97bf9d7d2ea0c"
+                "reference": "b348d09d0d258a4f068efb50a2510dc63101c213"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/bf83acc23a7d60978fce36a384f97bf9d7d2ea0c",
-                "reference": "bf83acc23a7d60978fce36a384f97bf9d7d2ea0c",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/b348d09d0d258a4f068efb50a2510dc63101c213",
+                "reference": "b348d09d0d258a4f068efb50a2510dc63101c213",
                 "shasum": ""
             },
             "require": {
@@ -8613,7 +8613,7 @@
                 "read",
                 "write"
             ],
-            "time": "2019-10-17T06:05:32+00:00"
+            "time": "2019-12-15T19:51:41+00:00"
         },
         {
             "name": "marcj/topsort",
@@ -10629,16 +10629,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v3.4.33",
+            "version": "v3.4.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "c111091db748ed394fd8c3e473a90ad3b80e08ad"
+                "reference": "6abc18b2a97f63508d23929bbb2ae65aaa07bace"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/c111091db748ed394fd8c3e473a90ad3b80e08ad",
-                "reference": "c111091db748ed394fd8c3e473a90ad3b80e08ad",
+                "url": "https://api.github.com/repos/symfony/config/zipball/6abc18b2a97f63508d23929bbb2ae65aaa07bace",
+                "reference": "6abc18b2a97f63508d23929bbb2ae65aaa07bace",
                 "shasum": ""
             },
             "require": {
@@ -10689,7 +10689,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-30T12:46:47+00:00"
+            "time": "2020-01-04T12:05:51+00:00"
         },
         {
             "name": "symfony/console",
@@ -11065,16 +11065,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.33",
+            "version": "v3.4.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "00e3a6ddd723b8bcfe4f2a1b6f82b98eeeb51516"
+                "reference": "0a0d3b4bda11aa3a0464531c40e681e184e75628"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/00e3a6ddd723b8bcfe4f2a1b6f82b98eeeb51516",
-                "reference": "00e3a6ddd723b8bcfe4f2a1b6f82b98eeeb51516",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/0a0d3b4bda11aa3a0464531c40e681e184e75628",
+                "reference": "0a0d3b4bda11aa3a0464531c40e681e184e75628",
                 "shasum": ""
             },
             "require": {
@@ -11111,20 +11111,20 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2019-08-20T13:31:17+00:00"
+            "time": "2020-01-17T08:50:08+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.33",
+            "version": "v3.4.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "3e915e5ce305f8bc8017597f71f1f4095092ddf8"
+                "reference": "a90a9d3b9f458a5cdeabfa4090b20c000ca3962f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/3e915e5ce305f8bc8017597f71f1f4095092ddf8",
-                "reference": "3e915e5ce305f8bc8017597f71f1f4095092ddf8",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/a90a9d3b9f458a5cdeabfa4090b20c000ca3962f",
+                "reference": "a90a9d3b9f458a5cdeabfa4090b20c000ca3962f",
                 "shasum": ""
             },
             "require": {
@@ -11160,7 +11160,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-30T12:43:22+00:00"
+            "time": "2020-01-01T11:03:25+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -12459,6 +12459,53 @@
             "time": "2017-05-10T20:08:17+00:00"
         },
         {
+            "name": "tplaner/when",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tplaner/When.git",
+                "reference": "09182e1707085382b8207c480120e96e98880563"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tplaner/When/zipball/09182e1707085382b8207c480120e96e98880563",
+                "reference": "09182e1707085382b8207c480120e96e98880563",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "When\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Planer",
+                    "email": "tplaner@gmail.com"
+                }
+            ],
+            "description": "Date/Calendar recursion library.",
+            "homepage": "https://github.com/tplaner/When",
+            "keywords": [
+                "date",
+                "datetime",
+                "recurrence",
+                "repeat",
+                "time"
+            ],
+            "time": "2019-04-17T14:46:29+00:00"
+        },
+        {
             "name": "twig/twig",
             "version": "v1.42.5",
             "source": {
@@ -12707,6 +12754,57 @@
             ],
             "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
             "time": "2015-12-17T08:42:14+00:00"
+        },
+        {
+            "name": "xkerman/restricted-unserialize",
+            "version": "1.1.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xKerman/restricted-unserialize.git",
+                "reference": "4c6cadbb176c04d3e19b9bb8b40df12998460489"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xKerman/restricted-unserialize/zipball/4c6cadbb176c04d3e19b9bb8b40df12998460489",
+                "reference": "4c6cadbb176c04d3e19b9bb8b40df12998460489",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "nikic/php-parser": "^1.4|^3.0|^4.2",
+                "phpmd/phpmd": "^2.6",
+                "phpunit/phpunit": "^4.8|^5.7|^6.5|^7.4|^8.2",
+                "sebastian/phpcpd": "^2.0|^3.0|^4.1",
+                "squizlabs/php_codesniffer": "^2.9|^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/function.php"
+                ],
+                "psr-4": {
+                    "xKerman\\Restricted\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "xKerman",
+                    "email": "xKhorasan@gmail.com"
+                }
+            ],
+            "description": "provide PHP Object Injection safe unserialize function",
+            "keywords": [
+                "PHP Object Injection",
+                "deserialize",
+                "unserialize"
+            ],
+            "time": "2019-08-11T00:04:39+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -14970,7 +15068,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "civicrm/civicrm-drupal-8": 20,
         "drupal/bulkdelete": 20,
         "roundearth/civicrm-composer-plugin": 20
     },
