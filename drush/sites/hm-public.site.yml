@@ -1,0 +1,15 @@
+dev:
+  root: /var/www/drupalvm/web
+  uri: www.hm-public.test
+
+qa:
+  host: d8dev.thehistorymakers.org
+  user: devuser
+  root: /var/www/hm-public/current/web
+  uri: https://d8dev.thehistorymakers.org
+
+prod:
+  host: www.thehistorymakers.org
+  user: devuser
+  root: /var/www/hm-public/current/web
+  uri: https://d8dev.thehistorymakers.org
