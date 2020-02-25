@@ -11,5 +11,5 @@ qa:
 prod:
   host: www.thehistorymakers.org
   user: devuser
-  root: /var/www/hm-public/current/web
-  uri: https://d8dev.thehistorymakers.org
+  root: /var/www/hm-public/web
+  uri: https://www.thehistorymakers.org
