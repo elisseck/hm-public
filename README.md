@@ -206,3 +206,12 @@ The solr server is installed at `/home/devuser/bin/solr-6.6.0/bin/solr`
 
 
 # CiviCRM 
+
+
+# Composer Global Require
+
+In order to get a global drush installed using composer, there is a seperate
+requirement.  Having global drush on the app servers may make certain
+operations more convienient.
+
+    composer global require consolidation/cgr
