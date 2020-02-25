@@ -253,8 +253,11 @@ class BioXMLMigrationImporter {
   protected function populatePdfFields($record) {
     $fieldName = 'field_bio_pdf';
 
-    foreach($this->pdfFields as $field => $value) {
+    // Remove existing items
+    $this->node->$fieldName->removeItem(0);
+    $this->node->$fieldName->removeItem(0);
 
+    foreach($this->pdfFields as $field => $value) {
       $imageField = BioXMLMigrationHelpers::attachImage(
         $this->db, $this->config, stripslashes($record->$value));
 
@@ -264,7 +267,6 @@ class BioXMLMigrationImporter {
         drupal_set_message('no pdf found: ' . $record->$value);
       }
     }
-
     return $this;
   }
 
@@ -385,7 +387,7 @@ class BioXMLMigrationImporter {
   protected function removeDuplicates($title) {
     // TODO: Refactor this statement. Currently assumes there will be one duplicate.
     $stmt = <<<SQL
-SELECT 
+SELECT
   MIN(nid) AS old_nid,
   COUNT(title) AS nid_count
 FROM {node_field_data}

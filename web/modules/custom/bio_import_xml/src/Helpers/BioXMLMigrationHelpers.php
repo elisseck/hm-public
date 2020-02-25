@@ -13,18 +13,18 @@ use Drupal\taxonomy\Entity\Term;
 
 class BioXMLMigrationHelpers {
 
-  public static $storageFieldNames = 'HM_ID, nid, Accession, BirthCity, 
+  public static $storageFieldNames = 'HM_ID, nid, Accession, BirthCity,
        BirthState, BirthCountry,
-       DateBirth, Dates_of_Sessions, DateDeath, MaritalStatus, Gender, 
-       Favorite_Color, Favorite_Food, Favorite_Quote, Favorite_Season, 
-       Favorite_VacationSpot, PreferredName, NameFirst, NameMiddle, NameLast, 
-       BiographyLong, DescriptionShort, Category, Location_Flash_File, 
-       Location_Flash_Title, Employment_for, Occupation, OccupationCategories, 
-       Organizations, Sponsor, Schools_for, BiographyLongWords, ImageBio, 
-       ImageArchive01, ImageArchive02, BiographyLongPath, SpeakersBureauYesNo, 
-       SpeakersBureauPreferredAudience, SpeakersBureauHonorarium, 
+       DateBirth, Dates_of_Sessions, DateDeath, MaritalStatus, Gender,
+       Favorite_Color, Favorite_Food, Favorite_Quote, Favorite_Season,
+       Favorite_VacationSpot, PreferredName, NameFirst, NameMiddle, NameLast,
+       BiographyLong, DescriptionShort, Category, Location_Flash_File,
+       Location_Flash_Title, Employment_for, Occupation, OccupationCategories,
+       Organizations, Sponsor, Schools_for, BiographyLongWords, ImageBio,
+       ImageArchive01, ImageArchive02, BiographyLongPath, SpeakersBureauYesNo,
+       SpeakersBureauPreferredAudience, SpeakersBureauHonorarium,
        SpeakersBureauAvailability, SpeakersBureauNotes, RegionCity, RegionState,
-       TimeStampModificationAny, SponsorLogo, SponsorURL, InterviewPDF1, 
+       TimeStampModificationAny, SponsorLogo, SponsorURL, InterviewPDF1,
        InterviewPDF2, LinkToTHMDA, LinkToSMDA, DAStoryList, DASession, DACaption,
        DATape, DATitle, DAUrl, DATIMINGPAIR, new, timestamp';
 
@@ -130,6 +130,7 @@ class BioXMLMigrationHelpers {
         $fmPath = $config->get('bio_import_xml.fm_files_path');
         $importErrorKey = 'bio_import_xml.image_import_errors';
         $pathToFile = end(explode('/', $path));
+        $extension = end(explode('.', $path));
         $stmt = "SELECT fid FROM {file_managed} WHERE uri = :uri";
         $uri = 'public://' . preg_replace('/[^\w-.]/', '', $pathToFile);
 
@@ -151,13 +152,10 @@ class BioXMLMigrationHelpers {
                 'H:/HM Interviews/'
             ];
 
-            $filePath = $fmPath . str_replace($dir, '', $path);
-
+            $filePath = $fmPath . str_replace($dir, '', trim($path));
             if (file_exists($filePath)) {
                 $fileContents = file_get_contents($filePath);
-                $f = file_save_data(
-                    $fileContents, 'public://' . self::stripInvalidXml($pathToFile),
-                    FILE_EXISTS_REPLACE);
+                $f = file_save_data($fileContents, 'public://'.self::stripInvalidXml($pathToFile), FILE_EXISTS_REPLACE);
                 $name = $f->getFilename();
                 if (isset($name) && strlen($name)) {
                   return $f;
@@ -165,8 +163,10 @@ class BioXMLMigrationHelpers {
             } else {
               self::addToErrorStateObject($filePath . ' doesn\'t exist.');
               // TODO: Move $placeholderUrl to config or admin form.
-              $placeholderUrl = 'http://via.placeholder.com/300x300';
-              return self::attachPlaceholderImage($placeholderUrl);
+              if ($extension != 'pdf') {
+                $placeholderUrl = 'http://via.placeholder.com/300x300';
+                return self::attachPlaceholderImage($placeholderUrl);
+              }
             }
         }
 
