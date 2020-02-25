@@ -256,8 +256,11 @@ class BioXMLMigrationImporter {
   protected function populatePdfFields($record) {
     $fieldName = 'field_bio_pdf';
 
-    foreach($this->pdfFields as $field => $value) {
+    // Remove existing items
+    $this->node->$fieldName->removeItem(0);
+    $this->node->$fieldName->removeItem(0);
 
+    foreach($this->pdfFields as $field => $value) {
       $imageField = BioXMLMigrationHelpers::attachImage(
         $this->db, $this->config, stripslashes($record->$value));
 
@@ -267,7 +270,6 @@ class BioXMLMigrationImporter {
         drupal_set_message('no pdf found: ' . $record->$value);
       }
     }
-
     return $this;
   }
 
