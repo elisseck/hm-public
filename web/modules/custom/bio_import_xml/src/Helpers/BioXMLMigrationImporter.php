@@ -252,21 +252,28 @@ class BioXMLMigrationImporter {
 
   protected function populatePdfFields($record) {
     $fieldName = 'field_bio_pdf';
-
-    // Remove existing items
-    $this->node->$fieldName->removeItem(0);
-    $this->node->$fieldName->removeItem(0);
+    $newImages=[];
 
     foreach($this->pdfFields as $field => $value) {
-      $imageField = BioXMLMigrationHelpers::attachImage(
-        $this->db, $this->config, stripslashes($record->$value));
-
+      $imageField = BioXMLMigrationHelpers::attachImage($this->db, $this->config, stripslashes($record->$value));
       if (($imageField) && !empty($imageField->getSize())) {
-        $this->node->$fieldName->appendItem($imageField);
+        $newImages[]=$imageField;
       } else {
         drupal_set_message('no pdf found: ' . $record->$value);
       }
     }
+
+    $bound=count($this->node->$fieldName);
+
+    // Remove existing items
+    for ($i = 0; $i < $bound; $i++) {
+      $this->node->$fieldName->removeItem(0);
+    }
+
+    foreach($newImages as $imageField) {
+      $this->node->$fieldName->appendItem($imageField);
+    }
+
     return $this;
   }
 
