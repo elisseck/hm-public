@@ -53,6 +53,8 @@ post_provision_scripts:
 
 extra_packages:
   - php7.2-bcmath
+  - php7.2-xml
+  - php7.2-mbstring
 
 # Add support for SSL on local hostnames.
 
@@ -63,3 +65,19 @@ apache_vhosts_ssl:
     certificate_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key"
     extra_parameters: |
       ProxyPassMatch ^/(.*\.php(/.*)?)$ "fcgi://127.0.0.1:9000{{ drupal_core_path }}"
+
+apache_mods_enabled:
+  - expires.load
+  - headers.load
+  - ssl.load
+  - rewrite.load
+  - proxy.load
+  - proxy_fcgi.load
+
+# To enable the XDebug abilities for IDE's like PHPStorm or IntelliJ
+php_xdebug_default_enable: 1
+php_xdebug_remote_enable: 1
+php_xdebug_remote_connect_back: 1
+php_xdebug_idekey: PHPSTORM
+php_xdebug_remote_port: "9000"
+php_xdebug_cli_disable: no
