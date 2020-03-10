@@ -117,7 +117,7 @@ drush_aliases_guest_template: "templates/drupalvm-local.aliases.drushrc.php.j2"
 # VirtualHost in the `apache_vhosts` list.
 apache_vhost_php_fpm_parameters: |
     <FilesMatch \.php$>
-      SetHandler "proxy:fcgi://{{ php_fpm_listen }}"
+      SetHandler "proxy:unix:/run/php/php{{ php_version }}-fpm.sock|fcgi://{{ php_fpm_listen }}"
     </FilesMatch>
 
 # Apache VirtualHosts. Add one for each site you are running inside the VM. For
