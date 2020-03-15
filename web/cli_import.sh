@@ -22,4 +22,4 @@ DRUSH_EXEC=../vendor/bin/drush
   && ../vendor/bin/drush sapi-i biography_index \
   && ../vendor/bin/drush php-eval "use \Drupal\Core\Cache\Cache; Cache::invalidateTags(['bio-search-facets']);" \
   && ../vendor/bin/drush @self sqlq --file ../scripts/sql/select-marc-url-redirects.sql --result-file ../marc-map.txt \
-  && httxt2dbm -i marc-map.txt -o marc-map.map
+  && httxt2dbm -i ../marc-map.txt -o ../marc-map.map
