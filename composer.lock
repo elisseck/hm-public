@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb15e43cdbb092ad1c325b11565b1642",
+    "content-hash": "c407fdc2bc6d653b8afe776d297e0115",
     "packages": [
         {
             "name": "ajgl/breakpoint-twig-extension",
@@ -4636,44 +4636,48 @@
         },
         {
             "name": "drupal/devel_entity_updates",
-            "version": "1.0.0",
+            "version": "dev-2.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/devel_entity_updates.git",
-                "reference": "8.x-1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/devel_entity_updates-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "011b76ba426344450b96efa2f16a64cbc70734c6"
+                "reference": "70aca7c2e76ae6856618fea04971795deefe619f"
             },
             "require": {
                 "drupal/core": "^8.7.0",
                 "drupal/devel": "*"
             },
+            "conflict": {
+                "drupal/core": "<8.7",
+                "drush/drush": ">=9.0 <9.6"
+            },
             "type": "drupal-module",
             "extra": {
                 "branch-alias": {
-                    "dev-1.x": "1.x-dev"
+                    "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1576707406",
+                    "version": "8.x-2.0-rc1+0-dev",
+                    "datestamp": "1576707488",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10"
                     }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0-or-later"
+                "GPL-2.0+"
             ],
             "authors": [
                 {
-                    "name": "amateescu",
-                    "homepage": "https://www.drupal.org/user/729614"
+                    "name": "Francesco Placella (plach)",
+                    "homepage": "https://www.drupal.org/u/plach",
+                    "role": "Maintainer"
                 },
                 {
                     "name": "plach",
@@ -4681,10 +4685,13 @@
                 }
             ],
             "description": "Provides developers an API and drush command to perform automatic entity updates.",
-            "homepage": "https://www.drupal.org/project/devel_entity_updates",
+            "homepage": "http://drupal.org/project/devel_entity_updates",
             "support": {
-                "source": "https://git.drupalcode.org/project/devel_entity_updates"
-            }
+                "source": "https://cgit.drupalcode.org/devel_entity_updates",
+                "issues": "https://drupal.org/project/issues/devel_entity_updates",
+                "irc": "irc://irc.freenode.org/drupal-contribute"
+            },
+            "time": "2019-12-18T22:08:45+00:00"
         },
         {
             "name": "drupal/drush_delete",
@@ -15152,6 +15159,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/bulkdelete": 20,
+        "drupal/devel_entity_updates": 20,
         "roundearth/civicrm-composer-plugin": 20
     },
     "prefer-stable": true,
