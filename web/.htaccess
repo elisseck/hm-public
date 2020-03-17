@@ -142,7 +142,7 @@ AddEncoding gzip svgz
   # this feature relies on the marcmap being defined in the vhost.conf at the
   # apache config level since maps can not be defined in the .htaccess scope
 
-  RewriteRule "^biography-router/by-accession/(.*)" "${marcmapdb:$1}" [R=301,L]
+  RewriteRule "^biography-router/by-accession/(.*)" "${marcmapdb:$1|/biography-router/accession-not-found}" [R=302,L]
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php.

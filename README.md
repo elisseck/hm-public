@@ -215,3 +215,27 @@ requirement.  Having global drush on the app servers may make certain
 operations more convienient.
 
     composer global require consolidation/cgr
+    
+    
+# Apache RewriteMap config
+
+There is a required RewriteMap configuration that needs to exist at the Apache
+level .conf files for both the http and https configs.  This is in order to handle
+redirections by accession number.  
+
+For example:
+
+    https://d8dev.thehistorymakers.org/biography-router/by-accession/A2005.099
+
+redirects to
+
+    https://d8dev.thehistorymakers.org/biography/joseph-benjamin-anderson-jr
+
+
+## on d8dev
+
+    RewriteMap marcmapdb "dbm:/var/www/hm-public/current/marc-map.map"
+   
+## on production
+
+    RewriteMap marcmapdb "dbm:/var/www/hm-public/marc-map.map"
