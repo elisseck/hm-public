@@ -225,7 +225,7 @@ redirections by accession number.
 
 For example:
 
-    https://d8dev.thehistorymakers.org/biography-router/by-accession/A2005.099
+    https://d8dev.thehistorymakers.org/biography/A2005.099
 
 redirects to
 

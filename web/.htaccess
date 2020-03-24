@@ -138,11 +138,11 @@ AddEncoding gzip svgz
   # This redirection map must also use the L so that the other redirections do
   # not take effect either.
   # The pattern that will be handled by the map is as follows.
-  # /biography-router/by-accession/{A2002.048}  ->   {/biography/naim-akbar-40}
+  # /biography/accession/{A2002.048}  ->   {/biography/naim-akbar-40}
   # this feature relies on the marcmap being defined in the vhost.conf at the
   # apache config level since maps can not be defined in the .htaccess scope
 
-  RewriteRule "^biography-router/by-accession/(.*)" "${marcmapdb:$1|/biography-router/accession-not-found}" [R=302,L]
+  RewriteRule "^biography/([A-Z][0-9]{4}\.[0-9]{3})$" "${marcmapdb:$1|/biography/accession-not-found}" [R=302,L]
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php.
