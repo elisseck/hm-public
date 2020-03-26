@@ -73,9 +73,21 @@
               </div>
               {{ field_bio_image }}
 
-              {# Profession #}
               <div class="desktop-only">
-                <section>  
+
+                {# Interview Date(s) #}
+                {% if node.field_interview_date[0].value %}
+                  <section>
+                    <h3>Interview Date{% if node.field_interview_date|length > 1 %}s{% endif %}</h3>
+                    {% for key, value in node.field_interview_date %}
+                      {{ node.field_interview_date[key].value }}<br />
+                    {% endfor %}
+                  </section>
+                {% endif %}
+                {# End Interview Date(s) #}
+
+                {# Profession #}
+                <section>
                   <h3 class="info__profession">Profession</h3>
                   <dl>
                     <dt>Category:</dt>
@@ -93,7 +105,7 @@
                     </dd>
 
                   </dl>
-                </section>  
+                </section>
                 {# End Profession #}
 
                 {# Favorites #}
@@ -145,10 +157,11 @@
                 </section>
                 {% endif %}
                 {# End Birthplace #}
+
               </div>{# <div class="desktop-only"> #}
             </div>{# <div class="info"> #}
-          </section>  
-          
+          </section>
+
 
           {# Mobile only #}
           <div class="accordion mobile-only-details">
@@ -162,7 +175,7 @@
 
             <div class="accordion__body collapse show" id="aboutInfo">
               <div class="card-block info">
-                <section>  
+                <section>
                   <h3 class="info__profession">Profession</h3>
                   <dl>
                     <dt>Category:</dt>
@@ -180,7 +193,7 @@
                     </dd>
 
                   </dl>
-                </section>  
+                </section>
                 {# End Profession #}
 
                 {# Favorites #}
@@ -234,7 +247,7 @@
                 {# End Birthplace #}
               </div>
             </div>
-          </div>            
+          </div>
 
           {# Related Makers #}
           <section class="discover desktop-only">
@@ -336,7 +349,7 @@
               <div>
                 <ul>
                   {% for key, value in node.field_bio_pdf %}
-                    <li><a href="{{file_url(node.field_bio_pdf[key].entity.uri.value)}}">{{ node.field_bio_pdf[key].entity.filename.value }}</a></li>
+                    <li><a href="{{file_url(node.field_bio_pdf[key].entity.uri.value)}}" target="_blank">{{ node.field_bio_pdf[key].entity.filename.value }}</a></li>
                   {% endfor %}
                 </ul>
               </div>
