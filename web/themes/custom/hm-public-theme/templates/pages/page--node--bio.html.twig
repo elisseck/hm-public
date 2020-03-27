@@ -79,7 +79,7 @@
                 {% if node.field_interview_date[0].value %}
                   <section>
                     <h3 class="info__profession">Interview Date{% if node.field_interview_date|length > 1 %}s{% endif %}</h3>
-                    {% for key, value in node.field_interview_date %}
+                    {% for key, value in node.field_interview_date|reverse(true) %}
                       {{ node.field_interview_date[key].value }}<br />
                     {% endfor %}
                   </section>
