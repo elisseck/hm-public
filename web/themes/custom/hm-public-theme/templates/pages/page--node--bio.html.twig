@@ -78,7 +78,7 @@
                 {# Interview Date(s) #}
                 {% if node.field_interview_date[0].value %}
                   <section>
-                    <h3>Interview Date{% if node.field_interview_date|length > 1 %}s{% endif %}</h3>
+                    <h3 class="info__profession">Interview Date{% if node.field_interview_date|length > 1 %}s{% endif %}</h3>
                     {% for key, value in node.field_interview_date %}
                       {{ node.field_interview_date[key].value }}<br />
                     {% endfor %}
