@@ -208,16 +208,14 @@ class BioXMLMigrationImporter {
   protected function populateMultiValueFields($record) {
     foreach ($this->multiValueFields as $field => $value) {
       if (strlen(trim($record->$value)) && !empty($record->$value)) {
-        $dollarValues = BioXMLMigrationHelpers::migrateThmExplode(
-          '$', stripslashes($record->$value));
+        $dollarValues = BioXMLMigrationHelpers::migrateThmExplode('$', stripslashes($record->$value));
 
-        if (in_array($field, ['field_dastories', 'field_datitle']) && $this->node->$field->count() > 0) {
+        if (in_array($field, ['field_dastories', 'field_datitle', 'field_interview_date']) && $this->node->$field->count() > 0) {
           $this->clearMultiValueField($field);
         }
 
         foreach ($dollarValues as $val) {
           $valuesInField = $this->node->$field->getValue();
-
           if (!in_array($val, array_column($valuesInField, 'value'))) {
             $this->node->$field->appendItem($val);
           }
