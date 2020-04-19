@@ -1,0 +1,59 @@
+Dear {contact.first_name} {contact.last_name},
+
+{if $receipt_text}
+{$receipt_text} Your support of ${$amount} means so much.
+{else}
+Thank you so much for your support of *The HistoryMakers*. Your support of ${$amount} means so much.
+{/if}
+
+Not only is your support fully tax-deductible to the fullest extent permitted under the law, but it also brings us one step closer to fulfilling our goal of raising $20 million in honor of our 20th anniversary.
+
+Our goal is education and our archives provide real-life counter narratives, role models, content and success frameworks for racial understanding across socio-economic, racial and ethnic lines. Our “inside look” into the past is critical to combating societal ignorance and prejudice while providing many with a path forward. It will also educate those inside and outside of the African American community about African American achievement and its relationship to American culture and progress - something that is still so sorely needed.
+
+We are now positioned to be *the* digital repository for the black experience.
+
+Below please find *The HistoryMakers* receipt.
+
+We thank you once again. Thank you, {contact.first_name} {contact.last_name}!
+
+===========================================================
+{ts}Pledge Information{/ts}
+
+===========================================================
+{ts}Pledge Received{/ts}: {$create_date|truncate:10:''|crmDate}
+{ts}Total Pledge Amount{/ts}: {$total_pledge_amount|crmMoney:$currency}
+
+===========================================================
+{ts}Payment Schedule{/ts}
+
+===========================================================
+{ts 1=$scheduled_amount|crmMoney:$currency 2=$frequency_interval 3=$frequency_unit 4=$installments}%1 every %2 %3 for %4 installments.{/ts}
+
+{if $frequency_day}
+
+{ts 1=$frequency_day 2=$frequency_unit}Payments are due on day %1 of the %2.{/ts}
+{/if}
+
+{if $payments}
+{assign var="count" value="1"}
+{foreach from=$payments item=payment}
+
+{ts 1=$count}Payment %1{/ts}: {$payment.amount|crmMoney:$currency} {if $payment.status eq 1}{ts}paid{/ts} {$payment.receive_date|truncate:10:''|crmDate}{else}{ts}due{/ts} {$payment.due_date|truncate:10:''|crmDate}{/if}
+{assign var="count" value=`$count+1`}
+{/foreach}
+{/if}
+
+
+{ts 1=$domain.phone 2=$domain.email}Please contact us at %1 or send email to %2 if you have questions
+or need to modify your payment schedule.{/ts}
+
+{if $customGroup}
+{foreach from=$customGroup item=value key=customName}
+===========================================================
+{$customName}
+===========================================================
+{foreach from=$value item=v key=n}
+{$n}: {$v}
+{/foreach}
+{/foreach}
+{/if}
