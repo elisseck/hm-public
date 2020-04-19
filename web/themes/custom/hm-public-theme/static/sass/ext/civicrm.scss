@@ -57,3 +57,8 @@ input.crm-form-checkbox + label {
 #hm-public-theme-content i.crm-i.fa-check:before {
   content:none;
 }
+
+/* resolve issue with calendar icon */
+svg.svg-inline--fa.fa-calendar.fa-w-14.addon {
+  transform: scale(0.04);
+}
