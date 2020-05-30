@@ -36,6 +36,7 @@
         "civicrm/civicrm-asset-plugin": "~1.0",
         "civicrm/civicrm-core": "^5.25",
         "civicrm/civicrm-drupal-8": "^5.22.1",
+        "civicrm/civicrm-packages": "5.25",
         "commerceguys/intl": "1.0.4",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
