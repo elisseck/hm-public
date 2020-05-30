@@ -169,6 +169,11 @@ install bower globally with sudo.
 Install the cv tool as described 
 
   https://github.com/civicrm/cv
+  
+To install cv, I only had to issue two commands: 
+
+    sudo curl -LsS https://download.civicrm.org/cv/cv.phar -o /usr/local/bin/cv 
+    sudo chmod +x /usr/local/bin/cv 
 
 ### CiviCRM Cron config
 
@@ -239,3 +244,15 @@ redirects to
 ## on production
 
     RewriteMap marcmapdb "dbm:/var/www/hm-public/marc-map.map"
+    
+    
+    
+# CiviCRM Data exports
+
+There are a handful of automatic data exports running that take Civi data and push it to  the /data/image_sync/ folder 
+on the production server.  These commands are run by cron.
+
+    sudo -u www-data cv api Job.mail_report instanceId=42 format=csv sendmail=0 --user=civicrm.reports --cwd=/var/www/hm-public/ > /data/image_sync/CiviCRM\ Exports/contact_export_instance_42.csv
+    
+Note the use of the user `civicrm.reports` that is a specifi user that was created on production for the sole purpose 
+of running these reports.
