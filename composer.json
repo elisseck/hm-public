@@ -54,7 +54,7 @@
         "drupal/console": "^1.0.1",
         "drupal/core": "^8.8.6",
         "drupal/csv_serialization": "^2.0",
-        "drupal/ctools": "^3.2",
+        "drupal/ctools": "^3.4",
         "drupal/devel": "^2.1",
         "drupal/devel_entity_updates": "2.x-dev",
         "drupal/drush_delete": "^2.2",
