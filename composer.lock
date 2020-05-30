@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8da3950fcab8ca8c0d14c11ff3042f89",
+    "content-hash": "f95e8097115e6276ba94de73ab81aa0f",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -904,6 +904,25 @@
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
             "time": "2020-03-02T05:14:11+00:00"
+        },
+        {
+            "name": "civicrm/civicrm-packages",
+            "version": "5.25.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/civicrm/civicrm-packages.git",
+                "reference": "b0040af10d80cb63d3aea21f6b359784a0629363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/civicrm/civicrm-packages/zipball/b0040af10d80cb63d3aea21f6b359784a0629363",
+                "reference": "b0040af10d80cb63d3aea21f6b359784a0629363",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Legacy third party dependencies for CiviCRM",
+            "time": "2020-04-08T21:19:55+00:00"
         },
         {
             "name": "civicrm/composer-downloads-plugin",
