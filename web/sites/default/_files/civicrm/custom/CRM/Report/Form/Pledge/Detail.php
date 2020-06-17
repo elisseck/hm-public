@@ -84,9 +84,7 @@ class CRM_Report_Form_Pledge_Detail extends CRM_Report_Form {
         'fields' => [
           'id' => [
             'title' => ts('Pledge Id'),
-            'no_display' => FALSE,
-            'default' => TRUE,
-            'required' => TRUE,
+            'required' =>TRUE,
           ],
           'contact_id' => [
             'no_display' => TRUE,
