@@ -33,8 +33,10 @@
         }
     ],
     "require": {
-        "civicrm/civicrm-core": "5.22.1",
-        "civicrm/civicrm-drupal-8": "5.22.1",
+        "civicrm/civicrm-asset-plugin": "~1.0",
+        "civicrm/civicrm-core": "^5.25",
+        "civicrm/civicrm-drupal-8": "^5.25",
+        "civicrm/civicrm-packages": "5.25",
         "commerceguys/intl": "1.0.4",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
@@ -52,11 +54,11 @@
         "drupal/commerce_store": "2.12",
         "drupal/config_update": "^1.5",
         "drupal/console": "^1.0.1",
-        "drupal/core": "^8.7.9",
+        "drupal/core": "^8.8.6",
         "drupal/csv_serialization": "^2.0",
-        "drupal/ctools": "^3.2",
+        "drupal/ctools": "^3.4",
         "drupal/devel": "^2.1",
-        "drupal/devel_entity_updates": "2.x-dev",
+        "drupal/devel_entity_updates": "^3.0",
         "drupal/drush_delete": "^2.2",
         "drupal/facets": "^1.4",
         "drupal/flag": "^4.0",
@@ -73,7 +75,7 @@
         "drupal/page_manager": "^4.0",
         "drupal/panels": "^4.2",
         "drupal/paragraphs": "^1.2",
-        "drupal/pathauto": "^1.6",
+        "drupal/pathauto": "^1.8",
         "drupal/profile": "^1.0",
         "drupal/readonlymode": "^1.0",
         "drupal/redirect": "^1.4",
@@ -92,13 +94,14 @@
         "drupal/xhprof": "^1.0",
         "drush/drush": "^9.6",
         "guiguiboy/php-cli-progress-bar": "^0.0.4",
+        "pear/net_smtp": "^1.9",
         "react/child-process": "^0.5.0",
         "react/event-loop": "^0.4.3",
         "react/promise": "^2.5.1",
-        "roundearth/civicrm-composer-plugin": "dev-master",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-        "zendframework/zend-diactoros": "^1.8.7"
+        "zendframework/zend-diactoros": "^1.8.7",
+        "zetacomponents/mail": "^1.9"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -170,9 +173,6 @@
             },
             "drupal/l10n_client_ui": {
                 "Fixes invalid render array key":"https://www.drupal.org/files/issues/l10n_client-hook_toolbar-fix-2872668-3.patch"
-            },
-            "civicrm/civicrm-core": {
-                "Resolves issue with warnings in reports on CiviCRM ": "https://github.com/civicrm/civicrm-core/commit/a8ada91688e6326d7a36eb50419e65bae0edf1b3.patch"
             }
 
         }

@@ -31,26 +31,56 @@
 
 }
 
-div.crm-container label {
-  line-height: 1.8rem;
-}
 
 input.crm-form-radio + label,
 input.crm-form-checkbox + label {
-  margin-left: 0px;
+  margin-left: 0;
 }
 
-.crm-container .listing-box,
-.crm-container .listing-box-tall {
-  width: auto;
-  max-width: 30rem;
-  height: 7.25rem;
-  overflow: auto;
-  border: 1px solid #999999;
-}
+div.crm-container {
 
-.crm-container input[type=checkbox] {
-  opacity: 100;
+  label {
+    line-height: 1.8rem;
+  }
+
+  .listing-box,
+  .listing-box-tall {
+    width: auto;
+    max-width: 30rem;
+    height: 7.25rem;
+    overflow: auto;
+    border: 1px solid #999999;
+  }
+
+  input.ui-spinner-input {
+    height: 1.4em;
+  }
+
+  input[type=checkbox] {
+    opacity: 100;
+  }
+
+  .crm-pager {
+    min-height: 3.0rem;
+  }
+
+  select.crm-form-select {
+    min-height: 2.6rem;
+  }
+
+  /* resolve issue with calendar icon */
+  svg.svg-inline--fa.fa-calendar.fa-w-14.addon {
+    transform: scale(0.035);
+  }
+
+  .addon.fa-calendar {
+    vertical-align: top;
+  }
+
+  .crm-form-submit {
+    height: unset;
+  }
+
 }
 
 /* remove checkmark from buttons on contribute form */
