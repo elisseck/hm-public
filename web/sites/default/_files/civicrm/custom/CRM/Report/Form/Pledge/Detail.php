@@ -83,7 +83,9 @@ class CRM_Report_Form_Pledge_Detail extends CRM_Report_Form {
         'dao' => 'CRM_Pledge_DAO_Pledge',
         'fields' => [
           'id' => [
-            'no_display' => TRUE,
+            'title' => ts('Pledge Id'),
+            'no_display' => FALSE,
+            'default' => TRUE,
             'required' => TRUE,
           ],
           'contact_id' => [
@@ -159,6 +161,11 @@ class CRM_Report_Form_Pledge_Detail extends CRM_Report_Form {
       'civicrm_pledge_payment' => [
         'dao' => 'CRM_Pledge_DAO_PledgePayment',
         'fields' => [
+          'pledge_payment_id' => [
+            'title' => ts('Pledge Payment Id'),
+            'no_display' => FALSE,
+            'required' => FALSE,
+          ],
           'total_paid' => [
             'title' => ts('Total Amount Paid'),
             'type' => CRM_Utils_Type::T_MONEY,
@@ -479,7 +486,8 @@ class CRM_Report_Form_Pledge_Detail extends CRM_Report_Form {
     }
 
     unset($this->_columnHeaders['status_id']);
-    unset($this->_columnHeaders['civicrm_pledge_id']);
+    // OHF - Let the pledgeId show!!!
+    //unset($this->_columnHeaders['civicrm_pledge_id']);
     unset($this->_columnHeaders['civicrm_pledge_contact_id']);
 
     $this->formatDisplay($rows, FALSE);
