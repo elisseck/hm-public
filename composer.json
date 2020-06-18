@@ -54,7 +54,7 @@
         "drupal/commerce_store": "2.12",
         "drupal/config_update": "^1.5",
         "drupal/console": "^1.0.1",
-        "drupal/core": "^8.8.7",
+        "drupal/core": "^8.8.8",
         "drupal/csv_serialization": "^2.0",
         "drupal/ctools": "^3.4",
         "drupal/devel": "^2.1",
