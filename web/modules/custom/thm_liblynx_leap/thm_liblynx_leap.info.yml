@@ -1,0 +1,6 @@
+name: 'THM LibLynx LEAP Authentication'
+type: module
+description: Module to support LibLynx LEAP Authentication
+core: 8.x
+package: Custom
+configure: thm_liblynx_leap.admin.config
