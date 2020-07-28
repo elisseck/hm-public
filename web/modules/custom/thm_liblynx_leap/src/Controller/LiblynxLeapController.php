@@ -13,15 +13,6 @@ class LiblynxLeapController extends ControllerBase {
     $this->secret = $secret;
   }
 
-	private function validateHash($target, $source) {
-		if (hash_hmac('sha256',$source,$this->secret)==$target) {
-			return true;
-		}
-		else {
-			return false;
-		}
-  }
-
   private function createHash($string) {
     return hash_hmac('sha256',$string,$this->secret);
   }
@@ -47,10 +38,10 @@ class LiblynxLeapController extends ControllerBase {
 			$request->request->replace( is_array( $data ) ? $data : [] );
 		}
 
-    $targetHash=$data['username'];
+    $targetHash=$data['hash'];
     $sourceHash=$this->createHash($data['relyingParty'].$data['username'].$data['password'].$data['timestamp']);
 
-    $validRequest=$this->validateHash($targetHash,$sourceHash);
+    $validRequest=($targetHash==$sourceHash) ? 'true' : 'false';
 
     if ($validRequest) {
       // check username
