@@ -13,15 +13,6 @@ class LiblynxLeapController extends ControllerBase {
     $this->secret = $secret;
   }
 
-	private function validateHash($target, $source) {
-		if (hash_hmac('sha256',$source,$this->secret)==$target) {
-			return true;
-		}
-		else {
-			return false;
-		}
-  }
-
   private function createHash($string) {
     return hash_hmac('sha256',$string,$this->secret);
   }
@@ -41,16 +32,24 @@ class LiblynxLeapController extends ControllerBase {
     $email='';
     $name='';
     $returnRoles=array();
+    $gmdate = new \DateTime("now", new \DateTimeZone("UTC"));
 
 		if ( 0 === strpos( $request->headers->get( 'Content-Type' ), 'application/json' ) ) {
 			$data = json_decode( $request->getContent(), TRUE );
 			$request->request->replace( is_array( $data ) ? $data : [] );
 		}
 
-    $targetHash=$data['username'];
+    $targetHash=$data['hash'];
     $sourceHash=$this->createHash($data['relyingParty'].$data['username'].$data['password'].$data['timestamp']);
 
-    $validRequest=$this->validateHash($targetHash,$sourceHash);
+    $validRequest=($targetHash==$sourceHash) ? true : false;
+
+    if ($validRequest) {
+      $datetime1 = $gmdate;
+      $datetime2 = date_create($data['timestamp']);
+      $diff=date_diff($datetime1,$datetime2);
+      $validRequest=($diff->h <= 1) ? true : false;
+    }
 
     if ($validRequest) {
       // check username
@@ -84,8 +83,8 @@ class LiblynxLeapController extends ControllerBase {
       }
     }
 
-    $gmdate=gmdate("Y-m-d\TH:i:s");
-    $responseHash=$this->createHash($uid.$gmdate);
+    $gmdateString=date_format($gmdate,'Y-m-d\TH:i:s');
+    $responseHash=$this->createHash($uid.$gmdateString);
 
     $response['knownuser'] = ($uid != false) ? 'true' : 'false';
     $response['validpassword'] = ($authenticatedUid != false) ? 'true' : 'false';
@@ -101,7 +100,7 @@ class LiblynxLeapController extends ControllerBase {
     $response['user']=$returnUser;
 
     $response['units']=$returnRoles;
-		$response['timestamp'] = $gmdate;
+		$response['timestamp'] = $gmdateString;
 		$response['hash'] = $responseHash;
 
 		return new JsonResponse( $response );
