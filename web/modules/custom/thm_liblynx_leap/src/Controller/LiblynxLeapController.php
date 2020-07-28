@@ -89,8 +89,8 @@ class LiblynxLeapController extends ControllerBase {
     $response['knownuser'] = ($uid != false) ? 'true' : 'false';
     $response['validpassword'] = ($authenticatedUid != false) ? 'true' : 'false';
 
-    $account['id']='The HistoryMakers';
-    $account['name']='name';
+    $account['id']='thm';
+    $account['name']='The HistoryMakers';
     $response['account']=$account;
 
     $returnUser['id']=$uid;
