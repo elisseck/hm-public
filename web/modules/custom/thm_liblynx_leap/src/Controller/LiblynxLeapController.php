@@ -31,6 +31,7 @@ class LiblynxLeapController extends ControllerBase {
     $roles=false;
     $email='';
     $name='';
+    $username='';
     $returnRoles=array();
     $gmdate = new \DateTime("now", new \DateTimeZone("UTC"));
 
@@ -47,6 +48,16 @@ class LiblynxLeapController extends ControllerBase {
     if(!empty($uidQuery)){
       $uid=array_pop(array_reverse($uidQuery));
     }
+    else {
+      // check email then
+      $uidQuery = \Drupal::entityQuery('user')
+        ->condition('mail', $data['username'])
+        ->range(0, 1)
+        ->execute();
+      if(!empty($uidQuery)){
+        $uid=array_pop(array_reverse($uidQuery));
+      }
+    }
 
     // retreive user information
     if ($uid) {
@@ -54,6 +65,7 @@ class LiblynxLeapController extends ControllerBase {
       $roles = $user->getRoles();
       $email = $user->getEmail();
       $name = $user->getDisplayName();
+      $username = $user->getUsername();
 
       // get roles
       $is_thm_paid_member=array_search('thm_paid_member',$roles);
@@ -64,7 +76,7 @@ class LiblynxLeapController extends ControllerBase {
     }
 
     // does password match?
-    $authenticatedUid = \Drupal::service('user.auth')->authenticate($data['username'], $data['password']);
+    $authenticatedUid = \Drupal::service('user.auth')->authenticate($username, $data['password']);
     if ($uid != $authenticatedUid) {
       $authenticatedUid=false;
     }
