@@ -12,7 +12,9 @@
 # by the .my.cnf in the home directory of
 # the devuser account on remote machine
 # echo "creating the snapshot on the live server"
-# knife ssh -z "name:www.thehistorymakers.org" "mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database | gzip -c > ./_backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz"
+#
+ knife ssh -z "name:www.thehistorymakers.org" "mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database | gzip -c > ./_backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz"
+#
 # echo "snapshot created on live server"
 
 
@@ -35,7 +37,7 @@
 # or pull backups directly from production
 ##
 # echo "pulling backup directly from production to local drive"
-# rsync -avzhe ssh www.thehistorymakers.org:_backports/db/* ./_backports/db/production/
+rsync -avzhe ssh www.thehistorymakers.org:_backports/db/* ./_backports/db/production/
 # echo "pulling backup directly from production to local drive"
 
 
