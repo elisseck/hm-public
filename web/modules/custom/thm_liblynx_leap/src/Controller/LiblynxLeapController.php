@@ -69,8 +69,8 @@ class LiblynxLeapController extends ControllerBase {
 
       // get roles
       $is_thm_paid_member=array_search('thm_paid_member',$roles);
-      $returnRoles[]='SMDA';
       if ($is_thm_paid_member) {
+        $returnRoles[]='SMDA';
         $returnRoles[]='THMDA';
       }
     }
@@ -118,7 +118,13 @@ class LiblynxLeapController extends ControllerBase {
         $returnUser['metadata']=$metadata;
         $response['user']=$returnUser;
 
-        $response['units']=$returnRoles;
+        if (count($returnRoles)>0) {
+          $response['units']=$returnRoles;
+        }
+        else {
+          $response['expireduser']=true;
+        }
+
         $response['timestamp'] = $gmdateString;
         $response['hash'] = $responseHash;
       }
