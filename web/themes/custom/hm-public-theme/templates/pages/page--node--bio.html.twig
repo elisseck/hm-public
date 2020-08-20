@@ -288,9 +288,11 @@
             {% if node.field_sponsor.value %}
             <section class="col-sm-3 sponsor">
               <h2>Sponsored by {{ node.field_sponsor.value }}</h2>
-              <div>
-                <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="Profile picture">
-              </div>
+              {% if node.field_event_title_sponsor.entity.uri.value != 'public://300x300' %}
+                <div>
+                  <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="{{ node.field_sponsor.value|escape }}">
+                </div>
+              {% endif %}
             </section>
             {% endif %}
 
