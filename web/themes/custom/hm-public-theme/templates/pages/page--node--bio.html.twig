@@ -343,7 +343,7 @@
               <div>
                 <ul>
                   {% for key, value in node.field_dastories %}
-                    <li>{{ node.field_dastories[key].value | replace({'\\': ''}) }}</li>
+                    <li>{{ node.field_dastories[key].value | replace({'\\': ''}) | raw }}</li>
                   {% endfor %}
                 </ul>
               </div>
