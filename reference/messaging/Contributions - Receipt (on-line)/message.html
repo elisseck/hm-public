@@ -2,30 +2,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title></title>
+    <title>Contributions - Receipt (on-line)</title>
 </head>
-<body>
+<body style="line-height: 120%;">
 
 {capture assign=headerStyle}colspan="2" style="text-align: left; padding: 4px; border-bottom: 1px solid #999; background-color: #eee;"{/capture}
 {capture assign=labelStyle }style="padding: 4px; border-bottom: 1px solid #999; background-color: #f7f7f7;"{/capture}
 {capture assign=valueStyle }style="padding: 4px; border-bottom: 1px solid #999;"{/capture}
 
-<center>
-    <table id="crm-event_receipt" style="font-family: Arial, Verdana, sans-serif; text-align: left; width:100%; max-width:700px; padding:0; margin:0; border:0px;">
+<div style="width: 100%;">
+    <img src="https://www.thehistorymakers.org/themes/custom/hm-public-theme/static/images/thm_logo.jpg" alt="The HistoryMakers logo" style="margin: 10px auto; width: 80%;" >
+</div>
+
+<div>
+    <table id="crm-event_receipt" style="border-left: 1px solid #000; padding-left: 24px; padding-top: 20px;">
 
         <!-- BEGIN HEADER -->
         <!-- You can add table row(s) here with logo or other header elements -->
-        <tr>
-            <td>
-                <img src="https://www.thehistorymakers.org/themes/custom/hm-public-theme/static/images/thm_logo.jpg" style="width:100%; max-width:380px; margin-top:12px; margin-bottom:24px; border:0px;">
-            </td>
-        </tr>
+
         <!-- END HEADER -->
 
         <!-- BEGIN CONTENT -->
+        
         <tr>
             <td>
-                <p>Dear {contact.first_name} {contact.last_name},</p>
+                {$receive_date|crmDate}
+                <br>
+                <p>Dear {contact.first_name} {contact.last_name}:</p>
 
                 {if $receipt_text}
                 <p>{$receipt_text}</p>
@@ -42,17 +45,29 @@
 
                 <p>Below please find <strong>The HistoryMakers</strong> receipt.</p>
 
-                <p>We thank you once again. Thank you, {contact.first_name} {contact.last_name}!</p>
+                <p>We thank you once again.</p> 
+                <p>Thank you, {contact.first_name} {contact.last_name}!</p>
 
 
                 {if $is_pay_later}
                 <p>{$pay_later_receipt}</p> {* FIXME: this might be text rather than HTML *}
                 {/if}
 
+                <div>
+                    <p style="padding-top: 20px;">Sincerely,</p>
+
+                    <img src="https://www.thehistorymakers.org/themes/custom/hm-public-theme/static/images/signature-jlr.jpg" alt="Julieanna Richardson's signature" width="213" height="88" >
+
+                    <p style="margin-top: 0;">Julieanna Richardson<br>
+                    The HistoryMakers<br>
+                    Founder & President<br></p>
+                </div>
+
             </td>
         </tr>
     </table>
-    <table style="width:100%; max-width:500px; border: 1px solid #999; margin: 1em 0em 1em; border-collapse: collapse;">
+    <div style="border-left: 1px solid #000; padding-left: 24px; padding-top: 20px;">
+    <table style="border: 1px solid #999; margin: 1em 0em 1em; border-collapse: collapse; width:100%;">
 
         {if $amount}
 
@@ -485,7 +500,8 @@
         {/if}
 
     </table>
-</center>
+  </div>
+</div>
 
 </body>
 </html>
