@@ -153,6 +153,9 @@
         {% for item in content.field_alt_event_address|field_value %}
           <div class="event__info">
             {{ content.field_alt_event_address|field_value }}
+            {% if content.field_icalendar_file|field_value is not empty %}
+              <a href="{{ fields.field_icalendar_file.content|striptags|trim }}">Download ICS file</a>
+            {% endif %}
           </div>
         {% endfor %}
       {% endif %}
