@@ -154,8 +154,8 @@
           <div class="event__info">
             {{ content.field_alt_event_address|field_value }}
             {% if content.field_icalendar_file|field_value is not empty %}
-              <a href="{{ file_url(fields.field_icalendar_file.content) }}">
-                {{ file_url(fields.field_icalendar_file.content) }}
+              <a href="{{ content.field_icalendar_file['#url'] }}">
+                {{ content.field_icalendar_file['#url'] }}
               </a>
             {% endif %}
           </div>
