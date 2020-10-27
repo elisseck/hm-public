@@ -139,13 +139,15 @@
         {{ content.field_date|field_value }}
         {{ content.field_date_and_time_details|field_value }}
       </div>
-      {% if content.field_address|field_value is not empty %}
-      <div class="event__location">
-        <h2>Location</h2>
-        {{ content.field_address|field_value }}
-        {{ content.field_event_address|field_value }}
-        {# {{ content.field_event_map|field_value }} #}
-      </div>
+      {% if content.field_event_address|field_value is not empty %}
+        {% for item in content.field_event_address|field_value %}
+          <div class="event__location">
+            <h2>Location</h2>
+            {{ content.field_address|field_value }}
+            {{ content.field_event_address|field_value }}
+            {# {{ content.field_event_map|field_value }} #}
+          </div>
+        {% endfor %}
       {% endif %}
     </div>
   </div>
