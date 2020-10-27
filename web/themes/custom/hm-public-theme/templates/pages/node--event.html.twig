@@ -149,6 +149,13 @@
           </div>
         {% endfor %}
       {% endif %}
+      {% if content.field_alt_event_address|field_value is not empty %}
+        {% for item in content.field_alt_event_address|field_value %}
+          <div class="event__info">
+            {{ content.field_alt_event_address|field_value }}
+          </div>
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 
