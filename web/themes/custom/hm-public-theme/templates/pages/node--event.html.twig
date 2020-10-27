@@ -73,7 +73,7 @@
   <div class="row">
     <div class="col-sm-12 column">
       {{ content.banner }}
-  
+
       {# Carousel #}
       <div class="event-carousel two-column-snapshot-carousel carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -104,7 +104,7 @@
   <div class="row layout--1-2col-9-3 event__content">
     <div class="col-sm-12 col-md column first event__info">
       {{ content.left_9 }}
-      
+
       {# Video #}
       {% if content.field_post_event_video_url|field_value is not empty %}
         {{ drupal_block('hero_video_player_block', {video_url: content.field_post_event_video_url|field_value, hero_title: content.	field_post_event_video_title|field_value, hero_desc: 	content.field_post_event_video_descript|field_value}) }}
@@ -139,12 +139,14 @@
         {{ content.field_date|field_value }}
         {{ content.field_date_and_time_details|field_value }}
       </div>
+      {% if content.field_address|field_value is not empty %}
       <div class="event__location">
         <h2>Location</h2>
         {{ content.field_address|field_value }}
         {{ content.field_event_address|field_value }}
         {# {{ content.field_event_map|field_value }} #}
       </div>
+      {% endif %}
     </div>
   </div>
 
@@ -152,13 +154,13 @@
 
     {# Show Post Event Pictures #}
     <div class="row event__pictures">
-      <div class="col-sm-12 column px-4 my-4">  
+      <div class="col-sm-12 column px-4 my-4">
         <div class="collage event__collage">
           {{ content.field_post_event_pictures|field_value }}
-        </div>  
+        </div>
       </div>
-    </div>  
-  {% endif %}  
+    </div>
+  {% endif %}
 
 </div>{# <div class="contextual-region"> #}
 
