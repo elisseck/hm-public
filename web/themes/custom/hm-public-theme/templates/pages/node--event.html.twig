@@ -153,13 +153,13 @@
         {% for item in content.field_alt_event_address|field_value %}
           <div class="event__info">
             {{ content.field_alt_event_address|field_value }}
-            {% if content.field_icalendar_file|field_value is not empty %}
-              <a href="{{ file_url(content.field_icalendar_file|field_target_entity.uri.value) }}" download="">
-                {{ file_url(content.field_icalendar_file|field_target_entity.uri.value) }}
-              </a>
-            {% endif %}
           </div>
         {% endfor %}
+      {% endif %}
+      {% if content.field_icalendar_file|field_value is not empty %}
+        <a href="{{ file_url(content.field_icalendar_file|field_target_entity.uri.value) }}" download="">
+          Add to calendar
+        </a>
       {% endif %}
     </div>
   </div>
