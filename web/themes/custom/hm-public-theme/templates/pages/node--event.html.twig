@@ -156,6 +156,11 @@
           </div>
         {% endfor %}
       {% endif %}
+      {% if content.field_icalendar_file|field_value is not empty %}
+        <a class="button button--secondary" href="{{ file_url(content.field_icalendar_file|field_target_entity.uri.value) }}" download="">
+          Add to calendar
+        </a>
+      {% endif %}
     </div>
   </div>
 
