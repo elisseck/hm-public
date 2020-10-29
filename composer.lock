@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a33ce2c87cb7fff22a678b3dbe0e1e97",
+    "content-hash": "a43742ff3a05d80decee6b1b4d5fd9e7",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -526,16 +526,16 @@
         },
         {
             "name": "civicrm/civicrm-core",
-            "version": "5.28.1",
+            "version": "5.28.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-core.git",
-                "reference": "be989a7051c7620136c4e6dbdb128f55d3b2b5f9"
+                "reference": "d19587d82710aefaf5c824e60633bb68ece1ac03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/be989a7051c7620136c4e6dbdb128f55d3b2b5f9",
-                "reference": "be989a7051c7620136c4e6dbdb128f55d3b2b5f9",
+                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/d19587d82710aefaf5c824e60633bb68ece1ac03",
+                "reference": "d19587d82710aefaf5c824e60633bb68ece1ac03",
                 "shasum": ""
             },
             "require": {
@@ -933,7 +933,7 @@
                 }
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
-            "time": "2020-08-20T00:45:49+00:00"
+            "time": "2020-09-02T00:42:23+00:00"
         },
         {
             "name": "civicrm/civicrm-cxn-rpc",
@@ -974,16 +974,16 @@
         },
         {
             "name": "civicrm/civicrm-drupal-8",
-            "version": "5.26.2",
+            "version": "5.28.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-drupal-8.git",
-                "reference": "3c084fc6d6aedb3deabae2dadde63338dc526580"
+                "reference": "d3ae4f5efe35649640e114279e00d2ad92f9fe4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-drupal-8/zipball/3c084fc6d6aedb3deabae2dadde63338dc526580",
-                "reference": "3c084fc6d6aedb3deabae2dadde63338dc526580",
+                "url": "https://api.github.com/repos/civicrm/civicrm-drupal-8/zipball/d3ae4f5efe35649640e114279e00d2ad92f9fe4d",
+                "reference": "d3ae4f5efe35649640e114279e00d2ad92f9fe4d",
                 "shasum": ""
             },
             "require": {
@@ -1021,26 +1021,26 @@
                 }
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
-            "time": "2020-04-16T20:31:26+00:00"
+            "time": "2020-06-29T20:42:45+00:00"
         },
         {
             "name": "civicrm/civicrm-packages",
-            "version": "5.26.2",
+            "version": "5.28.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-packages.git",
-                "reference": "09a6c8df5051dd4e634a017abe17edadc9992f11"
+                "reference": "297fd86564f0bfebeb44a09f34dce95727ab8d46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-packages/zipball/09a6c8df5051dd4e634a017abe17edadc9992f11",
-                "reference": "09a6c8df5051dd4e634a017abe17edadc9992f11",
+                "url": "https://api.github.com/repos/civicrm/civicrm-packages/zipball/297fd86564f0bfebeb44a09f34dce95727ab8d46",
+                "reference": "297fd86564f0bfebeb44a09f34dce95727ab8d46",
                 "shasum": ""
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "description": "Legacy third party dependencies for CiviCRM",
-            "time": "2020-04-08T23:04:44+00:00"
+            "time": "2020-06-28T21:03:43+00:00"
         },
         {
             "name": "civicrm/composer-downloads-plugin",

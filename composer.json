@@ -34,9 +34,9 @@
     ],
     "require": {
         "civicrm/civicrm-asset-plugin": "~1.1",
-        "civicrm/civicrm-core": "5.28.1",
-        "civicrm/civicrm-drupal-8": "5.26.2",
-        "civicrm/civicrm-packages": "5.26.2",
+        "civicrm/civicrm-core": "~5.28.0",
+        "civicrm/civicrm-drupal-8": "~5.28.0",
+        "civicrm/civicrm-packages": "~5.28.0",
         "commerceguys/intl": "1.0.4",
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6",
