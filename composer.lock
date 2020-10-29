@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7cd01112a3f676dab2c9bfe66f995eb0",
+    "content-hash": "a33ce2c87cb7fff22a678b3dbe0e1e97",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -24,6 +24,11 @@
                 "dflydev/apache-mime-types": "^1.0"
             },
             "type": "library",
+            "extra": {
+                "patches_applied": {
+                    "Update gitignore to ensure that sites that manage via git don't miss out on the important db.json file": "https://patch-diff.githubusercontent.com/raw/adrienrn/php-mimetyper/pull/15.patch"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "MimeTyper\\": "src/"
@@ -490,14 +495,14 @@
         },
         {
             "name": "civicrm/civicrm-asset-plugin",
-            "version": "v1.0.1",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://lab.civicrm.org/dev/civicrm-asset-plugin/",
-                "reference": "e99a60966d0deda24a644f348376537af5b618e9"
+                "url": "https://lab.civicrm.org/dev/civicrm-asset-plugin.git",
+                "reference": "50f967f2bbafe828e1734e860f06b59729f47da6"
             },
             "require": {
-                "composer-plugin-api": "^1.1"
+                "composer-plugin-api": "^1.1 || ^2.0"
             },
             "require-dev": {
                 "symfony/process": "^2.7 || ^3.0 || ^4.0",
@@ -517,7 +522,7 @@
                 "BSD-2-Clause"
             ],
             "description": "Publish assets from private CiviCRM folders to a public folder",
-            "time": "2020-03-20T22:50:08+00:00"
+            "time": "2020-10-08T01:31:53+00:00"
         },
         {
             "name": "civicrm/civicrm-core",
@@ -3381,6 +3386,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Composer Plugin for updating the Drupal scaffold files when using drupal/core",
+            "abandoned": "drupal/core-composer-scaffold",
             "time": "2019-03-30T10:41:38+00:00"
         },
         {
@@ -3470,9 +3476,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.0-rc1",
                     "datestamp": "1582887433",
@@ -3556,7 +3559,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.x-dev",
-                    "datestamp": "1569586386",
+                    "datestamp": "1590300128",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -3613,9 +3616,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.9",
                     "datestamp": "1576963005",
@@ -3688,9 +3688,6 @@
             },
             "type": "metapackage",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.9",
                     "datestamp": "1576963005",
@@ -3918,9 +3915,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.0-rc1",
                     "datestamp": "1562791981",
@@ -3974,10 +3968,10 @@
             "name": "drupal/commerce_order",
             "version": "2.12.0",
             "require": {
-                "drupal/commerce": "self.version",
+                "drupal/commerce": "*",
                 "drupal/commerce_price": "*",
                 "drupal/commerce_store": "*",
-                "drupal/core": "*",
+                "drupal/core": "^8",
                 "drupal/entity_reference_revisions": "*",
                 "drupal/profile": "*",
                 "drupal/state_machine": "*"
@@ -4025,9 +4019,9 @@
             "name": "drupal/commerce_payment",
             "version": "2.12.0",
             "require": {
-                "drupal/commerce": "self.version",
+                "drupal/commerce": "*",
                 "drupal/commerce_order": "*",
-                "drupal/core": "*",
+                "drupal/core": "^8",
                 "drupal/entity_reference_revisions": "*"
             },
             "type": "metapackage",
@@ -4073,7 +4067,7 @@
             "name": "drupal/commerce_price",
             "version": "2.12.0",
             "require": {
-                "drupal/commerce": "self.version",
+                "drupal/commerce": "*",
                 "drupal/core": "~8.0"
             },
             "type": "metapackage",
@@ -4217,9 +4211,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.0-beta6",
                     "datestamp": "1567123981",
@@ -4268,9 +4259,9 @@
             "name": "drupal/commerce_store",
             "version": "2.12.0",
             "require": {
-                "drupal/commerce": "self.version",
+                "drupal/commerce": "*",
                 "drupal/commerce_price": "*",
-                "drupal/core": "*"
+                "drupal/core": "^8"
             },
             "type": "metapackage",
             "extra": {
@@ -4870,9 +4861,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.0-beta1",
                     "datestamp": "1568995088",
@@ -5145,9 +5133,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.2",
                     "datestamp": "1498923542",
@@ -5162,6 +5147,10 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "JayKandari",
+                    "homepage": "https://www.drupal.org/user/2876519"
+                },
                 {
                     "name": "manojapare",
                     "homepage": "https://www.drupal.org/user/2825053"
@@ -5263,9 +5252,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.8",
                     "datestamp": "1583961846",
@@ -5382,9 +5368,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-4.x": "4.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-4.0-beta1",
                     "datestamp": "1572442085",
@@ -5461,9 +5444,6 @@
             },
             "type": "drupal-theme",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.5",
                     "datestamp": "1499336042",
@@ -5544,7 +5524,7 @@
                 "shasum": "a401d5c576a8c4886e84272f2ca2a3c524c46869"
             },
             "require": {
-                "drupal/core": "*"
+                "drupal/core": "^8"
             },
             "type": "drupal-module",
             "extra": {
@@ -5600,9 +5580,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.4",
                     "datestamp": "1548968580",
@@ -5624,6 +5601,22 @@
                 {
                     "name": "See other contributors",
                     "homepage": "https://www.drupal.org/node/49388/committers"
+                },
+                {
+                    "name": "ixismark",
+                    "homepage": "https://www.drupal.org/user/3632333"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "pfaocle",
+                    "homepage": "https://www.drupal.org/user/9740"
+                },
+                {
+                    "name": "roberto.rivera.ixis",
+                    "homepage": "https://www.drupal.org/user/3632325"
                 }
             ],
             "description": "Allows your site to be tracked by Google Analytics by adding a Javascript tracking code to every page.",
@@ -5796,9 +5789,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.4",
                     "datestamp": "1582149957",
@@ -5880,9 +5870,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.2",
                     "datestamp": "1582150027",
@@ -5937,9 +5924,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.2",
                     "datestamp": "1582150071",
@@ -6269,7 +6253,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-1.13",
-                    "datestamp": "1587478404",
+                    "datestamp": "1587550202",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6322,9 +6306,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.5",
                     "datestamp": "1508906348",
@@ -6463,16 +6444,12 @@
             ],
             "authors": [
                 {
-                    "name": "heddn",
-                    "homepage": "https://www.drupal.org/user/1463982"
+                    "name": "drupalspoons",
+                    "homepage": "https://www.drupal.org/user/3647684"
                 },
                 {
                     "name": "mikeryan",
                     "homepage": "https://www.drupal.org/user/4420"
-                },
-                {
-                    "name": "moshe weitzman",
-                    "homepage": "https://www.drupal.org/user/23"
                 }
             ],
             "description": "Tools to assist in developing and running migrations.",
@@ -6511,7 +6488,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-3.2",
-                    "datestamp": "1588260035",
+                    "datestamp": "1588260599",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6537,22 +6514,6 @@
                     "name": "Lucas Hedding",
                     "homepage": "https://www.drupal.org/u/heddn",
                     "role": "Maintainer"
-                },
-                {
-                    "name": "ksenzee",
-                    "homepage": "https://www.drupal.org/user/139855"
-                },
-                {
-                    "name": "mikeryan",
-                    "homepage": "https://www.drupal.org/user/4420"
-                },
-                {
-                    "name": "ultimike",
-                    "homepage": "https://www.drupal.org/user/51132"
-                },
-                {
-                    "name": "xjm",
-                    "homepage": "https://www.drupal.org/user/65776"
                 }
             ],
             "description": "Drush support for direct upgrades from older Drupal versions.",
@@ -6652,10 +6613,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-4.x": "4.x-dev",
-                    "dev-8.x-4.x": "4.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-4.6",
                     "datestamp": "1585870866",
@@ -6663,6 +6620,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "branch-alias": {
+                    "dev-8.x-4.x": "4.x-dev"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -6757,7 +6717,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-1.12",
-                    "datestamp": "1590066861",
+                    "datestamp": "1590140081",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7015,9 +6975,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.0",
                     "datestamp": "1541706447",
@@ -7267,7 +7224,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-1.5",
-                    "datestamp": "1590238566",
+                    "datestamp": "1592392104",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7331,9 +7288,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.0-beta3",
                     "datestamp": "1509488285",
@@ -7383,9 +7337,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.0",
                     "datestamp": "1582902575",
@@ -7541,7 +7492,7 @@
                 "shasum": "c7e3a3757282e4c94e3c1fff08d01e22155cb853"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9"
+                "drupal/core": "^8.7.7 || ^9"
             },
             "type": "drupal-module",
             "extra": {
@@ -7752,7 +7703,7 @@
                 "shasum": "ba49a11ce7273c0f1e6978484dd4263b03372934"
             },
             "require": {
-                "drupal/core": "*",
+                "drupal/core": "^8",
                 "drupal/csv_serialization": "~1.4 || ~2.0"
             },
             "require-dev": {
@@ -7821,7 +7772,7 @@
                 "shasum": "d9b778bc13784d2fd6a651d7deb471791af6ba5e"
             },
             "require": {
-                "drupal/core": "*"
+                "drupal/core": "^8"
             },
             "require-dev": {
                 "drupal/address": "~1.4",
@@ -7926,9 +7877,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.1",
                     "datestamp": "1547087580",
@@ -7943,6 +7891,10 @@
                 "GPL-2.0+"
             ],
             "authors": [
+                {
+                    "name": "andriyun",
+                    "homepage": "https://www.drupal.org/user/1277538"
+                },
                 {
                     "name": "heshanlk",
                     "homepage": "https://www.drupal.org/user/199102"
@@ -7970,8 +7922,8 @@
             "name": "drupal/webform_node",
             "version": "5.0.0-rc21",
             "require": {
-                "drupal/core": "*",
-                "drupal/webform": "self.version"
+                "drupal/core": "^8",
+                "drupal/webform": "*"
             },
             "type": "metapackage",
             "extra": {
@@ -8051,14 +8003,11 @@
                 "shasum": "6c9bb51735a106729dcfa08372e987ebf95d38f2"
             },
             "require": {
-                "drupal/core": "*",
+                "drupal/core": "^8",
                 "drupal/webform": "*"
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-5.x": "5.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-5.0-alpha7",
                     "datestamp": "1557288185",
@@ -8073,6 +8022,10 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "acbramley",
+                    "homepage": "https://www.drupal.org/user/1036766"
+                },
                 {
                     "name": "bucefal91",
                     "homepage": "https://www.drupal.org/user/504128"
@@ -8115,9 +8068,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.0-beta2",
                     "datestamp": "1584974732",
@@ -8455,6 +8405,11 @@
                 "shasum": ""
             },
             "type": "library",
+            "extra": {
+                "patches_applied": {
+                    "PHP7.4 Fix for array access using {} instead of []": "https://raw.githubusercontent.com/civicrm/civicrm-core/fe45bdfc4f3e3d3deb27e3d853cdbc7f616620a9/tools/scripts/composer/patches/php74_array_access_fix_phpquery.patch"
+                }
+            },
             "autoload": {
                 "classmap": [
                     "phpQuery/"
@@ -10023,12 +9978,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/Validate_Finance_CreditCard.git",
-                "reference": "a74da657d7a6f24b7e669294b32812e9a947519f"
+                "reference": "86a9927898fd0d48b676022bb0646bc76e9eb6b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/Validate_Finance_CreditCard/zipball/a74da657d7a6f24b7e669294b32812e9a947519f",
-                "reference": "a74da657d7a6f24b7e669294b32812e9a947519f",
+                "url": "https://api.github.com/repos/pear/Validate_Finance_CreditCard/zipball/86a9927898fd0d48b676022bb0646bc76e9eb6b2",
+                "reference": "86a9927898fd0d48b676022bb0646bc76e9eb6b2",
                 "shasum": ""
             },
             "require": {
@@ -10059,7 +10014,7 @@
                 }
             ],
             "description": "Validation class for credit cards.",
-            "time": "2016-09-12T08:01:21+00:00"
+            "time": "2020-08-08T21:58:31+00:00"
         },
         {
             "name": "phenx/php-font-lib",

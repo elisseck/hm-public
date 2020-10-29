@@ -33,7 +33,7 @@
         }
     ],
     "require": {
-        "civicrm/civicrm-asset-plugin": "~1.0",
+        "civicrm/civicrm-asset-plugin": "~1.1",
         "civicrm/civicrm-core": "5.28.1",
         "civicrm/civicrm-drupal-8": "5.26.2",
         "civicrm/civicrm-packages": "5.26.2",
