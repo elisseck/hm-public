@@ -330,25 +330,46 @@
           {%  endif %}
           {#  List of DA Stories #}
           {% if node.field_dastories|length > 0 %}
-          <div class="accordion bio-detail__accordion">
-            <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#storyList" aria-expanded="false" aria-controls="storyList">
-              List of Stories in The HistoryMakers Digital Archive
-              <span class="accordion__arrow">
-                  <span class="accordion__arrow-half"></span>
-                  <span class="accordion__arrow-half"></span>
-              </span>
-            </button>
 
-            <div class="collapse accordion__body" id="storyList">
-              <div>
-                <ul>
-                  {% for key, value in node.field_dastories %}
-                    <li>{{ node.field_dastories[key].value | replace({'\\': ''}) | raw }}</li>
+            <div class="accordion bio-detail__accordion">
+              <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#storyList" aria-expanded="false" aria-controls="storyList">
+                List of Stories in The HistoryMakers Digital Archive
+                <span class="accordion__arrow">
+                    <span class="accordion__arrow-half"></span>
+                    <span class="accordion__arrow-half"></span>
+                </span>
+              </button>
+
+              <div class="collapse accordion__body" id="storyList">
+                {#  Create array of arrays of DA Links #}
+                {% set tapes = {} %}
+                {% for key, value in node.field_dastories %}
+                  {% set string1=node.field_dastories[key].value|split('e: ') %}
+                  {% set string2=string1[1]|split(' ') %}
+                  {% set field_name = "Tape "~string2[0] %}
+                  {% if not attribute(tapes, field_name) is defined %}
+                    {% set tapes = tapes|merge({ (field_name) : [node.field_dastories[key].value] }) %}
+                  {# else update the dynamic property with the new title #}
+                  {% else %}
+                    {% set new_tape = attribute(tapes, field_name) %}
+                    {% set new_tape = new_tape|merge([node.field_dastories[key].value]) %}
+                    {% set tapes = tapes|merge({ (field_name) : new_tape }) %}
+                  {% endif %}
+                {% endfor %}
+                {# dump(tapes) #}
+                {% for key,value in tapes %}
+                  <div>
+                  <h3>{{ key }}</h3>
+                  <ul>
+                  {% for key1,value1 in value %}
+                    {% set da_link=value1|split('-') %}
+                    <li>{{ da_link[1] | replace({'\\': ''}) | raw }}</li>
                   {% endfor %}
-                </ul>
+                  </ul>
+                  </div>
+                {% endfor %}
               </div>
             </div>
-          </div>
           {% endif %}
           {#  End List of DA Stories #}
 
