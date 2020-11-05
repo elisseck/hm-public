@@ -4876,9 +4876,10 @@ header div.search-form div.block-views h2 {
     display: -ms-flexbox;
     display: flex;
     font-size: 3.3125rem;
-    height: 1.88679em;
+    height: auto;
     margin: 0 auto;
-    max-width: 1440px; }
+    max-width: 1440px;
+    padding: 15px;}
 
 .page-title {
   -webkit-box-align: center;
@@ -4893,9 +4894,10 @@ header div.search-form div.block-views h2 {
   display: -ms-flexbox;
   display: flex;
   font-size: 3.3125rem;
-  height: 1.88679em;
+  height: auto;
   margin: 0 auto;
-  max-width: 1440px; }
+  max-width: 1440px;
+  padding: 15px;}
 
 .feature-carousel.carousel.slide {
   background: #682052;
