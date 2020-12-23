@@ -190,25 +190,34 @@ form#Main div#on-behalf-block legend {
   line-height: 120%;
 }
 
-form#Main h4 {
-  color: #2e2d6f;
-}
+form#Main {
+  h4 {
+    color: #2e2d6f;
+  }
 
-form#Main h5 {
-  color: #941A1D;
+  h5 {
+    color: #941A1D;
+  }
+  .crm-public-form-item.crm-group.honor_block-group legend {
+    border-top: 1px solid #ccc;
+    color: #2e2d6f;
+    padding-top: 15px;
+    width: 100%;
+  }
+
+  form#Main label,
+  form#Main .crm-public-form-item.crm-group.honor_block-group .crm-public-form-item.crm-section.honor_block_text-section {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
 }
 
 div#priceset-div:before,
 form#Main div#on-behalf-block legend {
   color: #2e2d6f;
   content: 'Donate';
-}
-
-form#Main .crm-public-form-item.crm-group.honor_block-group legend {
-  border-top: 1px solid #ccc;
-  color: #2e2d6f;
-  padding-top: 15px;
-  width: 100%;
 }
 
 div#payment_information legend {
@@ -218,12 +227,7 @@ div#payment_information legend {
   width: 100%;
 }
 
-form#Main label,
-form#Main .crm-public-form-item.crm-group.honor_block-group .crm-public-form-item.crm-section.honor_block_text-section {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-}
+
 
 form#Main p {
   font-family: 'Source Sans Pro', sans-serif;
