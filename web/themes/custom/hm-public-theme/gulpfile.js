@@ -54,7 +54,7 @@ gulp.task('sass-compile', ['sass-lint'], function () {
   .pipe($.postcss(pcProcess))
   .pipe($.sourcemaps.write())
   .pipe(gulp.dest('static/css'))
-  .pipe(browserSync.reload({stream:true}))
+  .pipe(browserSync.reload({stream:true}));
 });
 
 /**
