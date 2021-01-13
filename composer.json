@@ -89,6 +89,7 @@
         "drupal/twig_xdebug": "^1.0",
         "drupal/views_data_export": "^1.0",
         "drupal/webform": "5.0.0-rc21",
+        "drupal/webform_civicrm": "^5.0",
         "drupal/webform_migrate": "^1.1",
         "drupal/webform_views": "^5.0",
         "drupal/xhprof": "^1.0",
