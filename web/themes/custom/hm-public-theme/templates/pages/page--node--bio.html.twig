@@ -284,7 +284,10 @@
 
             {# Body #}
             <section class="col-sm bio-detail__main-content">
-              <h2>Biography</h2>
+              <div class="bio-detail__header">
+                <h2>Biography</h2>
+                <a class="button button--primary" href="/civicrm/contribute/transact?reset=1&amp;id=3&amp;click_source=bio_top">Donate Now</a>
+              </div>
               {% autoescape %}
                 <p>{{ node.body.value|raw|nl2br }}</p>
               {% endautoescape %}
@@ -293,12 +296,6 @@
             {# Sponsored by #}
             {% if node.field_sponsor.value %}
             <section class="col-sm-3 sponsor">
-            
-              {# Donate Button 2 #}
-              <section class="discover desktop-only">
-                <a class="button button--primary" href="/civicrm/contribute/transact?reset=1&id=3&click_source=bio_top">Donate Now</a>
-              </section>
-              
               <h2>Sponsored by {{ node.field_sponsor.value }}</h2>
               {% if node.field_event_title_sponsor.entity.uri.value != 'public://300x300' %}
                 <div>
