@@ -5432,6 +5432,11 @@ article .form-item.form-item-.form-type-item.form-no-label {
 .node--type-bio .bio-detail__main-content {
   padding-bottom: 30px; }
 
+.node--type-bio .bio-detail__header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .node--type-bio .info {
   background-color: #FFFFFF;
   border: 1px solid #cccccc;
