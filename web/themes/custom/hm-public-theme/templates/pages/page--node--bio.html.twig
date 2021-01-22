@@ -273,7 +273,7 @@
           </section>
           
           {# Donate Button 1 #}
-          <section class="discover">
+          <section class="discover desktop-only">
             <a class="button button--quaternary" href="/civicrm/contribute/transact?reset=1&id=3&click_source=bio_left">Donate Now</a>
           </section>
           
@@ -311,6 +311,11 @@
           <section class="discover mobile-only-details">
             {#{{ page.content.relatedmakersblock }}#}
             <a class="button button--primary" href="/related-to/{{ node.id }}">See how {{ node.title.value }} is related to other HistoryMakers</a>
+          </section>
+          
+          {# Mobile Donate Button 1 #}
+          <section class="discover mobile-only-details">
+            <a class="button button--quaternary" href="/civicrm/contribute/transact?reset=1&id=3&click_source=bio_left">Donate Now</a>
           </section>
 
           {# Video Selections #}
