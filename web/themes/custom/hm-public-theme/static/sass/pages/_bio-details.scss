@@ -473,5 +473,21 @@
 //Donation 2 button styles
 .bio-detail__header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  
+  @media screen and (max-width: 600px) {
+    flex-direction: column; 
+    
+    h2 {
+      order: 2;
+    }
+    
+    a.button.button--primary {
+      margin-bottom: 15px;
+      order: 1;
+      text-align: center;
+      width: 100%;
+    }
+  }
 }
