@@ -8618,7 +8618,7 @@ form#Main div#s2id_billing_state_province_id-5 {
     .block-commerce-checkout, #commerce-checkout-flow-thm-donation-checkout-flow, .checkout-pane.checkout-pane-login, .layout-checkout-form, #edit-none, #webform-submission-contact-add-form,
     #webform-submission-contact-page-variant-contact-us-panels-variant-0-add-form, .form-item-referred,
     .webform-confirmation, .user-login-form, .webform-submission-form.webform-submission-add-form.webform-submission-basicmaker-membership-flow-form.webform-submission-basicmaker-membership-flow-add-form,
-    #commerce-checkout-flow-thm-digitalmaker-checkout-flow, #pagetitle h1, .page-title, .wrapper .basic-block,
+    #commerce-checkout-flow-thm-digitalmaker-checkout-flow, .page-title, .wrapper .basic-block,
     .basic-block, article .form-item.form-item-.form-type-item.form-no-label, .how-it-works, .node--type-bio .container, .node--type-bio .page-title, .view.list-events .pager, .view.list-events .view-content, .media-landing-image--button .row, .view.list-special-collections .pager, .special-collections--content .special-collections--descript,
     .special-collections--content .event__pictures,
     .special-collections--content .paragraph.paragraph--type--basic-block-content,
@@ -8626,6 +8626,7 @@ form#Main div#s2id_billing_state_province_id-5 {
     .special-collections--content .paragraph.paragraph--type--two-column-basic-content,
     .special-collections--content .resource--block, .my-account, .related-makers, .maker-category--content, .list-commerce-products, .my-cart--button, .list-advanced-search, .block-facets, #facetcontainerblock, .press__year-navigation, .view.list-press-cards, .list-matching-favorites, .list-global-search{
     padding: 0 15px; }
+  #pagetitle h1 {padding-bottom: 12px; padding-top: 8px;}
   .two-column-slide--content h2, .testimonial-carousel h2, .two-column-testimonial--header, .intro-content h1, .content h2, .my-account .my-account__content .block h2{
     font-size: 1.875em; }
   .two-column-slide--content p, .intro-content p{
