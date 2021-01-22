@@ -5434,7 +5434,25 @@ article .form-item.form-item-.form-type-item.form-no-label {
 
 .node--type-bio .bio-detail__header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+  .node--type-bio .bio-detail__header {
+    flex-direction: column; 
+  }
+
+  .node--type-bio .bio-detail__header h2 {
+    order: 2;
+  }
+
+  .node--type-bio .bio-detail__header a.button.button--primary {
+    margin-bottom: 15px;
+    order: 1;
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .node--type-bio .info {
