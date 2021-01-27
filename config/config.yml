@@ -283,6 +283,8 @@ composer_path: /usr/bin/composer
 composer_home_path: "/home/{{ drupalvm_user }}/.composer"
 composer_home_owner: "{{ drupalvm_user }}"
 composer_home_group: "{{ drupalvm_user }}"
+composer_version_branch: ''
+composer_version: '1.10.12'
 composer_global_packages:
   - { name: hirak/prestissimo, release: '^0.3' }
 
