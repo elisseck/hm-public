@@ -69,7 +69,7 @@ class LiblynxLeapController extends ControllerBase {
 
       // get roles
       $is_thm_paid_member=array_search('thm_paid_member',$roles);
-      if ($is_thm_paid_member || TRUE) {
+      if ($is_thm_paid_member) {
         $returnRoles[]='SMDA';
         $returnRoles[]='THMDA';
       }
