@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ed62cee3ce411dd42df0588fed2aa12",
+    "content-hash": "cc716b2af487130b7c975f223fd03aac",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -498,8 +498,14 @@
             "version": "v1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://lab.civicrm.org/dev/civicrm-asset-plugin.git",
+                "url": "https://github.com/civicrm/civicrm-asset-plugin.git",
                 "reference": "50f967f2bbafe828e1734e860f06b59729f47da6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/civicrm/civicrm-asset-plugin/zipball/50f967f2bbafe828e1734e860f06b59729f47da6",
+                "reference": "50f967f2bbafe828e1734e860f06b59729f47da6",
+                "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.1 || ^2.0"
@@ -3284,6 +3290,7 @@
                 "reflection",
                 "static"
             ],
+            "abandoned": "roave/better-reflection",
             "time": "2020-03-27T11:06:43+00:00"
         },
         {
@@ -7862,6 +7869,65 @@
                 "issues": "https://www.drupal.org/project/issues/webform?version=8.x",
                 "docs": "https://www.drupal.org/docs/8/modules/webform",
                 "forum": "https://drupal.stackexchange.com/questions/tagged/webform"
+            }
+        },
+        {
+            "name": "drupal/webform_civicrm",
+            "version": "5.0.0-beta4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/webform_civicrm.git",
+                "reference": "8.x-5.0-beta4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform_civicrm-8.x-5.0-beta4.zip",
+                "reference": "8.x-5.0-beta4",
+                "shasum": "45294d434cae828644c0bc00bd169acac92b0282"
+            },
+            "require": {
+                "civicrm/civicrm-drupal-8": "~5.0",
+                "drupal/core": "^8.7.7 || ^9",
+                "drupal/webform": "^5.0 || ^6.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-5.0-beta4",
+                    "datestamp": "1608826246",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "KarinG",
+                    "homepage": "https://www.drupal.org/user/787114"
+                },
+                {
+                    "name": "colemanw",
+                    "homepage": "https://www.drupal.org/user/639856"
+                },
+                {
+                    "name": "jitendrapurohit",
+                    "homepage": "https://www.drupal.org/user/2810707"
+                }
+            ],
+            "description": "CiviCRM and Webform integration",
+            "homepage": "https://www.drupal.org/project/webform_civicrm",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/webform_civicrm",
+                "error": "Invalid dependency: \"civicrm\" is an unknown drupal 8 package name",
+                "issues": "https://www.drupal.org/project/issues/webform_civicrm"
             }
         },
         {
@@ -13901,12 +13967,12 @@
             "version": "1.9.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "9dc4f203e36f2b486149058bade43c851dd97451"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/9dc4f203e36f2b486149058bade43c851dd97451",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/9dc4f203e36f2b486149058bade43c851dd97451",
                 "reference": "9dc4f203e36f2b486149058bade43c851dd97451",
                 "shasum": ""
             },
