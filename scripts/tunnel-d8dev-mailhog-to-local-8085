@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh -L 8025:localhost:8025 devuser@d8dev.thehistorymakers.org
