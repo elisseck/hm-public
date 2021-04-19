@@ -16,7 +16,6 @@ append :linked_dirs, 'vendor/civicrm/civicrm-core/packages'
 
 before 'deploy:starting', 'drupal:site_offline'
 after 'deploy:finished', 'drupal:site_online'
-after "deploy:update", "deploy:cleanup"
 
 SSHKit.config.command_map[:composer] = "php #{shared_path.join("composer.phar")}"
 
