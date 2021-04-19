@@ -183,6 +183,11 @@
                 "Fixes invalid render array key":"https://www.drupal.org/files/issues/l10n_client-hook_toolbar-fix-2872668-3.patch"
             }
 
-        }
+        },
+        "compile-whitelist": [
+            "civicrm/composer-compile-lib",
+            "civicrm/civicrm-core"
+        ]
+
     }
 }
