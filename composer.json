@@ -52,7 +52,7 @@
         "drupal/commerce_recurring": "^1.0",
         "drupal/commerce_shipping": "^2.0",
         "drupal/commerce_store": "2.12",
-        "drupal/config_update": "^1.5",
+        "drupal/config_update": "^1.7",
         "drupal/console": "^1.0.1",
         "drupal/core": "^8.9.13",
         "drupal/csv_serialization": "^2.0",
