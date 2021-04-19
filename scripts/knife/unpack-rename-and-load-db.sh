@@ -10,26 +10,29 @@
 # export REMOTE_DB_SCHEMA="drupal"
 # export LOCAL_DB_SCHEMA="thm_livedev"
 
-# export THM_WORKING_DIRECTORY="/var/www/drupalvm/_backports/db/production"
-# export THM_ZIPPED_FILE="thm_livedev_backup.20190929_230120.sql.gz"
-# export THM_SQL_FILE="thm_livedev_backup.20190929_230120.sql"
-# export REMOTE_DB_SCHEMA="thm_livedev"
-# export LOCAL_DB_SCHEMA="drupal"
+export THM_WORKING_DIRECTORY="/var/www/drupalvm/_backports/db/production"
+export THM_ZIPPED_FILE="thm_livedev_backup.20200315_125649.sql.gz"
+export THM_SQL_FILE="thm_livedev_backup.20200315_125649.sql"
+export THM_LATEST_SQL_FILE="thm_livedev_backup.latest.sql"
+export REMOTE_DB_SCHEMA="thm_livedev"
+export LOCAL_DB_SCHEMA="drupal"
 
-echo "unzipping database"
+echo "unzipping database and normalize its filename"
 gunzip -f ${THM_WORKING_DIRECTORY}/${THM_ZIPPED_FILE}
+mv ${THM_WORKING_DIRECTORY}/${THM_SQL_FILE} ${THM_WORKING_DIRECTORY}/${THM_LATEST_SQL_FILE}
 
 echo "replacing schema names in sql file"
-sed -i "s/${REMOTE_DB_SCHEMA}/${LOCAL_DB_SCHEMA}/g" ${THM_WORKING_DIRECTORY}/${THM_SQL_FILE}
+sed -i "s/${REMOTE_DB_SCHEMA}/${LOCAL_DB_SCHEMA}/g" ${THM_WORKING_DIRECTORY}/${THM_LATEST_SQL_FILE}
 # sed -i "s/thm_livedev/drupal/g" /var/www/drupalvm/_backports/db/production/thm_livedev_backup.20190925_222025.sql
 
-
 echo "loading database into mysql"
-mysql < ${THM_WORKING_DIRECTORY}/${THM_SQL_FILE}
+mysql < ${THM_WORKING_DIRECTORY}/${THM_LATEST_SQL_FILE}
 
 # on vagrant
-# sudo su
-# mysql < /var/www/drupalvm/_backports/db/production/thm_livedev_backup.20190923_210411.sql
+sudo su
+export THM_WORKING_DIRECTORY="/var/www/drupalvm/_backports/db/production"
+export THM_LATEST_SQL_FILE="thm_livedev_backup.latest.sql"
+mysql < ${THM_WORKING_DIRECTORY}/${THM_LATEST_SQL_FILE}
 
 # echo "removing sql file"
 # rm ${THM_WORKING_DIRECTORY}/${THM_SQL_FILE}

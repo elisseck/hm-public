@@ -180,7 +180,10 @@ class BioXMLMigrationImporter {
   protected function populateSingleValueFields($record) {
     foreach ($this->singleValueFields as $field => $value) {
 
-      if (strlen(trim($record->$value)) && !empty($record->$value)) {
+      if (substr(strtolower($field),0,15)=='field_favorite_') {
+        $this->node->set($field, stripslashes(trim($record->$value)));
+      }
+      elseif (strlen(trim($record->$value)) && !empty($record->$value)) {
         $truncateMig = Unicode::truncate(
           $record->$value, 240, true, true,
           1
@@ -205,16 +208,14 @@ class BioXMLMigrationImporter {
   protected function populateMultiValueFields($record) {
     foreach ($this->multiValueFields as $field => $value) {
       if (strlen(trim($record->$value)) && !empty($record->$value)) {
-        $dollarValues = BioXMLMigrationHelpers::migrateThmExplode(
-          '$', stripslashes($record->$value));
+        $dollarValues = BioXMLMigrationHelpers::migrateThmExplode('$', stripslashes($record->$value));
 
-        if (in_array($field, ['field_dastories', 'field_datitle']) && $this->node->$field->count() > 0) {
+        if (in_array($field, ['field_dastories', 'field_datitle', 'field_interview_date']) && $this->node->$field->count() > 0) {
           $this->clearMultiValueField($field);
         }
 
         foreach ($dollarValues as $val) {
           $valuesInField = $this->node->$field->getValue();
-
           if (!in_array($val, array_column($valuesInField, 'value'))) {
             $this->node->$field->appendItem($val);
           }
@@ -250,23 +251,33 @@ class BioXMLMigrationImporter {
     return $this;
   }
 
-  protected function populatePdfFields($record) {
+protected function populatePdfFields($record) {
     $fieldName = 'field_bio_pdf';
+    $newImages=[];
 
     foreach($this->pdfFields as $field => $value) {
-
-      $imageField = BioXMLMigrationHelpers::attachImage(
-        $this->db, $this->config, stripslashes($record->$value));
-
+      $imageField = BioXMLMigrationHelpers::attachImage($this->db, $this->config, stripslashes($record->$value));
       if (($imageField) && !empty($imageField->getSize())) {
-        $this->node->$fieldName->appendItem($imageField);
+        $newImages[]=$imageField;
       } else {
         drupal_set_message('no pdf found: ' . $record->$value);
       }
     }
 
+    $bound=count($this->node->$fieldName);
+
+    // Remove existing items
+    for ($i = 0; $i < $bound; $i++) {
+      $this->node->$fieldName->removeItem(0);
+    }
+
+    foreach($newImages as $imageField) {
+      $this->node->$fieldName->appendItem($imageField);
+    }
+
     return $this;
   }
+
 
   protected function clearTaxonomyFieldInNode($field) {
     if (in_array($field, ['field_maker_category']) && $this->node->$field->count() > 0) {
@@ -385,7 +396,7 @@ class BioXMLMigrationImporter {
   protected function removeDuplicates($title) {
     // TODO: Refactor this statement. Currently assumes there will be one duplicate.
     $stmt = <<<SQL
-SELECT 
+SELECT
   MIN(nid) AS old_nid,
   COUNT(title) AS nid_count
 FROM {node_field_data}

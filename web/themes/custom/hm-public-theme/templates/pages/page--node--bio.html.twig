@@ -73,9 +73,23 @@
               </div>
               {{ field_bio_image }}
 
-              {# Profession #}
               <div class="desktop-only">
-                <section>  
+
+                {# Interview Date(s) #}
+                {% if node.field_interview_date[0].value %}
+                  <section>
+                    <h3 class="info__profession">Interview Date{% if node.field_interview_date|length > 1 %}s{% endif %}</h3>
+                    <dd>
+                    {% for key, value in node.field_interview_date|reverse(true) %}
+                      {{ node.field_interview_date[key].value|date("F j, Y") }}<br />
+                    {% endfor %}
+                    </dd>
+                  </section>
+                {% endif %}
+                {# End Interview Date(s) #}
+
+                {# Profession #}
+                <section>
                   <h3 class="info__profession">Profession</h3>
                   <dl>
                     <dt>Category:</dt>
@@ -93,7 +107,7 @@
                     </dd>
 
                   </dl>
-                </section>  
+                </section>
                 {# End Profession #}
 
                 {# Favorites #}
@@ -145,10 +159,11 @@
                 </section>
                 {% endif %}
                 {# End Birthplace #}
+
               </div>{# <div class="desktop-only"> #}
             </div>{# <div class="info"> #}
-          </section>  
-          
+          </section>
+
 
           {# Mobile only #}
           <div class="accordion mobile-only-details">
@@ -162,7 +177,22 @@
 
             <div class="accordion__body collapse show" id="aboutInfo">
               <div class="card-block info">
-                <section>  
+
+                  {# Begin Interview Date(s) #}
+                  {% if node.field_interview_date[0].value %}
+                    <section>
+                      <h3 class="info__profession">Interview Date{% if node.field_interview_date|length > 1 %}s{% endif %}</h3>
+                      <dd>
+                      {% for key, value in node.field_interview_date|reverse(true) %}
+                        {{ node.field_interview_date[key].value|date("F j, Y") }}<br />
+                      {% endfor %}
+                      </dd>
+                    </section>
+                  {% endif %}
+                  {# End Interview Date(s) #}
+
+                  {# Begin Profession #}
+                  <section>
                   <h3 class="info__profession">Profession</h3>
                   <dl>
                     <dt>Category:</dt>
@@ -180,7 +210,7 @@
                     </dd>
 
                   </dl>
-                </section>  
+                </section>
                 {# End Profession #}
 
                 {# Favorites #}
@@ -234,7 +264,7 @@
                 {# End Birthplace #}
               </div>
             </div>
-          </div>            
+          </div>
 
           {# Related Makers #}
           <section class="discover desktop-only">
@@ -258,9 +288,11 @@
             {% if node.field_sponsor.value %}
             <section class="col-sm-3 sponsor">
               <h2>Sponsored by {{ node.field_sponsor.value }}</h2>
-              <div>
-                <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="Profile picture">
-              </div>
+              {% if node.field_event_title_sponsor.entity.uri.value != 'public://300x300' %}
+                <div>
+                  <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="{{ node.field_sponsor.value|escape }}">
+                </div>
+              {% endif %}
             </section>
             {% endif %}
 
@@ -311,7 +343,7 @@
               <div>
                 <ul>
                   {% for key, value in node.field_dastories %}
-                    <li>{{ node.field_dastories[key].value | replace({'\\': ''}) }}</li>
+                    <li>{{ node.field_dastories[key].value | replace({'\\': ''}) | raw }}</li>
                   {% endfor %}
                 </ul>
               </div>
@@ -336,7 +368,7 @@
               <div>
                 <ul>
                   {% for key, value in node.field_bio_pdf %}
-                    <li><a href="{{file_url(node.field_bio_pdf[key].entity.uri.value)}}">{{ node.field_bio_pdf[key].entity.filename.value }}</a></li>
+                    <li><a href="{{file_url(node.field_bio_pdf[key].entity.uri.value)}}" target="_blank">{{ node.field_bio_pdf[key].entity.filename.value }}</a></li>
                   {% endfor %}
                 </ul>
               </div>

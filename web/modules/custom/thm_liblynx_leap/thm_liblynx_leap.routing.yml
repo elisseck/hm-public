@@ -1,0 +1,13 @@
+thm_liblynx_leap.get:
+  path: 'liblynx-leap'
+  defaults: { _controller: '\Drupal\thm_liblynx_leap\Controller\LiblynxLeapController::get' }
+  methods:  [GET]
+  requirements:
+    _access: 'TRUE'
+
+thm_liblynx_leap.post:
+  path: 'liblynx-leap'
+  defaults: { _controller: '\Drupal\thm_liblynx_leap\Controller\LiblynxLeapController::post' }
+  methods:  [POST]
+  requirements:
+    _access: 'TRUE'

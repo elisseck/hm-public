@@ -3,7 +3,7 @@
 #
 
 # Protect files and directories from prying eyes.
-<FilesMatch "\.(engine|inc|install|make|module|profile|po|sh|.*sql|theme|twig|tpl(\.php)?|xtmpl|yml)(~|\.sw[op]|\.bak|\.orig|\.save)?$|^(\.(?!well-known).*|Entries.*|Repository|Root|Tag|Template|composer\.(json|lock))$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig|\.save)$">
+<FilesMatch "\.(engine|inc|install|make|module|profile|po|sh|.*sql|theme|twig|tpl(\.php)?|xtmpl|yml)(~|\.sw[op]|\.bak|\.orig|\.save)?$|^(\.(?!well-known).*|Entries.*|Repository|Root|Tag|Template|composer\.(json|lock)|web\.config)$|^#.*#$|\.php(~|\.sw[op]|\.bak|\.orig|\.save)$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
@@ -130,6 +130,19 @@ AddEncoding gzip svgz
 
   # Rewrite install.php during installation to see if mod_rewrite is working
   RewriteRule ^core/install.php core/install.php?rewrite=ok [QSA,L]
+
+
+  # Custom rewrite map for the MARC record redirection.
+  # This rule is in place before the following rules by design to ensure
+  # they run prior to passing everything to index.php for Drupal to deal with
+  # This redirection map must also use the L so that the other redirections do
+  # not take effect either.
+  # The pattern that will be handled by the map is as follows.
+  # /biography/accession/{A2002.048}  ->   {/biography/naim-akbar-40}
+  # this feature relies on the marcmap being defined in the vhost.conf at the
+  # apache config level since maps can not be defined in the .htaccess scope
+
+  RewriteRule "^biography/([A-Z][0-9]{4}\.[0-9]{3})$" "${marcmapdb:$1|/biography/accession-not-found}" [R=302,L]
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php.

@@ -107,6 +107,13 @@ your local host, or, navigate to "Configuration > Content Authoring > Import Bio
 A full import of Bios can be run by updating the configuration in the Administration screens and checking the box that
 indicates rebuilding of the ingestion tables.
 
+Note the bio import now also needs to export the Accession route map after it runs and the Apache map needs to be
+converted to the db format.
+
+    @hm-public.www sqlq --file ../scripts/sql/select-marc-url-redirects.sql --result-file ../marc-map.txt \
+    
+    httxt2dbm -i marc-map.txt -o marc-map.map
+
 ## Working on this project
 
 In this project, we use [GitHub Flow](https://guides.github.com/introduction/flow/), a lightweight, branch-based workflow that supports teams and projects where deployments are made regularly. In addition, we would appreciate if you fork from this project and create a feature branch from your fork. When your work is ready, you can create a Pull Request from your forked project's feature branch into this repository's master branch. This helps us keep the branch structure of this repo clean.
@@ -162,6 +169,11 @@ install bower globally with sudo.
 Install the cv tool as described 
 
   https://github.com/civicrm/cv
+  
+To install cv, I only had to issue two commands: 
+
+    sudo curl -LsS https://download.civicrm.org/cv/cv.phar -o /usr/local/bin/cv 
+    sudo chmod +x /usr/local/bin/cv 
 
 ### CiviCRM Cron config
 
@@ -199,3 +211,48 @@ The solr server is installed at `/home/devuser/bin/solr-6.6.0/bin/solr`
 
 
 # CiviCRM 
+
+
+# Composer Global Require
+
+In order to get a global drush installed using composer, there is a seperate
+requirement.  Having global drush on the app servers may make certain
+operations more convienient.
+
+    composer global require consolidation/cgr
+    
+    
+# Apache RewriteMap config
+
+There is a required RewriteMap configuration that needs to exist at the Apache
+level .conf files for both the http and https configs.  This is in order to handle
+redirections by accession number.  
+
+For example:
+
+    https://d8dev.thehistorymakers.org/biography/A2005.099
+
+redirects to
+
+    https://d8dev.thehistorymakers.org/biography/joseph-benjamin-anderson-jr
+
+
+## on d8dev
+
+    RewriteMap marcmapdb "dbm:/var/www/hm-public/current/marc-map.map"
+   
+## on production
+
+    RewriteMap marcmapdb "dbm:/var/www/hm-public/marc-map.map"
+    
+    
+    
+# CiviCRM Data exports
+
+There are a handful of automatic data exports running that take Civi data and push it to  the /data/image_sync/ folder 
+on the production server.  These commands are run by cron.
+
+    sudo -u www-data cv api Job.mail_report instanceId=42 format=csv sendmail=0 --user=civicrm.reports --cwd=/var/www/hm-public/ > /data/image_sync/CiviCRM\ Exports/contact_export_instance_42.csv
+    
+Note the use of the user `civicrm.reports` that is a specifi user that was created on production for the sole purpose 
+of running these reports.

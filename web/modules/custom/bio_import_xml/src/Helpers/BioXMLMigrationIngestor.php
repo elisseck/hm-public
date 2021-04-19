@@ -154,13 +154,14 @@ class BioXMLMigrationIngestor {
           unset($value);
           $value = implode(' -$- ', $newValue);
         }
-        if (strlen(trim($value))) {
-          $v = trim($value);
+        // add logic for favorites here
+        $v = trim($value);
+        if (strlen($v) || (substr(strtolower($field),0,9)=='favorite_')) {
           if (!$this->isInFieldList($v, $data['to_insert']['fields'])) {
             $data['to_insert']['fields'][] = strtolower($field);
-            $data['to_insert']['values'][] = addslashes(urldecode($value));
+            $data['to_insert']['values'][] = addslashes(urldecode($v));
           }
-          $data['to_update'][strtolower($field)] = addslashes(urldecode($value));
+          $data['to_update'][strtolower($field)] = addslashes(urldecode($v));
         }
       }
 
@@ -180,6 +181,8 @@ class BioXMLMigrationIngestor {
 
         $hmId = (isset($bio['HM_ID'])) ? $bio['HM_ID'] : '';
 
+
+
         if (!$this->isAValidHistoryMakersID($hmId)) {
           \drupal_set_message('skipping ' . $hmId . ' as it is not valid.');
           continue;
@@ -198,8 +201,7 @@ class BioXMLMigrationIngestor {
           $data['to_update']['timestamp'] = $newDate;
         }
 
-        if ($this->reset ||
-          (isset($newDate) && $this->isDateLessThanAWeekOld($newDate))) {
+        if ($this->reset || (isset($newDate) && $this->isDateLessThanAWeekOld($newDate))) {
 
           //\drupal_set_message('processing: ' . $bio['HM_ID']);
 
@@ -227,6 +229,7 @@ class BioXMLMigrationIngestor {
         }
 
         $this->processBiography($bio, $data);
+
         //\drupal_set_message('preparing to perform ' . $action);
         $this->upsert($this->db, $action, $hmId, $data);
         $data['to_insert']['fields'] = array();
@@ -236,22 +239,22 @@ class BioXMLMigrationIngestor {
   }
 
   public function upsert(Connection $db, $action, $hmId, $data) {
-      //\drupal_set_message("attempting to $action record: $hmId");
+    \drupal_set_message("attempting to $action record: $hmId");
     switch ($action) {
       case 'update':
+        // \drupal_set_message(print_r($data['to_update'], true));
         $db->update($this->storageTable)
             ->fields($data['to_update'])
             ->condition('hm_id', $hmId)
             ->execute();
         return true;
-        //\drupal_set_message(print_r($data['to_update'], true));
       case 'insert':
+        // \drupal_set_message(print_r($data['to_insert'], true));
         $db->insert($this->storageTable)
             ->fields($data['to_insert']['fields'])
             ->values($data['to_insert']['values'])
             ->execute();
         return true;
-        //\drupal_set_message(print_r($data['to_insert'], true));
       default:
         \drupal_set_message('record fell through.');
         return false;
