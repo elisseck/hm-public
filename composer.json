@@ -46,6 +46,7 @@
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/bulkdelete": "1.x-dev",
         "drupal/chosen": "^2.5",
+        "drupal/civicrm_member_roles": "^1.0@alpha",
         "drupal/commerce": "2.12",
         "drupal/commerce_authnet": "^1.1",
         "drupal/commerce_migrate": "^2.0",
