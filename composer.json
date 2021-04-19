@@ -35,10 +35,10 @@
     "require": {
         "cache/integration-tests": "~0.17",
         "civicrm/civicrm-asset-plugin": "~1.1",
-        "civicrm/civicrm-core": "~5.36.0",
+        "civicrm/civicrm-core": "5.36.0",
         "civicrm/civicrm-cxn-rpc": "v0.20.12.01",
-        "civicrm/civicrm-drupal-8": "~5.36.0",
-        "civicrm/civicrm-packages": "~5.36.0",
+        "civicrm/civicrm-drupal-8": "5.36.0",
+        "civicrm/civicrm-packages": "5.36.0",
         "civicrm/composer-downloads-plugin": "~3.0",
         "commerceguys/intl": "1.0.4",
         "composer/installers": "^1.9",
