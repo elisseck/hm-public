@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "587e2462d75f277e3ca0cf3c8ff16117",
+    "content-hash": "4f37fa50be71ab0c964fc9eca3f521ed",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -329,39 +329,35 @@
         },
         {
             "name": "cache/integration-tests",
-            "version": "0.16.0",
+            "version": "0.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-cache/integration-tests.git",
-                "reference": "a8d9538a44ed5a70d551f9b87f534c98dfe6b0ee"
+                "reference": "eda2e6b8bc5abcd623c8047e2345cda38dd6479e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-cache/integration-tests/zipball/a8d9538a44ed5a70d551f9b87f534c98dfe6b0ee",
-                "reference": "a8d9538a44ed5a70d551f9b87f534c98dfe6b0ee",
+                "url": "https://api.github.com/repos/php-cache/integration-tests/zipball/eda2e6b8bc5abcd623c8047e2345cda38dd6479e",
+                "reference": "eda2e6b8bc5abcd623c8047e2345cda38dd6479e",
                 "shasum": ""
             },
             "require": {
                 "cache/tag-interop": "^1.0",
-                "php": "^5.4|^7",
+                "php": ">=5.5.9",
                 "psr/cache": "~1.0"
             },
+            "conflict": {
+                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
+            },
             "require-dev": {
-                "cache/cache": "dev-master",
-                "illuminate/cache": "^5.0",
-                "madewithlove/illuminate-psr-cache-bridge": "^1.0",
-                "phpunit/phpunit": "^4.0|^5.0",
-                "symfony/cache": "^3.1",
-                "tedivm/stash": "dev-master"
+                "cache/cache": "^1.0",
+                "illuminate/cache": "^5.4|^5.5|^5.6",
+                "mockery/mockery": "^1.0",
+                "symfony/cache": "^3.4.31|^4.3.4|^5.0",
+                "symfony/phpunit-bridge": "^5.1",
+                "tedivm/stash": "^0.14"
             },
             "type": "library",
-            "extra": {
-                "patches_applied": {
-                    "Allow adding tests": "https://github.com/php-cache/integration-tests/commit/05f97174c09364dc10c084a38ba0cfd5124f4cec.patch",
-                    "Support PHPUnit 6+": "https://github.com/php-cache/integration-tests/commit/1ec7362962185df91d3d749bc3fa7e7b99cb9fc7.patch",
-                    "Add tests for binary data round trip": "https://github.com/php-cache/integration-tests/commit/89cd7068e83aa776774bfc44f6bcba858c085616.patch"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Cache\\IntegrationTests\\": "src/"
@@ -380,7 +376,7 @@
                 {
                     "name": "Tobias Nyholm",
                     "email": "tobias.nyholm@gmail.com",
-                    "homepage": "https://github.com/Nyholm"
+                    "homepage": "https://github.com/nyholm"
                 }
             ],
             "description": "Integration tests for PSR-6 and PSR-16 cache implementations",
@@ -391,7 +387,7 @@
                 "psr6",
                 "test"
             ],
-            "time": "2017-02-02T14:29:50+00:00"
+            "time": "2020-11-03T12:52:23+00:00"
         },
         {
             "name": "cache/tag-interop",
@@ -532,30 +528,34 @@
         },
         {
             "name": "civicrm/civicrm-core",
-            "version": "5.30.1",
+            "version": "5.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-core.git",
-                "reference": "343dc8dd6da8505bc40b7c01483b0b7102816ad6"
+                "reference": "d525bcda1229ec8b3fcc3bcf4951bd4c3683ed12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/343dc8dd6da8505bc40b7c01483b0b7102816ad6",
-                "reference": "343dc8dd6da8505bc40b7c01483b0b7102816ad6",
+                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/d525bcda1229ec8b3fcc3bcf4951bd4c3683ed12",
+                "reference": "d525bcda1229ec8b3fcc3bcf4951bd4c3683ed12",
                 "shasum": ""
             },
             "require": {
                 "adrienrn/php-mimetyper": "0.2.2",
                 "brick/money": "~0.4",
-                "cache/integration-tests": "~0.16.0",
-                "civicrm/civicrm-cxn-rpc": "~0.19.01.08",
-                "civicrm/composer-downloads-plugin": "^2.0",
+                "cache/integration-tests": "~0.17.0",
+                "civicrm/civicrm-cxn-rpc": "~0.20.12.01 || ~0.19.01.10",
+                "civicrm/composer-compile-lib": "~0.3 || ~1.0",
+                "civicrm/composer-downloads-plugin": "^3.0",
                 "cweagans/composer-patches": "~1.0",
                 "dompdf/dompdf": "~0.8",
                 "electrolinux/phpquery": "^0.9.6",
                 "ext-intl": "*",
+                "firebase/php-jwt": ">=3 <6",
                 "guzzlehttp/guzzle": "^6.3",
                 "league/csv": "^9.2",
+                "league/oauth2-client": "^2.4",
+                "league/oauth2-google": "^3.0",
                 "marcj/topsort": "~1.1",
                 "pear/auth_sasl": "1.1.0",
                 "pear/db": "1.10",
@@ -565,7 +565,7 @@
                 "pear/net_smtp": "1.9.*",
                 "pear/net_socket": "1.0.*",
                 "pear/validate_finance_creditcard": "dev-master",
-                "php": "~7.1",
+                "php": "~7.2",
                 "phpoffice/phpword": "^0.15.0",
                 "psr/log": "~1.0",
                 "psr/simple-cache": "~1.0.1",
@@ -576,6 +576,7 @@
                 "symfony/finder": "~3.0 || ~4.4",
                 "symfony/polyfill-iconv": "~1.0",
                 "symfony/process": "~3.0 || ~4.4",
+                "symfony/var-dumper": "~3.0 || ~4.4 || ~5.1",
                 "tecnickcom/tcpdf": "6.3.*",
                 "totten/ca-config": "~17.05",
                 "tplaner/when": "~3.0.0",
@@ -591,7 +592,7 @@
                         "path": "bower_components/{$id}"
                     },
                     "angular": {
-                        "url": "https://github.com/angular/bower-angular/archive/v1.5.11.zip"
+                        "url": "https://github.com/angular/bower-angular/archive/v1.8.0.zip"
                     },
                     "angular-bootstrap": {
                         "url": "https://github.com/angular-ui/bootstrap-bower/archive/2.5.0.zip"
@@ -606,13 +607,13 @@
                         "url": "https://github.com/totten/angular-jquery-dialog-service/archive/v0.8.0-civicrm-1.0.zip"
                     },
                     "angular-mocks": {
-                        "url": "https://github.com/angular/bower-angular-mocks/archive/v1.5.11.zip"
+                        "url": "https://github.com/angular/bower-angular-mocks/archive/v1.8.0.zip"
                     },
                     "angular-route": {
-                        "url": "https://github.com/angular/bower-angular-route/archive/v1.5.11.zip"
+                        "url": "https://github.com/angular/bower-angular-route/archive/v1.8.0.zip"
                     },
                     "angular-sanitize": {
-                        "url": "https://github.com/angular/bower-angular-sanitize/archive/v1.5.11.zip"
+                        "url": "https://github.com/angular/bower-angular-sanitize/archive/v1.8.0.zip"
                     },
                     "angular-ui-sortable": {
                         "url": "https://github.com/angular-ui/ui-sortable/archive/v0.19.0.zip"
@@ -756,6 +757,16 @@
                     "es6-promise": {
                         "url": "https://github.com/components/es6-promise/archive/v4.2.4.zip"
                     },
+                    "ext-greenwich-bootstrap3": {
+                        "url": "https://github.com/twbs/bootstrap-sass/archive/v{$version}.zip",
+                        "path": "ext/greenwich/extern/bootstrap3",
+                        "version": "3.4.1",
+                        "ignore": [
+                            "test",
+                            "tasks",
+                            "lib"
+                        ]
+                    },
                     "font-awesome": {
                         "url": "https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.zip",
                         "ignore": [
@@ -778,6 +789,14 @@
                             "*/*"
                         ]
                     },
+                    "monaco-editor": {
+                        "url": "https://registry.npmjs.org/monaco-editor/-/monaco-editor-0.16.2.tgz",
+                        "path": "bower_components/monaco-editor",
+                        "ignore": [
+                            "dev",
+                            "esm"
+                        ]
+                    },
                     "google-code-prettify": {
                         "url": "https://github.com/tcollard/google-code-prettify/archive/v1.0.5.zip",
                         "ignore": [
@@ -798,7 +817,7 @@
                         "url": "https://github.com/components/jqueryui/archive/1.12.1.zip"
                     },
                     "jquery-validation": {
-                        "url": "https://github.com/jquery-validation/jquery-validation/archive/1.19.1.zip",
+                        "url": "https://github.com/jquery-validation/jquery-validation/archive/1.19.3.zip",
                         "ignore": [
                             ".*",
                             "node_modules",
@@ -806,6 +825,15 @@
                             "test",
                             "demo",
                             "lib"
+                        ]
+                    },
+                    "json-formatter": {
+                        "url": "https://github.com/mohsen1/json-formatter/archive/v{$version}.zip",
+                        "version": "0.7.0",
+                        "ignore": [
+                            "demo",
+                            "test",
+                            "screenshot.png"
                         ]
                     },
                     "jstree": {
@@ -868,11 +896,6 @@
                     "adrienrn/php-mimetyper": {
                         "Update gitignore to ensure that sites that manage via git don't miss out on the important db.json file": "https://patch-diff.githubusercontent.com/raw/adrienrn/php-mimetyper/pull/15.patch"
                     },
-                    "cache/integration-tests": {
-                        "Allow adding tests": "https://github.com/php-cache/integration-tests/commit/05f97174c09364dc10c084a38ba0cfd5124f4cec.patch",
-                        "Support PHPUnit 6+": "https://github.com/php-cache/integration-tests/commit/1ec7362962185df91d3d749bc3fa7e7b99cb9fc7.patch",
-                        "Add tests for binary data round trip": "https://github.com/php-cache/integration-tests/commit/89cd7068e83aa776774bfc44f6bcba858c085616.patch"
-                    },
                     "electrolinux/phpquery": {
                         "PHP7.4 Fix for array access using {} instead of []": "https://raw.githubusercontent.com/civicrm/civicrm-core/fe45bdfc4f3e3d3deb27e3d853cdbc7f616620a9/tools/scripts/composer/patches/php74_array_access_fix_phpquery.patch"
                     },
@@ -897,7 +920,13 @@
                     "zetacomponents/mail": {
                         "CiviCRM Custom Patches for ZetaCompoents mail": "https://raw.githubusercontent.com/civicrm/civicrm-core/9d93748a36c7c5d44422911db1c98fb2f7067b34/tools/scripts/composer/patches/civicrm-custom-patches-zetacompoents-mail.patch"
                     }
-                }
+                },
+                "compile-includes": [
+                    "ext/greenwich/composer.compile.json"
+                ],
+                "compile-whitelist": [
+                    "civicrm/composer-compile-lib"
+                ]
             },
             "autoload": {
                 "psr-0": {
@@ -947,25 +976,31 @@
                 }
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
-            "time": "2020-10-21T04:13:25+00:00"
+            "funding": [
+                {
+                    "url": "https://civicrm.org/civicrm/contribute/transact?reset=1&id=47",
+                    "type": "custom"
+                }
+            ],
+            "time": "2021-04-07T23:49:53+00:00"
         },
         {
             "name": "civicrm/civicrm-cxn-rpc",
-            "version": "v0.19.01.09",
+            "version": "v0.20.12.01",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-cxn-rpc.git",
-                "reference": "3ea668bc651adb4d61e96276f55e76ae22baea7a"
+                "reference": "b097258a642dc3e0dd9c264cb75b72d5274cac2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-cxn-rpc/zipball/3ea668bc651adb4d61e96276f55e76ae22baea7a",
-                "reference": "3ea668bc651adb4d61e96276f55e76ae22baea7a",
+                "url": "https://api.github.com/repos/civicrm/civicrm-cxn-rpc/zipball/b097258a642dc3e0dd9c264cb75b72d5274cac2f",
+                "reference": "b097258a642dc3e0dd9c264cb75b72d5274cac2f",
                 "shasum": ""
             },
             "require": {
-                "phpseclib/phpseclib": "1.0.*",
-                "psr/log": "~1.0"
+                "phpseclib/phpseclib": "~2.0",
+                "psr/log": "~1.1"
             },
             "type": "library",
             "autoload": {
@@ -984,23 +1019,24 @@
                 }
             ],
             "description": "RPC library for CiviConnect",
-            "time": "2020-02-05T03:24:26+00:00"
+            "time": "2020-12-16T02:35:45+00:00"
         },
         {
             "name": "civicrm/civicrm-drupal-8",
-            "version": "5.30.1",
+            "version": "5.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-drupal-8.git",
-                "reference": "98be371cf58700e4314127930cc67f456cce4f23"
+                "reference": "3be82fa25f030c6b949fe5d274bac08313d54b7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-drupal-8/zipball/98be371cf58700e4314127930cc67f456cce4f23",
-                "reference": "98be371cf58700e4314127930cc67f456cce4f23",
+                "url": "https://api.github.com/repos/civicrm/civicrm-drupal-8/zipball/3be82fa25f030c6b949fe5d274bac08313d54b7d",
+                "reference": "3be82fa25f030c6b949fe5d274bac08313d54b7d",
                 "shasum": ""
             },
             "require": {
+                "civicrm/civicrm-asset-plugin": "~1.1",
                 "civicrm/civicrm-core": ">=5.21.0",
                 "composer/installers": "^1.0"
             },
@@ -1035,48 +1071,156 @@
                 }
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
-            "time": "2020-08-21T09:50:59+00:00"
+            "time": "2021-02-20T17:52:48+00:00"
         },
         {
             "name": "civicrm/civicrm-packages",
-            "version": "5.30.1",
+            "version": "5.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-packages.git",
-                "reference": "a95defd41e5131339a4df68544ba2c2275c55190"
+                "reference": "0368d3d43cfb73049e5914cf4d294074b967d858"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-packages/zipball/a95defd41e5131339a4df68544ba2c2275c55190",
-                "reference": "a95defd41e5131339a4df68544ba2c2275c55190",
+                "url": "https://api.github.com/repos/civicrm/civicrm-packages/zipball/0368d3d43cfb73049e5914cf4d294074b967d858",
+                "reference": "0368d3d43cfb73049e5914cf4d294074b967d858",
                 "shasum": ""
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "description": "Legacy third party dependencies for CiviCRM",
-            "time": "2020-09-03T08:01:53+00:00"
+            "time": "2021-02-20T17:53:27+00:00"
         },
         {
-            "name": "civicrm/composer-downloads-plugin",
-            "version": "v2.1.1",
+            "name": "civicrm/composer-compile-lib",
+            "version": "v0.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/civicrm/composer-downloads-plugin.git",
-                "reference": "8722bc7d547315be39397a3078bb51ee053ca269"
+                "url": "https://github.com/civicrm/composer-compile-lib.git",
+                "reference": "234ce8f3ca4401b05421009c242e10bae8958518"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/composer-downloads-plugin/zipball/8722bc7d547315be39397a3078bb51ee053ca269",
-                "reference": "8722bc7d547315be39397a3078bb51ee053ca269",
+                "url": "https://api.github.com/repos/civicrm/composer-compile-lib/zipball/234ce8f3ca4401b05421009c242e10bae8958518",
+                "reference": "234ce8f3ca4401b05421009c242e10bae8958518",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.1",
+                "civicrm/composer-compile-plugin": "~0.9 || ~1.0",
+                "padaliyajay/php-autoprefixer": "~1.2",
+                "scssphp/scssphp": "~1.2",
+                "symfony/filesystem": "~2.8 || ~3.4 || ~4.0 || ~5.0",
+                "tubalmartin/cssmin": "^4.1"
+            },
+            "type": "library",
+            "extra": {
+                "compile": [
+                    {
+                        "title": "Generate <comment>CCL</comment> wrapper functions",
+                        "run": [
+                            "@php-method \\CCL\\Tasks::template"
+                        ],
+                        "tpl-file": "src/StubsTpl.php",
+                        "tpl-items": {
+                            "CCL.php": true
+                        },
+                        "watch-files": [
+                            "src/StubsTpl.php",
+                            "src/Functions.php"
+                        ]
+                    }
+                ]
+            },
+            "autoload": {
+                "psr-0": {
+                    "CCL": ""
+                },
+                "psr-4": {
+                    "CCL\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CiviCRM",
+                    "email": "info@civicrm.org"
+                }
+            ],
+            "description": "Small library of compilation helpers",
+            "time": "2020-11-12T03:25:02+00:00"
+        },
+        {
+            "name": "civicrm/composer-compile-plugin",
+            "version": "v0.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/civicrm/composer-compile-plugin.git",
+                "reference": "af9686c4511ad4d2dde3c32aafa4637579e1085d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/civicrm/composer-compile-plugin/zipball/af9686c4511ad4d2dde3c32aafa4637579e1085d",
+                "reference": "af9686c4511ad4d2dde3c32aafa4637579e1085d",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1 || ^2.0",
+                "php": ">=7.1",
+                "totten/lurkerlite": "^1.3"
+            },
+            "require-dev": {
+                "composer/composer": "~1.0",
+                "totten/process-helper": "^1.0.1"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Civi\\CompilePlugin\\CompilePlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Civi\\CompilePlugin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Otten",
+                    "email": "info@civicrm.org"
+                }
+            ],
+            "description": "Define a 'compile' event for all packages in the dependency-graph",
+            "time": "2021-01-13T05:12:30+00:00"
+        },
+        {
+            "name": "civicrm/composer-downloads-plugin",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/civicrm/composer-downloads-plugin.git",
+                "reference": "3aabb6d259a86158d01829fc2c62a2afb9618877"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/civicrm/composer-downloads-plugin/zipball/3aabb6d259a86158d01829fc2c62a2afb9618877",
+                "reference": "3aabb6d259a86158d01829fc2c62a2afb9618877",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1 || ^2.0",
                 "php": ">=5.6",
                 "togos/gitignore": "~1.1.1"
             },
             "require-dev": {
-                "composer/composer": "~1.0",
+                "composer/composer": "~1.0 || ~2.0",
                 "friendsofphp/php-cs-fixer": "^2.3",
                 "phpunit/phpunit": "^5.7",
                 "totten/process-helper": "^1.0.1"
@@ -1105,7 +1249,7 @@
                 }
             ],
             "description": "Composer plugin for downloading additional files within any composer package.",
-            "time": "2019-08-28T00:33:51+00:00"
+            "time": "2020-11-02T05:26:23+00:00"
         },
         {
             "name": "commerceguys/addressing",
@@ -9627,6 +9771,123 @@
             "time": "2020-03-17T15:15:35+00:00"
         },
         {
+            "name": "league/oauth2-client",
+            "version": "2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/oauth2-client.git",
+                "reference": "badb01e62383430706433191b82506b6df24ad98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/badb01e62383430706433191b82506b6df24ad98",
+                "reference": "badb01e62383430706433191b82506b6df24ad98",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0 || ^7.0",
+                "paragonie/random_compat": "^1 || ^2 || ^9.99",
+                "php": "^5.6 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.3",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpunit/phpunit": "^5.7 || ^6.0 || ^9.3",
+                "squizlabs/php_codesniffer": "^2.3 || ^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\OAuth2\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Bilbie",
+                    "email": "hello@alexbilbie.com",
+                    "homepage": "http://www.alexbilbie.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Woody Gilk",
+                    "homepage": "https://github.com/shadowhand",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "OAuth 2.0 Client Library",
+            "keywords": [
+                "Authentication",
+                "SSO",
+                "authorization",
+                "identity",
+                "idp",
+                "oauth",
+                "oauth2",
+                "single sign on"
+            ],
+            "time": "2020-10-28T02:03:40+00:00"
+        },
+        {
+            "name": "league/oauth2-google",
+            "version": "3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/oauth2-google.git",
+                "reference": "6b79441f244040760bed5fdcd092a2bda7cf34c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-google/zipball/6b79441f244040760bed5fdcd092a2bda7cf34c6",
+                "reference": "6b79441f244040760bed5fdcd092a2bda7cf34c6",
+                "shasum": ""
+            },
+            "require": {
+                "league/oauth2-client": "^2.0"
+            },
+            "require-dev": {
+                "eloquent/phony-phpunit": "^2.0",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^6.0",
+                "squizlabs/php_codesniffer": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\OAuth2\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Woody Gilk",
+                    "email": "woody.gilk@gmail.com",
+                    "homepage": "http://shadowhand.me"
+                }
+            ],
+            "description": "Google OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
+            "keywords": [
+                "Authentication",
+                "authorization",
+                "client",
+                "google",
+                "oauth",
+                "oauth2"
+            ],
+            "time": "2021-01-27T16:09:03+00:00"
+        },
+        {
             "name": "marcj/topsort",
             "version": "1.1.0",
             "source": {
@@ -9789,6 +10050,86 @@
                 "php"
             ],
             "time": "2019-11-08T13:50:10+00:00"
+        },
+        {
+            "name": "padaliyajay/php-autoprefixer",
+            "version": "1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/padaliyajay/php-autoprefixer.git",
+                "reference": "f05f374f0c1e463db62209613f52b38bf4b52430"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/padaliyajay/php-autoprefixer/zipball/f05f374f0c1e463db62209613f52b38bf4b52430",
+                "reference": "f05f374f0c1e463db62209613f52b38bf4b52430",
+                "shasum": ""
+            },
+            "require": {
+                "sabberworm/php-css-parser": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Padaliyajay\\PHPAutoprefixer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jay padaliya"
+                }
+            ],
+            "description": "CSS Autoprefixer written in pure PHP.",
+            "time": "2019-11-26T09:55:37+00:00"
+        },
+        {
+            "name": "paragonie/random_compat",
+            "version": "v9.99.100",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
+            },
+            "suggest": {
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+            "keywords": [
+                "csprng",
+                "polyfill",
+                "pseudorandom",
+                "random"
+            ],
+            "time": "2020-10-15T08:29:30+00:00"
         },
         {
             "name": "pclzip/pclzip",
@@ -10742,50 +11083,42 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "1.0.19",
+            "version": "2.0.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "6537e74746c09cde3bb94317ae039bd89e1decf9"
+                "reference": "233a920cb38636a43b18d428f9a8db1f0a1a08f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/6537e74746c09cde3bb94317ae039bd89e1decf9",
-                "reference": "6537e74746c09cde3bb94317ae039bd89e1decf9",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/233a920cb38636a43b18d428f9a8db1f0a1a08f4",
+                "reference": "233a920cb38636a43b18d428f9a8db1f0a1a08f4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.0.0"
+                "php": ">=5.3.3"
             },
             "require-dev": {
                 "phing/phing": "~2.7",
-                "phpunit/phpunit": "^4.8.35|^5.7|^6.0",
-                "sami/sami": "~2.0",
+                "phpunit/phpunit": "^4.8.35|^5.7|^6.0|^9.4",
                 "squizlabs/php_codesniffer": "~2.0"
             },
             "suggest": {
                 "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
-                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
-                "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP < 5.0.0."
+                "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
+                "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Crypt": "phpseclib/",
-                    "File": "phpseclib/",
-                    "Math": "phpseclib/",
-                    "Net": "phpseclib/",
-                    "System": "phpseclib/"
-                },
                 "files": [
-                    "phpseclib/bootstrap.php",
-                    "phpseclib/Crypt/Random.php"
-                ]
+                    "phpseclib/bootstrap.php"
+                ],
+                "psr-4": {
+                    "phpseclib\\": "phpseclib/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                "phpseclib/"
-            ],
             "license": [
                 "MIT"
             ],
@@ -10851,7 +11184,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-08T04:31:58+00:00"
+            "time": "2021-04-06T13:56:45+00:00"
         },
         {
             "name": "psr/cache",
@@ -11422,6 +11755,69 @@
                 "stylesheet"
             ],
             "time": "2020-06-01T09:10:00+00:00"
+        },
+        {
+            "name": "scssphp/scssphp",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scssphp/scssphp.git",
+                "reference": "ba86c963b94ec7ebd6e19d90cdab90d89667dbf7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scssphp/scssphp/zipball/ba86c963b94ec7ebd6e19d90cdab90d89667dbf7",
+                "reference": "ba86c963b94ec7ebd6e19d90cdab90d89667dbf7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.3 || ^9.4",
+                "sass/sass-spec": "2020.12.29",
+                "squizlabs/php_codesniffer": "~3.5",
+                "symfony/phpunit-bridge": "^5.1",
+                "twbs/bootstrap": "~4.3",
+                "zurb/foundation": "~6.5"
+            },
+            "bin": [
+                "bin/pscss"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ScssPhp\\ScssPhp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthon Pang",
+                    "email": "apang@softwaredevelopment.ca",
+                    "homepage": "https://github.com/robocoder"
+                },
+                {
+                    "name": "Cédric Morin",
+                    "email": "cedric@yterium.com",
+                    "homepage": "https://github.com/Cerdic"
+                }
+            ],
+            "description": "scssphp is a compiler for SCSS written in PHP.",
+            "homepage": "http://scssphp.github.io/scssphp/",
+            "keywords": [
+                "css",
+                "less",
+                "sass",
+                "scss",
+                "stylesheet"
+            ],
+            "time": "2021-01-04T13:23:23+00:00"
         },
         {
             "name": "solarium/solarium",
@@ -13903,6 +14299,66 @@
             "time": "2017-05-10T20:08:17+00:00"
         },
         {
+            "name": "totten/lurkerlite",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/totten/Lurker.git",
+                "reference": "a20c47142b486415b9117c76aa4c2117ff95b49a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/totten/Lurker/zipball/a20c47142b486415b9117c76aa4c2117ff95b49a",
+                "reference": "a20c47142b486415b9117c76aa4c2117ff95b49a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "replace": {
+                "henrikbjorn/lurker": "*"
+            },
+            "suggest": {
+                "ext-inotify": ">=0.1.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Lurker": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Konstantin Kudryashov",
+                    "email": "ever.zet@gmail.com"
+                },
+                {
+                    "name": "Yaroslav Kiliba",
+                    "email": "om.dattaya@gmail.com"
+                },
+                {
+                    "name": "Henrik Bjrnskov",
+                    "email": "henrik@bjrnskov.dk"
+                }
+            ],
+            "description": "Resource Watcher - Lightweight edition of henrikbjorn/lurker with no dependencies",
+            "keywords": [
+                "filesystem",
+                "resource",
+                "watching"
+            ],
+            "time": "2020-09-01T10:01:01+00:00"
+        },
+        {
             "name": "tplaner/when",
             "version": "v3.0.0",
             "source": {
@@ -13948,6 +14404,59 @@
                 "time"
             ],
             "time": "2019-04-17T14:46:29+00:00"
+        },
+        {
+            "name": "tubalmartin/cssmin",
+            "version": "v4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port.git",
+                "reference": "3cbf557f4079d83a06f9c3ff9b957c022d7805cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tubalmartin/YUI-CSS-compressor-PHP-port/zipball/3cbf557f4079d83a06f9c3ff9b957c022d7805cf",
+                "reference": "3cbf557f4079d83a06f9c3ff9b957c022d7805cf",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "cogpowered/finediff": "0.3.*",
+                "phpunit/phpunit": "4.8.*"
+            },
+            "bin": [
+                "cssmin"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "tubalmartin\\CssMin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Túbal Martín",
+                    "homepage": "http://tubalmartin.me/"
+                }
+            ],
+            "description": "A PHP port of the YUI CSS compressor",
+            "homepage": "https://github.com/tubalmartin/YUI-CSS-compressor-PHP-port",
+            "keywords": [
+                "compress",
+                "compressor",
+                "css",
+                "cssmin",
+                "minify",
+                "yui"
+            ],
+            "time": "2018-01-15T15:26:51+00:00"
         },
         {
             "name": "twig/twig",
