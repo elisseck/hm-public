@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a43742ff3a05d80decee6b1b4d5fd9e7",
+    "content-hash": "1ed62cee3ce411dd42df0588fed2aa12",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -526,16 +526,16 @@
         },
         {
             "name": "civicrm/civicrm-core",
-            "version": "5.28.4",
+            "version": "5.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-core.git",
-                "reference": "d19587d82710aefaf5c824e60633bb68ece1ac03"
+                "reference": "343dc8dd6da8505bc40b7c01483b0b7102816ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/d19587d82710aefaf5c824e60633bb68ece1ac03",
-                "reference": "d19587d82710aefaf5c824e60633bb68ece1ac03",
+                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/343dc8dd6da8505bc40b7c01483b0b7102816ad6",
+                "reference": "343dc8dd6da8505bc40b7c01483b0b7102816ad6",
                 "shasum": ""
             },
             "require": {
@@ -545,15 +545,17 @@
                 "civicrm/civicrm-cxn-rpc": "~0.19.01.08",
                 "civicrm/composer-downloads-plugin": "^2.0",
                 "cweagans/composer-patches": "~1.0",
-                "dompdf/dompdf": "0.8.*",
+                "dompdf/dompdf": "~0.8",
                 "electrolinux/phpquery": "^0.9.6",
                 "ext-intl": "*",
                 "guzzlehttp/guzzle": "^6.3",
                 "league/csv": "^9.2",
                 "marcj/topsort": "~1.1",
                 "pear/auth_sasl": "1.1.0",
+                "pear/db": "1.10",
                 "pear/log": "1.13.2",
                 "pear/mail": "^1.4",
+                "pear/mail_mime": "~1.10",
                 "pear/net_smtp": "1.9.*",
                 "pear/net_socket": "1.0.*",
                 "pear/validate_finance_creditcard": "dev-master",
@@ -868,8 +870,14 @@
                     "electrolinux/phpquery": {
                         "PHP7.4 Fix for array access using {} instead of []": "https://raw.githubusercontent.com/civicrm/civicrm-core/fe45bdfc4f3e3d3deb27e3d853cdbc7f616620a9/tools/scripts/composer/patches/php74_array_access_fix_phpquery.patch"
                     },
+                    "pear/db": {
+                        "Apply CiviCRM Customisations for the pear:db package": "https://raw.githubusercontent.com/civicrm/civicrm-core/a48a43c2b5f6d694fff1cfb99d522c5d9e2459a0/tools/scripts/composer/pear_db_civicrm_changes.patch"
+                    },
                     "pear/mail": {
                         "Apply CiviCRM Customisations for CRM-1367 and CRM-5946": "https://raw.githubusercontent.com/civicrm/civicrm-core/36319938a5bf26c1e7e2110a26a65db6a5979268/tools/scripts/composer/patches/pear-mail.patch"
+                    },
+                    "pear/mail_mime": {
+                        "Apply patch for CRM-3133 wordwrap body to be 750 characters to apply with RFC 2821": "https://raw.githubusercontent.com/civicrm/civicrm-core/74e25f27bb3be32519657539afe8a285c6c99a08/tools/scripts/composer/patches/mail_mime_crm_3133.patch"
                     },
                     "pear/net_smtp": {
                         "Add in CiviCRM custom error message for CRM-8744": "https://raw.githubusercontent.com/civicrm/civicrm-core/a6a0ff13d2a155ad962529595dceaef728116f96/tools/scripts/composer/patches/net-smtp-patch.patch"
@@ -933,7 +941,7 @@
                 }
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
-            "time": "2020-09-02T00:42:23+00:00"
+            "time": "2020-10-21T04:13:25+00:00"
         },
         {
             "name": "civicrm/civicrm-cxn-rpc",
@@ -974,16 +982,16 @@
         },
         {
             "name": "civicrm/civicrm-drupal-8",
-            "version": "5.28.4",
+            "version": "5.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-drupal-8.git",
-                "reference": "d3ae4f5efe35649640e114279e00d2ad92f9fe4d"
+                "reference": "98be371cf58700e4314127930cc67f456cce4f23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-drupal-8/zipball/d3ae4f5efe35649640e114279e00d2ad92f9fe4d",
-                "reference": "d3ae4f5efe35649640e114279e00d2ad92f9fe4d",
+                "url": "https://api.github.com/repos/civicrm/civicrm-drupal-8/zipball/98be371cf58700e4314127930cc67f456cce4f23",
+                "reference": "98be371cf58700e4314127930cc67f456cce4f23",
                 "shasum": ""
             },
             "require": {
@@ -1021,26 +1029,26 @@
                 }
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
-            "time": "2020-06-29T20:42:45+00:00"
+            "time": "2020-08-21T09:50:59+00:00"
         },
         {
             "name": "civicrm/civicrm-packages",
-            "version": "5.28.4",
+            "version": "5.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-packages.git",
-                "reference": "297fd86564f0bfebeb44a09f34dce95727ab8d46"
+                "reference": "a95defd41e5131339a4df68544ba2c2275c55190"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-packages/zipball/297fd86564f0bfebeb44a09f34dce95727ab8d46",
-                "reference": "297fd86564f0bfebeb44a09f34dce95727ab8d46",
+                "url": "https://api.github.com/repos/civicrm/civicrm-packages/zipball/a95defd41e5131339a4df68544ba2c2275c55190",
+                "reference": "a95defd41e5131339a4df68544ba2c2275c55190",
                 "shasum": ""
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "description": "Legacy third party dependencies for CiviCRM",
-            "time": "2020-06-28T21:03:43+00:00"
+            "time": "2020-09-03T08:01:53+00:00"
         },
         {
             "name": "civicrm/composer-downloads-plugin",
@@ -9640,6 +9648,66 @@
             "time": "2019-11-20T18:27:48+00:00"
         },
         {
+            "name": "pear/db",
+            "version": "v1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/DB.git",
+                "reference": "e158c3a48246b67cd8c95856ffbb93de4ef380fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/DB/zipball/e158c3a48246b67cd8c95856ffbb93de4ef380fe",
+                "reference": "e158c3a48246b67cd8c95856ffbb93de4ef380fe",
+                "shasum": ""
+            },
+            "require": {
+                "pear/pear-core-minimal": "*"
+            },
+            "type": "library",
+            "extra": {
+                "patches_applied": {
+                    "Apply CiviCRM Customisations for the pear:db package": "https://raw.githubusercontent.com/civicrm/civicrm-core/a48a43c2b5f6d694fff1cfb99d522c5d9e2459a0/tools/scripts/composer/pear_db_civicrm_changes.patch"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "DB": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "PHP License v3.01"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Convissor",
+                    "email": "danielc@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Adam Harvey",
+                    "email": "aharvey@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Stig Bakken",
+                    "email": "stig@php.net",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tomas V.V.Cox",
+                    "email": "cox@idecnet.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "More info available on: http://pear.php.net/package/DB",
+            "time": "2020-04-19T19:45:59+00:00"
+        },
+        {
             "name": "pear/log",
             "version": "1.13.2",
             "source": {
@@ -9754,6 +9822,57 @@
             "description": "Class that provides multiple interfaces for sending emails.",
             "homepage": "http://pear.php.net/package/Mail",
             "time": "2017-04-11T17:27:29+00:00"
+        },
+        {
+            "name": "pear/mail_mime",
+            "version": "1.10.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Mail_Mime.git",
+                "reference": "1e7ae4e5258b6c0d385a8e76add567934245d38d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Mail_Mime/zipball/1e7ae4e5258b6c0d385a8e76add567934245d38d",
+                "reference": "1e7ae4e5258b6c0d385a8e76add567934245d38d",
+                "shasum": ""
+            },
+            "require": {
+                "pear/pear-core-minimal": "*"
+            },
+            "type": "library",
+            "extra": {
+                "patches_applied": {
+                    "Apply patch for CRM-3133 wordwrap body to be 750 characters to apply with RFC 2821": "https://raw.githubusercontent.com/civicrm/civicrm-core/74e25f27bb3be32519657539afe8a285c6c99a08/tools/scripts/composer/patches/mail_mime_crm_3133.patch"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mail": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./"
+            ],
+            "license": [
+                "BSD-3-clause"
+            ],
+            "authors": [
+                {
+                    "name": "Cipriano Groenendal",
+                    "email": "cipri@php.net",
+                    "role": "Lead"
+                },
+                {
+                    "name": "Aleksander Machniak",
+                    "email": "alec@php.net",
+                    "role": "Lead"
+                }
+            ],
+            "description": "Mail_Mime provides classes to create MIME messages",
+            "homepage": "http://pear.php.net/package/Mail_Mime",
+            "time": "2020-06-27T08:35:27+00:00"
         },
         {
             "name": "pear/net_smtp",
