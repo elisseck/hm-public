@@ -6,6 +6,7 @@ set :repo_url, 'git@github.com:thirdwavellc/hm-public.git'
 set :branch, 'env/qa'
 set :deploy_to, '/var/www/hm-public'
 set :composer_install_flags, '--no-dev --no-interaction --quiet --optimize-autoloader'
+set :keep_releases, 3
 
 append :linked_files, 'web/sites/default/settings.php'
 append :linked_files, 'web/sites/default/civicrm.settings.php'
@@ -15,6 +16,7 @@ append :linked_dirs, 'vendor/civicrm/civicrm-core/packages'
 
 before 'deploy:starting', 'drupal:site_offline'
 after 'deploy:finished', 'drupal:site_online'
+after "deploy:update", "deploy:cleanup"
 
 SSHKit.config.command_map[:composer] = "php #{shared_path.join("composer.phar")}"
 
