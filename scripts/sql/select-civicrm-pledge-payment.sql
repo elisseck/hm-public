@@ -1,0 +1,13 @@
+SELECT
+    id,
+    pledge_id,
+    contribution_id,
+    scheduled_amount,
+    actual_amount,
+    currency,
+    scheduled_date,
+    reminder_date,
+    reminder_count,
+    status_id
+FROM
+    civicrm_pledge_payment

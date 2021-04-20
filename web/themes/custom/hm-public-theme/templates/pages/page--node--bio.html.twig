@@ -271,6 +271,12 @@
             {#{{ page.content.relatedmakersblock }}#}
             <a class="button button--primary" href="/related-to/{{ node.id }}">See how {{ node.title.value }} is related to other HistoryMakers</a>
           </section>
+          
+          {# Donate Button 1 #}
+          <section class="discover desktop-only">
+            <a class="button button--quaternary" href="/civicrm/contribute/transact?reset=1&id=3&click_source=bio_left">Donate Now</a>
+          </section>
+          
         </div>{# <div class="row"> #}
 
         <div class="bio__column col-sm-7 col-md-9">
@@ -278,7 +284,10 @@
 
             {# Body #}
             <section class="col-sm bio-detail__main-content">
-              <h2>Biography</h2>
+              <div class="bio-detail__header">
+                <h2>Biography</h2>
+                <a class="button button--primary" href="/civicrm/contribute/transact?reset=1&amp;id=3&amp;click_source=bio_top">Donate Now</a>
+              </div>
               {% autoescape %}
                 <p>{{ node.body.value|raw|nl2br }}</p>
               {% endautoescape %}
@@ -288,9 +297,11 @@
             {% if node.field_sponsor.value %}
             <section class="col-sm-3 sponsor">
               <h2>Sponsored by {{ node.field_sponsor.value }}</h2>
-              <div>
-                <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="Profile picture">
-              </div>
+              {% if node.field_event_title_sponsor.entity.uri.value != 'public://300x300' %}
+                <div>
+                  <img class="sponsor__img" src="{{ file_url(node.field_event_title_sponsor.entity.uri.value) }}" alt="{{ node.field_sponsor.value|escape }}">
+                </div>
+              {% endif %}
             </section>
             {% endif %}
 
@@ -300,6 +311,11 @@
           <section class="discover mobile-only-details">
             {#{{ page.content.relatedmakersblock }}#}
             <a class="button button--primary" href="/related-to/{{ node.id }}">See how {{ node.title.value }} is related to other HistoryMakers</a>
+          </section>
+          
+          {# Mobile Donate Button 1 #}
+          <section class="discover mobile-only-details">
+            <a class="button button--quaternary" href="/civicrm/contribute/transact?reset=1&id=3&click_source=bio_left">Donate Now</a>
           </section>
 
           {# Video Selections #}
@@ -328,25 +344,45 @@
           {%  endif %}
           {#  List of DA Stories #}
           {% if node.field_dastories|length > 0 %}
-          <div class="accordion bio-detail__accordion">
-            <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#storyList" aria-expanded="false" aria-controls="storyList">
-              List of Stories in The HistoryMakers Digital Archive
-              <span class="accordion__arrow">
-                  <span class="accordion__arrow-half"></span>
-                  <span class="accordion__arrow-half"></span>
-              </span>
-            </button>
 
-            <div class="collapse accordion__body" id="storyList">
-              <div>
-                <ul>
-                  {% for key, value in node.field_dastories %}
-                    <li>{{ node.field_dastories[key].value | replace({'\\': ''}) }}</li>
+            <div class="accordion bio-detail__accordion">
+              <button class="accordion__panel collapsed" type="button" data-toggle="collapse" data-target="#storyList" aria-expanded="false" aria-controls="storyList">
+                List of Stories in The HistoryMakers Digital Archive
+                <span class="accordion__arrow">
+                    <span class="accordion__arrow-half"></span>
+                    <span class="accordion__arrow-half"></span>
+                </span>
+              </button>
+
+              <div class="collapse accordion__body" id="storyList">
+                {#  Create array of arrays of DA Links #}
+                {% set tapes = {} %}
+                {% for key, value in node.field_dastories %}
+                  {% set string1=node.field_dastories[key].value|split('e: ') %}
+                  {% set string2=string1[1]|split(' ') %}
+                  {% set field_name = "Tape: "~string2[0] %}
+                  {% if not attribute(tapes, field_name) is defined %}
+                    {% set tapes = tapes|merge({ (field_name) : [node.field_dastories[key].value] }) %}
+                  {# else update the dynamic property with the new title #}
+                  {% else %}
+                    {% set new_tape = attribute(tapes, field_name) %}
+                    {% set new_tape = new_tape|merge([node.field_dastories[key].value]) %}
+                    {% set tapes = tapes|merge({ (field_name) : new_tape }) %}
+                  {% endif %}
+                {% endfor %}
+                {# dump(tapes) #}
+                {% for key,value in tapes %}
+                  <div>
+                  <h3>{{ key }}</h3>
+                  <ul>
+                  {% for key1,value1 in value %}
+                    <li>{{ value1 | replace({(key):'', '\\': ''}) | raw }}</li>
                   {% endfor %}
-                </ul>
+                  </ul>
+                  </div>
+                {% endfor %}
               </div>
             </div>
-          </div>
           {% endif %}
           {#  End List of DA Stories #}
 

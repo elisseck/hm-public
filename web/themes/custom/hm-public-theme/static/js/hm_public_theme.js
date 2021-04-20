@@ -96,18 +96,19 @@
 
   //End global search function
 
+
+
+  //Open accordions
+  $(".accordion__panel").removeClass("collapsed");
+  $(".accordion__body").addClass("show");
+
+
 })(jQuery, Drupal, this, this.document);
 
 $('.carousel').carousel({
   interval: 9000
 });
 
-//Open first accordion
-$(".accordion__panel").first().removeClass("collapsed");
-$(".accordion__body").first().addClass("show");
-//EXCEPT bio detail page
-$(".mobile-only-details .accordion__panel").addClass("collapsed");
-$("#aboutInfo").removeClass("show");
 
 $(window).scroll(function() {
 });
