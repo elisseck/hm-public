@@ -38,4 +38,4 @@ cd /var/www/hm-public
 sudo -u www-data vendor/drush/drush/drush updb
 sudo -u www-data vendor/drush/drush/drush cr
 
-drush state:set system.maintenance_mode 1 --input-format=integer
+drush state:set system.maintenance_mode 0 --input-format=integer
