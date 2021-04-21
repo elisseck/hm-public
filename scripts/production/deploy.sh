@@ -17,8 +17,6 @@ rm web/sites/default/civicrm.settings.php && sudo cp $HM_PUB/web/sites/default/c
 
 sudo rsync -r $HM_PUB/web/sites/default/files/ web/sites/default/files;
 
-sudo cp -r $HM_PUB/web/pits web/;
-
 sudo chmod go+w web/sites/default/files/temp/
 sudo chmod go+w web/sites/default/files/2018-*
 sudo chmod -R go+w web/sites/default/files/pictures
