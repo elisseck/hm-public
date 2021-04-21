@@ -57,7 +57,10 @@
         "drupal/commerce_shipping": "^2.0",
         "drupal/commerce_store": "2.12",
         "drupal/config_update": "^1.7",
-        "drupal/console": "^1.0.1",
+        "drupal/console": "~1.9.7",
+        "drupal/console-core": "~1.9.7",
+        "drupal/console-en": "~1.9.7",
+        "drupal/console-extend-plugin": "~0.9.5",
         "drupal/core": "^8.9.13",
         "drupal/csv_serialization": "^2.0",
         "drupal/ctools": "^3.5",
@@ -121,7 +124,7 @@
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsstream": "~1.2",
         "phpunit/phpunit": "^4.8.35 || ^6.5",
-        "symfony/css-selector": "~2.8"
+        "symfony/css-selector": "~3.4"
     },
     "conflict": {
         "drupal/drupal": "*"
