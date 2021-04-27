@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e907a87bef68cb5d46ae42aeb8656659",
+    "content-hash": "b6f3e9b4a3b67b32f14f869d9a3dc747",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -1401,24 +1401,24 @@
         },
         {
             "name": "commerceguys/intl",
-            "version": "v1.0.4",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/commerceguys/intl.git",
-                "reference": "0fc176165f45d9f3dd9af50a05293c3fa99e4691"
+                "reference": "b8df285687b8d5d6494874d22e2e5cf625dbe180"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/commerceguys/intl/zipball/0fc176165f45d9f3dd9af50a05293c3fa99e4691",
-                "reference": "0fc176165f45d9f3dd9af50a05293c3fa99e4691",
+                "url": "https://api.github.com/repos/commerceguys/intl/zipball/b8df285687b8d5d6494874d22e2e5cf625dbe180",
+                "reference": "b8df285687b8d5d6494874d22e2e5cf625dbe180",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0"
+                "php": ">=7.0.8"
             },
             "require-dev": {
                 "mikey179/vfsstream": "1.*",
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "^6.0"
             },
             "type": "library",
             "extra": {
@@ -1441,7 +1441,11 @@
                 }
             ],
             "description": "Internationalization library powered by CLDR data.",
-            "time": "2019-03-31T23:36:43+00:00"
+            "support": {
+                "issues": "https://github.com/commerceguys/intl/issues",
+                "source": "https://github.com/commerceguys/intl/tree/v1.0.8"
+            },
+            "time": "2020-12-05T16:31:25+00:00"
         },
         {
             "name": "composer/installers",
@@ -7372,26 +7376,26 @@
         },
         {
             "name": "drupal/readonlymode",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/readonlymode.git",
-                "reference": "8.x-1.0"
+                "reference": "8.x-1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/readonlymode-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "d0ec15c851bb985453831ae15d7082f8343e9110"
+                "url": "https://ftp.drupal.org/files/projects/readonlymode-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "c81bd71c143b14d759611d7d105146f786e442e0"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1541706447",
+                    "version": "8.x-1.1",
+                    "datestamp": "1603541730",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7412,12 +7416,12 @@
                     "homepage": "https://www.drupal.org/user/73545"
                 },
                 {
-                    "name": "petew",
-                    "homepage": "https://www.drupal.org/user/1009366"
+                    "name": "bircher",
+                    "homepage": "https://www.drupal.org/user/1344166"
                 },
                 {
-                    "name": "rakeshfalke",
-                    "homepage": "https://www.drupal.org/user/660062"
+                    "name": "petew",
+                    "homepage": "https://www.drupal.org/user/1009366"
                 }
             ],
             "description": "This module will lock your site for any form postings.",
@@ -7706,29 +7710,29 @@
         },
         {
             "name": "drupal/simple_megamenu",
-            "version": "1.0.0-beta3",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/simple_megamenu.git",
-                "reference": "8.x-1.0-beta3"
+                "reference": "8.x-1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/simple_megamenu-8.x-1.0-beta3.zip",
-                "reference": "8.x-1.0-beta3",
-                "shasum": "7acc38f6e9e2fb371f2ea631f45e3110aacb8e4a"
+                "url": "https://ftp.drupal.org/files/projects/simple_megamenu-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "037a23fd01da1f1b0dcfd26948031eb65a231201"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-beta3",
-                    "datestamp": "1509488285",
+                    "version": "8.x-1.1",
+                    "datestamp": "1597530157",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -8027,17 +8031,17 @@
         },
         {
             "name": "drupal/twig_tweak",
-            "version": "2.6.0",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/twig_tweak.git",
-                "reference": "8.x-2.6"
+                "reference": "8.x-2.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/twig_tweak-8.x-2.6.zip",
-                "reference": "8.x-2.6",
-                "shasum": "a877de315bbf8603f146b55e7ca345d8fe70e234"
+                "url": "https://ftp.drupal.org/files/projects/twig_tweak-8.x-2.9.zip",
+                "reference": "8.x-2.9",
+                "shasum": "c45ba1a41e323a432d1ff36d0a72344b88595a39"
             },
             "require": {
                 "drupal/core": "^8.7 || ^9.0",
@@ -8049,8 +8053,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.6",
-                    "datestamp": "1589992479",
+                    "version": "8.x-2.9",
+                    "datestamp": "1608093728",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8125,20 +8129,20 @@
         },
         {
             "name": "drupal/views_data_export",
-            "version": "1.0.0-rc1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/views_data_export.git",
-                "reference": "8.x-1.0-rc1"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views_data_export-8.x-1.0-rc1.zip",
-                "reference": "8.x-1.0-rc1",
-                "shasum": "ba49a11ce7273c0f1e6978484dd4263b03372934"
+                "url": "https://ftp.drupal.org/files/projects/views_data_export-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "f1d16fd06ee7574f680e30f6bf5d6a152e3e9f42"
             },
             "require": {
-                "drupal/core": "^8",
+                "drupal/core": "^8.8 || ^9",
                 "drupal/csv_serialization": "~1.4 || ~2.0"
             },
             "require-dev": {
@@ -8148,11 +8152,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc1",
-                    "datestamp": "1588275953",
+                    "version": "8.x-1.0",
+                    "datestamp": "1592589996",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -8352,28 +8356,28 @@
         },
         {
             "name": "drupal/webform_migrate",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webform_migrate.git",
-                "reference": "8.x-1.1"
+                "reference": "8.x-1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform_migrate-8.x-1.1.zip",
-                "reference": "8.x-1.1",
-                "shasum": "09ac96f73429cfae2b5e47be9557a1e9ccea4fcb"
+                "url": "https://ftp.drupal.org/files/projects/webform_migrate-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "5bdd71ec318a51f5ebc20f30054eadbe14a2d1f0"
             },
             "require": {
-                "drupal/core": "~8.0",
+                "drupal/core": "^8.8 || ^9",
                 "drupal/webform": "*",
                 "drupal/webform_node": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.1",
-                    "datestamp": "1547087580",
+                    "version": "8.x-1.2",
+                    "datestamp": "1615806788",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8386,7 +8390,7 @@
             ],
             "authors": [
                 {
-                    "name": "andriyun",
+                    "name": "andr1yun",
                     "homepage": "https://www.drupal.org/user/1277538"
                 },
                 {
@@ -11064,16 +11068,16 @@
         },
         {
             "name": "pear/net_smtp",
-            "version": "1.9.1",
+            "version": "1.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/Net_SMTP.git",
-                "reference": "ee0e156ab94b37ac7ad10623a4a62f10a2a2d421"
+                "reference": "18b5dbaa049bee5f6d02c9a4318db02472e2c922"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/Net_SMTP/zipball/ee0e156ab94b37ac7ad10623a4a62f10a2a2d421",
-                "reference": "ee0e156ab94b37ac7ad10623a4a62f10a2a2d421",
+                "url": "https://api.github.com/repos/pear/Net_SMTP/zipball/18b5dbaa049bee5f6d02c9a4318db02472e2c922",
+                "reference": "18b5dbaa049bee5f6d02c9a4318db02472e2c922",
                 "shasum": ""
             },
             "require": {
@@ -11088,11 +11092,6 @@
                 "pear/auth_sasl": "Install optionally via your project's composer.json"
             },
             "type": "library",
-            "extra": {
-                "patches_applied": {
-                    "Add in CiviCRM custom error message for CRM-8744": "https://raw.githubusercontent.com/civicrm/civicrm-core/a6a0ff13d2a155ad962529595dceaef728116f96/tools/scripts/composer/patches/net-smtp-patch.patch"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Net": "./"
@@ -11125,7 +11124,11 @@
                 "mail",
                 "smtp"
             ],
-            "time": "2020-06-06T22:45:09+00:00"
+            "support": {
+                "issues": "https://github.com/pear/Net_SMTP/issues",
+                "source": "https://github.com/pear/Net_SMTP"
+            },
+            "time": "2020-08-13T01:26:09+00:00"
         },
         {
             "name": "pear/net_socket",
@@ -12310,23 +12313,23 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.7.1",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "31ffa96f8d2ed0341a57848cbb84d88b89dd664d"
+                "reference": "f3cff96a19736714524ca0dd1d4130de73dbbbc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/31ffa96f8d2ed0341a57848cbb84d88b89dd664d",
-                "reference": "31ffa96f8d2ed0341a57848cbb84d88b89dd664d",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/f3cff96a19736714524ca0dd1d4130de73dbbbc4",
+                "reference": "f3cff96a19736714524ca0dd1d4130de73dbbbc4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8"
+                "phpunit/phpunit": "^7.0 || ^6.5 || ^5.7 || ^4.8.36"
             },
             "type": "library",
             "autoload": {
@@ -12352,7 +12355,11 @@
                 "promise",
                 "promises"
             ],
-            "time": "2019-01-07T21:25:54+00:00"
+            "support": {
+                "issues": "https://github.com/reactphp/promise/issues",
+                "source": "https://github.com/reactphp/promise/tree/v2.8.0"
+            },
+            "time": "2020-05-12T15:16:56+00:00"
         },
         {
             "name": "react/stream",
