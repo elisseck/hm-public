@@ -15,9 +15,6 @@ append :linked_dirs, 'vendor/civicrm/civicrm-core/packages'
 
 
 
-## SSHKit.config.command_map[:composer] = "php #{shared_path.join("composer.phar")}"
-SSHKit.config.command_map[:bash] = "/bin/bash"
-SSHKit.config.command_map[:composer] = "/usr/bin/php7.2-cli /home/devuser/bin/composer"
 
 namespace :deploy do
   after :starting, 'composer:install_executable', 'composer:run'
