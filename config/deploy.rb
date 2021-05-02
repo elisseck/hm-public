@@ -14,13 +14,13 @@ append :linked_dirs, 'web/sites/default/files'
 append :linked_dirs, 'vendor/civicrm/civicrm-core/packages'
 
 
-before 'deploy:starting', 'drupal:site_offline'
-after 'deploy:finished', 'drupal:site_online'
 
-SSHKit.config.command_map[:composer] = "php #{shared_path.join("composer.phar")}"
+## SSHKit.config.command_map[:composer] = "php #{shared_path.join("composer.phar")}"
 
 namespace :deploy do
-  after :starting, 'composer:install_executable'
+  after :starting, 'composer:install_executable', 'composer:run'
+  before :publishing, 'drupal:site_offline'
+  after :finished, 'drupal:site_online'
 end
 
 namespace :drupal do
