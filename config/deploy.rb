@@ -11,7 +11,6 @@ set :keep_releases, 3
 append :linked_files, 'web/sites/default/settings.php'
 append :linked_files, 'web/sites/default/civicrm.settings.php'
 append :linked_dirs, 'web/sites/default/files'
-append :linked_dirs, 'vendor/civicrm/civicrm-core/packages'
 
 
 
