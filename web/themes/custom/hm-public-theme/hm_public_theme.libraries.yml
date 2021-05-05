@@ -19,8 +19,7 @@ hero-video-player:
 
 bio-video-player:
   js:
-    bio-video-player/dist/inline.bundle.js: {preprocess: false}
-    bio-video-player/dist/polyfills.bundle.js: {preprocess: false}
-    bio-video-player/dist/styles.bundle.js: {preprocess: false}
-    bio-video-player/dist/vendor.bundle.js: {preprocess: false}
-    bio-video-player/dist/main.bundle.js: {preprocess: false}
+    bio-video-player/dist/runtime-es5.js: {preprocess: false}
+    bio-video-player/dist/polyfills-es5.js: {preprocess: false}
+    bio-video-player/dist/vendor-es5.js: {preprocess: false}
+    bio-video-player/dist/main-es5.js: {preprocess: false}

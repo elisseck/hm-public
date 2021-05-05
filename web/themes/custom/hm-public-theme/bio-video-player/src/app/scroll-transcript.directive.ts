@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, Renderer, Output, EventEmitter } from '@angular/core';
+import { Directive, ElementRef, Input, Renderer2, Output, EventEmitter } from '@angular/core';
 
 // NOTE: this directive used to use scrollIntoView with window scrolling removed via CSS. However, it has been updated to pass
 // the top offset value of the element to the parent component. From there, the parent uses scrollTop with that value
@@ -9,7 +9,7 @@ import { Directive, ElementRef, Input, Renderer, Output, EventEmitter } from '@a
 export class ScrollTranscript {
     private el: HTMLElement;
 
-    constructor(private _renderer: Renderer, el: ElementRef) { this.el = el.nativeElement; }
+    constructor(private _renderer: Renderer2, el: ElementRef) { this.el = el.nativeElement; }
 
     @Input() set thdaScrollTranscript(condition: boolean) {
         if (condition) {
