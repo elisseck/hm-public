@@ -1,3 +1,5 @@
+<hr/>
+<h5>Original Video Player Start</h5>
 <app-root source="{{ video.field_web_clip1.value }}"
         source2="{{ video.field_web_clip2.value }}"
         title="{{ video.field_datitle[0].value | replace({'\\': ''}) }}"
@@ -6,3 +8,5 @@
         transcriptText="{{ video.field_transcript.value | striptags }}">Loading...</app-root>
 
 {{ attach_library('hm_public_theme/bio-video-player') }}
+<h5>Original Bio Video Player End</h5>
+<hr/>

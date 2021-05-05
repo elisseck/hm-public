@@ -2,11 +2,11 @@ import { Component, Input, ElementRef, ViewChild } from '@angular/core';
 import { DetailedStory } from './detailed-story';
 import { TimedTextMatch } from './timed-text-match';
 import { TranscriptTiming } from './transcript-timing';
-import { VgCoreModule }         from 'videogular2/core';
-import { VgControlsModule }     from 'videogular2/controls';
-import { VgOverlayPlayModule }  from 'videogular2/overlay-play';
-import { VgBufferingModule }    from 'videogular2/buffering';
-import { VgAPI }                from 'videogular2/core';
+import { VgCoreModule }         from '@videogular/ngx-videogular/core';
+import { VgControlsModule }     from '@videogular/ngx-videogular/controls';
+import { VgOverlayPlayModule }  from '@videogular/ngx-videogular/overlay-play';
+import { VgBufferingModule }    from '@videogular/ngx-videogular/buffering';
+import { VgAPI }                from '@videogular/ngx-videogular/core';
 
 export interface IMedia {
   title: string;
@@ -52,7 +52,7 @@ export class AppComponent {
   transcriptHeightInitialized: boolean = false;
 
   public api: VgAPI;
-  
+
   playlist: Array<IMedia>;
   currentIndex = 0;
   currentItem: IMedia;
@@ -74,7 +74,7 @@ export class AppComponent {
     var index = this.timingPairs.indexOf("$");
     this.timingPairsVideo1 = this.timingPairsToJSON(this.timingPairs.substr(0, index));
     this.timingPairsVideo2 = this.timingPairsToJSON(this.timingPairs.substr(index + 1) + "}");
-    
+
     this.playlist = [
       {
           title: this.title,
@@ -351,7 +351,7 @@ onResize(event) {
   adjustVideoCurrentTime() {
     let movieTimeInSecs: number
     movieTimeInSecs =  this.api.getDefaultMedia().currentTime;
-    
+
       // One-time setup of video transcript height based on video player (and player controls) height:
       if (!this.transcriptHeightInitialized) {
         this.computeTranscriptAreaHeight(window.innerWidth, window.innerHeight);
