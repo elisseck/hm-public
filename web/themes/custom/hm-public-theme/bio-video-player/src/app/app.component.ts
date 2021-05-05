@@ -61,15 +61,18 @@ export class AppComponent {
     this.title2 = this.elementRef.nativeElement.getAttribute('title2');
     this.thumb = this.source.replace('video','image');
     this.thumb2 = this.source2.replace('video','image');
-    this.timingPairs = this.elementRef.nativeElement.getAttribute('timingPairs');
-    this.transcriptText = this.elementRef.nativeElement.getAttribute('transcriptText');
 
+    this.timingPairs = this.elementRef.nativeElement.getAttribute('timingPairs');
+    let timingPairs1 = this.timingPairs.split(/[\$]/)[0];
+    let timingParis2 = this.timingPairs.split(/[\$]/)[1];
+
+    this.transcriptText = this.elementRef.nativeElement.getAttribute('transcriptText');
     this.transcriptText = this.transcriptText.replace( /(\$)\1+/gi, "\n\n").replace(/[\\]/, '');;
     this.transcriptText1 = this.transcriptText.split(/[\$]/)[0];
     this.transcriptText2 = this.transcriptText.split(/[\$]/)[1];
-    var index = this.timingPairs.indexOf("$");
-    this.timingPairsVideo1 = this.timingPairsToJSON(this.timingPairs.substr(0, index));
-    this.timingPairsVideo2 = this.timingPairsToJSON(this.timingPairs.substr(index + 1) + "}");
+
+    this.timingPairsVideo1 = this.timingPairsToJSON(timingPairs1);
+    this.timingPairsVideo2 = this.timingPairsToJSON(timingParis2);
 
     this.playlist = [
       {
@@ -90,23 +93,14 @@ export class AppComponent {
   }
 
   timingPairsToJSON(timingPairs) {
-    let currentNum = "";
+    let timingPairsArray = timingPairs.split(':').map(e => e.split(','));
     let newTimingPairs = [];
-    let newTimingPair: TranscriptTiming = {offset: 0, time: 0};
-    for (let ch of timingPairs) {
-      if (ch === ',') {
-        newTimingPair.time = Number(currentNum);
-        currentNum = "";
-      }
-      else if (ch === ':') {
-        newTimingPair.offset = Number(currentNum);
-        newTimingPairs.push(newTimingPair);
-        currentNum = "";
-        newTimingPair = {offset: 0, time: 0};
-      }
-      else {
-        currentNum = currentNum + ch;
-      }
+    for (let timingPairArray of timingPairsArray) {
+
+      let pair = new TranscriptTiming()
+        .buildFromArray(timingPairArray);
+
+      newTimingPairs.push(pair);
     }
     return newTimingPairs;
   }
@@ -215,10 +209,10 @@ export class AppComponent {
       // Fill transcript by breaking it into N pieces, corresponding to the N timing pieces.
 
           for (var i = 0; i < this.myStory.timingPairs.length - 1; i++) {
-              if (this.myStory.timingPairs[i + 1].offset > this.myStory.timingPairs[i].offset) {
+        if (this.myStory.timingPairs[i + 1].offset > this.myStory.timingPairs[i].offset) {
           // Something worthwhile for this piece.
-                  transcriptPiece = textWithBoldedMatches.substring(this.myStory.timingPairs[i].offset,
-                          this.myStory.timingPairs[i + 1].offset)
+          transcriptPiece = textWithBoldedMatches.substring(this.myStory.timingPairs[i].offset,
+            this.myStory.timingPairs[i + 1].offset)
           transcriptPiece = transcriptPiece.replace(re,'<br>');
           this.transcriptPieces.push(transcriptPiece);
         }
@@ -397,9 +391,9 @@ export class AppComponent {
     var newEntry: TimedTextMatch;
 
     if (this.myStory.timingPairs == null)
-        maxTimingPairIndex = -1;
+      maxTimingPairIndex = -1;
     else
-        maxTimingPairIndex = this.myStory.timingPairs.length - 1;
+      maxTimingPairIndex = this.myStory.timingPairs.length - 1;
     if (givenMatchesCount == 0 || maxTimingPairIndex <= 0) {
       this.storyHasMatches = false;
       this.myMatchContext = [];
