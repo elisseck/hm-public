@@ -5,17 +5,17 @@ This project repository contains the Drupal 8 scaffolding for the public THM sit
 ## Getting started
 1. Ensure you have the following dependencies installed on your machine:
     * [PHP 7.2](http://php.net/)
-      
+
     * [Composer](https://getcomposer.org/) >= 1.2.3
       (note: composer may require up to 4GB memory to install all dependencies. Update your php.ini accordingly)
-      
-    * [Ansible](http://docs.ansible.com/ansible/latest/intro.html) >= 2.3.1.0 
+
+    * [Ansible](http://docs.ansible.com/ansible/latest/intro.html) >= 2.3.1.0
       (Used by Vagrant. We recommend using `brew install ansible` if you're on a Mac.)
-      
+
     * [Vagrant](https://www.vagrantup.com/intro/index.html) >= 2.2.4
-      
+
     * [VirtualBox](https://www.virtualbox.org/) >= 6.0
-      
+
     * Note to Linux users:
         * You might need to enable mbstring and phpunit manually on your machine. You can do this by running `sudo apt-get install php7.0-mbstring` and `sudo apt-get install phpunit`.
         * You will need to install NFS, which is a distributed file system protocol used between your local machine and the virtual machine generated with `vagrant up`. You can do so by running `sudo apt install nfs-kernel-server`. You might also have to run `sudo apt install nfs-common` if you have mounting issues after installing. More information about that here: https://help.ubuntu.com/lts/serverguide/network-file-system.html.
@@ -52,7 +52,7 @@ This allows us to easily manage and share dependencies between a team of develop
 
 ## Ensure your local environment uses a sandbox Authorize.net configuration
 
-It is **imperative** that you create a local configuration for the Authorize.net feature.  Without this step, you risk creating orders against a configuration intended for another environment since there is an _option_ to configure these secrets through the Drupal GUI.  
+It is **imperative** that you create a local configuration for the Authorize.net feature.  Without this step, you risk creating orders against a configuration intended for another environment since there is an _option_ to configure these secrets through the Drupal GUI.
 
 In order to use a local configuration, place the following block within a `settings.local.php` file inside `/web/sites/default`
 
@@ -76,7 +76,7 @@ In order to safely make a backup from another database server
     mysqldump --databases thm_livedev --single-transaction --set-gtid-purged=OFF --add-drop-database --user=devuser --password | gzip -c > ./_backports/db/thm_livedev_backup.$(date +%Y%m%d_%H%M%S).sql.gz
 
 Bring the backup down to local and push it up into the vagrant machine
-  
+
     rsync -v devuser@devwww.thehistorymakers.org:~/_backports/db/* ../_backports/production/
     vagrant upload ../_backports/production/thm_livedev_backup.20190501_204210.sql.gzip
 
@@ -93,10 +93,10 @@ Get into vagrant machine and switch to root user, unzip the db, replace instance
 ## First boot of app after DB import
 
 Upon starting the DB after an import, step through the install and enter DB credentials.  Then you will also need to rebuild the Cache.  This can be accomplished by going into the vagrant host `vagrant ssh` and issuing a Drush coammand
-    
+
     cd /var/www/drupalvm/web
     drush cr
-    
+
 ## Adding items to the SOLR index.
 
 When you first start up, and after you've imported the DB, the Solr collection will need to be populated with the data from the database.  In order to do this, run the following.
@@ -105,8 +105,8 @@ When you first start up, and after you've imported the DB, the Solr collection w
 
 ## Local configuration for XML Import paths
 
-You will want to update the local path that should be used in the XML import script if you are testing that functionality.  
-The settings can be managed in the Drupal Administration interface by visiting the `/admin/settings/thm-migrate` URL on 
+You will want to update the local path that should be used in the XML import script if you are testing that functionality.
+The settings can be managed in the Drupal Administration interface by visiting the `/admin/settings/thm-migrate` URL on
 your local host, or, navigate to "Configuration > Content Authoring > Import Biographies" in the Drupal administration screens.
 
 ## Running _full_ import of Bios
@@ -118,7 +118,7 @@ Note the bio import now also needs to export the Accession route map after it ru
 converted to the db format.
 
     @hm-public.www sqlq --file ../scripts/sql/select-marc-url-redirects.sql --result-file ../marc-map.txt \
-    
+
     httxt2dbm -i marc-map.txt -o marc-map.map
 
 ## Working on this project
@@ -133,54 +133,30 @@ We use Gulp to process the theme SASS and other preprocessing tasks.  For exampl
     npm install
     gulp clean
     gulp sass-compile
-    
+
 We currently commit the compiled CSS files to the code repo rather than building at deploy time.
 
 
 ## Running deployments
-The QA server deployments _may_ be handled by Capistrano config
+The QA server deployments are handled by Capistrano config
 The production server has a deploy.sh script in the home directory of the devuser that outlines the steps necessary
 
 ## CiviCRM Installation
 
-The following patch is critical to use in order to get Civi to Run 
+The following patch is critical to use in order to get Civi to Run
 https://github.com/mattwire/civicrm-core/commit/e7e176259f89af7fdda0a2940171d313f98f678f#diff-7b0caad195353c8c5d49bbf5f053daf6
 
-### CiviCRM THeme
 
-We use the Shoreditch CiviCRM theme to present a 'flat' design that matches the design fo the site.
-https://github.com/civicrm/org.civicrm.shoreditch
-
-Install Shoreditch by using the following ... run as an appropriate www-data user if necessary.
-
-    # Navigate to your extension directory, e.g.
-    cd sites/default/files/civicrm/ext
-    
-    # Download and enable the extension
-    git clone https://github.com/civicrm/org.civicrm.shoreditch
-    cv en org.civicrm.shoreditch
-
-
-### Bower
-
-Bower is required in order to install CiviCRM at this time.
-It will be easiest to install the npm and bower with nvm so you do not have to 
-install bower globally with sudo.
-
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
-    nvm use
-    npm install bower -g
-    
 ### CiviCRM Cron config
 
-Install the cv tool as described 
+Install the cv tool as described
 
   https://github.com/civicrm/cv
-  
-To install cv, I only had to issue two commands: 
 
-    sudo curl -LsS https://download.civicrm.org/cv/cv.phar -o /usr/local/bin/cv 
-    sudo chmod +x /usr/local/bin/cv 
+To install cv, I only had to issue two commands:
+
+    sudo curl -LsS https://download.civicrm.org/cv/cv.phar -o /usr/local/bin/cv
+    sudo chmod +x /usr/local/bin/cv
 
 ### CiviCRM Cron config
 
@@ -188,13 +164,13 @@ Create a cron file `civicrm` in the `/etc/cron.d/` folder.  Place the following
 
     */5 * * * * www-data /usr/bin/php /usr/local/bin/cv api job.execute --cwd=/var/www/hm-public
 
-If you are not getting results, it may be helpful to create a directory in /var/log/ called `civicrm` 
+If you are not getting results, it may be helpful to create a directory in /var/log/ called `civicrm`
 make sure the directory is owned by `www-data` and then append the following string at the end of the cron
 command in `/etc/cron.d/civicrm` that was created above.
 
      {previous cron command} 1> /var/log/civicrm/civi-cron.log 2> /var/log/civicrm/civi-cron.err
-     
-You should expect something like 
+
+You should expect something like
 
 
 # Solr server
@@ -205,7 +181,7 @@ We utilize Solr for the search index on this site.
 
 The solr server is installed at `/home/devuser/bin/solr-6.6.5`
 
-The server can be started by 
+The server can be started by
 
     cd /home/devuser/bin/solr-6.6.5/bin`
     solr start
@@ -217,7 +193,7 @@ You will know it is running by checking the Drupal Status report
 The solr server is installed at `/home/devuser/bin/solr-6.6.0/bin/solr`
 
 
-# CiviCRM 
+# CiviCRM
 
 
 # Composer Global Require
@@ -227,13 +203,13 @@ requirement.  Having global drush on the app servers may make certain
 operations more convienient.
 
     composer global require consolidation/cgr
-    
-    
+
+
 # Apache RewriteMap config
 
 There is a required RewriteMap configuration that needs to exist at the Apache
 level .conf files for both the http and https configs.  This is in order to handle
-redirections by accession number.  
+redirections by accession number.
 
 For example:
 
@@ -247,19 +223,19 @@ redirects to
 ## on d8dev
 
     RewriteMap marcmapdb "dbm:/var/www/hm-public/current/marc-map.map"
-   
+
 ## on production
 
     RewriteMap marcmapdb "dbm:/var/www/hm-public/marc-map.map"
-    
-    
-    
+
+
+
 # CiviCRM Data exports
 
-There are a handful of automatic data exports running that take Civi data and push it to  the /data/image_sync/ folder 
+There are a handful of automatic data exports running that take Civi data and push it to  the /data/image_sync/ folder
 on the production server.  These commands are run by cron.
 
     sudo -u www-data cv api Job.mail_report instanceId=42 format=csv sendmail=0 --user=civicrm.reports --cwd=/var/www/hm-public/ > /data/image_sync/CiviCRM\ Exports/contact_export_instance_42.csv
-    
-Note the use of the user `civicrm.reports` that is a specifi user that was created on production for the sole purpose 
+
+Note the use of the user `civicrm.reports` that is a specifi user that was created on production for the sole purpose
 of running these reports.
