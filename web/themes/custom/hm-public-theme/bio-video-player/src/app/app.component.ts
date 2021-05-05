@@ -2,10 +2,6 @@ import { Component, Input, ElementRef, ViewChild } from '@angular/core';
 import { DetailedStory } from './detailed-story';
 import { TimedTextMatch } from './timed-text-match';
 import { TranscriptTiming } from './transcript-timing';
-import { VgCoreModule }         from '@videogular/ngx-videogular/core';
-import { VgControlsModule }     from '@videogular/ngx-videogular/controls';
-import { VgOverlayPlayModule }  from '@videogular/ngx-videogular/overlay-play';
-import { VgBufferingModule }    from '@videogular/ngx-videogular/buffering';
 import { VgApiService }         from '@videogular/ngx-videogular/core';
 
 export interface IMedia {
