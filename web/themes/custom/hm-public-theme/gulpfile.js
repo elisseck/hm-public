@@ -31,7 +31,7 @@ gulp.task('sass-lint', function () {
   .pipe($.sassLint.failOnError());
 });
 
-gulp.task('sass-compile', ['sass-lint'], function () {
+gulp.task('sass-compile', gulp.series('sass-lint', function () {
   // postCss plugins and processes
   var pcPlug = {
     autoprefixer: require('autoprefixer'),
@@ -55,45 +55,45 @@ gulp.task('sass-compile', ['sass-lint'], function () {
   .pipe($.sourcemaps.write())
   .pipe(gulp.dest('static/css'))
   .pipe(browserSync.reload({stream:true}));
-});
+}));
 
 /**
  * @task clean
  * Clean the dist folder.
  */
-gulp.task('clean', function () {
+gulp.task('clean', gulp.series( function () {
   return del(['static/css/*']);
-});
+}));
 
 /**
  * @task clearcache
  * Clear all caches
  */
-gulp.task('clearcache', function(done) {
+gulp.task('clearcache', gulp.series( function(done) {
   return cp.spawn('drush', ['cache-rebuild'], {stdio: 'inherit'})
   .on('close', done);
-});
+}));
 
 /**
  * @task reload
  * Refresh the page after clearing cache
  */
-gulp.task('reload', function () {
+gulp.task('reload', gulp.series( function () {
   browserSync.reload();
-});
+}));
 
 /**
  * @task watch
  * Watch files and do stuff.
  */
-gulp.task('watch', ['clean', 'sass-compile','browser-sync'], function () {
+gulp.task('watch', gulp.series( 'clean', 'sass-compile','browser-sync', function () {
   gulp.watch('static/sass/**/*.+(scss|sass)', ['sass-compile','reload']);
   gulp.watch(['templates/**/*.twig', 'partials/**/*.twig','**/*.yml'], ['clearcache','reload']);
-});
+}));
 
 /**
  * @task default
  * Watch files and do stuff.
  */
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.series('watch', function (){}));
 

@@ -28,8 +28,8 @@
     width: 100%;
   }
 
-  @media screen and (max-width: 520px) {
-    font-size: 1.2em;
+  @media screen and (max-width: 768px) {
+    font-size: 1.0em;
   }
 }
 
@@ -49,9 +49,16 @@
     background-color: color(quaternary);
   }
 
+  &:nth-of-type(4) {
+    background-color: color(dim-grey);
+  }
+
   &:nth-of-type(1):hover,
   &:nth-of-type(2):hover,
   &:nth-of-type(3):hover {
+    background-color: $white;
+  }
+  &:nth-of-type(4):hover {
     background-color: $white;
   }
 
@@ -83,6 +90,7 @@
 .carousel__link--bio:hover { color: color(secondary); }
 .carousel__link--member:hover { color: color(primary); }
 .carousel__link--da:hover { color: color(quaternary); }
+.carousel__link--archivedive:hover { color: color(quaternary); }
 
 .carousel__caption {
   display: flex;
