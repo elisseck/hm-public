@@ -8019,6 +8019,11 @@ form#Main div#s2id_onbehalf_country-3 {
   height: 34px;
   width: 98.55%; }
 
+#crm-container.crm-public .label {
+  width: 100%;
+  text-align: left;
+}
+
 .crm-container div.select2-container {
   min-width: 100%; }
 
